@@ -264,7 +264,21 @@ fn pwd_decides_the_working_copy_root() {
 #[test]
 fn a_locked_working_copy_is_refused() {
     let w = wc("storedbogus");
-    let held = Tree::open(w.root.as_os_str().as_bytes()).expect("hold the working copy");
+    // Other tests spawn dstore processes from their threads, and between fork and exec a child holds a
+    // copy of every descriptor, a packstore's flock included. So right after the fixture closes the
+    // store, or after `held` releases it, the lock can briefly look taken: retry for up to 10 s.
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    let held = loop {
+        match Tree::open(w.root.as_os_str().as_bytes()) {
+            Err(e)
+                if e.to_string().contains("is already open")
+                    && std::time::Instant::now() < deadline =>
+            {
+                std::thread::sleep(std::time::Duration::from_millis(20));
+            }
+            r => break r.expect("hold the working copy"),
+        }
+    };
     let locked = format!(
         "dstore: packstore: {}/.dstore/packstore is already open: resource temporarily unavailable\n",
         w.root.display()
@@ -281,7 +295,16 @@ fn a_locked_working_copy_is_refused() {
         assert_eq!(got, (1, Vec::new(), locked.clone()), "{args:?}");
     }
     held.close().expect("release");
-    let got = run(&mut dstore(&w.root, &["status"], &[]));
+    // The same fork window as above can briefly keep the released lock alive.
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    let got = loop {
+        let got = run(&mut dstore(&w.root, &["status"], &[]));
+        if got.2.contains("is already open") && std::time::Instant::now() < deadline {
+            std::thread::sleep(std::time::Duration::from_millis(20));
+            continue;
+        }
+        break got;
+    };
     assert_eq!(got.0, 0, "{got:?}");
 }
 

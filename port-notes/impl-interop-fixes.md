@@ -494,3 +494,26 @@ interop-fix-1's kill. The patch removes it: no NAT traversal round runs on a dir
   attempt failed at evaluation, because
   `./third_party` was still untracked and a git flake sees only tracked files. It passed once the tree was
   staged for the commit. The check outputs were then deleted from the store.
+
+## CI fix: H4 on Linux (Bubble Tea's input reader)
+
+On the GitHub ubuntu runner, H4 (`store pull` and `clone` with stderr on /dev/null) failed: Go exited 1
+with no stdout while Rust succeeded. The runner's stdin is /dev/null, a character device, so dstore's
+`runTUI` hands it to Bubble Tea as input (`tea.WithInput(os.Stdin)`), and `Program.Run` wraps it in
+muesli/cancelreader's reader. On Linux that reader registers the descriptor with epoll, which refuses
+non-pollable files such as /dev/null and /dev/zero. `Run` then returns `bubbletea: could not create
+cancelable reader: add reader to epoll interest list` before drawing anything, and `runTUI` cancels the
+transfer and returns that error. On macOS the kqueue reader accepts those files and the TUI runs.
+
+This was verified with a probe pinned to dstore v0.1.9's Charm module versions, on macOS and in a Linux
+container.
+
+The Rust TUI now does the same. `TermConfig.input_reader_fails` is set when stdin is a character device
+and `gocompat::os::epoll_rejects(0)` is true (always false off Linux). `Screen::open` checks it at Bubble
+Tea's point in `Run`: after raw mode, before the renderer starts. The tests are
+`progress::tests::run_tui_returns_the_input_reader_error_and_cancels_the_transfer` and
+`os::epoll_tests::dev_null_is_refused_and_a_pipe_is_not` (Linux).
+
+The same CI run showed the fixture-lock race again in `tests/cli_wc.rs`
+(`a_locked_working_copy_is_refused`). Like the snapshot fixtures, it now retries while a concurrently
+spawned child still holds the flock between fork and exec.

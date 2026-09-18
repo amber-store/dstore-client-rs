@@ -888,6 +888,8 @@ pub async fn run_transfer<T: Send + 'static>(
     let term = TermConfig {
         out: Box::new(std::io::stderr()),
         input: std::io::stdin().is_terminal(),
+        input_reader_fails: dstore_gocompat::os::is_char_device(0)
+            && dstore_gocompat::os::epoll_rejects(0),
         tty_output,
         profile,
     };
@@ -945,10 +947,18 @@ where
 
 /// Where and how the TUI draws: Bubble Tea's `WithOutput(os.Stderr)`, `WithInput(stdin)` and its tty
 /// checks.
+/// Bubble Tea's `Program.Run` error when its input reader cannot be created (see `TermConfig`).
+const INPUT_READER_EPOLL: &str =
+    "bubbletea: could not create cancelable reader: add reader to epoll interest list";
+
 struct TermConfig {
     out: Box<dyn Write + Send>,
     /// stdin is a terminal: raw mode and key events (Bubble Tea `initInput`).
     input: bool,
+    /// Bubble Tea cannot create its cancelable input reader. dstore hands Bubble Tea its stdin whenever
+    /// that is a character device, and on Linux the reader's epoll set refuses non-pollable ones such as
+    /// /dev/null (`gocompat::os::epoll_rejects`), so `Program.Run` fails before anything is drawn.
+    input_reader_fails: bool,
     /// stderr is a terminal: size queries and SIGWINCH (Bubble Tea `ttyOutput`).
     tty_output: bool,
     /// The colour profile frames are downsampled to (Bubble Tea `Program.profile`).
@@ -1111,6 +1121,14 @@ impl Screen {
             crossterm::terminal::enable_raw_mode()
                 .map_err(|e| format!("error entering raw mode: {}", io_error_text(&e)))?;
             raw = true;
+        }
+        // initInputReader comes after initTerminal (raw mode) and the size query, before the renderer
+        // starts. A terminal always takes an epoll registration, so raw mode is never on here in practice.
+        if term.input_reader_fails {
+            if raw {
+                let _ = crossterm::terminal::disable_raw_mode();
+            }
+            return Err(INPUT_READER_EPOLL.to_string());
         }
         let mut renderer = InlineRenderer::new(term.out, term.profile);
         renderer.start();
@@ -1950,6 +1968,7 @@ mod tests {
     async fn run_tui_draws_events_and_the_done_frame() {
         let buf = SharedBuf::default();
         let term = TermConfig {
+            input_reader_fails: false,
             out: Box::new(buf.clone()),
             input: false,
             tty_output: false,
@@ -2005,6 +2024,43 @@ mod tests {
         );
     }
 
+    /// Linux with stdin on /dev/null: Bubble Tea's `Program.Run` fails creating its input reader before
+    /// anything is drawn, and runTUI cancels the transfer, waits for it and returns the run error.
+    #[tokio::test]
+    async fn run_tui_returns_the_input_reader_error_and_cancels_the_transfer() {
+        let buf = SharedBuf::default();
+        let term = TermConfig {
+            input_reader_fails: true,
+            out: Box::new(buf.clone()),
+            input: false,
+            tty_output: false,
+            profile: Profile::TrueColor,
+        };
+        let res = tokio::time::timeout(
+            Duration::from_secs(10),
+            run_tui(
+                &Ctx::background(),
+                "pull trees/x".into(),
+                Level::INFO,
+                Arc::new(FixedZone(0)),
+                term,
+                |ctx, _log, _prog| {
+                    Box::pin(async move {
+                        ctx.done().await;
+                        Ok::<_, CliError>(())
+                    })
+                },
+            ),
+        )
+        .await
+        .expect("run_tui cancels the transfer");
+        assert!(
+            matches!(res, Err(CliError::Msg(ref m)) if m == INPUT_READER_EPOLL),
+            "{res:?}"
+        );
+        assert_eq!(buf.text(), "", "nothing drawn");
+    }
+
     /// Bubble Tea converts the frame to the detected profile: plain text for NoTTY (TERM=dumb), bold and
     /// faint without colours for Ascii (NO_COLOR), indexed colours for ANSI256; never 24-bit colours.
     #[tokio::test]
@@ -2016,6 +2072,7 @@ mod tests {
         ] {
             let buf = SharedBuf::default();
             let term = TermConfig {
+                input_reader_fails: false,
                 out: Box::new(buf.clone()),
                 input: false,
                 tty_output: false,

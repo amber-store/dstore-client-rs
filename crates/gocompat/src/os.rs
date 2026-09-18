@@ -683,6 +683,48 @@ pub fn restore_sigpipe() {
     }
 }
 
+/// Whether muesli/cancelreader's Linux constructor fails on `fd`. It is the reader Bubble Tea v2 wraps
+/// around its input, and it adds the descriptor to an epoll set, which Linux refuses for files that
+/// cannot be polled, such as /dev/null and /dev/zero. Always false elsewhere: the BSD reader uses
+/// kqueue, which accepts them.
+#[cfg(target_os = "linux")]
+pub fn epoll_rejects(fd: RawFd) -> bool {
+    // SAFETY: epoll_create1 returns a new descriptor or -1; epoll_ctl only reads `ev`; the epoll
+    // descriptor is closed before returning, and `fd` is neither closed nor modified.
+    unsafe {
+        let ep = libc::epoll_create1(libc::EPOLL_CLOEXEC);
+        if ep < 0 {
+            return false;
+        }
+        let mut ev = libc::epoll_event {
+            events: libc::EPOLLIN as u32,
+            u64: 0,
+        };
+        let rc = libc::epoll_ctl(ep, libc::EPOLL_CTL_ADD, fd, &mut ev);
+        libc::close(ep);
+        rc != 0
+    }
+}
+
+/// See the Linux variant: kqueue accepts every descriptor Bubble Tea is handed here.
+#[cfg(not(target_os = "linux"))]
+pub fn epoll_rejects(_fd: RawFd) -> bool {
+    false
+}
+
+#[cfg(all(test, target_os = "linux"))]
+mod epoll_tests {
+    use std::os::fd::AsRawFd;
+
+    #[test]
+    fn dev_null_is_refused_and_a_pipe_is_not() {
+        let null = std::fs::File::open("/dev/null").expect("/dev/null");
+        assert!(super::epoll_rejects(null.as_raw_fd()));
+        let (r, _w) = std::io::pipe().expect("pipe");
+        assert!(!super::epoll_rejects(r.as_raw_fd()));
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
