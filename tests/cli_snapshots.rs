@@ -12,14 +12,22 @@
 //! - `framework_cases`: groups `help`, `unknown`, `usage`, and `required` flag errors. The command table
 //!   (`dstore_cli::app`) and `dstore-gocli` decide them before any action runs.
 //! - `admin_cases`, `client_cases`, `wc_cases`: every other case reaches the action of its top-level
-//!   command, in `cmd_admin`, `cmd_client` or `cmd_wc` (layer L5). These are the argument, ticket and
-//!   relay validation before dialing, the node-side paths up to the store, the `cluster replicas` prompt,
-//!   the DD-2 refusal, and the offline working-copy commands.
+//!   command, in `cmd_admin`, `cmd_client` or `cmd_wc`. These are the argument, ticket and relay
+//!   validation before dialing, the node-side paths up to the store, the `cluster replicas` prompt, the
+//!   DD-2 refusal, and the offline working-copy commands.
 //!
 //! No captured case needs the network in Rust. Go binds an endpoint only in the kind-A node-side cases,
 //! and Rust replaces those with the fixed §2.2 A text. Every other case fails or finishes before dialing.
+//! On macOS this was checked by running the test binary under `sandbox-exec` with all networking denied
+//! (port-notes/impl-cli-snapshots.md).
 //!
-//! Tests that need nothing unfinished run now, over the same vectors:
+//! Not covered here: the outputs that need a live cluster (VECTORS.md "Not captured"). They belong to
+//! the interop suite (verification.md §4.5, PORTING.md §7). They are `cat NAME /` (DD-7), `cluster status`
+//! with a short cluster id (DD-7, DD-15), SIGPIPE on `cat`/`watch`, `watch` ending on SIGINT, the TUI into
+//! `/dev/null` and colour downsampling, `pull` conflicts, and the cli.md §3.4 success output of the admin,
+//! transfer and working-copy commands.
+//!
+//! Other tests over the same vectors:
 //! - the classification of every case, and its agreement with `dstore_gocli::dispatch` over the command table:
 //!   exactly the action cases reach an action, and nothing is printed before it;
 //! - the node-side substitute texts against `dstore_cli::nodeside`;
@@ -634,19 +642,16 @@ fn framework_cases() {
 }
 
 #[test]
-#[ignore = "needs dstore_cli::cmd_admin (layer L5)"]
 fn admin_cases() {
     run_cases(Needs::Admin);
 }
 
 #[test]
-#[ignore = "needs dstore_cli::cmd_client and dstore_cli::common (layer L5)"]
 fn client_cases() {
     run_cases(Needs::Client);
 }
 
 #[test]
-#[ignore = "needs dstore_cli::cmd_wc (layer L5)"]
 fn wc_cases() {
     run_cases(Needs::Wc);
 }
@@ -920,9 +925,7 @@ fn apply_step(
             fs::write(root.join(path), text).map_err(io)?;
             chmod(&root.join(path), *mode)
         }
-        Step::Symlink { path, target } => {
-            std::os::unix::fs::symlink(target, root.join(path)).map_err(io)
-        }
+        Step::Symlink { path, target } => symlink(&root.join(path), target),
         // `os.RemoveAll`: a missing path is not an error.
         Step::Remove { path } => {
             let p = root.join(path);
@@ -1059,4 +1062,45 @@ fn set_mtime(p: &Path, unix_ns: i64) -> Result<(), String> {
         rustix::fs::AtFlags::SYMLINK_NOFOLLOW,
     )
     .map_err(|e| e.to_string())
+}
+
+/// The umask clisnap ran under when it generated the vectors. The committed `snapshots.json` reproduces byte
+/// for byte under 022; under 077 the three `wc1` diff cases change (port-notes/impl-cli-snapshots.md).
+const GENERATION_UMASK: u32 = 0o022;
+
+/// The `symlink` step: `os.Symlink`, then, on macOS, the permission bits clisnap's links got.
+///
+/// A macOS symlink is created with `0777 &^ umask`. Its bits are part of the ingested entry, and `wc1` turns
+/// its `link` into a 0755 directory: a type change whose diff prints `old mode`/`new mode` when the bits
+/// differ (worktree `modeLines`). Setting them makes the fixture independent of this process's umask.
+/// Linux links are always 0777 and cannot be changed (`fchmodat` with `AT_SYMLINK_NOFOLLOW` gives
+/// `EOPNOTSUPP`).
+fn symlink(p: &Path, target: &str) -> Result<(), String> {
+    std::os::unix::fs::symlink(target, p).map_err(|e| e.to_string())?;
+    #[cfg(target_os = "macos")]
+    rustix::fs::chmodat(
+        rustix::fs::CWD,
+        p,
+        rustix::fs::Mode::from_raw_mode((0o777 & !GENERATION_UMASK) as rustix::fs::RawMode),
+        rustix::fs::AtFlags::SYMLINK_NOFOLLOW,
+    )
+    .map_err(|e| e.to_string())?;
+    Ok(())
+}
+
+/// The `symlink` step gives a link the bits clisnap gave it, whatever this process's umask: 0755 on macOS,
+/// 0777 on Linux. `wc/wc1 diff` and its `sub` variants depend on them.
+#[test]
+fn symlink_step_has_the_generation_mode() {
+    let dir = tempfile::tempdir().expect("temp dir");
+    let p = dir.path().join("link");
+    symlink(&p, "a.txt").expect("symlink step");
+    let md = fs::symlink_metadata(&p).expect("lstat the link");
+    assert!(md.file_type().is_symlink());
+    let want = if cfg!(target_os = "macos") {
+        0o777 & !GENERATION_UMASK
+    } else {
+        0o777
+    };
+    assert_eq!(md.permissions().mode() & 0o7777, want);
 }

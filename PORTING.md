@@ -117,6 +117,7 @@ These work together with Go, but their bytes are not compared:
 | DD-12 | Rare core-rs error texts are not re-rendered: `decode_payload` over-long frames, and `readdirent` vs `open` op names in walk errors. | Unobservable in practice (core-rs-gaps G17, G19, R3). Common paths are rewritten (§5.2). |
 | DD-13 | A `--relay` string that Go's `url.Parse` accepts but `url::Url` rejects (e.g. `foo`) is accepted. Relays count as enabled, bind waits its 10 s for a home relay, and no relay path is dialled. | Same observable effect as Go, whose relay never connects. |
 | DD-14 | Unicode tables (`IsPrint`, `IsSpace`, simple case mapping) are those of go1.26.5. | Regenerate the tables when dstore's `go.mod` `go` line changes. |
+| DD-15 | `cluster status` takes the cluster id's length as its capacity. An id shorter than 4 bytes takes the DD-7 path (`panic: runtime error: slice bounds out of range [:4] with capacity N`, N = the length, exit 2). Go slices `v.ClusterID[:4]` up to the capacity: a 1..3-byte id sent as an indefinite-length CBOR byte string has an append-grown capacity of at least 8, so Go prints it zero-padded (`01020000`) and exits 0. | `View` and `Cluster` keep neither the view bytes nor Go's slice capacity (`dstore_view::cluster_id_cap` needs the bytes). Nodes encode views canonically, with definite lengths, so only a hand-crafted reply differs. Decided by the orchestrator at the L2-L4 review. |
 
 ### 1.4 Go quirks reproduced on purpose
 

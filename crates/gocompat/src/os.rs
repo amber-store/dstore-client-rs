@@ -670,6 +670,19 @@ pub fn geteuid() -> u32 {
     unsafe { libc::geteuid() }
 }
 
+/// Sets SIGPIPE back to its default disposition (PORTING.md §5.9). A write to a closed stdout or
+/// stderr then kills the process by the signal, as Go does for fds 1 and 2, where Rust's runtime
+/// ignores SIGPIPE and `println!` panics. Sockets are unaffected (MSG_NOSIGNAL/SO_NOSIGPIPE).
+///
+/// Call it first in `main`, before any thread starts.
+pub fn restore_sigpipe() {
+    // SAFETY: signal(2) installs the default disposition, so no handler code ever runs; the caller
+    // does this before starting threads.
+    unsafe {
+        libc::signal(libc::SIGPIPE, libc::SIG_DFL);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

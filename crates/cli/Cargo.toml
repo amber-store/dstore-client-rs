@@ -27,3 +27,6 @@ libc.workspace = true
 thiserror.workspace = true
 tokio.workspace = true
 tokio-util.workspace = true
+
+[dev-dependencies]
+dstore-testkit.workspace = true

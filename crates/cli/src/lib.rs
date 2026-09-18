@@ -8,14 +8,9 @@
 #![deny(unsafe_op_in_unsafe_fn)]
 
 mod app;
-// L5 stubs (todo!() bodies): remove these allows when cli-admin, cli-client and cli-wc land.
-#[allow(dead_code, unused_variables)]
 mod cmd_admin;
-#[allow(dead_code, unused_variables)]
 mod cmd_client;
-#[allow(dead_code, unused_variables)]
 mod cmd_wc;
-#[allow(dead_code, unused_variables)]
 pub mod common;
 pub mod nodeside;
 pub mod progress;
@@ -39,7 +34,8 @@ pub const VERSION: &str = match option_env!("DSTORE_VERSION") {
 /// run(), flush stdout and stderr, return the exit code. The caller exits with `std::process::exit`
 /// (the runtime is not dropped).
 pub fn main_entry() -> i32 {
-    restore_sigpipe();
+    // PORTING.md §5.9: a write to a closed stdout or stderr kills the process by SIGPIPE, as in Go.
+    dstore_gocompat::os::restore_sigpipe();
     let args: Vec<OsString> = std::env::args_os().collect();
     let runtime = match tokio::runtime::Builder::new_multi_thread()
         .enable_all()
@@ -89,15 +85,6 @@ pub fn go_panic_exit(text: &str) -> ! {
     let _ = std::io::stdout().flush();
     write_stderr(format!("panic: {text}\n").as_bytes());
     std::process::exit(2)
-}
-
-/// PORTING.md §5.9: a write to a closed stdout or stderr kills the process by SIGPIPE, as in Go.
-fn restore_sigpipe() {
-    // SAFETY: signal(2) installs the default disposition, no handler code; it runs first in main_entry,
-    // before the runtime starts any thread.
-    unsafe {
-        libc::signal(libc::SIGPIPE, libc::SIG_DFL);
-    }
 }
 
 /// One write of `b` to stderr; errors are ignored as `fmt.Fprintln` errors are.

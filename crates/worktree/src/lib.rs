@@ -18,8 +18,6 @@ mod apply;
 mod change;
 mod diff;
 mod error;
-// L0 stubs until worktree-flow lands: remove this allow with them.
-#[allow(dead_code, unused_variables)]
 mod flow;
 mod merge;
 mod scan;
