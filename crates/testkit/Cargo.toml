@@ -1,0 +1,22 @@
+[package]
+name = "dstore-testkit"
+description = "Test support for dstore-client-rs: splitmix64 streams, golden-vector loaders, refglob and a fake dstore cluster"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+amber-store-core.workspace = true
+dstore-codec.workspace = true
+dstore-gocompat.workspace = true
+dstore-ticket.workspace = true
+dstore-transport.workspace = true
+dstore-view.workspace = true
+dstore-wire.workspace = true
+hex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true

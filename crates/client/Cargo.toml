@@ -1,0 +1,25 @@
+[package]
+name = "dstore-client"
+description = "dstore client: dial, view cache, references, watch, put/get and push/pull, compatible with Go dstore"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+amber-store-core.workspace = true
+async-channel.workspace = true
+async-stream.workspace = true
+dstore-codec.workspace = true
+dstore-gocompat.workspace = true
+dstore-ticket.workspace = true
+dstore-transport.workspace = true
+dstore-view.workspace = true
+dstore-wire.workspace = true
+futures.workspace = true
+pin-project-lite.workspace = true
+rand.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true

@@ -1,0 +1,13 @@
+[package]
+name = "dstore-codec"
+description = "CBOR compatible with fxamacker/cbor v2.9.3 as dstore configures it: canonical encoding, lax decoding, verbatim error texts"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+amber-store-core.workspace = true
+dstore-gocompat.workspace = true
+thiserror.workspace = true

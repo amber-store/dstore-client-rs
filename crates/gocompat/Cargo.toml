@@ -1,0 +1,14 @@
+[package]
+name = "dstore-gocompat"
+description = "Go standard-library behaviour dstore observes: strconv, strings, time, encoding/json v1, hex, base32, errno texts, paths, context and log/slog"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+libc.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true

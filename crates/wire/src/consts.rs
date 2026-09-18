@@ -1,0 +1,91 @@
+//! `wire/wire.go:21-129`: ALPNs, limits, message types and error codes.
+//!
+//! Names: Go `TFooBar` → `T_FOO_BAR` (`TOK` → `T_OK`, `TCASMismatch` → `T_CAS_MISMATCH`,
+//! `TGCStatusRep` → `T_GC_STATUS_REP`); Go `CodeFooBar` → `CODE_FOO_BAR`.
+
+pub const ALPN_CLIENT: &str = "amber-dstore/1";
+pub const ALPN_CLUSTER: &str = "amber-dstore-cluster/1";
+pub const ALPN_GATEWAY: &str = "amber-store-iroh/1";
+
+pub const MAX_FRAME: usize = 16 << 20;
+pub const MAX_KEYS: usize = 8192;
+pub const MAX_PUT_BATCH: usize = 64 << 20;
+pub const MAX_PAGE_BYTES: usize = 4 << 20;
+pub const CHUNK_SIZE: usize = 1 << 20;
+
+pub const T_DATA: i64 = 7;
+pub const T_DATA_END: i64 = 8;
+pub const T_ERR: i64 = 10;
+pub const T_VIEW: i64 = 32;
+pub const T_MISSING: i64 = 33;
+pub const T_GET: i64 = 34;
+pub const T_PUT: i64 = 35;
+pub const T_REF_GET: i64 = 36;
+pub const T_REF_PUT: i64 = 37;
+pub const T_REF_DELETE: i64 = 38;
+pub const T_REF_LIST: i64 = 39;
+pub const T_STATUS: i64 = 40;
+pub const T_ADMIN: i64 = 41;
+pub const T_REF_WATCH: i64 = 42;
+pub const T_VIEW_REPLY: i64 = 48;
+pub const T_MISSING_REPLY: i64 = 49;
+pub const T_ABSENT: i64 = 50;
+pub const T_PUT_RESULT: i64 = 51;
+pub const T_REF: i64 = 52;
+pub const T_OK: i64 = 53;
+pub const T_CAS_MISMATCH: i64 = 54;
+pub const T_INCOMPLETE: i64 = 55;
+pub const T_REFS: i64 = 56;
+pub const T_STATUS_REPLY: i64 = 57;
+pub const T_ADMIN_REPLY: i64 = 58;
+pub const T_REF_CHANGES: i64 = 59;
+pub const T_REF_SYNCED: i64 = 60;
+pub const T_PREPARE: i64 = 64;
+pub const T_ACCEPT: i64 = 65;
+pub const T_READ: i64 = 66;
+pub const T_SCAN: i64 = 67;
+pub const T_INSTALL: i64 = 68;
+pub const T_PURGE: i64 = 69;
+pub const T_MARKER: i64 = 70;
+pub const T_SEED: i64 = 71;
+pub const T_PROMISE: i64 = 80;
+pub const T_CONFLICT: i64 = 81;
+pub const T_ACCEPTED: i64 = 82;
+pub const T_READ_REPLY: i64 = 83;
+pub const T_SCAN_REPLY: i64 = 84;
+pub const T_INSTALLED: i64 = 85;
+pub const T_JOIN: i64 = 96;
+pub const T_GC_BARRIER: i64 = 97;
+pub const T_GC_MARK: i64 = 98;
+pub const T_GC_KEYS: i64 = 99;
+pub const T_GC_STATUS: i64 = 100;
+pub const T_ACK: i64 = 101;
+pub const T_VIEW_CHANGED: i64 = 102;
+pub const T_GC_STATUS_REP: i64 = 103;
+pub const T_GC_ABORT: i64 = 104;
+pub const T_PING: i64 = 105;
+pub const T_PONG: i64 = 106;
+pub const T_BACKUP_NOTE: i64 = 107;
+pub const T_REF_CHANGED: i64 = 108;
+
+pub const CODE_STALE_VIEW: &str = "stale-view";
+pub const CODE_NOT_OWNER: &str = "not-owner";
+pub const CODE_NO_SPACE: &str = "no-space";
+pub const CODE_BUSY: &str = "busy";
+pub const CODE_BAD_REQUEST: &str = "bad-request";
+pub const CODE_UNAUTHORIZED: &str = "unauthorized";
+pub const CODE_UNKNOWN_REF: &str = "unknown-ref";
+pub const CODE_CAS_MISMATCH: &str = "cas-mismatch";
+pub const CODE_INCOMPLETE: &str = "incomplete";
+pub const CODE_UNAVAILABLE: &str = "unavailable";
+pub const CODE_TIMEOUT: &str = "timeout";
+pub const CODE_INTERNAL: &str = "internal";
+pub const CODE_NOT_MEMBER: &str = "not-member";
+pub const CODE_NEED_VIEW: &str = "need-view";
+pub const CODE_EXPIRED: &str = "expired";
+pub const CODE_AMNESIAC: &str = "amnesiac";
+pub const CODE_MARK_FROZEN: &str = "mark-frozen";
+pub const CODE_RETIRED: &str = "retired";
+pub const CODE_TOO_SOON: &str = "too-soon";
+pub const CODE_CONFLICT: &str = "conflict";
+pub const CODE_NO_MARK: &str = "no-mark";

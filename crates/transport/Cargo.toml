@@ -1,0 +1,18 @@
+[package]
+name = "dstore-transport"
+description = "dstore transport traits, connection pool, Go address strings and an in-memory network"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+dstore-gocompat.workspace = true
+dstore-view.workspace = true
+dstore-wire.workspace = true
+futures.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true

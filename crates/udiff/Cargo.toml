@@ -1,0 +1,10 @@
+[package]
+name = "dstore-udiff"
+description = "go-udiff v0.4.1 unified diffs (Unified path) with Go's pdqsort, byte-identical to Go"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]

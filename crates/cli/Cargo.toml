@@ -1,0 +1,29 @@
+[package]
+name = "dstore-cli"
+description = "The dstore command-line interface (Go cmd/dstore): command table, actions, progress and TUI"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+amber-store-core.workspace = true
+crossterm.workspace = true
+dstore-client.workspace = true
+dstore-codec.workspace = true
+dstore-gocli.workspace = true
+dstore-gocompat.workspace = true
+dstore-ticket.workspace = true
+dstore-transport.workspace = true
+dstore-transport-iroh.workspace = true
+dstore-udiff.workspace = true
+dstore-view.workspace = true
+dstore-wire.workspace = true
+dstore-worktree.workspace = true
+futures.workspace = true
+iroh.workspace = true
+libc.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true

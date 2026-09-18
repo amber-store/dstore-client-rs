@@ -1,0 +1,13 @@
+[package]
+name = "dstore-gocli"
+description = "A urfave/cli v2.27.7-compatible CLI framework: Go flag parsing, help templates and tabwriter output"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+dstore-gocompat.workspace = true
+thiserror.workspace = true
+tokio.workspace = true

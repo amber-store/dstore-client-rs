@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_TOOLCHAIN: "1.95.0" # = nixpkgs nixos-26.05 rustc
+  DSTORE_GO_REF: v0.1.9
+
+jobs:
+  rust:
+    name: rust (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo fmt
+        run: cargo fmt --all --check
+      - name: cargo clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: cargo test (unit, golden, CLI snapshots, fake cluster, iroh loopback)
+        run: cargo test --workspace --locked
+        env:
+          TZ: UTC
+
+  vectors:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/vectorgen
+    env:
+      GOTOOLCHAIN: local
+      CGO_ENABLED: "0"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/vectorgen/go.mod
+          cache-dependency-path: tools/vectorgen/go.sum
+      - name: go vet
+        run: go vet ./...
+      - name: Regenerate twice; deterministic and equal to the committed vectors
+        run: |
+          go run . "$RUNNER_TEMP/golden-a"
+          go run . "$RUNNER_TEMP/golden-b"
+          diff -r "$RUNNER_TEMP/golden-a" "$RUNNER_TEMP/golden-b"
+          diff -r --exclude=snapshots.json --exclude=.gitkeep "$RUNNER_TEMP/golden-a" ../../tests/golden
+      - name: Regenerate crates/gocompat/src/tables.rs
+        run: |
+          go run ./cmd/gotables > "$RUNNER_TEMP/tables.rs"
+          diff -u ../../crates/gocompat/src/tables.rs "$RUNNER_TEMP/tables.rs"
+      - name: CLI snapshots from the Go binary (built into a temporary GOBIN and removed)
+        run: |
+          go run ./cmd/clisnap -o "$RUNNER_TEMP/cli"
+          diff -u ../../tests/golden/cli/snapshots.json "$RUNNER_TEMP/cli/snapshots.json"
+
+  interop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          repository: amber-store/dstore
+          ref: ${{ env.DSTORE_GO_REF }}
+          path: dstore-go
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: dstore-go/go.mod
+          cache-dependency-path: |
+            dstore-go/go.sum
+            tools/vectorgen/go.sum
+      - name: Build the Rust CLI and examples
+        run: cargo build --release --locked --bin dstore --examples
+      - name: Live Go <-> Rust interop over a 3-node loopback cluster
+        run: bash interop/check.sh
+        env:
+          GOTOOLCHAIN: local
+          CGO_ENABLED: "0"
+          DSTORE_GO_REPO: ${{ github.workspace }}/dstore-go
+          DSTORE_RS_BIN: ${{ github.workspace }}/target/release/dstore
+          INTEROP_MDNS: auto
+          INTEROP_LOG_DIR: ${{ runner.temp }}/interop-logs
+          # heavy and chaos groups only on manual runs
+          INTEROP_HEAVY: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+          INTEROP_CHAOS: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: interop-logs
+          path: ${{ runner.temp }}/interop-logs
+
+  nix:
+    name: nix (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: nix flake check
+        run: nix flake check -L
+      - name: nix build
+        run: nix build .#dstore -L && ./result/bin/dstore --version

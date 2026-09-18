@@ -1,0 +1,15 @@
+[package]
+name = "dstore-ticket"
+description = "dstore1 tickets and go-iroh endpoint-id parsing, compatible with Go dstore"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+data-encoding.workspace = true
+dstore-codec.workspace = true
+dstore-gocompat.workspace = true
+iroh-base.workspace = true
+thiserror.workspace = true

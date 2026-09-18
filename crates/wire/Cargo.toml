@@ -1,0 +1,16 @@
+[package]
+name = "dstore-wire"
+description = "dstore wire messages, frames and remote errors, transport-iroh pack framing, node admin and status payloads"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+amber-store-core.workspace = true
+dstore-codec.workspace = true
+dstore-gocompat.workspace = true
+futures-core.workspace = true
+thiserror.workspace = true
+tokio.workspace = true

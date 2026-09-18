@@ -1,0 +1,103 @@
+[package]
+name = "dstore-client-rs"
+description = "dstore client library and CLI: a compatible Rust port of github.com/amber-store/dstore v0.1.9"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+name = "dstore"
+path = "src/lib.rs"
+
+[[bin]]
+name = "dstore"
+path = "src/bin/dstore.rs"
+doc = false
+
+[dependencies]
+amber-store-core.workspace = true
+dstore-cli.workspace = true
+dstore-client.workspace = true
+dstore-codec.workspace = true
+dstore-gocli.workspace = true
+dstore-gocompat.workspace = true
+dstore-ticket.workspace = true
+dstore-transport.workspace = true
+dstore-transport-iroh.workspace = true
+dstore-udiff.workspace = true
+dstore-view.workspace = true
+dstore-wire.workspace = true
+dstore-worktree.workspace = true
+
+[dev-dependencies]
+dstore-testkit.workspace = true
+hex.workspace = true
+rustix.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+similar.workspace = true
+tempfile.workspace = true
+tokio = { workspace = true, features = ["test-util"] }
+walkdir.workspace = true
+xattr.workspace = true
+
+[workspace]
+members = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.91"
+license = "LGPL-3.0-only"
+repository = "https://github.com/amber-store/dstore-client-rs"
+
+[workspace.dependencies]
+# Workspace crates (PORTING.md §3.1).
+dstore-cli = { path = "crates/cli", version = "0.1.0" }
+dstore-client = { path = "crates/client", version = "0.1.0" }
+dstore-codec = { path = "crates/codec", version = "0.1.0" }
+dstore-gocli = { path = "crates/gocli", version = "0.1.0" }
+dstore-gocompat = { path = "crates/gocompat", version = "0.1.0" }
+dstore-testkit = { path = "crates/testkit", version = "0.1.0" }
+dstore-ticket = { path = "crates/ticket", version = "0.1.0" }
+dstore-transport = { path = "crates/transport", version = "0.1.0" }
+dstore-transport-iroh = { path = "crates/transport-iroh", version = "0.1.0" }
+dstore-udiff = { path = "crates/udiff", version = "0.1.0" }
+dstore-view = { path = "crates/view", version = "0.1.0" }
+dstore-wire = { path = "crates/wire", version = "0.1.0" }
+dstore-worktree = { path = "crates/worktree", version = "0.1.0" }
+
+# core-rs v0.3.0 (PORTING.md §5.11). Bump the flake's outputHashes."amber-store-core-0.3.0" with every rev.
+amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "a85ffa1eb5ed363b9072ab224de179196cd0a046" }
+
+# External crates (PORTING.md §5.10).
+async-channel = "2.5.0"
+async-stream = "0.3.6"
+async-trait = "0.1.92"
+blake3 = "1.8.6"
+crossterm = { version = "0.29.0", features = ["event-stream"] }
+data-encoding = "2.11.1"
+futures = "0.3.34"
+futures-core = "0.3.34"
+hex = "0.4.3"
+iroh = { version = "=1.2.0", default-features = false, features = ["tls-ring", "fast-apple-datapath"] }
+iroh-base = { version = "=1.2.0", features = ["key"] }
+libc = "0.2.189"
+nix = { version = "0.30.1", features = ["net"] }
+pin-project-lite = "0.2.17"
+rand = "0.9.2"
+rustix = { version = "1.1.4", features = ["fs"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+similar = "2.7.0"
+socket2 = { version = "0.6.5", features = ["all"] }
+tempfile = "3.27.0"
+thiserror = "2.0.20"
+tokio = { version = "1.53.1", features = ["rt-multi-thread", "macros", "sync", "time", "io-util", "net", "signal", "fs"] }
+tokio-util = "0.7.19"
+url = "2.5.8"
+walkdir = "2.5.0"
+xattr = "1.6.1"

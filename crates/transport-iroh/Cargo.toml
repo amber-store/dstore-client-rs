@@ -1,0 +1,26 @@
+[package]
+name = "dstore-transport-iroh"
+description = "dstore transport over Rust iroh 1.2.0: dial phases, discovery and a port of go-iroh's mDNS resolver"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+data-encoding.workspace = true
+dstore-gocompat.workspace = true
+dstore-transport.workspace = true
+dstore-view.workspace = true
+dstore-wire.workspace = true
+futures.workspace = true
+iroh.workspace = true
+iroh-base.workspace = true
+nix.workspace = true
+rand.workspace = true
+socket2.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-util.workspace = true
+url.workspace = true

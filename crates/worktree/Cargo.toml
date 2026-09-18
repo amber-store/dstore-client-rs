@@ -1,0 +1,20 @@
+[package]
+name = "dstore-worktree"
+description = "dstore working copies: scan, diff, merge, apply, fetch/pull/push, compatible with Go dstore"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+amber-store-core.workspace = true
+dstore-client.workspace = true
+dstore-gocompat.workspace = true
+dstore-ticket.workspace = true
+dstore-udiff.workspace = true
+dstore-view.workspace = true
+libc.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+xattr.workspace = true
