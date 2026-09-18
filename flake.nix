@@ -16,7 +16,8 @@
 
       src = lib.fileset.toSource {
         root = ./.;
-        fileset = lib.fileset.unions [ ./Cargo.toml ./Cargo.lock ./src ./crates ./tests ./examples ];
+        # third_party: the patched iroh 1.2.0 ([patch.crates-io] in Cargo.toml).
+        fileset = lib.fileset.unions [ ./Cargo.toml ./Cargo.lock ./src ./crates ./tests ./examples ./third_party ];
       };
 
       rustCommon = {
@@ -76,11 +77,27 @@
           installPhase = "touch $out";
         });
 
-        # socket-free suites only: unit tests, golden vectors, CLI snapshots, fake cluster
+        # Every test target that opens no socket: the unit tests of every crate; the root suites (golden
+        # vectors, CLI snapshots, the CLI actions, the fake cluster over the in-memory transport); and the
+        # crate test targets dstore-view all_slots and dstore-codec structs. iroh_loopback binds UDP
+        # sockets, which the Darwin sandbox refuses; the CI rust job runs it.
         tests = pkgs.rustPlatform.buildRustPackage (rustCommon // {
           pname = "dstore-tests";
           doCheck = true;
-          cargoTestFlags = [ "--workspace" "--lib" "--test" "golden" "--test" "cli_snapshots" "--test" "fake_cluster" ];
+          cargoTestFlags = [
+            "--workspace"
+            "--lib"
+            "--test" "golden"
+            "--test" "cli_snapshots"
+            "--test" "cli_admin"
+            "--test" "cli_client"
+            "--test" "cli_wc"
+            "--test" "fake_cluster"
+            "--test" "fake_cluster_transfer"
+            "--test" "fake_cluster_worktree"
+            "--test" "all_slots" # dstore-view
+            "--test" "structs" # dstore-codec
+          ];
           TZ = "UTC";
           installPhase = "touch $out";
         });

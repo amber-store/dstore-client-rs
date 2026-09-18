@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"strings"
 	"testing"
 
@@ -123,6 +124,45 @@ func TestFixtureStepsBuildTheTree(t *testing.T) {
 	}
 	if _, err := build(fixture{Name: "bad", Steps: []step{{Op: "nosuch"}}}, root, t.TempDir()); err == nil {
 		t.Error("an unknown op did not fail")
+	}
+}
+
+func TestSymlinkStepMode(t *testing.T) {
+	root := t.TempDir()
+	lperm := func(name string) os.FileMode {
+		t.Helper()
+		fi, err := os.Lstat(filepath.Join(root, name))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if fi.Mode()&os.ModeSymlink == 0 {
+			t.Fatalf("%s is not a symlink: %v", name, fi.Mode())
+		}
+		return fi.Mode().Perm()
+	}
+	// wc1's link: 0777 on every platform, whatever the umask.
+	fx := fixture{Name: "s", Steps: []step{{Op: "symlink", Path: "l", Target: "f", Mode: mode(0o777)}}}
+	if _, err := build(fx, root, t.TempDir()); err != nil {
+		t.Fatal(err)
+	}
+	if got := lperm("l"); got != 0o777 {
+		t.Errorf("l: %v, want 0777", got)
+	}
+	// Bits a Linux link cannot have fail the step there; macOS applies them.
+	fx = fixture{Name: "s2", Steps: []step{{Op: "symlink", Path: "m", Target: "f", Mode: mode(0o700)}}}
+	_, err := build(fx, root, t.TempDir())
+	switch runtime.GOOS {
+	case "linux":
+		if err == nil {
+			t.Error("a 0700 symlink on Linux did not fail")
+		}
+	case "darwin":
+		if err != nil {
+			t.Fatal(err)
+		}
+		if got := lperm("m"); got != 0o700 {
+			t.Errorf("m: %v, want 0700", got)
+		}
 	}
 }
 

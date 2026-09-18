@@ -83,6 +83,8 @@ enum Step {
     Symlink {
         path: String,
         target: String,
+        #[serde(default)]
+        mode: Option<u32>,
     },
     Remove {
         path: String,
@@ -925,7 +927,7 @@ fn apply_step(
             fs::write(root.join(path), text).map_err(io)?;
             chmod(&root.join(path), *mode)
         }
-        Step::Symlink { path, target } => symlink(&root.join(path), target),
+        Step::Symlink { path, target, mode } => symlink(&root.join(path), target, *mode),
         // `os.RemoveAll`: a missing path is not an error.
         Step::Remove { path } => {
             let p = root.join(path);
@@ -1064,43 +1066,64 @@ fn set_mtime(p: &Path, unix_ns: i64) -> Result<(), String> {
     .map_err(|e| e.to_string())
 }
 
-/// The umask clisnap ran under when it generated the vectors. The committed `snapshots.json` reproduces byte
-/// for byte under 022; under 077 the three `wc1` diff cases change (port-notes/impl-cli-snapshots.md).
-const GENERATION_UMASK: u32 = 0o022;
-
-/// The `symlink` step: `os.Symlink`, then, on macOS, the permission bits clisnap's links got.
+/// The `symlink` step: `os.Symlink`, then clisnap's `lchmod` when the step has a `mode`.
 ///
-/// A macOS symlink is created with `0777 &^ umask`. Its bits are part of the ingested entry, and `wc1` turns
-/// its `link` into a 0755 directory: a type change whose diff prints `old mode`/`new mode` when the bits
-/// differ (worktree `modeLines`). Setting them makes the fixture independent of this process's umask.
-/// Linux links are always 0777 and cannot be changed (`fchmodat` with `AT_SYMLINK_NOFOLLOW` gives
-/// `EOPNOTSUPP`).
-fn symlink(p: &Path, target: &str) -> Result<(), String> {
+/// A link's permission bits are part of its ingested entry. `wc1` turns its `link` into a 0755 directory: a
+/// type change whose diff prints `old mode`/`new mode` when the bits differ (worktree `modeLines`). A macOS
+/// link is created with `0777 &^ umask` and `fchmodat(AT_SYMLINK_NOFOLLOW)` changes it; Linux links are
+/// always 0777 and cannot be changed (`EOPNOTSUPP`). So `wc1` asks for 0777, and the fixture is the same on
+/// both platforms under any umask. As in clisnap, the step fails unless the link ends up with `mode`.
+fn symlink(p: &Path, target: &str, mode: Option<u32>) -> Result<(), String> {
     std::os::unix::fs::symlink(target, p).map_err(|e| e.to_string())?;
+    let Some(mode) = mode else {
+        return Ok(());
+    };
     #[cfg(target_os = "macos")]
-    rustix::fs::chmodat(
+    let changed = rustix::fs::chmodat(
         rustix::fs::CWD,
         p,
-        rustix::fs::Mode::from_raw_mode((0o777 & !GENERATION_UMASK) as rustix::fs::RawMode),
+        rustix::fs::Mode::from_raw_mode(mode as rustix::fs::RawMode),
         rustix::fs::AtFlags::SYMLINK_NOFOLLOW,
     )
-    .map_err(|e| e.to_string())?;
-    Ok(())
+    .map_err(|e| e.to_string());
+    #[cfg(not(target_os = "macos"))]
+    let changed: Result<(), String> = Err("a symlink's bits cannot change on this OS".to_string());
+    let got = fs::symlink_metadata(p)
+        .map_err(|e| e.to_string())?
+        .permissions()
+        .mode()
+        & 0o7777;
+    match changed {
+        _ if got == mode => Ok(()),
+        Ok(()) => Err(format!("lchmod {mode:#o}: the link has {got:#o}")),
+        Err(e) => Err(format!("lchmod {mode:#o}: {e} (the link has {got:#o})")),
+    }
 }
 
-/// The `symlink` step gives a link the bits clisnap gave it, whatever this process's umask: 0755 on macOS,
-/// 0777 on Linux. `wc/wc1 diff` and its `sub` variants depend on them.
+/// The `symlink` step gives a link the step's bits whatever this process's umask: `wc1`'s 0777 on every
+/// platform (`wc/wc1 diff` and its `sub` variants depend on it). Bits a Linux link cannot have fail the step
+/// there, as in clisnap; macOS applies them.
 #[test]
-fn symlink_step_has_the_generation_mode() {
+fn symlink_step_sets_the_link_mode() {
     let dir = tempfile::tempdir().expect("temp dir");
-    let p = dir.path().join("link");
-    symlink(&p, "a.txt").expect("symlink step");
-    let md = fs::symlink_metadata(&p).expect("lstat the link");
-    assert!(md.file_type().is_symlink());
-    let want = if cfg!(target_os = "macos") {
-        0o777 & !GENERATION_UMASK
-    } else {
-        0o777
+    let lperm = |p: &Path| {
+        let md = fs::symlink_metadata(p).expect("lstat the link");
+        assert!(
+            md.file_type().is_symlink(),
+            "{} is not a symlink",
+            p.display()
+        );
+        md.permissions().mode() & 0o7777
     };
-    assert_eq!(md.permissions().mode() & 0o7777, want);
+    let p = dir.path().join("link");
+    symlink(&p, "a.txt", Some(0o777)).expect("symlink step");
+    assert_eq!(lperm(&p), 0o777);
+    let q = dir.path().join("private");
+    let r = symlink(&q, "a.txt", Some(0o700));
+    if cfg!(target_os = "macos") {
+        r.expect("lchmod 0700 on macOS");
+        assert_eq!(lperm(&q), 0o700);
+    } else {
+        assert!(r.is_err(), "a 0700 symlink on this OS: {r:?}");
+    }
 }

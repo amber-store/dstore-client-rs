@@ -11,7 +11,6 @@ use std::fmt;
 use std::sync::LazyLock;
 use std::time::Duration;
 
-use amber_store_core::key::{Key, Type};
 use dstore_codec::{DecodeError, Struct, marshal, unmarshal};
 use dstore_testkit::golden::{self, Payload, decimal_i64, decimal_u64};
 use dstore_ticket::{Member, Ticket};
@@ -49,15 +48,14 @@ fn nullable<'de, D: Deserializer<'de>, T: Deserialize<'de> + Default>(d: D) -> R
     Ok(Option::<T>::deserialize(d)?.unwrap_or_default())
 }
 
-/// The first 30 bytes of BLAKE3-256(data). blake3 is not a dev-dependency of this package, but
-/// `amber_store_core::key::Key::new` stores the leading digest bytes after the key's header and length
-/// bytes; with length 0 the length takes one byte, so key bytes 2..32 are digest bytes 0..30.
-fn blake3_prefix(data: &[u8]) -> Vec<u8> {
-    Key::new(Type::Blob, 0, data).0[2..].to_vec()
+/// BLAKE3-256(data).
+fn blake3_digest(data: &[u8]) -> [u8; 32] {
+    *blake3::hash(data).as_bytes()
 }
 
+/// Whether `want_hex` is the full BLAKE3-256 digest of `data`.
 fn same_blake3(data: &[u8], want_hex: &str) -> bool {
-    hx(want_hex).get(..30) == Some(&blake3_prefix(data)[..])
+    hx(want_hex) == blake3_digest(data)
 }
 
 /// Collects failures so one run reports every mismatching case.
@@ -1016,8 +1014,8 @@ async fn frames_bulk() {
         });
         f.check(same_blake3(&frame, &c.frame_blake3), || {
             format!(
-                "{label}: frame blake3 prefix {}, want {}",
-                to_hex(&blake3_prefix(&frame)),
+                "{label}: frame blake3 {}, want {}",
+                to_hex(&blake3_digest(&frame)),
                 c.frame_blake3
             )
         });

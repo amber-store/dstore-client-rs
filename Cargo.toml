@@ -32,7 +32,9 @@ dstore-wire.workspace = true
 dstore-worktree.workspace = true
 
 [dev-dependencies]
+blake3.workspace = true
 dstore-testkit.workspace = true
+futures.workspace = true
 hex.workspace = true
 rustix.workspace = true
 serde.workspace = true
@@ -45,7 +47,15 @@ xattr.workspace = true
 
 [workspace]
 members = ["crates/*"]
+# third_party/iroh-1.2.0 is a patched dependency, not a member (PORTING.md §5.12).
+exclude = ["third_party"]
 resolver = "3"
+
+# iroh 1.2.0 with one change: no NAT traversal round while a direct path is selected, as go-iroh
+# does. Without it, go-iroh v0.2.0 nodes kill some connections (port-notes/impl-interop-fixes.md,
+# interop-fix-1; third_party/README.md).
+[patch.crates-io]
+iroh = { path = "third_party/iroh-1.2.0" }
 
 [workspace.package]
 version = "0.1.0"

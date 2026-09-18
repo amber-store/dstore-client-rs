@@ -297,7 +297,7 @@ impl IrohEndpoint {
     /// and waits for the peers to acknowledge (DD-11).
     pub async fn close_bounded(&self, d: Duration) {
         if let Some(discovery) = &self.discovery {
-            discovery.mdns.close();
+            discovery.close();
         }
         let _ = tokio::time::timeout(d, self.ep.close()).await;
     }
@@ -686,16 +686,30 @@ struct Discovery {
     dns: Option<DnsAddressLookup>,
 }
 
+/// The mDNS resolver `setupDiscovery` registers: the started one, or, when `Start` failed, a resolver without
+/// listener after the WARN line Go logs. Go keeps its resolver registered either way.
+fn registered_mdns(
+    started: Result<Arc<MdnsResolver>, String>,
+    logger: &Logger,
+) -> Arc<MdnsResolver> {
+    match started {
+        Ok(r) => r,
+        Err(err) => {
+            logger.warn(MDNS_UNAVAILABLE, vec![Attr::any("error", err)]);
+            MdnsResolver::without_listener(logger.clone())
+        }
+    }
+}
+
 impl Discovery {
+    /// Go `Close` ends the ctx the mDNS `Start` runs under: the listener stops.
+    fn close(&self) {
+        self.mdns.close();
+    }
+
     /// `setupDiscovery` for a client (`Discover` without `Announce`).
     async fn start(ep: &iroh::Endpoint, relays: bool, logger: &Logger) -> Discovery {
-        let mdns = match MdnsResolver::start(logger.clone()).await {
-            Ok(r) => r,
-            Err(err) => {
-                logger.warn(MDNS_UNAVAILABLE, vec![Attr::any("error", err)]);
-                MdnsResolver::without_listener(logger.clone())
-            }
-        };
+        let mdns = registered_mdns(MdnsResolver::start(logger.clone()).await, logger);
         let dns = if relays {
             ep.dns_resolver().ok().map(|r| {
                 DnsAddressLookup::builder(DNS_ORIGIN.to_string())
@@ -1107,5 +1121,118 @@ mod tests {
             generate_secret_key().public(),
             generate_secret_key().public()
         );
+    }
+
+    /// Records the message and the attribute keys of every slog record.
+    #[derive(Default)]
+    struct Recorder(std::sync::Mutex<Vec<(String, Vec<String>)>>);
+
+    impl Recorder {
+        fn lines(&self) -> Vec<(String, Vec<String>)> {
+            self.0
+                .lock()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .clone()
+        }
+    }
+
+    impl dstore_gocompat::slog::Handler for Recorder {
+        fn enabled(&self, _level: dstore_gocompat::slog::Level) -> bool {
+            true
+        }
+        fn handle(&self, _handler_attrs: &[Attr], r: &dstore_gocompat::slog::Record) {
+            let keys = r.attrs.iter().map(|a| a.key.clone()).collect();
+            self.0
+                .lock()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .push((r.message.clone(), keys));
+        }
+    }
+
+    fn recorded_logger() -> Logger {
+        Logger::new(Arc::new(Recorder::default()))
+    }
+
+    /// dstore `setupDiscovery`: when the mDNS `Start` fails, Go logs the WARN line and keeps its resolver
+    /// registered, so the endpoint gets a resolver without listener. A started resolver is kept as it is.
+    #[test]
+    fn a_failed_mdns_start_registers_a_resolver_without_listener() {
+        let rec = Arc::new(Recorder::default());
+        let logger = Logger::new(rec.clone());
+        let fallback = registered_mdns(
+            Err(
+                "mdns: listen udp4: listen udp4 0.0.0.0:5353: bind: address already in use"
+                    .to_string(),
+            ),
+            &logger,
+        );
+        assert!(!fallback.is_listening());
+        assert_eq!(
+            rec.lines(),
+            [(MDNS_UNAVAILABLE.to_string(), vec!["error".to_string()])]
+        );
+
+        let started = MdnsResolver::with_cache(logger.clone(), Vec::new());
+        let kept = registered_mdns(Ok(started.clone()), &logger);
+        assert!(Arc::ptr_eq(&kept, &started));
+        assert!(kept.is_listening());
+        assert_eq!(rec.lines().len(), 1, "no WARN for a started resolver");
+    }
+
+    /// go-iroh `lookupAddr`: an answer whose address set is empty (`found.IsEmpty()`) is skipped. A relay URL
+    /// alone counts as an address.
+    #[tokio::test(start_paused = true)]
+    async fn discovery_skips_answers_without_addresses() {
+        let key = iroh::SecretKey::from_bytes(&[7; 32]).public();
+        let discovery = |a: Announcement| Discovery {
+            mdns: MdnsResolver::with_cache(recorded_logger(), vec![a]),
+            dns: None,
+        };
+        let empty = Announcement {
+            id: *key.as_bytes(),
+            addrs: Vec::new(),
+            relay: None,
+            user_data: None,
+        };
+        let ctx = Ctx::background();
+        assert!(
+            discovery(empty.clone())
+                .first_usable(&ctx, key)
+                .await
+                .is_none()
+        );
+
+        let relay_only = Announcement {
+            relay: Some("https://use1-1.relay.n0.iroh-canary.iroh.link./".to_string()),
+            ..empty.clone()
+        };
+        let got = discovery(relay_only)
+            .first_usable(&ctx, key)
+            .await
+            .expect("a relay URL is an address");
+        assert_eq!(got.relay_urls().count(), 1);
+
+        let direct = Announcement {
+            addrs: vec!["192.0.2.1:4242".parse().expect("addr")],
+            ..empty
+        };
+        let got = discovery(direct)
+            .first_usable(&ctx, key)
+            .await
+            .expect("usable");
+        assert_eq!(got.id, key);
+        assert_eq!(got.addrs.len(), 1);
+    }
+
+    /// Go `Close` stops discovery: closing the endpoint's discovery ends the mDNS listener.
+    #[test]
+    fn closing_discovery_stops_the_mdns_listener() {
+        let discovery = Discovery {
+            mdns: MdnsResolver::with_cache(recorded_logger(), Vec::new()),
+            dns: None,
+        };
+        assert!(discovery.mdns.is_listening());
+        discovery.close();
+        assert!(!discovery.mdns.is_listening());
     }
 }

@@ -544,6 +544,28 @@ impl Drop for MdnsResolver {
     }
 }
 
+/// Seams for the unit tests of the endpoint's discovery wiring (`endpoint.rs`); no socket is opened.
+#[cfg(test)]
+impl MdnsResolver {
+    /// A resolver without sockets: `cached` answers lookups, and queries are recorded, not sent.
+    pub(crate) fn with_cache(logger: Logger, cached: Vec<Announcement>) -> Arc<MdnsResolver> {
+        let cache = cached.into_iter().map(|a| (a.id, a)).collect();
+        Arc::new(MdnsResolver {
+            shared: Arc::new(Shared {
+                logger,
+                cache: Mutex::new(cache),
+                tx: Mutex::new(Tx::Recorded(Vec::new())),
+                bg: CancellationToken::new(),
+            }),
+        })
+    }
+
+    /// The listener still runs: not closed, not dropped, and not a resolver without listener.
+    pub(crate) fn is_listening(&self) -> bool {
+        !self.shared.bg.is_cancelled()
+    }
+}
+
 /// A non-positive lookup timeout falls back to go-iroh's default.
 fn lookup_timeout(timeout: Duration) -> Duration {
     if timeout.is_zero() {

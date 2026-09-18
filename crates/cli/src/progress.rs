@@ -8,7 +8,9 @@
 //! - the event texts `TeaHandler` sends.
 //!
 //! The renderer's terminal bytes are not a contract: `run_transfer` draws frames with a small crossterm
-//! inline renderer (PORTING.md C9).
+//! inline renderer (PORTING.md C9). Each frame is downsampled to the colour profile Bubble Tea would
+//! pick, with colorprofile's rules and conversions (`colorprofile`), so the colours and attributes on the
+//! terminal are Go's (DD-6).
 //!
 //! Spec: port-notes/cli.md §2.4, §2.6, §3.6, §4.4, §5.4 and its Addenda.
 
@@ -37,6 +39,10 @@ use dstore_view::{NodeId, short_id};
 use futures::StreamExt;
 use tokio::sync::mpsc;
 use tokio::task::{JoinError, JoinHandle};
+
+pub mod colorprofile;
+
+use colorprofile::Profile;
 
 /// `maxEvents`.
 const MAX_EVENTS: usize = 12;
@@ -752,9 +758,9 @@ fn lab_finv(t: f64) -> f64 {
 /// `D65`.
 const D65: [f64; 3] = [0.95047, 1.00000, 1.08883];
 
-/// `Color.Lab()`: linear RGB, XYZ, then L*a*b* with the D65 white.
+/// `Color.Xyz()`: linear RGB, then XYZ.
 #[allow(clippy::excessive_precision)] // go-colorful's literals, verbatim; they parse to the same f64
-fn to_lab(c: Colorful) -> [f64; 3] {
+fn xyz(c: Colorful) -> [f64; 3] {
     let (r, g, b) = (linearize(c.r), linearize(c.g), linearize(c.b));
     let x = fma(
         0.180_480_788_401_834_29,
@@ -771,6 +777,12 @@ fn to_lab(c: Colorful) -> [f64; 3] {
         b,
         fma(0.119_194_779_794_625_99, g, 0.019_330_818_715_591_851 * r),
     );
+    [x, y, z]
+}
+
+/// `Color.Lab()`: XYZ, then L*a*b* with the D65 white.
+fn to_lab(c: Colorful) -> [f64; 3] {
+    let [x, y, z] = xyz(c);
     let fy = lab_f(y / D65[1]);
     [
         fma(1.16, fy, -0.16),
@@ -864,10 +876,20 @@ pub async fn run_transfer<T: Send + 'static>(
         let log = crate::common::logger(c);
         return run_plain(ctx, log, Box::new(std::io::stderr()), PLAIN_EVERY, f).await;
     }
+    let tty_output = std::io::stderr().is_terminal();
+    // Bubble Tea's Run: colorprofile.Detect(os.Stderr, os.Environ()), which may read terminfo files and
+    // run `tmux info`.
+    let profile = join_result(
+        tokio::task::spawn_blocking(move || {
+            colorprofile::detect(tty_output, &colorprofile::Environ::from_process())
+        })
+        .await,
+    )?;
     let term = TermConfig {
         out: Box::new(std::io::stderr()),
         input: std::io::stdin().is_terminal(),
-        tty_output: std::io::stderr().is_terminal(),
+        tty_output,
+        profile,
     };
     let level = log_level(&c.string("log-level"));
     run_tui(ctx, title, level, Arc::new(SystemZone), term, f).await
@@ -929,6 +951,8 @@ struct TermConfig {
     input: bool,
     /// stderr is a terminal: size queries and SIGWINCH (Bubble Tea `ttyOutput`).
     tty_output: bool,
+    /// The colour profile frames are downsampled to (Bubble Tea `Program.profile`).
+    profile: Profile,
 }
 
 /// `runTUI`: the model on an inline renderer while `f` runs in a task with a `TeaHandler` logger; the
@@ -1088,7 +1112,7 @@ impl Screen {
                 .map_err(|e| format!("error entering raw mode: {}", io_error_text(&e)))?;
             raw = true;
         }
-        let mut renderer = InlineRenderer::new(term.out);
+        let mut renderer = InlineRenderer::new(term.out, term.profile);
         renderer.start();
         Ok(Screen {
             renderer,
@@ -1145,6 +1169,7 @@ impl Drop for Screen {
 /// the terminal.
 struct InlineRenderer {
     out: Box<dyn Write + Send>,
+    profile: Profile,
     /// Columns and rows, when stderr is a terminal.
     size: Option<(u16, u16)>,
     /// Lines of the frame on the terminal; the cursor is on the line below it.
@@ -1153,9 +1178,10 @@ struct InlineRenderer {
 }
 
 impl InlineRenderer {
-    fn new(out: Box<dyn Write + Send>) -> InlineRenderer {
+    fn new(out: Box<dyn Write + Send>, profile: Profile) -> InlineRenderer {
         InlineRenderer {
             out,
+            profile,
             size: None,
             drawn: 0,
             last: None,
@@ -1176,7 +1202,7 @@ impl InlineRenderer {
         if self.last.as_deref() == Some(frame) {
             return;
         }
-        let (bytes, lines) = frame_bytes(frame, self.drawn, self.size);
+        let (bytes, lines) = frame_bytes(frame, self.drawn, self.size, self.profile);
         let _ = self.out.write_all(&bytes);
         let _ = self.out.flush();
         self.drawn = lines;
@@ -1192,8 +1218,13 @@ impl InlineRenderer {
 /// The bytes that replace a frame of `drawn` lines with `frame`, and the new frame's line count: back to
 /// the first line of the old frame, clear below, then the lines, each ended by CR LF (raw mode does not
 /// map LF). Lines are cut to the terminal width, and a frame taller than the terminal keeps its last
-/// lines.
-fn frame_bytes(frame: &str, drawn: usize, size: Option<(u16, u16)>) -> (Vec<u8>, usize) {
+/// lines. Each line is then downsampled to `profile`.
+fn frame_bytes(
+    frame: &str,
+    drawn: usize,
+    size: Option<(u16, u16)>,
+    profile: Profile,
+) -> (Vec<u8>, usize) {
     let mut buf = Vec::with_capacity(frame.len() + 32);
     buf.push(b'\r');
     if drawn > 0 {
@@ -1220,12 +1251,11 @@ fn frame_bytes(frame: &str, drawn: usize, size: Option<(u16, u16)>) -> (Vec<u8>,
         }
     }
     for line in &lines {
-        match size {
-            Some((w, _)) if w > 0 => {
-                buf.extend_from_slice(truncate_cells(line, usize::from(w)).as_bytes())
-            }
-            _ => buf.extend_from_slice(line.as_bytes()),
-        }
+        let line = match size {
+            Some((w, _)) if w > 0 => truncate_cells(line, usize::from(w)),
+            _ => Cow::Borrowed(*line),
+        };
+        buf.extend_from_slice(colorprofile::downsample(&line, profile).as_bytes());
         buf.extend_from_slice(b"\r\n");
     }
     (buf, lines.len())
@@ -1803,21 +1833,44 @@ mod tests {
 
     #[test]
     fn frame_bytes_replace_the_previous_frame() {
-        let (b, n) = frame_bytes("a\nbb\n", 0, None);
+        let tc = Profile::TrueColor;
+        let (b, n) = frame_bytes("a\nbb\n", 0, None, tc);
         assert_eq!((b.as_slice(), n), (&b"\r\x1b[Ja\r\nbb\r\n"[..], 2));
-        let (b, n) = frame_bytes("x\n", 2, None);
+        let (b, n) = frame_bytes("x\n", 2, None, tc);
         assert_eq!((b.as_slice(), n), (&b"\r\x1b[2A\x1b[Jx\r\n"[..], 1));
         // Cut to the width, last lines kept when taller than the terminal.
-        let (b, n) = frame_bytes("1\n2\n\x1b[1mabcdef\x1b[m\n", 1, Some((4, 3)));
+        let (b, n) = frame_bytes("1\n2\n\x1b[1mabcdef\x1b[m\n", 1, Some((4, 3)), tc);
         assert_eq!(
             (b.as_slice(), n),
             (&b"\r\x1b[1A\x1b[J2\r\n\x1b[1mabcd\x1b[m\x1b[m\r\n"[..], 2)
         );
         // A terminal that reports 0 × 0: no trimming, no cutting.
-        let (b, n) = frame_bytes("1\n2\n3\n", 0, Some((0, 0)));
+        let (b, n) = frame_bytes("1\n2\n3\n", 0, Some((0, 0)), tc);
         assert_eq!((b.as_slice(), n), (&b"\r\x1b[J1\r\n2\r\n3\r\n"[..], 3));
-        let (b, n) = frame_bytes("", 3, None);
+        let (b, n) = frame_bytes("", 3, None, tc);
         assert_eq!((b.as_slice(), n), (&b"\r\x1b[3A\x1b[J"[..], 0));
+    }
+
+    #[test]
+    fn frame_bytes_downsample_each_line_after_the_cut() {
+        // NoTTY: no SGR at all, the cut's reset included; the renderer's own sequences stay.
+        let (b, _) = frame_bytes("\x1b[1mabcdef\x1b[m\n", 1, Some((4, 3)), Profile::NoTty);
+        assert_eq!(b.as_slice(), &b"\r\x1b[1A\x1b[Jabcd\r\n"[..]);
+        let (b, _) = frame_bytes(
+            "\x1b[38;2;96;96;96m\u{2591}\x1b[m \x1b[31mfailed\x1b[m\n",
+            0,
+            None,
+            Profile::Ansi256,
+        );
+        assert_eq!(
+            b.as_slice(),
+            "\r\x1b[J\x1b[38;5;59m\u{2591}\x1b[m \x1b[31mfailed\x1b[m\r\n".as_bytes()
+        );
+        let (b, _) = frame_bytes("\x1b[2mx\x1b[m \x1b[33my\x1b[m\n", 0, None, Profile::Ascii);
+        assert_eq!(
+            b.as_slice(),
+            &b"\r\x1b[J\x1b[2mx\x1b[m \x1b[my\x1b[m\r\n"[..]
+        );
     }
 
     #[test]
@@ -1900,6 +1953,7 @@ mod tests {
             out: Box::new(buf.clone()),
             input: false,
             tty_output: false,
+            profile: Profile::TrueColor,
         };
         let res = run_tui(
             &Ctx::background(),
@@ -1949,5 +2003,69 @@ mod tests {
             last.contains("\x1b[31mfailed: open x: no such file or directory\x1b[m\r\n"),
             "{last:?}"
         );
+    }
+
+    /// Bubble Tea converts the frame to the detected profile: plain text for NoTTY (TERM=dumb), bold and
+    /// faint without colours for Ascii (NO_COLOR), indexed colours for ANSI256; never 24-bit colours.
+    #[tokio::test]
+    async fn run_tui_downsamples_frames_to_the_profile() {
+        for (profile, attrs, colours) in [
+            (Profile::NoTty, false, false),
+            (Profile::Ascii, true, false),
+            (Profile::Ansi256, true, true),
+        ] {
+            let buf = SharedBuf::default();
+            let term = TermConfig {
+                out: Box::new(buf.clone()),
+                input: false,
+                tty_output: false,
+                profile,
+            };
+            let res = run_tui(
+                &Ctx::background(),
+                "pull trees/x".into(),
+                Level::INFO,
+                Arc::new(FixedZone(0)),
+                term,
+                |_ctx, _log, prog| {
+                    Box::pin(async move {
+                        prog(&ProgressReport {
+                            objects: 1,
+                            total_objects: 2,
+                            ..ProgressReport::default()
+                        });
+                        Ok::<_, CliError>(())
+                    })
+                },
+            )
+            .await;
+            assert!(res.is_ok(), "{profile}");
+            let text = buf.text();
+            assert!(!text.contains("\x1b[38;2;"), "{profile}: {text:?}");
+            let last = text.rsplit("\x1b[J").next().unwrap_or_default();
+            assert!(last.contains("pull trees/x"), "{profile}: {last:?}");
+            assert!(last.contains("done"), "{profile}: {last:?}");
+            assert_eq!(
+                last.contains("\x1b[1mpull trees/x\x1b[m"),
+                attrs,
+                "{profile}: {last:?}"
+            );
+            assert_eq!(
+                last.contains("\x1b[38;5;59m\u{2591}"),
+                colours,
+                "{profile}: {last:?}"
+            );
+            assert_eq!(
+                last.contains("\x1b[32mdone\x1b[m"),
+                colours,
+                "{profile}: {last:?}"
+            );
+            if profile == Profile::NoTty {
+                assert!(
+                    !last.contains("\x1b[1m") && !last.contains("\x1b[m"),
+                    "{last:?}"
+                );
+            }
+        }
     }
 }

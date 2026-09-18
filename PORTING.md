@@ -12,7 +12,7 @@ decisions, the build order, and how compatibility is proven.
 | Go dstore (normative behaviour) | `github.com/amber-store/dstore` tag `v0.1.9`, HEAD `368f2c7`, checkout `/Users/dragan/amber-store/dstore`. Ignore the uncommitted formatting-only change to `cmd/dstore/wc.go`; read files with `git show HEAD:<path>`. |
 | Go dependencies | `github.com/amber-store/core` v0.0.8; `github.com/amber-store/transport-iroh` v0.4.0 (`protocol`); `github.com/tmc/go-iroh` v0.2.0; `github.com/fxamacker/cbor/v2` v2.9.3; `github.com/aymanbagabas/go-udiff` v0.4.1; `github.com/urfave/cli/v2` v2.27.7; `charm.land/bubbletea/v2` v2.0.9, `lipgloss/v2` v2.0.6, `bubbles/v2` v2.2.1; Go toolchain go1.26.5 (stdlib behaviour: `encoding/base32`, `encoding/json` v1, `strconv`, `unicode`, `sort`, `log/slog`, `flag`, `time`). |
 | core-rs | crate `amber-store-core` 0.3.0, git rev `a85ffa1eb5ed363b9072ab224de179196cd0a046` (= public tag v0.3.0) |
-| Rust iroh | `iroh = "=1.2.0"` (iroh-base/iroh-relay 1.2.0, noq 1.3.0): the latest release, by user decision (2026-09-18). go-iroh v0.2.0's matrix verifies 1.0.3; compatibility with 1.2.0 is proven by the live interop suite (§7), not assumed. |
+| Rust iroh | `iroh = "=1.2.0"` (iroh-base/iroh-relay 1.2.0, noq 1.3.0): the latest release, by user decision (2026-09-18). go-iroh v0.2.0's matrix verifies 1.0.3; compatibility with 1.2.0 is proven by the live interop suite (§7), not assumed. The crate comes through `[patch.crates-io]` from `third_party/iroh-1.2.0`: the published 1.2.0 with one change, no NAT traversal round while a direct path is selected (§5.12). |
 | Toolchain | nixpkgs `nixos-26.05`: rustc/cargo/clippy/rustfmt 1.95.0, go 1.26.5. Workspace `rust-version = "1.91"`, edition 2024. |
 
 **Override (user decision, 2026-09-18): Rust iroh is the latest release, `iroh = "=1.2.0"`.** Area specs
@@ -108,9 +108,9 @@ These work together with Go, but their bytes are not compared:
 | DD-3 | Node-side commands (`serve`, `cluster init`, `node join`), the restore step of `catalog restore`, and ticket derivation from `--store` fail with a fixed error after Go's validation steps (§2.2). | They need the Pebble meta store, the paxos acceptor and the whole node. |
 | DD-4 | Transport error texts and timing below the dstore wrappers. The inner QUIC text (noq vs qng) differs. A connect phase fails at `min(ctx deadline, 10 s)`, where qng uses a 5 s handshake idle / 10 s total timeout. The `dial <addr>: …` lines of one phase share one inner error and are joined in candidate order, not completion order. The wrapper texts are identical: `client: no bootstrap node answered: `, `dial %s: `, `discovery: `, `transport: …`. | Rust iroh sends handshakes on all known paths and has no separate handshake idle timeout (transport §7). |
 | DD-5 | "RTT not measured" is detected when the selected path's RTT equals noq's initial RTT (333 ms), so a real 333.000 ms sample reads as unmeasured. | noq exposes no has-sample flag. |
-| DD-6 | TUI terminal bytes (renderer control sequences, colour downsampling). Only `UiModel::view()` is byte-identical. | Bubble Tea has no Rust port; the renderer is a hand-rolled crossterm inline renderer. |
+| DD-6 | TUI terminal bytes: the renderer's control sequences and how it writes styles. Only `UiModel::view()` is byte-identical. The styling on screen is Go's: each frame is downsampled to the profile colorprofile v0.4.3 `Detect(stderr, environ)` picks (`NoTTY` for `TERM` unset or `dumb` or a non-terminal stderr: no SGR at all; `NO_COLOR`: attributes without colours; 16, 256 or 24-bit colours), with colorprofile `Writer`'s SGR rewriting and x/ansi `Convert256`/`Convert16` as Go computes them on arm64 (`progress::colorprofile`). The terminfo search takes the home directory from `$HOME` (Go: `user.Current()`). | Bubble Tea has no Rust port; the renderer is a hand-rolled crossterm inline renderer. Colour downsampling was first left out; the L6 interop suite (H5) showed Go's visibly different output (impl-interop-fixes.md). |
 | DD-7 | The Go runtime panics in `dstore cat NAME /` (nil entry) and `cluster status` with a cluster id shorter than 4 bytes: Rust writes only the panic's first line to stderr and exits 2, without the goroutine dump. | Exit status parity without imitating a Go crash dump. |
-| DD-8 | A non-UTF-8 command-line argument placed into a CBOR text field (`ref get/delete NAME`, `ls/cat NAME`, `watch PATTERN`, `node zone ID ZONE`) is sent lossily (U+FFFD). Go sends invalid UTF-8, and the node fails to decode the frame. Likewise, non-UTF-8 file paths inside error messages (`PathError`, `… is outside the working copy`) are rendered lossily on stderr. Stdout texts that print names and paths (`ls`, `status`, `diff`, `refs`) stay byte-exact. | `wire::Msg` text fields are `String`; error `Display` produces a `String`. Only pathological inputs are affected. |
+| DD-8 | A non-UTF-8 command-line argument placed into a CBOR text field (`ref get/delete NAME`, `store pull NAME`, `ls/cat NAME`, `watch PATTERN`, `node zone ID ZONE`) is sent lossily (U+FFFD). Go sends invalid UTF-8, and the node fails to decode the frame; for `store pull NAME` Rust also writes the lossy name into the local refstore when the cluster has it. Likewise, non-UTF-8 argument bytes and file paths inside error messages (`PathError`, `… is outside the working copy`, the framework's flag errors) are rendered lossily on stderr, as are non-UTF-8 relay and user-data bytes of an mDNS announcement. Stdout texts that print names and paths (`ls`, `status`, `diff`, `refs`) stay byte-exact. | `wire::Msg` text fields are `String`; error `Display` produces a `String`. Only pathological inputs are affected. |
 | DD-9 | Packstore segment files under a non-022 umask get `0666 & ~umask` (Go: `0644 & ~umask`) until core-rs is patched. Rust pre-creates store directories with 0755. | core-rs `create_active` mode (core-rs-gaps G5); upstream patch proposed. |
 | DD-10 | Where Go iterates a map, Rust uses a deterministic order: anyNode's bootstrap fallback, the ref-watch known list, `shortError` names, `negotiate %x`/`record %x rejected` picks, pickBatch ties, primary goroutine order, xattr set order, directory chmod restore order. | Go's order is random, so any order is compatible. |
 | DD-11 | At CLI exit Rust awaits `Endpoint::close()` (bounded to 3 s) after `Cluster::close()`. | Go's `CloseWithError` blocks until CONNECTION_CLOSE is sent; noq only queues it. This restores parity for the peer. |
@@ -191,7 +191,8 @@ definition, flags, help and pre-store validation are identical, then the action 
 | `status`, `diff [PATH...]` | wc.go:339-488 (HEAD) | offline working copy | implemented |
 | `refs [PREFIX]`, `watch PATTERN`, `ref` (parent), `ref get NAME`, `ref delete NAME`, `ls NAME [PATH]`, `cat NAME PATH` | client.go:344-574 | client | implemented (`cat NAME /` → DD-7) |
 
-That is 21 top-level commands, 32 subcommands and the `help` command. Library scope: everything in Go
+That is 21 top-level commands, 30 subcommands (cluster 4, token 1, node 6, voter 2, transition 5, gc 5,
+catalog 3, store 2, ref 2) and the `help` command. Library scope: everything in Go
 packages `client`, `codec`, `wire`, `ticket`, `view`, `placement`, `transport`, `worktree`, the
 payload types of `node/admin.go` and `node/status.go`, and transport-iroh `protocol` pack framing.
 Not ported: `node`, `paxos`, `catalog`, `meta`; `refglob` only as a test helper (testkit).
@@ -217,7 +218,10 @@ work, in order:
 **B. `--store` ticket derivation** (`cluster status`, `cluster ticket`, and `catalog restore` without
 `--ticket`). Replicate `node.OpenOffline`'s first step:
 
-1. Read `<store>/identity` (`std::fs::read`). A failure → `node: no identity in <dir>: open <dir>/identity: <go errno text>` (verified vector).
+1. Read `<store>/identity` as Go's `os.ReadFile` does (`gocompat::os::read_file`). A failure →
+   `node: no identity in <dir>: <op> <dir>/identity: <go errno text>`, where `<op>` is `open` when the open
+   fails (`open nostore/identity: no such file or directory`) and `read` when the read fails
+   (`read dirident/identity: is a directory`) (verified vectors).
 2. Otherwise fail with
    `deriving a ticket from --store needs the node's Pebble meta store, which dstore-client-rs does not implement; pass --ticket or $DSTORE_TICKET, or use the Go dstore binary`.
 
@@ -267,14 +271,19 @@ dstore-client-rs/
   crates/gocli/           dstore-gocli           urfave/cli v2.27.7-compatible framework (Go flag parser, help templates, tabwriter)
   crates/cli/             dstore-cli             cmd/dstore: command table, actions, progress/TUI
   crates/testkit/         dstore-testkit         publish = false: splitmix, golden loaders, refglob, FakeNode
-  tests/golden.rs         one integration binary, a `mod` per vector family
+  tests/golden.rs         one integration binary, a `mod` per vector family (tests/golden_tests/)
   tests/golden/           committed vectors (§7)
   tests/cli_snapshots.rs  spawns env!("CARGO_BIN_EXE_dstore") over tests/golden/cli/snapshots.json
+  tests/cli_admin.rs, tests/cli_client.rs, tests/cli_wc.rs
+                          the CLI actions of cmd_admin, cmd_client and cmd_wc (added at L5)
   tests/fake_cluster.rs   client + worktree scenarios over transport::mem + FakeNode
-  tests/iroh_loopback.rs  real Rust iroh on 127.0.0.1 (never inside the Nix sandbox)
+  tests/fake_cluster_transfer.rs, tests/fake_cluster_worktree.rs
+                          transfers against scripted nodes; working-copy flows (added at L5)
+  tests/iroh_loopback.rs  real Rust iroh on 127.0.0.1 (never inside the Nix sandbox); the live Go tests (ignored)
   examples/holdlock.rs    lock-interop helper for interop D12
-  tools/vectorgen/        Go module: vector generator, gotables, clisnap, mktree, treekey, storecmp, holdlock
-  interop/check.sh, interop/lib.sh
+  tools/vectorgen/        Go module: vector generator, gotables, goerrno, clisnap, mktree, treekey, storecmp, holdlock
+  third_party/iroh-1.2.0/ iroh 1.2.0 with one patch, through [patch.crates-io] (§5.12, third_party/README.md)
+  interop/check.sh, interop/lib.sh, interop/README.md
   flake.nix, flake.lock, .envrc, .gitignore, .github/workflows/ci.yml
   README.md, VECTORS.md, PORTING.md, port-notes/
 ```
@@ -493,7 +502,7 @@ pub fn geteuid() -> u32;
 // fmt.rs
 pub fn hex_lower(b: &[u8]) -> String;                           // %x
 pub fn v_strings(items: &[String]) -> String;                   // %v of []string: "[a b]", "[]"
-pub fn errors_join(msgs: &[String]) -> String;                  // errors.Join layout: "\n" between non-empty messages
+pub fn errors_join(msgs: &[String]) -> String;                  // errors.Join layout: "\n" between the messages; an empty one still adds its line
 
 // ctx.rs (context.Context)
 #[derive(Clone)]
@@ -1379,6 +1388,10 @@ pub mod mdns {
         pub async fn start(logger: dstore_gocompat::slog::Logger) -> Result<std::sync::Arc<MdnsResolver>, String>;
         /// Cache hit → at once; else send the query and poll the cache every 25 ms until `timeout` or ctx end.
         pub async fn resolve(&self, ctx: &dstore_gocompat::ctx::Ctx, id: [u8; 32], timeout: std::time::Duration) -> Option<Announcement>;
+        /// Added at L4: registered when `start` fails (Go keeps its resolver); queries go out from fresh sockets.
+        pub fn without_listener(logger: dstore_gocompat::slog::Logger) -> std::sync::Arc<MdnsResolver>;
+        /// Added at L4: stops the listener (the endpoint's close; also on drop); the cache stays.
+        pub fn close(&self);
     }
 }
 pub mod ifaces {
@@ -1959,6 +1972,20 @@ pub mod progress {
     }
     pub struct TeaHandler { .. }                                                               // impl slog::Handler: "msg key=value…", bytes humanised for Int64
     pub fn blend1d(steps: usize, a: [u8; 3], b: [u8; 3]) -> Vec<[u8; 3]>;                     // lipgloss Blend1D / go-colorful BlendLab
+    pub mod colorprofile {                                                                     // added at L6 (DD-6): Bubble Tea's colour profile
+        #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+        pub enum Profile { NoTty = 1, Ascii, Ansi, Ansi256, TrueColor }
+        impl Profile { pub fn name(self) -> &'static str; }                                   // Profile.String()
+        pub struct Environ { .. }
+        impl Environ { pub fn new<S: AsRef<str>>(entries: &[S]) -> Environ; pub fn from_process() -> Environ; }
+        pub fn detect(output_is_terminal: bool, env: &Environ) -> Profile;                    // colorprofile.Detect (terminfo Tc/RGB, tmux info)
+        pub fn env_profile(env: &Environ) -> Profile;                                         // colorprofile.Env
+        pub fn color_profile(isatty: bool, env: &Environ) -> Profile;                         // colorProfile
+        pub fn terminfo_profile(term: &str) -> Profile;                                       // colorprofile.Terminfo
+        pub fn convert256(rgb: [u8; 3]) -> u8;                                                // x/ansi Convert256 (arm64 rounding)
+        pub fn convert16(rgb: [u8; 3]) -> u8;                                                 // x/ansi Convert16
+        pub fn downsample(s: &str, p: Profile) -> std::borrow::Cow<'_, str>;                  // colorprofile.Writer{Profile: p}.Write(s)
+    }
     /// plain mode unless a character-device stderr and no --no-tui; runs f with the logger and progress callback.
     pub async fn run_transfer<T: Send + 'static>(
         c: &dstore_gocli::Context, ctx: &dstore_gocompat::ctx::Ctx, title: String,
@@ -2260,8 +2287,21 @@ rustls 0.23.43, ring 0.17.14). Commit `Cargo.lock`.
 
 ### 5.12 Rust iroh
 
-- **Version.** Pin 1.2.0, the latest release (user decision). It replaces 1.0.3, the column go-iroh v0.2.0 verifies; the interop suite is the gate. Earlier text: moving between 1.x releases is a Cargo-only change,
-  gated on the interop suite passing.
+- **Version.** Pin 1.2.0, the latest release (user decision). It replaces 1.0.3, the column go-iroh v0.2.0
+  verifies; the interop suite is the gate. Moving to another 1.x release is a Cargo change plus the patch
+  below re-applied, gated on the interop suite passing.
+- **Patch (decided at L6, interop-fix-1).** iroh comes from `third_party/iroh-1.2.0` through
+  `[patch.crates-io]`; the workspace `exclude`s the directory. The one change is in
+  `src/socket/remote_map/remote_state.rs`. `handle_msg_add_connection` selects the path before
+  `trigger_holepunching`, and `trigger_holepunching` returns while the selected path is an IP path. That is
+  the rule of go-iroh's upgrade tick ("Direct selected: nothing to upgrade toward").
+  - Why: stock 1.2.0 starts a QUIC NAT traversal round (REACH_OUT with every interface address) on every new
+    connection. The Go node's answer hits two go-iroh v0.2.0 bugs, which close the connection. One is
+    key-update bookkeeping that is not per path (`KEY_UPDATE_ERROR`). The other is a retired connection ID
+    reused, which noq answers with a stateless reset. About 1 Rust connection in 180 died this way in the
+    interop suite.
+  - No public iroh 1.2.0 API turns the round off. Connections over a relay still holepunch.
+  - `third_party/README.md` has the diff. Drop the patch once go-iroh or iroh fixes this.
 - **Builder.** `Endpoint::builder(presets::Minimal)` with `.secret_key`, `.alpns`,
   `.transport_config(...)`, `.portmapper_config(PortmapperConfig::Disabled)`, `.relay_mode(...)`.
   No `.address_lookup(...)`. Never use `presets::N0`, `RelayMode::Default`, `DnsAddressLookup::n0_dns`
@@ -2343,10 +2383,19 @@ Notes:
 | `cli/size.json`, `cli/snapshots.json` | parseSize and pack_size; stdout, stderr and exit of every CLI case | cli §5.2-5.4, verification §4.3 item 24 |
 | `errors/text.json`, `refglob/refglob.json` | client and worktree error texts; refglob for the fake node | verification §4.3 items 22-23 |
 
+The committed files differ from this list in a few places, and VECTORS.md maps each name above to its file:
+- `errors/text.json` is split into `errors/client_text.json` and `errors/worktree_text.json`;
+- `status_line` and `describe_change` live in `cli/text.json` and `worktree/cli.json`;
+- `client/transcripts/*.json` was not generated, because the fake-cluster suites (`tests/fake_cluster*.rs`)
+  assert the same conversations;
+- `cli/text.json` also has the L6 colour-profile sections `color_profile`, `convert256` and `downsample`
+  (DD-6).
+
 **Placement of tests:**
-- vectors of crate-private functions (`batches`, `rank_owners`, `est_size`, `gosort`) → crate unit
-  tests via `dstore_testkit::golden`;
-- public APIs → root `tests/golden.rs`;
+- vectors of crate-private functions (`batches`, `rank_owners`, `est_size`) → crate unit tests via
+  `dstore_testkit::golden`;
+- public APIs → root `tests/golden.rs`. `gosort` is public, so `udiff/pdqsort.json` is read there too; the
+  udiff crate has no dev-dependencies;
 - CLI → `tests/cli_snapshots.rs`, with a clean env (`PATH`, temp `HOME`, `TZ=UTC`) and `{CWD}`
   normalised with `pwd -P`.
 
@@ -2356,21 +2405,35 @@ Notes:
 - `tokio::time::pause()` for timing tests;
 - never assert an order that Go randomises (DD-10).
 
-**Go tests to port, by crate:**
+**Go tests to port, by crate.** All are ported. The exceptions are listed here and recorded where they
+were decided.
 - codec/wire/ticket: codec-wire-ticket §6.
 - view: `placement_test.go` (7 tests).
 - client: `batch_test.go` (4), `rank_test.go` (7), `wire_test.go` `TestErrorFrames`.
-- fake cluster: `node/cluster_test.go` (7), `watch_test.go` (4), `worktree_test.go` (3).
-- transport: `iroh_test.go` (4), the go-iroh mdns/netaddr tests (transport §6).
+- fake cluster: the 7 client-side tests of `node/cluster_test.go`, `watch_test.go` (4), `worktree_test.go`
+  (3). The other four of v0.1.9 test node behaviour and are left to the interop suite (verification.md,
+  impl-client-b.md): `TestClusterGC`, `TestClusterRemoveNode`, `TestClusterPutStreamsWhileReceiving` and
+  `TestClusterPutGivesUpASlowForward`.
+- transport: `iroh_test.go` (4), and the go-iroh mdns/netaddr tests (transport §6). The node-side responder
+  and publisher tests are not ported (impl-transport-iroh-mdns.md). `TestDefaultMapHasN0Relays` is covered by
+  the golden `relay_map_strings`.
 - worktree/udiff: `worktree/*_test.go`, go-udiff tests.
 - cli: `size_test.go`, `wc_test.go`, `tui_test.go` (`TestRateMeter`, `TestStatusLine`, `TestUIModel`
-  against `UiModel::view`, `TestTeaHandler`), plus the urfave tests listed in cli §6.
+  against `UiModel::view`, `TestTeaHandler`), plus the urfave tests listed in cli §6. The urfave cases for
+  features that `dstore-gocli` does not have cannot be ported: custom help printers, the `CommandNotFound`
+  hook, a custom `HelpName`, `HideHelp` (impl-gocli.md).
 
-**Live interop** (`interop/check.sh`, verification §4.5): a 3-node Go v0.1.9 cluster on loopback,
-built with `CGO_ENABLED=0` into `mktemp -d` and removed on exit, using `store push/pull`, not the
-stale script lines. It runs checks A1-A13, B1-B14, C1-C3, D1-D13, E1-E3, and G1-G2 (G1 asserts the
-§2.3 refusal, G2 the §2.2 texts), with exact, stdout+exit, normalized, format and root comparison
-modes, a TZ matrix (UTC, Asia/Kolkata, America/St_Johns), and `INTEROP_MDNS=auto`.
+**Live interop** (`interop/check.sh`, `interop/README.md`, verification §4.5):
+- **Cluster.** 3 Go v0.1.9 nodes on loopback, built with `CGO_ENABLED=0` into `mktemp -d` and removed on
+  exit. It uses `store push/pull`, not the stale script lines.
+- **Checks.** A1-A13, B1-B14, C1-C3, D1-D13, E1-E3, G1-G2 and H1-H8:
+  - G1 asserts the §2.3 refusal, and G2 the §2.2 texts;
+  - H1-H8 are the live cases handed over by the CLI snapshots and the L5 reviews. H8 is always skipped,
+    because real nodes send a 16-byte cluster id.
+- **Comparison modes:** exact, stdout+exit, normalized, panic, format and root.
+- **Environment:** a TZ matrix (UTC, Asia/Kolkata, America/St_Johns) and `INTEROP_MDNS=auto`. A12 and A13
+  run only with `INTEROP_HEAVY=1`, and C3 only with `INTEROP_CHAOS=1`.
+- **Result at L6 (macOS arm64):** 55 passed, none failed, H8 skipped.
 
 ---
 
@@ -2380,7 +2443,7 @@ modes, a TZ matrix (UTC, Asia/Kolkata, America/St_Johns), and `INTEROP_MDNS=auto
 - **Inputs.** `nixpkgs` `nixos-26.05` and `systems`; `flake.lock` copied from core-rs (rev
   `445d861c6d31b4af0c79d8d4be2331f762a361d7`).
 - **`packages.dstore`.**
-  - `rustPlatform.buildRustPackage` over `lib.fileset.unions [ ./Cargo.toml ./Cargo.lock ./src ./crates ./tests ./examples ]`;
+  - `rustPlatform.buildRustPackage` over `lib.fileset.unions [ ./Cargo.toml ./Cargo.lock ./src ./crates ./tests ./examples ./third_party ]`;
   - `cargoLock.outputHashes."amber-store-core-0.3.0"` per §5.11;
   - `cargoBuildFlags = [ "-p" "dstore-client-rs" "--bin" "dstore" ]`, `doCheck = false`
     (the Darwin sandbox refuses UDP binds).
@@ -2388,7 +2451,13 @@ modes, a TZ matrix (UTC, Asia/Kolkata, America/St_Johns), and `INTEROP_MDNS=auto
   - `dstore`;
   - `fmt`: `rustfmt --check --edition 2024` over `src crates tests examples`;
   - `clippy`: `cargo clippy --workspace --all-targets --offline -- -D warnings`;
-  - `tests`: `cargoTestFlags = [ "--workspace" "--lib" ]`, plus root `--test golden --test cli_snapshots --test fake_cluster`, `TZ = "UTC"`.
+  - `tests`: every test target that opens no socket, with `TZ = "UTC"`:
+    - `--workspace --lib`;
+    - the root targets `golden`, `cli_snapshots`, `cli_admin`, `cli_client`, `cli_wc`, `fake_cluster`,
+      `fake_cluster_transfer` and `fake_cluster_worktree`;
+    - the crate targets `all_slots` (dstore-view) and `structs` (dstore-codec).
+
+    `iroh_loopback` binds sockets and runs in the CI `rust` job.
 - **`devShells.default`.** cargo, rustc, rustfmt, clippy, rust-analyzer, go, gopls;
   `hardeningDisable = [ "all" ]`; `GOTOOLCHAIN = "local"`; `CGO_ENABLED = "0"`;
   `RUST_SRC_PATH` = `rustPlatform.rustLibSrc`. The C compiler for zstd-sys, ring and blake3 comes from
@@ -2399,8 +2468,8 @@ modes, a TZ matrix (UTC, Asia/Kolkata, America/St_Johns), and `INTEROP_MDNS=auto
 
 | Job | Runs on | Steps |
 |---|---|---|
-| `rust` | ubuntu-latest, macos-latest | toolchain 1.95.0; `cargo fmt --all --check`; `cargo clippy --workspace --all-targets --locked -- -D warnings`; `cargo test --workspace --locked` (includes iroh loopback), `TZ=UTC` |
-| `vectors` | ubuntu-latest | `go vet ./...`; regenerate twice and diff; diff against `tests/golden`; regenerate `crates/gocompat/src/tables.rs` and diff; `clisnap` and diff |
+| `rust` | ubuntu-latest, macos-latest | toolchain 1.95.0; `cargo fmt --all --check`; `cargo clippy --workspace --all-targets --locked -- -D warnings`; `cargo test --workspace --all-targets --locked` (includes iroh loopback), `TZ=UTC` |
+| `vectors` | ubuntu-latest | `go vet ./...`; `go test ./...`; regenerate twice and diff; diff against `tests/golden`; regenerate `crates/gocompat/src/tables.rs` and `errno_tables.rs` and diff; `clisnap` and diff |
 | `interop` | ubuntu-latest, 45 min timeout | check out dstore at `v0.1.9`; `cargo build --release --locked --bin dstore --examples`; `bash interop/check.sh`; upload logs on failure; heavy and chaos groups on `workflow_dispatch` |
 | `nix` | ubuntu-latest, macos-latest | `nix flake check -L`; `nix build .#dstore -L && ./result/bin/dstore --version` |
 
@@ -2443,17 +2512,25 @@ modes, a TZ matrix (UTC, Asia/Kolkata, America/St_Johns), and `INTEROP_MDNS=auto
 
 ---
 
-## 10. Open decisions for the user
+## 10. Decisions (formerly open)
 
-1. **Node-side commands.** v1 keeps `serve`, `cluster init`, `node join`, the restore step of
-   `catalog restore`, and `--store` ticket derivation as identical definitions that fail with the
-   fixed messages of §2.2. Should a later phase port the node (Pebble-compatible meta store, paxos
-   acceptor, full node), or delegate these commands to a Go `dstore` binary on `PATH`?
-2. **Local refs for `store push/pull --local`.** v1 stores refs in redb and refuses Pebble
-   directories (DD-2). Is sharing `--local` directories with Go dstore required, i.e. a
-   Pebble-compatible refs writer?
-3. **License.** dstore has no LICENSE file. The port links core-rs (LGPL-3.0-only) and copies LGPL
-   helpers from core-rs examples. Recommended: LGPL-3.0-only for dstore-client-rs.
+These questions were open when this contract was written. v1 settles them as follows:
+
+1. **Node-side commands: kept, with the texts of §2.2.** `serve`, `cluster init`, `node join`, the
+   restore step of `catalog restore` and `--store` ticket derivation keep Go's definitions, flags, help
+   and pre-store validation, then fail with the fixed messages of §2.2 (DD-3; interop G2). Porting the
+   node (a Pebble-compatible meta store, the paxos acceptor, the full node), or delegating to a Go
+   `dstore` binary on `PATH`, is not part of v1.
+2. **Local refs for `store push/pull --local`: redb, with the Pebble refusal.** References live in
+   `DIR/refs/refs.redb`, and a Pebble directory is refused with the §2.3 text (DD-2; interop G1). There
+   is no Pebble-compatible refs writer. The README tells users to keep separate `--local` directories for
+   Go and Rust.
+3. **License: LGPL-3.0-only** (`[workspace.package] license`, `LICENSE`, `COPYING`). That is the
+   licence of core-rs, which the port links and copies helpers from. dstore itself has no LICENSE file.
+4. **Rust iroh: `=1.2.0`**, the latest release, by user decision (2026-09-18; §0, §5.12). It carries one
+   vendored patch, `third_party/iroh-1.2.0`: no NAT traversal round while a direct path is selected. The
+   patch was decided at L6 from interop-fix-1 (§5.12). The live interop suite is the compatibility proof:
+   55 checks pass, and H8 is skipped by design.
 
 ---
 

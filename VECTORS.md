@@ -7,10 +7,12 @@ v0.2.0, urfave/cli v2.27.7, the charm.land TUI modules and zeebo/blake3 v0.2.4, 
 (`GOTOOLCHAIN=local`, `CGO_ENABLED=0`). The Rust tests read the vectors through `dstore_testkit::golden`
 (PORTING.md §7).
 
-**Status: layer L1.** 18 families are registered and their files are committed. So far they were generated
-on macOS arm64 only; the CI `vectors` job regenerates them on Linux and diffs. Each family documents itself
-in `tools/vectorgen/docs/<owner>.md`, and those files are assembled here (section "Families" onwards). Later
-families (`client/transcripts/`) add their sections when they land.
+**Status: final for dstore v0.1.9.** 18 families are registered and their files are committed, together
+with `cli/snapshots.json` from `cmd/clisnap` and the two Go tables of section "Helper programs". The
+committed files were generated on macOS arm64. The CI `vectors` job regenerates all of them on Linux and
+diffs them against the committed files. Each family documents itself in `tools/vectorgen/docs/<owner>.md`,
+and those files are assembled here (section "Families" onwards). PORTING.md §7 also lists
+`client/transcripts/*.json`, which was never generated (section "Not generated").
 
 ## Regenerating
 
@@ -35,8 +37,11 @@ nix develop -c go -C tools/vectorgen run ./cmd/goerrno > crates/gocompat/src/err
 
 - `clisnap` builds dstore v0.1.9 `cmd/dstore` with `go build -trimpath` into a temporary directory, runs every
   CLI case, and deletes the binary and the fixtures afterwards.
-- `go test ./...` in `tools/vectorgen` covers the registry rules, the clisnap case table and the copied
-  `cmd/dstore` Go tests.
+- `go test ./...` in `tools/vectorgen` covers the registry rules, the clisnap case table and fixture steps,
+  and the copied `cmd/dstore` Go tests.
+- The CI `vectors` job (ubuntu, `.github/workflows/ci.yml`) runs all of this. It runs `go vet ./...` and
+  `go test ./...`, then every family twice: the two runs must be identical and equal to `tests/golden`. Then
+  it runs `gotables`, `goerrno` and `clisnap`, and diffs each output against the committed file.
 
 ## Conventions
 
@@ -97,9 +102,14 @@ Rust: `dstore_testkit::splitmix::{SplitMix64, data, u64s}`. Go: `smData` and `u6
   public, and `dstore-udiff` has no dev-dependencies.
 - The CLI snapshots run in `tests/cli_snapshots.rs`, with a clean environment (`PATH`, a temporary `HOME`,
   `TZ=UTC`) and `{CWD}` normalised through `pwd -P`.
-- Tests of unfinished modules are `#[ignore = "needs <crate>::<module>"]`. At layer L1 the root modules
-  `gocompat_text`, `gocompat_numtime`, `gocompat_io`, `gocompat_slog`, `codec` and `udiff` are written; the
-  other modules are placeholders until their owners land.
+- `placement/all_slots.json`'s digests are recomputed by `crates/view/tests/all_slots.rs`, a test target of
+  dstore-view; the root `view` module checks the spots.
+- Every golden test runs, and none is ignored. During the layered development a test of an unfinished module
+  was marked `#[ignore = "needs <crate>::<module>"]`, and no test was ever skipped silently.
+- The flake's `checks.tests` (`nix flake check`) runs every socket-free test target: the unit tests, the root
+  suites `golden`, `cli_snapshots`, `cli_admin`, `cli_client`, `cli_wc`, `fake_cluster`,
+  `fake_cluster_transfer` and `fake_cluster_worktree`, and the crate targets `all_slots` and `structs`. The CI
+  `rust` job runs `cargo test --workspace --all-targets` on Linux and macOS, `iroh_loopback` included.
 
 ### Files that PORTING.md §7 names differently
 
@@ -134,7 +144,8 @@ copies the new files in. Nothing else in `<out-dir>` is touched. When a generato
 
 ## Families
 
-Generator files are in `tools/vectorgen/`; Rust test modules are in `tests/golden_tests/`.
+Generator files are in `tools/vectorgen/`. Bare Rust test module names are in `tests/golden_tests/`; other
+paths are relative to the repository root.
 
 | Family | Files | Generator | Rust tests |
 |---|---|---|---|
@@ -145,16 +156,16 @@ Generator files are in `tools/vectorgen/`; Rust test modules are in `tests/golde
 | `gocompat-slog` | `gocompat/slog.json` | `family_gocompat_slog.go` | `gocompat_slog.rs` |
 | `codec` | `codec/encode.json`, `codec/decode.json` | `family_codec.go` | `codec.rs` |
 | `udiff` | `udiff/udiff.json`, `udiff/lcs.json`, `udiff/pdqsort.json` | `family_udiff.go` | `udiff.rs` |
-| `wire` | `wire/frames.json`, `wire/decode.json`, `wire/frame_errors.json` | `family_wire.go` | `wire.rs`, `codec.rs` |
+| `wire` | `wire/frames.json`, `wire/decode.json`, `wire/frame_errors.json` | `family_wire.go` | `wire.rs`; `ticket.rs` (the `ticket` section of `decode.json`) |
 | `wire-pack` | `wire/pack_frames.json`, `wire/pack_reader.json` | `family_wire.go` | `wire_pack.rs` |
 | `ticket` | `ticket/encode.json`, `ticket/parse.json`, `ticket/curve.json` | `family_ticket.go` | `ticket.rs` |
-| `admin` | `admin/requests.json`, `admin/replies.json`, `status/status.json` | `family_admin.go` | `wire.rs`; cli-admin unit tests |
-| `view` | `view/view_placement.json` | `family_view.go` | `view.rs` |
-| `placement` | `placement/all_slots.json` | `family_view.go` | `view.rs` |
-| `transport` | `transport/addrs.json`, `transport/relay_urls.json`, `transport/ids.json`, `transport/mdns.json`, `transport/pool_scripts.json` | `family_transport.go` | `transport.rs`, `transport_iroh.rs`, `transport_mdns.rs` |
+| `admin` | `admin/requests.json`, `admin/replies.json`, `status/status.json` | `family_admin.go` | `wire.rs`; `tests/cli_admin.rs`; `dstore-cli` unit tests |
+| `view` | `view/view_placement.json` | `family_view.go` | `view.rs`; `dstore-cli` unit tests |
+| `placement` | `placement/all_slots.json` | `family_view.go` | `view.rs` (spots); `crates/view/tests/all_slots.rs` (digests) |
+| `transport` | `transport/addrs.json`, `transport/relay_urls.json`, `transport/ids.json`, `transport/mdns.json`, `transport/pool_scripts.json` | `family_transport.go` | `transport.rs`, `transport_iroh.rs`, `transport_mdns.rs`; `dstore-transport-iroh` unit tests |
 | `client` | `client/rank.json`, `client/batches.json`, `client/fetch.json`, `client/verify_record.json`, `client/progress.json`, `client/backoff.json`, `client/placement_decisions.json`, `errors/client_text.json` | `family_client.go` | `client.rs`, `client_transfer.rs`; `dstore-client` unit tests |
 | `refglob` | `refglob/refglob.json` | `family_refglob.go` | `dstore_testkit::refglob` unit tests |
-| `worktree` | `worktree/config.json`, `worktree/state.json`, `worktree/trees/`, `worktree/diff_trees.json`, `worktree/merge.json`, `worktree/unified.json`, `worktree/cli.json`, `errors/worktree_text.json` | `family_worktree.go` | `worktree.rs`; `dstore-cli` unit tests |
+| `worktree` | `worktree/config.json`, `worktree/state.json`, `worktree/trees/`, `worktree/diff_trees.json`, `worktree/merge.json`, `worktree/unified.json`, `worktree/cli.json`, `errors/worktree_text.json` | `family_worktree.go` | `worktree.rs`, `tests/fake_cluster_worktree.rs`; `dstore-cli` unit tests |
 | `cli` | `cli/size.json`, `cli/text.json` | `family_cli.go` | `cli.rs`, `cli_progress.rs`; `dstore-cli` unit tests |
 | (helper) | `cli/snapshots.json` | `cmd/clisnap` | `tests/cli_snapshots.rs` |
 
@@ -1498,7 +1509,8 @@ exceptions to the conventions:
 
 Owner: vectorgen-view. File: `placement/all_slots.json`. Generator: `tools/vectorgen/family_view.go` (about 13 s,
 26 s CPU, one goroutine per set). **Go:** dstore v0.1.9 `placement.NewSet`, `Set.Rank` and `Set.Owners` over all
-2^20 slots (verification.md §4.3 item 9). **Rust tests:** `tests/golden_tests/view.rs`. Ids follow the placement
+2^20 slots (verification.md §4.3 item 9). **Rust tests:** `tests/golden_tests/view.rs` checks the spots, and
+`crates/view/tests/all_slots.rs` (a test target of dstore-view) recomputes every digest. Ids follow the placement
 rule of family `view` (splitmix64 `data(seed, 32)` or `idFrom(b)`, not ed25519 keys).
 
 ```json
@@ -1805,7 +1817,8 @@ and the TUI (`gocompat::time::duration_round`, `duration_string`).
 Owner: vectorgen-client, who also owns `refglob`. Generator: `tools/vectorgen/family_client.go`. Files:
 `client/rank.json`, `client/batches.json`, `client/fetch.json`, `client/verify_record.json`,
 `client/progress.json`, `client/backoff.json`, `client/placement_decisions.json`, `errors/client_text.json`. The
-family owns exactly these files; `client/transcripts/` belongs to a later family.
+family owns exactly these files. PORTING.md §7 also lists `client/transcripts/*.json`, which was never generated
+(section "Not generated").
 
 Specs: port-notes/client-core.md §5, port-notes/client-transfer.md §5.2 items 3-5 and 8,
 port-notes/verification.md §4.3 items 22-23. Normative Go: `github.com/amber-store/dstore` v0.1.9 (`client/`,
@@ -2636,6 +2649,9 @@ Every top-level key is an array of cases.
 | `blend1d` | `{steps, a: [r,g,b], b: [r,g,b], out: [[r,g,b], …]}` | `lipgloss.Blend1D(steps, a, b)` over opaque stops. Channels are as x/ansi writes them in `38;2;R;G;B` (`RGBA() >> 8`). Rust `progress::blend1d`. |
 | `progress_bar` | `{width, percent: f64s, out}` | bubbles `progress.New(progress.WithDefaultBlend())`, `SetWidth(width)`, `ViewAs(percent)`: the bar line of the view, for the renderer's internal tests |
 | `ui_model` | see below | `uiModel` |
+| `color_profile` | `{env: ["KEY=VALUE"], tty, out}` | With `tty`, `colorprofile.Env(env)`; without, `colorprofile.Detect(&bytes.Buffer{}, env)`: an output that is not a terminal, so terminfo and tmux are never consulted, and no case sets `TTY_FORCE`. `out` is `Profile.String()`. Rust `progress::colorprofile::{env_profile, detect, color_profile}`. |
+| `convert256` | `{rgb: [r,g,b], c256, c16}` | x/ansi `Convert256` and `Convert16` of an opaque `color.RGBA`: the default bar's colours (bar widths 20, 60 and 80), its empty run, points around the cube levels, and a fixed pseudo-random sample. Colours with a channel of 115, 155, 195 or 235 are left out (`cliArchNeutral`): gc fuses `c*255-35` into one FMA on arm64 and not on amd64, so their index depends on the architecture that generates the file. Every other colour agrees on both. Rust `progress::colorprofile::{convert256, convert16}`. |
+| `downsample` | `{profile, in, out}` | `colorprofile.Writer{Profile: profile}.Write(in)` for every profile and input. Rust `progress::colorprofile::downsample`. |
 
 - **Report:** `{objects: n, total_objects: n, bytes: i64s, total_bytes: i64s, nodes: [Node]}`.
 - **Node:** `{id: hex (32 bytes), direct, rtt_ns: i64s, in_flight: n, awaiting: n, bytes: i64s}`
@@ -2796,7 +2812,7 @@ Paths are relative to ROOT and `/`-separated.
 |---|---|---|
 | `mkdir` | `path`, `mode` | mkdir, then chmod `mode`, so the umask does not matter |
 | `write` | `path`, `text`, `mode` | create or truncate, write `text`, chmod `mode` |
-| `symlink` | `path`, `target` | symlink |
+| `symlink` | `path`, `target`, `mode`? | symlink. With `mode`, `fchmodat(AT_SYMLINK_NOFOLLOW)` to `mode`, which macOS applies and Linux refuses (its links are always 0777). The step fails unless the link then has `mode`. |
 | `remove` | `path` | remove recursively |
 | `chmod` | `path`, `mode` | chmod |
 | `mtime` | `path`, `unix_ns` | `utimensat(AT_FDCWD, path, [unix_ns, unix_ns], AT_SYMLINK_NOFOLLOW)` |
@@ -2809,6 +2825,12 @@ Paths are relative to ROOT and `/`-separated.
 user running the harness, which is why outputs name them through `{key:…}` placeholders. The fixtures set
 every mtime they rely on and keep them far from `synced_at`, so the racy window never triggers.
 
+Every step that creates an entry sets its mode, so no fixture depends on the umask. Fixture `wc1` gives its
+`link` mode 0777. A link's bits are part of its ingested entry, and `wc1` replaces the link with a 0755
+directory, so `wc/wc1 diff`, `wc/wc1/sub diff` and `wc/wc1/sub diff ..` print `old mode 0777` /
+`new mode 0755` for it. Linux links are always 0777, and a macOS link would otherwise get `0777 &^ umask`. With
+the explicit mode the three cases are the same on both platforms.
+
 #### Which cases need what
 
 - **`help`, `unknown`, `usage`, `required`:** only the command table and `dstore-gocli` (owner cli-app).
@@ -2819,7 +2841,7 @@ every mtime they rely on and keep them far from `synced_at`, so the racy window 
 - **`wc`:** `dstore-worktree` offline and cli-wc. The fixture builder needs `Tree::create`, `save_state`
   and core-rs `ingest::dir`.
 
-Tests of unfinished modules are `#[ignore = "needs <crate>::<module>"]`, never skipped silently.
+Every case runs; none is ignored or skipped.
 
 #### Not captured
 
@@ -2827,7 +2849,8 @@ The live cases of cli.md §5.3 need a cluster and belong to the interop harness 
 - `cat NAME /` (DD-7);
 - SIGPIPE on `cat`/`watch`;
 - the TUI into `/dev/null`;
-- colour downsampling;
+- the TUI's styling on a real terminal. The colour-profile policy itself is captured by `cli/text.json`
+  `color_profile`, `convert256` and `downsample`; interop H5 compares the styling live;
 - `pull` conflicts;
 - the §3.4 output of admin and transfer commands.
 
@@ -2910,13 +2933,32 @@ Owner: vectorgen-worktree. Used by the live interop harness (layer L6).
 - `go run ./cmd/treekey [-exclude NAME]... [-jobs N] [-no-ignore] PATH` prints the root key core ingest
   computes for `PATH` without storing anything (`ingest.Objects`). A working copy needs `-exclude .dstore`.
 
-`storecmp` and `holdlock` (PORTING.md §3.1) belong to layer L6 and do not exist yet.
+### `storecmp` and `holdlock`
 
-## Not generated yet
+Owner: the interop harness (layer L6).
 
-- `client/transcripts/*.json` (client-transfer §5.2 item 9, scripted fake-node conversations): a later family.
-- Outputs that need a live cluster belong to the interop harness (`interop/check.sh`, verification.md §4.5): the
-  cli.md §5.3 cases listed under family `cli`, and the cross-implementation working-copy checks (worktree.md §5
-  item 16).
-- Linux byte identity of every family, including the slog line counts of the snapshot cases that print logs, is
-  settled by the CI `vectors` job on ubuntu; so far everything was generated on macOS arm64.
+- `go run ./cmd/storecmp A B ROOT` checks that every object reachable from `ROOT` (64 hex) is present in the
+  packstores `A` and `B` with the same record bytes. It walks `A`. It prints `N objects equal`, or every
+  missing or differing object with exit status 1.
+- `go run ./cmd/holdlock DIR SECONDS` opens `DIR/.dstore/packstore` with core v0.0.8, which takes its flock.
+  It prints `locked <path>` and holds the lock for `SECONDS` (interop check D12). The Rust twin is
+  `examples/holdlock.rs` (`cargo run --example holdlock -- DIR SECONDS`).
+
+## Not generated
+
+- **`client/transcripts/*.json`** (PORTING.md §7, client-transfer §5.2 item 9: scripted fake-node
+  conversations) was never generated, and no family owns it. The fake-cluster suites cover those
+  scenarios by asserting the requests:
+  - `tests/fake_cluster.rs` and `tests/fake_cluster_worktree.rs` run the client against
+    `dstore_testkit::fake` nodes over the in-memory transport. They assert the requests each node received
+    (`FakeCluster::requests`).
+  - `tests/fake_cluster_transfer.rs` scripts its own nodes. These check each request of a push or pull as a
+    Go node does (`node/data.go`, `node/refs.go`).
+  - The request bytes are pinned by `wire/frames.json`.
+- Outputs that need a live cluster belong to the interop harness (`interop/check.sh`, verification.md §4.5):
+  the cli.md §5.3 cases listed under family `cli` ("Not captured"), and the cross-implementation working-copy
+  checks (worktree.md §5 item 16).
+- **Linux.** The committed files were generated on macOS arm64. The CI `vectors` job regenerates them on ubuntu
+  and diffs them, which proves Linux byte identity, including the slog line counts of the snapshot cases that
+  print logs. The one known platform difference, the symlink bits of fixture `wc1`, is removed by the
+  fixture (section "Fixture steps").

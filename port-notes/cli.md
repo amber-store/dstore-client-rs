@@ -2626,7 +2626,7 @@ string renderer is simpler and exact), `tracing` (§4.3).
 
 - Root: `[]`, `--help`, `-h`, `-help`, `help`, `h`, `--version`, `-v`, `--version refs`, `""`,
   `nosuch`, `help nosuch`, `version`, `--bogus`, `--log-level`, `help help`.
-- `--help` of all 21 top-level commands and all 32 subcommands.
+- `--help` of all 21 top-level commands and all 30 subcommands.
 - Help variants: `cluster`, `store`, `token`, `ref`, `help cluster`, `cluster help`,
   `cluster help init`, `cluster h`, `help refs`, `help cluster init`, `refs help`, `refs h`,
   `refs -h`, `ls help x`, `cluster nosuch`, `store push help`.

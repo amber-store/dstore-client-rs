@@ -11,8 +11,9 @@
 //! is chosen, so an early error never resets the client's writes, and only `view` replies are stamped, so no
 //! background view refresh races a scenario.
 //!
-//! `Get` itself (early drops, the missing accessor) is tested in `dstore_client::objects`, because iterating a
-//! `futures::Stream` needs the `futures` crate, which the root package does not depend on.
+//! `Get` itself (early drops, the missing accessor) is tested by the `dstore_client::objects` unit tests, the
+//! ports of `TestClusterGetYieldsBeforeEveryBatchIsFetched` and `TestClusterGetStopsEarlyCleanly`, which drive
+//! a `GetStream` against scripted nodes.
 
 use std::collections::{BTreeMap, HashMap, HashSet, VecDeque};
 use std::path::Path;

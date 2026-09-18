@@ -8,8 +8,7 @@
 //! - `pack_reader.json`: `PackReader::read` with Go's buffer size until its sticky error, one more read,
 //!   then a fresh `PackRecords` (records and error), `drain`, and the next frame through `read_msg`.
 //!
-//! BLAKE3 digests are compared on their first 30 bytes through core-rs `Key::new`, which embeds them in a
-//! key (the root package has no `blake3` dependency).
+//! The vectors' BLAKE3-256 digests are compared in full.
 
 use amber_store_core::amberpack::{self, REC_HEADER_SIZE};
 use amber_store_core::key::{Key, Type};
@@ -21,23 +20,13 @@ use dstore_wire::{
 };
 use serde::Deserialize;
 
-/// The first 30 bytes of BLAKE3-256(`data`), hex: a Blob key of logical length 0 is
-/// `00 00 ‖ digest[..30]` (core-rs `Key::new_from_hash`).
-fn blake3_prefix(data: &[u8]) -> String {
-    hex::encode(&Key::new(Type::Blob, 0, data).as_bytes()[2..])
+/// BLAKE3-256(`data`), lowercase hex.
+fn blake3_hex(data: &[u8]) -> String {
+    hex::encode(blake3::hash(data).as_bytes())
 }
 
 fn assert_blake3(label: &str, data: &[u8], want: &str) {
-    assert_eq!(
-        want.len(),
-        64,
-        "{label}: not a BLAKE3-256 hex digest: {want}"
-    );
-    assert_eq!(
-        Some(blake3_prefix(data).as_str()),
-        want.get(..60),
-        "{label}: BLAKE3 digest (first 30 bytes)"
-    );
+    assert_eq!(blake3_hex(data), want, "{label}: BLAKE3-256 digest");
 }
 
 fn be32(b: &[u8], at: usize) -> u32 {
@@ -73,7 +62,7 @@ fn frame_kind(e: &ProtocolFrameError) -> &'static str {
 }
 
 #[test]
-fn blake3_prefix_of_the_empty_input() {
+fn blake3_digest_of_the_empty_input() {
     assert_blake3(
         "empty input",
         b"",

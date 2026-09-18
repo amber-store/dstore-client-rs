@@ -2,13 +2,15 @@
 //!
 //! `cli/text.json` (family `cli`, schema in `tools/vectorgen/docs/vectorgen-cli.md`), sections
 //! `status_line` (with `fraction`), `rate_meter`, `node_state`, `tea_handler`, `format_event`, `blend1d`,
-//! `progress_bar` and `ui_model`. The file's other sections belong to other modules: `human_bytes` and
-//! `rate` to `client.rs`; `hex_decode`, `resolve_ticket`, `log_level`, `describe_change` and
-//! `filter_paths` to `cli.rs`.
+//! `progress_bar` and `ui_model`, and of `progress::colorprofile`: `color_profile`, `convert256` and
+//! `downsample`. The file's other sections belong to other modules: `human_bytes` and `rate` to
+//! `client.rs`; `hex_decode`, `resolve_ticket`, `log_level`, `describe_change` and `filter_paths` to
+//! `cli.rs`.
 
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
+use dstore_cli::progress::colorprofile::{self, Environ, Profile};
 use dstore_cli::progress::{self, Latest, RateMeter, TeaHandler, UiModel, UiMsg};
 use dstore_client::{NodeProgress, ProgressReport};
 use dstore_gocompat::ctx::Ctx;
@@ -36,6 +38,9 @@ struct Vectors {
     blend1d: Vec<BlendCase>,
     progress_bar: Vec<BarCase>,
     ui_model: Vec<UiScenario>,
+    color_profile: Vec<ColorProfileCase>,
+    convert256: Vec<ConvertCase>,
+    downsample: Vec<DownsampleCase>,
 }
 
 fn vectors() -> Vectors {
@@ -381,6 +386,91 @@ fn progress_bar_cases() {
             "width {} percent {}",
             c.width,
             c.percent
+        );
+    }
+}
+
+#[derive(Deserialize)]
+struct ColorProfileCase {
+    env: Vec<String>,
+    tty: bool,
+    out: String,
+}
+
+/// `colorprofile.Env(env)` for a terminal, `colorprofile.Detect(&bytes.Buffer{}, env)` otherwise.
+#[test]
+fn color_profile_cases() {
+    let v = vectors();
+    assert!(v.color_profile.iter().any(|c| c.tty) && v.color_profile.iter().any(|c| !c.tty));
+    for c in &v.color_profile {
+        let env = Environ::new(&c.env);
+        let got = if c.tty {
+            colorprofile::env_profile(&env)
+        } else {
+            colorprofile::detect(false, &env)
+        };
+        assert_eq!(got.name(), c.out, "env {:?} tty {}", c.env, c.tty);
+        assert_eq!(
+            colorprofile::color_profile(c.tty, &env).name(),
+            c.out,
+            "env {:?} tty {}",
+            c.env,
+            c.tty
+        );
+    }
+}
+
+#[derive(Deserialize)]
+struct ConvertCase {
+    rgb: [u8; 3],
+    c256: u8,
+    c16: u8,
+}
+
+#[test]
+fn convert256_cases() {
+    let v = vectors();
+    assert!(!v.convert256.is_empty());
+    for c in &v.convert256 {
+        assert_eq!(colorprofile::convert256(c.rgb), c.c256, "{:?}", c.rgb);
+        assert_eq!(colorprofile::convert16(c.rgb), c.c16, "{:?}", c.rgb);
+    }
+}
+
+#[derive(Deserialize)]
+struct DownsampleCase {
+    profile: String,
+    #[serde(rename = "in")]
+    input: String,
+    out: String,
+}
+
+fn profile_named(name: &str) -> Profile {
+    [
+        Profile::NoTty,
+        Profile::Ascii,
+        Profile::Ansi,
+        Profile::Ansi256,
+        Profile::TrueColor,
+    ]
+    .into_iter()
+    .find(|p| p.name() == name)
+    .unwrap_or_else(|| panic!("unknown profile {name:?}"))
+}
+
+/// `colorprofile.Writer{Profile: p}.Write(in)`.
+#[test]
+fn downsample_cases() {
+    let v = vectors();
+    assert!(!v.downsample.is_empty());
+    for c in &v.downsample {
+        let p = profile_named(&c.profile);
+        assert_eq!(
+            &*colorprofile::downsample(&c.input, p),
+            c.out.as_str(),
+            "{} {:?}",
+            c.profile,
+            c.input
         );
     }
 }

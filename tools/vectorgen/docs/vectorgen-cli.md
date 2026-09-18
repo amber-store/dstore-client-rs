@@ -93,6 +93,9 @@ Every top-level key is an array of cases.
 | `blend1d` | `{steps, a: [r,g,b], b: [r,g,b], out: [[r,g,b], …]}` | `lipgloss.Blend1D(steps, a, b)` over opaque stops. Channels are as x/ansi writes them in `38;2;R;G;B` (`RGBA() >> 8`). Rust `progress::blend1d`. |
 | `progress_bar` | `{width, percent: f64s, out}` | bubbles `progress.New(progress.WithDefaultBlend())`, `SetWidth(width)`, `ViewAs(percent)`: the bar line of the view, for the renderer's internal tests |
 | `ui_model` | see below | `uiModel` |
+| `color_profile` | `{env: ["KEY=VALUE"], tty, out}` | With `tty`, `colorprofile.Env(env)`; without, `colorprofile.Detect(&bytes.Buffer{}, env)`: an output that is not a terminal, so terminfo and tmux are never consulted, and no case sets `TTY_FORCE`. `out` is `Profile.String()`. Rust `progress::colorprofile::{env_profile, detect, color_profile}`. |
+| `convert256` | `{rgb: [r,g,b], c256, c16}` | x/ansi `Convert256` and `Convert16` of an opaque `color.RGBA`: the default bar's colours (bar widths 20, 60 and 80), its empty run, points around the cube levels, and a fixed pseudo-random sample. Colours with a channel of 115, 155, 195 or 235 are left out (`cliArchNeutral`): gc fuses `c*255-35` into one FMA on arm64 and not on amd64, so their index depends on the architecture that generates the file. Every other colour agrees on both. Rust `progress::colorprofile::{convert256, convert16}`. |
+| `downsample` | `{profile, in, out}` | `colorprofile.Writer{Profile: profile}.Write(in)` for every profile and input. Rust `progress::colorprofile::downsample`. |
 
 - **Report:** `{objects: n, total_objects: n, bytes: i64s, total_bytes: i64s, nodes: [Node]}`.
 - **Node:** `{id: hex (32 bytes), direct, rtt_ns: i64s, in_flight: n, awaiting: n, bytes: i64s}`
@@ -253,7 +256,7 @@ Paths are relative to ROOT and `/`-separated.
 |---|---|---|
 | `mkdir` | `path`, `mode` | mkdir, then chmod `mode`, so the umask does not matter |
 | `write` | `path`, `text`, `mode` | create or truncate, write `text`, chmod `mode` |
-| `symlink` | `path`, `target` | symlink |
+| `symlink` | `path`, `target`, `mode`? | symlink. With `mode`, `fchmodat(AT_SYMLINK_NOFOLLOW)` to `mode`, which macOS applies and Linux refuses (its links are always 0777). The step fails unless the link then has `mode`. |
 | `remove` | `path` | remove recursively |
 | `chmod` | `path`, `mode` | chmod |
 | `mtime` | `path`, `unix_ns` | `utimensat(AT_FDCWD, path, [unix_ns, unix_ns], AT_SYMLINK_NOFOLLOW)` |
@@ -265,6 +268,12 @@ Paths are relative to ROOT and `/`-separated.
 `mode` is a JSON number (for example 420 = 0644). Ingested keys depend on the uid, gid and times of the
 user running the harness, which is why outputs name them through `{key:…}` placeholders. The fixtures set
 every mtime they rely on and keep them far from `synced_at`, so the racy window never triggers.
+
+Every step that creates an entry sets its mode, so no fixture depends on the umask. Fixture `wc1` gives its
+`link` mode 0777. A link's bits are part of its ingested entry, and `wc1` replaces the link with a 0755
+directory, so `wc/wc1 diff`, `wc/wc1/sub diff` and `wc/wc1/sub diff ..` print `old mode 0777` /
+`new mode 0755` for it. Linux links are always 0777, and a macOS link would otherwise get `0777 &^ umask`. With
+the explicit mode the three cases are the same on both platforms.
 
 ### Which cases need what
 

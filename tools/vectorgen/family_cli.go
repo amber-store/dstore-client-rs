@@ -8,9 +8,11 @@ package main
 // written by cmd/clisnap. Schemas: docs/vectorgen-cli.md.
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"fmt"
+	"image/color"
 	"log/slog"
 	"math"
 	"os"
@@ -24,6 +26,8 @@ import (
 	"github.com/amber-store/dstore/client"
 	"github.com/amber-store/dstore/view"
 	"github.com/amber-store/dstore/worktree"
+	"github.com/charmbracelet/colorprofile"
+	"github.com/charmbracelet/x/ansi"
 )
 
 func init() {
@@ -217,6 +221,9 @@ type cliTextFile struct {
 	Blend1D        []cliBlendCase         `json:"blend1d"`
 	ProgressBar    []cliBarCase           `json:"progress_bar"`
 	UIModel        []cliUIScenario        `json:"ui_model"`
+	ColorProfile   []cliColorProfileCase  `json:"color_profile"`
+	Convert256     []cliConvertCase       `json:"convert256"`
+	Downsample     []cliDownsampleCase    `json:"downsample"`
 }
 
 type cliHumanBytesCase struct {
@@ -404,6 +411,11 @@ func cliTextVectors() (cliTextFile, error) {
 	cliBlends(&f)
 	cliBars(&f)
 	if err = cliUIScenarios(&f); err != nil {
+		return f, err
+	}
+	cliColorProfiles(&f)
+	cliConverts(&f)
+	if err = cliDownsamples(&f); err != nil {
 		return f, err
 	}
 	return f, cliCheckText(&f)
@@ -781,6 +793,171 @@ func cliBars(f *cliTextFile) {
 	} {
 		f.ProgressBar = append(f.ProgressBar, cliBarCase{Width: c.width, Percent: cliF64(c.percent), Out: mainpkg.ProgressBar(c.width, c.percent)})
 	}
+}
+
+// ---- colorprofile v0.4.3: Bubble Tea's colour profile and downsampling ----
+
+type cliColorProfileCase struct {
+	Env []string `json:"env"`
+	TTY bool     `json:"tty"`
+	Out string   `json:"out"`
+}
+
+type cliConvertCase struct {
+	RGB  [3]uint8 `json:"rgb"`
+	C256 int      `json:"c256"`
+	C16  int      `json:"c16"`
+}
+
+type cliDownsampleCase struct {
+	Profile string `json:"profile"`
+	In      string `json:"in"`
+	Out     string `json:"out"`
+}
+
+// cliArchNeutral reports whether x/ansi Convert256 gives c the same index
+// on arm64 and on amd64. On arm64 the gc compiler fuses c*255-35 into one
+// FMA, which moves a channel of exactly 115, 155, 195 or 235 into the cube
+// level below; amd64 (GOAMD64=v1) rounds the product first. Every other
+// colour agrees (checked over all 2^24, port-notes/impl-interop-fixes.md),
+// and the vectors only use those, so that they regenerate on either.
+func cliArchNeutral(c [3]uint8) bool {
+	for _, v := range c {
+		switch v {
+		case 115, 155, 195, 235:
+			return false
+		}
+	}
+	return true
+}
+
+func cliColorProfiles(f *cliTextFile) {
+	// No case sets TTY_FORCE: with it, Detect would read this machine's
+	// terminfo.
+	for _, env := range [][]string{
+		{},
+		{"TERM=dumb"},
+		{"TERM=dumb", "COLORTERM=truecolor"},
+		{"TERM=dumb", "COLORTERM=truecolor", "CLICOLOR_FORCE=1"},
+		{"TERM=dumb", "CLICOLOR_FORCE=1"},
+		{"TERM=dumb", "CLICOLOR=1"},
+		{"TERM=xterm-256color"},
+		{"TERM=xterm-256color", "CLICOLOR=1"},
+		{"TERM=xterm-256color", "COLORTERM=yes"},
+		{"TERM=xterm-256color", "COLORTERM=truecolor"},
+		{"TERM=xterm-256color", "COLORTERM=24BIT"},
+		{"TERM=xterm-256color", "NO_COLOR=1"},
+		{"TERM=xterm-256color", "NO_COLOR=0"},
+		{"TERM=xterm-256color", "NO_COLOR=yes"},
+		{"TERM=xterm-256color", "NO_COLOR=1", "CLICOLOR_FORCE=1"},
+		{"TERM=xterm-256color", "COLORTERM=truecolor", "NO_COLOR=1"},
+		{"TERM=xterm"},
+		{"TERM=xterm", "NO_COLOR=1"},
+		{"TERM=xterm", "CLICOLOR=1"},
+		{"TERM=xterm", "CLICOLOR_FORCE=1"},
+		{"TERM=xterm", "GOOGLE_CLOUD_SHELL=true"},
+		{"TERM=xterm-16color"},
+		{"TERM=xterm-color"},
+		{"TERM=xterm-direct"},
+		{"TERM=vt100"},
+		{"TERM=linux"},
+		{"TERM=screen"},
+		{"TERM=screen", "COLORTERM=truecolor"},
+		{"TERM=screen-256color"},
+		{"TERM=tmux", "COLORTERM=truecolor"},
+		{"TERM=tmux-256color"},
+		{"TERM=alacritty"},
+		{"TERM=xterm-kitty"},
+		{"TERM=xterm-ghostty"},
+		{"TERM=wezterm"},
+		{"TERM=foot"},
+		{"TERM=st-256color"},
+		{"WT_SESSION=1"},
+		{"TERM=xterm-256color", "WT_SESSION=1"},
+		{"COLORTERM=truecolor"},
+		{"TERM="},
+		{"TERM=", "CLICOLOR=1"},
+		{"TERM"},
+		{"TERM=dumb", "TERM=xterm-256color"},
+		{"TERM=xterm-256color", "TERM=dumb"},
+	} {
+		f.ColorProfile = append(f.ColorProfile,
+			cliColorProfileCase{Env: env, TTY: true, Out: colorprofile.Env(env).String()},
+			cliColorProfileCase{Env: env, TTY: false, Out: colorprofile.Detect(&bytes.Buffer{}, env).String()})
+	}
+}
+
+func cliConverts(f *cliTextFile) {
+	seen := map[[3]uint8]bool{}
+	add := func(c [3]uint8) {
+		if seen[c] || !cliArchNeutral(c) {
+			return
+		}
+		seen[c] = true
+		col := color.RGBA{R: c[0], G: c[1], B: c[2], A: 0xff}
+		f.Convert256 = append(f.Convert256, cliConvertCase{RGB: c, C256: int(ansi.Convert256(col)), C16: int(ansi.Convert16(col))})
+	}
+	// The default bar at widths 20, 60 and 80 (tw = width-5, Blend1D(2*tw)),
+	// and its empty run.
+	for _, w := range []int{20, 60, 80} {
+		for _, c := range mainpkg.Blend1D(2*(w-5), cliBlendStart, cliBlendEnd) {
+			add(c)
+		}
+	}
+	add([3]uint8{0x60, 0x60, 0x60})
+	// Around the cube levels (0, 95, 135, 175, 215, 255), the grey ramp and
+	// the corners.
+	for _, v := range []uint8{0, 1, 7, 8, 47, 48, 94, 95, 96, 114, 116, 134, 135, 136, 154, 156, 174, 175, 176, 194, 196, 214, 215, 216, 234, 236, 238, 239, 254, 255} {
+		add([3]uint8{v, v, v})
+		add([3]uint8{v, 0, 0})
+		add([3]uint8{0, v, 0})
+		add([3]uint8{0, 0, v})
+		add([3]uint8{v, 255 - v, 128})
+	}
+	// A fixed xorshift sample.
+	s := uint64(0x9e3779b97f4a7c15)
+	for range 400 {
+		s ^= s << 13
+		s ^= s >> 7
+		s ^= s << 17
+		add([3]uint8{uint8(s), uint8(s >> 8), uint8(s >> 16)})
+	}
+}
+
+func cliDownsamples(f *cliTextFile) error {
+	// Every 24-bit colour in these inputs is arch-neutral (cliArchNeutral),
+	// and each colour type of ReadStyleColor is valid: Writer panics on an
+	// invalid one under ANSI and ANSI256.
+	inputs := []string{
+		mainpkg.ProgressBar(60, 0),
+		"\x1b[1mpush trees/demo\x1b[m  \x1b[2melapsed 2s\x1b[m",
+		"\x1b[33m12:34:56  upload retry node=abcd reason=busy\x1b[m",
+		"\x1b[31mfailed: context canceled\x1b[m",
+		"\x1b[32mdone\x1b[m",
+		"\x1b[1mt\x1b[m \x1b[38;2;90;86;224;48;2;92;86;225m▌\x1b[m\x1b[38;2;96;96;96m░\x1b[m \x1b[32mdone\x1b[m \x1b[0;1;38:2::1:2:3m x\x1b[?25l\x1b[2A",
+		"\x1b[38;5;200;48;5;17m x \x1b[91;101;39;49m y \x1b[58;2;255;0;0;59m z \x1b[4:3m w\x1b[m",
+		"\x1b[38:2:10:20:30;48:5:232m a \x1b[38:3::11:21:31m b \x1b[48:4::10:20:30:40m c \x1b[38:6::1:2:3:128m d",
+		"\x1b[38;1m t \x1b[;m u \x1b[m v \x1b[?1m w \x1b[1 m x",
+		"a\tb\x1b]8;;http://x\x07c\x1b]0;t\x1b\\d\x1b[?25l\x1b[2Ae\x1b7f",
+	}
+	// Full bars have channels of 155 and 235, so they are only downsampled
+	// where no colour is converted.
+	bars := []string{mainpkg.ProgressBar(60, 0.5), mainpkg.ProgressBar(20, 1)}
+	for _, p := range []colorprofile.Profile{colorprofile.NoTTY, colorprofile.ASCII, colorprofile.ANSI, colorprofile.ANSI256, colorprofile.TrueColor} {
+		in := inputs
+		if p != colorprofile.ANSI && p != colorprofile.ANSI256 {
+			in = append(append([]string{}, inputs...), bars...)
+		}
+		for _, s := range in {
+			var buf bytes.Buffer
+			w := &colorprofile.Writer{Forward: &buf, Profile: p}
+			if _, err := w.WriteString(s); err != nil {
+				return err
+			}
+			f.Downsample = append(f.Downsample, cliDownsampleCase{Profile: p.String(), In: s, Out: buf.String()})
+		}
+	}
+	return nil
 }
 
 // cliUIRun records a uiModel scenario while driving it.

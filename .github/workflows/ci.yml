@@ -16,6 +16,7 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   RUST_TOOLCHAIN: "1.95.0" # = nixpkgs nixos-26.05 rustc
+  GO_VERSION: "1.26.5" # = tools/vectorgen/go.mod and dstore v0.1.9's go.mod
   DSTORE_GO_REF: v0.1.9
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ env.RUST_TOOLCHAIN }}
@@ -37,8 +38,8 @@ jobs:
         run: cargo fmt --all --check
       - name: cargo clippy
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
-      - name: cargo test (unit, golden, CLI snapshots, fake cluster, iroh loopback)
-        run: cargo test --workspace --locked
+      - name: cargo test (unit, golden vectors, CLI snapshots and actions, fake cluster, iroh loopback)
+        run: cargo test --workspace --all-targets --locked
         env:
           TZ: UTC
 
@@ -51,16 +52,16 @@ jobs:
       GOTOOLCHAIN: local
       CGO_ENABLED: "0"
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version-file: tools/vectorgen/go.mod
+          go-version: ${{ env.GO_VERSION }}
           cache-dependency-path: tools/vectorgen/go.sum
       - name: go vet
         run: go vet ./...
-      - name: go test (registry rules, clisnap cases, copied cmd/dstore tests)
+      - name: go test (registry rules, clisnap cases and fixture steps, copied cmd/dstore tests)
         run: go test ./...
-      - name: Regenerate twice; deterministic and equal to the committed vectors
+      - name: Regenerate every family twice; deterministic and equal to tests/golden
         run: |
           go run . "$RUNNER_TEMP/golden-a"
           go run . "$RUNNER_TEMP/golden-b"
@@ -74,7 +75,7 @@ jobs:
         run: |
           go run ./cmd/goerrno > "$RUNNER_TEMP/errno_tables.rs"
           diff -u ../../crates/gocompat/src/errno_tables.rs "$RUNNER_TEMP/errno_tables.rs"
-      - name: CLI snapshots from the Go binary (built into a temporary directory and removed)
+      - name: Regenerate tests/golden/cli/snapshots.json (Go binary built into a temporary directory and removed)
         run: |
           go run ./cmd/clisnap -o "$RUNNER_TEMP/cli"
           diff -u ../../tests/golden/cli/snapshots.json "$RUNNER_TEMP/cli/snapshots.json"
@@ -82,23 +83,31 @@ jobs:
   interop:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: dstore-client-rs
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/checkout@v5
+      # This repository and Go dstore side by side: $GITHUB_WORKSPACE/dstore-client-rs and $GITHUB_WORKSPACE/dstore.
+      - uses: actions/checkout@v4
+        with:
+          path: dstore-client-rs
+      - uses: actions/checkout@v4
         with:
           repository: amber-store/dstore
           ref: ${{ env.DSTORE_GO_REF }}
-          path: dstore-go
+          path: dstore
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ env.RUST_TOOLCHAIN }}
       - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: dstore-client-rs
       - uses: actions/setup-go@v5
         with:
-          go-version-file: dstore-go/go.mod
+          go-version: ${{ env.GO_VERSION }}
           cache-dependency-path: |
-            dstore-go/go.sum
-            tools/vectorgen/go.sum
+            dstore/go.sum
+            dstore-client-rs/tools/vectorgen/go.sum
       - name: Build the Rust CLI and examples
         run: cargo build --release --locked --bin dstore --examples
       - name: Live Go <-> Rust interop over a 3-node loopback cluster
@@ -106,11 +115,11 @@ jobs:
         env:
           GOTOOLCHAIN: local
           CGO_ENABLED: "0"
-          DSTORE_GO_REPO: ${{ github.workspace }}/dstore-go
-          DSTORE_RS_BIN: ${{ github.workspace }}/target/release/dstore
+          DSTORE_GO_REPO: ${{ github.workspace }}/dstore
+          DSTORE_RS_BIN: ${{ github.workspace }}/dstore-client-rs/target/release/dstore
           INTEROP_MDNS: auto
           INTEROP_LOG_DIR: ${{ runner.temp }}/interop-logs
-          # heavy and chaos groups only on manual runs
+          # the heavy (transitions) and chaos (node restarts) groups only on manual runs
           INTEROP_HEAVY: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
           INTEROP_CHAOS: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
       - if: failure()
@@ -118,6 +127,7 @@ jobs:
         with:
           name: interop-logs
           path: ${{ runner.temp }}/interop-logs
+          if-no-files-found: ignore
 
   nix:
     name: nix (${{ matrix.os }})
@@ -127,8 +137,8 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
       - name: nix flake check
         run: nix flake check -L
       - name: nix build

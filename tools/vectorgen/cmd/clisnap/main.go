@@ -265,7 +265,12 @@ func fixtures() []fixture {
 			mkdir("sub", 0o755),
 			write("sub/b.txt", "x\ny\n", 0o644),
 			write("run.sh", "#!/bin/sh\necho run\n", 0o644),
-			{Op: "symlink", Path: "link", Target: "a.txt"},
+			// The link's bits are part of its ingested entry, and the
+			// type change to a 0755 directory below prints old mode /
+			// new mode when they differ. Linux links are always 0777;
+			// a macOS link gets 0777 &^ umask unless it is set, so the
+			// step asks for 0777 and every platform prints the same.
+			{Op: "symlink", Path: "link", Target: "a.txt", Mode: mode(0o777)},
 			mtime("a.txt", t0), mtime("sub/b.txt", t0), mtime("sub", t0), mtime("run.sh", t0), mtime("link", t0),
 			wcCreate("trees/demo"),
 			{Op: "ingest", Dir: ".", Into: "wc", Exclude: []string{".dstore"}, Var: "base"},
@@ -310,6 +315,26 @@ func fixtures() []fixture {
 	}
 }
 
+// lchmod gives the symlink p the permission bits m. macOS applies them
+// (fchmodat with AT_SYMLINK_NOFOLLOW). Linux refuses with EOPNOTSUPP because
+// its links always have 0777, so there the link must already have m.
+func lchmod(p string, m uint32) error {
+	err := unix.Fchmodat(unix.AT_FDCWD, p, m, unix.AT_SYMLINK_NOFOLLOW)
+	var st unix.Stat_t
+	if lerr := unix.Lstat(p, &st); lerr != nil {
+		return lerr
+	}
+	got := uint32(st.Mode) & 0o7777
+	switch {
+	case got == m:
+		return nil
+	case err != nil:
+		return fmt.Errorf("lchmod %#o: %w (the link has %#o)", m, err, got)
+	default:
+		return fmt.Errorf("lchmod %#o: the link has %#o", m, got)
+	}
+}
+
 // build applies a fixture's steps under root and returns its key variables.
 func build(fx fixture, root, scratch string) (map[string]key.Key, error) {
 	vars := map[string]key.Key{}
@@ -335,7 +360,13 @@ func applyStep(s step, root, scratch string, vars map[string]key.Key) error {
 		}
 		return os.Chmod(p, os.FileMode(*s.Mode))
 	case "symlink":
-		return os.Symlink(s.Target, p)
+		if err := os.Symlink(s.Target, p); err != nil {
+			return err
+		}
+		if s.Mode == nil {
+			return nil
+		}
+		return lchmod(p, *s.Mode)
 	case "remove":
 		return os.RemoveAll(p)
 	case "chmod":

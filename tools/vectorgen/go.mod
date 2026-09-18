@@ -10,6 +10,8 @@ require (
 	github.com/amber-store/dstore v0.1.9
 	github.com/amber-store/transport-iroh v0.4.0
 	github.com/aymanbagabas/go-udiff v0.4.1
+	github.com/charmbracelet/colorprofile v0.4.3
+	github.com/charmbracelet/x/ansi v0.11.8
 	github.com/fxamacker/cbor/v2 v2.9.3
 	github.com/tmc/go-iroh v0.2.0
 	github.com/urfave/cli/v2 v2.27.7
@@ -26,10 +28,8 @@ require (
 	github.com/RaduBerinde/btreemap v0.0.0-20250419174037-3d62b7205d54 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/harmonica v0.2.0 // indirect
 	github.com/charmbracelet/ultraviolet v0.0.0-20260811164956-006e29f97886 // indirect
-	github.com/charmbracelet/x/ansi v0.11.8 // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
 	github.com/charmbracelet/x/termios v0.1.1 // indirect
 	github.com/charmbracelet/x/windows v0.2.2 // indirect
