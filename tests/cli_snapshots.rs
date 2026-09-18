@@ -604,8 +604,10 @@ fn fixture_builder_builds_every_fixture() {
             .iter()
             .any(|s| matches!(s, Step::WcState { .. }))
         {
-            let tree = dstore_worktree::Tree::open(root.as_os_str().as_bytes())
-                .unwrap_or_else(|e| panic!("{}: open the working copy: {e}", fixture.name));
+            let tree = retry_locked(|| {
+                dstore_worktree::Tree::open(root.as_os_str().as_bytes()).map_err(|e| e.to_string())
+            })
+            .unwrap_or_else(|e| panic!("{}: open the working copy: {e}", fixture.name));
             tree.close().expect("close the working copy");
         }
         if matches!(fixture.name.as_str(), "files" | "pebble-refs") {
@@ -964,8 +966,10 @@ fn apply_step(
                 "scratch" => scratch.join("packstore"),
                 other => return Err(format!("unknown ingest target {other:?}")),
             };
-            let st = packstore::Store::open_with(&store_dir, packstore::Options::new().sync(true))
-                .map_err(|e| e.to_string())?;
+            let st = retry_locked(|| {
+                packstore::Store::open_with(&store_dir, packstore::Options::new().sync(true))
+                    .map_err(|e| e.to_string())
+            })?;
             let src = if dir == "." {
                 root.to_path_buf()
             } else {
@@ -1011,11 +1015,13 @@ fn apply_step(
                 ),
                 None => (Key([0; 32]), false, None),
             };
-            let store = packstore::Store::open_with(
-                root.join(".dstore").join("packstore"),
-                packstore::Options::new().sync(true),
-            )
-            .map_err(|e| e.to_string())?;
+            let store = retry_locked(|| {
+                packstore::Store::open_with(
+                    root.join(".dstore").join("packstore"),
+                    packstore::Options::new().sync(true),
+                )
+                .map_err(|e| e.to_string())
+            })?;
             let tree = dstore_worktree::Tree {
                 root: root.as_os_str().as_bytes().to_vec(),
                 config: dstore_worktree::Config::default(),
@@ -1038,6 +1044,22 @@ fn apply_step(
                 fs::File::create(dir.join(n)).map_err(io)?;
             }
             Ok(())
+        }
+    }
+}
+
+/// Runs `open` until it stops failing on a packstore lock conflict, for up to 10 s. This test binary
+/// spawns `dstore` processes from other threads, and between fork and exec a child holds a copy of every
+/// descriptor, a packstore's flock included, so reopening a store right after closing it can briefly
+/// report "is already open" (EAGAIN/EWOULDBLOCK). The CLI never forks; only the fixture builder retries.
+fn retry_locked<T>(mut open: impl FnMut() -> Result<T, String>) -> Result<T, String> {
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    loop {
+        match open() {
+            Err(e) if e.contains("is already open") && std::time::Instant::now() < deadline => {
+                std::thread::sleep(std::time::Duration::from_millis(20));
+            }
+            r => return r,
         }
     }
 }

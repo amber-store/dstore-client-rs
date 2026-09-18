@@ -39,7 +39,7 @@ jobs:
       - name: cargo clippy
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: cargo test (unit, golden vectors, CLI snapshots and actions, fake cluster, iroh loopback)
-        run: cargo test --workspace --all-targets --locked
+        run: cargo test --workspace --all-targets --locked --no-fail-fast
         env:
           TZ: UTC
 
@@ -110,6 +110,8 @@ jobs:
             dstore-client-rs/tools/vectorgen/go.sum
       - name: Build the Rust CLI and examples
         run: cargo build --release --locked --bin dstore --examples
+      - name: Raise the UDP buffer limits (quic-go and noq ask for 7 MiB)
+        run: sudo sysctl -w net.core.rmem_max=7500000 net.core.wmem_max=7500000
       - name: Live Go <-> Rust interop over a 3-node loopback cluster
         run: bash interop/check.sh
         env:

@@ -967,10 +967,51 @@ fn keep_announcing_v6(packet: Vec<u8>) -> tokio::task::JoinHandle<()> {
     })
 }
 
+/// Whether this host loops IPv6 link-local multicast back to a local member: a socket joins a private
+/// group on every interface index from 1 to 32, and another sends to that group on each of them. Some
+/// hosts deliver nothing (GitHub's macOS runners, for one), and there an IPv6 mDNS test cannot run.
+async fn ipv6_multicast_loops_back() -> bool {
+    let group = std::net::Ipv6Addr::new(0xff02, 0, 0, 0, 0, 0, 0x1234, 0x5678);
+    let Ok(rx) = tokio::net::UdpSocket::bind("[::]:0").await else {
+        return false;
+    };
+    let Ok(port) = rx.local_addr().map(|a| a.port()) else {
+        return false;
+    };
+    let mut joined = false;
+    for scope in 1..=32 {
+        joined |= rx.join_multicast_v6(&group, scope).is_ok();
+    }
+    let Ok(tx) = tokio::net::UdpSocket::bind("[::]:0").await else {
+        return false;
+    };
+    if !joined || tx.set_multicast_loop_v6(true).is_err() {
+        return false;
+    }
+    let deadline = Instant::now() + Duration::from_secs(2);
+    let mut buf = [0u8; 16];
+    while Instant::now() < deadline {
+        for scope in 1..=32 {
+            let to = std::net::SocketAddrV6::new(group, port, 0, scope);
+            let _ = tx.send_to(b"v6-probe", to).await;
+        }
+        if let Ok(Ok((n, _))) =
+            tokio::time::timeout(Duration::from_millis(200), rx.recv_from(&mut buf)).await
+            && &buf[..n] == b"v6-probe"
+        {
+            return true;
+        }
+    }
+    false
+}
+
 /// Starts a resolver whose DEBUG output is kept, or explains why this host cannot run an IPv6 mDNS test.
 async fn start_ipv6_resolver() -> Result<Arc<mdns::MdnsResolver>, String> {
     if std::net::UdpSocket::bind("[::1]:0").is_err() {
         return Err("no ipv6 loopback".to_string());
+    }
+    if !ipv6_multicast_loops_back().await {
+        return Err("this host does not loop ipv6 multicast back to a local member".to_string());
     }
     let log = Captured::default();
     let logger = Logger::new(Arc::new(TextHandler::new(

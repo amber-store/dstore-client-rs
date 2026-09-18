@@ -118,7 +118,9 @@ for v in DSTORE_TICKET DSTORE_STORE DSTORE_LOG_LEVEL DSTORE_NO_TUI DSTORE_NO_DIS
 	AMBER_STORE DSTORE_LIVE_STORE NO_COLOR COLORTERM; do
 	unset "$v"
 done
-export TZ=UTC LC_ALL=C GOTOOLCHAIN=local CGO_ENABLED=0
+# QUIC_GO_DISABLE_RECEIVE_BUFFER_WARNING: the Go binary's quic-go fork logs a buffer warning at bind on
+# Linux hosts with small UDP buffer limits (PORTING.md DD-16); the Rust CLI prints nothing.
+export TZ=UTC LC_ALL=C GOTOOLCHAIN=local CGO_ENABLED=0 QUIC_GO_DISABLE_RECEIVE_BUFFER_WARNING=true
 
 MDNS=${INTEROP_MDNS:-auto}
 case $MDNS in auto | require | skip) ;; *) die "INTEROP_MDNS=$MDNS: want auto, require or skip" ;; esac

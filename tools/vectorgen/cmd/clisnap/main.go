@@ -926,7 +926,10 @@ func runCase(bin, dir string, fx fixture, sp spec) (snapCase, error) {
 	defer cancel()
 	cmd := exec.CommandContext(ctx, bin, args...)
 	cmd.Dir = cwd
-	cmd.Env = []string{"PATH=" + os.Getenv("PATH"), "HOME=" + home, "TZ=UTC"}
+	// QUIC_GO_DISABLE_RECEIVE_BUFFER_WARNING: on Linux hosts with small UDP buffer limits the Go
+	// binary's quic-go fork logs a buffer warning when it binds (PORTING.md DD-16); it is the host's
+	// output, not dstore's, so the snapshots leave it out.
+	cmd.Env = []string{"PATH=" + os.Getenv("PATH"), "HOME=" + home, "TZ=UTC", "QUIC_GO_DISABLE_RECEIVE_BUFFER_WARNING=true"}
 	for _, e := range sp.env {
 		cmd.Env = append(cmd.Env, e.Name+"="+strings.ReplaceAll(e.Value, placeholderCWD, cwd))
 	}
