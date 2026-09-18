@@ -13,3 +13,10 @@ dstore-codec.workspace = true
 dstore-gocompat.workspace = true
 dstore-ticket.workspace = true
 thiserror.workspace = true
+
+[dev-dependencies]
+# crates/view/tests/all_slots.rs: golden loaders (a dev-dependency cycle, allowed by Cargo) and serde.
+dstore-testkit.workspace = true
+# src/gosort.rs: the copy of Go's sort.Slice is checked against dstore_udiff::gosort.
+dstore-udiff.workspace = true
+serde.workspace = true

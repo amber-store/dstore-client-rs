@@ -82,12 +82,142 @@ cbor_struct! {
     }
 }
 
-/// `node.DecodeStatus`.
+/// `node.DecodeStatus`: `codec.Unmarshal` into a `node.Status`. Go also returns the partly filled value
+/// with an error; its only caller (`printStatus`) discards it.
 pub fn decode_status(b: &[u8]) -> Result<Status, dstore_codec::DecodeError> {
-    todo!()
+    dstore_codec::unmarshal::<Status>(b)
 }
 
-/// `codec.Unmarshal` into a `node.AdminReply`.
+/// `codec.Unmarshal` into a `node.AdminReply` (`cmd/dstore/client.go:98-108` returns the error as is).
 pub fn decode_admin_reply(b: &[u8]) -> Result<AdminReply, dstore_codec::DecodeError> {
-    todo!()
+    dstore_codec::unmarshal::<AdminReply>(b)
+}
+
+#[cfg(test)]
+mod tests {
+    use dstore_codec::marshal;
+
+    use super::*;
+
+    fn hex(s: &str) -> Vec<u8> {
+        dstore_gocompat::hex::decode_string(s.as_bytes()).expect("test hex")
+    }
+
+    #[test]
+    fn admin_request_probes() {
+        let cases: &[(AdminRequest, &str)] = &[
+            (
+                AdminRequest {
+                    op: "cluster-ticket".into(),
+                    ..AdminRequest::default()
+                },
+                "a1006e636c75737465722d7469636b6574",
+            ),
+            (
+                AdminRequest {
+                    op: "gc-run".into(),
+                    garbage: 0.5,
+                    ..AdminRequest::default()
+                },
+                "a2006667632d72756e09f93800",
+            ),
+            (
+                AdminRequest {
+                    op: "gc-run".into(),
+                    garbage: -0.0,
+                    ..AdminRequest::default()
+                },
+                "a1006667632d72756e",
+            ),
+            (
+                AdminRequest {
+                    op: "replicas".into(),
+                    replicas: 3,
+                    weight: 100,
+                    names: vec!["a".into()],
+                    ..AdminRequest::default()
+                },
+                "a400687265706c6963617302186404030e816161",
+            ),
+            (
+                AdminRequest {
+                    op: "node-remove".into(),
+                    node: vec![0xab; 32],
+                    dead: true,
+                    allow_unsafe: true,
+                    ..AdminRequest::default()
+                },
+                "a4006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab05f506f5",
+            ),
+        ];
+        for (req, want) in cases {
+            assert_eq!(marshal(req), hex(want), "{req:?}");
+            let back: AdminRequest = dstore_codec::unmarshal(&hex(want)).expect("decode");
+            assert_eq!(back.op, req.op);
+            assert_eq!(back.garbage.to_bits(), (req.garbage + 0.0).to_bits());
+        }
+    }
+
+    #[test]
+    fn admin_reply_probes() {
+        let reply = AdminReply {
+            text: "ok".into(),
+            ..AdminReply::default()
+        };
+        assert_eq!(marshal(&reply), hex("a100626f6b"));
+        assert_eq!(
+            decode_admin_reply(&hex("a200626f6b186301")).map(|r| r.text),
+            Ok("ok".to_owned())
+        );
+        assert_eq!(decode_admin_reply(&hex("a0")), Ok(AdminReply::default()));
+        assert_eq!(
+            decode_admin_reply(&[0xff]).map_err(|e| e.to_string()),
+            Err("cbor: unexpected \"break\" code".into())
+        );
+    }
+
+    #[test]
+    fn status_probes() {
+        let zero = "b000f601000200030004000500060008000df40e000f0010001100120013001400";
+        assert_eq!(marshal(&Status::default()), hex(zero));
+        assert_eq!(decode_status(&hex(zero)), Ok(Status::default()));
+
+        // cli §3.8.
+        let st = Status {
+            id: Some(vec![0xab; 32]),
+            epoch: 5,
+            incarnation: 1,
+            packs: 2,
+            records: 10,
+            bytes: 1234,
+            pins: 1,
+            unreachable: vec![vec![0x01; 32]],
+            transition: "idle".into(),
+            gc: "epoch 3 idle".into(),
+            voters: vec![VoterStat {
+                id: Some(vec![0x01; 32]),
+                calls: 10,
+                failures: 1,
+                p99ms: 12,
+            }],
+            writable: true,
+            free_bytes: (5 << 30) + 123,
+            total_bytes: 10 << 30,
+            is_holder: true,
+            ..Status::default()
+        };
+        let want = hex(
+            "b5005820abababababababababababababababababababababababababababababababab010502010302040a051904d206010781582001010101010101010101010101010101010101010101010101010101010101010800096469646c650a6c65706f636820332069646c650c81a40058200101010101010101010101010101010101010101010101010101010101010101010a0201030c0df50e1b000000014000007b0f1b000000028000000010001100120013001400181af5",
+        );
+        assert_eq!(marshal(&st), want);
+        assert_eq!(decode_status(&want), Ok(st));
+        assert_eq!(
+            decode_status(&[0xff]).map_err(|e| e.to_string()),
+            Err("cbor: unexpected \"break\" code".into())
+        );
+        assert_eq!(
+            decode_status(&[]).map_err(|e| e.to_string()),
+            Err("EOF".into())
+        );
+    }
 }

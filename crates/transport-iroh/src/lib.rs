@@ -3,7 +3,6 @@
 //! `iroh/endpoint.go`, and a port of the go-iroh `iroh/mdns` resolver.
 //!
 //! Spec: PORTING.md §4.7, §5.12; port-notes/transport.md §2.3, §2.5-§2.8, §2.10, §3.2-§3.4, §4.5-§4.8.
-#![allow(dead_code, unused_variables)] // L0 stubs: remove once the modules are implemented
 #![deny(unsafe_op_in_unsafe_fn)]
 
 mod conn;
@@ -13,6 +12,11 @@ pub mod mdns;
 
 pub use conn::*;
 pub use endpoint::*;
+
+/// The iroh release this transport is built on (`=1.2.0`). The public API names its types
+/// ([`IrohConfig::secret_key`], [`IrohEndpoint::raw`], [`to_iroh_addr`]), so callers use this re-export to
+/// get the same version.
+pub use iroh;
 
 /// go-iroh `relay.DefaultMap()` hosts (`relay/relay.go:23-30`).
 pub const GO_DEFAULT_RELAYS: [&str; 4] = [

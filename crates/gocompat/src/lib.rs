@@ -6,7 +6,6 @@
 //! - `fmt` verbs and `errors.Join` (`fmt`), `context` (`ctx`) and `log/slog` (`slog`).
 //!
 //! Spec: PORTING.md §4.1.
-#![allow(dead_code, unused_variables)] // L0 stubs: remove once the modules are implemented
 #![deny(unsafe_op_in_unsafe_fn)]
 
 pub mod base32;

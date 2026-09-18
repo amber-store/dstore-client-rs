@@ -4,7 +4,6 @@
 //! Go `wire.CloseStream` is `dstore_transport::Stream::close_stream`.
 //!
 //! Spec: PORTING.md §4.3; port-notes/codec-wire-ticket.md §2.2, §2.3, §2.5, §2.6, §3.
-#![allow(dead_code, unused_variables)] // L0 stubs: remove once the modules are implemented
 #![deny(unsafe_op_in_unsafe_fn)]
 
 pub mod admin;

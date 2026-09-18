@@ -118,3 +118,82 @@ cbor_struct! {
         4 => has_value: bool = "bool" [omitempty],
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use dstore_codec::{marshal, unmarshal};
+
+    use super::*;
+    use crate::consts::{T_ERR, T_JOIN, T_REF_CHANGES, T_REF_LIST};
+
+    fn hex(s: &str) -> Vec<u8> {
+        dstore_gocompat::hex::decode_string(s.as_bytes()).expect("test hex")
+    }
+
+    /// codec-wire-ticket §2.2.2 probes: nil non-omitempty `[]byte` fields encode as null.
+    #[test]
+    fn sub_struct_probes() {
+        assert_eq!(marshal(&KeyHolders::default()), hex("a100f6"));
+        assert_eq!(marshal(&ScanRow::default()), hex("a100f6"));
+        let failure = KeyFailure {
+            key: Some(vec![1]),
+            ..KeyFailure::default()
+        };
+        assert_eq!(marshal(&failure), hex("a300410101f60260"));
+        let info = RefInfo {
+            name: "n".into(),
+            key: Some(vec![]),
+            version: Some(vec![9]),
+            created_at: -2,
+            user: "u".into(),
+        };
+        let b = hex("a500616e01400241090321046175");
+        assert_eq!(marshal(&info), b);
+        assert_eq!(unmarshal::<RefInfo>(&b), Ok(info));
+        assert_eq!(unmarshal::<RefInfo>(&hex("a100f6")), Ok(RefInfo::default()));
+    }
+
+    /// codec-wire-ticket §3.3 "other probe payloads".
+    #[test]
+    fn msg_probes() {
+        let cases = [
+            (
+                Msg {
+                    typ: T_ERR,
+                    code: "busy".into(),
+                    retry_after: 1500,
+                    ..Msg::default()
+                },
+                "a3000a0a6462757379181c1905dc",
+            ),
+            (
+                Msg {
+                    typ: T_REF_LIST,
+                    limit: -1,
+                    shortfall: 300,
+                    ..Msg::default()
+                },
+                "a30018271420181e19012c",
+            ),
+            (
+                Msg {
+                    typ: T_JOIN,
+                    weight: 70000,
+                    since: 1 << 40,
+                    g: (1 << 32) - 1,
+                    ..Msg::default()
+                },
+                "a400186018291b0000010000000000182b1a00011170182f1affffffff",
+            ),
+        ];
+        for (m, want) in cases {
+            assert_eq!(marshal(&m), hex(want), "{m:?}");
+            assert_eq!(unmarshal::<Msg>(&hex(want)), Ok(m));
+        }
+        // A nil element of a [][]byte list decodes as empty (codec-wire-ticket R6).
+        let m = unmarshal::<Msg>(&hex("a300183b181b82f640183d82617860")).expect("decode");
+        assert_eq!(m.typ, T_REF_CHANGES);
+        assert_eq!(m.unreachable, [Vec::<u8>::new(), Vec::new()]);
+        assert_eq!(m.deleted, ["x", ""]);
+    }
+}

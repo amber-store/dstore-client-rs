@@ -7,7 +7,6 @@
 //! part B `objects`, `fetch`, `tree`, coding against the `pub(crate)` seams of part A.
 //!
 //! Spec: PORTING.md §4.8; port-notes/client-core.md, port-notes/client-transfer.md.
-#![allow(dead_code, unused_variables)] // L0 stubs: remove once the modules are implemented
 #![deny(unsafe_op_in_unsafe_fn)]
 
 pub use dstore_gocompat::ctx::{Ctx, CtxError};
