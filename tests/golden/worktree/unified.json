@@ -1,0 +1,604 @@
+{
+  "cases": [
+    {
+      "name": "diff",
+      "a": "diff-a",
+      "b": "diff-b",
+      "unified": "diff a/bin b/bin\nBinary files a/bin and b/bin differ\ndiff a/edit.txt b/edit.txt\n--- a/edit.txt\n+++ b/edit.txt\n@@ -1,3 +1,3 @@\n one\n-two\n+2\n three\ndiff a/gone.txt b/gone.txt\n--- a/gone.txt\n+++ /dev/null\n@@ -1 +0,0 @@\n-bye\ndiff a/link b/link\n--- a/link\n+++ b/link\n@@ -1 +1 @@\n-t1\n\\ No newline at end of file\n+t2\n\\ No newline at end of file\ndiff a/new.txt b/new.txt\n--- /dev/null\n+++ b/new.txt\n@@ -0,0 +1 @@\n+hi\ndiff a/run.sh b/run.sh\nold mode 0644\nnew mode 0755\ndiff a/sub b/sub\nold mode 0755\nnew mode 0700\n",
+      "stat": " bin | binary\n edit.txt | +1 -1\n gone.txt | +0 -1\n link | +1 -1\n new.txt | +1 -0\n 5 files changed, 3 insertions(+), 3 deletions(-)\n"
+    },
+    {
+      "name": "diff-reverse",
+      "a": "diff-b",
+      "b": "diff-a",
+      "unified": "diff a/bin b/bin\nBinary files a/bin and b/bin differ\ndiff a/edit.txt b/edit.txt\n--- a/edit.txt\n+++ b/edit.txt\n@@ -1,3 +1,3 @@\n one\n-2\n+two\n three\ndiff a/gone.txt b/gone.txt\n--- /dev/null\n+++ b/gone.txt\n@@ -0,0 +1 @@\n+bye\ndiff a/link b/link\n--- a/link\n+++ b/link\n@@ -1 +1 @@\n-t2\n\\ No newline at end of file\n+t1\n\\ No newline at end of file\ndiff a/new.txt b/new.txt\n--- a/new.txt\n+++ /dev/null\n@@ -1 +0,0 @@\n-hi\ndiff a/run.sh b/run.sh\nold mode 0755\nnew mode 0644\ndiff a/sub b/sub\nold mode 0700\nnew mode 0755\n",
+      "stat": " bin | binary\n edit.txt | +1 -1\n gone.txt | +1 -0\n link | +1 -1\n new.txt | +0 -1\n 5 files changed, 3 insertions(+), 3 deletions(-)\n"
+    },
+    {
+      "name": "clone",
+      "a": "empty",
+      "b": "diff-a",
+      "unified": "diff a/bin b/bin\nBinary files /dev/null and b/bin differ\ndiff a/edit.txt b/edit.txt\n--- /dev/null\n+++ b/edit.txt\n@@ -0,0 +1,3 @@\n+one\n+two\n+three\ndiff a/gone.txt b/gone.txt\n--- /dev/null\n+++ b/gone.txt\n@@ -0,0 +1 @@\n+bye\ndiff a/link b/link\n--- /dev/null\n+++ b/link\n@@ -0,0 +1 @@\n+t1\n\\ No newline at end of file\ndiff a/run.sh b/run.sh\n--- /dev/null\n+++ b/run.sh\n@@ -0,0 +1 @@\n+#!/bin/sh\ndiff a/sub/x b/sub/x\n--- /dev/null\n+++ b/sub/x\n@@ -0,0 +1 @@\n+x\n",
+      "stat": " bin | binary\n edit.txt | +3 -0\n gone.txt | +1 -0\n link | +1 -0\n run.sh | +1 -0\n sub/x | +1 -0\n 6 files changed, 7 insertions(+), 0 deletions(-)\n"
+    },
+    {
+      "name": "delete-all",
+      "a": "diff-a",
+      "b": "empty",
+      "unified": "diff a/bin b/bin\nBinary files a/bin and /dev/null differ\ndiff a/edit.txt b/edit.txt\n--- a/edit.txt\n+++ /dev/null\n@@ -1,3 +0,0 @@\n-one\n-two\n-three\ndiff a/gone.txt b/gone.txt\n--- a/gone.txt\n+++ /dev/null\n@@ -1 +0,0 @@\n-bye\ndiff a/link b/link\n--- a/link\n+++ /dev/null\n@@ -1 +0,0 @@\n-t1\n\\ No newline at end of file\ndiff a/run.sh b/run.sh\n--- a/run.sh\n+++ /dev/null\n@@ -1 +0,0 @@\n-#!/bin/sh\ndiff a/sub/x b/sub/x\n--- a/sub/x\n+++ /dev/null\n@@ -1 +0,0 @@\n-x\n",
+      "stat": " bin | binary\n edit.txt | +0 -3\n gone.txt | +0 -1\n link | +0 -1\n run.sh | +0 -1\n sub/x | +0 -1\n 6 files changed, 0 insertions(+), 7 deletions(-)\n"
+    },
+    {
+      "name": "identical",
+      "a": "diff-a",
+      "b": "diff-a",
+      "unified": "",
+      "stat": " 0 files changed, 0 insertions(+), 0 deletions(-)\n"
+    },
+    {
+      "name": "every-kind",
+      "a": "every-a",
+      "b": "every-b",
+      "unified": "diff a/becomes-file b/becomes-file\nold mode 0777\nnew mode 0644\n--- a/becomes-file\n+++ b/becomes-file\n@@ -1 +1 @@\n-was-link\n\\ No newline at end of file\n+now a file\n\\ No newline at end of file\ndiff a/edit.txt b/edit.txt\n--- a/edit.txt\n+++ b/edit.txt\n@@ -1 +1 @@\n-one\n\\ No newline at end of file\n+two\n\\ No newline at end of file\ndiff a/flip b/flip\nold mode 0755\nnew mode 0644\n--- /dev/null\n+++ b/flip\n@@ -0,0 +1 @@\n+flat\n\\ No newline at end of file\ndiff a/flip/inner b/flip/inner\n--- a/flip/inner\n+++ /dev/null\n@@ -1 +0,0 @@\n-inner\n\\ No newline at end of file\ndiff a/gone.txt b/gone.txt\n--- a/gone.txt\n+++ /dev/null\n@@ -1 +0,0 @@\n-bye\n\\ No newline at end of file\ndiff a/link b/link\n--- a/link\n+++ b/link\n@@ -1 +1 @@\n-t1\n\\ No newline at end of file\n+t2\n\\ No newline at end of file\ndiff a/mode.sh b/mode.sh\nold mode 0644\nnew mode 0755\ndiff a/new.txt b/new.txt\n--- /dev/null\n+++ b/new.txt\n@@ -0,0 +1 @@\n+hi\n\\ No newline at end of file\ndiff a/newdir/y b/newdir/y\n--- /dev/null\n+++ b/newdir/y\n@@ -0,0 +1 @@\n+y\n\\ No newline at end of file\ndiff a/olddir/x b/olddir/x\n--- a/olddir/x\n+++ /dev/null\n@@ -1 +0,0 @@\n-x\n\\ No newline at end of file\n",
+      "stat": " becomes-file | +1 -1\n edit.txt | +1 -1\n flip | +1 -0\n flip/inner | +0 -1\n gone.txt | +0 -1\n link | +1 -1\n new.txt | +1 -0\n newdir/y | +1 -0\n olddir/x | +0 -1\n 9 files changed, 6 insertions(+), 6 deletions(-)\n"
+    },
+    {
+      "name": "walk-order",
+      "a": "walk-a",
+      "b": "walk-b",
+      "unified": "diff a/a/x b/a/x\n--- /dev/null\n+++ b/a/x\n@@ -0,0 +1 @@\n+x\ndiff a/a/y/z b/a/y/z\n--- /dev/null\n+++ b/a/y/z\n@@ -0,0 +1 @@\n+z\ndiff a/a-b b/a-b\n--- /dev/null\n+++ b/a-b\n@@ -0,0 +1 @@\n+ab\ndiff a/café b/café\n--- /dev/null\n+++ b/café\n@@ -0,0 +1 @@\n+cafe\ndiff a/sp ace b/sp ace\n--- /dev/null\n+++ b/sp ace\n@@ -0,0 +1 @@\n+s\ndiff a/tab\tname b/tab\tname\n--- /dev/null\n+++ b/tab\tname\n@@ -0,0 +1 @@\n+t\n",
+      "stat": " a/x | +1 -0\n a/y/z | +1 -0\n a-b | +1 -0\n café | +1 -0\n sp ace | +1 -0\n tab\tname | +1 -0\n 6 files changed, 6 insertions(+), 0 deletions(-)\n"
+    },
+    {
+      "name": "non-utf8",
+      "a": "nonutf8-a",
+      "b": "nonutf8-b",
+      "unified_hex": "6469666620612f626164ff6e616d6520622f626164ff6e616d650a2d2d2d202f6465762f6e756c6c0a2b2b2b20622f626164ff6e616d650a4040202d302c30202b312040400a2b66660a6469666620612f6c6174696e3120622f6c6174696e310a2d2d2d20612f6c6174696e310a2b2b2b20622f6c6174696e310a4040202d31202b312040400a2d636166e90a2b636166e80a",
+      "stat_hex": "20626164ff6e616d65207c202b31202d300a206c6174696e31207c202b31202d310a20322066696c6573206368616e6765642c203220696e73657274696f6e73282b292c20312064656c6574696f6e73282d290a"
+    },
+    {
+      "name": "special",
+      "a": "special-a",
+      "b": "special-b",
+      "unified": "diff a/crlf b/crlf\n--- a/crlf\n+++ b/crlf\n@@ -1,2 +1,2 @@\n a\r\n-b\r\n+c\r\ndiff a/d2f b/d2f\nold mode 0755\nnew mode 0644\n--- /dev/null\n+++ b/d2f\n@@ -0,0 +1 @@\n+flat\ndiff a/d2f/deeper/z b/d2f/deeper/z\n--- a/d2f/deeper/z\n+++ /dev/null\n@@ -1 +0,0 @@\n-z\ndiff a/d2f/inner b/d2f/inner\n--- a/d2f/inner\n+++ /dev/null\n@@ -1 +0,0 @@\n-inner\ndiff a/dev b/dev\ndiff a/dirmode b/dirmode\nold mode 0755\nnew mode 0700\ndiff a/empty-new b/empty-new\ndiff a/empty-old b/empty-old\ndiff a/f2d b/f2d\nold mode 0644\nnew mode 0755\n--- a/f2d\n+++ /dev/null\n@@ -1 +0,0 @@\n-file\ndiff a/f2d/inner b/f2d/inner\n--- /dev/null\n+++ b/f2d/inner\n@@ -0,0 +1 @@\n+i\ndiff a/fifo b/fifo\nold mode 0644\nnew mode 0777\n--- a/fifo\n+++ b/fifo\n@@ -0,0 +1 @@\n+somewhere\n\\ No newline at end of file\ndiff a/fifo2 b/fifo2\ndiff a/miscount b/miscount\n--- a/miscount\n+++ b/miscount\n@@ -1,2 +1,2 @@\n keep\n---x\n+++y\ndiff a/modecontent b/modecontent\nold mode 0644\nnew mode 0755\n--- a/modecontent\n+++ b/modecontent\n@@ -1 +1 @@\n-one\n+two\ndiff a/nonl b/nonl\n--- a/nonl\n+++ b/nonl\n@@ -1 +1,2 @@\n-a\n\\ No newline at end of file\n+a\n+b\n\\ No newline at end of file\ndiff a/nul8191 b/nul8191\nBinary files a/nul8191 and b/nul8191 differ\ndiff a/nul8192 b/nul8192\n--- a/nul8192\n+++ b/nul8192\n@@ -1,4 +1,4 @@\n-A side\n+B side\n 789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\ndiff a/olddir/deep/y b/olddir/deep/y\n--- a/olddir/deep/y\n+++ /dev/null\n@@ -1 +0,0 @@\n-y\ndiff a/olddir/x b/olddir/x\n--- a/olddir/x\n+++ /dev/null\n@@ -1 +0,0 @@\n-x\ndiff a/same-bytes b/same-bytes\nold mode 0777\nnew mode 0644\ndiff a/setuid b/setuid\nold mode 4755\nnew mode 0755\ndiff a/weird b/weird\nold mode 0644\nnew mode 0755\ndiff a/zero b/zero\n",
+      "stat": " crlf | +1 -1\n d2f | +1 -0\n d2f/deeper/z | +0 -1\n d2f/inner | +0 -1\n f2d | +0 -1\n f2d/inner | +1 -0\n fifo | +1 -0\n miscount | +0 -0\n modecontent | +1 -1\n nonl | +2 -1\n nul8191 | binary\n nul8192 | +1 -1\n olddir/deep/y | +0 -1\n olddir/x | +0 -1\n 14 files changed, 8 insertions(+), 9 deletions(-)\n"
+    },
+    {
+      "name": "special-reverse",
+      "a": "special-b",
+      "b": "special-a",
+      "unified": "diff a/crlf b/crlf\n--- a/crlf\n+++ b/crlf\n@@ -1,2 +1,2 @@\n a\r\n-c\r\n+b\r\ndiff a/d2f b/d2f\nold mode 0644\nnew mode 0755\n--- a/d2f\n+++ /dev/null\n@@ -1 +0,0 @@\n-flat\ndiff a/d2f/deeper/z b/d2f/deeper/z\n--- /dev/null\n+++ b/d2f/deeper/z\n@@ -0,0 +1 @@\n+z\ndiff a/d2f/inner b/d2f/inner\n--- /dev/null\n+++ b/d2f/inner\n@@ -0,0 +1 @@\n+inner\ndiff a/dev b/dev\ndiff a/dirmode b/dirmode\nold mode 0700\nnew mode 0755\ndiff a/empty-new b/empty-new\ndiff a/empty-old b/empty-old\ndiff a/f2d b/f2d\nold mode 0755\nnew mode 0644\n--- /dev/null\n+++ b/f2d\n@@ -0,0 +1 @@\n+file\ndiff a/f2d/inner b/f2d/inner\n--- a/f2d/inner\n+++ /dev/null\n@@ -1 +0,0 @@\n-i\ndiff a/fifo b/fifo\nold mode 0777\nnew mode 0644\n--- a/fifo\n+++ b/fifo\n@@ -1 +0,0 @@\n-somewhere\n\\ No newline at end of file\ndiff a/fifo2 b/fifo2\ndiff a/miscount b/miscount\n--- a/miscount\n+++ b/miscount\n@@ -1,2 +1,2 @@\n keep\n-++y\n+--x\ndiff a/modecontent b/modecontent\nold mode 0755\nnew mode 0644\n--- a/modecontent\n+++ b/modecontent\n@@ -1 +1 @@\n-two\n+one\ndiff a/nonl b/nonl\n--- a/nonl\n+++ b/nonl\n@@ -1,2 +1 @@\n-a\n-b\n\\ No newline at end of file\n+a\n\\ No newline at end of file\ndiff a/nul8191 b/nul8191\nBinary files a/nul8191 and b/nul8191 differ\ndiff a/nul8192 b/nul8192\n--- a/nul8192\n+++ b/nul8192\n@@ -1,4 +1,4 @@\n-B side\n+A side\n 789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\ndiff a/olddir/deep/y b/olddir/deep/y\n--- /dev/null\n+++ b/olddir/deep/y\n@@ -0,0 +1 @@\n+y\ndiff a/olddir/x b/olddir/x\n--- /dev/null\n+++ b/olddir/x\n@@ -0,0 +1 @@\n+x\ndiff a/same-bytes b/same-bytes\nold mode 0644\nnew mode 0777\ndiff a/setuid b/setuid\nold mode 0755\nnew mode 4755\ndiff a/weird b/weird\nold mode 0755\nnew mode 0644\ndiff a/zero b/zero\n",
+      "stat": " crlf | +1 -1\n d2f | +0 -1\n d2f/deeper/z | +1 -0\n d2f/inner | +1 -0\n f2d | +1 -0\n f2d/inner | +0 -1\n fifo | +0 -1\n miscount | +1 -1\n modecontent | +1 -1\n nonl | +1 -2\n nul8191 | binary\n nul8192 | +1 -1\n olddir/deep/y | +1 -0\n olddir/x | +1 -0\n 14 files changed, 10 insertions(+), 9 deletions(-)\n"
+    },
+    {
+      "name": "clone-special",
+      "a": "empty",
+      "b": "special-a",
+      "unified": "diff a/blk b/blk\ndiff a/crlf b/crlf\n--- /dev/null\n+++ b/crlf\n@@ -0,0 +1,2 @@\n+a\r\n+b\r\ndiff a/d2f/deeper/z b/d2f/deeper/z\n--- /dev/null\n+++ b/d2f/deeper/z\n@@ -0,0 +1 @@\n+z\ndiff a/d2f/inner b/d2f/inner\n--- /dev/null\n+++ b/d2f/inner\n@@ -0,0 +1 @@\n+inner\ndiff a/dev b/dev\ndiff a/dirmode/f b/dirmode/f\n--- /dev/null\n+++ b/dirmode/f\n@@ -0,0 +1 @@\n+f\ndiff a/empty-old b/empty-old\ndiff a/f2d b/f2d\n--- /dev/null\n+++ b/f2d\n@@ -0,0 +1 @@\n+file\ndiff a/fifo b/fifo\ndiff a/miscount b/miscount\n--- /dev/null\n+++ b/miscount\n@@ -0,0 +1,2 @@\n+keep\n+--x\ndiff a/modecontent b/modecontent\n--- /dev/null\n+++ b/modecontent\n@@ -0,0 +1 @@\n+one\ndiff a/nonl b/nonl\n--- /dev/null\n+++ b/nonl\n@@ -0,0 +1 @@\n+a\n\\ No newline at end of file\ndiff a/nul8191 b/nul8191\nBinary files /dev/null and b/nul8191 differ\ndiff a/nul8192 b/nul8192\n--- /dev/null\n+++ b/nul8192\n@@ -0,0 +1,130 @@\n+A side\n+789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+\u0000\n\\ No newline at end of file\ndiff a/olddir/deep/y b/olddir/deep/y\n--- /dev/null\n+++ b/olddir/deep/y\n@@ -0,0 +1 @@\n+y\ndiff a/olddir/x b/olddir/x\n--- /dev/null\n+++ b/olddir/x\n@@ -0,0 +1 @@\n+x\ndiff a/owner b/owner\n--- /dev/null\n+++ b/owner\n@@ -0,0 +1 @@\n+o\ndiff a/same-bytes b/same-bytes\n--- /dev/null\n+++ b/same-bytes\n@@ -0,0 +1 @@\n+payload\n\\ No newline at end of file\ndiff a/setuid b/setuid\n--- /dev/null\n+++ b/setuid\n@@ -0,0 +1 @@\n+s\ndiff a/sock b/sock\ndiff a/touch b/touch\n--- /dev/null\n+++ b/touch\n@@ -0,0 +1 @@\n+t\ndiff a/weird b/weird\ndiff a/x256 b/x256\n--- /dev/null\n+++ b/x256\n@@ -0,0 +1 @@\n+x256\ndiff a/x257 b/x257\n--- /dev/null\n+++ b/x257\n@@ -0,0 +1 @@\n+x257\ndiff a/xin b/xin\n--- /dev/null\n+++ b/xin\n@@ -0,0 +1 @@\n+xin\ndiff a/xsp b/xsp\n--- /dev/null\n+++ b/xsp\n@@ -0,0 +1 @@\n+xsp\n",
+      "stat": " crlf | +2 -0\n d2f/deeper/z | +1 -0\n d2f/inner | +1 -0\n dirmode/f | +1 -0\n f2d | +1 -0\n miscount | +2 -0\n modecontent | +1 -0\n nonl | +1 -0\n nul8191 | binary\n nul8192 | +130 -0\n olddir/deep/y | +1 -0\n olddir/x | +1 -0\n owner | +1 -0\n same-bytes | +1 -0\n setuid | +1 -0\n touch | +1 -0\n x256 | +1 -0\n x257 | +1 -0\n xin | +1 -0\n xsp | +1 -0\n 20 files changed, 150 insertions(+), 0 deletions(-)\n"
+    },
+    {
+      "name": "big",
+      "a": "big-a",
+      "b": "big-b",
+      "unified": "diff a/exact16 b/exact16\n--- a/exact16\n+++ b/exact16\n@@ -131070,7 +131070,7 @@\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n+this line was changed in the B side of the big fixture         \n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\n 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-\ndiff a/grow b/grow\nBinary files a/grow and b/grow differ\ndiff a/over16 b/over16\nBinary files a/over16 and b/over16 differ\n",
+      "stat": " exact16 | +1 -1\n grow | binary\n over16 | binary\n 3 files changed, 1 insertions(+), 1 deletions(-)\n"
+    },
+    {
+      "name": "wide",
+      "a": "wide-a",
+      "b": "wide-b",
+      "unified": "diff a/f100 b/f100\n--- a/f100\n+++ b/f100\n@@ -1 +1 @@\n-100\n+100 changed\ndiff a/f200 b/f200\n--- a/f200\n+++ /dev/null\n@@ -1 +0,0 @@\n-200\ndiff a/f200a b/f200a\n--- /dev/null\n+++ b/f200a\n@@ -0,0 +1 @@\n+new\ndiff a/f350 b/f350\n--- a/f350\n+++ b/f350\n@@ -1 +1 @@\n-350\n+350 changed\n",
+      "stat": " f100 | +1 -1\n f200 | +0 -1\n f200a | +1 -0\n f350 | +1 -1\n 4 files changed, 3 insertions(+), 3 deletions(-)\n"
+    },
+    {
+      "name": "missing-content",
+      "a": "missing-content-a",
+      "b": "missing-content-b",
+      "unified": "diff a/edit.txt b/edit.txt\n",
+      "unified_error": "edit.txt: reading 00207b26b2296e185f20c51f906d65cb5a9893dece6520c2ba4440a4ec6ede56: packstore: object not found",
+      "stat": "",
+      "stat_error": "edit.txt: reading 00207b26b2296e185f20c51f906d65cb5a9893dece6520c2ba4440a4ec6ede56: packstore: object not found"
+    }
+  ],
+  "disk": [
+    {
+      "name": "tree-to-disk",
+      "doc": "TestUnified_TreeToDisk: the diffFixtures edits made on disk",
+      "setup": [
+        {
+          "op": "file",
+          "path": "edit.txt",
+          "mode": 420,
+          "text": "one\ntwo\nthree\n"
+        },
+        {
+          "op": "mtime",
+          "path": "edit.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "bin",
+          "mode": 420,
+          "text": "a\u0000b"
+        },
+        {
+          "op": "mtime",
+          "path": "bin",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye\n"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh\n"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/x",
+          "mode": 420,
+          "text": "x\n"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/x",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000006",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "t1"
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": "edit.txt",
+          "mode": 420,
+          "text": "one\n2\nthree\n"
+        },
+        {
+          "op": "file",
+          "path": "bin",
+          "mode": 420,
+          "text": "a\u0000c"
+        },
+        {
+          "op": "file",
+          "path": "new.txt",
+          "mode": 420,
+          "text": "hi\n"
+        },
+        {
+          "op": "chmod",
+          "path": "run.sh",
+          "mode": 493
+        },
+        {
+          "op": "chmod",
+          "path": "sub",
+          "mode": 448
+        },
+        {
+          "op": "remove",
+          "path": "gone.txt"
+        },
+        {
+          "op": "remove",
+          "path": "link"
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "t2"
+        }
+      ],
+      "after_scan": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        "modified bin",
+        "modified edit.txt",
+        "deleted gone.txt",
+        "modified link",
+        "new new.txt",
+        "mode run.sh",
+        "mode sub"
+      ],
+      "unified": "diff a/bin b/bin\nBinary files a/bin and b/bin differ\ndiff a/edit.txt b/edit.txt\n--- a/edit.txt\n+++ b/edit.txt\n@@ -1,3 +1,3 @@\n one\n-two\n+2\n three\ndiff a/gone.txt b/gone.txt\n--- a/gone.txt\n+++ /dev/null\n@@ -1 +0,0 @@\n-bye\ndiff a/link b/link\n--- a/link\n+++ b/link\n@@ -1 +1 @@\n-t1\n\\ No newline at end of file\n+t2\n\\ No newline at end of file\ndiff a/new.txt b/new.txt\n--- /dev/null\n+++ b/new.txt\n@@ -0,0 +1 @@\n+hi\ndiff a/run.sh b/run.sh\nold mode 0644\nnew mode 0755\ndiff a/sub b/sub\nold mode 0755\nnew mode 0700\n",
+      "stat": " bin | binary\n edit.txt | +1 -1\n gone.txt | +0 -1\n link | +1 -1\n new.txt | +1 -0\n 5 files changed, 3 insertions(+), 3 deletions(-)\n"
+    },
+    {
+      "name": "disk-sizes",
+      "doc": "DiskSource reads the size first: over MaxDiffBytes is binary without reading; exactly MaxDiffBytes of zeros is read and binary",
+      "setup": [
+        {
+          "op": "file",
+          "path": "big",
+          "mode": 420,
+          "text": "x\n"
+        },
+        {
+          "op": "mtime",
+          "path": "big",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "exact",
+          "mode": 420,
+          "text": "y\n"
+        },
+        {
+          "op": "mtime",
+          "path": "exact",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        }
+      ],
+      "edit": [
+        {
+          "op": "truncate",
+          "path": "big",
+          "size": "16777217"
+        },
+        {
+          "op": "truncate",
+          "path": "exact",
+          "size": "16777216"
+        }
+      ],
+      "after_scan": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        "modified big",
+        "modified exact"
+      ],
+      "unified": "diff a/big b/big\nBinary files a/big and b/big differ\ndiff a/exact b/exact\nBinary files a/exact and b/exact differ\n",
+      "stat": " big | binary\n exact | binary\n 2 files changed, 0 insertions(+), 0 deletions(-)\n"
+    },
+    {
+      "name": "mode-only-and-empty",
+      "doc": "mode changes on a file and a directory, an added empty file and an added fifo: headers only",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "chmod",
+          "path": "run.sh",
+          "mode": 493
+        },
+        {
+          "op": "chmod",
+          "path": "sub",
+          "mode": 448
+        },
+        {
+          "op": "file",
+          "path": "empty",
+          "mode": 420,
+          "text": ""
+        },
+        {
+          "op": "fifo",
+          "path": "pipe",
+          "mode": 420
+        }
+      ],
+      "after_scan": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        "new empty",
+        "new pipe",
+        "mode run.sh",
+        "mode sub"
+      ],
+      "unified": "diff a/empty b/empty\ndiff a/pipe b/pipe\ndiff a/run.sh b/run.sh\nold mode 0644\nnew mode 0755\ndiff a/sub b/sub\nold mode 0755\nnew mode 0700\n",
+      "stat": " 0 files changed, 0 insertions(+), 0 deletions(-)\n"
+    },
+    {
+      "name": "vanished-after-scan",
+      "doc": "a file removed between Scan and Unified: the header is written, then the lstat error",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "remove",
+          "path": "link"
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "run.sh"
+        },
+        {
+          "op": "file",
+          "path": "new.txt",
+          "mode": 420,
+          "text": "n\n"
+        }
+      ],
+      "after_scan": [
+        {
+          "op": "remove",
+          "path": "new.txt"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        "modified link",
+        "new new.txt"
+      ],
+      "unified": "diff a/link b/link\n--- a/link\n+++ b/link\n@@ -1 +1 @@\n-a.txt\n\\ No newline at end of file\n+run.sh\n\\ No newline at end of file\ndiff a/new.txt b/new.txt\n",
+      "unified_error": "new.txt: lstat {ROOT}/new.txt: no such file or directory",
+      "stat": " link | +1 -1\n",
+      "stat_error": "new.txt: lstat {ROOT}/new.txt: no such file or directory"
+    },
+    {
+      "name": "readlink-error",
+      "doc": "a symlink removed between Scan and Unified",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "remove",
+          "path": "link"
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "run.sh"
+        }
+      ],
+      "after_scan": [
+        {
+          "op": "remove",
+          "path": "link"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        "modified link"
+      ],
+      "unified": "diff a/link b/link\n",
+      "unified_error": "link: readlink {ROOT}/link: no such file or directory",
+      "stat": "",
+      "stat_error": "link: readlink {ROOT}/link: no such file or directory"
+    }
+  ]
+}

@@ -1,0 +1,2151 @@
+{
+  "cases": [
+    {
+      "name": "cluster-ticket",
+      "source": "cli §3.8",
+      "argv": [
+        "cluster",
+        "ticket"
+      ],
+      "request": {
+        "op": "cluster-ticket",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006e636c75737465722d7469636b6574",
+      "frame_hex": "0000002ea50018290150000102030405060708090a0b0c0d0e0f02010307183351a1006e636c75737465722d7469636b6574"
+    },
+    {
+      "name": "cluster-ticket-ids",
+      "source": "verification §5",
+      "argv": [
+        "cluster",
+        "ticket",
+        "--ids"
+      ],
+      "request": {
+        "op": "cluster-ticket",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006e636c75737465722d7469636b6574",
+      "frame_hex": "0000002ea50018290150000102030405060708090a0b0c0d0e0f02010307183351a1006e636c75737465722d7469636b6574"
+    },
+    {
+      "name": "cluster-replicas-2",
+      "source": "cli §3.8",
+      "argv": [
+        "cluster",
+        "replicas",
+        "--yes",
+        "2"
+      ],
+      "request": {
+        "op": "replicas",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 2,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a200687265706c696361730402",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da200687265706c696361730402"
+    },
+    {
+      "name": "cluster-replicas-0",
+      "source": "cli §3.8",
+      "argv": [
+        "cluster",
+        "replicas",
+        "--yes",
+        "0"
+      ],
+      "request": {
+        "op": "replicas",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a100687265706c69636173",
+      "frame_hex": "00000028a50018290150000102030405060708090a0b0c0d0e0f0201030718334ba100687265706c69636173"
+    },
+    {
+      "name": "cluster-replicas-255",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "cluster",
+        "replicas",
+        "--yes",
+        "255"
+      ],
+      "request": {
+        "op": "replicas",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 255,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a200687265706c696361730418ff",
+      "frame_hex": "0000002ba50018290150000102030405060708090a0b0c0d0e0f0201030718334ea200687265706c696361730418ff"
+    },
+    {
+      "name": "token-create",
+      "source": "cli §3.8",
+      "argv": [
+        "token",
+        "create"
+      ],
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006c746f6b656e2d637265617465",
+      "frame_hex": "0000002ca50018290150000102030405060708090a0b0c0d0e0f0201030718334fa1006c746f6b656e2d637265617465"
+    },
+    {
+      "name": "token-create-weight-100",
+      "source": "cli §3.8",
+      "argv": [
+        "token",
+        "create",
+        "--weight",
+        "100"
+      ],
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 100,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d637265617465021864",
+      "frame_hex": "0000002fa50018290150000102030405060708090a0b0c0d0e0f02010307183352a2006c746f6b656e2d637265617465021864"
+    },
+    {
+      "name": "token-create-weight-50",
+      "source": "verification §5",
+      "argv": [
+        "token",
+        "create",
+        "--weight",
+        "50"
+      ],
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 50,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d637265617465021832",
+      "frame_hex": "0000002fa50018290150000102030405060708090a0b0c0d0e0f02010307183352a2006c746f6b656e2d637265617465021832"
+    },
+    {
+      "name": "token-create-weight-max",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "token",
+        "create",
+        "--weight",
+        "4294967295"
+      ],
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 4294967295,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d637265617465021affffffff",
+      "frame_hex": "00000032a50018290150000102030405060708090a0b0c0d0e0f02010307183355a2006c746f6b656e2d637265617465021affffffff"
+    },
+    {
+      "name": "token-create-weight-2-pow-32-truncates",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "token",
+        "create",
+        "--weight",
+        "4294967296"
+      ],
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006c746f6b656e2d637265617465",
+      "frame_hex": "0000002ca50018290150000102030405060708090a0b0c0d0e0f0201030718334fa1006c746f6b656e2d637265617465"
+    },
+    {
+      "name": "node-remove-dead-allow-unsafe",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "remove",
+        "--dead",
+        "--allow-unsafe",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "node-remove",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": true,
+        "allow_unsafe": true,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a4006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab05f506f5",
+      "frame_hex": "00000053a50018290150000102030405060708090a0b0c0d0e0f0201030718335835a4006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab05f506f5"
+    },
+    {
+      "name": "node-remove",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "remove",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "node-remove",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab",
+      "frame_hex": "0000004fa50018290150000102030405060708090a0b0c0d0e0f0201030718335831a2006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "node-remove-flags-after-id-ignored",
+      "source": "cli §2.2.4",
+      "argv": [
+        "node",
+        "remove",
+        "abababababababababababababababababababababababababababababababab",
+        "--dead"
+      ],
+      "request": {
+        "op": "node-remove",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab",
+      "frame_hex": "0000004fa50018290150000102030405060708090a0b0c0d0e0f0201030718335831a2006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "node-drain",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "drain",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "node-drain",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006a6e6f64652d647261696e015820abababababababababababababababababababababababababababababababab",
+      "frame_hex": "0000004ea50018290150000102030405060708090a0b0c0d0e0f0201030718335830a2006a6e6f64652d647261696e015820abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "node-weight-50",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "weight",
+        "abababababababababababababababababababababababababababababababab",
+        "50"
+      ],
+      "request": {
+        "op": "node-weight",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 50,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a3006b6e6f64652d776569676874015820abababababababababababababababababababababababababababababababab021832",
+      "frame_hex": "00000052a50018290150000102030405060708090a0b0c0d0e0f0201030718335834a3006b6e6f64652d776569676874015820abababababababababababababababababababababababababababababababab021832"
+    },
+    {
+      "name": "node-weight-max",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "weight",
+        "abababababababababababababababababababababababababababababababab",
+        "4294967295"
+      ],
+      "request": {
+        "op": "node-weight",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 4294967295,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a3006b6e6f64652d776569676874015820abababababababababababababababababababababababababababababababab021affffffff",
+      "frame_hex": "00000055a50018290150000102030405060708090a0b0c0d0e0f0201030718335837a3006b6e6f64652d776569676874015820abababababababababababababababababababababababababababababababab021affffffff"
+    },
+    {
+      "name": "node-weight-300",
+      "source": "verification §5",
+      "argv": [
+        "node",
+        "weight",
+        "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+        "300"
+      ],
+      "request": {
+        "op": "node-weight",
+        "node": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+        "weight": 300,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a3006b6e6f64652d7765696768740158204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd240219012c",
+      "frame_hex": "00000053a50018290150000102030405060708090a0b0c0d0e0f0201030718335835a3006b6e6f64652d7765696768740158204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd240219012c"
+    },
+    {
+      "name": "node-zone-rack-1",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "zone",
+        "abababababababababababababababababababababababababababababababab",
+        "rack-1"
+      ],
+      "request": {
+        "op": "node-zone",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "rack-1",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a300696e6f64652d7a6f6e65015820abababababababababababababababababababababababababababababababab03667261636b2d31",
+      "frame_hex": "00000055a50018290150000102030405060708090a0b0c0d0e0f0201030718335837a300696e6f64652d7a6f6e65015820abababababababababababababababababababababababababababababababab03667261636b2d31"
+    },
+    {
+      "name": "node-zone-empty",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "zone",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "node-zone",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a200696e6f64652d7a6f6e65015820abababababababababababababababababababababababababababababababab",
+      "frame_hex": "0000004da50018290150000102030405060708090a0b0c0d0e0f020103071833582fa200696e6f64652d7a6f6e65015820abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "node-zone-unicode",
+      "source": "verification §5",
+      "argv": [
+        "node",
+        "zone",
+        "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+        "zürich"
+      ],
+      "request": {
+        "op": "node-zone",
+        "node": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+        "weight": 0,
+        "zone": "zürich",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a300696e6f64652d7a6f6e650158204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2403677ac3bc72696368",
+      "frame_hex": "00000056a50018290150000102030405060708090a0b0c0d0e0f0201030718335838a300696e6f64652d7a6f6e650158204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2403677ac3bc72696368"
+    },
+    {
+      "name": "node-repair",
+      "source": "cli §3.8",
+      "argv": [
+        "node",
+        "repair",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "node-repair",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006b6e6f64652d726570616972015820abababababababababababababababababababababababababababababababab",
+      "frame_hex": "0000004fa50018290150000102030405060708090a0b0c0d0e0f0201030718335831a2006b6e6f64652d726570616972015820abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "voter-add",
+      "source": "cli §3.8",
+      "argv": [
+        "voter",
+        "add",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "voter-add",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a20069766f7465722d616464015820abababababababababababababababababababababababababababababababab",
+      "frame_hex": "0000004da50018290150000102030405060708090a0b0c0d0e0f020103071833582fa20069766f7465722d616464015820abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "voter-remove-allow-unsafe",
+      "source": "cli §3.8",
+      "argv": [
+        "voter",
+        "remove",
+        "--allow-unsafe",
+        "abababababababababababababababababababababababababababababababab"
+      ],
+      "request": {
+        "op": "voter-remove",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": true,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a3006c766f7465722d72656d6f7665015820abababababababababababababababababababababababababababababababab06f5",
+      "frame_hex": "00000052a50018290150000102030405060708090a0b0c0d0e0f0201030718335834a3006c766f7465722d72656d6f7665015820abababababababababababababababababababababababababababababababab06f5"
+    },
+    {
+      "name": "voter-remove",
+      "source": "verification §5",
+      "argv": [
+        "voter",
+        "remove",
+        "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+      ],
+      "request": {
+        "op": "voter-remove",
+        "node": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c766f7465722d72656d6f76650158204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "frame_hex": "00000050a50018290150000102030405060708090a0b0c0d0e0f0201030718335832a2006c766f7465722d72656d6f76650158204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "transition-status",
+      "source": "cli §3.8",
+      "argv": [
+        "transition",
+        "status"
+      ],
+      "request": {
+        "op": "transition-status",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a100717472616e736974696f6e2d737461747573",
+      "frame_hex": "00000031a50018290150000102030405060708090a0b0c0d0e0f02010307183354a100717472616e736974696f6e2d737461747573"
+    },
+    {
+      "name": "transition-abort",
+      "source": "cli §3.8",
+      "argv": [
+        "transition",
+        "abort"
+      ],
+      "request": {
+        "op": "transition-abort",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a100707472616e736974696f6e2d61626f7274",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a100707472616e736974696f6e2d61626f7274"
+    },
+    {
+      "name": "transition-refreeze",
+      "source": "cli §3.8",
+      "argv": [
+        "transition",
+        "refreeze"
+      ],
+      "request": {
+        "op": "transition-refreeze",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a100737472616e736974696f6e2d7265667265657a65",
+      "frame_hex": "00000033a50018290150000102030405060708090a0b0c0d0e0f02010307183356a100737472616e736974696f6e2d7265667265657a65"
+    },
+    {
+      "name": "transition-pause",
+      "source": "cli §3.8",
+      "argv": [
+        "transition",
+        "pause"
+      ],
+      "request": {
+        "op": "transition-pause",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a100707472616e736974696f6e2d7061757365",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a100707472616e736974696f6e2d7061757365"
+    },
+    {
+      "name": "transition-resume",
+      "source": "cli §3.8",
+      "argv": [
+        "transition",
+        "resume"
+      ],
+      "request": {
+        "op": "transition-resume",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a100717472616e736974696f6e2d726573756d65",
+      "frame_hex": "00000031a50018290150000102030405060708090a0b0c0d0e0f02010307183354a100717472616e736974696f6e2d726573756d65"
+    },
+    {
+      "name": "gc-run",
+      "source": "cli §3.8",
+      "argv": [
+        "gc",
+        "run"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006667632d72756e",
+      "frame_hex": "00000026a50018290150000102030405060708090a0b0c0d0e0f02010307183349a1006667632d72756e"
+    },
+    {
+      "name": "gc-run-tolerate-missing",
+      "source": "cli §3.8",
+      "argv": [
+        "gc",
+        "run",
+        "--tolerate-missing"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": true,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e0af5",
+      "frame_hex": "00000028a50018290150000102030405060708090a0b0c0d0e0f0201030718334ba2006667632d72756e0af5"
+    },
+    {
+      "name": "gc-run-tolerate-and-garbage",
+      "source": "client-core §3.4",
+      "argv": [
+        "gc",
+        "run",
+        "--tolerate-missing",
+        "--garbage",
+        "0.5"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0.5",
+        "garbage_bits": "3fe0000000000000",
+        "tolerate": true,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a3006667632d72756e09f938000af5",
+      "frame_hex": "0000002ca50018290150000102030405060708090a0b0c0d0e0f0201030718334fa3006667632d72756e09f938000af5"
+    },
+    {
+      "name": "gc-status",
+      "source": "cli §3.8",
+      "argv": [
+        "gc",
+        "status"
+      ],
+      "request": {
+        "op": "gc-status",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006967632d737461747573",
+      "frame_hex": "00000029a50018290150000102030405060708090a0b0c0d0e0f0201030718334ca1006967632d737461747573"
+    },
+    {
+      "name": "gc-hold",
+      "source": "cli §3.8",
+      "argv": [
+        "gc",
+        "hold"
+      ],
+      "request": {
+        "op": "gc-hold",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": true,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006767632d686f6c640cf5",
+      "frame_hex": "00000029a50018290150000102030405060708090a0b0c0d0e0f0201030718334ca2006767632d686f6c640cf5"
+    },
+    {
+      "name": "gc-release",
+      "source": "cli §3.8",
+      "argv": [
+        "gc",
+        "release"
+      ],
+      "request": {
+        "op": "gc-hold",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006767632d686f6c64",
+      "frame_hex": "00000027a50018290150000102030405060708090a0b0c0d0e0f0201030718334aa1006767632d686f6c64"
+    },
+    {
+      "name": "gc-why",
+      "source": "cli §3.8",
+      "argv": [
+        "gc",
+        "why",
+        "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a"
+      ],
+      "request": {
+        "op": "gc-why",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d7768790858205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "frame_hex": "0000004aa50018290150000102030405060708090a0b0c0d0e0f020103071833582ca2006667632d7768790858205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a"
+    },
+    {
+      "name": "gc-why-upper-hex",
+      "source": "verification §5",
+      "argv": [
+        "gc",
+        "why",
+        "5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A"
+      ],
+      "request": {
+        "op": "gc-why",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d7768790858205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "frame_hex": "0000004aa50018290150000102030405060708090a0b0c0d0e0f020103071833582ca2006667632d7768790858205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a"
+    },
+    {
+      "name": "catalog-backup",
+      "source": "cli §3.8",
+      "argv": [
+        "catalog",
+        "backup"
+      ],
+      "request": {
+        "op": "catalog-backup",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006e636174616c6f672d6261636b7570",
+      "frame_hex": "0000002ea50018290150000102030405060708090a0b0c0d0e0f02010307183351a1006e636174616c6f672d6261636b7570"
+    },
+    {
+      "name": "catalog-backups",
+      "source": "cli §3.8",
+      "argv": [
+        "catalog",
+        "backups"
+      ],
+      "request": {
+        "op": "catalog-backups",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006f636174616c6f672d6261636b757073",
+      "frame_hex": "0000002fa50018290150000102030405060708090a0b0c0d0e0f02010307183352a1006f636174616c6f672d6261636b757073"
+    },
+    {
+      "name": "gc-run-garbage-0",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "0"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006667632d72756e",
+      "frame_hex": "00000026a50018290150000102030405060708090a0b0c0d0e0f02010307183349a1006667632d72756e"
+    },
+    {
+      "name": "gc-run-garbage--0",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "-0"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "-0",
+        "garbage_bits": "8000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a1006667632d72756e",
+      "frame_hex": "00000026a50018290150000102030405060708090a0b0c0d0e0f02010307183349a1006667632d72756e"
+    },
+    {
+      "name": "gc-run-garbage-0.5",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "0.5"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0.5",
+        "garbage_bits": "3fe0000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f93800",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f93800"
+    },
+    {
+      "name": "gc-run-garbage-1.5",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "1.5"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "1.5",
+        "garbage_bits": "3ff8000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f93e00",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f93e00"
+    },
+    {
+      "name": "gc-run-garbage-0.1",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "0.1"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0.1",
+        "garbage_bits": "3fb999999999999a",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb3fb999999999999a",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb3fb999999999999a"
+    },
+    {
+      "name": "gc-run-garbage-0.25",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "0.25"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0.25",
+        "garbage_bits": "3fd0000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f93400",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f93400"
+    },
+    {
+      "name": "gc-run-garbage-0.3",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "0.3"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0.3",
+        "garbage_bits": "3fd3333333333333",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb3fd3333333333333",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb3fd3333333333333"
+    },
+    {
+      "name": "gc-run-garbage--1",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "-1"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "-1",
+        "garbage_bits": "bff0000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f9bc00",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f9bc00"
+    },
+    {
+      "name": "gc-run-garbage-100",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "100"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "100",
+        "garbage_bits": "4059000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f95640",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f95640"
+    },
+    {
+      "name": "gc-run-garbage-100000",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "100000"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "100000",
+        "garbage_bits": "40f86a0000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fa47c35000",
+      "frame_hex": "0000002ca50018290150000102030405060708090a0b0c0d0e0f0201030718334fa2006667632d72756e09fa47c35000"
+    },
+    {
+      "name": "gc-run-garbage-65504",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "65504"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "65504",
+        "garbage_bits": "40effc0000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f97bff",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f97bff"
+    },
+    {
+      "name": "gc-run-garbage-65520",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "65520"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "65520",
+        "garbage_bits": "40effe0000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fa477ff000",
+      "frame_hex": "0000002ca50018290150000102030405060708090a0b0c0d0e0f0201030718334fa2006667632d72756e09fa477ff000"
+    },
+    {
+      "name": "gc-run-garbage-1e-7",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "1e-7"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "1e-07",
+        "garbage_bits": "3e7ad7f29abcaf48",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb3e7ad7f29abcaf48",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb3e7ad7f29abcaf48"
+    },
+    {
+      "name": "gc-run-garbage-1e-40",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "1e-40"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "1e-40",
+        "garbage_bits": "37a16c262777579c",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb37a16c262777579c",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb37a16c262777579c"
+    },
+    {
+      "name": "gc-run-garbage-3.4e38",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "3.4e38"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "3.4e+38",
+        "garbage_bits": "47eff933c78cdfad",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb47eff933c78cdfad",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb47eff933c78cdfad"
+    },
+    {
+      "name": "gc-run-garbage-0.3333333333333333",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "0.3333333333333333"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0.3333333333333333",
+        "garbage_bits": "3fd5555555555555",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb3fd5555555555555",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb3fd5555555555555"
+    },
+    {
+      "name": "gc-run-garbage-1.7976931348623157e308",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "1.7976931348623157e308"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "1.7976931348623157e+308",
+        "garbage_bits": "7fefffffffffffff",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb7fefffffffffffff",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb7fefffffffffffff"
+    },
+    {
+      "name": "gc-run-garbage-5e-324",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "5e-324"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "5e-324",
+        "garbage_bits": "0000000000000001",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09fb0000000000000001",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006667632d72756e09fb0000000000000001"
+    },
+    {
+      "name": "gc-run-garbage-+Inf",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "+Inf"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "+Inf",
+        "garbage_bits": "7ff0000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f97c00",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f97c00"
+    },
+    {
+      "name": "gc-run-garbage--Inf",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "-Inf"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "-Inf",
+        "garbage_bits": "fff0000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f9fc00",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f9fc00"
+    },
+    {
+      "name": "gc-run-garbage-NaN",
+      "source": "codec-wire-ticket §5 G1",
+      "argv": [
+        "gc",
+        "run",
+        "--garbage",
+        "NaN"
+      ],
+      "request": {
+        "op": "gc-run",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "NaN",
+        "garbage_bits": "7ff8000000000001",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006667632d72756e09f97e00",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da2006667632d72756e09f97e00"
+    },
+    {
+      "name": "rate-cap",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "rate-cap",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "1099511627776",
+        "names": []
+      },
+      "params_hex": "a20068726174652d6361700d1b0000010000000000",
+      "frame_hex": "00000032a50018290150000102030405060708090a0b0c0d0e0f02010307183355a20068726174652d6361700d1b0000010000000000"
+    },
+    {
+      "name": "rate-max",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "rate-cap",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "18446744073709551615",
+        "names": []
+      },
+      "params_hex": "a20068726174652d6361700d1bffffffffffffffff",
+      "frame_hex": "00000032a50018290150000102030405060708090a0b0c0d0e0f02010307183355a20068726174652d6361700d1bffffffffffffffff"
+    },
+    {
+      "name": "keep-names",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "keep",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": [
+          "trees/a",
+          "",
+          "bäume"
+        ]
+      },
+      "params_hex": "a200646b6565700e836774726565732f61606662c3a4756d65",
+      "frame_hex": "00000037a50018290150000102030405060708090a0b0c0d0e0f0201030718335819a200646b6565700e836774726565732f61606662c3a4756d65"
+    },
+    {
+      "name": "force-forwarded",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "node-remove",
+        "node": "abababababababababababababababababababababababababababababababab",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": true,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": true,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a4006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab07f50bf5",
+      "frame_hex": "00000053a50018290150000102030405060708090a0b0c0d0e0f0201030718335835a4006b6e6f64652d72656d6f7665015820abababababababababababababababababababababababababababababababab07f50bf5"
+    },
+    {
+      "name": "all-fields",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "x",
+        "node": "01",
+        "weight": 2,
+        "zone": "z",
+        "replicas": 4,
+        "dead": true,
+        "allow_unsafe": true,
+        "force": true,
+        "key": "08",
+        "garbage": "0.75",
+        "garbage_bits": "3fe8000000000000",
+        "tolerate": true,
+        "forwarded": true,
+        "pause": true,
+        "rate": "13",
+        "names": [
+          "n"
+        ]
+      },
+      "params_hex": "af006178014101020203617a040405f506f507f508410809f93a000af50bf50cf50d0d0e81616e",
+      "frame_hex": "00000045a50018290150000102030405060708090a0b0c0d0e0f0201030718335827af006178014101020203617a040405f506f507f508410809f93a000af50bf50cf50d0d0e81616e"
+    },
+    {
+      "name": "empty-op",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a10060",
+      "frame_hex": "00000020a50018290150000102030405060708090a0b0c0d0e0f02010307183343a10060"
+    },
+    {
+      "name": "weight-23",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 23,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d6372656174650217",
+      "frame_hex": "0000002ea50018290150000102030405060708090a0b0c0d0e0f02010307183351a2006c746f6b656e2d6372656174650217"
+    },
+    {
+      "name": "weight-24",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 24,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d637265617465021818",
+      "frame_hex": "0000002fa50018290150000102030405060708090a0b0c0d0e0f02010307183352a2006c746f6b656e2d637265617465021818"
+    },
+    {
+      "name": "weight-255",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 255,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d6372656174650218ff",
+      "frame_hex": "0000002fa50018290150000102030405060708090a0b0c0d0e0f02010307183352a2006c746f6b656e2d6372656174650218ff"
+    },
+    {
+      "name": "weight-256",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 256,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d63726561746502190100",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006c746f6b656e2d63726561746502190100"
+    },
+    {
+      "name": "weight-65535",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 65535,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d6372656174650219ffff",
+      "frame_hex": "00000030a50018290150000102030405060708090a0b0c0d0e0f02010307183353a2006c746f6b656e2d6372656174650219ffff"
+    },
+    {
+      "name": "weight-65536",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "token-create",
+        "node": "",
+        "weight": 65536,
+        "zone": "",
+        "replicas": 0,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a2006c746f6b656e2d637265617465021a00010000",
+      "frame_hex": "00000032a50018290150000102030405060708090a0b0c0d0e0f02010307183355a2006c746f6b656e2d637265617465021a00010000"
+    },
+    {
+      "name": "replicas-23",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "replicas",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 23,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a200687265706c696361730417",
+      "frame_hex": "0000002aa50018290150000102030405060708090a0b0c0d0e0f0201030718334da200687265706c696361730417"
+    },
+    {
+      "name": "replicas-24",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "replicas",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 24,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a200687265706c69636173041818",
+      "frame_hex": "0000002ba50018290150000102030405060708090a0b0c0d0e0f0201030718334ea200687265706c69636173041818"
+    },
+    {
+      "name": "replicas-255",
+      "source": "codec-wire-ticket §5 G1 (no CLI producer)",
+      "argv": null,
+      "request": {
+        "op": "replicas",
+        "node": "",
+        "weight": 0,
+        "zone": "",
+        "replicas": 255,
+        "dead": false,
+        "allow_unsafe": false,
+        "force": false,
+        "key": "",
+        "garbage": "0",
+        "garbage_bits": "0000000000000000",
+        "tolerate": false,
+        "forwarded": false,
+        "pause": false,
+        "rate": "0",
+        "names": []
+      },
+      "params_hex": "a200687265706c696361730418ff",
+      "frame_hex": "0000002ba50018290150000102030405060708090a0b0c0d0e0f0201030718334ea200687265706c696361730418ff"
+    }
+  ]
+}

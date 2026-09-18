@@ -1,0 +1,757 @@
+{
+  "encode": [
+    {
+      "name": "minimal",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\"\n}\n"
+    },
+    {
+      "name": "zero",
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"\",\n  \"name\": \"\"\n}\n"
+    },
+    {
+      "name": "probe",
+      "config": {
+        "ticket": "dstore1abc",
+        "name": "trees/demo",
+        "relay": "",
+        "no_relay": true,
+        "no_discovery": false,
+        "user": "me"
+      },
+      "file": "{\n  \"ticket\": \"dstore1abc\",\n  \"name\": \"trees/demo\",\n  \"no_relay\": true,\n  \"user\": \"me\"\n}\n"
+    },
+    {
+      "name": "all-fields",
+      "config": {
+        "ticket": "dstore1abc",
+        "name": "trees/demo",
+        "relay": "https://relay.example/",
+        "no_relay": true,
+        "no_discovery": true,
+        "user": "alice"
+      },
+      "file": "{\n  \"ticket\": \"dstore1abc\",\n  \"name\": \"trees/demo\",\n  \"relay\": \"https://relay.example/\",\n  \"no_relay\": true,\n  \"no_discovery\": true,\n  \"user\": \"alice\"\n}\n"
+    },
+    {
+      "name": "no-discovery-only",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": true,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"no_discovery\": true\n}\n"
+    },
+    {
+      "name": "relay-only",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "https://r.example:8443/x?y=1\u0026z=2",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"relay\": \"https://r.example:8443/x?y=1\\u0026z=2\"\n}\n"
+    },
+    {
+      "name": "html-and-controls",
+      "config": {
+        "ticket": "dstore1abc",
+        "name": "trees/\u003ca\u0026b\u003e x\u0001\"\\",
+        "relay": "",
+        "no_relay": true,
+        "no_discovery": false,
+        "user": "Dr \u003cd@x\u003e"
+      },
+      "file": "{\n  \"ticket\": \"dstore1abc\",\n  \"name\": \"trees/\\u003ca\\u0026b\\u003e x\\u0001\\\"\\\\\",\n  \"no_relay\": true,\n  \"user\": \"Dr \\u003cd@x\\u003e\"\n}\n"
+    },
+    {
+      "name": "relay-escapes",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "\u0026\u003c\u003e\b\f\n\r\t\u0001\u001f\u2028\u2029",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"relay\": \"\\u0026\\u003c\\u003e\\b\\f\\n\\r\\t\\u0001\\u001f\\u2028\\u2029\"\n}\n"
+    },
+    {
+      "name": "all-control-bytes",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f"
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"user\": \"\\u0000\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\\n\\u000b\\f\\r\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f\"\n}\n"
+    },
+    {
+      "name": "invalid-utf8-ff",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay_hex": "61ff62",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"relay\": \"a\\ufffdb\"\n}\n"
+    },
+    {
+      "name": "invalid-utf8-truncated",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user_hex": "78e282"
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"user\": \"x\\ufffd\\ufffd\"\n}\n"
+    },
+    {
+      "name": "invalid-utf8-surrogate",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay_hex": "eda080",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"relay\": \"\\ufffd\\ufffd\\ufffd\"\n}\n"
+    },
+    {
+      "name": "invalid-utf8-overlong",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user_hex": "c0af"
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"user\": \"\\ufffd\\ufffd\"\n}\n"
+    },
+    {
+      "name": "user-quote-backslash",
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": "a\"b\\c"
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"n\",\n  \"user\": \"a\\\"b\\\\c\"\n}\n"
+    },
+    {
+      "name": "unicode",
+      "config": {
+        "ticket": "t",
+        "name": "trees/é/😀",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": "Zoë  ﻿"
+      },
+      "file": "{\n  \"ticket\": \"t\",\n  \"name\": \"trees/é/😀\",\n  \"user\": \"Zoë  ﻿\"\n}\n"
+    }
+  ],
+  "decode": [
+    {
+      "name": "probe",
+      "file": "{\n  \"ticket\": \"dstore1abc\",\n  \"name\": \"trees/demo\",\n  \"no_relay\": true,\n  \"user\": \"me\"\n}\n",
+      "ok": true,
+      "config": {
+        "ticket": "dstore1abc",
+        "name": "trees/demo",
+        "relay": "",
+        "no_relay": true,
+        "no_discovery": false,
+        "user": "me"
+      }
+    },
+    {
+      "name": "all-fields-compact",
+      "file": "{\"ticket\":\"t\",\"name\":\"n\",\"relay\":\"r\",\"no_relay\":true,\"no_discovery\":true,\"user\":\"u\"}",
+      "ok": true,
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "r",
+        "no_relay": true,
+        "no_discovery": true,
+        "user": "u"
+      }
+    },
+    {
+      "name": "case-insensitive-keys",
+      "file": "{\"Ticket\":\"t\",\"NAME\":\"n\",\"Relay\":\"r\",\"NO_RELAY\":true,\"No_Discovery\":true,\"USER\":\"u\"}",
+      "ok": true,
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "r",
+        "no_relay": true,
+        "no_discovery": true,
+        "user": "u"
+      }
+    },
+    {
+      "name": "fold-kelvin-and-long-s",
+      "file": "{\"ticKet\":\"t\",\"uſer\":\"u\",\"no_diſcovery\":true}",
+      "ok": true,
+      "config": {
+        "ticket": "t",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": true,
+        "user": "u"
+      }
+    },
+    {
+      "name": "exact-then-folded-last-wins",
+      "file": "{\"name\":\"a\",\"NAME\":\"b\"}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "b",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "folded-then-exact-last-wins",
+      "file": "{\"NAME\":\"b\",\"name\":\"a\"}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "a",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "duplicate-keys-last-wins",
+      "file": "{\"name\":\"a\",\"name\":\"b\",\"no_relay\":true,\"no_relay\":false}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "b",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "unknown-keys",
+      "file": "{\"ticket\":\"t\",\"name\":\"n\",\"extra\":1,\"nested\":{\"a\":[1,{\"b\":null}]}}",
+      "ok": true,
+      "config": {
+        "ticket": "t",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "null-values",
+      "file": "{\"ticket\":null,\"name\":\"n\",\"no_relay\":null,\"user\":null}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "null-document",
+      "file": "null",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "empty-object",
+      "file": "{}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "whitespace",
+      "file": " \t\r\n{ \"name\" : \"n\" ,\n\"user\":\"u\"} \n",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": "u"
+      }
+    },
+    {
+      "name": "escapes",
+      "file": "{\"name\":\"\\u003ca\\u0026b\\u003e \\u00e9 \\ud83d\\ude00 \\/ \\b\\f\\n\\r\\t \\\"\\\\\"}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "\u003ca\u0026b\u003e é 😀 / \b\f\n\r\t \"\\",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "key-escape",
+      "file": "{\"\\u0074icket\":\"t\"}",
+      "ok": true,
+      "config": {
+        "ticket": "t",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "lone-surrogate-escape",
+      "file": "{\"name\":\"\\ud800x\",\"user\":\"\\udc00\"}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "�x",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": "�"
+      }
+    },
+    {
+      "name": "invalid-utf8",
+      "file_hex": "7b226e616d65223a2261ff62222c2275736572223a22e282222c2272656c6179223a22eda080227d",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "a�b",
+        "relay": "���",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": "��"
+      }
+    },
+    {
+      "name": "raw-del-and-u2028",
+      "file": "{\"name\":\"ab\u2028\"}",
+      "ok": true,
+      "config": {
+        "ticket": "",
+        "name": "ab\u2028",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      }
+    },
+    {
+      "name": "number-into-string",
+      "file": "{\"ticket\":5,\"name\":\"n\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal number into Go struct field Config.ticket of type string"
+    },
+    {
+      "name": "string-into-bool",
+      "file": "{\"no_relay\":\"true\",\"name\":\"n\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal string into Go struct field Config.no_relay of type bool"
+    },
+    {
+      "name": "number-into-bool",
+      "file": "{\"no_relay\":1}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal number into Go struct field Config.no_relay of type bool"
+    },
+    {
+      "name": "object-into-string",
+      "file": "{\"ticket\":{\"a\":1},\"name\":\"n\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal object into Go struct field Config.ticket of type string"
+    },
+    {
+      "name": "array-into-string",
+      "file": "{\"user\":[\"u\"],\"name\":\"n\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal array into Go struct field Config.user of type string"
+    },
+    {
+      "name": "two-type-errors-first-wins",
+      "file": "{\"ticket\":1,\"user\":true,\"name\":\"n\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "n",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal number into Go struct field Config.ticket of type string"
+    },
+    {
+      "name": "big-number-into-string",
+      "file": "{\"ticket\":1e999}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal number into Go struct field Config.ticket of type string"
+    },
+    {
+      "name": "array-document",
+      "file": "[]",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal array into Go value of type worktree.Config"
+    },
+    {
+      "name": "string-document",
+      "file": "\"x\"",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal string into Go value of type worktree.Config"
+    },
+    {
+      "name": "number-document",
+      "file": "5",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal number into Go value of type worktree.Config"
+    },
+    {
+      "name": "bool-document",
+      "file": "true",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "json: cannot unmarshal bool into Go value of type worktree.Config"
+    },
+    {
+      "name": "empty-input",
+      "file": "",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "unexpected end of JSON input"
+    },
+    {
+      "name": "only-whitespace",
+      "file": " \n",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "unexpected end of JSON input"
+    },
+    {
+      "name": "truncated-value",
+      "file": "{\"ticket\":",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "unexpected end of JSON input"
+    },
+    {
+      "name": "truncated-string",
+      "file": "{\"ticket\":\"t",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "unexpected end of JSON input"
+    },
+    {
+      "name": "trailing-garbage",
+      "file": "{\"ticket\":\"t\"} x",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character 'x' after top-level value"
+    },
+    {
+      "name": "trailing-object",
+      "file": "{\"ticket\":\"t\"}{}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character '{' after top-level value"
+    },
+    {
+      "name": "not-json",
+      "file": "ticket = t",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character 'i' in literal true (expecting 'r')"
+    },
+    {
+      "name": "bom",
+      "file": "﻿{\"name\":\"n\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character 'ï' looking for beginning of value"
+    },
+    {
+      "name": "control-byte-in-string",
+      "file": "{\"name\":\"a\u0001\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character '\\x01' in string literal"
+    },
+    {
+      "name": "bad-escape",
+      "file": "{\"name\":\"\\q\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character 'q' in string escape code"
+    },
+    {
+      "name": "short-unicode-escape",
+      "file": "{\"name\":\"\\u12\"}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character '\"' in \\u hexadecimal character escape"
+    },
+    {
+      "name": "single-quotes",
+      "file": "{'name':'n'}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character '\\'' looking for beginning of object key string"
+    },
+    {
+      "name": "trailing-comma",
+      "file": "{\"name\":\"n\",}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character '}' looking for beginning of object key string"
+    },
+    {
+      "name": "uppercase-true",
+      "file": "{\"no_relay\":TRUE}",
+      "ok": false,
+      "config": {
+        "ticket": "",
+        "name": "",
+        "relay": "",
+        "no_relay": false,
+        "no_discovery": false,
+        "user": ""
+      },
+      "error": "invalid character 'T' looking for beginning of value"
+    }
+  ]
+}

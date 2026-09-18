@@ -1,0 +1,901 @@
+{
+  "cases": [
+    {
+      "name": "tdata-tdataend-then-ok",
+      "source": "codec-wire-ticket §5 G6",
+      "stream_hex": "0000000aa20007084568656c6c6f00000003a1000800000004a1001835",
+      "read": {
+        "read_size": 5,
+        "data_hex": "68656c6c6f",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: unexpected EOF",
+        "next": {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        }
+      }
+    },
+    {
+      "name": "tdata-without-data",
+      "source": "codec-wire-ticket §5 G6",
+      "stream_hex": "00000003a1000700000007a200070842616200000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "6162",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "tdataend-only",
+      "source": "codec-wire-ticket §5 G6",
+      "stream_hex": "00000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "empty-stream",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "eof-at-frame-boundary",
+      "source": "codec-wire-ticket §5 G6",
+      "stream_hex": "00000008a200070843616263",
+      "read": {
+        "read_size": 5,
+        "data_hex": "616263",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "eof-mid-frame",
+      "source": "codec-wire-ticket §5 G6",
+      "stream_hex": "0000000ba200070846616263",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "frame",
+          "frame_kind": "short",
+          "error": "protocol: short frame: unexpected EOF"
+        },
+        "again": {
+          "kind": "frame",
+          "frame_kind": "short",
+          "error": "protocol: short frame: unexpected EOF"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: short frame: unexpected EOF",
+        "drain_error": "protocol: short frame: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "oversize-frame",
+      "source": "transport-iroh protocol_test",
+      "stream_hex": "01000001",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "frame",
+          "frame_kind": "too_large",
+          "error": "protocol: frame of 16777217 bytes exceeds limit 16777216"
+        },
+        "again": {
+          "kind": "frame",
+          "frame_kind": "too_large",
+          "error": "protocol: frame of 16777217 bytes exceeds limit 16777216"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: frame of 16777217 bytes exceeds limit 16777216",
+        "drain_error": "protocol: frame of 16777217 bytes exceeds limit 16777216",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "terr-internal-sender-died",
+      "source": "transport-iroh pack_test; client-transfer §5.2 item 2",
+      "stream_hex": "00000009a2000708446a756e6b0000001aa3000a0a68696e7465726e616c0b6b73656e6465722064696564",
+      "read": {
+        "read_size": 5,
+        "data_hex": "6a756e6b",
+        "end": {
+          "kind": "remote",
+          "error": "remote: internal: sender died",
+          "remote": {
+            "code": "internal",
+            "text": "sender died",
+            "current": ""
+          }
+        },
+        "again": {
+          "kind": "remote",
+          "error": "remote: internal: sender died",
+          "remote": {
+            "code": "internal",
+            "text": "sender died",
+            "current": ""
+          }
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: remote: internal: sender died",
+        "drain_error": "remote: internal: sender died",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "terr-busy-no-text",
+      "source": "verification §5",
+      "stream_hex": "0000000da200070848414d424552504b0300000009a2000a0a6462757379",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b03",
+        "end": {
+          "kind": "remote",
+          "error": "remote: busy: ",
+          "remote": {
+            "code": "busy",
+            "text": "",
+            "current": ""
+          }
+        },
+        "again": {
+          "kind": "remote",
+          "error": "remote: busy: ",
+          "remote": {
+            "code": "busy",
+            "text": "",
+            "current": ""
+          }
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated before end marker: remote: busy: ",
+        "drain_error": "remote: busy: ",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "dstore-terr-view-retry-after",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000010a4000a0a64627573790c420102181c07",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "remote",
+          "error": "remote: busy: ",
+          "remote": {
+            "code": "busy",
+            "text": "",
+            "current": "0102"
+          }
+        },
+        "again": {
+          "kind": "remote",
+          "error": "remote: busy: ",
+          "remote": {
+            "code": "busy",
+            "text": "",
+            "current": "0102"
+          }
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: remote: busy: ",
+        "drain_error": "remote: busy: ",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "dstore-terr-stamped",
+      "source": "codec-wire-ticket §2.3.5 (key 2 is protocol.Msg.Root)",
+      "stream_hex": "00000014a6000a020103070a64627573790c420102181c07",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8"
+        },
+        "again": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8",
+        "drain_error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "dstore-tabsent",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000008a200183204814101",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal byte string into Go struct field protocol.Msg.4 of type uint8"
+        },
+        "again": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal byte string into Go struct field protocol.Msg.4 of type uint8"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: decode frame: cbor: cannot unmarshal byte string into Go struct field protocol.Msg.4 of type uint8",
+        "drain_error": "protocol: decode frame: cbor: cannot unmarshal byte string into Go struct field protocol.Msg.4 of type uint8",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "dstore-trefs",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000010a20018381581a400616101f602f60300",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "unexpected",
+          "error": "protocol: unexpected frame: type 56 during pack transfer",
+          "unexpected_type": "56"
+        },
+        "again": {
+          "kind": "unexpected",
+          "error": "protocol: unexpected frame: type 56 during pack transfer",
+          "unexpected_type": "56"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: unexpected frame: type 56 during pack transfer",
+        "drain_error": "protocol: unexpected frame: type 56 during pack transfer",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "tdata-with-epoch",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000008a300070307084100",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.3 of type bool"
+        },
+        "again": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.3 of type bool"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.3 of type bool",
+        "drain_error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.3 of type bool",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "type-51-mid-pack",
+      "source": "client-transfer §5.2 item 2",
+      "stream_hex": "0000000da200070848414d424552504b0300000004a1001833",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b03",
+        "end": {
+          "kind": "unexpected",
+          "error": "protocol: unexpected frame: type 51 during pack transfer",
+          "unexpected_type": "51"
+        },
+        "again": {
+          "kind": "unexpected",
+          "error": "protocol: unexpected frame: type 51 during pack transfer",
+          "unexpected_type": "51"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated before end marker: protocol: unexpected frame: type 51 during pack transfer",
+        "drain_error": "protocol: unexpected frame: type 51 during pack transfer",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "type-51-stamped-mid-pack",
+      "source": "client-transfer §5.2 item 2 (stamped: key 2 is protocol.Msg.Root)",
+      "stream_hex": "0000000da200070848414d424552504b0300000008a300183302010307",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b03",
+        "end": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8"
+        },
+        "again": {
+          "kind": "frame",
+          "frame_kind": "decode",
+          "error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated before end marker: protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8",
+        "drain_error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "twants",
+      "source": "transport-iroh pack_test",
+      "stream_hex": "00000003a10006",
+      "read": {
+        "read_size": 5,
+        "data_hex": "",
+        "end": {
+          "kind": "unexpected",
+          "error": "protocol: unexpected frame: type 6 during pack transfer",
+          "unexpected_type": "6"
+        },
+        "again": {
+          "kind": "unexpected",
+          "error": "protocol: unexpected frame: type 6 during pack transfer",
+          "unexpected_type": "6"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: protocol: unexpected frame: type 6 during pack transfer",
+        "drain_error": "protocol: unexpected frame: type 6 during pack transfer",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "pack-one-record-then-ok",
+      "source": "wire_test TestPackFramesInterop",
+      "stream_hex": "000000a1a2000708589b414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b0000000003a1000800000004a1001835",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b00",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [
+          {
+            "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+            "flags": 0,
+            "ulen": 100,
+            "slen": 100,
+            "bytes_hex": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+          }
+        ],
+        "next": {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        }
+      }
+    },
+    {
+      "name": "bad-magic",
+      "source": "client-transfer §5.2 item 2",
+      "stream_hex": "0000000ea200070849414d424552504b020000000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b0200",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: bad magic",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "short-magic",
+      "source": "core amberpack",
+      "stream_hex": "0000000aa200070845414d42455200000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: reading magic: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "record-payload-over-limit",
+      "source": "client-transfer §5.2 item 2",
+      "stream_hex": "0000003ca20007085836414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006410000001ce6c2ad600000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006410000001ce6c2ad6",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: record payload 268435457 exceeds limit 268435456",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "truncated-record-header",
+      "source": "core amberpack",
+      "stream_hex": "00000017a200070852414d424552504b030100644b75a8842dc16d00000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16d",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated record header: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "truncated-record-payload",
+      "source": "core amberpack",
+      "stream_hex": "0000004aa20007085844414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18d00000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18d",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated record payload: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "bad-record-tag",
+      "source": "core amberpack",
+      "stream_hex": "0000000ea200070849414d424552504b030200000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b0302",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: bad record tag 0x2",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "record-crc-mismatch",
+      "source": "core amberpack",
+      "stream_hex": "000000a1a2000708589b414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4a0000000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4a00",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: amberpack: corrupt pack data: record CRC mismatch",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "record-raw-ulen-differs",
+      "source": "core amberpack",
+      "stream_hex": "000000a1a2000708589b414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006500000064b25f7ea0c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b0000000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006500000064b25f7ea0c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b00",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: amberpack: corrupt pack data: raw record with ulen 101 != slen 100",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "record-reserved-key-bit",
+      "source": "core amberpack",
+      "stream_hex": "000000a1a2000708589b414d424552504b030180644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064f1246af2c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b0000000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030180644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064f1246af2c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b00",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: amberpack: corrupt pack data: record key: key: reserved object type: 8",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "no-end-marker",
+      "source": "client-transfer §5.2 item 2",
+      "stream_hex": "000000a0a2000708589a414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b00000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [
+          {
+            "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+            "flags": 0,
+            "ulen": 100,
+            "slen": 100,
+            "bytes_hex": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+          }
+        ],
+        "error": "amberpack: malformed pack stream: truncated before end marker: EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "end-marker-own-frame",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "0000000da200070848414d424552504b0300000098a200070858920100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b00000006a2000708410000000003a1000800000004a1001835",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b00",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [
+          {
+            "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+            "flags": 0,
+            "ulen": 100,
+            "slen": 100,
+            "bytes_hex": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+          }
+        ],
+        "next": {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        }
+      }
+    },
+    {
+      "name": "data-after-end-marker",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000010a20007084b414d424552504b0300ffff00000003a1000800000004a1001835",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b0300ffff",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "next": {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        }
+      }
+    },
+    {
+      "name": "terr-after-end-marker",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "0000000ea200070849414d424552504b03000000000fa3000a0a64627573790b646c617465",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b0300",
+        "end": {
+          "kind": "remote",
+          "error": "remote: busy: late",
+          "remote": {
+            "code": "busy",
+            "text": "late",
+            "current": ""
+          }
+        },
+        "again": {
+          "kind": "remote",
+          "error": "remote: busy: late",
+          "remote": {
+            "code": "busy",
+            "text": "late",
+            "current": ""
+          }
+        }
+      },
+      "records": {
+        "records": [],
+        "drain_error": "remote: busy: late",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "terr-mid-record",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000040a2000708583a414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c02890000001aa3000a0a68696e7465726e616c0b6b73656e6465722064696564",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289",
+        "end": {
+          "kind": "remote",
+          "error": "remote: internal: sender died",
+          "remote": {
+            "code": "internal",
+            "text": "sender died",
+            "current": ""
+          }
+        },
+        "again": {
+          "kind": "remote",
+          "error": "remote: internal: sender died",
+          "remote": {
+            "code": "internal",
+            "text": "sender died",
+            "current": ""
+          }
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated record payload: remote: internal: sender died",
+        "drain_error": "remote: internal: sender died",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "eof-mid-record",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "00000040a2000708583a414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b030100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [],
+        "error": "amberpack: malformed pack stream: truncated record payload: unexpected EOF",
+        "next": {
+          "result": "eof"
+        }
+      }
+    },
+    {
+      "name": "zstd-record",
+      "source": "client-transfer §3.3",
+      "stream_hex": "0000004ca20007085846414d424552504b0301011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db901000010000000000fca6d649528b52ffd64000f0380006103162c890000000003a10008",
+      "read": {
+        "read_size": 5,
+        "data_hex": "414d424552504b0301011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db901000010000000000fca6d649528b52ffd64000f0380006103162c8900",
+        "end": {
+          "kind": "eof"
+        },
+        "again": {
+          "kind": "eof"
+        }
+      },
+      "records": {
+        "records": [
+          {
+            "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+            "flags": 1,
+            "ulen": 4096,
+            "slen": 15,
+            "bytes_hex": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db901000010000000000fca6d649528b52ffd64000f0380006103162c89"
+          }
+        ],
+        "next": {
+          "result": "eof"
+        }
+      }
+    }
+  ]
+}

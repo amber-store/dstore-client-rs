@@ -1,0 +1,4408 @@
+{
+  "human_bytes": [
+    {
+      "n": "0",
+      "out": "0 B"
+    },
+    {
+      "n": "1",
+      "out": "1 B"
+    },
+    {
+      "n": "1023",
+      "out": "1023 B"
+    },
+    {
+      "n": "1024",
+      "out": "1.0 KiB"
+    },
+    {
+      "n": "1126",
+      "out": "1.1 KiB"
+    },
+    {
+      "n": "1152",
+      "out": "1.1 KiB"
+    },
+    {
+      "n": "1280",
+      "out": "1.2 KiB"
+    },
+    {
+      "n": "1331",
+      "out": "1.3 KiB"
+    },
+    {
+      "n": "1536",
+      "out": "1.5 KiB"
+    },
+    {
+      "n": "1792",
+      "out": "1.8 KiB"
+    },
+    {
+      "n": "2304",
+      "out": "2.2 KiB"
+    },
+    {
+      "n": "3584",
+      "out": "3.5 KiB"
+    },
+    {
+      "n": "3840",
+      "out": "3.8 KiB"
+    },
+    {
+      "n": "1048524",
+      "out": "1023.9 KiB"
+    },
+    {
+      "n": "1048575",
+      "out": "1024.0 KiB"
+    },
+    {
+      "n": "1048576",
+      "out": "1.0 MiB"
+    },
+    {
+      "n": "1101004",
+      "out": "1.0 MiB"
+    },
+    {
+      "n": "1310720",
+      "out": "1.2 MiB"
+    },
+    {
+      "n": "1073741823",
+      "out": "1024.0 MiB"
+    },
+    {
+      "n": "1073741824",
+      "out": "1.0 GiB"
+    },
+    {
+      "n": "5368709120",
+      "out": "5.0 GiB"
+    },
+    {
+      "n": "5497558138880",
+      "out": "5.0 TiB"
+    },
+    {
+      "n": "1125899906842623",
+      "out": "1024.0 TiB"
+    },
+    {
+      "n": "1125899906842624",
+      "out": "1.0 PiB"
+    },
+    {
+      "n": "1152921504606846976",
+      "out": "1.0 EiB"
+    },
+    {
+      "n": "9223372036854775807",
+      "out": "8.0 EiB"
+    },
+    {
+      "n": "-1",
+      "out": "-1 B"
+    },
+    {
+      "n": "-5",
+      "out": "-5 B"
+    },
+    {
+      "n": "-2048",
+      "out": "-2048 B"
+    },
+    {
+      "n": "-9223372036854775808",
+      "out": "-9223372036854775808 B"
+    }
+  ],
+  "rate": [
+    {
+      "bytes": "1000",
+      "took_ns": "0",
+      "out": "-"
+    },
+    {
+      "bytes": "1000",
+      "took_ns": "-1",
+      "out": "-"
+    },
+    {
+      "bytes": "3145728",
+      "took_ns": "2000000000",
+      "out": "1.5 MiB/s"
+    },
+    {
+      "bytes": "1",
+      "took_ns": "1",
+      "out": "953.7 MiB/s"
+    },
+    {
+      "bytes": "1000",
+      "took_ns": "1500000000",
+      "out": "666 B/s"
+    },
+    {
+      "bytes": "5368709120",
+      "took_ns": "3000000000",
+      "out": "1.7 GiB/s"
+    },
+    {
+      "bytes": "0",
+      "took_ns": "1000000000",
+      "out": "0 B/s"
+    },
+    {
+      "bytes": "-2048",
+      "took_ns": "1000000000",
+      "out": "-2048 B/s"
+    },
+    {
+      "bytes": "1099511627776",
+      "took_ns": "1000000",
+      "out": "1000.0 TiB/s"
+    },
+    {
+      "bytes": "512",
+      "took_ns": "10000000000",
+      "out": "51 B/s"
+    }
+  ],
+  "status_line": [
+    {
+      "report": {
+        "objects": 3,
+        "total_objects": 4,
+        "bytes": "0",
+        "total_bytes": "0",
+        "nodes": []
+      },
+      "rate": "0",
+      "out": "3/4 objects  0 B/s",
+      "fraction": "0.75"
+    },
+    {
+      "report": {
+        "objects": 0,
+        "total_objects": 0,
+        "bytes": "512",
+        "total_bytes": "0",
+        "nodes": []
+      },
+      "rate": "100",
+      "out": "0/0 objects  512 B  100 B/s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 5,
+        "total_objects": 10,
+        "bytes": "1024",
+        "total_bytes": "2048",
+        "nodes": []
+      },
+      "rate": "512",
+      "out": "5/10 objects  1.0 KiB / 2.0 KiB  512 B/s  eta 2s",
+      "fraction": "0.5"
+    },
+    {
+      "report": {
+        "objects": 5,
+        "total_objects": 10,
+        "bytes": "1073741824",
+        "total_bytes": "5368709120",
+        "nodes": []
+      },
+      "rate": "3.7e+06",
+      "out": "5/10 objects  1.0 GiB / 5.0 GiB  3.5 MiB/s  eta 19m21s",
+      "fraction": "0.2"
+    },
+    {
+      "report": {
+        "objects": 5,
+        "total_objects": 10,
+        "bytes": "3000",
+        "total_bytes": "1000",
+        "nodes": []
+      },
+      "rate": "10",
+      "out": "5/10 objects  2.9 KiB / 1000 B  10 B/s",
+      "fraction": "1"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "10",
+        "total_bytes": "100",
+        "nodes": []
+      },
+      "rate": "0.5",
+      "out": "1/2 objects  10 B / 100 B  0 B/s  eta 3m0s",
+      "fraction": "0.1"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "10",
+        "total_bytes": "100000000",
+        "nodes": []
+      },
+      "rate": "1",
+      "out": "1/2 objects  10 B / 95.4 MiB  1 B/s  eta 27777h46m30s",
+      "fraction": "1e-07"
+    },
+    {
+      "report": {
+        "objects": 0,
+        "total_objects": 0,
+        "bytes": "0",
+        "total_bytes": "0",
+        "nodes": []
+      },
+      "rate": "0",
+      "out": "0/0 objects  0 B/s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "0",
+        "total_bytes": "1500",
+        "nodes": []
+      },
+      "rate": "1000",
+      "out": "1/2 objects  0 B / 1.5 KiB  1000 B/s  eta 2s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "0",
+        "total_bytes": "2500",
+        "nodes": []
+      },
+      "rate": "1000",
+      "out": "1/2 objects  0 B / 2.4 KiB  1000 B/s  eta 3s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "0",
+        "total_bytes": "1499",
+        "nodes": []
+      },
+      "rate": "1000",
+      "out": "1/2 objects  0 B / 1.5 KiB  1000 B/s  eta 1s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "512",
+        "total_bytes": "0",
+        "nodes": []
+      },
+      "rate": "0",
+      "out": "1/2 objects  512 B  0 B/s",
+      "fraction": "0.5"
+    },
+    {
+      "report": {
+        "objects": 7,
+        "total_objects": 7,
+        "bytes": "4096",
+        "total_bytes": "4096",
+        "nodes": []
+      },
+      "rate": "2048",
+      "out": "7/7 objects  4.0 KiB / 4.0 KiB  2.0 KiB/s",
+      "fraction": "1"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "10",
+        "total_bytes": "100",
+        "nodes": []
+      },
+      "rate": "-5",
+      "out": "1/2 objects  10 B / 100 B  -5 B/s",
+      "fraction": "0.1"
+    },
+    {
+      "report": {
+        "objects": 1,
+        "total_objects": 2,
+        "bytes": "0",
+        "total_bytes": "100",
+        "nodes": []
+      },
+      "rate": "0.999",
+      "out": "1/2 objects  0 B / 100 B  0 B/s  eta 1m40s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": -1,
+        "total_objects": 3,
+        "bytes": "-5",
+        "total_bytes": "10",
+        "nodes": []
+      },
+      "rate": "0",
+      "out": "-1/3 objects  -5 B / 10 B  0 B/s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 0,
+        "total_objects": 1,
+        "bytes": "0",
+        "total_bytes": "1073741824",
+        "nodes": []
+      },
+      "rate": "3.7e+06",
+      "out": "0/1 objects  0 B / 1.0 GiB  3.5 MiB/s  eta 4m50s",
+      "fraction": "0"
+    },
+    {
+      "report": {
+        "objects": 3,
+        "total_objects": 4,
+        "bytes": "1",
+        "total_bytes": "0",
+        "nodes": []
+      },
+      "rate": "1023.9",
+      "out": "3/4 objects  1 B  1023 B/s",
+      "fraction": "0.75"
+    }
+  ],
+  "rate_meter": [
+    {
+      "name": "cli-md-5.4",
+      "window_ns": "5000000000",
+      "adds": [
+        {
+          "t_ns": "0",
+          "n": "0",
+          "rate": "0",
+          "samples": 1
+        },
+        {
+          "t_ns": "1000000000",
+          "n": "1000",
+          "rate": "1000",
+          "samples": 2
+        },
+        {
+          "t_ns": "2000000000",
+          "n": "1100",
+          "rate": "550",
+          "samples": 3
+        },
+        {
+          "t_ns": "3000000000",
+          "n": "1200",
+          "rate": "400",
+          "samples": 4
+        },
+        {
+          "t_ns": "7000000000",
+          "n": "1600",
+          "rate": "100",
+          "samples": 3
+        },
+        {
+          "t_ns": "8000000000",
+          "n": "1700",
+          "rate": "100",
+          "samples": 3
+        },
+        {
+          "t_ns": "8000000000",
+          "n": "1700",
+          "rate": "100",
+          "samples": 4
+        },
+        {
+          "t_ns": "9000000000",
+          "n": "100",
+          "rate": "0",
+          "samples": 5
+        },
+        {
+          "t_ns": "15000000000",
+          "n": "5000",
+          "rate": "816.6666666666666",
+          "samples": 2
+        }
+      ]
+    },
+    {
+      "name": "backwards-time",
+      "window_ns": "5000000000",
+      "adds": [
+        {
+          "t_ns": "10000000000",
+          "n": "0",
+          "rate": "0",
+          "samples": 1
+        },
+        {
+          "t_ns": "9000000000",
+          "n": "100",
+          "rate": "0",
+          "samples": 2
+        },
+        {
+          "t_ns": "11000000000",
+          "n": "200",
+          "rate": "200",
+          "samples": 3
+        }
+      ]
+    },
+    {
+      "name": "window-2s",
+      "window_ns": "2000000000",
+      "adds": [
+        {
+          "t_ns": "0",
+          "n": "0",
+          "rate": "0",
+          "samples": 1
+        },
+        {
+          "t_ns": "1000000000",
+          "n": "100",
+          "rate": "100",
+          "samples": 2
+        },
+        {
+          "t_ns": "2000000000",
+          "n": "300",
+          "rate": "150",
+          "samples": 3
+        },
+        {
+          "t_ns": "3000000000",
+          "n": "600",
+          "rate": "250",
+          "samples": 3
+        },
+        {
+          "t_ns": "10000000000",
+          "n": "700",
+          "rate": "14.285714285714286",
+          "samples": 2
+        }
+      ]
+    },
+    {
+      "name": "sub-millisecond",
+      "window_ns": "5000000000",
+      "adds": [
+        {
+          "t_ns": "0",
+          "n": "0",
+          "rate": "0",
+          "samples": 1
+        },
+        {
+          "t_ns": "500000",
+          "n": "10",
+          "rate": "20000",
+          "samples": 2
+        }
+      ]
+    },
+    {
+      "name": "tui-test-go",
+      "window_ns": "5000000000",
+      "adds": [
+        {
+          "t_ns": "0",
+          "n": "0",
+          "rate": "0",
+          "samples": 1
+        },
+        {
+          "t_ns": "1000000000",
+          "n": "1000",
+          "rate": "1000",
+          "samples": 2
+        },
+        {
+          "t_ns": "2000000000",
+          "n": "1100",
+          "rate": "550",
+          "samples": 3
+        },
+        {
+          "t_ns": "3000000000",
+          "n": "1200",
+          "rate": "400",
+          "samples": 4
+        },
+        {
+          "t_ns": "4000000000",
+          "n": "1300",
+          "rate": "325",
+          "samples": 5
+        },
+        {
+          "t_ns": "5000000000",
+          "n": "1400",
+          "rate": "280",
+          "samples": 6
+        },
+        {
+          "t_ns": "6000000000",
+          "n": "1500",
+          "rate": "100",
+          "samples": 6
+        },
+        {
+          "t_ns": "7000000000",
+          "n": "1600",
+          "rate": "100",
+          "samples": 6
+        },
+        {
+          "t_ns": "8000000000",
+          "n": "1700",
+          "rate": "100",
+          "samples": 6
+        },
+        {
+          "t_ns": "9000000000",
+          "n": "1800",
+          "rate": "100",
+          "samples": 6
+        },
+        {
+          "t_ns": "10000000000",
+          "n": "1900",
+          "rate": "100",
+          "samples": 6
+        },
+        {
+          "t_ns": "11000000000",
+          "n": "2000",
+          "rate": "100",
+          "samples": 6
+        },
+        {
+          "t_ns": "12000000000",
+          "n": "2100",
+          "rate": "100",
+          "samples": 6
+        }
+      ]
+    }
+  ],
+  "hex_decode": [
+    {
+      "in": "",
+      "ok": true,
+      "out": ""
+    },
+    {
+      "in": "ab",
+      "ok": true,
+      "out": "ab"
+    },
+    {
+      "in": "ABcd",
+      "ok": true,
+      "out": "abcd"
+    },
+    {
+      "in": "abc",
+      "ok": true,
+      "out": "ab"
+    },
+    {
+      "in": "a",
+      "ok": true,
+      "out": ""
+    },
+    {
+      "in": "zz",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"zz\""
+    },
+    {
+      "in": "0g",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"0g\""
+    },
+    {
+      "in": "g0",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"g0\""
+    },
+    {
+      "in": "abz",
+      "ok": true,
+      "out": "ab"
+    },
+    {
+      "in": "0x12",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"0x12\""
+    },
+    {
+      "in": "é",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"é\""
+    },
+    {
+      "in": "00ff7a",
+      "ok": true,
+      "out": "00ff7a"
+    },
+    {
+      "in": "AbCdEf01",
+      "ok": true,
+      "out": "abcdef01"
+    },
+    {
+      "in": "  ",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"  \""
+    },
+    {
+      "in": "0 ",
+      "ok": false,
+      "out": null,
+      "error": "bad hex \"0 \""
+    },
+    {
+      "in": "0102030405060708",
+      "ok": true,
+      "out": "0102030405060708"
+    }
+  ],
+  "resolve_ticket": [
+    {
+      "flag": "f",
+      "stored": "s",
+      "env": "e",
+      "ok": true,
+      "out": "f"
+    },
+    {
+      "flag": "",
+      "stored": "s",
+      "env": "e",
+      "ok": true,
+      "out": "s"
+    },
+    {
+      "flag": "",
+      "stored": "",
+      "env": "e",
+      "ok": true,
+      "out": "e"
+    },
+    {
+      "flag": "",
+      "stored": "",
+      "env": "",
+      "ok": false,
+      "error": "no cluster: set --ticket or $DSTORE_TICKET"
+    },
+    {
+      "flag": "f",
+      "stored": "",
+      "env": "",
+      "ok": true,
+      "out": "f"
+    },
+    {
+      "flag": " ",
+      "stored": "s",
+      "env": "e",
+      "ok": true,
+      "out": " "
+    },
+    {
+      "flag": "",
+      "stored": " ",
+      "env": "e",
+      "ok": true,
+      "out": " "
+    }
+  ],
+  "log_level": [
+    {
+      "value": "debug",
+      "level": -4
+    },
+    {
+      "value": "DEBUG",
+      "level": -4
+    },
+    {
+      "value": "Debug",
+      "level": -4
+    },
+    {
+      "value": "dEbUg",
+      "level": -4
+    },
+    {
+      "value": "info",
+      "level": 0
+    },
+    {
+      "value": "INFO",
+      "level": 0
+    },
+    {
+      "value": "warn",
+      "level": 4
+    },
+    {
+      "value": "WARN",
+      "level": 4
+    },
+    {
+      "value": "error",
+      "level": 8
+    },
+    {
+      "value": "ERROR",
+      "level": 8
+    },
+    {
+      "value": "",
+      "level": 0
+    },
+    {
+      "value": "verbose",
+      "level": 0
+    },
+    {
+      "value": "WARNING",
+      "level": 0
+    },
+    {
+      "value": "warning",
+      "level": 0
+    },
+    {
+      "value": "trace",
+      "level": 0
+    },
+    {
+      "value": " debug",
+      "level": 0
+    },
+    {
+      "value": "debug ",
+      "level": 0
+    }
+  ],
+  "describe_change": [
+    {
+      "path": "a.txt",
+      "kind": 0,
+      "kind_string": "new",
+      "old_mode": null,
+      "new_mode": 33188,
+      "describe": "a.txt",
+      "line": "  new       a.txt"
+    },
+    {
+      "path": "d",
+      "kind": 0,
+      "kind_string": "new",
+      "old_mode": null,
+      "new_mode": 16877,
+      "describe": "d/",
+      "line": "  new       d/"
+    },
+    {
+      "path": "d",
+      "kind": 1,
+      "kind_string": "deleted",
+      "old_mode": 16877,
+      "new_mode": null,
+      "describe": "d/",
+      "line": "  deleted   d/"
+    },
+    {
+      "path": "f.txt",
+      "kind": 1,
+      "kind_string": "deleted",
+      "old_mode": 33188,
+      "new_mode": null,
+      "describe": "f.txt",
+      "line": "  deleted   f.txt"
+    },
+    {
+      "path": "x",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 41471,
+      "new_mode": 16877,
+      "describe": "x/ (symlink → directory)",
+      "line": "  type      x/ (symlink → directory)"
+    },
+    {
+      "path": "a.txt",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 33188,
+      "new_mode": 16877,
+      "describe": "a.txt/ (file → directory)",
+      "line": "  type      a.txt/ (file → directory)"
+    },
+    {
+      "path": "link",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 16877,
+      "new_mode": 41471,
+      "describe": "link (directory → symlink)",
+      "line": "  type      link (directory → symlink)"
+    },
+    {
+      "path": "run.sh",
+      "kind": 4,
+      "kind_string": "mode",
+      "old_mode": 33188,
+      "new_mode": 33261,
+      "describe": "run.sh (0644 → 0755)",
+      "line": "  mode      run.sh (0644 → 0755)"
+    },
+    {
+      "path": "run.sh",
+      "kind": 4,
+      "kind_string": "mode",
+      "old_mode": 33188,
+      "new_mode": 35309,
+      "describe": "run.sh (0644 → 4755)",
+      "line": "  mode      run.sh (0644 → 4755)"
+    },
+    {
+      "path": "d",
+      "kind": 4,
+      "kind_string": "mode",
+      "old_mode": 16832,
+      "new_mode": 16877,
+      "describe": "d/ (0700 → 0755)",
+      "line": "  mode      d/ (0700 → 0755)"
+    },
+    {
+      "path": "f",
+      "kind": 2,
+      "kind_string": "modified",
+      "old_mode": 33188,
+      "new_mode": 33188,
+      "describe": "f",
+      "line": "  modified  f"
+    },
+    {
+      "path": "m",
+      "kind": 5,
+      "kind_string": "meta",
+      "old_mode": 16877,
+      "new_mode": 16877,
+      "describe": "m/",
+      "line": "  meta      m/"
+    },
+    {
+      "path": "p",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 4516,
+      "new_mode": 49645,
+      "describe": "p (fifo → socket)",
+      "line": "  type      p (fifo → socket)"
+    },
+    {
+      "path": "c",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 8612,
+      "new_mode": 24996,
+      "describe": "c (char device → block device)",
+      "line": "  type      c (char device → block device)"
+    },
+    {
+      "path": "w",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 61860,
+      "new_mode": 33188,
+      "describe": "w (type 0170000 → file)",
+      "line": "  type      w (type 0170000 → file)"
+    },
+    {
+      "path": "z",
+      "kind": 3,
+      "kind_string": "type",
+      "old_mode": 420,
+      "new_mode": 33188,
+      "describe": "z (type 0 → file)",
+      "line": "  type      z (type 0 → file)"
+    },
+    {
+      "path": "k",
+      "kind": 9,
+      "kind_string": "Kind(9)",
+      "old_mode": 33188,
+      "new_mode": 33188,
+      "describe": "k",
+      "line": "  Kind(9)   k"
+    },
+    {
+      "path": "sub/dir",
+      "kind": 1,
+      "kind_string": "deleted",
+      "old_mode": 16877,
+      "new_mode": null,
+      "describe": "sub/dir/",
+      "line": "  deleted   sub/dir/"
+    },
+    {
+      "path": "é/ü",
+      "kind": 0,
+      "kind_string": "new",
+      "old_mode": null,
+      "new_mode": 33152,
+      "describe": "é/ü",
+      "line": "  new       é/ü"
+    }
+  ],
+  "filter_paths": [
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "."
+      ],
+      "ok": true,
+      "out": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "sub"
+      ],
+      "ok": true,
+      "out": [
+        "sub",
+        "sub/b.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "sub/"
+      ],
+      "ok": true,
+      "out": [
+        "sub",
+        "sub/b.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "./sub/b.txt"
+      ],
+      "ok": true,
+      "out": [
+        "sub/b.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "su"
+      ],
+      "ok": true,
+      "out": []
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        ".."
+      ],
+      "ok": false,
+      "out": null,
+      "error": ".. is outside the working copy"
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "../x"
+      ],
+      "ok": false,
+      "out": null,
+      "error": "../x is outside the working copy"
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "/"
+      ],
+      "ok": false,
+      "out": null,
+      "error": "/ is outside the working copy"
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "{ROOT}"
+      ],
+      "ok": true,
+      "out": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "{ROOT}/sub"
+      ],
+      "ok": true,
+      "out": [
+        "sub",
+        "sub/b.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "{ROOT}/../x"
+      ],
+      "ok": false,
+      "out": null,
+      "error": "{ROOT}/../x is outside the working copy"
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "a.txt",
+        ".."
+      ],
+      "ok": false,
+      "out": null,
+      "error": ".. is outside the working copy"
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        ""
+      ],
+      "ok": true,
+      "out": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "sub/../a.txt"
+      ],
+      "ok": true,
+      "out": [
+        "a.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "subx"
+      ],
+      "ok": true,
+      "out": [
+        "subx/c"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "sub",
+        "subx/c"
+      ],
+      "ok": true,
+      "out": [
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "./"
+      ],
+      "ok": true,
+      "out": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "a.txt/"
+      ],
+      "ok": true,
+      "out": [
+        "a.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "sub/b.txt/.."
+      ],
+      "ok": true,
+      "out": [
+        "sub",
+        "sub/b.txt"
+      ]
+    },
+    {
+      "changes": [
+        "a.txt",
+        "sub",
+        "sub/b.txt",
+        "subx/c"
+      ],
+      "args": [
+        "nosuch"
+      ],
+      "ok": true,
+      "out": []
+    }
+  ],
+  "node_state": [
+    {
+      "in_flight": 0,
+      "awaiting": 0,
+      "out": "idle"
+    },
+    {
+      "in_flight": 0,
+      "awaiting": 1,
+      "out": "idle"
+    },
+    {
+      "in_flight": 1,
+      "awaiting": 1,
+      "out": "waiting for ack"
+    },
+    {
+      "in_flight": 2,
+      "awaiting": 2,
+      "out": "waiting for ack"
+    },
+    {
+      "in_flight": 2,
+      "awaiting": 1,
+      "out": "sending"
+    },
+    {
+      "in_flight": 1,
+      "awaiting": 0,
+      "out": "sending"
+    },
+    {
+      "in_flight": 3,
+      "awaiting": 0,
+      "out": "sending"
+    }
+  ],
+  "tea_handler": [
+    {
+      "name": "debug-hidden",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": -4,
+      "msg": "hidden",
+      "attrs": [],
+      "enabled": false,
+      "text": null
+    },
+    {
+      "name": "uploaded",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 0,
+      "msg": "uploaded",
+      "attrs": [
+        {
+          "key": "objects",
+          "kind": "int64",
+          "value": "3"
+        },
+        {
+          "key": "bytes",
+          "kind": "int64",
+          "value": "3145728"
+        },
+        {
+          "key": "took",
+          "kind": "duration",
+          "value": "2000000000"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "value": "direct"
+        }
+      ],
+      "enabled": true,
+      "text": "uploaded node=abcd objects=3 bytes=3.0 MiB took=2s path=direct"
+    },
+    {
+      "name": "upload-failed",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 4,
+      "msg": "upload failed",
+      "attrs": [
+        {
+          "key": "err",
+          "kind": "string",
+          "value": "timeout: no recent network activity"
+        }
+      ],
+      "enabled": true,
+      "text": "upload failed node=abcd err=\"timeout: no recent network activity\""
+    },
+    {
+      "name": "quoting",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 0,
+      "msg": "q",
+      "attrs": [
+        {
+          "key": "s",
+          "kind": "string",
+          "value": "a\"b"
+        },
+        {
+          "key": "t",
+          "kind": "string",
+          "value": "x\ty"
+        },
+        {
+          "key": "e",
+          "kind": "string",
+          "value": ""
+        },
+        {
+          "key": "n",
+          "kind": "string",
+          "value": "a=b"
+        },
+        {
+          "key": "bytesint",
+          "kind": "int64",
+          "value": "5"
+        },
+        {
+          "key": "bytes",
+          "kind": "uint64",
+          "value": "5"
+        }
+      ],
+      "enabled": true,
+      "text": "q node=abcd s=a\"b t=\"x\\ty\" e= n=a=b bytesint=5 bytes=5"
+    },
+    {
+      "name": "error-value",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 8,
+      "msg": "boom",
+      "attrs": [
+        {
+          "key": "err",
+          "kind": "error",
+          "value": "disk full"
+        }
+      ],
+      "enabled": true,
+      "text": "boom node=abcd err=\"disk full\""
+    },
+    {
+      "name": "nil-error",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 0,
+      "msg": "nil",
+      "attrs": [
+        {
+          "key": "err",
+          "kind": "error",
+          "value": "\u003cnil\u003e"
+        }
+      ],
+      "enabled": true,
+      "text": "nil node=abcd err=\u003cnil\u003e"
+    },
+    {
+      "name": "kinds",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "kinds",
+      "attrs": [
+        {
+          "key": "f",
+          "kind": "float64",
+          "value": "1.5"
+        },
+        {
+          "key": "g",
+          "kind": "float64",
+          "value": "3.7e+06"
+        },
+        {
+          "key": "b",
+          "kind": "bool",
+          "value": "true"
+        },
+        {
+          "key": "neg",
+          "kind": "int64",
+          "value": "-5"
+        },
+        {
+          "key": "bytes",
+          "kind": "int64",
+          "value": "-5"
+        },
+        {
+          "key": "max",
+          "kind": "uint64",
+          "value": "18446744073709551615"
+        },
+        {
+          "key": "d",
+          "kind": "duration",
+          "value": "3723000000000"
+        },
+        {
+          "key": "ms",
+          "kind": "duration",
+          "value": "1500000"
+        }
+      ],
+      "enabled": true,
+      "text": "kinds f=1.5 g=3.7e+06 b=true neg=-5 bytes=-5 B max=18446744073709551615 d=1h2m3s ms=1.5ms"
+    },
+    {
+      "name": "warn-handler-drops-info",
+      "handler_level": 4,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 0,
+      "msg": "info",
+      "attrs": [],
+      "enabled": false,
+      "text": null
+    },
+    {
+      "name": "warn-handler-keeps-warn",
+      "handler_level": 4,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        }
+      ],
+      "level": 4,
+      "msg": "w",
+      "attrs": [],
+      "enabled": true,
+      "text": "w node=abcd"
+    },
+    {
+      "name": "debug-handler",
+      "handler_level": -4,
+      "with": [],
+      "level": -4,
+      "msg": "d",
+      "attrs": [
+        {
+          "key": "k",
+          "kind": "string",
+          "value": "v"
+        }
+      ],
+      "enabled": true,
+      "text": "d k=v"
+    },
+    {
+      "name": "plain",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "plain",
+      "attrs": [],
+      "enabled": true,
+      "text": "plain"
+    },
+    {
+      "name": "two-with",
+      "handler_level": 0,
+      "with": [
+        {
+          "key": "node",
+          "kind": "string",
+          "value": "abcd"
+        },
+        {
+          "key": "round",
+          "kind": "int64",
+          "value": "2"
+        }
+      ],
+      "level": 0,
+      "msg": "round done",
+      "attrs": [
+        {
+          "key": "objects",
+          "kind": "int64",
+          "value": "7"
+        }
+      ],
+      "enabled": true,
+      "text": "round done node=abcd round=2 objects=7"
+    },
+    {
+      "name": "raw-newline-and-unicode",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "m",
+      "attrs": [
+        {
+          "key": "nl",
+          "kind": "string",
+          "value": "a\nb"
+        },
+        {
+          "key": "u",
+          "kind": "string",
+          "value": "é"
+        },
+        {
+          "key": "nbsp",
+          "kind": "string",
+          "value": "a b"
+        },
+        {
+          "key": "cr",
+          "kind": "string",
+          "value": "a\rb"
+        }
+      ],
+      "enabled": true,
+      "text": "m nl=a\nb u=é nbsp=a b cr=a\rb"
+    },
+    {
+      "name": "bytes-as-string",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "m",
+      "attrs": [
+        {
+          "key": "bytes",
+          "kind": "string",
+          "value": "3 MiB"
+        }
+      ],
+      "enabled": true,
+      "text": "m bytes=\"3 MiB\""
+    },
+    {
+      "name": "custom-level",
+      "handler_level": 0,
+      "with": [],
+      "level": 2,
+      "msg": "custom",
+      "attrs": [],
+      "enabled": true,
+      "text": "custom"
+    },
+    {
+      "name": "message-not-quoted",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "upload retry \"x\"",
+      "attrs": [
+        {
+          "key": "reason",
+          "kind": "string",
+          "value": "busy"
+        }
+      ],
+      "enabled": true,
+      "text": "upload retry \"x\" reason=busy"
+    },
+    {
+      "name": "empty-message",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "",
+      "attrs": [],
+      "enabled": true,
+      "text": ""
+    },
+    {
+      "name": "big-bytes",
+      "handler_level": 0,
+      "with": [],
+      "level": 0,
+      "msg": "m",
+      "attrs": [
+        {
+          "key": "bytes",
+          "kind": "int64",
+          "value": "9223372036854775807"
+        },
+        {
+          "key": "bytes",
+          "kind": "int64",
+          "value": "1023"
+        }
+      ],
+      "enabled": true,
+      "text": "m bytes=8.0 EiB bytes=1023 B"
+    }
+  ],
+  "format_event": [
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": -4,
+      "text": "debug x",
+      "out": "12:34:56  debug x"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": 0,
+      "text": "uploaded node=abcd objects=3 bytes=3.0 MiB took=2s path=direct",
+      "out": "12:34:56  uploaded node=abcd objects=3 bytes=3.0 MiB took=2s path=direct"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": 2,
+      "text": "custom level",
+      "out": "12:34:56  custom level"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": 4,
+      "text": "upload failed node=abcd err=\"timeout: no recent network activity\"",
+      "out": "\u001b[33m12:34:56  upload failed node=abcd err=\"timeout: no recent network activity\"\u001b[m"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": 6,
+      "text": "warn+2",
+      "out": "\u001b[33m12:34:56  warn+2\u001b[m"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": 8,
+      "text": "boom node=abcd",
+      "out": "\u001b[31m12:34:56  boom node=abcd\u001b[m"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 0,
+      "level": 12,
+      "text": "error+4",
+      "out": "\u001b[31m12:34:56  error+4\u001b[m"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 7200,
+      "level": 0,
+      "text": "connected node=abcd nodes=3 path=direct rtt=3ms",
+      "out": "14:34:56  connected node=abcd nodes=3 path=direct rtt=3ms"
+    },
+    {
+      "at_unix_ns": "1758198896999999999",
+      "offset_secs": -12600,
+      "level": 4,
+      "text": "St John's",
+      "out": "\u001b[33m09:04:56  St John's\u001b[m"
+    },
+    {
+      "at_unix_ns": "-1",
+      "offset_secs": 0,
+      "level": 0,
+      "text": "before the epoch",
+      "out": "23:59:59  before the epoch"
+    },
+    {
+      "at_unix_ns": "1758198896000000000",
+      "offset_secs": 19800,
+      "level": 8,
+      "text": "",
+      "out": "\u001b[31m18:04:56  \u001b[m"
+    }
+  ],
+  "blend1d": [
+    {
+      "steps": 0,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": []
+    },
+    {
+      "steps": 1,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ]
+      ]
+    },
+    {
+      "steps": 2,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 3,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          171,
+          98,
+          236
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 4,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          147,
+          94,
+          232
+        ],
+        [
+          194,
+          103,
+          240
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 10,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          111,
+          89,
+          227
+        ],
+        [
+          130,
+          91,
+          230
+        ],
+        [
+          147,
+          94,
+          232
+        ],
+        [
+          163,
+          97,
+          235
+        ],
+        [
+          179,
+          100,
+          238
+        ],
+        [
+          194,
+          103,
+          240
+        ],
+        [
+          209,
+          105,
+          243
+        ],
+        [
+          224,
+          108,
+          246
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 40,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          95,
+          86,
+          225
+        ],
+        [
+          100,
+          87,
+          226
+        ],
+        [
+          105,
+          88,
+          226
+        ],
+        [
+          109,
+          88,
+          227
+        ],
+        [
+          114,
+          89,
+          227
+        ],
+        [
+          118,
+          90,
+          228
+        ],
+        [
+          123,
+          90,
+          229
+        ],
+        [
+          127,
+          91,
+          229
+        ],
+        [
+          131,
+          92,
+          230
+        ],
+        [
+          135,
+          92,
+          231
+        ],
+        [
+          139,
+          93,
+          231
+        ],
+        [
+          143,
+          94,
+          232
+        ],
+        [
+          147,
+          94,
+          232
+        ],
+        [
+          151,
+          95,
+          233
+        ],
+        [
+          155,
+          96,
+          234
+        ],
+        [
+          158,
+          96,
+          234
+        ],
+        [
+          162,
+          97,
+          235
+        ],
+        [
+          166,
+          97,
+          236
+        ],
+        [
+          169,
+          98,
+          236
+        ],
+        [
+          173,
+          99,
+          237
+        ],
+        [
+          177,
+          99,
+          237
+        ],
+        [
+          180,
+          100,
+          238
+        ],
+        [
+          184,
+          101,
+          239
+        ],
+        [
+          187,
+          101,
+          239
+        ],
+        [
+          191,
+          102,
+          240
+        ],
+        [
+          194,
+          103,
+          240
+        ],
+        [
+          198,
+          103,
+          241
+        ],
+        [
+          201,
+          104,
+          242
+        ],
+        [
+          205,
+          105,
+          242
+        ],
+        [
+          208,
+          105,
+          243
+        ],
+        [
+          212,
+          106,
+          244
+        ],
+        [
+          215,
+          106,
+          244
+        ],
+        [
+          218,
+          107,
+          245
+        ],
+        [
+          222,
+          108,
+          245
+        ],
+        [
+          225,
+          108,
+          246
+        ],
+        [
+          228,
+          109,
+          247
+        ],
+        [
+          232,
+          110,
+          247
+        ],
+        [
+          235,
+          110,
+          248
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 110,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          92,
+          86,
+          225
+        ],
+        [
+          94,
+          86,
+          225
+        ],
+        [
+          95,
+          87,
+          225
+        ],
+        [
+          97,
+          87,
+          225
+        ],
+        [
+          99,
+          87,
+          225
+        ],
+        [
+          101,
+          87,
+          226
+        ],
+        [
+          102,
+          87,
+          226
+        ],
+        [
+          104,
+          88,
+          226
+        ],
+        [
+          106,
+          88,
+          226
+        ],
+        [
+          108,
+          88,
+          227
+        ],
+        [
+          109,
+          88,
+          227
+        ],
+        [
+          111,
+          89,
+          227
+        ],
+        [
+          112,
+          89,
+          227
+        ],
+        [
+          114,
+          89,
+          227
+        ],
+        [
+          116,
+          89,
+          228
+        ],
+        [
+          117,
+          90,
+          228
+        ],
+        [
+          119,
+          90,
+          228
+        ],
+        [
+          120,
+          90,
+          228
+        ],
+        [
+          122,
+          90,
+          229
+        ],
+        [
+          123,
+          90,
+          229
+        ],
+        [
+          125,
+          91,
+          229
+        ],
+        [
+          126,
+          91,
+          229
+        ],
+        [
+          128,
+          91,
+          229
+        ],
+        [
+          129,
+          91,
+          230
+        ],
+        [
+          131,
+          92,
+          230
+        ],
+        [
+          132,
+          92,
+          230
+        ],
+        [
+          134,
+          92,
+          230
+        ],
+        [
+          135,
+          92,
+          231
+        ],
+        [
+          137,
+          93,
+          231
+        ],
+        [
+          138,
+          93,
+          231
+        ],
+        [
+          140,
+          93,
+          231
+        ],
+        [
+          141,
+          93,
+          231
+        ],
+        [
+          142,
+          93,
+          232
+        ],
+        [
+          144,
+          94,
+          232
+        ],
+        [
+          145,
+          94,
+          232
+        ],
+        [
+          147,
+          94,
+          232
+        ],
+        [
+          148,
+          94,
+          233
+        ],
+        [
+          149,
+          95,
+          233
+        ],
+        [
+          151,
+          95,
+          233
+        ],
+        [
+          152,
+          95,
+          233
+        ],
+        [
+          153,
+          95,
+          233
+        ],
+        [
+          155,
+          96,
+          234
+        ],
+        [
+          156,
+          96,
+          234
+        ],
+        [
+          157,
+          96,
+          234
+        ],
+        [
+          159,
+          96,
+          234
+        ],
+        [
+          160,
+          96,
+          235
+        ],
+        [
+          161,
+          97,
+          235
+        ],
+        [
+          163,
+          97,
+          235
+        ],
+        [
+          164,
+          97,
+          235
+        ],
+        [
+          165,
+          97,
+          235
+        ],
+        [
+          167,
+          98,
+          236
+        ],
+        [
+          168,
+          98,
+          236
+        ],
+        [
+          169,
+          98,
+          236
+        ],
+        [
+          171,
+          98,
+          236
+        ],
+        [
+          172,
+          99,
+          237
+        ],
+        [
+          173,
+          99,
+          237
+        ],
+        [
+          175,
+          99,
+          237
+        ],
+        [
+          176,
+          99,
+          237
+        ],
+        [
+          177,
+          99,
+          237
+        ],
+        [
+          178,
+          100,
+          238
+        ],
+        [
+          180,
+          100,
+          238
+        ],
+        [
+          181,
+          100,
+          238
+        ],
+        [
+          182,
+          100,
+          238
+        ],
+        [
+          183,
+          101,
+          239
+        ],
+        [
+          185,
+          101,
+          239
+        ],
+        [
+          186,
+          101,
+          239
+        ],
+        [
+          187,
+          101,
+          239
+        ],
+        [
+          188,
+          102,
+          239
+        ],
+        [
+          190,
+          102,
+          240
+        ],
+        [
+          191,
+          102,
+          240
+        ],
+        [
+          192,
+          102,
+          240
+        ],
+        [
+          193,
+          102,
+          240
+        ],
+        [
+          195,
+          103,
+          241
+        ],
+        [
+          196,
+          103,
+          241
+        ],
+        [
+          197,
+          103,
+          241
+        ],
+        [
+          198,
+          103,
+          241
+        ],
+        [
+          200,
+          104,
+          241
+        ],
+        [
+          201,
+          104,
+          242
+        ],
+        [
+          202,
+          104,
+          242
+        ],
+        [
+          203,
+          104,
+          242
+        ],
+        [
+          205,
+          105,
+          242
+        ],
+        [
+          206,
+          105,
+          243
+        ],
+        [
+          207,
+          105,
+          243
+        ],
+        [
+          208,
+          105,
+          243
+        ],
+        [
+          210,
+          105,
+          243
+        ],
+        [
+          211,
+          106,
+          243
+        ],
+        [
+          212,
+          106,
+          244
+        ],
+        [
+          213,
+          106,
+          244
+        ],
+        [
+          214,
+          106,
+          244
+        ],
+        [
+          216,
+          107,
+          244
+        ],
+        [
+          217,
+          107,
+          245
+        ],
+        [
+          218,
+          107,
+          245
+        ],
+        [
+          219,
+          107,
+          245
+        ],
+        [
+          220,
+          108,
+          245
+        ],
+        [
+          222,
+          108,
+          245
+        ],
+        [
+          223,
+          108,
+          246
+        ],
+        [
+          224,
+          108,
+          246
+        ],
+        [
+          225,
+          108,
+          246
+        ],
+        [
+          226,
+          109,
+          246
+        ],
+        [
+          228,
+          109,
+          246
+        ],
+        [
+          229,
+          109,
+          247
+        ],
+        [
+          230,
+          109,
+          247
+        ],
+        [
+          231,
+          110,
+          247
+        ],
+        [
+          232,
+          110,
+          247
+        ],
+        [
+          234,
+          110,
+          248
+        ],
+        [
+          235,
+          110,
+          248
+        ],
+        [
+          236,
+          110,
+          248
+        ],
+        [
+          237,
+          111,
+          248
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 150,
+      "a": [
+        90,
+        86,
+        224
+      ],
+      "b": [
+        238,
+        111,
+        248
+      ],
+      "out": [
+        [
+          90,
+          86,
+          224
+        ],
+        [
+          91,
+          86,
+          225
+        ],
+        [
+          93,
+          86,
+          225
+        ],
+        [
+          94,
+          86,
+          225
+        ],
+        [
+          95,
+          87,
+          225
+        ],
+        [
+          97,
+          87,
+          225
+        ],
+        [
+          98,
+          87,
+          225
+        ],
+        [
+          99,
+          87,
+          226
+        ],
+        [
+          100,
+          87,
+          226
+        ],
+        [
+          102,
+          87,
+          226
+        ],
+        [
+          103,
+          88,
+          226
+        ],
+        [
+          104,
+          88,
+          226
+        ],
+        [
+          105,
+          88,
+          226
+        ],
+        [
+          107,
+          88,
+          226
+        ],
+        [
+          108,
+          88,
+          227
+        ],
+        [
+          109,
+          88,
+          227
+        ],
+        [
+          110,
+          89,
+          227
+        ],
+        [
+          112,
+          89,
+          227
+        ],
+        [
+          113,
+          89,
+          227
+        ],
+        [
+          114,
+          89,
+          227
+        ],
+        [
+          115,
+          89,
+          228
+        ],
+        [
+          116,
+          89,
+          228
+        ],
+        [
+          117,
+          90,
+          228
+        ],
+        [
+          119,
+          90,
+          228
+        ],
+        [
+          120,
+          90,
+          228
+        ],
+        [
+          121,
+          90,
+          228
+        ],
+        [
+          122,
+          90,
+          229
+        ],
+        [
+          123,
+          90,
+          229
+        ],
+        [
+          124,
+          91,
+          229
+        ],
+        [
+          125,
+          91,
+          229
+        ],
+        [
+          126,
+          91,
+          229
+        ],
+        [
+          127,
+          91,
+          229
+        ],
+        [
+          129,
+          91,
+          230
+        ],
+        [
+          130,
+          91,
+          230
+        ],
+        [
+          131,
+          92,
+          230
+        ],
+        [
+          132,
+          92,
+          230
+        ],
+        [
+          133,
+          92,
+          230
+        ],
+        [
+          134,
+          92,
+          230
+        ],
+        [
+          135,
+          92,
+          231
+        ],
+        [
+          136,
+          92,
+          231
+        ],
+        [
+          137,
+          93,
+          231
+        ],
+        [
+          138,
+          93,
+          231
+        ],
+        [
+          139,
+          93,
+          231
+        ],
+        [
+          140,
+          93,
+          231
+        ],
+        [
+          141,
+          93,
+          232
+        ],
+        [
+          142,
+          93,
+          232
+        ],
+        [
+          143,
+          94,
+          232
+        ],
+        [
+          144,
+          94,
+          232
+        ],
+        [
+          145,
+          94,
+          232
+        ],
+        [
+          146,
+          94,
+          232
+        ],
+        [
+          147,
+          94,
+          233
+        ],
+        [
+          148,
+          94,
+          233
+        ],
+        [
+          149,
+          95,
+          233
+        ],
+        [
+          150,
+          95,
+          233
+        ],
+        [
+          151,
+          95,
+          233
+        ],
+        [
+          152,
+          95,
+          233
+        ],
+        [
+          153,
+          95,
+          233
+        ],
+        [
+          154,
+          95,
+          234
+        ],
+        [
+          155,
+          96,
+          234
+        ],
+        [
+          156,
+          96,
+          234
+        ],
+        [
+          157,
+          96,
+          234
+        ],
+        [
+          158,
+          96,
+          234
+        ],
+        [
+          159,
+          96,
+          234
+        ],
+        [
+          160,
+          96,
+          235
+        ],
+        [
+          161,
+          97,
+          235
+        ],
+        [
+          162,
+          97,
+          235
+        ],
+        [
+          163,
+          97,
+          235
+        ],
+        [
+          164,
+          97,
+          235
+        ],
+        [
+          165,
+          97,
+          235
+        ],
+        [
+          166,
+          97,
+          236
+        ],
+        [
+          167,
+          98,
+          236
+        ],
+        [
+          168,
+          98,
+          236
+        ],
+        [
+          169,
+          98,
+          236
+        ],
+        [
+          170,
+          98,
+          236
+        ],
+        [
+          171,
+          98,
+          236
+        ],
+        [
+          172,
+          99,
+          237
+        ],
+        [
+          173,
+          99,
+          237
+        ],
+        [
+          174,
+          99,
+          237
+        ],
+        [
+          175,
+          99,
+          237
+        ],
+        [
+          176,
+          99,
+          237
+        ],
+        [
+          176,
+          99,
+          237
+        ],
+        [
+          177,
+          100,
+          238
+        ],
+        [
+          178,
+          100,
+          238
+        ],
+        [
+          179,
+          100,
+          238
+        ],
+        [
+          180,
+          100,
+          238
+        ],
+        [
+          181,
+          100,
+          238
+        ],
+        [
+          182,
+          100,
+          238
+        ],
+        [
+          183,
+          101,
+          239
+        ],
+        [
+          184,
+          101,
+          239
+        ],
+        [
+          185,
+          101,
+          239
+        ],
+        [
+          186,
+          101,
+          239
+        ],
+        [
+          187,
+          101,
+          239
+        ],
+        [
+          188,
+          101,
+          239
+        ],
+        [
+          189,
+          102,
+          239
+        ],
+        [
+          189,
+          102,
+          240
+        ],
+        [
+          190,
+          102,
+          240
+        ],
+        [
+          191,
+          102,
+          240
+        ],
+        [
+          192,
+          102,
+          240
+        ],
+        [
+          193,
+          102,
+          240
+        ],
+        [
+          194,
+          103,
+          240
+        ],
+        [
+          195,
+          103,
+          241
+        ],
+        [
+          196,
+          103,
+          241
+        ],
+        [
+          197,
+          103,
+          241
+        ],
+        [
+          198,
+          103,
+          241
+        ],
+        [
+          199,
+          103,
+          241
+        ],
+        [
+          199,
+          104,
+          241
+        ],
+        [
+          200,
+          104,
+          242
+        ],
+        [
+          201,
+          104,
+          242
+        ],
+        [
+          202,
+          104,
+          242
+        ],
+        [
+          203,
+          104,
+          242
+        ],
+        [
+          204,
+          104,
+          242
+        ],
+        [
+          205,
+          105,
+          242
+        ],
+        [
+          206,
+          105,
+          243
+        ],
+        [
+          207,
+          105,
+          243
+        ],
+        [
+          208,
+          105,
+          243
+        ],
+        [
+          208,
+          105,
+          243
+        ],
+        [
+          209,
+          105,
+          243
+        ],
+        [
+          210,
+          106,
+          243
+        ],
+        [
+          211,
+          106,
+          243
+        ],
+        [
+          212,
+          106,
+          244
+        ],
+        [
+          213,
+          106,
+          244
+        ],
+        [
+          214,
+          106,
+          244
+        ],
+        [
+          215,
+          106,
+          244
+        ],
+        [
+          216,
+          107,
+          244
+        ],
+        [
+          216,
+          107,
+          244
+        ],
+        [
+          217,
+          107,
+          245
+        ],
+        [
+          218,
+          107,
+          245
+        ],
+        [
+          219,
+          107,
+          245
+        ],
+        [
+          220,
+          107,
+          245
+        ],
+        [
+          221,
+          108,
+          245
+        ],
+        [
+          222,
+          108,
+          245
+        ],
+        [
+          223,
+          108,
+          246
+        ],
+        [
+          224,
+          108,
+          246
+        ],
+        [
+          224,
+          108,
+          246
+        ],
+        [
+          225,
+          108,
+          246
+        ],
+        [
+          226,
+          109,
+          246
+        ],
+        [
+          227,
+          109,
+          246
+        ],
+        [
+          228,
+          109,
+          247
+        ],
+        [
+          229,
+          109,
+          247
+        ],
+        [
+          230,
+          109,
+          247
+        ],
+        [
+          231,
+          109,
+          247
+        ],
+        [
+          231,
+          110,
+          247
+        ],
+        [
+          232,
+          110,
+          247
+        ],
+        [
+          233,
+          110,
+          248
+        ],
+        [
+          234,
+          110,
+          248
+        ],
+        [
+          235,
+          110,
+          248
+        ],
+        [
+          236,
+          110,
+          248
+        ],
+        [
+          237,
+          111,
+          248
+        ],
+        [
+          238,
+          111,
+          248
+        ],
+        [
+          238,
+          111,
+          248
+        ]
+      ]
+    },
+    {
+      "steps": 5,
+      "a": [
+        0,
+        0,
+        0
+      ],
+      "b": [
+        255,
+        255,
+        255
+      ],
+      "out": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          59,
+          59,
+          59
+        ],
+        [
+          119,
+          119,
+          119
+        ],
+        [
+          185,
+          185,
+          185
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    {
+      "steps": 3,
+      "a": [
+        96,
+        96,
+        96
+      ],
+      "b": [
+        96,
+        96,
+        96
+      ],
+      "out": [
+        [
+          96,
+          96,
+          96
+        ],
+        [
+          96,
+          96,
+          96
+        ],
+        [
+          96,
+          96,
+          96
+        ]
+      ]
+    },
+    {
+      "steps": 7,
+      "a": [
+        255,
+        0,
+        0
+      ],
+      "b": [
+        0,
+        0,
+        255
+      ],
+      "out": [
+        [
+          255,
+          0,
+          0
+        ],
+        [
+          241,
+          0,
+          59
+        ],
+        [
+          223,
+          0,
+          99
+        ],
+        [
+          202,
+          0,
+          137
+        ],
+        [
+          173,
+          0,
+          175
+        ],
+        [
+          130,
+          0,
+          215
+        ],
+        [
+          0,
+          0,
+          255
+        ]
+      ]
+    }
+  ],
+  "progress_bar": [
+    {
+      "width": 60,
+      "percent": "0",
+      "out": "\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m   0%"
+    },
+    {
+      "width": 60,
+      "percent": "0.5",
+      "out": "\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;137;93;231m▌\u001b[m\u001b[38;2;138;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;231;48;2;142;93;232m▌\u001b[m\u001b[38;2;144;94;232;48;2;145;94;232m▌\u001b[m\u001b[38;2;147;94;232;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;151;95;233m▌\u001b[m\u001b[38;2;152;95;233;48;2;153;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;159;96;234m▌\u001b[m\u001b[38;2;160;96;235;48;2;161;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;167;98;236m▌\u001b[m\u001b[38;2;168;98;236;48;2;169;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%"
+    },
+    {
+      "width": 60,
+      "percent": "1",
+      "out": "\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;137;93;231m▌\u001b[m\u001b[38;2;138;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;231;48;2;142;93;232m▌\u001b[m\u001b[38;2;144;94;232;48;2;145;94;232m▌\u001b[m\u001b[38;2;147;94;232;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;151;95;233m▌\u001b[m\u001b[38;2;152;95;233;48;2;153;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;159;96;234m▌\u001b[m\u001b[38;2;160;96;235;48;2;161;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;167;98;236m▌\u001b[m\u001b[38;2;168;98;236;48;2;169;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;175;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;99;237m▌\u001b[m\u001b[38;2;178;100;238;48;2;180;100;238m▌\u001b[m\u001b[38;2;181;100;238;48;2;182;100;238m▌\u001b[m\u001b[38;2;183;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;102;239;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;195;103;241m▌\u001b[m\u001b[38;2;196;103;241;48;2;197;103;241m▌\u001b[m\u001b[38;2;198;103;241;48;2;200;104;241m▌\u001b[m\u001b[38;2;201;104;242;48;2;202;104;242m▌\u001b[m\u001b[38;2;203;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;210;105;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;218;107;245;48;2;219;107;245m▌\u001b[m\u001b[38;2;220;108;245;48;2;222;108;245m▌\u001b[m\u001b[38;2;223;108;246;48;2;224;108;246m▌\u001b[m\u001b[38;2;225;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;228;109;246;48;2;229;109;247m▌\u001b[m\u001b[38;2;230;109;247;48;2;231;110;247m▌\u001b[m\u001b[38;2;232;110;247;48;2;234;110;248m▌\u001b[m\u001b[38;2;235;110;248;48;2;236;110;248m▌\u001b[m\u001b[38;2;237;111;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%"
+    },
+    {
+      "width": 20,
+      "percent": "0.3333333333333333",
+      "out": "\u001b[38;2;90;86;224;48;2;97;87;225m▌\u001b[m\u001b[38;2;103;88;226;48;2;110;88;227m▌\u001b[m\u001b[38;2;116;89;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;127;91;229;48;2;133;92;230m▌\u001b[m\u001b[38;2;138;93;231;48;2;144;94;232m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░\u001b[m  33%"
+    },
+    {
+      "width": 21,
+      "percent": "0.5",
+      "out": "\u001b[38;2;90;86;224;48;2;96;87;225m▌\u001b[m\u001b[38;2;103;87;226;48;2;108;88;227m▌\u001b[m\u001b[38;2;114;89;228;48;2;120;90;228m▌\u001b[m\u001b[38;2;125;91;229;48;2;130;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;145;94;232;48;2;150;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;164;97;235;48;2;169;98;236m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░\u001b[m  50%"
+    },
+    {
+      "width": 22,
+      "percent": "0.5",
+      "out": "\u001b[38;2;90;86;224;48;2;96;87;225m▌\u001b[m\u001b[38;2;102;87;226;48;2;107;88;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;118;90;228m▌\u001b[m\u001b[38;2;123;90;229;48;2;128;91;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;138;93;231m▌\u001b[m\u001b[38;2;142;93;232;48;2;147;94;232m▌\u001b[m\u001b[38;2;152;95;233;48;2;156;96;234m▌\u001b[m\u001b[38;2;160;97;235;48;2;165;97;235m▌\u001b[m\u001b[38;2;169;98;236;48;2;173;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░\u001b[m  50%"
+    },
+    {
+      "width": 22,
+      "percent": "0.3333333333333333",
+      "out": "\u001b[38;2;90;86;224;48;2;96;87;225m▌\u001b[m\u001b[38;2;102;87;226;48;2;107;88;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;118;90;228m▌\u001b[m\u001b[38;2;123;90;229;48;2;128;91;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;138;93;231m▌\u001b[m\u001b[38;2;142;93;232;48;2;147;94;232m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░\u001b[m  33%"
+    },
+    {
+      "width": 5,
+      "percent": "0.5",
+      "out": "\u001b[38;2;96;96;96m\u001b[m  50%"
+    },
+    {
+      "width": 0,
+      "percent": "0.5",
+      "out": "\u001b[38;2;96;96;96m\u001b[m  50%"
+    },
+    {
+      "width": 7,
+      "percent": "0.5",
+      "out": "\u001b[38;2;90;86;224;48;2;147;94;232m▌\u001b[m\u001b[38;2;96;96;96m░\u001b[m  50%"
+    },
+    {
+      "width": 6,
+      "percent": "1",
+      "out": "\u001b[38;2;90;86;224;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%"
+    },
+    {
+      "width": 80,
+      "percent": "0.999",
+      "out": "\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;174;99;237m▌\u001b[m\u001b[38;2;175;99;237;48;2;176;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;100;238m▌\u001b[m\u001b[38;2;178;100;238;48;2;179;100;238m▌\u001b[m\u001b[38;2;180;100;238;48;2;181;100;238m▌\u001b[m\u001b[38;2;182;100;238;48;2;183;101;239m▌\u001b[m\u001b[38;2;184;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;101;239;48;2;189;102;239m▌\u001b[m\u001b[38;2;189;102;240;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;194;103;240m▌\u001b[m\u001b[38;2;195;103;241;48;2;196;103;241m▌\u001b[m\u001b[38;2;197;103;241;48;2;198;103;241m▌\u001b[m\u001b[38;2;199;103;241;48;2;199;104;241m▌\u001b[m\u001b[38;2;200;104;242;48;2;201;104;242m▌\u001b[m\u001b[38;2;202;104;242;48;2;203;104;242m▌\u001b[m\u001b[38;2;204;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;208;105;243m▌\u001b[m\u001b[38;2;209;105;243;48;2;210;106;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;215;106;244;48;2;216;107;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;218;107;245;48;2;219;107;245m▌\u001b[m\u001b[38;2;220;107;245;48;2;221;108;245m▌\u001b[m\u001b[38;2;222;108;245;48;2;223;108;246m▌\u001b[m\u001b[38;2;224;108;246;48;2;224;108;246m▌\u001b[m\u001b[38;2;225;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;227;109;246;48;2;228;109;247m▌\u001b[m\u001b[38;2;229;109;247;48;2;230;109;247m▌\u001b[m\u001b[38;2;231;109;247;48;2;231;110;247m▌\u001b[m\u001b[38;2;232;110;247;48;2;233;110;248m▌\u001b[m\u001b[38;2;234;110;248;48;2;235;110;248m▌\u001b[m\u001b[38;2;236;110;248;48;2;237;111;248m▌\u001b[m\u001b[38;2;238;111;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%"
+    },
+    {
+      "width": 80,
+      "percent": "1.5",
+      "out": "\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;174;99;237m▌\u001b[m\u001b[38;2;175;99;237;48;2;176;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;100;238m▌\u001b[m\u001b[38;2;178;100;238;48;2;179;100;238m▌\u001b[m\u001b[38;2;180;100;238;48;2;181;100;238m▌\u001b[m\u001b[38;2;182;100;238;48;2;183;101;239m▌\u001b[m\u001b[38;2;184;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;101;239;48;2;189;102;239m▌\u001b[m\u001b[38;2;189;102;240;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;194;103;240m▌\u001b[m\u001b[38;2;195;103;241;48;2;196;103;241m▌\u001b[m\u001b[38;2;197;103;241;48;2;198;103;241m▌\u001b[m\u001b[38;2;199;103;241;48;2;199;104;241m▌\u001b[m\u001b[38;2;200;104;242;48;2;201;104;242m▌\u001b[m\u001b[38;2;202;104;242;48;2;203;104;242m▌\u001b[m\u001b[38;2;204;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;208;105;243m▌\u001b[m\u001b[38;2;209;105;243;48;2;210;106;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;215;106;244;48;2;216;107;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;218;107;245;48;2;219;107;245m▌\u001b[m\u001b[38;2;220;107;245;48;2;221;108;245m▌\u001b[m\u001b[38;2;222;108;245;48;2;223;108;246m▌\u001b[m\u001b[38;2;224;108;246;48;2;224;108;246m▌\u001b[m\u001b[38;2;225;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;227;109;246;48;2;228;109;247m▌\u001b[m\u001b[38;2;229;109;247;48;2;230;109;247m▌\u001b[m\u001b[38;2;231;109;247;48;2;231;110;247m▌\u001b[m\u001b[38;2;232;110;247;48;2;233;110;248m▌\u001b[m\u001b[38;2;234;110;248;48;2;235;110;248m▌\u001b[m\u001b[38;2;236;110;248;48;2;237;111;248m▌\u001b[m\u001b[38;2;238;111;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%"
+    },
+    {
+      "width": 80,
+      "percent": "-0.1",
+      "out": "\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m   0%"
+    },
+    {
+      "width": 26,
+      "percent": "0.004",
+      "out": "\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░\u001b[m   0%"
+    },
+    {
+      "width": 26,
+      "percent": "0.996",
+      "out": "\u001b[38;2;90;86;224;48;2;95;86;225m▌\u001b[m\u001b[38;2;100;87;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;109;88;227;48;2;113;89;227m▌\u001b[m\u001b[38;2;117;90;228;48;2;121;90;229m▌\u001b[m\u001b[38;2;125;91;229;48;2;129;91;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;137;93;231m▌\u001b[m\u001b[38;2;141;93;231;48;2;145;94;232m▌\u001b[m\u001b[38;2;148;94;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;159;96;234m▌\u001b[m\u001b[38;2;163;97;235;48;2;166;98;236m▌\u001b[m\u001b[38;2;170;98;236;48;2;173;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;180;100;238m▌\u001b[m\u001b[38;2;183;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;190;102;240;48;2;193;102;240m▌\u001b[m\u001b[38;2;197;103;241;48;2;200;104;241m▌\u001b[m\u001b[38;2;203;104;242;48;2;206;105;243m▌\u001b[m\u001b[38;2;210;105;243;48;2;213;106;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;219;107;245m▌\u001b[m\u001b[38;2;223;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;229;109;247;48;2;232;110;247m▌\u001b[m\u001b[38;2;235;110;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%"
+    }
+  ],
+  "ui_model": [
+    {
+      "name": "tui-test-go",
+      "title": "push demo",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "set",
+          "report": {
+            "objects": 5,
+            "total_objects": 10,
+            "bytes": "512",
+            "total_bytes": "1024",
+            "nodes": [
+              {
+                "id": "abcd000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "3000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "512"
+              }
+            ]
+          }
+        },
+        {
+          "op": "resize",
+          "width": 100,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush demo\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%\n5/10 objects  512 B / 1.0 KiB  0 B/s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      3ms       1 sending               512 B        0 B/s\n"
+        },
+        {
+          "op": "set",
+          "report": {
+            "objects": 5,
+            "total_objects": 10,
+            "bytes": "1024",
+            "total_bytes": "2048",
+            "nodes": [
+              {
+                "id": "abcd000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "3000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "1024"
+              }
+            ]
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "1000000000",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush demo\u001b[m  \u001b[2melapsed 1s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%\n5/10 objects  1.0 KiB / 2.0 KiB  512 B/s  eta 2s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      3ms       1 sending             1.0 KiB      512 B/s\n"
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198896000000000",
+          "level": 4,
+          "text": "upload retry node=abcd reason=busy",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush demo\u001b[m  \u001b[2melapsed 1s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%\n5/10 objects  1.0 KiB / 2.0 KiB  512 B/s  eta 2s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      3ms       1 sending             1.0 KiB      512 B/s\n\u001b[2mevents\u001b[m\n\u001b[33m12:34:56  upload retry node=abcd reason=busy\u001b[m\n"
+        },
+        {
+          "op": "set",
+          "report": {
+            "objects": 5,
+            "total_objects": 10,
+            "bytes": "2048",
+            "total_bytes": "2048",
+            "nodes": [
+              {
+                "id": "abcd000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "2048"
+              }
+            ]
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "2000000000",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush demo\u001b[m  \u001b[2melapsed 2s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;174;99;237m▌\u001b[m\u001b[38;2;175;99;237;48;2;176;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;100;238m▌\u001b[m\u001b[38;2;178;100;238;48;2;179;100;238m▌\u001b[m\u001b[38;2;180;100;238;48;2;181;100;238m▌\u001b[m\u001b[38;2;182;100;238;48;2;183;101;239m▌\u001b[m\u001b[38;2;184;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;101;239;48;2;189;102;239m▌\u001b[m\u001b[38;2;189;102;240;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;194;103;240m▌\u001b[m\u001b[38;2;195;103;241;48;2;196;103;241m▌\u001b[m\u001b[38;2;197;103;241;48;2;198;103;241m▌\u001b[m\u001b[38;2;199;103;241;48;2;199;104;241m▌\u001b[m\u001b[38;2;200;104;242;48;2;201;104;242m▌\u001b[m\u001b[38;2;202;104;242;48;2;203;104;242m▌\u001b[m\u001b[38;2;204;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;208;105;243m▌\u001b[m\u001b[38;2;209;105;243;48;2;210;106;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;215;106;244;48;2;216;107;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;218;107;245;48;2;219;107;245m▌\u001b[m\u001b[38;2;220;107;245;48;2;221;108;245m▌\u001b[m\u001b[38;2;222;108;245;48;2;223;108;246m▌\u001b[m\u001b[38;2;224;108;246;48;2;224;108;246m▌\u001b[m\u001b[38;2;225;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;227;109;246;48;2;228;109;247m▌\u001b[m\u001b[38;2;229;109;247;48;2;230;109;247m▌\u001b[m\u001b[38;2;231;109;247;48;2;231;110;247m▌\u001b[m\u001b[38;2;232;110;247;48;2;233;110;248m▌\u001b[m\u001b[38;2;234;110;248;48;2;235;110;248m▌\u001b[m\u001b[38;2;236;110;248;48;2;237;111;248m▌\u001b[m\u001b[38;2;238;111;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%\n5/10 objects  2.0 KiB / 2.0 KiB  768 B/s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct        -       1 waiting for ack     2.0 KiB      768 B/s\n\u001b[2mevents\u001b[m\n\u001b[33m12:34:56  upload retry node=abcd reason=busy\u001b[m\n"
+        },
+        {
+          "op": "ctrl_c",
+          "quit": false,
+          "cancelled": true
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush demo\u001b[m  \u001b[2melapsed 2s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;174;99;237m▌\u001b[m\u001b[38;2;175;99;237;48;2;176;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;100;238m▌\u001b[m\u001b[38;2;178;100;238;48;2;179;100;238m▌\u001b[m\u001b[38;2;180;100;238;48;2;181;100;238m▌\u001b[m\u001b[38;2;182;100;238;48;2;183;101;239m▌\u001b[m\u001b[38;2;184;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;101;239;48;2;189;102;239m▌\u001b[m\u001b[38;2;189;102;240;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;194;103;240m▌\u001b[m\u001b[38;2;195;103;241;48;2;196;103;241m▌\u001b[m\u001b[38;2;197;103;241;48;2;198;103;241m▌\u001b[m\u001b[38;2;199;103;241;48;2;199;104;241m▌\u001b[m\u001b[38;2;200;104;242;48;2;201;104;242m▌\u001b[m\u001b[38;2;202;104;242;48;2;203;104;242m▌\u001b[m\u001b[38;2;204;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;208;105;243m▌\u001b[m\u001b[38;2;209;105;243;48;2;210;106;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;215;106;244;48;2;216;107;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;218;107;245;48;2;219;107;245m▌\u001b[m\u001b[38;2;220;107;245;48;2;221;108;245m▌\u001b[m\u001b[38;2;222;108;245;48;2;223;108;246m▌\u001b[m\u001b[38;2;224;108;246;48;2;224;108;246m▌\u001b[m\u001b[38;2;225;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;227;109;246;48;2;228;109;247m▌\u001b[m\u001b[38;2;229;109;247;48;2;230;109;247m▌\u001b[m\u001b[38;2;231;109;247;48;2;231;110;247m▌\u001b[m\u001b[38;2;232;110;247;48;2;233;110;248m▌\u001b[m\u001b[38;2;234;110;248;48;2;235;110;248m▌\u001b[m\u001b[38;2;236;110;248;48;2;237;111;248m▌\u001b[m\u001b[38;2;238;111;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%\n5/10 objects  2.0 KiB / 2.0 KiB  768 B/s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct        -       1 waiting for ack     2.0 KiB      768 B/s\n\u001b[2mevents\u001b[m\n\u001b[33m12:34:56  upload retry node=abcd reason=busy\u001b[m\n\u001b[33m{CLOCK}  cancelling\u001b[m\n"
+        },
+        {
+          "op": "ctrl_c",
+          "quit": false,
+          "cancelled": true
+        },
+        {
+          "op": "done",
+          "error": "context canceled",
+          "quit": true,
+          "cancelled": true
+        },
+        {
+          "op": "view",
+          "contains": [
+            "push demo",
+            "failed: context canceled",
+            "cancelling",
+            "waiting for ack"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "two-nodes",
+      "title": "push trees/demo",
+      "offset_secs": 7200,
+      "steps": [
+        {
+          "op": "set",
+          "report": {
+            "objects": 5,
+            "total_objects": 10,
+            "bytes": "512",
+            "total_bytes": "2048",
+            "nodes": [
+              {
+                "id": "abcd000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "3000000",
+                "in_flight": 2,
+                "awaiting": 2,
+                "bytes": "512"
+              },
+              {
+                "id": "ef01000000000000000000000000000000000000000000000000000000000000",
+                "direct": false,
+                "rtt_ns": "45000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "set",
+          "report": {
+            "objects": 5,
+            "total_objects": 10,
+            "bytes": "1024",
+            "total_bytes": "2048",
+            "nodes": [
+              {
+                "id": "abcd000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "3000000",
+                "in_flight": 2,
+                "awaiting": 2,
+                "bytes": "1024"
+              },
+              {
+                "id": "ef01000000000000000000000000000000000000000000000000000000000000",
+                "direct": false,
+                "rtt_ns": "45000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "1200000000",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198896000000000",
+          "level": 4,
+          "text": "upload retry node=abcd reason=busy",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198896000000000",
+          "level": 0,
+          "text": "connected node=abcd nodes=3 path=direct rtt=3ms",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush trees/demo\u001b[m  \u001b[2melapsed 1s\u001b[m\n\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;137;93;231m▌\u001b[m\u001b[38;2;138;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;231;48;2;142;93;232m▌\u001b[m\u001b[38;2;144;94;232;48;2;145;94;232m▌\u001b[m\u001b[38;2;147;94;232;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;151;95;233m▌\u001b[m\u001b[38;2;152;95;233;48;2;153;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;159;96;234m▌\u001b[m\u001b[38;2;160;96;235;48;2;161;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;167;98;236m▌\u001b[m\u001b[38;2;168;98;236;48;2;169;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%\n5/10 objects  1.0 KiB / 2.0 KiB  426 B/s  eta 2s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      3ms       2 waiting for ack     1.0 KiB      426 B/s\nef010000   relay      45ms       1 sending                 0 B        0 B/s\n\u001b[2mevents\u001b[m\n\u001b[33m14:34:56  upload retry node=abcd reason=busy\u001b[m\n14:34:56  connected node=abcd nodes=3 path=direct rtt=3ms\n"
+        },
+        {
+          "op": "resize",
+          "width": 100,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush trees/demo\u001b[m  \u001b[2melapsed 1s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%\n5/10 objects  1.0 KiB / 2.0 KiB  426 B/s  eta 2s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      3ms       2 waiting for ack     1.0 KiB      426 B/s\nef010000   relay      45ms       1 sending                 0 B        0 B/s\n\u001b[2mevents\u001b[m\n\u001b[33m14:34:56  upload retry node=abcd reason=busy\u001b[m\n14:34:56  connected node=abcd nodes=3 path=direct rtt=3ms\n"
+        }
+      ]
+    },
+    {
+      "name": "empty-done-width-10",
+      "title": "pull x",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "resize",
+          "width": 10,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "done",
+          "quit": true,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpull x\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░\u001b[m   0%\n0/0 objects  0 B/s\n\u001b[32mdone\u001b[m\n"
+        }
+      ]
+    },
+    {
+      "name": "bar-full",
+      "title": "pull trees/demo",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "set",
+          "report": {
+            "objects": 3,
+            "total_objects": 3,
+            "bytes": "4096",
+            "total_bytes": "4096",
+            "nodes": []
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpull trees/demo\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;137;93;231m▌\u001b[m\u001b[38;2;138;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;231;48;2;142;93;232m▌\u001b[m\u001b[38;2;144;94;232;48;2;145;94;232m▌\u001b[m\u001b[38;2;147;94;232;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;151;95;233m▌\u001b[m\u001b[38;2;152;95;233;48;2;153;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;159;96;234m▌\u001b[m\u001b[38;2;160;96;235;48;2;161;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;167;98;236m▌\u001b[m\u001b[38;2;168;98;236;48;2;169;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;175;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;99;237m▌\u001b[m\u001b[38;2;178;100;238;48;2;180;100;238m▌\u001b[m\u001b[38;2;181;100;238;48;2;182;100;238m▌\u001b[m\u001b[38;2;183;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;102;239;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;195;103;241m▌\u001b[m\u001b[38;2;196;103;241;48;2;197;103;241m▌\u001b[m\u001b[38;2;198;103;241;48;2;200;104;241m▌\u001b[m\u001b[38;2;201;104;242;48;2;202;104;242m▌\u001b[m\u001b[38;2;203;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;210;105;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;218;107;245;48;2;219;107;245m▌\u001b[m\u001b[38;2;220;108;245;48;2;222;108;245m▌\u001b[m\u001b[38;2;223;108;246;48;2;224;108;246m▌\u001b[m\u001b[38;2;225;108;246;48;2;226;109;246m▌\u001b[m\u001b[38;2;228;109;246;48;2;229;109;247m▌\u001b[m\u001b[38;2;230;109;247;48;2;231;110;247m▌\u001b[m\u001b[38;2;232;110;247;48;2;234;110;248m▌\u001b[m\u001b[38;2;235;110;248;48;2;236;110;248m▌\u001b[m\u001b[38;2;237;111;248;48;2;238;111;248m▌\u001b[m\u001b[38;2;96;96;96m\u001b[m 100%\n3/3 objects  4.0 KiB / 4.0 KiB  0 B/s\n"
+        }
+      ]
+    },
+    {
+      "name": "odd-bar-third",
+      "title": "fetch trees/demo",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "resize",
+          "width": 26,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "set",
+          "report": {
+            "objects": 1,
+            "total_objects": 3,
+            "bytes": "0",
+            "total_bytes": "0",
+            "nodes": []
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mfetch trees/demo\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;96;87;225m▌\u001b[m\u001b[38;2;102;87;226;48;2;107;88;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;118;90;228m▌\u001b[m\u001b[38;2;123;90;229;48;2;128;91;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;138;93;231m▌\u001b[m\u001b[38;2;142;93;232;48;2;147;94;232m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░\u001b[m  33%\n1/3 objects  0 B/s\n"
+        }
+      ]
+    },
+    {
+      "name": "done-after-steady-ticks",
+      "title": "push trees/steady",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "set",
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "2048",
+            "total_bytes": "8192",
+            "nodes": [
+              {
+                "id": "abcd000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "2000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "2048"
+              }
+            ]
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "tick",
+          "offset_ns": "1000000000",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush trees/steady\u001b[m  \u001b[2melapsed 1s\u001b[m\n\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  25%\n4/10 objects  2.0 KiB / 8.0 KiB  0 B/s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      2ms       0 idle                2.0 KiB        0 B/s\n"
+        },
+        {
+          "op": "done",
+          "quit": true,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush trees/steady\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  25%\n4/10 objects  2.0 KiB / 8.0 KiB  0 B/s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\nabcd0000   direct      2ms       0 idle                2.0 KiB        0 B/s\n\u001b[32mdone\u001b[m\n"
+        }
+      ]
+    },
+    {
+      "name": "events-scroll",
+      "title": "pull trees/events",
+      "offset_secs": 3600,
+      "steps": [
+        {
+          "op": "event",
+          "at_unix_ns": "1758198896000000000",
+          "level": -4,
+          "text": "event 0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198897000000000",
+          "level": 0,
+          "text": "event 1",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198898000000000",
+          "level": 4,
+          "text": "event 2",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198899000000000",
+          "level": 8,
+          "text": "event 3",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198900000000000",
+          "level": 2,
+          "text": "event 4",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198901000000000",
+          "level": 6,
+          "text": "event 5",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198902000000000",
+          "level": 12,
+          "text": "event 6",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198903000000000",
+          "level": -4,
+          "text": "event 7",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198904000000000",
+          "level": 0,
+          "text": "event 8",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198905000000000",
+          "level": 4,
+          "text": "event 9",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198906000000000",
+          "level": 8,
+          "text": "event 10",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198907000000000",
+          "level": 2,
+          "text": "event 11",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198908000000000",
+          "level": 6,
+          "text": "event 12",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "event",
+          "at_unix_ns": "1758198909000000000",
+          "level": 12,
+          "text": "event 13",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpull trees/events\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m   0%\n0/0 objects  0 B/s\n\u001b[2mevents\u001b[m\n\u001b[33m13:34:58  event 2\u001b[m\n\u001b[31m13:34:59  event 3\u001b[m\n13:35:00  event 4\n\u001b[33m13:35:01  event 5\u001b[m\n\u001b[31m13:35:02  event 6\u001b[m\n13:35:03  event 7\n13:35:04  event 8\n\u001b[33m13:35:05  event 9\u001b[m\n\u001b[31m13:35:06  event 10\u001b[m\n13:35:07  event 11\n\u001b[33m13:35:08  event 12\u001b[m\n\u001b[31m13:35:09  event 13\u001b[m\n"
+        }
+      ]
+    },
+    {
+      "name": "node-rows",
+      "title": "push trees/rows",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "set",
+          "report": {
+            "objects": 9,
+            "total_objects": 9,
+            "bytes": "5368709120",
+            "total_bytes": "6442450944",
+            "nodes": [
+              {
+                "id": "0100000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "250000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "5368709120"
+              },
+              {
+                "id": "0200000000000000000000000000000000000000000000000000000000000000",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 3,
+                "awaiting": 1,
+                "bytes": "1023"
+              },
+              {
+                "id": "0300000000000000000000000000000000000000000000000000000000000000",
+                "direct": true,
+                "rtt_ns": "1234000000",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "1048576"
+              },
+              {
+                "id": "0400000000000000000000000000000000000000000000000000000000000000",
+                "direct": false,
+                "rtt_ns": "999000",
+                "in_flight": 4,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mpush trees/rows\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;92;86;225m▌\u001b[m\u001b[38;2;94;86;225;48;2;95;87;225m▌\u001b[m\u001b[38;2;97;87;225;48;2;99;87;225m▌\u001b[m\u001b[38;2;101;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;104;88;226;48;2;106;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;111;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;114;89;227;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;123;90;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;128;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;131;92;230m▌\u001b[m\u001b[38;2;132;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;137;93;231m▌\u001b[m\u001b[38;2;138;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;231;48;2;142;93;232m▌\u001b[m\u001b[38;2;144;94;232;48;2;145;94;232m▌\u001b[m\u001b[38;2;147;94;232;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;151;95;233m▌\u001b[m\u001b[38;2;152;95;233;48;2;153;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;159;96;234m▌\u001b[m\u001b[38;2;160;96;235;48;2;161;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;167;98;236m▌\u001b[m\u001b[38;2;168;98;236;48;2;169;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;173;99;237;48;2;175;99;237m▌\u001b[m\u001b[38;2;176;99;237;48;2;177;99;237m▌\u001b[m\u001b[38;2;178;100;238;48;2;180;100;238m▌\u001b[m\u001b[38;2;181;100;238;48;2;182;100;238m▌\u001b[m\u001b[38;2;183;101;239;48;2;185;101;239m▌\u001b[m\u001b[38;2;186;101;239;48;2;187;101;239m▌\u001b[m\u001b[38;2;188;102;239;48;2;190;102;240m▌\u001b[m\u001b[38;2;191;102;240;48;2;192;102;240m▌\u001b[m\u001b[38;2;193;102;240;48;2;195;103;241m▌\u001b[m\u001b[38;2;196;103;241;48;2;197;103;241m▌\u001b[m\u001b[38;2;198;103;241;48;2;200;104;241m▌\u001b[m\u001b[38;2;201;104;242;48;2;202;104;242m▌\u001b[m\u001b[38;2;203;104;242;48;2;205;105;242m▌\u001b[m\u001b[38;2;206;105;243;48;2;207;105;243m▌\u001b[m\u001b[38;2;208;105;243;48;2;210;105;243m▌\u001b[m\u001b[38;2;211;106;243;48;2;212;106;244m▌\u001b[m\u001b[38;2;213;106;244;48;2;214;106;244m▌\u001b[m\u001b[38;2;216;107;244;48;2;217;107;245m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░\u001b[m  83%\n9/9 objects  5.0 GiB / 6.0 GiB  0 B/s\n\u001b[2mnode       path        rtt batches state                  sent         rate\u001b[m\n01000000   direct       0s       0 idle                5.0 GiB        0 B/s\n02000000   relay         -       3 sending              1023 B        0 B/s\n03000000   direct   1.234s       1 waiting for ack     1.0 MiB        0 B/s\n04000000   relay       1ms       4 sending                 0 B        0 B/s\n"
+        }
+      ]
+    },
+    {
+      "name": "done-error-no-ticks",
+      "title": "clone trees/x",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "done",
+          "error": "client: no bootstrap node answered: dial 0707070707070707: timeout",
+          "quit": true,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1mclone trees/x\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m   0%\n0/0 objects  0 B/s\n\u001b[31mfailed: client: no bootstrap node answered: dial 0707070707070707: timeout\u001b[m\n"
+        }
+      ]
+    },
+    {
+      "name": "resize-bounds",
+      "title": "init trees/bounds",
+      "offset_secs": 0,
+      "steps": [
+        {
+          "op": "set",
+          "report": {
+            "objects": 1,
+            "total_objects": 2,
+            "bytes": "0",
+            "total_bytes": "0",
+            "nodes": []
+          }
+        },
+        {
+          "op": "resize",
+          "width": 200,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "tick",
+          "offset_ns": "0",
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1minit trees/bounds\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;91;86;225m▌\u001b[m\u001b[38;2;93;86;225;48;2;94;86;225m▌\u001b[m\u001b[38;2;95;87;225;48;2;97;87;225m▌\u001b[m\u001b[38;2;98;87;225;48;2;99;87;226m▌\u001b[m\u001b[38;2;100;87;226;48;2;102;87;226m▌\u001b[m\u001b[38;2;103;88;226;48;2;104;88;226m▌\u001b[m\u001b[38;2;105;88;226;48;2;107;88;226m▌\u001b[m\u001b[38;2;108;88;227;48;2;109;88;227m▌\u001b[m\u001b[38;2;110;89;227;48;2;112;89;227m▌\u001b[m\u001b[38;2;113;89;227;48;2;114;89;227m▌\u001b[m\u001b[38;2;115;89;228;48;2;116;89;228m▌\u001b[m\u001b[38;2;117;90;228;48;2;119;90;228m▌\u001b[m\u001b[38;2;120;90;228;48;2;121;90;228m▌\u001b[m\u001b[38;2;122;90;229;48;2;123;90;229m▌\u001b[m\u001b[38;2;124;91;229;48;2;125;91;229m▌\u001b[m\u001b[38;2;126;91;229;48;2;127;91;229m▌\u001b[m\u001b[38;2;129;91;230;48;2;130;91;230m▌\u001b[m\u001b[38;2;131;92;230;48;2;132;92;230m▌\u001b[m\u001b[38;2;133;92;230;48;2;134;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;136;92;231m▌\u001b[m\u001b[38;2;137;93;231;48;2;138;93;231m▌\u001b[m\u001b[38;2;139;93;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;141;93;232;48;2;142;93;232m▌\u001b[m\u001b[38;2;143;94;232;48;2;144;94;232m▌\u001b[m\u001b[38;2;145;94;232;48;2;146;94;232m▌\u001b[m\u001b[38;2;147;94;233;48;2;148;94;233m▌\u001b[m\u001b[38;2;149;95;233;48;2;150;95;233m▌\u001b[m\u001b[38;2;151;95;233;48;2;152;95;233m▌\u001b[m\u001b[38;2;153;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;155;96;234;48;2;156;96;234m▌\u001b[m\u001b[38;2;157;96;234;48;2;158;96;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;161;97;235;48;2;162;97;235m▌\u001b[m\u001b[38;2;163;97;235;48;2;164;97;235m▌\u001b[m\u001b[38;2;165;97;235;48;2;166;97;236m▌\u001b[m\u001b[38;2;167;98;236;48;2;168;98;236m▌\u001b[m\u001b[38;2;169;98;236;48;2;170;98;236m▌\u001b[m\u001b[38;2;171;98;236;48;2;172;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\u001b[m  50%\n1/2 objects  0 B/s\n"
+        },
+        {
+          "op": "resize",
+          "width": 24,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1minit trees/bounds\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;97;87;225m▌\u001b[m\u001b[38;2;103;88;226;48;2;110;88;227m▌\u001b[m\u001b[38;2;116;89;228;48;2;122;90;229m▌\u001b[m\u001b[38;2;127;91;229;48;2;133;92;230m▌\u001b[m\u001b[38;2;138;93;231;48;2;144;94;232m▌\u001b[m\u001b[38;2;149;95;233;48;2;154;95;234m▌\u001b[m\u001b[38;2;159;96;234;48;2;164;97;235m▌\u001b[m\u001b[38;2;169;98;236;48;2;174;99;237m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░\u001b[m  50%\n1/2 objects  0 B/s\n"
+        },
+        {
+          "op": "resize",
+          "width": 25,
+          "quit": false,
+          "cancelled": false
+        },
+        {
+          "op": "view",
+          "out": "\u001b[1minit trees/bounds\u001b[m  \u001b[2melapsed 0s\u001b[m\n\u001b[38;2;90;86;224;48;2;96;87;225m▌\u001b[m\u001b[38;2;103;87;226;48;2;108;88;227m▌\u001b[m\u001b[38;2;114;89;228;48;2;120;90;228m▌\u001b[m\u001b[38;2;125;91;229;48;2;130;92;230m▌\u001b[m\u001b[38;2;135;92;231;48;2;140;93;231m▌\u001b[m\u001b[38;2;145;94;232;48;2;150;95;233m▌\u001b[m\u001b[38;2;155;96;234;48;2;160;96;235m▌\u001b[m\u001b[38;2;164;97;235;48;2;169;98;236m▌\u001b[m\u001b[38;2;96;96;96m░░░░░░░░\u001b[m  50%\n1/2 objects  0 B/s\n"
+        }
+      ]
+    }
+  ]
+}

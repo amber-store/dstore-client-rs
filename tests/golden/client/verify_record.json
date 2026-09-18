@@ -1,0 +1,288 @@
+{
+  "cases": [
+    {
+      "name": "raw_blob",
+      "raw": {
+        "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064ce6c2ad6c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85"
+    },
+    {
+      "name": "raw_empty_blob",
+      "raw": {
+        "key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f",
+        "flags": 0,
+        "ulen": 0,
+        "slen": 0,
+        "bytes": "010000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f000000000000000000ca57a956"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f"
+    },
+    {
+      "name": "zstd_blob",
+      "raw": {
+        "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+        "flags": 1,
+        "ulen": 4096,
+        "slen": 15,
+        "bytes": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db901000010000000000fca6d649528b52ffd64000f0380006103162c89"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9"
+    },
+    {
+      "name": "dirleaf_logical_length",
+      "raw": {
+        "key": "211388114cb0783d82a06169e6be55da37656bdf2db23a6b28782241d63688bc",
+        "flags": 0,
+        "ulen": 64,
+        "slen": 64,
+        "bytes": "01211388114cb0783d82a06169e6be55da37656bdf2db23a6b28782241d63688bc0000000040000000407a2e32e0ce56971cde355897421efc0b1046c8bf2f537eddbfbc7b9864f6e7ff7a82f2c329fb173fb546c44fb3b2c77bb33cbc5886654aae7b4ff2b983e503f6aed334bd"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "211388114cb0783d82a06169e6be55da37656bdf2db23a6b28782241d63688bc"
+    },
+    {
+      "name": "filenode_logical_length",
+      "raw": {
+        "key": "15010000000000e22e453edd4f8da218ae7d2c5669f985e12e139ea346614ad4",
+        "flags": 0,
+        "ulen": 90,
+        "slen": 90,
+        "bytes": "0115010000000000e22e453edd4f8da218ae7d2c5669f985e12e139ea346614ad4000000005a0000005a5ad4450ced8f01dbe4140b1d89a9817b8a6f46b301dd50d0a6e8eb9ccfc9ab66fb64a7129699b7caad8d6837074f1f093777dfa2b8fdbecb42eb9822169285dc210d83e37aee49c8e044b67d726b03a2b1a976e3cc7ad4d712b6ccb27f48"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "15010000000000e22e453edd4f8da218ae7d2c5669f985e12e139ea346614ad4"
+    },
+    {
+      "name": "xattrset",
+      "raw": {
+        "key": "4028b3baeb5e370588d1264f61963e6d67f5a12d620513ac0681afeb851189cf",
+        "flags": 0,
+        "ulen": 40,
+        "slen": 40,
+        "bytes": "014028b3baeb5e370588d1264f61963e6d67f5a12d620513ac0681afeb851189cf00000000280000002894d424ddca8a33e272e3736e30b0984b6ac674e45f847b8efc19efdb9ef8f3260cebe47db9ca78a3183a0365"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "4028b3baeb5e370588d1264f61963e6d67f5a12d620513ac0681afeb851189cf"
+    },
+    {
+      "name": "blob_length_field_999_over_100_bytes",
+      "raw": {
+        "key": "0103e74b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "010103e74b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae00000000640000006447c8652ac15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "0103e74b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae"
+    },
+    {
+      "name": "payload_byte_flipped_crc_recomputed",
+      "raw": {
+        "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae850000000064000000643c07a9d5c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4a"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "payload hashes to 006462474a6071a30ca7a642f94c8102f659f6050c9607fb84abddb1e0475bbc, not 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+      "error_portable": true
+    },
+    {
+      "name": "payload_of_another_key",
+      "raw": {
+        "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae850000000064000000642906a6bace56971cde355897421efc0b1046c8bf2f537eddbfbc7b9864f6e7ff7a82f2c329fb173fb546c44fb3b2c77bb33cbc5886654aae7b4ff2b983e503f6aed334bdffcc8758bc7814406cf86fef330a45ba35e6b0e89844e8567799bb31ad6015706103b161"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "payload hashes to 00642128ec7400548a9cfbd68b06fba4b747624ba7af802eca21ebc42827c907, not 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+      "error_portable": true
+    },
+    {
+      "name": "zstd_payload_of_another_key",
+      "raw": {
+        "key": "01100048e7167d9f7b381492e2f469360bfadb4c07932ea526e452371adab1d9",
+        "flags": 1,
+        "ulen": 4096,
+        "slen": 15,
+        "bytes": "0101100048e7167d9f7b381492e2f469360bfadb4c07932ea526e452371adab1d901000010000000000fdaec8a0928b52ffd64000f0380006103162c89"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "payload hashes to 011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9, not 01100048e7167d9f7b381492e2f469360bfadb4c07932ea526e452371adab1d9",
+      "error_portable": true
+    },
+    {
+      "name": "zstd_frame_stored_raw",
+      "raw": {
+        "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+        "flags": 0,
+        "ulen": 15,
+        "slen": 15,
+        "bytes": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9000000000f0000000f6914d46f28b52ffd64000f0380006103162c89"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "payload hashes to 011000e6d183aa4a3de639d8d01ac63087660c8a38b931bc1eab945a5d9895ff, not 011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+      "error_portable": true
+    },
+    {
+      "name": "key_reserved_header_bit",
+      "raw": {
+        "key": "08644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0108644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae850000000064000000648ce3b368c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": false,
+      "ok": false,
+      "error": "key: reserved header bit is set",
+      "error_portable": true
+    },
+    {
+      "name": "key_reserved_type_5",
+      "raw": {
+        "key": "50644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0150644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae8500000000640000006454d739b8c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": false,
+      "ok": false,
+      "error": "key: reserved object type: 5",
+      "error_portable": true
+    },
+    {
+      "name": "key_reserved_type_15",
+      "raw": {
+        "key": "f0644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "01f0644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064644d6995c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": false,
+      "ok": false,
+      "error": "key: reserved object type: 15",
+      "error_portable": true
+    },
+    {
+      "name": "key_noncanonical_length",
+      "raw": {
+        "key": "01006475a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0101006475a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae8500000000640000006443de0097c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": false,
+      "ok": false,
+      "error": "key: non-canonical length encoding",
+      "error_portable": true
+    },
+    {
+      "name": "unknown_flag_bit_accepted",
+      "raw": {
+        "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 2,
+        "ulen": 100,
+        "slen": 100,
+        "bytes": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85020000006400000064afff0b8cc15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": false,
+      "ok": true,
+      "out_key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85"
+    },
+    {
+      "name": "zstd_with_unknown_flag_bit",
+      "raw": {
+        "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+        "flags": 3,
+        "ulen": 4096,
+        "slen": 15,
+        "bytes": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db903000010000000000f8baa040c28b52ffd64000f0380006103162c89"
+      },
+      "parses": false,
+      "ok": true,
+      "out_key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9"
+    },
+    {
+      "name": "raw_ulen_ignored",
+      "raw": {
+        "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "flags": 0,
+        "ulen": 5,
+        "slen": 100,
+        "bytes": "0100644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000000500000064662782f0c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+      },
+      "parses": false,
+      "ok": true,
+      "out_key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85"
+    },
+    {
+      "name": "zstd_header_ulen_one_more",
+      "raw": {
+        "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+        "flags": 1,
+        "ulen": 4097,
+        "slen": 15,
+        "bytes": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db901000010010000000f7022a61b28b52ffd64000f0380006103162c89"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "amberpack: corrupt pack data: decompressed to 4096 bytes, header says 4097",
+      "error_portable": true
+    },
+    {
+      "name": "zstd_header_ulen_one_less",
+      "raw": {
+        "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+        "flags": 1,
+        "ulen": 4095,
+        "slen": 15,
+        "bytes": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db90100000fff0000000fd94979ff28b52ffd64000f0380006103162c89"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "amberpack: corrupt pack data: zstd: decompressed size exceeds configured limit",
+      "error_portable": false
+    },
+    {
+      "name": "zstd_garbage_frame",
+      "raw": {
+        "key": "011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9",
+        "flags": 1,
+        "ulen": 4096,
+        "slen": 64,
+        "bytes": "01011000cf657d3fd42311a258afdf3b5261c256983e3deb2bb38980cb0e754db9010000100000000040e69eb0bf646070befe52afae62eaaf875e8a2dc0b689b544e52bec4360603197d68ce9c8a187582f78b33643fe6b8e80a5f4561dccb8ac5aa6b853a53df1e74d18d6c9fb"
+      },
+      "parses": true,
+      "ok": false,
+      "error": "amberpack: corrupt pack data: zstd: invalid input: magic number mismatch",
+      "error_portable": false
+    }
+  ]
+}

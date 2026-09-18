@@ -1,0 +1,3830 @@
+{
+  "encode": [
+    {
+      "in_hex": "",
+      "out": ""
+    },
+    {
+      "in_hex": "c2",
+      "out": "c2"
+    },
+    {
+      "in_hex": "122a",
+      "out": "122a"
+    },
+    {
+      "in_hex": "d62b1e",
+      "out": "d62b1e"
+    },
+    {
+      "in_hex": "21a5eda1",
+      "out": "21a5eda1"
+    },
+    {
+      "in_hex": "aea51cfe59",
+      "out": "aea51cfe59"
+    },
+    {
+      "in_hex": "d8c6780b394e",
+      "out": "d8c6780b394e"
+    },
+    {
+      "in_hex": "ed849f879d55de",
+      "out": "ed849f879d55de"
+    },
+    {
+      "in_hex": "b6c895f5d00f6e56",
+      "out": "b6c895f5d00f6e56"
+    },
+    {
+      "in_hex": "0def546330dc6c38cf",
+      "out": "0def546330dc6c38cf"
+    },
+    {
+      "in_hex": "884ab912a135a0f6e87f",
+      "out": "884ab912a135a0f6e87f"
+    },
+    {
+      "in_hex": "1c76af30c169de9d1e37f8",
+      "out": "1c76af30c169de9d1e37f8"
+    },
+    {
+      "in_hex": "7a119518686d365ec200473e",
+      "out": "7a119518686d365ec200473e"
+    },
+    {
+      "in_hex": "16fd103a68da72f2aef0008dd4",
+      "out": "16fd103a68da72f2aef0008dd4"
+    },
+    {
+      "in_hex": "d9bd7d5d2aedcad211bebc56af48",
+      "out": "d9bd7d5d2aedcad211bebc56af48"
+    },
+    {
+      "in_hex": "2d95ffceb61cfb79de42fbf96cc8c9",
+      "out": "2d95ffceb61cfb79de42fbf96cc8c9"
+    },
+    {
+      "in_hex": "be039eef36e95677d890482684524d40",
+      "out": "be039eef36e95677d890482684524d40"
+    },
+    {
+      "in_hex": "8000e45b4e8444a3c9fd4b509584167097",
+      "out": "8000e45b4e8444a3c9fd4b509584167097"
+    },
+    {
+      "in_hex": "36b1dfc351f25b6ce4c1a6698b217fb4fdd6",
+      "out": "36b1dfc351f25b6ce4c1a6698b217fb4fdd6"
+    },
+    {
+      "in_hex": "e4d65f4eeed2cc6c4dd6288159b7191a6d4dac",
+      "out": "e4d65f4eeed2cc6c4dd6288159b7191a6d4dac"
+    },
+    {
+      "in_hex": "87312c927c5366c962ee477b3ae4bd757f54ba65",
+      "out": "87312c927c5366c962ee477b3ae4bd757f54ba65"
+    },
+    {
+      "in_hex": "ae64d84e65d14e95e7f9bae93ba2c61425cc405a81",
+      "out": "ae64d84e65d14e95e7f9bae93ba2c61425cc405a81"
+    },
+    {
+      "in_hex": "1046b86baabfb9088f6f7c64d99f41006301f2b0cb94",
+      "out": "1046b86baabfb9088f6f7c64d99f41006301f2b0cb94"
+    },
+    {
+      "in_hex": "5a4de76d4160b9f7517ed5282e5edaf80168ddfbd0c035",
+      "out": "5a4de76d4160b9f7517ed5282e5edaf80168ddfbd0c035"
+    },
+    {
+      "in_hex": "1873f3dc7a0b7469fb458f563e6f11e60d124addadf74b49",
+      "out": "1873f3dc7a0b7469fb458f563e6f11e60d124addadf74b49"
+    },
+    {
+      "in_hex": "549b5fd77c2dec71684e73dfe8f4a9aea69d2ccb575987277f",
+      "out": "549b5fd77c2dec71684e73dfe8f4a9aea69d2ccb575987277f"
+    },
+    {
+      "in_hex": "c455aa8bebc1bb04c92b625d2edfdf95cb08c2a5b1795497b71d",
+      "out": "c455aa8bebc1bb04c92b625d2edfdf95cb08c2a5b1795497b71d"
+    },
+    {
+      "in_hex": "c3cb588d48560c289a7c7acc00e41c34d35b067b4280916eaf89e9",
+      "out": "c3cb588d48560c289a7c7acc00e41c34d35b067b4280916eaf89e9"
+    },
+    {
+      "in_hex": "33e59dc763f3540906b4df53771f179633297710e7a2170b6eaec1cf",
+      "out": "33e59dc763f3540906b4df53771f179633297710e7a2170b6eaec1cf"
+    },
+    {
+      "in_hex": "88ab8895325729afe1c85f6807985df189346696a3686071c5c291e2a9",
+      "out": "88ab8895325729afe1c85f6807985df189346696a3686071c5c291e2a9"
+    },
+    {
+      "in_hex": "f79cb573abedc89d35893815acee6503724c6f1bc835f36a542d2d39e599",
+      "out": "f79cb573abedc89d35893815acee6503724c6f1bc835f36a542d2d39e599"
+    },
+    {
+      "in_hex": "0cb95d6f1175c2b1167cd42c1643dcfe041e3ed55c853320cb96fa56bbdc65",
+      "out": "0cb95d6f1175c2b1167cd42c1643dcfe041e3ed55c853320cb96fa56bbdc65"
+    },
+    {
+      "in_hex": "0543e65e13cde92cb418865de85e340f1f1c6d80c54ee090fc7b00ae78ba6570",
+      "out": "0543e65e13cde92cb418865de85e340f1f1c6d80c54ee090fc7b00ae78ba6570"
+    },
+    {
+      "in_hex": "ba90269ff7c41932ecd48456638c0941653c24c9c6bd2094934bb565a5dffde0aa",
+      "out": "ba90269ff7c41932ecd48456638c0941653c24c9c6bd2094934bb565a5dffde0aa"
+    },
+    {
+      "in_hex": "98e8c10fcfe9c63e84014b88cdb74fd20084d14eb9210cca9ef628705275c671bd9f",
+      "out": "98e8c10fcfe9c63e84014b88cdb74fd20084d14eb9210cca9ef628705275c671bd9f"
+    },
+    {
+      "in_hex": "2182e0f69fef564d5aca670939aa5cdeb872d4b3ef81d43c19308ed4d6d958cd81bd93",
+      "out": "2182e0f69fef564d5aca670939aa5cdeb872d4b3ef81d43c19308ed4d6d958cd81bd93"
+    },
+    {
+      "in_hex": "3c8a01cd4af1085de58ac859ab99df3ccbfab94ee07c59c633818ae2016328013f8a370f",
+      "out": "3c8a01cd4af1085de58ac859ab99df3ccbfab94ee07c59c633818ae2016328013f8a370f"
+    },
+    {
+      "in_hex": "c83f555618e4aa3497abae15953cb67d94c7461f577daba7d7dc20370d3e7fe3f4957740d9",
+      "out": "c83f555618e4aa3497abae15953cb67d94c7461f577daba7d7dc20370d3e7fe3f4957740d9"
+    },
+    {
+      "in_hex": "f6e2c9a6c96f7ddbb2c954f2f3785c7fa6ae447ab266830fffd521ddd55c98dea3f16860b4d7",
+      "out": "f6e2c9a6c96f7ddbb2c954f2f3785c7fa6ae447ab266830fffd521ddd55c98dea3f16860b4d7"
+    },
+    {
+      "in_hex": "3766b176c61d0a92836bac8ce1bf51a923353742303f83b577f1e44b03fc6f5cfa0bf37d331737",
+      "out": "3766b176c61d0a92836bac8ce1bf51a923353742303f83b577f1e44b03fc6f5cfa0bf37d331737"
+    },
+    {
+      "in_hex": "9727891237e929c8ca462c6435aba2f4c1dc4b75937d5c84a5e30d906c8a3fab6eb6dbdeb2d3cd0c",
+      "out": "9727891237e929c8ca462c6435aba2f4c1dc4b75937d5c84a5e30d906c8a3fab6eb6dbdeb2d3cd0c"
+    }
+  ],
+  "decode": [
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "30",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "7a64346161",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "643461617a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "3330333133",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3067",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "30306767",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "3001",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0001"
+    },
+    {
+      "in_hex": "6666656564",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "616263",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "61",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "7a7a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "61627a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "c3bf",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "3047",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "00",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "30303031303230333034303530363037",
+      "out_hex": "0001020304050607",
+      "error": ""
+    },
+    {
+      "in_hex": "46384639464146424643464446454646",
+      "out_hex": "f8f9fafbfcfdfeff",
+      "error": ""
+    },
+    {
+      "in_hex": "65336131",
+      "out_hex": "e3a1",
+      "error": ""
+    },
+    {
+      "in_hex": "32303031626265366139663561303134366131663464303338316539623065643161633266316139373963653964356164383465343666663062353866333662",
+      "out_hex": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+      "error": ""
+    },
+    {
+      "in_hex": "3000",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "00",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "3001",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0001"
+    },
+    {
+      "in_hex": "01",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0001"
+    },
+    {
+      "in_hex": "3002",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0002"
+    },
+    {
+      "in_hex": "02",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0002"
+    },
+    {
+      "in_hex": "3003",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0003"
+    },
+    {
+      "in_hex": "03",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0003"
+    },
+    {
+      "in_hex": "3004",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0004"
+    },
+    {
+      "in_hex": "04",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0004"
+    },
+    {
+      "in_hex": "3005",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0005"
+    },
+    {
+      "in_hex": "05",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0005"
+    },
+    {
+      "in_hex": "3006",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0006"
+    },
+    {
+      "in_hex": "06",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0006"
+    },
+    {
+      "in_hex": "3007",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0007"
+    },
+    {
+      "in_hex": "07",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0007"
+    },
+    {
+      "in_hex": "3008",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0008"
+    },
+    {
+      "in_hex": "08",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0008"
+    },
+    {
+      "in_hex": "3009",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0009"
+    },
+    {
+      "in_hex": "09",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0009"
+    },
+    {
+      "in_hex": "300a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000A"
+    },
+    {
+      "in_hex": "0a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000A"
+    },
+    {
+      "in_hex": "300b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000B"
+    },
+    {
+      "in_hex": "0b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000B"
+    },
+    {
+      "in_hex": "300c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000C"
+    },
+    {
+      "in_hex": "0c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000C"
+    },
+    {
+      "in_hex": "300d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000D"
+    },
+    {
+      "in_hex": "0d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000D"
+    },
+    {
+      "in_hex": "300e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000E"
+    },
+    {
+      "in_hex": "0e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000E"
+    },
+    {
+      "in_hex": "300f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000F"
+    },
+    {
+      "in_hex": "0f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+000F"
+    },
+    {
+      "in_hex": "3010",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0010"
+    },
+    {
+      "in_hex": "10",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0010"
+    },
+    {
+      "in_hex": "3011",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0011"
+    },
+    {
+      "in_hex": "11",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0011"
+    },
+    {
+      "in_hex": "3012",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0012"
+    },
+    {
+      "in_hex": "12",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0012"
+    },
+    {
+      "in_hex": "3013",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0013"
+    },
+    {
+      "in_hex": "13",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0013"
+    },
+    {
+      "in_hex": "3014",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0014"
+    },
+    {
+      "in_hex": "14",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0014"
+    },
+    {
+      "in_hex": "3015",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0015"
+    },
+    {
+      "in_hex": "15",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0015"
+    },
+    {
+      "in_hex": "3016",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0016"
+    },
+    {
+      "in_hex": "16",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0016"
+    },
+    {
+      "in_hex": "3017",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0017"
+    },
+    {
+      "in_hex": "17",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0017"
+    },
+    {
+      "in_hex": "3018",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0018"
+    },
+    {
+      "in_hex": "18",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0018"
+    },
+    {
+      "in_hex": "3019",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0019"
+    },
+    {
+      "in_hex": "19",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0019"
+    },
+    {
+      "in_hex": "301a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001A"
+    },
+    {
+      "in_hex": "1a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001A"
+    },
+    {
+      "in_hex": "301b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001B"
+    },
+    {
+      "in_hex": "1b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001B"
+    },
+    {
+      "in_hex": "301c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001C"
+    },
+    {
+      "in_hex": "1c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001C"
+    },
+    {
+      "in_hex": "301d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001D"
+    },
+    {
+      "in_hex": "1d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001D"
+    },
+    {
+      "in_hex": "301e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001E"
+    },
+    {
+      "in_hex": "1e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001E"
+    },
+    {
+      "in_hex": "301f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001F"
+    },
+    {
+      "in_hex": "1f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+001F"
+    },
+    {
+      "in_hex": "3020",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "20",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "3021",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0021 '!'"
+    },
+    {
+      "in_hex": "21",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0021 '!'"
+    },
+    {
+      "in_hex": "3022",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0022 '\"'"
+    },
+    {
+      "in_hex": "22",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0022 '\"'"
+    },
+    {
+      "in_hex": "3023",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0023 '#'"
+    },
+    {
+      "in_hex": "23",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0023 '#'"
+    },
+    {
+      "in_hex": "3024",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0024 '$'"
+    },
+    {
+      "in_hex": "24",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0024 '$'"
+    },
+    {
+      "in_hex": "3025",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0025 '%'"
+    },
+    {
+      "in_hex": "25",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0025 '%'"
+    },
+    {
+      "in_hex": "3026",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0026 '\u0026'"
+    },
+    {
+      "in_hex": "26",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0026 '\u0026'"
+    },
+    {
+      "in_hex": "3027",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0027 '''"
+    },
+    {
+      "in_hex": "27",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0027 '''"
+    },
+    {
+      "in_hex": "3028",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0028 '('"
+    },
+    {
+      "in_hex": "28",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0028 '('"
+    },
+    {
+      "in_hex": "3029",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0029 ')'"
+    },
+    {
+      "in_hex": "29",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0029 ')'"
+    },
+    {
+      "in_hex": "302a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002A '*'"
+    },
+    {
+      "in_hex": "2a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002A '*'"
+    },
+    {
+      "in_hex": "302b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002B '+'"
+    },
+    {
+      "in_hex": "2b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002B '+'"
+    },
+    {
+      "in_hex": "302c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002C ','"
+    },
+    {
+      "in_hex": "2c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002C ','"
+    },
+    {
+      "in_hex": "302d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002D '-'"
+    },
+    {
+      "in_hex": "2d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002D '-'"
+    },
+    {
+      "in_hex": "302e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002E '.'"
+    },
+    {
+      "in_hex": "2e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002E '.'"
+    },
+    {
+      "in_hex": "302f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002F '/'"
+    },
+    {
+      "in_hex": "2f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+002F '/'"
+    },
+    {
+      "in_hex": "3030",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "in_hex": "30",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3031",
+      "out_hex": "01",
+      "error": ""
+    },
+    {
+      "in_hex": "31",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3032",
+      "out_hex": "02",
+      "error": ""
+    },
+    {
+      "in_hex": "32",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3033",
+      "out_hex": "03",
+      "error": ""
+    },
+    {
+      "in_hex": "33",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3034",
+      "out_hex": "04",
+      "error": ""
+    },
+    {
+      "in_hex": "34",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3035",
+      "out_hex": "05",
+      "error": ""
+    },
+    {
+      "in_hex": "35",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3036",
+      "out_hex": "06",
+      "error": ""
+    },
+    {
+      "in_hex": "36",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3037",
+      "out_hex": "07",
+      "error": ""
+    },
+    {
+      "in_hex": "37",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3038",
+      "out_hex": "08",
+      "error": ""
+    },
+    {
+      "in_hex": "38",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3039",
+      "out_hex": "09",
+      "error": ""
+    },
+    {
+      "in_hex": "39",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "303a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003A ':'"
+    },
+    {
+      "in_hex": "3a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003A ':'"
+    },
+    {
+      "in_hex": "303b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003B ';'"
+    },
+    {
+      "in_hex": "3b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003B ';'"
+    },
+    {
+      "in_hex": "303c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003C '\u003c'"
+    },
+    {
+      "in_hex": "3c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003C '\u003c'"
+    },
+    {
+      "in_hex": "303d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003D '='"
+    },
+    {
+      "in_hex": "3d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003D '='"
+    },
+    {
+      "in_hex": "303e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003E '\u003e'"
+    },
+    {
+      "in_hex": "3e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003E '\u003e'"
+    },
+    {
+      "in_hex": "303f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003F '?'"
+    },
+    {
+      "in_hex": "3f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+003F '?'"
+    },
+    {
+      "in_hex": "3040",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0040 '@'"
+    },
+    {
+      "in_hex": "40",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0040 '@'"
+    },
+    {
+      "in_hex": "3041",
+      "out_hex": "0a",
+      "error": ""
+    },
+    {
+      "in_hex": "41",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3042",
+      "out_hex": "0b",
+      "error": ""
+    },
+    {
+      "in_hex": "42",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3043",
+      "out_hex": "0c",
+      "error": ""
+    },
+    {
+      "in_hex": "43",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3044",
+      "out_hex": "0d",
+      "error": ""
+    },
+    {
+      "in_hex": "44",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3045",
+      "out_hex": "0e",
+      "error": ""
+    },
+    {
+      "in_hex": "45",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3046",
+      "out_hex": "0f",
+      "error": ""
+    },
+    {
+      "in_hex": "46",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3047",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "47",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "3048",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0048 'H'"
+    },
+    {
+      "in_hex": "48",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0048 'H'"
+    },
+    {
+      "in_hex": "3049",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0049 'I'"
+    },
+    {
+      "in_hex": "49",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0049 'I'"
+    },
+    {
+      "in_hex": "304a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004A 'J'"
+    },
+    {
+      "in_hex": "4a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004A 'J'"
+    },
+    {
+      "in_hex": "304b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004B 'K'"
+    },
+    {
+      "in_hex": "4b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004B 'K'"
+    },
+    {
+      "in_hex": "304c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004C 'L'"
+    },
+    {
+      "in_hex": "4c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004C 'L'"
+    },
+    {
+      "in_hex": "304d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004D 'M'"
+    },
+    {
+      "in_hex": "4d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004D 'M'"
+    },
+    {
+      "in_hex": "304e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004E 'N'"
+    },
+    {
+      "in_hex": "4e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004E 'N'"
+    },
+    {
+      "in_hex": "304f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004F 'O'"
+    },
+    {
+      "in_hex": "4f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+004F 'O'"
+    },
+    {
+      "in_hex": "3050",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0050 'P'"
+    },
+    {
+      "in_hex": "50",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0050 'P'"
+    },
+    {
+      "in_hex": "3051",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0051 'Q'"
+    },
+    {
+      "in_hex": "51",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0051 'Q'"
+    },
+    {
+      "in_hex": "3052",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0052 'R'"
+    },
+    {
+      "in_hex": "52",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0052 'R'"
+    },
+    {
+      "in_hex": "3053",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0053 'S'"
+    },
+    {
+      "in_hex": "53",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0053 'S'"
+    },
+    {
+      "in_hex": "3054",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0054 'T'"
+    },
+    {
+      "in_hex": "54",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0054 'T'"
+    },
+    {
+      "in_hex": "3055",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0055 'U'"
+    },
+    {
+      "in_hex": "55",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0055 'U'"
+    },
+    {
+      "in_hex": "3056",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0056 'V'"
+    },
+    {
+      "in_hex": "56",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0056 'V'"
+    },
+    {
+      "in_hex": "3057",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0057 'W'"
+    },
+    {
+      "in_hex": "57",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0057 'W'"
+    },
+    {
+      "in_hex": "3058",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0058 'X'"
+    },
+    {
+      "in_hex": "58",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0058 'X'"
+    },
+    {
+      "in_hex": "3059",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0059 'Y'"
+    },
+    {
+      "in_hex": "59",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0059 'Y'"
+    },
+    {
+      "in_hex": "305a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005A 'Z'"
+    },
+    {
+      "in_hex": "5a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005A 'Z'"
+    },
+    {
+      "in_hex": "305b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005B '['"
+    },
+    {
+      "in_hex": "5b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005B '['"
+    },
+    {
+      "in_hex": "305c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005C '\\'"
+    },
+    {
+      "in_hex": "5c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005C '\\'"
+    },
+    {
+      "in_hex": "305d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005D ']'"
+    },
+    {
+      "in_hex": "5d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005D ']'"
+    },
+    {
+      "in_hex": "305e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005E '^'"
+    },
+    {
+      "in_hex": "5e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005E '^'"
+    },
+    {
+      "in_hex": "305f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005F '_'"
+    },
+    {
+      "in_hex": "5f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+005F '_'"
+    },
+    {
+      "in_hex": "3060",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0060 '`'"
+    },
+    {
+      "in_hex": "60",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0060 '`'"
+    },
+    {
+      "in_hex": "3061",
+      "out_hex": "0a",
+      "error": ""
+    },
+    {
+      "in_hex": "61",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3062",
+      "out_hex": "0b",
+      "error": ""
+    },
+    {
+      "in_hex": "62",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3063",
+      "out_hex": "0c",
+      "error": ""
+    },
+    {
+      "in_hex": "63",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3064",
+      "out_hex": "0d",
+      "error": ""
+    },
+    {
+      "in_hex": "64",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3065",
+      "out_hex": "0e",
+      "error": ""
+    },
+    {
+      "in_hex": "65",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3066",
+      "out_hex": "0f",
+      "error": ""
+    },
+    {
+      "in_hex": "66",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3067",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "67",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "3068",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0068 'h'"
+    },
+    {
+      "in_hex": "68",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0068 'h'"
+    },
+    {
+      "in_hex": "3069",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0069 'i'"
+    },
+    {
+      "in_hex": "69",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0069 'i'"
+    },
+    {
+      "in_hex": "306a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006A 'j'"
+    },
+    {
+      "in_hex": "6a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006A 'j'"
+    },
+    {
+      "in_hex": "306b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006B 'k'"
+    },
+    {
+      "in_hex": "6b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006B 'k'"
+    },
+    {
+      "in_hex": "306c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006C 'l'"
+    },
+    {
+      "in_hex": "6c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006C 'l'"
+    },
+    {
+      "in_hex": "306d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006D 'm'"
+    },
+    {
+      "in_hex": "6d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006D 'm'"
+    },
+    {
+      "in_hex": "306e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006E 'n'"
+    },
+    {
+      "in_hex": "6e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006E 'n'"
+    },
+    {
+      "in_hex": "306f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006F 'o'"
+    },
+    {
+      "in_hex": "6f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+006F 'o'"
+    },
+    {
+      "in_hex": "3070",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0070 'p'"
+    },
+    {
+      "in_hex": "70",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0070 'p'"
+    },
+    {
+      "in_hex": "3071",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0071 'q'"
+    },
+    {
+      "in_hex": "71",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0071 'q'"
+    },
+    {
+      "in_hex": "3072",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0072 'r'"
+    },
+    {
+      "in_hex": "72",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0072 'r'"
+    },
+    {
+      "in_hex": "3073",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0073 's'"
+    },
+    {
+      "in_hex": "73",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0073 's'"
+    },
+    {
+      "in_hex": "3074",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0074 't'"
+    },
+    {
+      "in_hex": "74",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0074 't'"
+    },
+    {
+      "in_hex": "3075",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0075 'u'"
+    },
+    {
+      "in_hex": "75",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0075 'u'"
+    },
+    {
+      "in_hex": "3076",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0076 'v'"
+    },
+    {
+      "in_hex": "76",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0076 'v'"
+    },
+    {
+      "in_hex": "3077",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0077 'w'"
+    },
+    {
+      "in_hex": "77",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0077 'w'"
+    },
+    {
+      "in_hex": "3078",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0078 'x'"
+    },
+    {
+      "in_hex": "78",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0078 'x'"
+    },
+    {
+      "in_hex": "3079",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0079 'y'"
+    },
+    {
+      "in_hex": "79",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0079 'y'"
+    },
+    {
+      "in_hex": "307a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "7a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "307b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007B '{'"
+    },
+    {
+      "in_hex": "7b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007B '{'"
+    },
+    {
+      "in_hex": "307c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007C '|'"
+    },
+    {
+      "in_hex": "7c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007C '|'"
+    },
+    {
+      "in_hex": "307d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007D '}'"
+    },
+    {
+      "in_hex": "7d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007D '}'"
+    },
+    {
+      "in_hex": "307e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007E '~'"
+    },
+    {
+      "in_hex": "7e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007E '~'"
+    },
+    {
+      "in_hex": "307f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007F"
+    },
+    {
+      "in_hex": "7f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007F"
+    },
+    {
+      "in_hex": "3080",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0080"
+    },
+    {
+      "in_hex": "80",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0080"
+    },
+    {
+      "in_hex": "3081",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0081"
+    },
+    {
+      "in_hex": "81",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0081"
+    },
+    {
+      "in_hex": "3082",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0082"
+    },
+    {
+      "in_hex": "82",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0082"
+    },
+    {
+      "in_hex": "3083",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0083"
+    },
+    {
+      "in_hex": "83",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0083"
+    },
+    {
+      "in_hex": "3084",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0084"
+    },
+    {
+      "in_hex": "84",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0084"
+    },
+    {
+      "in_hex": "3085",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0085"
+    },
+    {
+      "in_hex": "85",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0085"
+    },
+    {
+      "in_hex": "3086",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0086"
+    },
+    {
+      "in_hex": "86",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0086"
+    },
+    {
+      "in_hex": "3087",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0087"
+    },
+    {
+      "in_hex": "87",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0087"
+    },
+    {
+      "in_hex": "3088",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0088"
+    },
+    {
+      "in_hex": "88",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0088"
+    },
+    {
+      "in_hex": "3089",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0089"
+    },
+    {
+      "in_hex": "89",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0089"
+    },
+    {
+      "in_hex": "308a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008A"
+    },
+    {
+      "in_hex": "8a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008A"
+    },
+    {
+      "in_hex": "308b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008B"
+    },
+    {
+      "in_hex": "8b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008B"
+    },
+    {
+      "in_hex": "308c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008C"
+    },
+    {
+      "in_hex": "8c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008C"
+    },
+    {
+      "in_hex": "308d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008D"
+    },
+    {
+      "in_hex": "8d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008D"
+    },
+    {
+      "in_hex": "308e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008E"
+    },
+    {
+      "in_hex": "8e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008E"
+    },
+    {
+      "in_hex": "308f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008F"
+    },
+    {
+      "in_hex": "8f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+008F"
+    },
+    {
+      "in_hex": "3090",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0090"
+    },
+    {
+      "in_hex": "90",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0090"
+    },
+    {
+      "in_hex": "3091",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0091"
+    },
+    {
+      "in_hex": "91",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0091"
+    },
+    {
+      "in_hex": "3092",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0092"
+    },
+    {
+      "in_hex": "92",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0092"
+    },
+    {
+      "in_hex": "3093",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0093"
+    },
+    {
+      "in_hex": "93",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0093"
+    },
+    {
+      "in_hex": "3094",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0094"
+    },
+    {
+      "in_hex": "94",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0094"
+    },
+    {
+      "in_hex": "3095",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0095"
+    },
+    {
+      "in_hex": "95",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0095"
+    },
+    {
+      "in_hex": "3096",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0096"
+    },
+    {
+      "in_hex": "96",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0096"
+    },
+    {
+      "in_hex": "3097",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0097"
+    },
+    {
+      "in_hex": "97",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0097"
+    },
+    {
+      "in_hex": "3098",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0098"
+    },
+    {
+      "in_hex": "98",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0098"
+    },
+    {
+      "in_hex": "3099",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0099"
+    },
+    {
+      "in_hex": "99",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0099"
+    },
+    {
+      "in_hex": "309a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009A"
+    },
+    {
+      "in_hex": "9a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009A"
+    },
+    {
+      "in_hex": "309b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009B"
+    },
+    {
+      "in_hex": "9b",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009B"
+    },
+    {
+      "in_hex": "309c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009C"
+    },
+    {
+      "in_hex": "9c",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009C"
+    },
+    {
+      "in_hex": "309d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009D"
+    },
+    {
+      "in_hex": "9d",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009D"
+    },
+    {
+      "in_hex": "309e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009E"
+    },
+    {
+      "in_hex": "9e",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009E"
+    },
+    {
+      "in_hex": "309f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009F"
+    },
+    {
+      "in_hex": "9f",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+009F"
+    },
+    {
+      "in_hex": "30a0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A0"
+    },
+    {
+      "in_hex": "a0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A0"
+    },
+    {
+      "in_hex": "30a1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A1 '¡'"
+    },
+    {
+      "in_hex": "a1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A1 '¡'"
+    },
+    {
+      "in_hex": "30a2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A2 '¢'"
+    },
+    {
+      "in_hex": "a2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A2 '¢'"
+    },
+    {
+      "in_hex": "30a3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A3 '£'"
+    },
+    {
+      "in_hex": "a3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A3 '£'"
+    },
+    {
+      "in_hex": "30a4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A4 '¤'"
+    },
+    {
+      "in_hex": "a4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A4 '¤'"
+    },
+    {
+      "in_hex": "30a5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A5 '¥'"
+    },
+    {
+      "in_hex": "a5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A5 '¥'"
+    },
+    {
+      "in_hex": "30a6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A6 '¦'"
+    },
+    {
+      "in_hex": "a6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A6 '¦'"
+    },
+    {
+      "in_hex": "30a7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A7 '§'"
+    },
+    {
+      "in_hex": "a7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A7 '§'"
+    },
+    {
+      "in_hex": "30a8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A8 '¨'"
+    },
+    {
+      "in_hex": "a8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A8 '¨'"
+    },
+    {
+      "in_hex": "30a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A9 '©'"
+    },
+    {
+      "in_hex": "a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00A9 '©'"
+    },
+    {
+      "in_hex": "30aa",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AA 'ª'"
+    },
+    {
+      "in_hex": "aa",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AA 'ª'"
+    },
+    {
+      "in_hex": "30ab",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AB '«'"
+    },
+    {
+      "in_hex": "ab",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AB '«'"
+    },
+    {
+      "in_hex": "30ac",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AC '¬'"
+    },
+    {
+      "in_hex": "ac",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AC '¬'"
+    },
+    {
+      "in_hex": "30ad",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AD"
+    },
+    {
+      "in_hex": "ad",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AD"
+    },
+    {
+      "in_hex": "30ae",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AE '®'"
+    },
+    {
+      "in_hex": "ae",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AE '®'"
+    },
+    {
+      "in_hex": "30af",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AF '¯'"
+    },
+    {
+      "in_hex": "af",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00AF '¯'"
+    },
+    {
+      "in_hex": "30b0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B0 '°'"
+    },
+    {
+      "in_hex": "b0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B0 '°'"
+    },
+    {
+      "in_hex": "30b1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B1 '±'"
+    },
+    {
+      "in_hex": "b1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B1 '±'"
+    },
+    {
+      "in_hex": "30b2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B2 '²'"
+    },
+    {
+      "in_hex": "b2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B2 '²'"
+    },
+    {
+      "in_hex": "30b3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B3 '³'"
+    },
+    {
+      "in_hex": "b3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B3 '³'"
+    },
+    {
+      "in_hex": "30b4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B4 '´'"
+    },
+    {
+      "in_hex": "b4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B4 '´'"
+    },
+    {
+      "in_hex": "30b5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B5 'µ'"
+    },
+    {
+      "in_hex": "b5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B5 'µ'"
+    },
+    {
+      "in_hex": "30b6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B6 '¶'"
+    },
+    {
+      "in_hex": "b6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B6 '¶'"
+    },
+    {
+      "in_hex": "30b7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B7 '·'"
+    },
+    {
+      "in_hex": "b7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B7 '·'"
+    },
+    {
+      "in_hex": "30b8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B8 '¸'"
+    },
+    {
+      "in_hex": "b8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B8 '¸'"
+    },
+    {
+      "in_hex": "30b9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B9 '¹'"
+    },
+    {
+      "in_hex": "b9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00B9 '¹'"
+    },
+    {
+      "in_hex": "30ba",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BA 'º'"
+    },
+    {
+      "in_hex": "ba",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BA 'º'"
+    },
+    {
+      "in_hex": "30bb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BB '»'"
+    },
+    {
+      "in_hex": "bb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BB '»'"
+    },
+    {
+      "in_hex": "30bc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BC '¼'"
+    },
+    {
+      "in_hex": "bc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BC '¼'"
+    },
+    {
+      "in_hex": "30bd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BD '½'"
+    },
+    {
+      "in_hex": "bd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BD '½'"
+    },
+    {
+      "in_hex": "30be",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BE '¾'"
+    },
+    {
+      "in_hex": "be",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BE '¾'"
+    },
+    {
+      "in_hex": "30bf",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BF '¿'"
+    },
+    {
+      "in_hex": "bf",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00BF '¿'"
+    },
+    {
+      "in_hex": "30c0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C0 'À'"
+    },
+    {
+      "in_hex": "c0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C0 'À'"
+    },
+    {
+      "in_hex": "30c1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C1 'Á'"
+    },
+    {
+      "in_hex": "c1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C1 'Á'"
+    },
+    {
+      "in_hex": "30c2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C2 'Â'"
+    },
+    {
+      "in_hex": "c2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C2 'Â'"
+    },
+    {
+      "in_hex": "30c3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "c3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "30c4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C4 'Ä'"
+    },
+    {
+      "in_hex": "c4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C4 'Ä'"
+    },
+    {
+      "in_hex": "30c5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C5 'Å'"
+    },
+    {
+      "in_hex": "c5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C5 'Å'"
+    },
+    {
+      "in_hex": "30c6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C6 'Æ'"
+    },
+    {
+      "in_hex": "c6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C6 'Æ'"
+    },
+    {
+      "in_hex": "30c7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C7 'Ç'"
+    },
+    {
+      "in_hex": "c7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C7 'Ç'"
+    },
+    {
+      "in_hex": "30c8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C8 'È'"
+    },
+    {
+      "in_hex": "c8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C8 'È'"
+    },
+    {
+      "in_hex": "30c9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C9 'É'"
+    },
+    {
+      "in_hex": "c9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C9 'É'"
+    },
+    {
+      "in_hex": "30ca",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CA 'Ê'"
+    },
+    {
+      "in_hex": "ca",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CA 'Ê'"
+    },
+    {
+      "in_hex": "30cb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CB 'Ë'"
+    },
+    {
+      "in_hex": "cb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CB 'Ë'"
+    },
+    {
+      "in_hex": "30cc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CC 'Ì'"
+    },
+    {
+      "in_hex": "cc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CC 'Ì'"
+    },
+    {
+      "in_hex": "30cd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CD 'Í'"
+    },
+    {
+      "in_hex": "cd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CD 'Í'"
+    },
+    {
+      "in_hex": "30ce",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CE 'Î'"
+    },
+    {
+      "in_hex": "ce",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CE 'Î'"
+    },
+    {
+      "in_hex": "30cf",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CF 'Ï'"
+    },
+    {
+      "in_hex": "cf",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00CF 'Ï'"
+    },
+    {
+      "in_hex": "30d0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D0 'Ð'"
+    },
+    {
+      "in_hex": "d0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D0 'Ð'"
+    },
+    {
+      "in_hex": "30d1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D1 'Ñ'"
+    },
+    {
+      "in_hex": "d1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D1 'Ñ'"
+    },
+    {
+      "in_hex": "30d2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D2 'Ò'"
+    },
+    {
+      "in_hex": "d2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D2 'Ò'"
+    },
+    {
+      "in_hex": "30d3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D3 'Ó'"
+    },
+    {
+      "in_hex": "d3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D3 'Ó'"
+    },
+    {
+      "in_hex": "30d4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D4 'Ô'"
+    },
+    {
+      "in_hex": "d4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D4 'Ô'"
+    },
+    {
+      "in_hex": "30d5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D5 'Õ'"
+    },
+    {
+      "in_hex": "d5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D5 'Õ'"
+    },
+    {
+      "in_hex": "30d6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D6 'Ö'"
+    },
+    {
+      "in_hex": "d6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D6 'Ö'"
+    },
+    {
+      "in_hex": "30d7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D7 '×'"
+    },
+    {
+      "in_hex": "d7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D7 '×'"
+    },
+    {
+      "in_hex": "30d8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D8 'Ø'"
+    },
+    {
+      "in_hex": "d8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D8 'Ø'"
+    },
+    {
+      "in_hex": "30d9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D9 'Ù'"
+    },
+    {
+      "in_hex": "d9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00D9 'Ù'"
+    },
+    {
+      "in_hex": "30da",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DA 'Ú'"
+    },
+    {
+      "in_hex": "da",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DA 'Ú'"
+    },
+    {
+      "in_hex": "30db",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DB 'Û'"
+    },
+    {
+      "in_hex": "db",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DB 'Û'"
+    },
+    {
+      "in_hex": "30dc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DC 'Ü'"
+    },
+    {
+      "in_hex": "dc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DC 'Ü'"
+    },
+    {
+      "in_hex": "30dd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DD 'Ý'"
+    },
+    {
+      "in_hex": "dd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DD 'Ý'"
+    },
+    {
+      "in_hex": "30de",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DE 'Þ'"
+    },
+    {
+      "in_hex": "de",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DE 'Þ'"
+    },
+    {
+      "in_hex": "30df",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DF 'ß'"
+    },
+    {
+      "in_hex": "df",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00DF 'ß'"
+    },
+    {
+      "in_hex": "30e0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E0 'à'"
+    },
+    {
+      "in_hex": "e0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E0 'à'"
+    },
+    {
+      "in_hex": "30e1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E1 'á'"
+    },
+    {
+      "in_hex": "e1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E1 'á'"
+    },
+    {
+      "in_hex": "30e2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E2 'â'"
+    },
+    {
+      "in_hex": "e2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E2 'â'"
+    },
+    {
+      "in_hex": "30e3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E3 'ã'"
+    },
+    {
+      "in_hex": "e3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E3 'ã'"
+    },
+    {
+      "in_hex": "30e4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E4 'ä'"
+    },
+    {
+      "in_hex": "e4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E4 'ä'"
+    },
+    {
+      "in_hex": "30e5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E5 'å'"
+    },
+    {
+      "in_hex": "e5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E5 'å'"
+    },
+    {
+      "in_hex": "30e6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E6 'æ'"
+    },
+    {
+      "in_hex": "e6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E6 'æ'"
+    },
+    {
+      "in_hex": "30e7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E7 'ç'"
+    },
+    {
+      "in_hex": "e7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E7 'ç'"
+    },
+    {
+      "in_hex": "30e8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E8 'è'"
+    },
+    {
+      "in_hex": "e8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E8 'è'"
+    },
+    {
+      "in_hex": "30e9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E9 'é'"
+    },
+    {
+      "in_hex": "e9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00E9 'é'"
+    },
+    {
+      "in_hex": "30ea",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EA 'ê'"
+    },
+    {
+      "in_hex": "ea",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EA 'ê'"
+    },
+    {
+      "in_hex": "30eb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EB 'ë'"
+    },
+    {
+      "in_hex": "eb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EB 'ë'"
+    },
+    {
+      "in_hex": "30ec",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EC 'ì'"
+    },
+    {
+      "in_hex": "ec",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EC 'ì'"
+    },
+    {
+      "in_hex": "30ed",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00ED 'í'"
+    },
+    {
+      "in_hex": "ed",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00ED 'í'"
+    },
+    {
+      "in_hex": "30ee",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EE 'î'"
+    },
+    {
+      "in_hex": "ee",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EE 'î'"
+    },
+    {
+      "in_hex": "30ef",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EF 'ï'"
+    },
+    {
+      "in_hex": "ef",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00EF 'ï'"
+    },
+    {
+      "in_hex": "30f0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F0 'ð'"
+    },
+    {
+      "in_hex": "f0",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F0 'ð'"
+    },
+    {
+      "in_hex": "30f1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F1 'ñ'"
+    },
+    {
+      "in_hex": "f1",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F1 'ñ'"
+    },
+    {
+      "in_hex": "30f2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F2 'ò'"
+    },
+    {
+      "in_hex": "f2",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F2 'ò'"
+    },
+    {
+      "in_hex": "30f3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F3 'ó'"
+    },
+    {
+      "in_hex": "f3",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F3 'ó'"
+    },
+    {
+      "in_hex": "30f4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F4 'ô'"
+    },
+    {
+      "in_hex": "f4",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F4 'ô'"
+    },
+    {
+      "in_hex": "30f5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F5 'õ'"
+    },
+    {
+      "in_hex": "f5",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F5 'õ'"
+    },
+    {
+      "in_hex": "30f6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F6 'ö'"
+    },
+    {
+      "in_hex": "f6",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F6 'ö'"
+    },
+    {
+      "in_hex": "30f7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F7 '÷'"
+    },
+    {
+      "in_hex": "f7",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F7 '÷'"
+    },
+    {
+      "in_hex": "30f8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F8 'ø'"
+    },
+    {
+      "in_hex": "f8",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F8 'ø'"
+    },
+    {
+      "in_hex": "30f9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F9 'ù'"
+    },
+    {
+      "in_hex": "f9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00F9 'ù'"
+    },
+    {
+      "in_hex": "30fa",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FA 'ú'"
+    },
+    {
+      "in_hex": "fa",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FA 'ú'"
+    },
+    {
+      "in_hex": "30fb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FB 'û'"
+    },
+    {
+      "in_hex": "fb",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FB 'û'"
+    },
+    {
+      "in_hex": "30fc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FC 'ü'"
+    },
+    {
+      "in_hex": "fc",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FC 'ü'"
+    },
+    {
+      "in_hex": "30fd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FD 'ý'"
+    },
+    {
+      "in_hex": "fd",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FD 'ý'"
+    },
+    {
+      "in_hex": "30fe",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FE 'þ'"
+    },
+    {
+      "in_hex": "fe",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FE 'þ'"
+    },
+    {
+      "in_hex": "30ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "004120ff00c3a97a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "39ff0046",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "614661",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "61c3a9c3a97ac3a946",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "46",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "666720",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "664139677a614120",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "207a614730",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "ff470000392000",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "7a306766",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "7a66663947",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "613030ff46",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "30670020463947",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "663939",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "ff2000c3a96139",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "20",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "6120396146",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "61ff30673941673039",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "ff476747ff46",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "66394661673061",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "41c3a97a47463000",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "3939307a39",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "c3a96641413939c3a97a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "3930",
+      "out_hex": "90",
+      "error": ""
+    },
+    {
+      "in_hex": "66",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "66",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "6766473920474667",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "46",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "67ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "ff463920666130",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "39c3a9c3a97a2046",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "664120",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "61c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "4167003946",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "41ff207a6667206667",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "3000ff7aff66",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "66c3a9003039007a39",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "204146617ac3a9ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "7a6641c3a90047ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "7a4739",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "00c3a9476639417aff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "41",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "47",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "41ff30666661",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "47003047c3a94746",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "4667ff20004730",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "39c3a9c3a96761c3a9c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "4167ffff610067",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "004666003039617a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "20397a41",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "20206120",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "46397a7a00",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "4120",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "c3a93920",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "472030664630c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "00",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "c3a900300030663066",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "39300061",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "7a0066c3a930",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "4130202000ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "3939ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "c3a9393966417a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "4747c3a941",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "c3a9202041416641",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "30677a20c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "7a207a616739",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "303920",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "67",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "39300047ffff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "7a204120007a0041ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "3061674600",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "41417a000020467a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "413030616767304747",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "61",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "617a41",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "4641",
+      "out_hex": "fa",
+      "error": ""
+    },
+    {
+      "in_hex": "ffc3a9007a466741",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "2039ff30003046",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "c3a939",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "300047473961",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "47206146",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "ff61616766",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "66",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "39307a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "204667c3a9464139",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "007a20",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "67203066007a67ff66",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "397a306600",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "7a3066004641",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "39c3a97a4147",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "6646c3a90067473047",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "ff6600ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "464767",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "47ff67666166",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "2066",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "00c3a939",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "ff00ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "6141",
+      "out_hex": "aa",
+      "error": ""
+    },
+    {
+      "in_hex": "30416761307a30ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "67c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "6100c3a9204639203930",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "6700002020",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "c3a939",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "47416661ff39",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "c3a97a41",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "41464700",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "20",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "6647c3a939613966",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "4661674141ff67",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "417a66200000",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "66ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "677a41c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "41",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3046306147",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "c3a96661ffc3a966206141",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "4166206167003066",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "003047306661",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "416100",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "6167c3a96130ff6720",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "47",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "39",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "41",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "6100",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "6647",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "6667",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "ff00ff20677a46c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "413020414646",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "ff003900c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "30",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "c3a94130c3a94667304166",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "3061466739c3a9003941",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "67413946200067",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "393047c3a9",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "674646c3a900",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "4167c3a900673966",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "204747",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "67",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "662061ff2047ff66",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "20200020",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "464700676700c3a920ff",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "677a0020",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "666639202067",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0020 ' '"
+    },
+    {
+      "in_hex": "4600c3a930",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "4141ff6641464130",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "39ff66",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "7a3030",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "ff67464630",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "c3a946",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "00c3a9662061396130",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "0000662020",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "c3a9ff61207a206600",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "in_hex": "67",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "61ff46396100",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "7a4639",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "47ff467a007a",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "4700666767614741",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "00393039",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "304639ff2030463066",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+00FF 'ÿ'"
+    },
+    {
+      "in_hex": "46",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "3061",
+      "out_hex": "0a",
+      "error": ""
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "004720ff47",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "664746390020673020",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    },
+    {
+      "in_hex": "390066474620",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0000"
+    },
+    {
+      "in_hex": "30",
+      "out_hex": null,
+      "error": "encoding/hex: odd length hex string"
+    },
+    {
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "in_hex": "6139",
+      "out_hex": "a9",
+      "error": ""
+    },
+    {
+      "in_hex": "67",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "in_hex": "397a3966207a6139",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "in_hex": "6147413900",
+      "out_hex": null,
+      "error": "encoding/hex: invalid byte: U+0047 'G'"
+    }
+  ]
+}

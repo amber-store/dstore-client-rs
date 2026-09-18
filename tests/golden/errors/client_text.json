@@ -1,0 +1,429 @@
+{
+  "cases": [
+    {
+      "name": "unknown_ref",
+      "kind": "unknown_ref",
+      "go": "client.ErrUnknownRef",
+      "out": "client: unknown reference"
+    },
+    {
+      "name": "cas_mismatch_absent",
+      "kind": "cas_mismatch",
+      "go": "(\u0026client.CASMismatch{HasCurrent: false, Current: }).Error()",
+      "has_current": false,
+      "out": "cas mismatch: reference is absent"
+    },
+    {
+      "name": "cas_mismatch_current",
+      "kind": "cas_mismatch",
+      "go": "(\u0026client.CASMismatch{HasCurrent: true, Current: 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85}).Error()",
+      "has_current": true,
+      "current": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+      "out": "cas mismatch: current key 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85"
+    },
+    {
+      "name": "cas_mismatch_current_nil",
+      "kind": "cas_mismatch",
+      "go": "(\u0026client.CASMismatch{HasCurrent: true, Current: }).Error()",
+      "has_current": true,
+      "out": "cas mismatch: current key "
+    },
+    {
+      "name": "cas_mismatch_current_3_bytes",
+      "kind": "cas_mismatch",
+      "go": "(\u0026client.CASMismatch{HasCurrent: true, Current: 010203}).Error()",
+      "has_current": true,
+      "current": "010203",
+      "out": "cas mismatch: current key 010203"
+    },
+    {
+      "name": "incomplete_0",
+      "kind": "incomplete",
+      "go": "(\u0026client.Incomplete{Shortfall: 0}).Error()",
+      "shortfall": 0,
+      "out": "incomplete: 0 keys short"
+    },
+    {
+      "name": "incomplete_3",
+      "kind": "incomplete",
+      "go": "(\u0026client.Incomplete{Shortfall: 3}).Error()",
+      "shortfall": 3,
+      "out": "incomplete: 3 keys short"
+    },
+    {
+      "name": "incomplete_64",
+      "kind": "incomplete",
+      "go": "(\u0026client.Incomplete{Shortfall: 64}).Error()",
+      "shortfall": 64,
+      "out": "incomplete: 64 keys short"
+    },
+    {
+      "name": "incomplete_1099511627776",
+      "kind": "incomplete",
+      "go": "(\u0026client.Incomplete{Shortfall: 1099511627776}).Error()",
+      "shortfall": 1099511627776,
+      "out": "incomplete: 1099511627776 keys short"
+    },
+    {
+      "name": "remote_busy",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"busy\", Text: \"\"}).Error()",
+      "code": "busy",
+      "out": "remote: busy"
+    },
+    {
+      "name": "remote_unavailable",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"unavailable\", Text: \"no view\"}).Error()",
+      "code": "unavailable",
+      "text": "no view",
+      "out": "remote: unavailable: no view"
+    },
+    {
+      "name": "remote_stale_view",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"stale-view\", Text: \"request epoch is behind\"}).Error()",
+      "code": "stale-view",
+      "text": "request epoch is behind",
+      "out": "remote: stale-view: request epoch is behind"
+    },
+    {
+      "name": "remote_bad_request",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"bad-request\", Text: \"refglob: unterminated character class\"}).Error()",
+      "code": "bad-request",
+      "text": "refglob: unterminated character class",
+      "out": "remote: bad-request: refglob: unterminated character class"
+    },
+    {
+      "name": "remote_unknown_ref",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"unknown-ref\", Text: \"no such reference\"}).Error()",
+      "code": "unknown-ref",
+      "text": "no such reference",
+      "out": "remote: unknown-ref: no such reference"
+    },
+    {
+      "name": "remote_unauthorized",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"unauthorized\", Text: \"not on the allowlist\"}).Error()",
+      "code": "unauthorized",
+      "text": "not on the allowlist",
+      "out": "remote: unauthorized: not on the allowlist"
+    },
+    {
+      "name": "remote_no_space",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"no-space\", Text: \"node below its free-space reserve\"}).Error()",
+      "code": "no-space",
+      "text": "node below its free-space reserve",
+      "out": "remote: no-space: node below its free-space reserve"
+    },
+    {
+      "name": "remote_internal",
+      "kind": "remote",
+      "go": "(\u0026wire.Error{Code: \"internal\", Text: \"\"}).Error()",
+      "code": "internal",
+      "out": "remote: internal"
+    },
+    {
+      "name": "protocol_remote_busy",
+      "kind": "protocol_remote",
+      "go": "(\u0026protocol.RemoteError{Code: \"busy\", Text: \"\"}).Error()",
+      "code": "busy",
+      "out": "remote: busy: "
+    },
+    {
+      "name": "protocol_remote_internal",
+      "kind": "protocol_remote",
+      "go": "(\u0026protocol.RemoteError{Code: \"internal\", Text: \"sender died\"}).Error()",
+      "code": "internal",
+      "text": "sender died",
+      "out": "remote: internal: sender died"
+    },
+    {
+      "name": "payload_hash",
+      "kind": "payload_hash",
+      "go": "client.VerifyRecord of k1's record with its last payload byte flipped",
+      "key": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+      "want": "006462474a6071a30ca7a642f94c8102f659f6050c9607fb84abddb1e0475bbc",
+      "out": "payload hashes to 006462474a6071a30ca7a642f94c8102f659f6050c9607fb84abddb1e0475bbc, not 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85"
+    },
+    {
+      "name": "dial_no_endpoint",
+      "kind": "no_endpoint",
+      "go": "client.Dial with a nil Endpoint",
+      "out": "client: no endpoint"
+    },
+    {
+      "name": "dial_ticket_names_no_nodes",
+      "kind": "no_bootstrap",
+      "go": "client.Dial with a ticket without members",
+      "inner": "client: ticket names no nodes",
+      "out": "client: no bootstrap node answered: client: ticket names no nodes"
+    },
+    {
+      "name": "dial_member_id_31_bytes",
+      "kind": "no_bootstrap",
+      "go": "client.Dial with a ticket whose only member id has 31 bytes",
+      "inner": "client: ticket names no nodes",
+      "out": "client: no bootstrap node answered: client: ticket names no nodes"
+    },
+    {
+      "name": "dial_member_not_bound",
+      "kind": "no_bootstrap",
+      "go": "client.Dial, the only member is not bound on the in-memory network",
+      "inner": "mem: a38d2241 not bound",
+      "out": "client: no bootstrap node answered: mem: a38d2241 not bound"
+    },
+    {
+      "name": "dial_unexpected_reply",
+      "kind": "no_bootstrap",
+      "go": "client.Dial, the member answers view with ok",
+      "inner": "client: unexpected reply 53",
+      "out": "client: no bootstrap node answered: client: unexpected reply 53"
+    },
+    {
+      "name": "dial_remote_error",
+      "kind": "no_bootstrap",
+      "go": "client.Dial, the member answers view with TErr unavailable \"no view\"",
+      "inner": "remote: unavailable: no view",
+      "out": "client: no bootstrap node answered: remote: unavailable: no view"
+    },
+    {
+      "name": "dial_bad_view",
+      "kind": "no_bootstrap",
+      "go": "client.Dial, the member answers view with the view bytes 80",
+      "inner": "view: decode: cbor: cannot unmarshal array into Go value of type view.View (cannot decode CBOR array to struct without toarray option)",
+      "out": "client: no bootstrap node answered: view: decode: cbor: cannot unmarshal array into Go value of type view.View (cannot decode CBOR array to struct without toarray option)"
+    },
+    {
+      "name": "dial_no_reply",
+      "kind": "no_bootstrap",
+      "go": "client.Dial, the member closes the stream without a frame",
+      "inner": "EOF",
+      "out": "client: no bootstrap node answered: EOF"
+    },
+    {
+      "name": "dial_last_member_error_wins",
+      "kind": "no_bootstrap",
+      "go": "client.Dial, the first member answers ok and the last is not bound",
+      "inner": "mem: a38d2241 not bound",
+      "out": "client: no bootstrap node answered: mem: a38d2241 not bound"
+    },
+    {
+      "name": "ref_get_unknown_ref",
+      "kind": "unknown_ref",
+      "go": "Cluster.RefGet, the node answers TErr unknown-ref \"no such reference\"",
+      "out": "client: unknown reference"
+    },
+    {
+      "name": "ref_get_unexpected_reply",
+      "kind": "unexpected_reply",
+      "go": "Cluster.RefGet, the node answers ok",
+      "type": 53,
+      "out": "client: unexpected reply 53"
+    },
+    {
+      "name": "ref_put_unexpected_reply",
+      "kind": "unexpected_reply",
+      "go": "Cluster.RefPut, the node answers refs",
+      "type": 56,
+      "out": "client: unexpected reply 56"
+    },
+    {
+      "name": "ref_delete_unexpected_reply",
+      "kind": "unexpected_reply",
+      "go": "Cluster.RefDelete, the node answers ref",
+      "type": 52,
+      "out": "client: unexpected reply 52"
+    },
+    {
+      "name": "ref_list_unexpected_reply",
+      "kind": "unexpected_reply",
+      "go": "Cluster.RefList, the node answers ok",
+      "type": 53,
+      "out": "client: unexpected reply 53"
+    },
+    {
+      "name": "admin_unexpected_reply",
+      "kind": "unexpected_reply",
+      "go": "Cluster.Admin, the node answers ok",
+      "type": 53,
+      "out": "client: unexpected reply 53"
+    },
+    {
+      "name": "ref_list_remote_error_not_mapped",
+      "kind": "remote",
+      "go": "Cluster.RefList, the node answers TErr unknown-ref \"no such reference\"",
+      "code": "unknown-ref",
+      "text": "no such reference",
+      "out": "remote: unknown-ref: no such reference"
+    },
+    {
+      "name": "admin_remote_error",
+      "kind": "remote",
+      "go": "Cluster.Admin, the node answers TErr bad-request \"unknown admin op nope\"",
+      "code": "bad-request",
+      "text": "unknown admin op nope",
+      "out": "remote: bad-request: unknown admin op nope"
+    },
+    {
+      "name": "ref_put_cas_mismatch",
+      "kind": "cas_mismatch",
+      "go": "Cluster.RefPut, the node answers cas-mismatch with the current key k1",
+      "has_current": true,
+      "current": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+      "out": "cas mismatch: current key 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85"
+    },
+    {
+      "name": "ref_delete_cas_mismatch_absent",
+      "kind": "cas_mismatch",
+      "go": "Cluster.RefDelete, the node answers cas-mismatch without a current record",
+      "has_current": false,
+      "out": "cas mismatch: reference is absent"
+    },
+    {
+      "name": "ref_put_incomplete",
+      "kind": "incomplete",
+      "go": "Cluster.RefPut, the node answers incomplete with shortfall 7",
+      "shortfall": 7,
+      "out": "incomplete: 7 keys short"
+    },
+    {
+      "name": "missing_no_owners",
+      "kind": "no_owners",
+      "go": "Cluster.Missing over a view without nodes: MissingResult.Failed[k]",
+      "out": "no owners"
+    },
+    {
+      "name": "push_negotiate_no_owners",
+      "kind": "negotiate",
+      "go": "Cluster.Push of the empty tree over a view without nodes",
+      "key": "2001bbe6a9f5a014",
+      "inner": "no owners",
+      "out": "negotiate 2001bbe6a9f5a014 at its primary: no owners"
+    },
+    {
+      "name": "push_walk_local_tree",
+      "kind": "walk_local_tree",
+      "go": "Cluster.Push of the empty tree from an empty packstore",
+      "inner": "fstree: reading 2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b: packstore: object not found",
+      "out": "walk local tree: fstree: reading 2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b: packstore: object not found"
+    },
+    {
+      "name": "pull_tree_object_not_found",
+      "kind": "pull_object_not_found",
+      "go": "Cluster.PullTree of the empty tree over a view without nodes",
+      "key": "2001bbe6a9f5a014",
+      "out": "pull: object 2001bbe6a9f5a014 not found in the cluster"
+    },
+    {
+      "name": "no_nodes",
+      "kind": "no_nodes",
+      "go": "errors.New(\"client: no nodes\") (anyNode)",
+      "out": "client: no nodes"
+    },
+    {
+      "name": "watch_idle",
+      "kind": "watch_idle",
+      "go": "errors.New(\"client: watch stream idle\") (errWatchIdle)",
+      "out": "client: watch stream idle"
+    },
+    {
+      "name": "unexpected_frame_99",
+      "kind": "unexpected_frame",
+      "go": "fmt.Errorf(\"%w: type %d\", wire.ErrProtocol, 99) (watchOnce)",
+      "type": 99,
+      "out": "wire: unexpected frame: type 99"
+    },
+    {
+      "name": "unexpected_frame_7",
+      "kind": "unexpected_frame",
+      "go": "fmt.Errorf(\"%w: type %d\", wire.ErrProtocol, 7) (watchOnce)",
+      "type": 7,
+      "out": "wire: unexpected frame: type 7"
+    },
+    {
+      "name": "unexpected_frame_0",
+      "kind": "unexpected_frame",
+      "go": "fmt.Errorf(\"%w: type %d\", wire.ErrProtocol, 0) (watchOnce)",
+      "type": 0,
+      "out": "wire: unexpected frame: type 0"
+    },
+    {
+      "name": "upload_to_remote_busy",
+      "kind": "upload_to",
+      "go": "fmt.Errorf(\"upload to %s: %w\", view.ShortID(node), inner) (Push)",
+      "node": "0100000000000000000000000000000000000000000000000000000000000001",
+      "inner": "remote: busy: x",
+      "out": "upload to 01000000: remote: busy: x"
+    },
+    {
+      "name": "upload_to_transport_closed",
+      "kind": "upload_to",
+      "go": "fmt.Errorf(\"upload to %s: %w\", view.ShortID(node), inner) (Push)",
+      "node": "0200000000000000000000000000000000000000000000000000000000000002",
+      "inner": "transport: closed",
+      "out": "upload to 02000000: transport: closed"
+    },
+    {
+      "name": "record_rejected_not_owner",
+      "kind": "record_rejected",
+      "go": "fmt.Errorf(\"record %x rejected: %s\", k[:8], reason) (Push)",
+      "key": "00644b75a8842dc1",
+      "reason": "not-owner",
+      "out": "record 00644b75a8842dc1 rejected: not-owner"
+    },
+    {
+      "name": "record_rejected_verify",
+      "kind": "record_rejected",
+      "go": "fmt.Errorf(\"record %x rejected: %s\", k[:8], reason) (Push)",
+      "key": "00644b75a8842dc1",
+      "reason": "verify: amberpack: corrupt pack data: record CRC mismatch",
+      "out": "record 00644b75a8842dc1 rejected: verify: amberpack: corrupt pack data: record CRC mismatch"
+    },
+    {
+      "name": "not_placed_one_owner",
+      "kind": "not_placed",
+      "go": "shortError's format with one owner",
+      "count": 5,
+      "names": [
+        "03000000 (5 keys)"
+      ],
+      "out": "push: 5 keys could not be placed; owners not confirming: [03000000 (5 keys)]"
+    },
+    {
+      "name": "not_placed_two_owners",
+      "kind": "not_placed",
+      "go": "shortError's format with two owners",
+      "count": 6,
+      "names": [
+        "03000000 (5 keys)",
+        "04000000 (2 keys)"
+      ],
+      "out": "push: 6 keys could not be placed; owners not confirming: [03000000 (5 keys) 04000000 (2 keys)]"
+    },
+    {
+      "name": "not_placed_last_error",
+      "kind": "not_placed_last_error",
+      "go": "fmt.Errorf(\"%w; last upload error: %v\", shortError, lastErr) (Push)",
+      "inner": "push: 5 keys could not be placed; owners not confirming: [03000000 (5 keys)]",
+      "last": "upload to 02000000: context deadline exceeded",
+      "out": "push: 5 keys could not be placed; owners not confirming: [03000000 (5 keys)]; last upload error: upload to 02000000: context deadline exceeded"
+    },
+    {
+      "name": "fetch_ended_early",
+      "kind": "fetch_ended_early",
+      "go": "errors.New(\"pull: fetch ended early\") (PullTree)",
+      "out": "pull: fetch ended early"
+    },
+    {
+      "name": "pull_incomplete",
+      "kind": "pull_incomplete",
+      "go": "fmt.Errorf(\"pull: tree incomplete after fetch: %w\", \u0026fstree.MissingObjectError{Key: k1}) (PullTree)",
+      "inner": "fstree: object 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85 is missing",
+      "out": "pull: tree incomplete after fetch: fstree: object 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85 is missing"
+    }
+  ]
+}

@@ -3,8 +3,10 @@
 //! `sort` (`pdqsort_func`, `sort.Stable`). Ported line by line, with no external dependencies: Go's
 //! unstable pdqsort order changes heavy random edits.
 //!
+//! Go's `int` is `isize` inside the ports, so arithmetic that goes negative in Go (diagonals, loop
+//! bounds, `strings.LastIndex` results) behaves the same; the public API uses `usize` offsets.
+//!
 //! Spec: PORTING.md §4.9; port-notes/worktree.md §3.9.
-#![allow(dead_code, unused_variables)] // L0 stubs: remove once the modules are implemented
 #![deny(unsafe_op_in_unsafe_fn)]
 
 mod diff;

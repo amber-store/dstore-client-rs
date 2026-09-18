@@ -6,7 +6,6 @@
 //! declared with [`cbor_struct!`].
 //!
 //! Spec: PORTING.md §4.2, §5.7; port-notes/codec-wire-ticket.md §2.1, §4.2-§4.4.
-#![allow(dead_code, unused_variables)] // L0 stubs: remove once the modules are implemented
 #![deny(unsafe_op_in_unsafe_fn)]
 
 mod dec;

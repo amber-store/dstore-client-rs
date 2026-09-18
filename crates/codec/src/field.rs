@@ -1,5 +1,6 @@
 //! Field types of keyasint structs and the `Struct` trait `cbor_struct!` implements.
 
+use crate::dec::elem_type;
 use crate::{Dec, DecodeError, Enc, Encode};
 
 /// Implemented for the field types dstore uses: bool, u8, u16, u32, u64, i64, f64, String, Vec<u8>,
@@ -7,6 +8,9 @@ use crate::{Dec, DecodeError, Enc, Encode};
 /// Option<Vec<T: Struct>>, Option<Box<T: Struct>>. Vec<Vec<u8>> decodes a null element as an empty
 /// vector (codec-wire-ticket R6); Vec<Option<Vec<u8>>> keeps it as None (views, which golden tests
 /// re-encode).
+///
+/// Encoding follows `CanonicalEncOptions` (E5-E11): `Option` fields and `Option` elements encode
+/// `None` as null (Go nil), the other collections as definite arrays and strings.
 pub trait Field: Sized + Default {
     fn encode_field(&self, e: &mut Enc);
     /// fxamacker omitempty emptiness.
@@ -24,204 +28,246 @@ pub trait Struct: Encode + Sized + Default {
 
 impl Field for bool {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.bool(*self);
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        !*self
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_bool(go_type)
     }
 }
 
 impl Field for u8 {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.uint(u64::from(*self));
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        *self == 0
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        Ok(d.read_uint(go_type, u64::from(u8::MAX))? as u8)
     }
 }
 
 impl Field for u16 {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.uint(u64::from(*self));
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        *self == 0
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        Ok(d.read_uint(go_type, u64::from(u16::MAX))? as u16)
     }
 }
 
 impl Field for u32 {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.uint(u64::from(*self));
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        *self == 0
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        Ok(d.read_uint(go_type, u64::from(u32::MAX))? as u32)
     }
 }
 
 impl Field for u64 {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.uint(*self);
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        *self == 0
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_uint(go_type, u64::MAX)
     }
 }
 
+/// Go `int` and `int64` (64-bit targets); the macro's Go type names the overflow detail.
 impl Field for i64 {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.int(*self);
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        *self == 0
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_int(go_type, i64::MIN, i64::MAX)
     }
 }
 
 impl Field for f64 {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.f64_canonical(*self);
     }
+    /// `v.Float() == 0.0`: -0.0 is empty too, NaN is not.
     fn is_empty_field(&self) -> bool {
-        todo!()
+        *self == 0.0
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_f64(go_type)
     }
 }
 
 impl Field for String {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.text(self);
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_text(go_type)
     }
 }
 
 impl Field for Vec<u8> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.bytes(self);
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_bytes(go_type)
     }
 }
 
+/// A `[]byte` without omitempty: `None` is nil (`f6`), `Some(vec![])` is `40`.
 impl Field for Option<Vec<u8>> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        match self {
+            None => e.null(),
+            Some(b) => e.bytes(b),
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.as_ref().is_none_or(|b| b.is_empty())
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_bytes_opt(go_type)
     }
 }
 
+/// `[][]byte` in wire: a null element decodes as empty (R6) and would re-encode as `40`.
 impl Field for Vec<Vec<u8>> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.head(4, self.len() as u64);
+        for b in self {
+            e.bytes(b);
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        let elem = elem_type(go_type);
+        d.read_array(go_type, |d| d.read_bytes(elem))
     }
 }
 
+/// `[][]byte` in views: a null element stays `None` and re-encodes as `f6`.
 impl Field for Vec<Option<Vec<u8>>> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.head(4, self.len() as u64);
+        for b in self {
+            b.encode_field(e);
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        let elem = elem_type(go_type);
+        d.read_array(go_type, |d| d.read_bytes_opt(elem))
     }
 }
 
 impl Field for Vec<String> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.head(4, self.len() as u64);
+        for s in self {
+            e.text(s);
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        let elem = elem_type(go_type);
+        d.read_array(go_type, |d| d.read_text(elem))
     }
 }
 
 impl Field for Vec<u16> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.head(4, self.len() as u64);
+        for v in self {
+            e.uint(u64::from(*v));
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        let elem = elem_type(go_type);
+        d.read_array(go_type, |d| {
+            Ok(d.read_uint(elem, u64::from(u16::MAX))? as u16)
+        })
     }
 }
 
+/// `[]T` of a keyasint struct: a null element decodes as `T::default()`.
 impl<T: Struct> Field for Vec<T> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        e.head(4, self.len() as u64);
+        for v in self {
+            Encode::encode(v, e);
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_empty()
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_array(go_type, T::decode_struct)
     }
 }
 
+/// `[]T` without omitempty: `None` is nil (`f6`), `Some(vec![])` is `80`.
 impl<T: Struct> Field for Option<Vec<T>> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        match self {
+            None => e.null(),
+            Some(v) => v.encode_field(e),
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.as_ref().is_none_or(|v| v.is_empty())
     }
     fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+        d.read_array_opt(go_type, T::decode_struct)
     }
 }
 
+/// `*T`: a bare null or undefined is nil; anything else allocates, so a tagged null gives
+/// `Some(T::default())` as in Go. `go_type` is the struct's name ("view.Pending").
 impl<T: Struct> Field for Option<Box<T>> {
     fn encode_field(&self, e: &mut Enc) {
-        todo!()
+        match self {
+            None => e.null(),
+            Some(v) => Encode::encode(&**v, e),
+        }
     }
     fn is_empty_field(&self) -> bool {
-        todo!()
+        self.is_none()
     }
-    fn decode_field(d: &mut Dec<'_>, go_type: &'static str) -> Result<Self, DecodeError> {
-        todo!()
+    fn decode_field(d: &mut Dec<'_>, _go_type: &'static str) -> Result<Self, DecodeError> {
+        if d.take_null() {
+            return Ok(None);
+        }
+        Ok(Some(Box::new(T::decode_struct(d)?)))
     }
 }

@@ -1,0 +1,608 @@
+{
+  "get_batch_keys": 2048,
+  "get_batch_bytes": 8388608,
+  "get_est_max": 65536,
+  "est_size": [
+    {
+      "name": "blob_length_0",
+      "key": "0000ab0abbbd1d9549775e508d96342ae63b62a1131033dfcf298abb904e4fda",
+      "length": "0",
+      "est": "46"
+    },
+    {
+      "name": "blob_length_1",
+      "key": "00016c9b589bc1e2a89895611920d464cdd7f72539d513d179b060ddf6958ba7",
+      "length": "1",
+      "est": "47"
+    },
+    {
+      "name": "blob_length_45",
+      "key": "002d702ea94af8557ef1749634ba03977fcee2427e0dc6ec8427d68f171ce3d0",
+      "length": "45",
+      "est": "91"
+    },
+    {
+      "name": "blob_length_100",
+      "key": "0064a5aa6b172012a95db294f3f7b804ba6a0763d71b906492951c877f87effb",
+      "length": "100",
+      "est": "146"
+    },
+    {
+      "name": "blob_length_65535",
+      "key": "01ffff941cfc5de347c5d7067ce2fccaf772b74c053524430696420557117d85",
+      "length": "65535",
+      "est": "65581"
+    },
+    {
+      "name": "blob_length_65536",
+      "key": "0201000077db65e696c7f52cd03384fc7b7d94973f9d92a810064f99b0a5a7e5",
+      "length": "65536",
+      "est": "65582"
+    },
+    {
+      "name": "blob_length_65537",
+      "key": "0201000137ac6ce0647b2f0c3b1b36858aece41895ca809d209d6618baaca99a",
+      "length": "65537",
+      "est": "65582"
+    },
+    {
+      "name": "blob_length_1048576",
+      "key": "021000001b5dbdf62ad81cd54fd027f9f033155b90bc7936f004abe4600bd4ad",
+      "length": "1048576",
+      "est": "65582"
+    },
+    {
+      "name": "blob_length_4294967296",
+      "key": "040100000000197509c3adf3b23ee6271423fbb31e3c95a608c934a8b84107bd",
+      "length": "4294967296",
+      "est": "65582"
+    },
+    {
+      "name": "blob_length_1099511627776",
+      "key": "05010000000000173b370fa15b7c4fc76faee785dc6a6d80d1b61711e966fa57",
+      "length": "1099511627776",
+      "est": "65582"
+    },
+    {
+      "name": "blob_length_72057594037927936",
+      "key": "070100000000000000105eb1ecce45f580ea368e718198ed645865e1bf83b812",
+      "length": "72057594037927936",
+      "est": "65582"
+    },
+    {
+      "name": "blob_length_9223372036854775807",
+      "key": "077fffffffffffffff9d828961f31eea3f0c4d3215b326beefca2785b235825e",
+      "length": "9223372036854775807",
+      "est": "65582"
+    },
+    {
+      "name": "filenode_length_300000",
+      "key": "120493e0063af50fd1e6541967793ec68b0a00f2160f7cb1e43347a932d8283c",
+      "length": "300000",
+      "est": "65582"
+    },
+    {
+      "name": "dirleaf_length_300000",
+      "key": "220493e0fc6267bb259097fc9e0346360592e91fdec687c81e26af6d11dbb841",
+      "length": "300000",
+      "est": "65582"
+    },
+    {
+      "name": "dirnode_length_300000",
+      "key": "320493e073970d00cd36f98f61831cfd2ff1b02bb28980b23d242d3a918ef08d",
+      "length": "300000",
+      "est": "65582"
+    },
+    {
+      "name": "xattrset_length_300000",
+      "key": "420493e03c512340eaabd583d6c96c363c08af8e002caaa6979921039f18dfc3",
+      "length": "300000",
+      "est": "65582"
+    },
+    {
+      "name": "noncanonical_0",
+      "key": "0780000000000000002631e6c625e4fc7ef97118bea7dd5f243800d76ac27e54",
+      "length": "9223372036854775808",
+      "est": "-9223372036854775762"
+    },
+    {
+      "name": "noncanonical_1",
+      "key": "07ffffffffffffffff7f905512a197b02ca8d9c3d15bb61126115dfed56ea11a",
+      "length": "18446744073709551615",
+      "est": "45"
+    },
+    {
+      "name": "noncanonical_2",
+      "key": "07fffffffffffffffec99d2a9e3e5bb03c8a532a347a6b254a3e99612931246a",
+      "length": "18446744073709551614",
+      "est": "44"
+    },
+    {
+      "name": "noncanonical_3",
+      "key": "077ffffffffffffffff4bac43d0213324c2bb0b2df3474768bef8dff7baec5be",
+      "length": "9223372036854775807",
+      "est": "65582"
+    },
+    {
+      "name": "noncanonical_4",
+      "key": "010005405c18c1986efba71218c9ebfe3b1a5239eed7435fdbf5df08fac821d6",
+      "length": "5",
+      "est": "51"
+    },
+    {
+      "name": "noncanonical_5",
+      "key": "08008ee474acbd81d37f652971e2d86681d4ffbffba44debc49274cd4a16c534",
+      "length": "0",
+      "est": "46"
+    },
+    {
+      "name": "noncanonical_6",
+      "key": "f30000ffff4f7547caefa5935e16ef0c319758a0989a93e0458cad8b10119647",
+      "length": "65535",
+      "est": "65581"
+    },
+    {
+      "name": "noncanonical_7",
+      "key": "ffff304b49a6dcbb741ab5f9ad73f93fc71bff13c460a1fa111672036b7051fd",
+      "length": "18388280058257914740",
+      "est": "-58464015451636830"
+    },
+    {
+      "name": "splitmix_00",
+      "key": "bace6754bf615865cea6dd7fa604c25ee848fa07932ca597bca1f66ebe3dc4e1",
+      "length": "13526868",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_01",
+      "key": "2c7a1257cf3b6a7a95a9f0b1743869248d4d1307fdb1e5fdf16ba22ec289b2b6",
+      "length": "524293754683",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_02",
+      "key": "414ae1d25f12c2b7b4b5bb8df22096f8969e500cd4cb780d830183c623849eae",
+      "length": "19169",
+      "est": "19215"
+    },
+    {
+      "name": "splitmix_03",
+      "key": "ef6c012d5fe681b2ab22d1805078cfc2dcd283c6d91c32bdd27ef0aca36c6024",
+      "length": "7782551520985330347",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_04",
+      "key": "4ce34448dc495905276f53a919f136077c910bdeb772258ba364f7c5c0b173cd",
+      "length": "976103201865",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_05",
+      "key": "61bdd79eb2b0c33058bd0ab10e3d99f8a791210cbe55ac006db2dc85ffd08828",
+      "length": "48599",
+      "est": "48645"
+    },
+    {
+      "name": "splitmix_06",
+      "key": "a107b8f7816903206fffa34ec1365657955604b3cca6700eb77ef8b9f7d20922",
+      "length": "1976",
+      "est": "2022"
+    },
+    {
+      "name": "splitmix_07",
+      "key": "9aa3c4cf00360e656e9b5c55ca2d153f26729950d5c202214af12aefe3117dae",
+      "length": "10732751",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_08",
+      "key": "4d30d842399a6dd6359c9b6c4b8a1e06d3dcba0268df043a246b9958dc044061",
+      "length": "53705382140525",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_09",
+      "key": "cc8e5674b86ddb11178ba8d65d6fee2a1c55b715fb3740dd3d4f65946489d9aa",
+      "length": "611335845997",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_10",
+      "key": "b46cd98b9f44a51741689975e0232430c1c69795ae601253fc1db18368193885",
+      "length": "467506274116",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_11",
+      "key": "4ced4c8abd6c90f4f90fc310b5e0c06986bd9e11716715baf8ddc366bde65867",
+      "length": "1019191410028",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_12",
+      "key": "f21a557b1cd2f868bd7c02c2db3c59b047472098b9bea20c8394ee6dbae02c61",
+      "length": "1725819",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_13",
+      "key": "2d9def68b061843064972b0aedbf81468ba62e5bfc5390c7bbdf3ba7d2d2d7c1",
+      "length": "173651579134340",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_14",
+      "key": "4447e02c5cee1bad3638f0b0d3951b82fdc1e6da65637b7557ce8240bf667034",
+      "length": "308703681774",
+      "est": "65582"
+    },
+    {
+      "name": "splitmix_15",
+      "key": "0560cba831ffcf4892a5dfdfc2f4a00c6d324c4e32b7b6399ea884c18be7e2f4",
+      "length": "106427816476623",
+      "est": "65582"
+    }
+  ],
+  "pick_batch": [
+    {
+      "name": "one_accumulator_5000_small_keys",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 5000
+            }
+          ],
+          "bytes": 230000
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 2048,
+          "bytes": 94208
+        },
+        {
+          "node": 0,
+          "count": 2048,
+          "bytes": 94208
+        },
+        {
+          "node": 0,
+          "count": 904,
+          "bytes": 41584
+        }
+      ]
+    },
+    {
+      "name": "est_max_keys_cut_at_8mib",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "65536",
+              "count": 200
+            }
+          ],
+          "bytes": 13116400
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 127,
+          "bytes": 8328914
+        },
+        {
+          "node": 0,
+          "count": 73,
+          "bytes": 4787486
+        }
+      ]
+    },
+    {
+      "name": "full_by_bytes_beats_a_larger_accumulator",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "65536",
+              "count": 128
+            }
+          ],
+          "bytes": 8394496
+        },
+        {
+          "node": "027e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 1000
+            }
+          ],
+          "bytes": 46000
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 127,
+          "bytes": 8328914
+        },
+        {
+          "node": 1,
+          "count": 1000,
+          "bytes": 46000
+        },
+        {
+          "node": 0,
+          "count": 1,
+          "bytes": 65582
+        }
+      ]
+    },
+    {
+      "name": "most_keys_first",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 10
+            }
+          ],
+          "bytes": 460
+        },
+        {
+          "node": "027e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 20
+            }
+          ],
+          "bytes": 920
+        },
+        {
+          "node": "037e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 5
+            }
+          ],
+          "bytes": 230
+        }
+      ],
+      "jobs": [
+        {
+          "node": 1,
+          "count": 20,
+          "bytes": 920
+        },
+        {
+          "node": 0,
+          "count": 10,
+          "bytes": 460
+        },
+        {
+          "node": 2,
+          "count": 5,
+          "bytes": 230
+        }
+      ]
+    },
+    {
+      "name": "full_by_keys",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 2048
+            }
+          ],
+          "bytes": 94208
+        },
+        {
+          "node": "027e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 2047
+            }
+          ],
+          "bytes": 94162
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 2048,
+          "bytes": 94208
+        },
+        {
+          "node": 1,
+          "count": 2047,
+          "bytes": 94162
+        }
+      ]
+    },
+    {
+      "name": "mixed_sizes",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "65536",
+              "count": 100
+            },
+            {
+              "length": "0",
+              "count": 3000
+            },
+            {
+              "length": "100000",
+              "count": 30
+            }
+          ],
+          "bytes": 8663660
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 2048,
+          "bytes": 6647808
+        },
+        {
+          "node": 0,
+          "count": 1082,
+          "bytes": 2015852
+        }
+      ]
+    },
+    {
+      "name": "exactly_8mib",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "65536",
+              "count": 127
+            },
+            {
+              "length": "59648",
+              "count": 1
+            },
+            {
+              "length": "0",
+              "count": 1
+            }
+          ],
+          "bytes": 8388654
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 128,
+          "bytes": 8388608
+        },
+        {
+          "node": 0,
+          "count": 1,
+          "bytes": 46
+        }
+      ]
+    },
+    {
+      "name": "three_accumulators",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 3000
+            }
+          ],
+          "bytes": 138000
+        },
+        {
+          "node": "027e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "65536",
+              "count": 100
+            }
+          ],
+          "bytes": 6558200
+        },
+        {
+          "node": "037e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "500",
+              "count": 700
+            }
+          ],
+          "bytes": 382200
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 2048,
+          "bytes": 94208
+        },
+        {
+          "node": 0,
+          "count": 952,
+          "bytes": 43792
+        },
+        {
+          "node": 2,
+          "count": 700,
+          "bytes": 382200
+        },
+        {
+          "node": 1,
+          "count": 100,
+          "bytes": 6558200
+        }
+      ]
+    },
+    {
+      "name": "partial_before_full",
+      "accs": [
+        {
+          "node": "017e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "1048576",
+              "count": 64
+            }
+          ],
+          "bytes": 4197248
+        },
+        {
+          "node": "027e000000000000000000000000000000000000000000000000000000000000",
+          "keys": [
+            {
+              "length": "0",
+              "count": 63
+            }
+          ],
+          "bytes": 2898
+        }
+      ],
+      "jobs": [
+        {
+          "node": 0,
+          "count": 64,
+          "bytes": 4197248
+        },
+        {
+          "node": 1,
+          "count": 63,
+          "bytes": 2898
+        }
+      ]
+    },
+    {
+      "name": "no_accumulators",
+      "accs": [],
+      "jobs": []
+    }
+  ]
+}

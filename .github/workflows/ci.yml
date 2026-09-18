@@ -58,6 +58,8 @@ jobs:
           cache-dependency-path: tools/vectorgen/go.sum
       - name: go vet
         run: go vet ./...
+      - name: go test (registry rules, clisnap cases, copied cmd/dstore tests)
+        run: go test ./...
       - name: Regenerate twice; deterministic and equal to the committed vectors
         run: |
           go run . "$RUNNER_TEMP/golden-a"
@@ -68,7 +70,11 @@ jobs:
         run: |
           go run ./cmd/gotables > "$RUNNER_TEMP/tables.rs"
           diff -u ../../crates/gocompat/src/tables.rs "$RUNNER_TEMP/tables.rs"
-      - name: CLI snapshots from the Go binary (built into a temporary GOBIN and removed)
+      - name: Regenerate crates/gocompat/src/errno_tables.rs
+        run: |
+          go run ./cmd/goerrno > "$RUNNER_TEMP/errno_tables.rs"
+          diff -u ../../crates/gocompat/src/errno_tables.rs "$RUNNER_TEMP/errno_tables.rs"
+      - name: CLI snapshots from the Go binary (built into a temporary directory and removed)
         run: |
           go run ./cmd/clisnap -o "$RUNNER_TEMP/cli"
           diff -u ../../tests/golden/cli/snapshots.json "$RUNNER_TEMP/cli/snapshots.json"

@@ -1,0 +1,1937 @@
+{
+  "cases": [
+    {
+      "name": "remote only",
+      "local": null,
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "modified"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "local only",
+      "local": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": null,
+      "apply": null,
+      "conflicts": null
+    },
+    {
+      "name": "both differ",
+      "local": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0003000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "modified",
+          "incoming_kind": "modified"
+        }
+      ]
+    },
+    {
+      "name": "same edit twice",
+      "local": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "modified"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "local touch",
+      "local": [
+        {
+          "path": "a",
+          "kind": "meta",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "modified"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "both delete",
+      "local": [
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": null,
+      "conflicts": null
+    },
+    {
+      "name": "local delete, remote edit",
+      "local": [
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "deleted",
+          "incoming_kind": "modified"
+        }
+      ]
+    },
+    {
+      "name": "local edit, remote delete",
+      "local": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "modified",
+          "incoming_kind": "deleted"
+        }
+      ]
+    },
+    {
+      "name": "remote add under locally deleted dir",
+      "local": [
+        {
+          "path": "d",
+          "kind": "deleted",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        },
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d/y",
+          "local_path": "d",
+          "local_kind": "deleted",
+          "incoming_kind": "new"
+        }
+      ]
+    },
+    {
+      "name": "remote delete under locally deleted dir",
+      "local": [
+        {
+          "path": "d",
+          "kind": "deleted",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        },
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": null,
+      "conflicts": null
+    },
+    {
+      "name": "remote add under locally retyped dir",
+      "local": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d/y",
+          "local_path": "d",
+          "local_kind": "type",
+          "incoming_kind": "new"
+        }
+      ]
+    },
+    {
+      "name": "remote retypes dir with local edits below",
+      "local": [
+        {
+          "path": "d/x",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0003000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d",
+          "local_path": "d/x",
+          "local_kind": "modified",
+          "incoming_kind": "type"
+        },
+        {
+          "path": "d/x",
+          "local_path": "d/x",
+          "local_kind": "modified",
+          "incoming_kind": "deleted"
+        }
+      ]
+    },
+    {
+      "name": "remote deletes dir, local adds below",
+      "local": [
+        {
+          "path": "d/new",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d",
+          "kind": "deleted",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        },
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": [
+        {
+          "path": "d",
+          "kind": "deleted"
+        },
+        {
+          "path": "d/x",
+          "kind": "deleted"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "ancestor walk skips an intermediate mode change",
+      "local": [
+        {
+          "path": "d",
+          "kind": "deleted",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        },
+        {
+          "path": "d/e",
+          "kind": "mode",
+          "old": {
+            "name": "e",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "e",
+            "mode": "16832",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/e/f",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d/e/f",
+          "local_path": "d",
+          "local_kind": "deleted",
+          "incoming_kind": "new"
+        }
+      ]
+    },
+    {
+      "name": "deep ancestor deleted",
+      "local": [
+        {
+          "path": "d",
+          "kind": "deleted",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/e/f",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d/e/f",
+          "local_path": "d",
+          "local_kind": "deleted",
+          "incoming_kind": "modified"
+        }
+      ]
+    },
+    {
+      "name": "ancestor meta change is no obstacle",
+      "local": [
+        {
+          "path": "d",
+          "kind": "meta",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/x",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "d/x",
+          "kind": "modified"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "local retype file to dir, remote adds below",
+      "local": [
+        {
+          "path": "a",
+          "kind": "type",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "a",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a/x",
+          "kind": "new"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "remote delete under locally retyped dir",
+      "local": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d/x",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": null,
+      "conflicts": null
+    },
+    {
+      "name": "both add same dir with equal perms",
+      "local": [
+        {
+          "path": "n",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "n",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "n",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "n",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "7",
+            "content_key": "2000000000090000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "n",
+          "kind": "new"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "both add same dir with different perms",
+      "local": [
+        {
+          "path": "n",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "e",
+            "mode": "16832",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "n",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "n",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "7",
+            "content_key": "2000000000090000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "n",
+          "local_path": "n",
+          "local_kind": "new",
+          "incoming_kind": "new"
+        }
+      ]
+    },
+    {
+      "name": "both add same file content, different mtime",
+      "local": [
+        {
+          "path": "a",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "5",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "new"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "both add different files",
+      "local": [
+        {
+          "path": "a",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0003000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "new",
+          "incoming_kind": "new"
+        }
+      ]
+    },
+    {
+      "name": "remote chmod against local edit",
+      "local": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "mode",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33261",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "modified",
+          "incoming_kind": "mode"
+        }
+      ]
+    },
+    {
+      "name": "remote chmod over local meta change",
+      "local": [
+        {
+          "path": "a",
+          "kind": "meta",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "mode",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33261",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "mode"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "local chmod against remote edit",
+      "local": [
+        {
+          "path": "a",
+          "kind": "mode",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33261",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "mode",
+          "incoming_kind": "modified"
+        }
+      ]
+    },
+    {
+      "name": "same chmod twice",
+      "local": [
+        {
+          "path": "a",
+          "kind": "mode",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33261",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "mode",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33261",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "mode"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "equivalent retypes on both sides",
+      "local": [
+        {
+          "path": "a",
+          "kind": "type",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "41471",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "link_target": "t"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "type",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "41471",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "link_target": "t"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "type"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "local meta change, remote delete",
+      "local": [
+        {
+          "path": "a",
+          "kind": "meta",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "deleted"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "local delete, remote meta change",
+      "local": [
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "meta",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "a",
+          "local_path": "a",
+          "local_kind": "deleted",
+          "incoming_kind": "meta"
+        }
+      ]
+    },
+    {
+      "name": "remote retypes dir, local mode change at the dir",
+      "local": [
+        {
+          "path": "d",
+          "kind": "mode",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "e",
+            "mode": "16832",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d",
+          "local_path": "d",
+          "local_kind": "mode",
+          "incoming_kind": "type"
+        }
+      ]
+    },
+    {
+      "name": "remote retypes dir, local change deep below",
+      "local": [
+        {
+          "path": "d/e/f",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": null,
+      "conflicts": [
+        {
+          "path": "d",
+          "local_path": "d/e/f",
+          "local_kind": "new",
+          "incoming_kind": "type"
+        }
+      ]
+    },
+    {
+      "name": "firstBelow ignores d-x before d/",
+      "local": [
+        {
+          "path": "d-x",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "d",
+          "kind": "type"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "firstBelow ignores d0 after d/",
+      "local": [
+        {
+          "path": "d0",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "d",
+          "kind": "type",
+          "old": {
+            "name": "d",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "d",
+          "kind": "type"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "remote retypes file to dir, local change below is not looked up",
+      "local": [
+        {
+          "path": "a/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "incoming": [
+        {
+          "path": "a",
+          "kind": "type",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "a",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "a",
+          "kind": "type"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "goneAbove stops before a leading slash",
+      "local": [
+        {
+          "path": "",
+          "kind": "deleted",
+          "old": {
+            "name": "r",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path": "/x",
+          "kind": "new"
+        }
+      ],
+      "conflicts": null
+    },
+    {
+      "name": "incoming order is kept",
+      "local": [
+        {
+          "path": "b",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path": "z",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path": "z",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0003000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path": "y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path": "b",
+          "kind": "modified",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0003000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path": "a",
+          "kind": "deleted",
+          "old": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0001000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "apply": [
+        {
+          "path": "y",
+          "kind": "new"
+        },
+        {
+          "path": "a",
+          "kind": "deleted"
+        }
+      ],
+      "conflicts": [
+        {
+          "path": "z",
+          "local_path": "z",
+          "local_kind": "deleted",
+          "incoming_kind": "modified"
+        },
+        {
+          "path": "b",
+          "local_path": "b",
+          "local_kind": "modified",
+          "incoming_kind": "modified"
+        }
+      ]
+    },
+    {
+      "name": "non-UTF-8 paths",
+      "local": [
+        {
+          "path_hex": "64ff",
+          "kind": "deleted",
+          "old": {
+            "name_hex": "64ff",
+            "mode": "16877",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "2000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "new": null
+        }
+      ],
+      "incoming": [
+        {
+          "path_hex": "64ff2f78",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "path_hex": "65fe",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "0",
+            "content_key": "0002000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "apply": [
+        {
+          "path_hex": "65fe",
+          "kind": "new"
+        }
+      ],
+      "conflicts": [
+        {
+          "path_hex": "64ff2f78",
+          "local_path_hex": "64ff",
+          "local_kind": "deleted",
+          "incoming_kind": "new"
+        }
+      ]
+    }
+  ]
+}

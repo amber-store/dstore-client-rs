@@ -1,0 +1,300 @@
+{
+  "cases": [
+    {
+      "name": "worktree/ErrNotWorkingCopy",
+      "out": "not a dstore working copy (no .dstore in this or any parent directory)"
+    },
+    {
+      "name": "worktree/ErrIncomplete",
+      "out": "incomplete clone: delete the directory and clone again"
+    },
+    {
+      "name": "worktree/ErrNoRemote",
+      "out": "the reference does not exist on the cluster: nothing to pull"
+    },
+    {
+      "name": "worktree/ErrRemoteMoved",
+      "out": "the cluster's tree moved since your last sync: pull first, or --force"
+    },
+    {
+      "name": "worktree/ErrRemoteDeleted",
+      "out": "the reference was deleted on the cluster: --force to recreate it"
+    },
+    {
+      "name": "worktree/ErrConflict",
+      "out": "conflicting changes: resolve them, or --force to take the cluster's side"
+    },
+    {
+      "name": "worktree/ErrRefChanged",
+      "out": "reference changed on the cluster since your last fetch: pull first, or --force"
+    },
+    {
+      "name": "worktree/ErrTooLarge",
+      "out": "too large to diff"
+    },
+    {
+      "name": "client/ErrUnknownRef",
+      "out": "client: unknown reference"
+    },
+    {
+      "name": "cli-line/worktree/ErrNotWorkingCopy",
+      "out": "dstore: not a dstore working copy (no .dstore in this or any parent directory)\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrIncomplete",
+      "out": "dstore: incomplete clone: delete the directory and clone again\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrNoRemote",
+      "out": "dstore: the reference does not exist on the cluster: nothing to pull\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrRemoteMoved",
+      "out": "dstore: the cluster's tree moved since your last sync: pull first, or --force\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrRemoteDeleted",
+      "out": "dstore: the reference was deleted on the cluster: --force to recreate it\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrConflict",
+      "out": "dstore: conflicting changes: resolve them, or --force to take the cluster's side\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrRefChanged",
+      "out": "dstore: reference changed on the cluster since your last fetch: pull first, or --force\n"
+    },
+    {
+      "name": "cli-line/worktree/ErrTooLarge",
+      "out": "dstore: too large to diff\n"
+    },
+    {
+      "name": "cli-line/client/ErrUnknownRef",
+      "out": "dstore: client: unknown reference\n"
+    },
+    {
+      "name": "flow/push-ref-changed-absent",
+      "out": "reference changed on the cluster since your last fetch: pull first, or --force (cas mismatch: reference is absent)"
+    },
+    {
+      "name": "flow/push-ref-changed-current",
+      "out": "reference changed on the cluster since your last fetch: pull first, or --force (cas mismatch: current key 00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85)"
+    },
+    {
+      "name": "flow/push-ref-changed-current-short-key",
+      "out": "reference changed on the cluster since your last fetch: pull first, or --force (cas mismatch: current key abcd)"
+    },
+    {
+      "name": "flow/clone-unknown-ref",
+      "out": "client: unknown reference: trees/x"
+    },
+    {
+      "name": "cli-line/flow/push-ref-changed-absent",
+      "out": "dstore: reference changed on the cluster since your last fetch: pull first, or --force (cas mismatch: reference is absent)\n"
+    },
+    {
+      "name": "tree/find-not-a-working-copy",
+      "out": "not a dstore working copy (no .dstore in this or any parent directory)"
+    },
+    {
+      "name": "tree/open-not-a-working-copy",
+      "out": "not a dstore working copy (no .dstore in this or any parent directory)"
+    },
+    {
+      "name": "tree/open-dstore-is-a-file",
+      "out": "not a dstore working copy (no .dstore in this or any parent directory)"
+    },
+    {
+      "name": "tree/open-no-config",
+      "out": "working copy {ROOT}: open {ROOT}/.dstore/config: no such file or directory"
+    },
+    {
+      "name": "tree/open-config-is-a-directory",
+      "out": "working copy {ROOT}: read {ROOT}/.dstore/config: is a directory"
+    },
+    {
+      "name": "tree/open-bad-config",
+      "out": "working copy {ROOT}: bad config: invalid character 'x' looking for beginning of value"
+    },
+    {
+      "name": "tree/open-bad-config-type",
+      "out": "working copy {ROOT}: bad config: json: cannot unmarshal number into Go struct field Config.name of type string"
+    },
+    {
+      "name": "tree/open-packstore-is-a-file",
+      "out": "packstore: creating {ROOT}/.dstore/packstore: mkdir {ROOT}/.dstore/packstore: not a directory"
+    },
+    {
+      "name": "tree/open-incomplete",
+      "out": "incomplete clone: delete the directory and clone again"
+    },
+    {
+      "name": "tree/open-locked",
+      "out": "packstore: {ROOT}/.dstore/packstore is already open: resource temporarily unavailable"
+    },
+    {
+      "name": "tree/open-locked-before-state-check",
+      "out": "packstore: {ROOT}/.dstore/packstore is already open: resource temporarily unavailable"
+    },
+    {
+      "name": "tree/create-over-existing",
+      "out": "{ROOT} is inside the working copy at {ROOT}"
+    },
+    {
+      "name": "tree/create-inside",
+      "out": "{ROOT}/sub is inside the working copy at {ROOT}"
+    },
+    {
+      "name": "flow/init-inside",
+      "out": "{ROOT}/sub/deeper is inside the working copy at {ROOT}"
+    },
+    {
+      "name": "flow/clone-not-a-directory",
+      "out": "{ROOT}/file is not a directory"
+    },
+    {
+      "name": "flow/clone-not-empty",
+      "out": "{ROOT} is not empty"
+    },
+    {
+      "name": "flow/clone-parent-is-a-file",
+      "out": "stat {ROOT}/file/sub: not a directory"
+    },
+    {
+      "name": "flow/clone-empty-directory-inside",
+      "out": "{ROOT}/empty is inside the working copy at {ROOT}"
+    },
+    {
+      "name": "apply/empty-path",
+      "out": "empty path"
+    },
+    {
+      "name": "apply/unsafe-parent",
+      "out": "refusing unsafe path \"../x\""
+    },
+    {
+      "name": "apply/unsafe-inner-parent",
+      "out": "refusing unsafe path \"a/../x\""
+    },
+    {
+      "name": "apply/unsafe-empty-component",
+      "out": "refusing unsafe path \"a//x\""
+    },
+    {
+      "name": "apply/unsafe-dot",
+      "out": "refusing unsafe path \"./x\""
+    },
+    {
+      "name": "apply/unsafe-trailing-slash",
+      "out": "refusing unsafe path \"x/\""
+    },
+    {
+      "name": "apply/unsafe-leading-slash",
+      "out": "refusing unsafe path \"/x\""
+    },
+    {
+      "name": "apply/unsafe-trailing-dot",
+      "out": "refusing unsafe path \"a/.\""
+    },
+    {
+      "name": "apply/unsafe-quoted-bytes",
+      "out": "refusing unsafe path \"\\xff\\t\\\"\\\\\\u00a0😀/../x\""
+    },
+    {
+      "name": "apply/unsafe-checked-before-writing",
+      "out": "refusing unsafe path \"..\""
+    },
+    {
+      "name": "apply/symlinked-ancestor",
+      "out": "refusing to write through non-directory {ROOT}/lnk"
+    },
+    {
+      "name": "apply/file-ancestor",
+      "out": "{ROOT}/f: not a directory"
+    },
+    {
+      "name": "apply/unsupported-type",
+      "out": "x: unsupported type 0160000"
+    },
+    {
+      "name": "apply/unsupported-type-zero",
+      "out": "x: unsupported type 0"
+    },
+    {
+      "name": "apply/bad-content-key",
+      "out": "x: key: data is not 32 bytes: got 3"
+    },
+    {
+      "name": "apply/missing-content",
+      "out": "x: reading 00106c7caf90acc75066cd538e953d3d9b65b10de51c59347ecbc976c8f51953: packstore: object not found"
+    },
+    {
+      "name": "apply/bad-inline-xattrs",
+      "out": "x: cborx: xattr map claims 1 pairs in 0 bytes"
+    },
+    {
+      "name": "apply/inline-xattrs-not-a-map",
+      "out": "x: cborx: expected CBOR map (major 5), got major 4"
+    },
+    {
+      "name": "apply/missing-xattr-set",
+      "out": "x: packstore: object not found"
+    },
+    {
+      "name": "apply/bad-xattr-set-key",
+      "out": "x: key: reserved header bit is set"
+    },
+    {
+      "name": "cmd/clone-usage",
+      "out": "clone NAME [DIR]"
+    },
+    {
+      "name": "cmd/init-usage",
+      "out": "init NAME"
+    },
+    {
+      "name": "cmd/remote-and-incoming",
+      "out": "--remote and --incoming exclude each other"
+    },
+    {
+      "name": "cmd/resolve-ticket",
+      "out": "no cluster: set --ticket or $DSTORE_TICKET"
+    },
+    {
+      "name": "cmd/push-user-empty",
+      "out": "user: user must not be empty"
+    },
+    {
+      "name": "cmd/push-user-invalid-utf8",
+      "out": "user: user must be valid UTF-8"
+    },
+    {
+      "name": "cmd/push-user-control",
+      "out": "user: user must not contain control characters"
+    },
+    {
+      "name": "cmd/push-user-too-long",
+      "out": "user: user exceeds 1024 bytes"
+    },
+    {
+      "name": "cmd/reference-name-empty",
+      "out": "reference name must not be empty"
+    },
+    {
+      "name": "cmd/reference-name-too-long",
+      "out": "reference name exceeds 1024 bytes"
+    },
+    {
+      "name": "cmd/reference-name-invalid-utf8",
+      "out": "reference name must be valid UTF-8"
+    },
+    {
+      "name": "cmd/reference-name-at",
+      "out": "reference name must not contain '@'"
+    },
+    {
+      "name": "cmd/reference-name-control",
+      "out": "reference name must not contain control characters"
+    }
+  ]
+}

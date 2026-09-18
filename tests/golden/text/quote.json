@@ -1,0 +1,6150 @@
+{
+  "go_version": "go1.26.5",
+  "unicode_version": "15.0.0",
+  "cases": [
+    {
+      "name": "ASCII byte 0x00",
+      "in_hex": "00",
+      "out": "\"\\x00\""
+    },
+    {
+      "name": "ASCII byte 0x01",
+      "in_hex": "01",
+      "out": "\"\\x01\""
+    },
+    {
+      "name": "ASCII byte 0x02",
+      "in_hex": "02",
+      "out": "\"\\x02\""
+    },
+    {
+      "name": "ASCII byte 0x03",
+      "in_hex": "03",
+      "out": "\"\\x03\""
+    },
+    {
+      "name": "ASCII byte 0x04",
+      "in_hex": "04",
+      "out": "\"\\x04\""
+    },
+    {
+      "name": "ASCII byte 0x05",
+      "in_hex": "05",
+      "out": "\"\\x05\""
+    },
+    {
+      "name": "ASCII byte 0x06",
+      "in_hex": "06",
+      "out": "\"\\x06\""
+    },
+    {
+      "name": "ASCII byte 0x07",
+      "in_hex": "07",
+      "out": "\"\\a\""
+    },
+    {
+      "name": "ASCII byte 0x08",
+      "in_hex": "08",
+      "out": "\"\\b\""
+    },
+    {
+      "name": "ASCII byte 0x09",
+      "in_hex": "09",
+      "out": "\"\\t\""
+    },
+    {
+      "name": "ASCII byte 0x0a",
+      "in_hex": "0a",
+      "out": "\"\\n\""
+    },
+    {
+      "name": "ASCII byte 0x0b",
+      "in_hex": "0b",
+      "out": "\"\\v\""
+    },
+    {
+      "name": "ASCII byte 0x0c",
+      "in_hex": "0c",
+      "out": "\"\\f\""
+    },
+    {
+      "name": "ASCII byte 0x0d",
+      "in_hex": "0d",
+      "out": "\"\\r\""
+    },
+    {
+      "name": "ASCII byte 0x0e",
+      "in_hex": "0e",
+      "out": "\"\\x0e\""
+    },
+    {
+      "name": "ASCII byte 0x0f",
+      "in_hex": "0f",
+      "out": "\"\\x0f\""
+    },
+    {
+      "name": "ASCII byte 0x10",
+      "in_hex": "10",
+      "out": "\"\\x10\""
+    },
+    {
+      "name": "ASCII byte 0x11",
+      "in_hex": "11",
+      "out": "\"\\x11\""
+    },
+    {
+      "name": "ASCII byte 0x12",
+      "in_hex": "12",
+      "out": "\"\\x12\""
+    },
+    {
+      "name": "ASCII byte 0x13",
+      "in_hex": "13",
+      "out": "\"\\x13\""
+    },
+    {
+      "name": "ASCII byte 0x14",
+      "in_hex": "14",
+      "out": "\"\\x14\""
+    },
+    {
+      "name": "ASCII byte 0x15",
+      "in_hex": "15",
+      "out": "\"\\x15\""
+    },
+    {
+      "name": "ASCII byte 0x16",
+      "in_hex": "16",
+      "out": "\"\\x16\""
+    },
+    {
+      "name": "ASCII byte 0x17",
+      "in_hex": "17",
+      "out": "\"\\x17\""
+    },
+    {
+      "name": "ASCII byte 0x18",
+      "in_hex": "18",
+      "out": "\"\\x18\""
+    },
+    {
+      "name": "ASCII byte 0x19",
+      "in_hex": "19",
+      "out": "\"\\x19\""
+    },
+    {
+      "name": "ASCII byte 0x1a",
+      "in_hex": "1a",
+      "out": "\"\\x1a\""
+    },
+    {
+      "name": "ASCII byte 0x1b",
+      "in_hex": "1b",
+      "out": "\"\\x1b\""
+    },
+    {
+      "name": "ASCII byte 0x1c",
+      "in_hex": "1c",
+      "out": "\"\\x1c\""
+    },
+    {
+      "name": "ASCII byte 0x1d",
+      "in_hex": "1d",
+      "out": "\"\\x1d\""
+    },
+    {
+      "name": "ASCII byte 0x1e",
+      "in_hex": "1e",
+      "out": "\"\\x1e\""
+    },
+    {
+      "name": "ASCII byte 0x1f",
+      "in_hex": "1f",
+      "out": "\"\\x1f\""
+    },
+    {
+      "name": "ASCII byte 0x20",
+      "in_hex": "20",
+      "out": "\" \""
+    },
+    {
+      "name": "ASCII byte 0x21",
+      "in_hex": "21",
+      "out": "\"!\""
+    },
+    {
+      "name": "ASCII byte 0x22",
+      "in_hex": "22",
+      "out": "\"\\\"\""
+    },
+    {
+      "name": "ASCII byte 0x23",
+      "in_hex": "23",
+      "out": "\"#\""
+    },
+    {
+      "name": "ASCII byte 0x24",
+      "in_hex": "24",
+      "out": "\"$\""
+    },
+    {
+      "name": "ASCII byte 0x25",
+      "in_hex": "25",
+      "out": "\"%\""
+    },
+    {
+      "name": "ASCII byte 0x26",
+      "in_hex": "26",
+      "out": "\"\u0026\""
+    },
+    {
+      "name": "ASCII byte 0x27",
+      "in_hex": "27",
+      "out": "\"'\""
+    },
+    {
+      "name": "ASCII byte 0x28",
+      "in_hex": "28",
+      "out": "\"(\""
+    },
+    {
+      "name": "ASCII byte 0x29",
+      "in_hex": "29",
+      "out": "\")\""
+    },
+    {
+      "name": "ASCII byte 0x2a",
+      "in_hex": "2a",
+      "out": "\"*\""
+    },
+    {
+      "name": "ASCII byte 0x2b",
+      "in_hex": "2b",
+      "out": "\"+\""
+    },
+    {
+      "name": "ASCII byte 0x2c",
+      "in_hex": "2c",
+      "out": "\",\""
+    },
+    {
+      "name": "ASCII byte 0x2d",
+      "in_hex": "2d",
+      "out": "\"-\""
+    },
+    {
+      "name": "ASCII byte 0x2e",
+      "in_hex": "2e",
+      "out": "\".\""
+    },
+    {
+      "name": "ASCII byte 0x2f",
+      "in_hex": "2f",
+      "out": "\"/\""
+    },
+    {
+      "name": "ASCII byte 0x30",
+      "in_hex": "30",
+      "out": "\"0\""
+    },
+    {
+      "name": "ASCII byte 0x31",
+      "in_hex": "31",
+      "out": "\"1\""
+    },
+    {
+      "name": "ASCII byte 0x32",
+      "in_hex": "32",
+      "out": "\"2\""
+    },
+    {
+      "name": "ASCII byte 0x33",
+      "in_hex": "33",
+      "out": "\"3\""
+    },
+    {
+      "name": "ASCII byte 0x34",
+      "in_hex": "34",
+      "out": "\"4\""
+    },
+    {
+      "name": "ASCII byte 0x35",
+      "in_hex": "35",
+      "out": "\"5\""
+    },
+    {
+      "name": "ASCII byte 0x36",
+      "in_hex": "36",
+      "out": "\"6\""
+    },
+    {
+      "name": "ASCII byte 0x37",
+      "in_hex": "37",
+      "out": "\"7\""
+    },
+    {
+      "name": "ASCII byte 0x38",
+      "in_hex": "38",
+      "out": "\"8\""
+    },
+    {
+      "name": "ASCII byte 0x39",
+      "in_hex": "39",
+      "out": "\"9\""
+    },
+    {
+      "name": "ASCII byte 0x3a",
+      "in_hex": "3a",
+      "out": "\":\""
+    },
+    {
+      "name": "ASCII byte 0x3b",
+      "in_hex": "3b",
+      "out": "\";\""
+    },
+    {
+      "name": "ASCII byte 0x3c",
+      "in_hex": "3c",
+      "out": "\"\u003c\""
+    },
+    {
+      "name": "ASCII byte 0x3d",
+      "in_hex": "3d",
+      "out": "\"=\""
+    },
+    {
+      "name": "ASCII byte 0x3e",
+      "in_hex": "3e",
+      "out": "\"\u003e\""
+    },
+    {
+      "name": "ASCII byte 0x3f",
+      "in_hex": "3f",
+      "out": "\"?\""
+    },
+    {
+      "name": "ASCII byte 0x40",
+      "in_hex": "40",
+      "out": "\"@\""
+    },
+    {
+      "name": "ASCII byte 0x41",
+      "in_hex": "41",
+      "out": "\"A\""
+    },
+    {
+      "name": "ASCII byte 0x42",
+      "in_hex": "42",
+      "out": "\"B\""
+    },
+    {
+      "name": "ASCII byte 0x43",
+      "in_hex": "43",
+      "out": "\"C\""
+    },
+    {
+      "name": "ASCII byte 0x44",
+      "in_hex": "44",
+      "out": "\"D\""
+    },
+    {
+      "name": "ASCII byte 0x45",
+      "in_hex": "45",
+      "out": "\"E\""
+    },
+    {
+      "name": "ASCII byte 0x46",
+      "in_hex": "46",
+      "out": "\"F\""
+    },
+    {
+      "name": "ASCII byte 0x47",
+      "in_hex": "47",
+      "out": "\"G\""
+    },
+    {
+      "name": "ASCII byte 0x48",
+      "in_hex": "48",
+      "out": "\"H\""
+    },
+    {
+      "name": "ASCII byte 0x49",
+      "in_hex": "49",
+      "out": "\"I\""
+    },
+    {
+      "name": "ASCII byte 0x4a",
+      "in_hex": "4a",
+      "out": "\"J\""
+    },
+    {
+      "name": "ASCII byte 0x4b",
+      "in_hex": "4b",
+      "out": "\"K\""
+    },
+    {
+      "name": "ASCII byte 0x4c",
+      "in_hex": "4c",
+      "out": "\"L\""
+    },
+    {
+      "name": "ASCII byte 0x4d",
+      "in_hex": "4d",
+      "out": "\"M\""
+    },
+    {
+      "name": "ASCII byte 0x4e",
+      "in_hex": "4e",
+      "out": "\"N\""
+    },
+    {
+      "name": "ASCII byte 0x4f",
+      "in_hex": "4f",
+      "out": "\"O\""
+    },
+    {
+      "name": "ASCII byte 0x50",
+      "in_hex": "50",
+      "out": "\"P\""
+    },
+    {
+      "name": "ASCII byte 0x51",
+      "in_hex": "51",
+      "out": "\"Q\""
+    },
+    {
+      "name": "ASCII byte 0x52",
+      "in_hex": "52",
+      "out": "\"R\""
+    },
+    {
+      "name": "ASCII byte 0x53",
+      "in_hex": "53",
+      "out": "\"S\""
+    },
+    {
+      "name": "ASCII byte 0x54",
+      "in_hex": "54",
+      "out": "\"T\""
+    },
+    {
+      "name": "ASCII byte 0x55",
+      "in_hex": "55",
+      "out": "\"U\""
+    },
+    {
+      "name": "ASCII byte 0x56",
+      "in_hex": "56",
+      "out": "\"V\""
+    },
+    {
+      "name": "ASCII byte 0x57",
+      "in_hex": "57",
+      "out": "\"W\""
+    },
+    {
+      "name": "ASCII byte 0x58",
+      "in_hex": "58",
+      "out": "\"X\""
+    },
+    {
+      "name": "ASCII byte 0x59",
+      "in_hex": "59",
+      "out": "\"Y\""
+    },
+    {
+      "name": "ASCII byte 0x5a",
+      "in_hex": "5a",
+      "out": "\"Z\""
+    },
+    {
+      "name": "ASCII byte 0x5b",
+      "in_hex": "5b",
+      "out": "\"[\""
+    },
+    {
+      "name": "ASCII byte 0x5c",
+      "in_hex": "5c",
+      "out": "\"\\\\\""
+    },
+    {
+      "name": "ASCII byte 0x5d",
+      "in_hex": "5d",
+      "out": "\"]\""
+    },
+    {
+      "name": "ASCII byte 0x5e",
+      "in_hex": "5e",
+      "out": "\"^\""
+    },
+    {
+      "name": "ASCII byte 0x5f",
+      "in_hex": "5f",
+      "out": "\"_\""
+    },
+    {
+      "name": "ASCII byte 0x60",
+      "in_hex": "60",
+      "out": "\"`\""
+    },
+    {
+      "name": "ASCII byte 0x61",
+      "in_hex": "61",
+      "out": "\"a\""
+    },
+    {
+      "name": "ASCII byte 0x62",
+      "in_hex": "62",
+      "out": "\"b\""
+    },
+    {
+      "name": "ASCII byte 0x63",
+      "in_hex": "63",
+      "out": "\"c\""
+    },
+    {
+      "name": "ASCII byte 0x64",
+      "in_hex": "64",
+      "out": "\"d\""
+    },
+    {
+      "name": "ASCII byte 0x65",
+      "in_hex": "65",
+      "out": "\"e\""
+    },
+    {
+      "name": "ASCII byte 0x66",
+      "in_hex": "66",
+      "out": "\"f\""
+    },
+    {
+      "name": "ASCII byte 0x67",
+      "in_hex": "67",
+      "out": "\"g\""
+    },
+    {
+      "name": "ASCII byte 0x68",
+      "in_hex": "68",
+      "out": "\"h\""
+    },
+    {
+      "name": "ASCII byte 0x69",
+      "in_hex": "69",
+      "out": "\"i\""
+    },
+    {
+      "name": "ASCII byte 0x6a",
+      "in_hex": "6a",
+      "out": "\"j\""
+    },
+    {
+      "name": "ASCII byte 0x6b",
+      "in_hex": "6b",
+      "out": "\"k\""
+    },
+    {
+      "name": "ASCII byte 0x6c",
+      "in_hex": "6c",
+      "out": "\"l\""
+    },
+    {
+      "name": "ASCII byte 0x6d",
+      "in_hex": "6d",
+      "out": "\"m\""
+    },
+    {
+      "name": "ASCII byte 0x6e",
+      "in_hex": "6e",
+      "out": "\"n\""
+    },
+    {
+      "name": "ASCII byte 0x6f",
+      "in_hex": "6f",
+      "out": "\"o\""
+    },
+    {
+      "name": "ASCII byte 0x70",
+      "in_hex": "70",
+      "out": "\"p\""
+    },
+    {
+      "name": "ASCII byte 0x71",
+      "in_hex": "71",
+      "out": "\"q\""
+    },
+    {
+      "name": "ASCII byte 0x72",
+      "in_hex": "72",
+      "out": "\"r\""
+    },
+    {
+      "name": "ASCII byte 0x73",
+      "in_hex": "73",
+      "out": "\"s\""
+    },
+    {
+      "name": "ASCII byte 0x74",
+      "in_hex": "74",
+      "out": "\"t\""
+    },
+    {
+      "name": "ASCII byte 0x75",
+      "in_hex": "75",
+      "out": "\"u\""
+    },
+    {
+      "name": "ASCII byte 0x76",
+      "in_hex": "76",
+      "out": "\"v\""
+    },
+    {
+      "name": "ASCII byte 0x77",
+      "in_hex": "77",
+      "out": "\"w\""
+    },
+    {
+      "name": "ASCII byte 0x78",
+      "in_hex": "78",
+      "out": "\"x\""
+    },
+    {
+      "name": "ASCII byte 0x79",
+      "in_hex": "79",
+      "out": "\"y\""
+    },
+    {
+      "name": "ASCII byte 0x7a",
+      "in_hex": "7a",
+      "out": "\"z\""
+    },
+    {
+      "name": "ASCII byte 0x7b",
+      "in_hex": "7b",
+      "out": "\"{\""
+    },
+    {
+      "name": "ASCII byte 0x7c",
+      "in_hex": "7c",
+      "out": "\"|\""
+    },
+    {
+      "name": "ASCII byte 0x7d",
+      "in_hex": "7d",
+      "out": "\"}\""
+    },
+    {
+      "name": "ASCII byte 0x7e",
+      "in_hex": "7e",
+      "out": "\"~\""
+    },
+    {
+      "name": "ASCII byte 0x7f",
+      "in_hex": "7f",
+      "out": "\"\\x7f\""
+    },
+    {
+      "name": "Latin-1 U+0080",
+      "in_hex": "c280",
+      "out": "\"\\u0080\""
+    },
+    {
+      "name": "Latin-1 U+0081",
+      "in_hex": "c281",
+      "out": "\"\\u0081\""
+    },
+    {
+      "name": "Latin-1 U+0082",
+      "in_hex": "c282",
+      "out": "\"\\u0082\""
+    },
+    {
+      "name": "Latin-1 U+0083",
+      "in_hex": "c283",
+      "out": "\"\\u0083\""
+    },
+    {
+      "name": "Latin-1 U+0084",
+      "in_hex": "c284",
+      "out": "\"\\u0084\""
+    },
+    {
+      "name": "Latin-1 U+0085",
+      "in_hex": "c285",
+      "out": "\"\\u0085\""
+    },
+    {
+      "name": "Latin-1 U+0086",
+      "in_hex": "c286",
+      "out": "\"\\u0086\""
+    },
+    {
+      "name": "Latin-1 U+0087",
+      "in_hex": "c287",
+      "out": "\"\\u0087\""
+    },
+    {
+      "name": "Latin-1 U+0088",
+      "in_hex": "c288",
+      "out": "\"\\u0088\""
+    },
+    {
+      "name": "Latin-1 U+0089",
+      "in_hex": "c289",
+      "out": "\"\\u0089\""
+    },
+    {
+      "name": "Latin-1 U+008A",
+      "in_hex": "c28a",
+      "out": "\"\\u008a\""
+    },
+    {
+      "name": "Latin-1 U+008B",
+      "in_hex": "c28b",
+      "out": "\"\\u008b\""
+    },
+    {
+      "name": "Latin-1 U+008C",
+      "in_hex": "c28c",
+      "out": "\"\\u008c\""
+    },
+    {
+      "name": "Latin-1 U+008D",
+      "in_hex": "c28d",
+      "out": "\"\\u008d\""
+    },
+    {
+      "name": "Latin-1 U+008E",
+      "in_hex": "c28e",
+      "out": "\"\\u008e\""
+    },
+    {
+      "name": "Latin-1 U+008F",
+      "in_hex": "c28f",
+      "out": "\"\\u008f\""
+    },
+    {
+      "name": "Latin-1 U+0090",
+      "in_hex": "c290",
+      "out": "\"\\u0090\""
+    },
+    {
+      "name": "Latin-1 U+0091",
+      "in_hex": "c291",
+      "out": "\"\\u0091\""
+    },
+    {
+      "name": "Latin-1 U+0092",
+      "in_hex": "c292",
+      "out": "\"\\u0092\""
+    },
+    {
+      "name": "Latin-1 U+0093",
+      "in_hex": "c293",
+      "out": "\"\\u0093\""
+    },
+    {
+      "name": "Latin-1 U+0094",
+      "in_hex": "c294",
+      "out": "\"\\u0094\""
+    },
+    {
+      "name": "Latin-1 U+0095",
+      "in_hex": "c295",
+      "out": "\"\\u0095\""
+    },
+    {
+      "name": "Latin-1 U+0096",
+      "in_hex": "c296",
+      "out": "\"\\u0096\""
+    },
+    {
+      "name": "Latin-1 U+0097",
+      "in_hex": "c297",
+      "out": "\"\\u0097\""
+    },
+    {
+      "name": "Latin-1 U+0098",
+      "in_hex": "c298",
+      "out": "\"\\u0098\""
+    },
+    {
+      "name": "Latin-1 U+0099",
+      "in_hex": "c299",
+      "out": "\"\\u0099\""
+    },
+    {
+      "name": "Latin-1 U+009A",
+      "in_hex": "c29a",
+      "out": "\"\\u009a\""
+    },
+    {
+      "name": "Latin-1 U+009B",
+      "in_hex": "c29b",
+      "out": "\"\\u009b\""
+    },
+    {
+      "name": "Latin-1 U+009C",
+      "in_hex": "c29c",
+      "out": "\"\\u009c\""
+    },
+    {
+      "name": "Latin-1 U+009D",
+      "in_hex": "c29d",
+      "out": "\"\\u009d\""
+    },
+    {
+      "name": "Latin-1 U+009E",
+      "in_hex": "c29e",
+      "out": "\"\\u009e\""
+    },
+    {
+      "name": "Latin-1 U+009F",
+      "in_hex": "c29f",
+      "out": "\"\\u009f\""
+    },
+    {
+      "name": "Latin-1 U+00A0",
+      "in_hex": "c2a0",
+      "out": "\"\\u00a0\""
+    },
+    {
+      "name": "Latin-1 U+00A1",
+      "in_hex": "c2a1",
+      "out": "\"¡\""
+    },
+    {
+      "name": "Latin-1 U+00A2",
+      "in_hex": "c2a2",
+      "out": "\"¢\""
+    },
+    {
+      "name": "Latin-1 U+00A3",
+      "in_hex": "c2a3",
+      "out": "\"£\""
+    },
+    {
+      "name": "Latin-1 U+00A4",
+      "in_hex": "c2a4",
+      "out": "\"¤\""
+    },
+    {
+      "name": "Latin-1 U+00A5",
+      "in_hex": "c2a5",
+      "out": "\"¥\""
+    },
+    {
+      "name": "Latin-1 U+00A6",
+      "in_hex": "c2a6",
+      "out": "\"¦\""
+    },
+    {
+      "name": "Latin-1 U+00A7",
+      "in_hex": "c2a7",
+      "out": "\"§\""
+    },
+    {
+      "name": "Latin-1 U+00A8",
+      "in_hex": "c2a8",
+      "out": "\"¨\""
+    },
+    {
+      "name": "Latin-1 U+00A9",
+      "in_hex": "c2a9",
+      "out": "\"©\""
+    },
+    {
+      "name": "Latin-1 U+00AA",
+      "in_hex": "c2aa",
+      "out": "\"ª\""
+    },
+    {
+      "name": "Latin-1 U+00AB",
+      "in_hex": "c2ab",
+      "out": "\"«\""
+    },
+    {
+      "name": "Latin-1 U+00AC",
+      "in_hex": "c2ac",
+      "out": "\"¬\""
+    },
+    {
+      "name": "Latin-1 U+00AD",
+      "in_hex": "c2ad",
+      "out": "\"\\u00ad\""
+    },
+    {
+      "name": "Latin-1 U+00AE",
+      "in_hex": "c2ae",
+      "out": "\"®\""
+    },
+    {
+      "name": "Latin-1 U+00AF",
+      "in_hex": "c2af",
+      "out": "\"¯\""
+    },
+    {
+      "name": "Latin-1 U+00B0",
+      "in_hex": "c2b0",
+      "out": "\"°\""
+    },
+    {
+      "name": "Latin-1 U+00B1",
+      "in_hex": "c2b1",
+      "out": "\"±\""
+    },
+    {
+      "name": "Latin-1 U+00B2",
+      "in_hex": "c2b2",
+      "out": "\"²\""
+    },
+    {
+      "name": "Latin-1 U+00B3",
+      "in_hex": "c2b3",
+      "out": "\"³\""
+    },
+    {
+      "name": "Latin-1 U+00B4",
+      "in_hex": "c2b4",
+      "out": "\"´\""
+    },
+    {
+      "name": "Latin-1 U+00B5",
+      "in_hex": "c2b5",
+      "out": "\"µ\""
+    },
+    {
+      "name": "Latin-1 U+00B6",
+      "in_hex": "c2b6",
+      "out": "\"¶\""
+    },
+    {
+      "name": "Latin-1 U+00B7",
+      "in_hex": "c2b7",
+      "out": "\"·\""
+    },
+    {
+      "name": "Latin-1 U+00B8",
+      "in_hex": "c2b8",
+      "out": "\"¸\""
+    },
+    {
+      "name": "Latin-1 U+00B9",
+      "in_hex": "c2b9",
+      "out": "\"¹\""
+    },
+    {
+      "name": "Latin-1 U+00BA",
+      "in_hex": "c2ba",
+      "out": "\"º\""
+    },
+    {
+      "name": "Latin-1 U+00BB",
+      "in_hex": "c2bb",
+      "out": "\"»\""
+    },
+    {
+      "name": "Latin-1 U+00BC",
+      "in_hex": "c2bc",
+      "out": "\"¼\""
+    },
+    {
+      "name": "Latin-1 U+00BD",
+      "in_hex": "c2bd",
+      "out": "\"½\""
+    },
+    {
+      "name": "Latin-1 U+00BE",
+      "in_hex": "c2be",
+      "out": "\"¾\""
+    },
+    {
+      "name": "Latin-1 U+00BF",
+      "in_hex": "c2bf",
+      "out": "\"¿\""
+    },
+    {
+      "name": "Latin-1 U+00C0",
+      "in_hex": "c380",
+      "out": "\"À\""
+    },
+    {
+      "name": "Latin-1 U+00C1",
+      "in_hex": "c381",
+      "out": "\"Á\""
+    },
+    {
+      "name": "Latin-1 U+00C2",
+      "in_hex": "c382",
+      "out": "\"Â\""
+    },
+    {
+      "name": "Latin-1 U+00C3",
+      "in_hex": "c383",
+      "out": "\"Ã\""
+    },
+    {
+      "name": "Latin-1 U+00C4",
+      "in_hex": "c384",
+      "out": "\"Ä\""
+    },
+    {
+      "name": "Latin-1 U+00C5",
+      "in_hex": "c385",
+      "out": "\"Å\""
+    },
+    {
+      "name": "Latin-1 U+00C6",
+      "in_hex": "c386",
+      "out": "\"Æ\""
+    },
+    {
+      "name": "Latin-1 U+00C7",
+      "in_hex": "c387",
+      "out": "\"Ç\""
+    },
+    {
+      "name": "Latin-1 U+00C8",
+      "in_hex": "c388",
+      "out": "\"È\""
+    },
+    {
+      "name": "Latin-1 U+00C9",
+      "in_hex": "c389",
+      "out": "\"É\""
+    },
+    {
+      "name": "Latin-1 U+00CA",
+      "in_hex": "c38a",
+      "out": "\"Ê\""
+    },
+    {
+      "name": "Latin-1 U+00CB",
+      "in_hex": "c38b",
+      "out": "\"Ë\""
+    },
+    {
+      "name": "Latin-1 U+00CC",
+      "in_hex": "c38c",
+      "out": "\"Ì\""
+    },
+    {
+      "name": "Latin-1 U+00CD",
+      "in_hex": "c38d",
+      "out": "\"Í\""
+    },
+    {
+      "name": "Latin-1 U+00CE",
+      "in_hex": "c38e",
+      "out": "\"Î\""
+    },
+    {
+      "name": "Latin-1 U+00CF",
+      "in_hex": "c38f",
+      "out": "\"Ï\""
+    },
+    {
+      "name": "Latin-1 U+00D0",
+      "in_hex": "c390",
+      "out": "\"Ð\""
+    },
+    {
+      "name": "Latin-1 U+00D1",
+      "in_hex": "c391",
+      "out": "\"Ñ\""
+    },
+    {
+      "name": "Latin-1 U+00D2",
+      "in_hex": "c392",
+      "out": "\"Ò\""
+    },
+    {
+      "name": "Latin-1 U+00D3",
+      "in_hex": "c393",
+      "out": "\"Ó\""
+    },
+    {
+      "name": "Latin-1 U+00D4",
+      "in_hex": "c394",
+      "out": "\"Ô\""
+    },
+    {
+      "name": "Latin-1 U+00D5",
+      "in_hex": "c395",
+      "out": "\"Õ\""
+    },
+    {
+      "name": "Latin-1 U+00D6",
+      "in_hex": "c396",
+      "out": "\"Ö\""
+    },
+    {
+      "name": "Latin-1 U+00D7",
+      "in_hex": "c397",
+      "out": "\"×\""
+    },
+    {
+      "name": "Latin-1 U+00D8",
+      "in_hex": "c398",
+      "out": "\"Ø\""
+    },
+    {
+      "name": "Latin-1 U+00D9",
+      "in_hex": "c399",
+      "out": "\"Ù\""
+    },
+    {
+      "name": "Latin-1 U+00DA",
+      "in_hex": "c39a",
+      "out": "\"Ú\""
+    },
+    {
+      "name": "Latin-1 U+00DB",
+      "in_hex": "c39b",
+      "out": "\"Û\""
+    },
+    {
+      "name": "Latin-1 U+00DC",
+      "in_hex": "c39c",
+      "out": "\"Ü\""
+    },
+    {
+      "name": "Latin-1 U+00DD",
+      "in_hex": "c39d",
+      "out": "\"Ý\""
+    },
+    {
+      "name": "Latin-1 U+00DE",
+      "in_hex": "c39e",
+      "out": "\"Þ\""
+    },
+    {
+      "name": "Latin-1 U+00DF",
+      "in_hex": "c39f",
+      "out": "\"ß\""
+    },
+    {
+      "name": "Latin-1 U+00E0",
+      "in_hex": "c3a0",
+      "out": "\"à\""
+    },
+    {
+      "name": "Latin-1 U+00E1",
+      "in_hex": "c3a1",
+      "out": "\"á\""
+    },
+    {
+      "name": "Latin-1 U+00E2",
+      "in_hex": "c3a2",
+      "out": "\"â\""
+    },
+    {
+      "name": "Latin-1 U+00E3",
+      "in_hex": "c3a3",
+      "out": "\"ã\""
+    },
+    {
+      "name": "Latin-1 U+00E4",
+      "in_hex": "c3a4",
+      "out": "\"ä\""
+    },
+    {
+      "name": "Latin-1 U+00E5",
+      "in_hex": "c3a5",
+      "out": "\"å\""
+    },
+    {
+      "name": "Latin-1 U+00E6",
+      "in_hex": "c3a6",
+      "out": "\"æ\""
+    },
+    {
+      "name": "Latin-1 U+00E7",
+      "in_hex": "c3a7",
+      "out": "\"ç\""
+    },
+    {
+      "name": "Latin-1 U+00E8",
+      "in_hex": "c3a8",
+      "out": "\"è\""
+    },
+    {
+      "name": "Latin-1 U+00E9",
+      "in_hex": "c3a9",
+      "out": "\"é\""
+    },
+    {
+      "name": "Latin-1 U+00EA",
+      "in_hex": "c3aa",
+      "out": "\"ê\""
+    },
+    {
+      "name": "Latin-1 U+00EB",
+      "in_hex": "c3ab",
+      "out": "\"ë\""
+    },
+    {
+      "name": "Latin-1 U+00EC",
+      "in_hex": "c3ac",
+      "out": "\"ì\""
+    },
+    {
+      "name": "Latin-1 U+00ED",
+      "in_hex": "c3ad",
+      "out": "\"í\""
+    },
+    {
+      "name": "Latin-1 U+00EE",
+      "in_hex": "c3ae",
+      "out": "\"î\""
+    },
+    {
+      "name": "Latin-1 U+00EF",
+      "in_hex": "c3af",
+      "out": "\"ï\""
+    },
+    {
+      "name": "Latin-1 U+00F0",
+      "in_hex": "c3b0",
+      "out": "\"ð\""
+    },
+    {
+      "name": "Latin-1 U+00F1",
+      "in_hex": "c3b1",
+      "out": "\"ñ\""
+    },
+    {
+      "name": "Latin-1 U+00F2",
+      "in_hex": "c3b2",
+      "out": "\"ò\""
+    },
+    {
+      "name": "Latin-1 U+00F3",
+      "in_hex": "c3b3",
+      "out": "\"ó\""
+    },
+    {
+      "name": "Latin-1 U+00F4",
+      "in_hex": "c3b4",
+      "out": "\"ô\""
+    },
+    {
+      "name": "Latin-1 U+00F5",
+      "in_hex": "c3b5",
+      "out": "\"õ\""
+    },
+    {
+      "name": "Latin-1 U+00F6",
+      "in_hex": "c3b6",
+      "out": "\"ö\""
+    },
+    {
+      "name": "Latin-1 U+00F7",
+      "in_hex": "c3b7",
+      "out": "\"÷\""
+    },
+    {
+      "name": "Latin-1 U+00F8",
+      "in_hex": "c3b8",
+      "out": "\"ø\""
+    },
+    {
+      "name": "Latin-1 U+00F9",
+      "in_hex": "c3b9",
+      "out": "\"ù\""
+    },
+    {
+      "name": "Latin-1 U+00FA",
+      "in_hex": "c3ba",
+      "out": "\"ú\""
+    },
+    {
+      "name": "Latin-1 U+00FB",
+      "in_hex": "c3bb",
+      "out": "\"û\""
+    },
+    {
+      "name": "Latin-1 U+00FC",
+      "in_hex": "c3bc",
+      "out": "\"ü\""
+    },
+    {
+      "name": "Latin-1 U+00FD",
+      "in_hex": "c3bd",
+      "out": "\"ý\""
+    },
+    {
+      "name": "Latin-1 U+00FE",
+      "in_hex": "c3be",
+      "out": "\"þ\""
+    },
+    {
+      "name": "Latin-1 U+00FF",
+      "in_hex": "c3bf",
+      "out": "\"ÿ\""
+    },
+    {
+      "name": "invalid byte 0x80",
+      "in_hex": "80",
+      "out": "\"\\x80\""
+    },
+    {
+      "name": "invalid byte 0x81",
+      "in_hex": "81",
+      "out": "\"\\x81\""
+    },
+    {
+      "name": "invalid byte 0x82",
+      "in_hex": "82",
+      "out": "\"\\x82\""
+    },
+    {
+      "name": "invalid byte 0x83",
+      "in_hex": "83",
+      "out": "\"\\x83\""
+    },
+    {
+      "name": "invalid byte 0x84",
+      "in_hex": "84",
+      "out": "\"\\x84\""
+    },
+    {
+      "name": "invalid byte 0x85",
+      "in_hex": "85",
+      "out": "\"\\x85\""
+    },
+    {
+      "name": "invalid byte 0x86",
+      "in_hex": "86",
+      "out": "\"\\x86\""
+    },
+    {
+      "name": "invalid byte 0x87",
+      "in_hex": "87",
+      "out": "\"\\x87\""
+    },
+    {
+      "name": "invalid byte 0x88",
+      "in_hex": "88",
+      "out": "\"\\x88\""
+    },
+    {
+      "name": "invalid byte 0x89",
+      "in_hex": "89",
+      "out": "\"\\x89\""
+    },
+    {
+      "name": "invalid byte 0x8a",
+      "in_hex": "8a",
+      "out": "\"\\x8a\""
+    },
+    {
+      "name": "invalid byte 0x8b",
+      "in_hex": "8b",
+      "out": "\"\\x8b\""
+    },
+    {
+      "name": "invalid byte 0x8c",
+      "in_hex": "8c",
+      "out": "\"\\x8c\""
+    },
+    {
+      "name": "invalid byte 0x8d",
+      "in_hex": "8d",
+      "out": "\"\\x8d\""
+    },
+    {
+      "name": "invalid byte 0x8e",
+      "in_hex": "8e",
+      "out": "\"\\x8e\""
+    },
+    {
+      "name": "invalid byte 0x8f",
+      "in_hex": "8f",
+      "out": "\"\\x8f\""
+    },
+    {
+      "name": "invalid byte 0x90",
+      "in_hex": "90",
+      "out": "\"\\x90\""
+    },
+    {
+      "name": "invalid byte 0x91",
+      "in_hex": "91",
+      "out": "\"\\x91\""
+    },
+    {
+      "name": "invalid byte 0x92",
+      "in_hex": "92",
+      "out": "\"\\x92\""
+    },
+    {
+      "name": "invalid byte 0x93",
+      "in_hex": "93",
+      "out": "\"\\x93\""
+    },
+    {
+      "name": "invalid byte 0x94",
+      "in_hex": "94",
+      "out": "\"\\x94\""
+    },
+    {
+      "name": "invalid byte 0x95",
+      "in_hex": "95",
+      "out": "\"\\x95\""
+    },
+    {
+      "name": "invalid byte 0x96",
+      "in_hex": "96",
+      "out": "\"\\x96\""
+    },
+    {
+      "name": "invalid byte 0x97",
+      "in_hex": "97",
+      "out": "\"\\x97\""
+    },
+    {
+      "name": "invalid byte 0x98",
+      "in_hex": "98",
+      "out": "\"\\x98\""
+    },
+    {
+      "name": "invalid byte 0x99",
+      "in_hex": "99",
+      "out": "\"\\x99\""
+    },
+    {
+      "name": "invalid byte 0x9a",
+      "in_hex": "9a",
+      "out": "\"\\x9a\""
+    },
+    {
+      "name": "invalid byte 0x9b",
+      "in_hex": "9b",
+      "out": "\"\\x9b\""
+    },
+    {
+      "name": "invalid byte 0x9c",
+      "in_hex": "9c",
+      "out": "\"\\x9c\""
+    },
+    {
+      "name": "invalid byte 0x9d",
+      "in_hex": "9d",
+      "out": "\"\\x9d\""
+    },
+    {
+      "name": "invalid byte 0x9e",
+      "in_hex": "9e",
+      "out": "\"\\x9e\""
+    },
+    {
+      "name": "invalid byte 0x9f",
+      "in_hex": "9f",
+      "out": "\"\\x9f\""
+    },
+    {
+      "name": "invalid byte 0xa0",
+      "in_hex": "a0",
+      "out": "\"\\xa0\""
+    },
+    {
+      "name": "invalid byte 0xa1",
+      "in_hex": "a1",
+      "out": "\"\\xa1\""
+    },
+    {
+      "name": "invalid byte 0xa2",
+      "in_hex": "a2",
+      "out": "\"\\xa2\""
+    },
+    {
+      "name": "invalid byte 0xa3",
+      "in_hex": "a3",
+      "out": "\"\\xa3\""
+    },
+    {
+      "name": "invalid byte 0xa4",
+      "in_hex": "a4",
+      "out": "\"\\xa4\""
+    },
+    {
+      "name": "invalid byte 0xa5",
+      "in_hex": "a5",
+      "out": "\"\\xa5\""
+    },
+    {
+      "name": "invalid byte 0xa6",
+      "in_hex": "a6",
+      "out": "\"\\xa6\""
+    },
+    {
+      "name": "invalid byte 0xa7",
+      "in_hex": "a7",
+      "out": "\"\\xa7\""
+    },
+    {
+      "name": "invalid byte 0xa8",
+      "in_hex": "a8",
+      "out": "\"\\xa8\""
+    },
+    {
+      "name": "invalid byte 0xa9",
+      "in_hex": "a9",
+      "out": "\"\\xa9\""
+    },
+    {
+      "name": "invalid byte 0xaa",
+      "in_hex": "aa",
+      "out": "\"\\xaa\""
+    },
+    {
+      "name": "invalid byte 0xab",
+      "in_hex": "ab",
+      "out": "\"\\xab\""
+    },
+    {
+      "name": "invalid byte 0xac",
+      "in_hex": "ac",
+      "out": "\"\\xac\""
+    },
+    {
+      "name": "invalid byte 0xad",
+      "in_hex": "ad",
+      "out": "\"\\xad\""
+    },
+    {
+      "name": "invalid byte 0xae",
+      "in_hex": "ae",
+      "out": "\"\\xae\""
+    },
+    {
+      "name": "invalid byte 0xaf",
+      "in_hex": "af",
+      "out": "\"\\xaf\""
+    },
+    {
+      "name": "invalid byte 0xb0",
+      "in_hex": "b0",
+      "out": "\"\\xb0\""
+    },
+    {
+      "name": "invalid byte 0xb1",
+      "in_hex": "b1",
+      "out": "\"\\xb1\""
+    },
+    {
+      "name": "invalid byte 0xb2",
+      "in_hex": "b2",
+      "out": "\"\\xb2\""
+    },
+    {
+      "name": "invalid byte 0xb3",
+      "in_hex": "b3",
+      "out": "\"\\xb3\""
+    },
+    {
+      "name": "invalid byte 0xb4",
+      "in_hex": "b4",
+      "out": "\"\\xb4\""
+    },
+    {
+      "name": "invalid byte 0xb5",
+      "in_hex": "b5",
+      "out": "\"\\xb5\""
+    },
+    {
+      "name": "invalid byte 0xb6",
+      "in_hex": "b6",
+      "out": "\"\\xb6\""
+    },
+    {
+      "name": "invalid byte 0xb7",
+      "in_hex": "b7",
+      "out": "\"\\xb7\""
+    },
+    {
+      "name": "invalid byte 0xb8",
+      "in_hex": "b8",
+      "out": "\"\\xb8\""
+    },
+    {
+      "name": "invalid byte 0xb9",
+      "in_hex": "b9",
+      "out": "\"\\xb9\""
+    },
+    {
+      "name": "invalid byte 0xba",
+      "in_hex": "ba",
+      "out": "\"\\xba\""
+    },
+    {
+      "name": "invalid byte 0xbb",
+      "in_hex": "bb",
+      "out": "\"\\xbb\""
+    },
+    {
+      "name": "invalid byte 0xbc",
+      "in_hex": "bc",
+      "out": "\"\\xbc\""
+    },
+    {
+      "name": "invalid byte 0xbd",
+      "in_hex": "bd",
+      "out": "\"\\xbd\""
+    },
+    {
+      "name": "invalid byte 0xbe",
+      "in_hex": "be",
+      "out": "\"\\xbe\""
+    },
+    {
+      "name": "invalid byte 0xbf",
+      "in_hex": "bf",
+      "out": "\"\\xbf\""
+    },
+    {
+      "name": "invalid byte 0xc0",
+      "in_hex": "c0",
+      "out": "\"\\xc0\""
+    },
+    {
+      "name": "invalid byte 0xc1",
+      "in_hex": "c1",
+      "out": "\"\\xc1\""
+    },
+    {
+      "name": "invalid byte 0xc2",
+      "in_hex": "c2",
+      "out": "\"\\xc2\""
+    },
+    {
+      "name": "invalid byte 0xc3",
+      "in_hex": "c3",
+      "out": "\"\\xc3\""
+    },
+    {
+      "name": "invalid byte 0xc4",
+      "in_hex": "c4",
+      "out": "\"\\xc4\""
+    },
+    {
+      "name": "invalid byte 0xc5",
+      "in_hex": "c5",
+      "out": "\"\\xc5\""
+    },
+    {
+      "name": "invalid byte 0xc6",
+      "in_hex": "c6",
+      "out": "\"\\xc6\""
+    },
+    {
+      "name": "invalid byte 0xc7",
+      "in_hex": "c7",
+      "out": "\"\\xc7\""
+    },
+    {
+      "name": "invalid byte 0xc8",
+      "in_hex": "c8",
+      "out": "\"\\xc8\""
+    },
+    {
+      "name": "invalid byte 0xc9",
+      "in_hex": "c9",
+      "out": "\"\\xc9\""
+    },
+    {
+      "name": "invalid byte 0xca",
+      "in_hex": "ca",
+      "out": "\"\\xca\""
+    },
+    {
+      "name": "invalid byte 0xcb",
+      "in_hex": "cb",
+      "out": "\"\\xcb\""
+    },
+    {
+      "name": "invalid byte 0xcc",
+      "in_hex": "cc",
+      "out": "\"\\xcc\""
+    },
+    {
+      "name": "invalid byte 0xcd",
+      "in_hex": "cd",
+      "out": "\"\\xcd\""
+    },
+    {
+      "name": "invalid byte 0xce",
+      "in_hex": "ce",
+      "out": "\"\\xce\""
+    },
+    {
+      "name": "invalid byte 0xcf",
+      "in_hex": "cf",
+      "out": "\"\\xcf\""
+    },
+    {
+      "name": "invalid byte 0xd0",
+      "in_hex": "d0",
+      "out": "\"\\xd0\""
+    },
+    {
+      "name": "invalid byte 0xd1",
+      "in_hex": "d1",
+      "out": "\"\\xd1\""
+    },
+    {
+      "name": "invalid byte 0xd2",
+      "in_hex": "d2",
+      "out": "\"\\xd2\""
+    },
+    {
+      "name": "invalid byte 0xd3",
+      "in_hex": "d3",
+      "out": "\"\\xd3\""
+    },
+    {
+      "name": "invalid byte 0xd4",
+      "in_hex": "d4",
+      "out": "\"\\xd4\""
+    },
+    {
+      "name": "invalid byte 0xd5",
+      "in_hex": "d5",
+      "out": "\"\\xd5\""
+    },
+    {
+      "name": "invalid byte 0xd6",
+      "in_hex": "d6",
+      "out": "\"\\xd6\""
+    },
+    {
+      "name": "invalid byte 0xd7",
+      "in_hex": "d7",
+      "out": "\"\\xd7\""
+    },
+    {
+      "name": "invalid byte 0xd8",
+      "in_hex": "d8",
+      "out": "\"\\xd8\""
+    },
+    {
+      "name": "invalid byte 0xd9",
+      "in_hex": "d9",
+      "out": "\"\\xd9\""
+    },
+    {
+      "name": "invalid byte 0xda",
+      "in_hex": "da",
+      "out": "\"\\xda\""
+    },
+    {
+      "name": "invalid byte 0xdb",
+      "in_hex": "db",
+      "out": "\"\\xdb\""
+    },
+    {
+      "name": "invalid byte 0xdc",
+      "in_hex": "dc",
+      "out": "\"\\xdc\""
+    },
+    {
+      "name": "invalid byte 0xdd",
+      "in_hex": "dd",
+      "out": "\"\\xdd\""
+    },
+    {
+      "name": "invalid byte 0xde",
+      "in_hex": "de",
+      "out": "\"\\xde\""
+    },
+    {
+      "name": "invalid byte 0xdf",
+      "in_hex": "df",
+      "out": "\"\\xdf\""
+    },
+    {
+      "name": "invalid byte 0xe0",
+      "in_hex": "e0",
+      "out": "\"\\xe0\""
+    },
+    {
+      "name": "invalid byte 0xe1",
+      "in_hex": "e1",
+      "out": "\"\\xe1\""
+    },
+    {
+      "name": "invalid byte 0xe2",
+      "in_hex": "e2",
+      "out": "\"\\xe2\""
+    },
+    {
+      "name": "invalid byte 0xe3",
+      "in_hex": "e3",
+      "out": "\"\\xe3\""
+    },
+    {
+      "name": "invalid byte 0xe4",
+      "in_hex": "e4",
+      "out": "\"\\xe4\""
+    },
+    {
+      "name": "invalid byte 0xe5",
+      "in_hex": "e5",
+      "out": "\"\\xe5\""
+    },
+    {
+      "name": "invalid byte 0xe6",
+      "in_hex": "e6",
+      "out": "\"\\xe6\""
+    },
+    {
+      "name": "invalid byte 0xe7",
+      "in_hex": "e7",
+      "out": "\"\\xe7\""
+    },
+    {
+      "name": "invalid byte 0xe8",
+      "in_hex": "e8",
+      "out": "\"\\xe8\""
+    },
+    {
+      "name": "invalid byte 0xe9",
+      "in_hex": "e9",
+      "out": "\"\\xe9\""
+    },
+    {
+      "name": "invalid byte 0xea",
+      "in_hex": "ea",
+      "out": "\"\\xea\""
+    },
+    {
+      "name": "invalid byte 0xeb",
+      "in_hex": "eb",
+      "out": "\"\\xeb\""
+    },
+    {
+      "name": "invalid byte 0xec",
+      "in_hex": "ec",
+      "out": "\"\\xec\""
+    },
+    {
+      "name": "invalid byte 0xed",
+      "in_hex": "ed",
+      "out": "\"\\xed\""
+    },
+    {
+      "name": "invalid byte 0xee",
+      "in_hex": "ee",
+      "out": "\"\\xee\""
+    },
+    {
+      "name": "invalid byte 0xef",
+      "in_hex": "ef",
+      "out": "\"\\xef\""
+    },
+    {
+      "name": "invalid byte 0xf0",
+      "in_hex": "f0",
+      "out": "\"\\xf0\""
+    },
+    {
+      "name": "invalid byte 0xf1",
+      "in_hex": "f1",
+      "out": "\"\\xf1\""
+    },
+    {
+      "name": "invalid byte 0xf2",
+      "in_hex": "f2",
+      "out": "\"\\xf2\""
+    },
+    {
+      "name": "invalid byte 0xf3",
+      "in_hex": "f3",
+      "out": "\"\\xf3\""
+    },
+    {
+      "name": "invalid byte 0xf4",
+      "in_hex": "f4",
+      "out": "\"\\xf4\""
+    },
+    {
+      "name": "invalid byte 0xf5",
+      "in_hex": "f5",
+      "out": "\"\\xf5\""
+    },
+    {
+      "name": "invalid byte 0xf6",
+      "in_hex": "f6",
+      "out": "\"\\xf6\""
+    },
+    {
+      "name": "invalid byte 0xf7",
+      "in_hex": "f7",
+      "out": "\"\\xf7\""
+    },
+    {
+      "name": "invalid byte 0xf8",
+      "in_hex": "f8",
+      "out": "\"\\xf8\""
+    },
+    {
+      "name": "invalid byte 0xf9",
+      "in_hex": "f9",
+      "out": "\"\\xf9\""
+    },
+    {
+      "name": "invalid byte 0xfa",
+      "in_hex": "fa",
+      "out": "\"\\xfa\""
+    },
+    {
+      "name": "invalid byte 0xfb",
+      "in_hex": "fb",
+      "out": "\"\\xfb\""
+    },
+    {
+      "name": "invalid byte 0xfc",
+      "in_hex": "fc",
+      "out": "\"\\xfc\""
+    },
+    {
+      "name": "invalid byte 0xfd",
+      "in_hex": "fd",
+      "out": "\"\\xfd\""
+    },
+    {
+      "name": "invalid byte 0xfe",
+      "in_hex": "fe",
+      "out": "\"\\xfe\""
+    },
+    {
+      "name": "invalid byte 0xff",
+      "in_hex": "ff",
+      "out": "\"\\xff\""
+    },
+    {
+      "name": "every ASCII byte",
+      "in_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f",
+      "out": "\"\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\a\\b\\t\\n\\v\\f\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\\\"#$%\u0026'()*+,-./0123456789:;\u003c=\u003e?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\\x7f\""
+    },
+    {
+      "name": "empty",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "plain ASCII",
+      "in_hex": "68656c6c6f2c20776f726c64",
+      "out": "\"hello, world\""
+    },
+    {
+      "name": "quote and backslash",
+      "in_hex": "71756f7465226261636b5c736c617368",
+      "out": "\"quote\\\"back\\\\slash\""
+    },
+    {
+      "name": "C escapes",
+      "in_hex": "07080c0a0d090b",
+      "out": "\"\\a\\b\\f\\n\\r\\t\\v\""
+    },
+    {
+      "name": "strconv quotetests control characters",
+      "in_hex": "07080c0d0a090b",
+      "out": "\"\\a\\b\\f\\r\\n\\t\\v\""
+    },
+    {
+      "name": "strconv quotetests invalid byte",
+      "in_hex": "616263ff646566",
+      "out": "\"abc\\xffdef\""
+    },
+    {
+      "name": "strconv quotetests graphic spaces",
+      "in_hex": "21c2a021e2808021e3808021",
+      "out": "\"!\\u00a0!\\u2000!\\u3000!\""
+    },
+    {
+      "name": "ticket probe",
+      "in_hex": "7a7a0122c3a9",
+      "out": "\"zz\\x01\\\"é\""
+    },
+    {
+      "name": "view probe tab",
+      "in_hex": "6162096364",
+      "out": "\"ab\\tcd\""
+    },
+    {
+      "name": "view probe trailing newline",
+      "in_hex": "643730643332353965346531636236333163363633636634643733633463303430323261623162613830343039386536636232393365363737306562336139350a",
+      "out": "\"d70d3259e4e1cb631c663cf4d73c4c04022ab1ba804098e6cb293e6770eb3a95\\n\""
+    },
+    {
+      "name": "view probe letters and emoji",
+      "in_hex": "68c3a96c6c6f20f09f9880",
+      "out": "\"héllo 😀\""
+    },
+    {
+      "name": "view probe invalid bytes",
+      "in_hex": "fffe",
+      "out": "\"\\xff\\xfe\""
+    },
+    {
+      "name": "view probe NUL and DEL",
+      "in_hex": "007f",
+      "out": "\"\\x00\\x7f\""
+    },
+    {
+      "name": "zone probe",
+      "in_hex": "7a6f6e652d61",
+      "out": "\"zone-a\""
+    },
+    {
+      "name": "slog probe control byte",
+      "in_hex": "610162",
+      "out": "\"a\\x01b\""
+    },
+    {
+      "name": "slog probe invalid byte",
+      "in_hex": "61ff62",
+      "out": "\"a\\xffb\""
+    },
+    {
+      "name": "slog probe NBSP",
+      "in_hex": "61c2a062",
+      "out": "\"a\\u00a0b\""
+    },
+    {
+      "name": "slog probe DEL",
+      "in_hex": "617f62",
+      "out": "\"a\\x7fb\""
+    },
+    {
+      "name": "U+00AD soft hyphen",
+      "in_hex": "c2ad",
+      "out": "\"\\u00ad\""
+    },
+    {
+      "name": "U+034F combining grapheme joiner",
+      "in_hex": "cd8f",
+      "out": "\"͏\""
+    },
+    {
+      "name": "combining acute accent after e",
+      "in_hex": "65cc81",
+      "out": "\"é\""
+    },
+    {
+      "name": "combining acute accent alone",
+      "in_hex": "cc81",
+      "out": "\"́\""
+    },
+    {
+      "name": "U+0378 unassigned",
+      "in_hex": "cdb8",
+      "out": "\"\\u0378\""
+    },
+    {
+      "name": "U+061C arabic letter mark",
+      "in_hex": "d89c",
+      "out": "\"\\u061c\""
+    },
+    {
+      "name": "U+1680 ogham space mark",
+      "in_hex": "e19a80",
+      "out": "\"\\u1680\""
+    },
+    {
+      "name": "U+180E mongolian vowel separator",
+      "in_hex": "e1a08e",
+      "out": "\"\\u180e\""
+    },
+    {
+      "name": "U+2000 en quad",
+      "in_hex": "e28080",
+      "out": "\"\\u2000\""
+    },
+    {
+      "name": "U+200B zero width space",
+      "in_hex": "e2808b",
+      "out": "\"\\u200b\""
+    },
+    {
+      "name": "U+200D zero width joiner",
+      "in_hex": "e2808d",
+      "out": "\"\\u200d\""
+    },
+    {
+      "name": "U+2028 line separator",
+      "in_hex": "e280a8",
+      "out": "\"\\u2028\""
+    },
+    {
+      "name": "U+2029 paragraph separator",
+      "in_hex": "e280a9",
+      "out": "\"\\u2029\""
+    },
+    {
+      "name": "U+202E right-to-left override",
+      "in_hex": "e280ae",
+      "out": "\"\\u202e\""
+    },
+    {
+      "name": "U+2060 word joiner",
+      "in_hex": "e281a0",
+      "out": "\"\\u2060\""
+    },
+    {
+      "name": "U+263A smiling face",
+      "in_hex": "e298ba",
+      "out": "\"☺\""
+    },
+    {
+      "name": "U+3000 ideographic space",
+      "in_hex": "e38080",
+      "out": "\"\\u3000\""
+    },
+    {
+      "name": "U+D7FF last rune before the surrogates",
+      "in_hex": "ed9fbf",
+      "out": "\"\\ud7ff\""
+    },
+    {
+      "name": "U+E000 private use",
+      "in_hex": "ee8080",
+      "out": "\"\\ue000\""
+    },
+    {
+      "name": "U+F8FF private use",
+      "in_hex": "efa3bf",
+      "out": "\"\\uf8ff\""
+    },
+    {
+      "name": "U+FEFF byte order mark",
+      "in_hex": "efbbbf",
+      "out": "\"\\ufeff\""
+    },
+    {
+      "name": "U+FFF9 interlinear annotation anchor",
+      "in_hex": "efbfb9",
+      "out": "\"\\ufff9\""
+    },
+    {
+      "name": "U+FFFC object replacement character",
+      "in_hex": "efbfbc",
+      "out": "\"￼\""
+    },
+    {
+      "name": "U+FFFD replacement character, valid",
+      "in_hex": "efbfbd",
+      "out": "\"�\""
+    },
+    {
+      "name": "U+FFFE noncharacter",
+      "in_hex": "efbfbe",
+      "out": "\"\\ufffe\""
+    },
+    {
+      "name": "U+FFFF noncharacter",
+      "in_hex": "efbfbf",
+      "out": "\"\\uffff\""
+    },
+    {
+      "name": "U+10000 linear b syllable a",
+      "in_hex": "f0908080",
+      "out": "\"𐀀\""
+    },
+    {
+      "name": "U+1D173 musical symbol begin beam",
+      "in_hex": "f09d85b3",
+      "out": "\"\\U0001d173\""
+    },
+    {
+      "name": "U+1F600 emoji",
+      "in_hex": "f09f9880",
+      "out": "\"😀\""
+    },
+    {
+      "name": "U+1FFFF noncharacter",
+      "in_hex": "f09fbfbf",
+      "out": "\"\\U0001ffff\""
+    },
+    {
+      "name": "U+20000 CJK extension B",
+      "in_hex": "f0a08080",
+      "out": "\"𠀀\""
+    },
+    {
+      "name": "U+2FFFF noncharacter",
+      "in_hex": "f0afbfbf",
+      "out": "\"\\U0002ffff\""
+    },
+    {
+      "name": "U+E0001 language tag",
+      "in_hex": "f3a08081",
+      "out": "\"\\U000e0001\""
+    },
+    {
+      "name": "U+E0100 variation selector 17",
+      "in_hex": "f3a08480",
+      "out": "\"󠄀\""
+    },
+    {
+      "name": "U+F0000 plane 15 private use",
+      "in_hex": "f3b08080",
+      "out": "\"\\U000f0000\""
+    },
+    {
+      "name": "U+10FFFF last rune",
+      "in_hex": "f48fbfbf",
+      "out": "\"\\U0010ffff\""
+    },
+    {
+      "name": "surrogate U+D800 encoded",
+      "in_hex": "eda080",
+      "out": "\"\\xed\\xa0\\x80\""
+    },
+    {
+      "name": "surrogate U+DBFF encoded",
+      "in_hex": "edafbf",
+      "out": "\"\\xed\\xaf\\xbf\""
+    },
+    {
+      "name": "surrogate U+DC00 encoded",
+      "in_hex": "edb080",
+      "out": "\"\\xed\\xb0\\x80\""
+    },
+    {
+      "name": "surrogate U+DFFF encoded",
+      "in_hex": "edbfbf",
+      "out": "\"\\xed\\xbf\\xbf\""
+    },
+    {
+      "name": "CESU-8 surrogate pair of U+1F600",
+      "in_hex": "eda0bdedb880",
+      "out": "\"\\xed\\xa0\\xbd\\xed\\xb8\\x80\""
+    },
+    {
+      "name": "overlong NUL c0 80",
+      "in_hex": "c080",
+      "out": "\"\\xc0\\x80\""
+    },
+    {
+      "name": "overlong c1 bf",
+      "in_hex": "c1bf",
+      "out": "\"\\xc1\\xbf\""
+    },
+    {
+      "name": "overlong e0 80 80",
+      "in_hex": "e08080",
+      "out": "\"\\xe0\\x80\\x80\""
+    },
+    {
+      "name": "overlong e0 9f bf",
+      "in_hex": "e09fbf",
+      "out": "\"\\xe0\\x9f\\xbf\""
+    },
+    {
+      "name": "overlong f0 80 80 80",
+      "in_hex": "f0808080",
+      "out": "\"\\xf0\\x80\\x80\\x80\""
+    },
+    {
+      "name": "overlong f0 8f bf bf",
+      "in_hex": "f08fbfbf",
+      "out": "\"\\xf0\\x8f\\xbf\\xbf\""
+    },
+    {
+      "name": "above U+10FFFF f4 90 80 80",
+      "in_hex": "f4908080",
+      "out": "\"\\xf4\\x90\\x80\\x80\""
+    },
+    {
+      "name": "lead byte f5",
+      "in_hex": "f5808080",
+      "out": "\"\\xf5\\x80\\x80\\x80\""
+    },
+    {
+      "name": "five-byte form f8",
+      "in_hex": "f888808080",
+      "out": "\"\\xf8\\x88\\x80\\x80\\x80\""
+    },
+    {
+      "name": "six-byte form fc",
+      "in_hex": "fc8480808080",
+      "out": "\"\\xfc\\x84\\x80\\x80\\x80\\x80\""
+    },
+    {
+      "name": "truncated two-byte rune",
+      "in_hex": "c3",
+      "out": "\"\\xc3\""
+    },
+    {
+      "name": "truncated three-byte rune",
+      "in_hex": "e282",
+      "out": "\"\\xe2\\x82\""
+    },
+    {
+      "name": "truncated four-byte rune",
+      "in_hex": "f09f98",
+      "out": "\"\\xf0\\x9f\\x98\""
+    },
+    {
+      "name": "truncated rune inside ASCII",
+      "in_hex": "61e28262",
+      "out": "\"a\\xe2\\x82b\""
+    },
+    {
+      "name": "valid rune then a stray continuation byte",
+      "in_hex": "f09f988080",
+      "out": "\"😀\\x80\""
+    },
+    {
+      "name": "continuation bytes",
+      "in_hex": "8080808080",
+      "out": "\"\\x80\\x80\\x80\\x80\\x80\""
+    },
+    {
+      "name": "valid, invalid, valid",
+      "in_hex": "c3a9ffc3a9",
+      "out": "\"é\\xffé\""
+    },
+    {
+      "name": "euro sign then a truncated euro sign",
+      "in_hex": "e282ace282",
+      "out": "\"€\\xe2\\x82\""
+    },
+    {
+      "name": "lead byte before a valid rune",
+      "in_hex": "e2e282ac",
+      "out": "\"\\xe2€\""
+    },
+    {
+      "name": "invalid byte before a quote",
+      "in_hex": "ff225c",
+      "out": "\"\\xff\\\"\\\\\""
+    },
+    {
+      "name": "printable Latin-1 (fast path): first U+0020",
+      "in_hex": "20",
+      "out": "\" \""
+    },
+    {
+      "name": "printable Latin-1 (fast path): middle U+007E",
+      "in_hex": "7e",
+      "out": "\"~\""
+    },
+    {
+      "name": "printable Latin-1 (fast path): last U+00FF",
+      "in_hex": "c3bf",
+      "out": "\"ÿ\""
+    },
+    {
+      "name": "non-printable Latin-1 (fast path): first U+0000",
+      "in_hex": "00",
+      "out": "\"\\x00\""
+    },
+    {
+      "name": "non-printable Latin-1 (fast path): middle U+0080",
+      "in_hex": "c280",
+      "out": "\"\\u0080\""
+    },
+    {
+      "name": "non-printable Latin-1 (fast path): last U+00AD",
+      "in_hex": "c2ad",
+      "out": "\"\\u00ad\""
+    },
+    {
+      "name": "printable in an isPrint16 range: first U+0100",
+      "in_hex": "c480",
+      "out": "\"Ā\""
+    },
+    {
+      "name": "printable in an isPrint16 range: middle U+7178",
+      "in_hex": "e785b8",
+      "out": "\"煸\""
+    },
+    {
+      "name": "printable in an isPrint16 range: last U+FFFD",
+      "in_hex": "efbfbd",
+      "out": "\"�\""
+    },
+    {
+      "name": "non-printable inside an isPrint16 range (isNotPrint16): first U+038B",
+      "in_hex": "ce8b",
+      "out": "\"\\u038b\""
+    },
+    {
+      "name": "non-printable inside an isPrint16 range (isNotPrint16): middle U+0E8B",
+      "in_hex": "e0ba8b",
+      "out": "\"\\u0e8b\""
+    },
+    {
+      "name": "non-printable inside an isPrint16 range (isNotPrint16): last U+FFE7",
+      "in_hex": "efbfa7",
+      "out": "\"\\uffe7\""
+    },
+    {
+      "name": "non-printable between isPrint16 ranges: first U+0378",
+      "in_hex": "cdb8",
+      "out": "\"\\u0378\""
+    },
+    {
+      "name": "non-printable between isPrint16 ranges: middle U+EA68",
+      "in_hex": "eea9a8",
+      "out": "\"\\uea68\""
+    },
+    {
+      "name": "non-printable between isPrint16 ranges: last U+FFFF",
+      "in_hex": "efbfbf",
+      "out": "\"\\uffff\""
+    },
+    {
+      "name": "printable in an isPrint32 range below U+20000: first U+10000",
+      "in_hex": "f0908080",
+      "out": "\"𐀀\""
+    },
+    {
+      "name": "printable in an isPrint32 range below U+20000: middle U+17A5E",
+      "in_hex": "f097a99e",
+      "out": "\"𗩞\""
+    },
+    {
+      "name": "printable in an isPrint32 range below U+20000: last U+1FBF9",
+      "in_hex": "f09fafb9",
+      "out": "\"🯹\""
+    },
+    {
+      "name": "non-printable inside an isPrint32 range (isNotPrint32): first U+1000C",
+      "in_hex": "f090808c",
+      "out": "\"\\U0001000c\""
+    },
+    {
+      "name": "non-printable inside an isPrint32 range (isNotPrint32): middle U+16B5A",
+      "in_hex": "f096ad9a",
+      "out": "\"\\U00016b5a\""
+    },
+    {
+      "name": "non-printable inside an isPrint32 range (isNotPrint32): last U+1FB93",
+      "in_hex": "f09fae93",
+      "out": "\"\\U0001fb93\""
+    },
+    {
+      "name": "non-printable between isPrint32 ranges below U+20000: first U+1004E",
+      "in_hex": "f090818e",
+      "out": "\"\\U0001004e\""
+    },
+    {
+      "name": "non-printable between isPrint32 ranges below U+20000: middle U+1927B",
+      "in_hex": "f09989bb",
+      "out": "\"\\U0001927b\""
+    },
+    {
+      "name": "non-printable between isPrint32 ranges below U+20000: last U+1FFFF",
+      "in_hex": "f09fbfbf",
+      "out": "\"\\U0001ffff\""
+    },
+    {
+      "name": "printable from U+20000 (no exception list): first U+20000",
+      "in_hex": "f0a08080",
+      "out": "\"𠀀\""
+    },
+    {
+      "name": "printable from U+20000 (no exception list): middle U+28932",
+      "in_hex": "f0a8a4b2",
+      "out": "\"𨤲\""
+    },
+    {
+      "name": "printable from U+20000 (no exception list): last U+E01EF",
+      "in_hex": "f3a087af",
+      "out": "\"󠇯\""
+    },
+    {
+      "name": "non-printable from U+20000: first U+2A6E0",
+      "in_hex": "f0aa9ba0",
+      "out": "\"\\U0002a6e0\""
+    },
+    {
+      "name": "non-printable from U+20000: middle U+A0842",
+      "in_hex": "f2a0a182",
+      "out": "\"\\U000a0842\""
+    },
+    {
+      "name": "non-printable from U+20000: last U+10FFFF",
+      "in_hex": "f48fbfbf",
+      "out": "\"\\U0010ffff\""
+    },
+    {
+      "name": "graphic, not printable U+00A0",
+      "in_hex": "c2a0",
+      "out": "\"\\u00a0\""
+    },
+    {
+      "name": "graphic, not printable U+1680",
+      "in_hex": "e19a80",
+      "out": "\"\\u1680\""
+    },
+    {
+      "name": "graphic, not printable U+2000",
+      "in_hex": "e28080",
+      "out": "\"\\u2000\""
+    },
+    {
+      "name": "graphic, not printable U+2001",
+      "in_hex": "e28081",
+      "out": "\"\\u2001\""
+    },
+    {
+      "name": "graphic, not printable U+2002",
+      "in_hex": "e28082",
+      "out": "\"\\u2002\""
+    },
+    {
+      "name": "graphic, not printable U+2003",
+      "in_hex": "e28083",
+      "out": "\"\\u2003\""
+    },
+    {
+      "name": "graphic, not printable U+2004",
+      "in_hex": "e28084",
+      "out": "\"\\u2004\""
+    },
+    {
+      "name": "graphic, not printable U+2005",
+      "in_hex": "e28085",
+      "out": "\"\\u2005\""
+    },
+    {
+      "name": "graphic, not printable U+2006",
+      "in_hex": "e28086",
+      "out": "\"\\u2006\""
+    },
+    {
+      "name": "graphic, not printable U+2007",
+      "in_hex": "e28087",
+      "out": "\"\\u2007\""
+    },
+    {
+      "name": "graphic, not printable U+2008",
+      "in_hex": "e28088",
+      "out": "\"\\u2008\""
+    },
+    {
+      "name": "graphic, not printable U+2009",
+      "in_hex": "e28089",
+      "out": "\"\\u2009\""
+    },
+    {
+      "name": "graphic, not printable U+200A",
+      "in_hex": "e2808a",
+      "out": "\"\\u200a\""
+    },
+    {
+      "name": "graphic, not printable U+202F",
+      "in_hex": "e280af",
+      "out": "\"\\u202f\""
+    },
+    {
+      "name": "graphic, not printable U+205F",
+      "in_hex": "e2819f",
+      "out": "\"\\u205f\""
+    },
+    {
+      "name": "graphic, not printable U+3000",
+      "in_hex": "e38080",
+      "out": "\"\\u3000\""
+    },
+    {
+      "name": "is_print boundaries 0 to 7 (U+0020 to U+0380)",
+      "in_hex": "1f207e7fc2a0c2a1c2acc2adc2adc2aecdb7cdb8cdb9cdbacdbfce80",
+      "out": "\"\\x1f ~\\x7f\\u00a0¡¬\\u00ad\\u00ad®ͷ\\u0378\\u0379ͺͿ\\u0380\""
+    },
+    {
+      "name": "is_print boundaries 8 to 15 (U+0384 to U+0530)",
+      "in_hex": "ce83ce84ce8ace8bce8bce8cce8cce8dce8dce8ecea1cea2cea2cea3d4afd4b0",
+      "out": "\"\\u0383΄Ί\\u038b\\u038bΌΌ\\u038d\\u038dΎΡ\\u03a2\\u03a2Σԯ\\u0530\""
+    },
+    {
+      "name": "is_print boundaries 16 to 23 (U+0531 to U+05C8)",
+      "in_hex": "d4b0d4b1d596d597d598d599d68ad68bd68cd68dd68fd690d690d691d787d788",
+      "out": "\"\\u0530ԱՖ\\u0557\\u0558ՙ֊\\u058b\\u058c֍֏\\u0590\\u0590ׇ֑\\u05c8\""
+    },
+    {
+      "name": "is_print boundaries 24 to 31 (U+05D0 to U+06DD)",
+      "in_hex": "d78fd790d7aad7abd7aed7afd7b4d7b5d885d886d89bd89cd89cd89ddb9cdb9d",
+      "out": "\"\\u05cfאת\\u05eb\\u05eeׯ״\\u05f5\\u0605؆؛\\u061c\\u061c؝ۜ\\u06dd\""
+    },
+    {
+      "name": "is_print boundaries 32 to 39 (U+06DE to U+07FB)",
+      "in_hex": "db9ddb9edc8ddc8edc8fdc90dd8add8bdd8cdd8ddeb1deb2debfdf80dfbadfbb",
+      "out": "\"\\u06dd۞܍\\u070e\\u070fܐ݊\\u074b\\u074cݍޱ\\u07b2\\u07bf߀ߺ\\u07fb\""
+    },
+    {
+      "name": "is_print boundaries 40 to 47 (U+07FD to U+085F)",
+      "in_hex": "dfbcdfbde0a0ade0a0aee0a0afe0a0b0e0a0bee0a0bfe0a0bfe0a180e0a19be0a19ce0a19de0a19ee0a19ee0a19f",
+      "out": "\"\\u07fc߽࠭\\u082e\\u082f࠰࠾\\u083f\\u083fࡀ࡛\\u085c\\u085d࡞࡞\\u085f\""
+    },
+    {
+      "name": "is_print boundaries 48 to 55 (U+0860 to U+0984)",
+      "in_hex": "e0a19fe0a1a0e0a1aae0a1abe0a1afe0a1b0e0a28ee0a28fe0a297e0a298e0a3a1e0a3a2e0a3a2e0a3a3e0a683e0a684",
+      "out": "\"\\u085fࡠࡪ\\u086b\\u086fࡰࢎ\\u088f\\u0897࢘࣡\\u08e2\\u08e2ࣣঃ\\u0984\""
+    },
+    {
+      "name": "is_print boundaries 56 to 63 (U+0985 to U+09B1)",
+      "in_hex": "e0a684e0a685e0a68ce0a68de0a68ee0a68fe0a690e0a691e0a692e0a693e0a6a8e0a6a9e0a6a9e0a6aae0a6b0e0a6b1",
+      "out": "\"\\u0984অঌ\\u098d\\u098eএঐ\\u0991\\u0992ওন\\u09a9\\u09a9পর\\u09b1\""
+    },
+    {
+      "name": "is_print boundaries 64 to 71 (U+09B2 to U+09C9)",
+      "in_hex": "e0a6b1e0a6b2e0a6b2e0a6b3e0a6b5e0a6b6e0a6b9e0a6bae0a6bbe0a6bce0a784e0a785e0a786e0a787e0a788e0a789",
+      "out": "\"\\u09b1লল\\u09b3\\u09b5শহ\\u09ba\\u09bb়ৄ\\u09c5\\u09c6েৈ\\u09c9\""
+    },
+    {
+      "name": "is_print boundaries 72 to 79 (U+09CB to U+09E4)",
+      "in_hex": "e0a78ae0a78be0a78ee0a78fe0a796e0a797e0a797e0a798e0a79be0a79ce0a79de0a79ee0a79ee0a79fe0a7a3e0a7a4",
+      "out": "\"\\u09caোৎ\\u09cf\\u09d6ৗৗ\\u09d8\\u09dbড়ঢ়\\u09de\\u09deয়ৣ\\u09e4\""
+    },
+    {
+      "name": "is_print boundaries 80 to 87 (U+09E6 to U+0A11)",
+      "in_hex": "e0a7a5e0a7a6e0a7bee0a7bfe0a880e0a881e0a883e0a884e0a884e0a885e0a88ae0a88be0a88ee0a88fe0a890e0a891",
+      "out": "\"\\u09e5০৾\\u09ff\\u0a00ਁਃ\\u0a04\\u0a04ਅਊ\\u0a0b\\u0a0eਏਐ\\u0a11\""
+    },
+    {
+      "name": "is_print boundaries 88 to 95 (U+0A13 to U+0A37)",
+      "in_hex": "e0a892e0a893e0a8a8e0a8a9e0a8a9e0a8aae0a8b0e0a8b1e0a8b1e0a8b2e0a8b3e0a8b4e0a8b4e0a8b5e0a8b6e0a8b7",
+      "out": "\"\\u0a12ਓਨ\\u0a29\\u0a29ਪਰ\\u0a31\\u0a31ਲਲ਼\\u0a34\\u0a34ਵਸ਼\\u0a37\""
+    },
+    {
+      "name": "is_print boundaries 96 to 103 (U+0A38 to U+0A49)",
+      "in_hex": "e0a8b7e0a8b8e0a8b9e0a8bae0a8bbe0a8bce0a8bce0a8bde0a8bde0a8bee0a982e0a983e0a986e0a987e0a988e0a989",
+      "out": "\"\\u0a37ਸਹ\\u0a3a\\u0a3b਼਼\\u0a3d\\u0a3dਾੂ\\u0a43\\u0a46ੇੈ\\u0a49\""
+    },
+    {
+      "name": "is_print boundaries 104 to 111 (U+0A4B to U+0A5F)",
+      "in_hex": "e0a98ae0a98be0a98de0a98ee0a990e0a991e0a991e0a992e0a998e0a999e0a99ce0a99de0a99de0a99ee0a99ee0a99f",
+      "out": "\"\\u0a4aੋ੍\\u0a4e\\u0a50ੑੑ\\u0a52\\u0a58ਖ਼ੜ\\u0a5d\\u0a5dਫ਼ਫ਼\\u0a5f\""
+    },
+    {
+      "name": "is_print boundaries 112 to 119 (U+0A66 to U+0A92)",
+      "in_hex": "e0a9a5e0a9a6e0a9b6e0a9b7e0aa80e0aa81e0aa83e0aa84e0aa84e0aa85e0aa8de0aa8ee0aa8ee0aa8fe0aa91e0aa92",
+      "out": "\"\\u0a65੦੶\\u0a77\\u0a80ઁઃ\\u0a84\\u0a84અઍ\\u0a8e\\u0a8eએઑ\\u0a92\""
+    },
+    {
+      "name": "is_print boundaries 120 to 127 (U+0A93 to U+0ABA)",
+      "in_hex": "e0aa92e0aa93e0aaa8e0aaa9e0aaa9e0aaaae0aab0e0aab1e0aab1e0aab2e0aab3e0aab4e0aab4e0aab5e0aab9e0aaba",
+      "out": "\"\\u0a92ઓન\\u0aa9\\u0aa9પર\\u0ab1\\u0ab1લળ\\u0ab4\\u0ab4વહ\\u0aba\""
+    },
+    {
+      "name": "is_print boundaries 128 to 135 (U+0ABC to U+0AD1)",
+      "in_hex": "e0aabbe0aabce0ab85e0ab86e0ab86e0ab87e0ab89e0ab8ae0ab8ae0ab8be0ab8de0ab8ee0ab8fe0ab90e0ab90e0ab91",
+      "out": "\"\\u0abb઼ૅ\\u0ac6\\u0ac6ેૉ\\u0aca\\u0acaો્\\u0ace\\u0acfૐૐ\\u0ad1\""
+    },
+    {
+      "name": "is_print boundaries 136 to 143 (U+0AE0 to U+0B04)",
+      "in_hex": "e0ab9fe0aba0e0aba3e0aba4e0aba5e0aba6e0abb1e0abb2e0abb8e0abb9e0abbfe0ac80e0ac80e0ac81e0ac83e0ac84",
+      "out": "\"\\u0adfૠૣ\\u0ae4\\u0ae5૦૱\\u0af2\\u0af8ૹ૿\\u0b00\\u0b00ଁଃ\\u0b04\""
+    },
+    {
+      "name": "is_print boundaries 144 to 151 (U+0B05 to U+0B31)",
+      "in_hex": "e0ac84e0ac85e0ac8ce0ac8de0ac8ee0ac8fe0ac90e0ac91e0ac92e0ac93e0aca8e0aca9e0aca9e0acaae0acb0e0acb1",
+      "out": "\"\\u0b04ଅଌ\\u0b0d\\u0b0eଏଐ\\u0b11\\u0b12ଓନ\\u0b29\\u0b29ପର\\u0b31\""
+    },
+    {
+      "name": "is_print boundaries 152 to 159 (U+0B32 to U+0B49)",
+      "in_hex": "e0acb1e0acb2e0acb3e0acb4e0acb4e0acb5e0acb9e0acbae0acbbe0acbce0ad84e0ad85e0ad86e0ad87e0ad88e0ad89",
+      "out": "\"\\u0b31ଲଳ\\u0b34\\u0b34ଵହ\\u0b3a\\u0b3b଼ୄ\\u0b45\\u0b46େୈ\\u0b49\""
+    },
+    {
+      "name": "is_print boundaries 160 to 167 (U+0B4B to U+0B64)",
+      "in_hex": "e0ad8ae0ad8be0ad8de0ad8ee0ad94e0ad95e0ad97e0ad98e0ad9be0ad9ce0ad9de0ad9ee0ad9ee0ad9fe0ada3e0ada4",
+      "out": "\"\\u0b4aୋ୍\\u0b4e\\u0b54୕ୗ\\u0b58\\u0b5bଡ଼ଢ଼\\u0b5e\\u0b5eୟୣ\\u0b64\""
+    },
+    {
+      "name": "is_print boundaries 168 to 175 (U+0B66 to U+0B91)",
+      "in_hex": "e0ada5e0ada6e0adb7e0adb8e0ae81e0ae82e0ae83e0ae84e0ae84e0ae85e0ae8ae0ae8be0ae8de0ae8ee0ae90e0ae91",
+      "out": "\"\\u0b65୦୷\\u0b78\\u0b81ஂஃ\\u0b84\\u0b84அஊ\\u0b8b\\u0b8dஎஐ\\u0b91\""
+    },
+    {
+      "name": "is_print boundaries 176 to 183 (U+0B92 to U+0BA0)",
+      "in_hex": "e0ae91e0ae92e0ae95e0ae96e0ae98e0ae99e0ae9ae0ae9be0ae9be0ae9ce0ae9ce0ae9de0ae9de0ae9ee0ae9fe0aea0",
+      "out": "\"\\u0b91ஒக\\u0b96\\u0b98ஙச\\u0b9b\\u0b9bஜஜ\\u0b9d\\u0b9dஞட\\u0ba0\""
+    },
+    {
+      "name": "is_print boundaries 184 to 191 (U+0BA3 to U+0BC3)",
+      "in_hex": "e0aea2e0aea3e0aea4e0aea5e0aea7e0aea8e0aeaae0aeabe0aeade0aeaee0aeb9e0aebae0aebde0aebee0af82e0af83",
+      "out": "\"\\u0ba2ணத\\u0ba5\\u0ba7நப\\u0bab\\u0badமஹ\\u0bba\\u0bbdாூ\\u0bc3\""
+    },
+    {
+      "name": "is_print boundaries 192 to 199 (U+0BC6 to U+0BD8)",
+      "in_hex": "e0af85e0af86e0af88e0af89e0af89e0af8ae0af8de0af8ee0af8fe0af90e0af90e0af91e0af96e0af97e0af97e0af98",
+      "out": "\"\\u0bc5ெை\\u0bc9\\u0bc9ொ்\\u0bce\\u0bcfௐௐ\\u0bd1\\u0bd6ௗௗ\\u0bd8\""
+    },
+    {
+      "name": "is_print boundaries 200 to 207 (U+0BE6 to U+0C29)",
+      "in_hex": "e0afa5e0afa6e0afbae0afbbe0afbfe0b080e0b08ce0b08de0b08de0b08ee0b090e0b091e0b091e0b092e0b0a8e0b0a9",
+      "out": "\"\\u0be5௦௺\\u0bfb\\u0bffఀఌ\\u0c0d\\u0c0dఎఐ\\u0c11\\u0c11ఒన\\u0c29\""
+    },
+    {
+      "name": "is_print boundaries 208 to 215 (U+0C2A to U+0C4E)",
+      "in_hex": "e0b0a9e0b0aae0b0b9e0b0bae0b0bbe0b0bce0b184e0b185e0b185e0b186e0b188e0b189e0b189e0b18ae0b18de0b18e",
+      "out": "\"\\u0c29పహ\\u0c3a\\u0c3b఼ౄ\\u0c45\\u0c45ెై\\u0c49\\u0c49ొ్\\u0c4e\""
+    },
+    {
+      "name": "is_print boundaries 216 to 223 (U+0C55 to U+0C64)",
+      "in_hex": "e0b194e0b195e0b196e0b197e0b197e0b198e0b19ae0b19be0b19ce0b19de0b19de0b19ee0b19fe0b1a0e0b1a3e0b1a4",
+      "out": "\"\\u0c54ౕౖ\\u0c57\\u0c57ౘౚ\\u0c5b\\u0c5cౝౝ\\u0c5e\\u0c5fౠౣ\\u0c64\""
+    },
+    {
+      "name": "is_print boundaries 224 to 231 (U+0C66 to U+0CA9)",
+      "in_hex": "e0b1a5e0b1a6e0b1afe0b1b0e0b1b6e0b1b7e0b28ce0b28de0b28de0b28ee0b290e0b291e0b291e0b292e0b2a8e0b2a9",
+      "out": "\"\\u0c65౦౯\\u0c70\\u0c76౷ಌ\\u0c8d\\u0c8dಎಐ\\u0c91\\u0c91ಒನ\\u0ca9\""
+    },
+    {
+      "name": "is_print boundaries 232 to 239 (U+0CAA to U+0CC9)",
+      "in_hex": "e0b2a9e0b2aae0b2b3e0b2b4e0b2b4e0b2b5e0b2b9e0b2bae0b2bbe0b2bce0b384e0b385e0b385e0b386e0b388e0b389",
+      "out": "\"\\u0ca9ಪಳ\\u0cb4\\u0cb4ವಹ\\u0cba\\u0cbb಼ೄ\\u0cc5\\u0cc5ೆೈ\\u0cc9\""
+    },
+    {
+      "name": "is_print boundaries 240 to 247 (U+0CCA to U+0CE4)",
+      "in_hex": "e0b389e0b38ae0b38de0b38ee0b394e0b395e0b396e0b397e0b39ce0b39de0b39ee0b39fe0b39fe0b3a0e0b3a3e0b3a4",
+      "out": "\"\\u0cc9ೊ್\\u0cce\\u0cd4ೕೖ\\u0cd7\\u0cdcೝೞ\\u0cdf\\u0cdfೠೣ\\u0ce4\""
+    },
+    {
+      "name": "is_print boundaries 248 to 255 (U+0CE6 to U+0D11)",
+      "in_hex": "e0b3a5e0b3a6e0b3afe0b3b0e0b3b0e0b3b1e0b3b3e0b3b4e0b3bfe0b480e0b48ce0b48de0b48de0b48ee0b490e0b491",
+      "out": "\"\\u0ce5೦೯\\u0cf0\\u0cf0ೱೳ\\u0cf4\\u0cffഀഌ\\u0d0d\\u0d0dഎഐ\\u0d11\""
+    },
+    {
+      "name": "is_print boundaries 256 to 263 (U+0D12 to U+0D64)",
+      "in_hex": "e0b491e0b492e0b584e0b585e0b585e0b586e0b588e0b589e0b589e0b58ae0b58fe0b590e0b593e0b594e0b5a3e0b5a4",
+      "out": "\"\\u0d11ഒൄ\\u0d45\\u0d45െൈ\\u0d49\\u0d49ൊ൏\\u0d50\\u0d53ൔൣ\\u0d64\""
+    },
+    {
+      "name": "is_print boundaries 264 to 271 (U+0D66 to U+0DB2)",
+      "in_hex": "e0b5a5e0b5a6e0b5bfe0b680e0b680e0b681e0b683e0b684e0b684e0b685e0b696e0b697e0b699e0b69ae0b6b1e0b6b2",
+      "out": "\"\\u0d65൦ൿ\\u0d80\\u0d80ඁඃ\\u0d84\\u0d84අඖ\\u0d97\\u0d99කන\\u0db2\""
+    },
+    {
+      "name": "is_print boundaries 272 to 279 (U+0DB3 to U+0DCB)",
+      "in_hex": "e0b6b2e0b6b3e0b6bbe0b6bce0b6bce0b6bde0b6bde0b6bee0b6bfe0b780e0b786e0b787e0b789e0b78ae0b78ae0b78b",
+      "out": "\"\\u0db2ඳර\\u0dbc\\u0dbcලල\\u0dbe\\u0dbfවෆ\\u0dc7\\u0dc9්්\\u0dcb\""
+    },
+    {
+      "name": "is_print boundaries 280 to 287 (U+0DCF to U+0DF0)",
+      "in_hex": "e0b78ee0b78fe0b794e0b795e0b795e0b796e0b796e0b797e0b797e0b798e0b79fe0b7a0e0b7a5e0b7a6e0b7afe0b7b0",
+      "out": "\"\\u0dceාු\\u0dd5\\u0dd5ූූ\\u0dd7\\u0dd7ෘෟ\\u0de0\\u0de5෦෯\\u0df0\""
+    },
+    {
+      "name": "is_print boundaries 288 to 295 (U+0DF2 to U+0E83)",
+      "in_hex": "e0b7b1e0b7b2e0b7b4e0b7b5e0b880e0b881e0b8bae0b8bbe0b8bee0b8bfe0b99be0b99ce0ba80e0ba81e0ba82e0ba83",
+      "out": "\"\\u0df1ෲ෴\\u0df5\\u0e00กฺ\\u0e3b\\u0e3e฿๛\\u0e5c\\u0e80ກຂ\\u0e83\""
+    },
+    {
+      "name": "is_print boundaries 296 to 303 (U+0E84 to U+0EA6)",
+      "in_hex": "e0ba83e0ba84e0ba84e0ba85e0ba85e0ba86e0ba8ae0ba8be0ba8be0ba8ce0baa3e0baa4e0baa4e0baa5e0baa5e0baa6",
+      "out": "\"\\u0e83ຄຄ\\u0e85\\u0e85ຆຊ\\u0e8b\\u0e8bຌຣ\\u0ea4\\u0ea4ລລ\\u0ea6\""
+    },
+    {
+      "name": "is_print boundaries 304 to 311 (U+0EA7 to U+0ECF)",
+      "in_hex": "e0baa6e0baa7e0babde0babee0babfe0bb80e0bb84e0bb85e0bb85e0bb86e0bb86e0bb87e0bb87e0bb88e0bb8ee0bb8f",
+      "out": "\"\\u0ea6ວຽ\\u0ebe\\u0ebfເໄ\\u0ec5\\u0ec5ໆໆ\\u0ec7\\u0ec7່໎\\u0ecf\""
+    },
+    {
+      "name": "is_print boundaries 312 to 319 (U+0ED0 to U+0F6D)",
+      "in_hex": "e0bb8fe0bb90e0bb99e0bb9ae0bb9be0bb9ce0bb9fe0bba0e0bbbfe0bc80e0bd87e0bd88e0bd88e0bd89e0bdace0bdad",
+      "out": "\"\\u0ecf໐໙\\u0eda\\u0edbໜໟ\\u0ee0\\u0effༀཇ\\u0f48\\u0f48ཉཬ\\u0f6d\""
+    },
+    {
+      "name": "is_print boundaries 320 to 327 (U+0F71 to U+0FDB)",
+      "in_hex": "e0bdb0e0bdb1e0be97e0be98e0be98e0be99e0bebce0bebde0bebde0bebee0bf8ce0bf8de0bf8de0bf8ee0bf9ae0bf9b",
+      "out": "\"\\u0f70ཱྗ\\u0f98\\u0f98ྙྼ\\u0fbd\\u0fbd྾࿌\\u0fcd\\u0fcd࿎࿚\\u0fdb\""
+    },
+    {
+      "name": "is_print boundaries 328 to 335 (U+1000 to U+1249)",
+      "in_hex": "e0bfbfe18080e18385e18386e18386e18387e18387e18388e1838ce1838de1838de1838ee1838fe18390e18988e18989",
+      "out": "\"\\u0fffကჅ\\u10c6\\u10c6ჇჇ\\u10c8\\u10ccჍჍ\\u10ce\\u10cfაቈ\\u1249\""
+    },
+    {
+      "name": "is_print boundaries 336 to 343 (U+124A to U+125E)",
+      "in_hex": "e18989e1898ae1898de1898ee1898fe18990e18996e18997e18997e18998e18998e18999e18999e1899ae1899de1899e",
+      "out": "\"\\u1249ቊቍ\\u124e\\u124fቐቖ\\u1257\\u1257ቘቘ\\u1259\\u1259ቚቝ\\u125e\""
+    },
+    {
+      "name": "is_print boundaries 344 to 351 (U+1260 to U+12B6)",
+      "in_hex": "e1899fe189a0e18a88e18a89e18a89e18a8ae18a8de18a8ee18a8fe18a90e18ab0e18ab1e18ab1e18ab2e18ab5e18ab6",
+      "out": "\"\\u125fበኈ\\u1289\\u1289ኊኍ\\u128e\\u128fነኰ\\u12b1\\u12b1ኲኵ\\u12b6\""
+    },
+    {
+      "name": "is_print boundaries 352 to 359 (U+12B8 to U+12D7)",
+      "in_hex": "e18ab7e18ab8e18abee18abfe18abfe18b80e18b80e18b81e18b81e18b82e18b85e18b86e18b87e18b88e18b96e18b97",
+      "out": "\"\\u12b7ኸኾ\\u12bf\\u12bfዀዀ\\u12c1\\u12c1ዂዅ\\u12c6\\u12c7ወዖ\\u12d7\""
+    },
+    {
+      "name": "is_print boundaries 360 to 367 (U+12D8 to U+137D)",
+      "in_hex": "e18b97e18b98e18c90e18c91e18c91e18c92e18c95e18c96e18c97e18c98e18d9ae18d9be18d9ce18d9de18dbce18dbd",
+      "out": "\"\\u12d7ዘጐ\\u1311\\u1311ጒጕ\\u1316\\u1317ጘፚ\\u135b\\u135c፝፼\\u137d\""
+    },
+    {
+      "name": "is_print boundaries 368 to 375 (U+1380 to U+1680)",
+      "in_hex": "e18dbfe18e80e18e99e18e9ae18e9fe18ea0e18fb5e18fb6e18fb7e18fb8e18fbde18fbee18fbfe19080e199bfe19a80",
+      "out": "\"\\u137fᎀ᎙\\u139a\\u139fᎠᏵ\\u13f6\\u13f7ᏸᏽ\\u13fe\\u13ff᐀ᙿ\\u1680\""
+    },
+    {
+      "name": "is_print boundaries 376 to 383 (U+1681 to U+1737)",
+      "in_hex": "e19a80e19a81e19a9ce19a9de19a9fe19aa0e19bb8e19bb9e19bbfe19c80e19c95e19c96e19c9ee19c9fe19cb6e19cb7",
+      "out": "\"\\u1680ᚁ᚜\\u169d\\u169fᚠᛸ\\u16f9\\u16ffᜀ᜕\\u1716\\u171eᜟ᜶\\u1737\""
+    },
+    {
+      "name": "is_print boundaries 384 to 391 (U+1740 to U+1774)",
+      "in_hex": "e19cbfe19d80e19d93e19d94e19d9fe19da0e19dace19dade19dade19daee19db0e19db1e19db1e19db2e19db3e19db4",
+      "out": "\"\\u173fᝀᝓ\\u1754\\u175fᝠᝬ\\u176d\\u176dᝮᝰ\\u1771\\u1771ᝲᝳ\\u1774\""
+    },
+    {
+      "name": "is_print boundaries 392 to 399 (U+1780 to U+180E)",
+      "in_hex": "e19dbfe19e80e19f9de19f9ee19f9fe19fa0e19fa9e19faae19fafe19fb0e19fb9e19fbae19fbfe1a080e1a08de1a08e",
+      "out": "\"\\u177fក៝\\u17de\\u17df០៩\\u17ea\\u17ef៰៹\\u17fa\\u17ff᠀᠍\\u180e\""
+    },
+    {
+      "name": "is_print boundaries 400 to 407 (U+180F to U+18F6)",
+      "in_hex": "e1a08ee1a08fe1a099e1a09ae1a09fe1a0a0e1a1b8e1a1b9e1a1bfe1a280e1a2aae1a2abe1a2afe1a2b0e1a3b5e1a3b6",
+      "out": "\"\\u180e᠏᠙\\u181a\\u181fᠠᡸ\\u1879\\u187fᢀᢪ\\u18ab\\u18afᢰᣵ\\u18f6\""
+    },
+    {
+      "name": "is_print boundaries 408 to 415 (U+1900 to U+1941)",
+      "in_hex": "e1a3bfe1a480e1a49ee1a49fe1a49fe1a4a0e1a4abe1a4ace1a4afe1a4b0e1a4bbe1a4bce1a4bfe1a580e1a580e1a581",
+      "out": "\"\\u18ffᤀᤞ\\u191f\\u191fᤠᤫ\\u192c\\u192fᤰ᤻\\u193c\\u193f᥀᥀\\u1941\""
+    },
+    {
+      "name": "is_print boundaries 416 to 423 (U+1944 to U+19CA)",
+      "in_hex": "e1a583e1a584e1a5ade1a5aee1a5afe1a5b0e1a5b4e1a5b5e1a5bfe1a680e1a6abe1a6ace1a6afe1a6b0e1a789e1a78a",
+      "out": "\"\\u1943᥄ᥭ\\u196e\\u196fᥰᥴ\\u1975\\u197fᦀᦫ\\u19ac\\u19afᦰᧉ\\u19ca\""
+    },
+    {
+      "name": "is_print boundaries 424 to 431 (U+19D0 to U+1A7D)",
+      "in_hex": "e1a78fe1a790e1a79ae1a79be1a79de1a79ee1a89be1a89ce1a89de1a89ee1a99ee1a99fe1a99fe1a9a0e1a9bce1a9bd",
+      "out": "\"\\u19cf᧐᧚\\u19db\\u19dd᧞ᨛ\\u1a1c\\u1a1d᨞ᩞ\\u1a5f\\u1a5f᩠᩼\\u1a7d\""
+    },
+    {
+      "name": "is_print boundaries 432 to 439 (U+1A7F to U+1ACF)",
+      "in_hex": "e1a9bee1a9bfe1aa89e1aa8ae1aa8fe1aa90e1aa99e1aa9ae1aa9fe1aaa0e1aaade1aaaee1aaafe1aab0e1ab8ee1ab8f",
+      "out": "\"\\u1a7e᩿᪉\\u1a8a\\u1a8f᪐᪙\\u1a9a\\u1a9f᪠᪭\\u1aae\\u1aaf᪰ᫎ\\u1acf\""
+    },
+    {
+      "name": "is_print boundaries 440 to 447 (U+1B00 to U+1C38)",
+      "in_hex": "e1abbfe1ac80e1ad8ce1ad8de1ad8fe1ad90e1adbee1adbfe1adbfe1ae80e1afb3e1afb4e1afbbe1afbce1b0b7e1b0b8",
+      "out": "\"\\u1affᬀᭌ\\u1b4d\\u1b4f᭐᭾\\u1b7f\\u1b7fᮀ᯳\\u1bf4\\u1bfb᯼᰷\\u1c38\""
+    },
+    {
+      "name": "is_print boundaries 448 to 455 (U+1C3B to U+1CC8)",
+      "in_hex": "e1b0bae1b0bbe1b189e1b18ae1b18ce1b18de1b288e1b289e1b28fe1b290e1b2bae1b2bbe1b2bce1b2bde1b387e1b388",
+      "out": "\"\\u1c3a᰻᱉\\u1c4a\\u1c4cᱍᲈ\\u1c89\\u1c8fᲐᲺ\\u1cbb\\u1cbcᲽ᳇\\u1cc8\""
+    },
+    {
+      "name": "is_print boundaries 456 to 463 (U+1CD0 to U+1F46)",
+      "in_hex": "e1b38fe1b390e1b3bae1b3bbe1b3bfe1b480e1bc95e1bc96e1bc97e1bc98e1bc9de1bc9ee1bc9fe1bca0e1bd85e1bd86",
+      "out": "\"\\u1ccf᳐ᳺ\\u1cfb\\u1cffᴀἕ\\u1f16\\u1f17ἘἝ\\u1f1e\\u1f1fἠὅ\\u1f46\""
+    },
+    {
+      "name": "is_print boundaries 464 to 471 (U+1F48 to U+1F5C)",
+      "in_hex": "e1bd87e1bd88e1bd8de1bd8ee1bd8fe1bd90e1bd97e1bd98e1bd98e1bd99e1bd99e1bd9ae1bd9ae1bd9be1bd9be1bd9c",
+      "out": "\"\\u1f47ὈὍ\\u1f4e\\u1f4fὐὗ\\u1f58\\u1f58ὙὙ\\u1f5a\\u1f5aὛὛ\\u1f5c\""
+    },
+    {
+      "name": "is_print boundaries 472 to 479 (U+1F5D to U+1FC5)",
+      "in_hex": "e1bd9ce1bd9de1bd9de1bd9ee1bd9ee1bd9fe1bdbde1bdbee1bdbfe1be80e1beb4e1beb5e1beb5e1beb6e1bf84e1bf85",
+      "out": "\"\\u1f5cὝὝ\\u1f5e\\u1f5eὟώ\\u1f7e\\u1f7fᾀᾴ\\u1fb5\\u1fb5ᾶῄ\\u1fc5\""
+    },
+    {
+      "name": "is_print boundaries 480 to 487 (U+1FC6 to U+1FF5)",
+      "in_hex": "e1bf85e1bf86e1bf93e1bf94e1bf95e1bf96e1bf9be1bf9ce1bf9ce1bf9de1bfafe1bfb0e1bfb1e1bfb2e1bfb4e1bfb5",
+      "out": "\"\\u1fc5ῆΐ\\u1fd4\\u1fd5ῖΊ\\u1fdc\\u1fdc῝`\\u1ff0\\u1ff1ῲῴ\\u1ff5\""
+    },
+    {
+      "name": "is_print boundaries 488 to 495 (U+1FF6 to U+2072)",
+      "in_hex": "e1bfb5e1bfb6e1bfbee1bfbfe2808fe28090e280a7e280a8e280afe280b0e2819ee2819fe281afe281b0e281b1e281b2",
+      "out": "\"\\u1ff5ῶ῾\\u1fff\\u200f‐‧\\u2028\\u202f‰⁞\\u205f\\u206f⁰ⁱ\\u2072\""
+    },
+    {
+      "name": "is_print boundaries 496 to 503 (U+2074 to U+20F1)",
+      "in_hex": "e281b3e281b4e2828ee2828fe2828fe28290e2829ce2829de2829fe282a0e28380e28381e2838fe28390e283b0e283b1",
+      "out": "\"\\u2073⁴₎\\u208f\\u208fₐₜ\\u209d\\u209f₠⃀\\u20c1\\u20cf⃐⃰\\u20f1\""
+    },
+    {
+      "name": "is_print boundaries 504 to 511 (U+2100 to U+2B74)",
+      "in_hex": "e283bfe28480e2868be2868ce2868fe28690e290a6e290a7e290bfe29180e2918ae2918be2919fe291a0e2adb3e2adb4",
+      "out": "\"\\u20ff℀↋\\u218c\\u218f←␦\\u2427\\u243f⑀⑊\\u244b\\u245f①⭳\\u2b74\""
+    },
+    {
+      "name": "is_print boundaries 512 to 519 (U+2B76 to U+2D28)",
+      "in_hex": "e2adb5e2adb6e2ae95e2ae96e2ae96e2ae97e2b3b3e2b3b4e2b3b8e2b3b9e2b4a5e2b4a6e2b4a6e2b4a7e2b4a7e2b4a8",
+      "out": "\"\\u2b75⭶⮕\\u2b96\\u2b96⮗ⳳ\\u2cf4\\u2cf8⳹ⴥ\\u2d26\\u2d26ⴧⴧ\\u2d28\""
+    },
+    {
+      "name": "is_print boundaries 520 to 527 (U+2D2D to U+2D97)",
+      "in_hex": "e2b4ace2b4ade2b4ade2b4aee2b4afe2b4b0e2b5a7e2b5a8e2b5aee2b5afe2b5b0e2b5b1e2b5bee2b5bfe2b696e2b697",
+      "out": "\"\\u2d2cⴭⴭ\\u2d2e\\u2d2fⴰⵧ\\u2d68\\u2d6eⵯ⵰\\u2d71\\u2d7e⵿ⶖ\\u2d97\""
+    },
+    {
+      "name": "is_print boundaries 528 to 535 (U+2DA0 to U+2DBF)",
+      "in_hex": "e2b69fe2b6a0e2b6a6e2b6a7e2b6a7e2b6a8e2b6aee2b6afe2b6afe2b6b0e2b6b6e2b6b7e2b6b7e2b6b8e2b6bee2b6bf",
+      "out": "\"\\u2d9fⶠⶦ\\u2da7\\u2da7ⶨⶮ\\u2daf\\u2dafⶰⶶ\\u2db7\\u2db7ⶸⶾ\\u2dbf\""
+    },
+    {
+      "name": "is_print boundaries 536 to 543 (U+2DC0 to U+2DDF)",
+      "in_hex": "e2b6bfe2b780e2b786e2b787e2b787e2b788e2b78ee2b78fe2b78fe2b790e2b796e2b797e2b797e2b798e2b79ee2b79f",
+      "out": "\"\\u2dbfⷀⷆ\\u2dc7\\u2dc7ⷈⷎ\\u2dcf\\u2dcfⷐⷖ\\u2dd7\\u2dd7ⷘⷞ\\u2ddf\""
+    },
+    {
+      "name": "is_print boundaries 544 to 551 (U+2DE0 to U+2FD6)",
+      "in_hex": "e2b79fe2b7a0e2b99de2b99ee2b9bfe2ba80e2ba99e2ba9ae2ba9ae2ba9be2bbb3e2bbb4e2bbbfe2bc80e2bf95e2bf96",
+      "out": "\"\\u2ddfⷠ⹝\\u2e5e\\u2e7f⺀⺙\\u2e9a\\u2e9a⺛⻳\\u2ef4\\u2eff⼀⿕\\u2fd6\""
+    },
+    {
+      "name": "is_print boundaries 552 to 559 (U+2FF0 to U+3100)",
+      "in_hex": "e2bfafe2bfb0e2bfbbe2bfbce38080e38081e380bfe38180e38180e38181e38296e38297e38298e38299e383bfe38480",
+      "out": "\"\\u2fef⿰⿻\\u2ffc\\u3000、〿\\u3040\\u3040ぁゖ\\u3097\\u3098゙ヿ\\u3100\""
+    },
+    {
+      "name": "is_print boundaries 560 to 567 (U+3105 to U+321F)",
+      "in_hex": "e38484e38485e384afe384b0e384b0e384b1e3868ee3868fe3868fe38690e387a3e387a4e387afe387b0e3889ee3889f",
+      "out": "\"\\u3104ㄅㄯ\\u3130\\u3130ㄱㆎ\\u318f\\u318f㆐㇣\\u31e4\\u31efㇰ㈞\\u321f\""
+    },
+    {
+      "name": "is_print boundaries 568 to 575 (U+3220 to U+A6F8)",
+      "in_hex": "e3889fe388a0ea928cea928dea928fea9290ea9386ea9387ea938fea9390ea98abea98acea98bfea9980ea9bb7ea9bb8",
+      "out": "\"\\u321f㈠ꒌ\\ua48d\\ua48f꒐꓆\\ua4c7\\ua4cfꓐꘫ\\ua62c\\ua63fꙀ꛷\\ua6f8\""
+    },
+    {
+      "name": "is_print boundaries 576 to 583 (U+A700 to U+A7DA)",
+      "in_hex": "ea9bbfea9c80ea9f8aea9f8bea9f8fea9f90ea9f91ea9f92ea9f92ea9f93ea9f93ea9f94ea9f94ea9f95ea9f99ea9f9a",
+      "out": "\"\\ua6ff꜀ꟊ\\ua7cb\\ua7cfꟐꟑ\\ua7d2\\ua7d2ꟓꟓ\\ua7d4\\ua7d4ꟕꟙ\\ua7da\""
+    },
+    {
+      "name": "is_print boundaries 584 to 591 (U+A7F2 to U+A8C6)",
+      "in_hex": "ea9fb1ea9fb2eaa0aceaa0adeaa0afeaa0b0eaa0b9eaa0baeaa0bfeaa180eaa1b7eaa1b8eaa1bfeaa280eaa385eaa386",
+      "out": "\"\\ua7f1ꟲ꠬\\ua82d\\ua82f꠰꠹\\ua83a\\ua83fꡀ꡷\\ua878\\ua87fꢀꣅ\\ua8c6\""
+    },
+    {
+      "name": "is_print boundaries 592 to 599 (U+A8CE to U+A9CE)",
+      "in_hex": "eaa38deaa38eeaa399eaa39aeaa39feaa3a0eaa593eaa594eaa59eeaa59feaa5bceaa5bdeaa5bfeaa680eaa78deaa78e",
+      "out": "\"\\ua8cd꣎꣙\\ua8da\\ua8df꥓꣠\\ua954\\ua95e꥟ꥼ\\ua97d\\ua97fꦀ꧍\\ua9ce\""
+    },
+    {
+      "name": "is_print boundaries 600 to 607 (U+A9CF to U+AA4E)",
+      "in_hex": "eaa78eeaa78feaa799eaa79aeaa79deaa79eeaa7beeaa7bfeaa7bfeaa880eaa8b6eaa8b7eaa8bfeaa980eaa98deaa98e",
+      "out": "\"\\ua9ceꧏ꧙\\ua9da\\ua9dd꧞ꧾ\\ua9ff\\ua9ffꨀꨶ\\uaa37\\uaa3fꩀꩍ\\uaa4e\""
+    },
+    {
+      "name": "is_print boundaries 608 to 615 (U+AA50 to U+AB07)",
+      "in_hex": "eaa98feaa990eaa999eaa99aeaa99beaa99ceaab82eaab83eaab9aeaab9beaabb6eaabb7eaac80eaac81eaac86eaac87",
+      "out": "\"\\uaa4f꩐꩙\\uaa5a\\uaa5b꩜ꫂ\\uaac3\\uaadaꫛ꫶\\uaaf7\\uab00ꬁꬆ\\uab07\""
+    },
+    {
+      "name": "is_print boundaries 616 to 623 (U+AB09 to U+AB2F)",
+      "in_hex": "eaac88eaac89eaac8eeaac8feaac90eaac91eaac96eaac97eaac9feaaca0eaaca6eaaca7eaaca7eaaca8eaacaeeaacaf",
+      "out": "\"\\uab08ꬉꬎ\\uab0f\\uab10ꬑꬖ\\uab17\\uab1fꬠꬦ\\uab27\\uab27ꬨꬮ\\uab2f\""
+    },
+    {
+      "name": "is_print boundaries 624 to 631 (U+AB30 to U+D7A4)",
+      "in_hex": "eaacafeaacb0eaadabeaadaceaadafeaadb0eaafadeaafaeeaafafeaafb0eaafb9eaafbaeaafbfeab080ed9ea3ed9ea4",
+      "out": "\"\\uab2fꬰ꭫\\uab6c\\uab6fꭰ꯭\\uabee\\uabef꯰꯹\\uabfa\\uabff가힣\\ud7a4\""
+    },
+    {
+      "name": "is_print boundaries 632 to 639 (U+D7B0 to U+FADA)",
+      "in_hex": "ed9eafed9eb0ed9f86ed9f87ed9f8aed9f8bed9fbbed9fbcefa3bfefa480efa9adefa9aeefa9afefa9b0efab99efab9a",
+      "out": "\"\\ud7afힰퟆ\\ud7c7\\ud7caퟋퟻ\\ud7fc\\uf8ff豈舘\\ufa6e\\ufa6f並龎\\ufada\""
+    },
+    {
+      "name": "is_print boundaries 640 to 647 (U+FB00 to U+FB3D)",
+      "in_hex": "efabbfefac80efac86efac87efac92efac93efac97efac98efac9cefac9defacb6efacb7efacb7efacb8efacbcefacbd",
+      "out": "\"\\ufaffﬀﬆ\\ufb07\\ufb12ﬓﬗ\\ufb18\\ufb1cיִזּ\\ufb37\\ufb37טּלּ\\ufb3d\""
+    },
+    {
+      "name": "is_print boundaries 648 to 655 (U+FB3E to U+FBC3)",
+      "in_hex": "efacbdefacbeefacbeefacbfefacbfefad80efad81efad82efad82efad83efad84efad85efad85efad86efaf82efaf83",
+      "out": "\"\\ufb3dמּמּ\\ufb3f\\ufb3fנּסּ\\ufb42\\ufb42ףּפּ\\ufb45\\ufb45צּ﯂\\ufbc3\""
+    },
+    {
+      "name": "is_print boundaries 656 to 663 (U+FBD3 to U+FE1A)",
+      "in_hex": "efaf92efaf93efb68fefb690efb691efb692efb787efb788efb78eefb78fefb78fefb790efb7afefb7b0efb899efb89a",
+      "out": "\"\\ufbd2ﯓﶏ\\ufd90\\ufd91ﶒﷇ\\ufdc8\\ufdce﷏﷏\\ufdd0\\ufdefﷰ︙\\ufe1a\""
+    },
+    {
+      "name": "is_print boundaries 664 to 671 (U+FE20 to U+FE75)",
+      "in_hex": "efb89fefb8a0efb992efb993efb993efb994efb9a6efb9a7efb9a7efb9a8efb9abefb9acefb9afefb9b0efb9b4efb9b5",
+      "out": "\"\\ufe1f︠﹒\\ufe53\\ufe53﹔﹦\\ufe67\\ufe67﹨﹫\\ufe6c\\ufe6fﹰﹴ\\ufe75\""
+    },
+    {
+      "name": "is_print boundaries 672 to 679 (U+FE76 to U+FFD0)",
+      "in_hex": "efb9b5efb9b6efbbbcefbbbdefbc80efbc81efbebeefbebfefbf81efbf82efbf87efbf88efbf89efbf8aefbf8fefbf90",
+      "out": "\"\\ufe75ﹶﻼ\\ufefd\\uff00！ﾾ\\uffbf\\uffc1ￂￇ\\uffc8\\uffc9ￊￏ\\uffd0\""
+    },
+    {
+      "name": "is_print boundaries 680 to 687 (U+FFD2 to U+FFEF)",
+      "in_hex": "efbf91efbf92efbf97efbf98efbf99efbf9aefbf9cefbf9defbf9fefbfa0efbfa6efbfa7efbfa7efbfa8efbfaeefbfaf",
+      "out": "\"\\uffd1ￒￗ\\uffd8\\uffd9ￚￜ\\uffdd\\uffdf￠￦\\uffe7\\uffe7￨￮\\uffef\""
+    },
+    {
+      "name": "is_print boundaries 688 to 695 (U+FFFC to U+1003B)",
+      "in_hex": "efbfbbefbfbcefbfbdefbfbeefbfbff0908080f090808bf090808cf090808cf090808df09080a6f09080a7f09080a7f09080a8f09080baf09080bb",
+      "out": "\"\\ufffb￼�\\ufffe\\uffff𐀀𐀋\\U0001000c\\U0001000c𐀍𐀦\\U00010027\\U00010027𐀨𐀺\\U0001003b\""
+    },
+    {
+      "name": "is_print boundaries 696 to 703 (U+1003C to U+100FB)",
+      "in_hex": "f09080bbf09080bcf09080bdf09080bef09080bef09080bff090818df090818ef090818ff0908190f090819df090819ef09081bff0908280f09083baf09083bb",
+      "out": "\"\\U0001003b𐀼𐀽\\U0001003e\\U0001003e𐀿𐁍\\U0001004e\\U0001004f𐁐𐁝\\U0001005e\\U0001007f𐂀𐃺\\U000100fb\""
+    },
+    {
+      "name": "is_print boundaries 704 to 711 (U+10100 to U+1019D)",
+      "in_hex": "f09083bff0908480f0908482f0908483f0908486f0908487f09084b3f09084b4f09084b6f09084b7f090868ef090868ff090868ff0908690f090869cf090869d",
+      "out": "\"\\U000100ff𐄀𐄂\\U00010103\\U00010106𐄇𐄳\\U00010134\\U00010136𐄷𐆎\\U0001018f\\U0001018f𐆐𐆜\\U0001019d\""
+    },
+    {
+      "name": "is_print boundaries 712 to 719 (U+101A0 to U+102D1)",
+      "in_hex": "f090869ff09086a0f09086a0f09086a1f090878ff0908790f09087bdf09087bef09089bff0908a80f0908a9cf0908a9df0908a9ff0908aa0f0908b90f0908b91",
+      "out": "\"\\U0001019f𐆠𐆠\\U000101a1\\U000101cf𐇐𐇽\\U000101fe\\U0001027f𐊀𐊜\\U0001029d\\U0001029f𐊠𐋐\\U000102d1\""
+    },
+    {
+      "name": "is_print boundaries 720 to 727 (U+102E0 to U+1037B)",
+      "in_hex": "f0908b9ff0908ba0f0908bbbf0908bbcf0908bbff0908c80f0908ca3f0908ca4f0908cacf0908cadf0908d8af0908d8bf0908d8ff0908d90f0908dbaf0908dbb",
+      "out": "\"\\U000102df𐋠𐋻\\U000102fc\\U000102ff𐌀𐌣\\U00010324\\U0001032c𐌭𐍊\\U0001034b\\U0001034f𐍐𐍺\\U0001037b\""
+    },
+    {
+      "name": "is_print boundaries 728 to 735 (U+10380 to U+1049E)",
+      "in_hex": "f0908dbff0908e80f0908e9df0908e9ef0908e9ef0908e9ff0908f83f0908f84f0908f87f0908f88f0908f95f0908f96f0908fbff0909080f090929df090929e",
+      "out": "\"\\U0001037f𐎀𐎝\\U0001039e\\U0001039e𐎟𐏃\\U000103c4\\U000103c7𐏈𐏕\\U000103d6\\U000103ff𐐀𐒝\\U0001049e\""
+    },
+    {
+      "name": "is_print boundaries 736 to 743 (U+104A0 to U+10528)",
+      "in_hex": "f090929ff09092a0f09092a9f09092aaf09092aff09092b0f0909393f0909394f0909397f0909398f09093bbf09093bcf09093bff0909480f09094a7f09094a8",
+      "out": "\"\\U0001049f𐒠𐒩\\U000104aa\\U000104af𐒰𐓓\\U000104d4\\U000104d7𐓘𐓻\\U000104fc\\U000104ff𐔀𐔧\\U00010528\""
+    },
+    {
+      "name": "is_print boundaries 744 to 751 (U+10530 to U+10593)",
+      "in_hex": "f09094aff09094b0f09095a3f09095a4f09095aef09095aff09095baf09095bbf09095bbf09095bcf090968af090968bf090968bf090968cf0909692f0909693",
+      "out": "\"\\U0001052f𐔰𐕣\\U00010564\\U0001056e𐕯𐕺\\U0001057b\\U0001057b𐕼𐖊\\U0001058b\\U0001058b𐖌𐖒\\U00010593\""
+    },
+    {
+      "name": "is_print boundaries 752 to 759 (U+10594 to U+105BA)",
+      "in_hex": "f0909693f0909694f0909695f0909696f0909696f0909697f09096a1f09096a2f09096a2f09096a3f09096b1f09096b2f09096b2f09096b3f09096b9f09096ba",
+      "out": "\"\\U00010593𐖔𐖕\\U00010596\\U00010596𐖗𐖡\\U000105a2\\U000105a2𐖣𐖱\\U000105b2\\U000105b2𐖳𐖹\\U000105ba\""
+    },
+    {
+      "name": "is_print boundaries 760 to 767 (U+105BB to U+10768)",
+      "in_hex": "f09096baf09096bbf09096bcf09096bdf09097bff0909880f0909cb6f0909cb7f0909cbff0909d80f0909d95f0909d96f0909d9ff0909da0f0909da7f0909da8",
+      "out": "\"\\U000105ba𐖻𐖼\\U000105bd\\U000105ff𐘀𐜶\\U00010737\\U0001073f𐝀𐝕\\U00010756\\U0001075f𐝠𐝧\\U00010768\""
+    },
+    {
+      "name": "is_print boundaries 768 to 775 (U+10780 to U+10806)",
+      "in_hex": "f0909dbff0909e80f0909e85f0909e86f0909e86f0909e87f0909eb0f0909eb1f0909eb1f0909eb2f0909ebaf0909ebbf0909fbff090a080f090a085f090a086",
+      "out": "\"\\U0001077f𐞀𐞅\\U00010786\\U00010786𐞇𐞰\\U000107b1\\U000107b1𐞲𐞺\\U000107bb\\U000107ff𐠀𐠅\\U00010806\""
+    },
+    {
+      "name": "is_print boundaries 776 to 783 (U+10808 to U+1083D)",
+      "in_hex": "f090a087f090a088f090a088f090a089f090a089f090a08af090a0b5f090a0b6f090a0b6f090a0b7f090a0b8f090a0b9f090a0bbf090a0bcf090a0bcf090a0bd",
+      "out": "\"\\U00010807𐠈𐠈\\U00010809\\U00010809𐠊𐠵\\U00010836\\U00010836𐠷𐠸\\U00010839\\U0001083b𐠼𐠼\\U0001083d\""
+    },
+    {
+      "name": "is_print boundaries 784 to 791 (U+1083F to U+108F3)",
+      "in_hex": "f090a0bef090a0bff090a195f090a196f090a196f090a197f090a29ef090a29ff090a2a6f090a2a7f090a2aff090a2b0f090a39ff090a3a0f090a3b2f090a3b3",
+      "out": "\"\\U0001083e𐠿𐡕\\U00010856\\U00010856𐡗𐢞\\U0001089f\\U000108a6𐢧𐢯\\U000108b0\\U000108df𐣠𐣲\\U000108f3\""
+    },
+    {
+      "name": "is_print boundaries 792 to 799 (U+108F4 to U+10940)",
+      "in_hex": "f090a3b3f090a3b4f090a3b5f090a3b6f090a3baf090a3bbf090a49bf090a49cf090a49ef090a49ff090a4b9f090a4baf090a4bef090a4bff090a4bff090a580",
+      "out": "\"\\U000108f3𐣴𐣵\\U000108f6\\U000108fa𐣻𐤛\\U0001091c\\U0001091e𐤟𐤹\\U0001093a\\U0001093e𐤿𐤿\\U00010940\""
+    },
+    {
+      "name": "is_print boundaries 800 to 807 (U+10980 to U+10A07)",
+      "in_hex": "f090a5bff090a680f090a6b7f090a6b8f090a6bbf090a6bcf090a78ff090a790f090a791f090a792f090a883f090a884f090a884f090a885f090a886f090a887",
+      "out": "\"\\U0001097f𐦀𐦷\\U000109b8\\U000109bb𐦼𐧏\\U000109d0\\U000109d1𐧒𐨃\\U00010a04\\U00010a04𐨅𐨆\\U00010a07\""
+    },
+    {
+      "name": "is_print boundaries 808 to 815 (U+10A0C to U+10A3B)",
+      "in_hex": "f090a88bf090a88cf090a893f090a894f090a894f090a895f090a897f090a898f090a898f090a899f090a8b5f090a8b6f090a8b7f090a8b8f090a8baf090a8bb",
+      "out": "\"\\U00010a0b𐨌𐨓\\U00010a14\\U00010a14𐨕𐨗\\U00010a18\\U00010a18𐨙𐨵\\U00010a36\\U00010a37𐨺𐨸\\U00010a3b\""
+    },
+    {
+      "name": "is_print boundaries 816 to 823 (U+10A3F to U+10AE7)",
+      "in_hex": "f090a8bef090a8bff090a988f090a989f090a98ff090a990f090a998f090a999f090a99ff090a9a0f090aa9ff090aaa0f090aabff090ab80f090aba6f090aba7",
+      "out": "\"\\U00010a3e𐨿𐩈\\U00010a49\\U00010a4f𐩐𐩘\\U00010a59\\U00010a5f𐩠𐪟\\U00010aa0\\U00010abf𐫀𐫦\\U00010ae7\""
+    },
+    {
+      "name": "is_print boundaries 824 to 831 (U+10AEB to U+10B73)",
+      "in_hex": "f090abaaf090ababf090abb6f090abb7f090abbff090ac80f090acb5f090acb6f090acb8f090acb9f090ad95f090ad96f090ad97f090ad98f090adb2f090adb3",
+      "out": "\"\\U00010aea𐫫𐫶\\U00010af7\\U00010aff𐬀𐬵\\U00010b36\\U00010b38𐬹𐭕\\U00010b56\\U00010b57𐭘𐭲\\U00010b73\""
+    },
+    {
+      "name": "is_print boundaries 832 to 839 (U+10B78 to U+10C49)",
+      "in_hex": "f090adb7f090adb8f090ae91f090ae92f090ae98f090ae99f090ae9cf090ae9df090aea8f090aea9f090aeaff090aeb0f090afbff090b080f090b188f090b189",
+      "out": "\"\\U00010b77𐭸𐮑\\U00010b92\\U00010b98𐮙𐮜\\U00010b9d\\U00010ba8𐮩𐮯\\U00010bb0\\U00010bff𐰀𐱈\\U00010c49\""
+    },
+    {
+      "name": "is_print boundaries 840 to 847 (U+10C80 to U+10D3A)",
+      "in_hex": "f090b1bff090b280f090b2b2f090b2b3f090b2bff090b380f090b3b2f090b3b3f090b3b9f090b3baf090b4a7f090b4a8f090b4aff090b4b0f090b4b9f090b4ba",
+      "out": "\"\\U00010c7f𐲀𐲲\\U00010cb3\\U00010cbf𐳀𐳲\\U00010cf3\\U00010cf9𐳺𐴧\\U00010d28\\U00010d2f𐴰𐴹\\U00010d3a\""
+    },
+    {
+      "name": "is_print boundaries 848 to 855 (U+10E60 to U+10EB2)",
+      "in_hex": "f090b99ff090b9a0f090b9bef090b9bff090b9bff090ba80f090baa9f090baaaf090baaaf090baabf090baadf090baaef090baaff090bab0f090bab1f090bab2",
+      "out": "\"\\U00010e5f𐹠𐹾\\U00010e7f\\U00010e7f𐺀𐺩\\U00010eaa\\U00010eaa𐺫𐺭\\U00010eae\\U00010eaf𐺰𐺱\\U00010eb2\""
+    },
+    {
+      "name": "is_print boundaries 856 to 863 (U+10EFD to U+10FCC)",
+      "in_hex": "f090bbbcf090bbbdf090bca7f090bca8f090bcaff090bcb0f090bd99f090bd9af090bdaff090bdb0f090be89f090be8af090beaff090beb0f090bf8bf090bf8c",
+      "out": "\"\\U00010efc𐻽𐼧\\U00010f28\\U00010f2f𐼰𐽙\\U00010f5a\\U00010f6f𐽰𐾉\\U00010f8a\\U00010faf𐾰𐿋\\U00010fcc\""
+    },
+    {
+      "name": "is_print boundaries 864 to 871 (U+10FE0 to U+110BD)",
+      "in_hex": "f090bf9ff090bfa0f090bfb6f090bfb7f090bfbff0918080f091818df091818ef0918191f0918192f09181b5f09181b6f09181bef09181bff09182bcf09182bd",
+      "out": "\"\\U00010fdf𐿠𐿶\\U00010ff7\\U00010fff𑀀𑁍\\U0001104e\\U00011051𑁒𑁵\\U00011076\\U0001107e𑁿𑂼\\U000110bd\""
+    },
+    {
+      "name": "is_print boundaries 872 to 879 (U+110BE to U+11135)",
+      "in_hex": "f09182bdf09182bef0918382f0918383f091838ff0918390f09183a8f09183a9f09183aff09183b0f09183b9f09183baf09183bff0918480f09184b4f09184b5",
+      "out": "\"\\U000110bd𑂾𑃂\\U000110c3\\U000110cf𑃐𑃨\\U000110e9\\U000110ef𑃰𑃹\\U000110fa\\U000110ff𑄴𑄀\\U00011135\""
+    },
+    {
+      "name": "is_print boundaries 880 to 887 (U+11136 to U+111F5)",
+      "in_hex": "f09184b5f09184b6f0918587f0918588f091858ff0918590f09185b6f09185b7f09185bff0918680f091879ff09187a0f09187a0f09187a1f09187b4f09187b5",
+      "out": "\"\\U00011135𑄶𑅇\\U00011148\\U0001114f𑅐𑅶\\U00011177\\U0001117f𑆀𑇟\\U000111e0\\U000111e0𑇡𑇴\\U000111f5\""
+    },
+    {
+      "name": "is_print boundaries 888 to 895 (U+11200 to U+11289)",
+      "in_hex": "f09187bff0918880f0918891f0918892f0918892f0918893f0918981f0918982f09189bff0918a80f0918a86f0918a87f0918a87f0918a88f0918a88f0918a89",
+      "out": "\"\\U000111ff𑈀𑈑\\U00011212\\U00011212𑈓𑉁\\U00011242\\U0001127f𑊀𑊆\\U00011287\\U00011287𑊈𑊈\\U00011289\""
+    },
+    {
+      "name": "is_print boundaries 896 to 903 (U+1128A to U+112EB)",
+      "in_hex": "f0918a89f0918a8af0918a8df0918a8ef0918a8ef0918a8ff0918a9df0918a9ef0918a9ef0918a9ff0918aa9f0918aaaf0918aaff0918ab0f0918baaf0918bab",
+      "out": "\"\\U00011289𑊊𑊍\\U0001128e\\U0001128e𑊏𑊝\\U0001129e\\U0001129e𑊟𑊩\\U000112aa\\U000112af𑊰𑋪\\U000112eb\""
+    },
+    {
+      "name": "is_print boundaries 904 to 911 (U+112F0 to U+11311)",
+      "in_hex": "f0918baff0918bb0f0918bb9f0918bbaf0918bbff0918c80f0918c83f0918c84f0918c84f0918c85f0918c8cf0918c8df0918c8ef0918c8ff0918c90f0918c91",
+      "out": "\"\\U000112ef𑋰𑋹\\U000112fa\\U000112ff𑌀𑌃\\U00011304\\U00011304𑌅𑌌\\U0001130d\\U0001130e𑌏𑌐\\U00011311\""
+    },
+    {
+      "name": "is_print boundaries 912 to 919 (U+11313 to U+1133A)",
+      "in_hex": "f0918c92f0918c93f0918ca8f0918ca9f0918ca9f0918caaf0918cb0f0918cb1f0918cb1f0918cb2f0918cb3f0918cb4f0918cb4f0918cb5f0918cb9f0918cba",
+      "out": "\"\\U00011312𑌓𑌨\\U00011329\\U00011329𑌪𑌰\\U00011331\\U00011331𑌲𑌳\\U00011334\\U00011334𑌵𑌹\\U0001133a\""
+    },
+    {
+      "name": "is_print boundaries 920 to 927 (U+1133B to U+11351)",
+      "in_hex": "f0918cbaf0918cbbf0918d84f0918d85f0918d86f0918d87f0918d88f0918d89f0918d8af0918d8bf0918d8df0918d8ef0918d8ff0918d90f0918d90f0918d91",
+      "out": "\"\\U0001133a𑌻𑍄\\U00011345\\U00011346𑍇𑍈\\U00011349\\U0001134a𑍋𑍍\\U0001134e\\U0001134f𑍐𑍐\\U00011351\""
+    },
+    {
+      "name": "is_print boundaries 928 to 935 (U+11357 to U+11375)",
+      "in_hex": "f0918d96f0918d97f0918d97f0918d98f0918d9cf0918d9df0918da3f0918da4f0918da5f0918da6f0918dacf0918dadf0918daff0918db0f0918db4f0918db5",
+      "out": "\"\\U00011356𑍗𑍗\\U00011358\\U0001135c𑍝𑍣\\U00011364\\U00011365𑍦𑍬\\U0001136d\\U0001136f𑍰𑍴\\U00011375\""
+    },
+    {
+      "name": "is_print boundaries 936 to 943 (U+11400 to U+114DA)",
+      "in_hex": "f0918fbff0919080f091919bf091919cf091919cf091919df09191a1f09191a2f09191bff0919280f0919387f0919388f091938ff0919390f0919399f091939a",
+      "out": "\"\\U000113ff𑐀𑑛\\U0001145c\\U0001145c𑑝𑑡\\U00011462\\U0001147f𑒀𑓇\\U000114c8\\U000114cf𑓐𑓙\\U000114da\""
+    },
+    {
+      "name": "is_print boundaries 944 to 951 (U+11580 to U+1165A)",
+      "in_hex": "f09195bff0919680f09196b5f09196b6f09196b7f09196b8f091979df091979ef09197bff0919880f0919984f0919985f091998ff0919990f0919999f091999a",
+      "out": "\"\\U0001157f𑖀𑖵\\U000115b6\\U000115b7𑖸𑗝\\U000115de\\U000115ff𑘀𑙄\\U00011645\\U0001164f𑙐𑙙\\U0001165a\""
+    },
+    {
+      "name": "is_print boundaries 952 to 959 (U+11660 to U+1171B)",
+      "in_hex": "f091999ff09199a0f09199acf09199adf09199bff0919a80f0919ab9f0919abaf0919abff0919b80f0919b89f0919b8af0919bbff0919c80f0919c9af0919c9b",
+      "out": "\"\\U0001165f𑙠𑙬\\U0001166d\\U0001167f𑚀𑚹\\U000116ba\\U000116bf𑛀𑛉\\U000116ca\\U000116ff𑜀𑜚\\U0001171b\""
+    },
+    {
+      "name": "is_print boundaries 960 to 967 (U+1171D to U+118F3)",
+      "in_hex": "f0919c9cf0919c9df0919cabf0919cacf0919caff0919cb0f0919d86f0919d87f0919fbff091a080f091a0bbf091a0bcf091a29ff091a2a0f091a3b2f091a3b3",
+      "out": "\"\\U0001171c𑜝𑜫\\U0001172c\\U0001172f𑜰𑝆\\U00011747\\U000117ff𑠀𑠻\\U0001183c\\U0001189f𑢠𑣲\\U000118f3\""
+    },
+    {
+      "name": "is_print boundaries 968 to 975 (U+118FF to U+11917)",
+      "in_hex": "f091a3bef091a3bff091a486f091a487f091a488f091a489f091a489f091a48af091a48bf091a48cf091a493f091a494f091a494f091a495f091a496f091a497",
+      "out": "\"\\U000118fe𑣿𑤆\\U00011907\\U00011908𑤉𑤉\\U0001190a\\U0001190b𑤌𑤓\\U00011914\\U00011914𑤕𑤖\\U00011917\""
+    },
+    {
+      "name": "is_print boundaries 976 to 983 (U+11918 to U+1195A)",
+      "in_hex": "f091a497f091a498f091a4b5f091a4b6f091a4b6f091a4b7f091a4b8f091a4b9f091a4baf091a4bbf091a586f091a587f091a58ff091a590f091a599f091a59a",
+      "out": "\"\\U00011917𑤘𑤵\\U00011936\\U00011936𑤷𑤸\\U00011939\\U0001193a𑤻𑥆\\U00011947\\U0001194f𑥐𑥙\\U0001195a\""
+    },
+    {
+      "name": "is_print boundaries 984 to 991 (U+119A0 to U+11A48)",
+      "in_hex": "f091a69ff091a6a0f091a6a7f091a6a8f091a6a9f091a6aaf091a797f091a798f091a799f091a79af091a7a4f091a7a5f091a7bff091a880f091a987f091a988",
+      "out": "\"\\U0001199f𑦠𑦧\\U000119a8\\U000119a9𑦪𑧗\\U000119d8\\U000119d9𑧚𑧤\\U000119e5\\U000119ff𑨀𑩇\\U00011a48\""
+    },
+    {
+      "name": "is_print boundaries 992 to 999 (U+11A50 to U+11C09)",
+      "in_hex": "f091a98ff091a990f091aaa2f091aaa3f091aaaff091aab0f091abb8f091abb9f091abbff091ac80f091ac89f091ac8af091afbff091b080f091b088f091b089",
+      "out": "\"\\U00011a4f𑩐𑪢\\U00011aa3\\U00011aaf𑪰𑫸\\U00011af9\\U00011aff𑬀𑬉\\U00011b0a\\U00011bff𑰀𑰈\\U00011c09\""
+    },
+    {
+      "name": "is_print boundaries 1000 to 1007 (U+11C0A to U+11C90)",
+      "in_hex": "f091b089f091b08af091b0b6f091b0b7f091b0b7f091b0b8f091b185f091b186f091b18ff091b190f091b1acf091b1adf091b1aff091b1b0f091b28ff091b290",
+      "out": "\"\\U00011c09𑰊𑰶\\U00011c37\\U00011c37𑰸𑱅\\U00011c46\\U00011c4f𑱐𑱬\\U00011c6d\\U00011c6f𑱰𑲏\\U00011c90\""
+    },
+    {
+      "name": "is_print boundaries 1008 to 1015 (U+11C92 to U+11D0A)",
+      "in_hex": "f091b291f091b292f091b2a7f091b2a8f091b2a8f091b2a9f091b2b6f091b2b7f091b3bff091b480f091b486f091b487f091b487f091b488f091b489f091b48a",
+      "out": "\"\\U00011c91𑲒𑲧\\U00011ca8\\U00011ca8𑲩𑲶\\U00011cb7\\U00011cff𑴀𑴆\\U00011d07\\U00011d07𑴈𑴉\\U00011d0a\""
+    },
+    {
+      "name": "is_print boundaries 1016 to 1023 (U+11D0B to U+11D48)",
+      "in_hex": "f091b48af091b48bf091b4b6f091b4b7f091b4b9f091b4baf091b4baf091b4bbf091b4bbf091b4bcf091b4bdf091b4bef091b4bef091b4bff091b587f091b588",
+      "out": "\"\\U00011d0a𑴋𑴶\\U00011d37\\U00011d39𑴺𑴺\\U00011d3b\\U00011d3b𑴼𑴽\\U00011d3e\\U00011d3e𑴿𑵇\\U00011d48\""
+    },
+    {
+      "name": "is_print boundaries 1024 to 1031 (U+11D50 to U+11D8F)",
+      "in_hex": "f091b58ff091b590f091b599f091b59af091b59ff091b5a0f091b5a5f091b5a6f091b5a6f091b5a7f091b5a8f091b5a9f091b5a9f091b5aaf091b68ef091b68f",
+      "out": "\"\\U00011d4f𑵐𑵙\\U00011d5a\\U00011d5f𑵠𑵥\\U00011d66\\U00011d66𑵧𑵨\\U00011d69\\U00011d69𑵪𑶎\\U00011d8f\""
+    },
+    {
+      "name": "is_print boundaries 1032 to 1039 (U+11D90 to U+11EF9)",
+      "in_hex": "f091b68ff091b690f091b691f091b692f091b692f091b693f091b698f091b699f091b69ff091b6a0f091b6a9f091b6aaf091bb9ff091bba0f091bbb8f091bbb9",
+      "out": "\"\\U00011d8f𑶐𑶑\\U00011d92\\U00011d92𑶓𑶘\\U00011d99\\U00011d9f𑶠𑶩\\U00011daa\\U00011edf𑻠𑻸\\U00011ef9\""
+    },
+    {
+      "name": "is_print boundaries 1040 to 1047 (U+11F00 to U+11FB1)",
+      "in_hex": "f091bbbff091bc80f091bc90f091bc91f091bc91f091bc92f091bcbaf091bcbbf091bcbdf091bcbef091bd99f091bd9af091beaff091beb0f091beb0f091beb1",
+      "out": "\"\\U00011eff𑼀𑼐\\U00011f11\\U00011f11𑼒𑼺\\U00011f3b\\U00011f3d𑼾𑽙\\U00011f5a\\U00011faf𑾰𑾰\\U00011fb1\""
+    },
+    {
+      "name": "is_print boundaries 1048 to 1055 (U+11FC0 to U+12475)",
+      "in_hex": "f091bebff091bf80f091bfb1f091bfb2f091bfbef091bfbff0928e99f0928e9af0928fbff0929080f09291aef09291aff09291aff09291b0f09291b4f09291b5",
+      "out": "\"\\U00011fbf𑿀𑿱\\U00011ff2\\U00011ffe𑿿𒎙\\U0001239a\\U000123ff𒐀𒑮\\U0001246f\\U0001246f𒑰𒑴\\U00012475\""
+    },
+    {
+      "name": "is_print boundaries 1056 to 1063 (U+12480 to U+13456)",
+      "in_hex": "f09291bff0929280f0929583f0929584f092be8ff092be90f092bfb2f092bfb3f092bfbff0938080f09390aff09390b0f09390bff0939180f0939195f0939196",
+      "out": "\"\\U0001247f𒒀𒕃\\U00012544\\U00012f8f𒾐𒿲\\U00012ff3\\U00012fff𓀀𓐯\\U00013430\\U0001343f𓑀𓑕\\U00013456\""
+    },
+    {
+      "name": "is_print boundaries 1064 to 1071 (U+14400 to U+16A6A)",
+      "in_hex": "f0948fbff0949080f0949986f0949987f0969fbff096a080f096a8b8f096a8b9f096a8bff096a980f096a99ef096a99ff096a99ff096a9a0f096a9a9f096a9aa",
+      "out": "\"\\U000143ff𔐀𔙆\\U00014647\\U000167ff𖠀𖨸\\U00016a39\\U00016a3f𖩀𖩞\\U00016a5f\\U00016a5f𖩠𖩩\\U00016a6a\""
+    },
+    {
+      "name": "is_print boundaries 1072 to 1079 (U+16A6E to U+16AF6)",
+      "in_hex": "f096a9adf096a9aef096aabef096aabff096aabff096ab80f096ab89f096ab8af096ab8ff096ab90f096abadf096abaef096abaff096abb0f096abb5f096abb6",
+      "out": "\"\\U00016a6d𖩮𖪾\\U00016abf\\U00016abf𖫀𖫉\\U00016aca\\U00016acf𖫐𖫭\\U00016aee\\U00016aef𖫰𖫵\\U00016af6\""
+    },
+    {
+      "name": "is_print boundaries 1080 to 1087 (U+16B00 to U+16B78)",
+      "in_hex": "f096abbff096ac80f096ad85f096ad86f096ad8ff096ad90f096ad99f096ad9af096ad9af096ad9bf096ada1f096ada2f096ada2f096ada3f096adb7f096adb8",
+      "out": "\"\\U00016aff𖬀𖭅\\U00016b46\\U00016b4f𖭐𖭙\\U00016b5a\\U00016b5a𖭛𖭡\\U00016b62\\U00016b62𖭣𖭷\\U00016b78\""
+    },
+    {
+      "name": "is_print boundaries 1088 to 1095 (U+16B7D to U+16F88)",
+      "in_hex": "f096adbcf096adbdf096ae8ff096ae90f096b8bff096b980f096ba9af096ba9bf096bbbff096bc80f096bd8af096bd8bf096bd8ef096bd8ff096be87f096be88",
+      "out": "\"\\U00016b7c𖭽𖮏\\U00016b90\\U00016e3f𖹀𖺚\\U00016e9b\\U00016eff𖼀𖽊\\U00016f4b\\U00016f4e𖽏𖾇\\U00016f88\""
+    },
+    {
+      "name": "is_print boundaries 1096 to 1103 (U+16F8F to U+187F8)",
+      "in_hex": "f096be8ef096be8ff096be9ff096bea0f096bf9ff096bfa0f096bfa4f096bfa5f096bfaff096bfb0f096bfb1f096bfb2f096bfbff0978080f0989fb7f0989fb8",
+      "out": "\"\\U00016f8e𖾏𖾟\\U00016fa0\\U00016fdf𖿠𖿤\\U00016fe5\\U00016fef𖿰𖿱\\U00016ff2\\U00016fff𗀀𘟷\\U000187f8\""
+    },
+    {
+      "name": "is_print boundaries 1104 to 1111 (U+18800 to U+1AFFC)",
+      "in_hex": "f0989fbff098a080f098b395f098b396f098b3bff098b480f098b488f098b489f09abfaff09abfb0f09abfb3f09abfb4f09abfb4f09abfb5f09abfbbf09abfbc",
+      "out": "\"\\U000187ff𘠀𘳕\\U00018cd6\\U00018cff𘴀𘴈\\U00018d09\\U0001afef𚿰𚿳\\U0001aff4\\U0001aff4𚿵𚿻\\U0001affc\""
+    },
+    {
+      "name": "is_print boundaries 1112 to 1119 (U+1AFFD to U+1B153)",
+      "in_hex": "f09abfbcf09abfbdf09abfbef09abfbff09abfbff09b8080f09b84a2f09b84a3f09b84b1f09b84b2f09b84b2f09b84b3f09b858ff09b8590f09b8592f09b8593",
+      "out": "\"\\U0001affc𚿽𚿾\\U0001afff\\U0001afff𛀀𛄢\\U0001b123\\U0001b131𛄲𛄲\\U0001b133\\U0001b14f𛅐𛅒\\U0001b153\""
+    },
+    {
+      "name": "is_print boundaries 1120 to 1127 (U+1B155 to U+1BC6B)",
+      "in_hex": "f09b8594f09b8595f09b8595f09b8596f09b85a3f09b85a4f09b85a7f09b85a8f09b85aff09b85b0f09b8bbbf09b8bbcf09bafbff09bb080f09bb1aaf09bb1ab",
+      "out": "\"\\U0001b154𛅕𛅕\\U0001b156\\U0001b163𛅤𛅧\\U0001b168\\U0001b16f𛅰𛋻\\U0001b2fc\\U0001bbff𛰀𛱪\\U0001bc6b\""
+    },
+    {
+      "name": "is_print boundaries 1128 to 1135 (U+1BC70 to U+1BCA0)",
+      "in_hex": "f09bb1aff09bb1b0f09bb1bcf09bb1bdf09bb1bff09bb280f09bb288f09bb289f09bb28ff09bb290f09bb299f09bb29af09bb29bf09bb29cf09bb29ff09bb2a0",
+      "out": "\"\\U0001bc6f𛱰𛱼\\U0001bc7d\\U0001bc7f𛲀𛲈\\U0001bc89\\U0001bc8f𛲐𛲙\\U0001bc9a\\U0001bc9b𛲜𛲟\\U0001bca0\""
+    },
+    {
+      "name": "is_print boundaries 1136 to 1143 (U+1CF00 to U+1D0F6)",
+      "in_hex": "f09cbbbff09cbc80f09cbcadf09cbcaef09cbcaff09cbcb0f09cbd86f09cbd87f09cbd8ff09cbd90f09cbf83f09cbf84f09cbfbff09d8080f09d83b5f09d83b6",
+      "out": "\"\\U0001ceff𜼀𜼭\\U0001cf2e\\U0001cf2f𜼰𜽆\\U0001cf47\\U0001cf4f𜽐𜿃\\U0001cfc4\\U0001cfff𝀀𝃵\\U0001d0f6\""
+    },
+    {
+      "name": "is_print boundaries 1144 to 1151 (U+1D100 to U+1D246)",
+      "in_hex": "f09d83bff09d8480f09d84a6f09d84a7f09d84a8f09d84a9f09d85b2f09d85b3f09d85baf09d85bbf09d87aaf09d87abf09d87bff09d8880f09d8985f09d8986",
+      "out": "\"\\U0001d0ff𝄀𝄦\\U0001d127\\U0001d128𝄩𝅲\\U0001d173\\U0001d17a𝅻𝇪\\U0001d1eb\\U0001d1ff𝈀𝉅\\U0001d246\""
+    },
+    {
+      "name": "is_print boundaries 1152 to 1159 (U+1D2C0 to U+1D379)",
+      "in_hex": "f09d8abff09d8b80f09d8b93f09d8b94f09d8b9ff09d8ba0f09d8bb3f09d8bb4f09d8bbff09d8c80f09d8d96f09d8d97f09d8d9ff09d8da0f09d8db8f09d8db9",
+      "out": "\"\\U0001d2bf𝋀𝋓\\U0001d2d4\\U0001d2df𝋠𝋳\\U0001d2f4\\U0001d2ff𝌀𝍖\\U0001d357\\U0001d35f𝍠𝍸\\U0001d379\""
+    },
+    {
+      "name": "is_print boundaries 1160 to 1167 (U+1D400 to U+1D4A3)",
+      "in_hex": "f09d8fbff09d9080f09d9194f09d9195f09d9195f09d9196f09d929cf09d929df09d929df09d929ef09d929ff09d92a0f09d92a1f09d92a2f09d92a2f09d92a3",
+      "out": "\"\\U0001d3ff𝐀𝑔\\U0001d455\\U0001d455𝑖𝒜\\U0001d49d\\U0001d49d𝒞𝒟\\U0001d4a0\\U0001d4a1𝒢𝒢\\U0001d4a3\""
+    },
+    {
+      "name": "is_print boundaries 1168 to 1175 (U+1D4A5 to U+1D4BC)",
+      "in_hex": "f09d92a4f09d92a5f09d92a6f09d92a7f09d92a8f09d92a9f09d92acf09d92adf09d92adf09d92aef09d92b9f09d92baf09d92baf09d92bbf09d92bbf09d92bc",
+      "out": "\"\\U0001d4a4𝒥𝒦\\U0001d4a7\\U0001d4a8𝒩𝒬\\U0001d4ad\\U0001d4ad𝒮𝒹\\U0001d4ba\\U0001d4ba𝒻𝒻\\U0001d4bc\""
+    },
+    {
+      "name": "is_print boundaries 1176 to 1183 (U+1D4BD to U+1D515)",
+      "in_hex": "f09d92bcf09d92bdf09d9383f09d9384f09d9384f09d9385f09d9485f09d9486f09d9486f09d9487f09d948af09d948bf09d948cf09d948df09d9494f09d9495",
+      "out": "\"\\U0001d4bc𝒽𝓃\\U0001d4c4\\U0001d4c4𝓅𝔅\\U0001d506\\U0001d506𝔇𝔊\\U0001d50b\\U0001d50c𝔍𝔔\\U0001d515\""
+    },
+    {
+      "name": "is_print boundaries 1184 to 1191 (U+1D516 to U+1D545)",
+      "in_hex": "f09d9495f09d9496f09d949cf09d949df09d949df09d949ef09d94b9f09d94baf09d94baf09d94bbf09d94bef09d94bff09d94bff09d9580f09d9584f09d9585",
+      "out": "\"\\U0001d515𝔖𝔜\\U0001d51d\\U0001d51d𝔞𝔹\\U0001d53a\\U0001d53a𝔻𝔾\\U0001d53f\\U0001d53f𝕀𝕄\\U0001d545\""
+    },
+    {
+      "name": "is_print boundaries 1192 to 1199 (U+1D546 to U+1D7CC)",
+      "in_hex": "f09d9585f09d9586f09d9586f09d9587f09d9589f09d958af09d9590f09d9591f09d9591f09d9592f09d9aa5f09d9aa6f09d9aa7f09d9aa8f09d9f8bf09d9f8c",
+      "out": "\"\\U0001d545𝕆𝕆\\U0001d547\\U0001d549𝕊𝕐\\U0001d551\\U0001d551𝕒𝚥\\U0001d6a6\\U0001d6a7𝚨𝟋\\U0001d7cc\""
+    },
+    {
+      "name": "is_print boundaries 1200 to 1207 (U+1D7CE to U+1DF1F)",
+      "in_hex": "f09d9f8df09d9f8ef09daa8bf09daa8cf09daa9af09daa9bf09daa9ff09daaa0f09daaa0f09daaa1f09daaaff09daab0f09dbbbff09dbc80f09dbc9ef09dbc9f",
+      "out": "\"\\U0001d7cd𝟎𝪋\\U0001da8c\\U0001da9a𝪛𝪟\\U0001daa0\\U0001daa0𝪡𝪯\\U0001dab0\\U0001deff𝼀𝼞\\U0001df1f\""
+    },
+    {
+      "name": "is_print boundaries 1208 to 1215 (U+1DF25 to U+1E022)",
+      "in_hex": "f09dbca4f09dbca5f09dbcaaf09dbcabf09dbfbff09e8080f09e8086f09e8087f09e8087f09e8088f09e8098f09e8099f09e809af09e809bf09e80a1f09e80a2",
+      "out": "\"\\U0001df24𝼥𝼪\\U0001df2b\\U0001dfff𞀀𞀆\\U0001e007\\U0001e007𞀈𞀘\\U0001e019\\U0001e01a𞀛𞀡\\U0001e022\""
+    },
+    {
+      "name": "is_print boundaries 1216 to 1223 (U+1E023 to U+1E090)",
+      "in_hex": "f09e80a2f09e80a3f09e80a4f09e80a5f09e80a5f09e80a6f09e80aaf09e80abf09e80aff09e80b0f09e81adf09e81aef09e828ef09e828ff09e828ff09e8290",
+      "out": "\"\\U0001e022𞀣𞀤\\U0001e025\\U0001e025𞀦𞀪\\U0001e02b\\U0001e02f𞀰𞁭\\U0001e06e\\U0001e08e𞂏𞂏\\U0001e090\""
+    },
+    {
+      "name": "is_print boundaries 1224 to 1231 (U+1E100 to U+1E150)",
+      "in_hex": "f09e83bff09e8480f09e84acf09e84adf09e84aff09e84b0f09e84bdf09e84bef09e84bff09e8580f09e8589f09e858af09e858df09e858ef09e858ff09e8590",
+      "out": "\"\\U0001e0ff𞄀𞄬\\U0001e12d\\U0001e12f𞄰𞄽\\U0001e13e\\U0001e13f𞅀𞅉\\U0001e14a\\U0001e14d𞅎𞅏\\U0001e150\""
+    },
+    {
+      "name": "is_print boundaries 1232 to 1239 (U+1E290 to U+1E4FA)",
+      "in_hex": "f09e8a8ff09e8a90f09e8aaef09e8aaff09e8abff09e8b80f09e8bb9f09e8bbaf09e8bbef09e8bbff09e8bbff09e8c80f09e938ff09e9390f09e93b9f09e93ba",
+      "out": "\"\\U0001e28f𞊐𞊮\\U0001e2af\\U0001e2bf𞋀𞋹\\U0001e2fa\\U0001e2fe𞋿𞋿\\U0001e300\\U0001e4cf𞓐𞓹\\U0001e4fa\""
+    },
+    {
+      "name": "is_print boundaries 1240 to 1247 (U+1E7E0 to U+1E7FF)",
+      "in_hex": "f09e9f9ff09e9fa0f09e9fa6f09e9fa7f09e9fa7f09e9fa8f09e9fabf09e9facf09e9facf09e9fadf09e9faef09e9faff09e9faff09e9fb0f09e9fbef09e9fbf",
+      "out": "\"\\U0001e7df𞟠𞟦\\U0001e7e7\\U0001e7e7𞟨𞟫\\U0001e7ec\\U0001e7ec𞟭𞟮\\U0001e7ef\\U0001e7ef𞟰𞟾\\U0001e7ff\""
+    },
+    {
+      "name": "is_print boundaries 1248 to 1255 (U+1E800 to U+1E95A)",
+      "in_hex": "f09e9fbff09ea080f09ea384f09ea385f09ea386f09ea387f09ea396f09ea397f09ea3bff09ea480f09ea58bf09ea58cf09ea58ff09ea590f09ea599f09ea59a",
+      "out": "\"\\U0001e7ff𞠀𞣄\\U0001e8c5\\U0001e8c6𞣇𞣖\\U0001e8d7\\U0001e8ff𞤀𞥋\\U0001e94c\\U0001e94f𞥐𞥙\\U0001e95a\""
+    },
+    {
+      "name": "is_print boundaries 1256 to 1263 (U+1E95E to U+1EE04)",
+      "in_hex": "f09ea59df09ea59ef09ea59ff09ea5a0f09eb1b0f09eb1b1f09eb2b4f09eb2b5f09eb480f09eb481f09eb4bdf09eb4bef09eb7bff09eb880f09eb883f09eb884",
+      "out": "\"\\U0001e95d𞥞𞥟\\U0001e960\\U0001ec70𞱱𞲴\\U0001ecb5\\U0001ed00𞴁𞴽\\U0001ed3e\\U0001edff𞸀𞸃\\U0001ee04\""
+    },
+    {
+      "name": "is_print boundaries 1264 to 1271 (U+1EE05 to U+1EE28)",
+      "in_hex": "f09eb884f09eb885f09eb89ff09eb8a0f09eb8a0f09eb8a1f09eb8a2f09eb8a3f09eb8a3f09eb8a4f09eb8a4f09eb8a5f09eb8a6f09eb8a7f09eb8a7f09eb8a8",
+      "out": "\"\\U0001ee04𞸅𞸟\\U0001ee20\\U0001ee20𞸡𞸢\\U0001ee23\\U0001ee23𞸤𞸤\\U0001ee25\\U0001ee26𞸧𞸧\\U0001ee28\""
+    },
+    {
+      "name": "is_print boundaries 1272 to 1279 (U+1EE29 to U+1EE3C)",
+      "in_hex": "f09eb8a8f09eb8a9f09eb8b2f09eb8b3f09eb8b3f09eb8b4f09eb8b7f09eb8b8f09eb8b8f09eb8b9f09eb8b9f09eb8baf09eb8baf09eb8bbf09eb8bbf09eb8bc",
+      "out": "\"\\U0001ee28𞸩𞸲\\U0001ee33\\U0001ee33𞸴𞸷\\U0001ee38\\U0001ee38𞸹𞸹\\U0001ee3a\\U0001ee3a𞸻𞸻\\U0001ee3c\""
+    },
+    {
+      "name": "is_print boundaries 1280 to 1287 (U+1EE42 to U+1EE4C)",
+      "in_hex": "f09eb981f09eb982f09eb982f09eb983f09eb986f09eb987f09eb987f09eb988f09eb988f09eb989f09eb989f09eb98af09eb98af09eb98bf09eb98bf09eb98c",
+      "out": "\"\\U0001ee41𞹂𞹂\\U0001ee43\\U0001ee46𞹇𞹇\\U0001ee48\\U0001ee48𞹉𞹉\\U0001ee4a\\U0001ee4a𞹋𞹋\\U0001ee4c\""
+    },
+    {
+      "name": "is_print boundaries 1288 to 1295 (U+1EE4D to U+1EE58)",
+      "in_hex": "f09eb98cf09eb98df09eb98ff09eb990f09eb990f09eb991f09eb992f09eb993f09eb993f09eb994f09eb994f09eb995f09eb996f09eb997f09eb997f09eb998",
+      "out": "\"\\U0001ee4c𞹍𞹏\\U0001ee50\\U0001ee50𞹑𞹒\\U0001ee53\\U0001ee53𞹔𞹔\\U0001ee55\\U0001ee56𞹗𞹗\\U0001ee58\""
+    },
+    {
+      "name": "is_print boundaries 1296 to 1303 (U+1EE59 to U+1EE60)",
+      "in_hex": "f09eb998f09eb999f09eb999f09eb99af09eb99af09eb99bf09eb99bf09eb99cf09eb99cf09eb99df09eb99df09eb99ef09eb99ef09eb99ff09eb99ff09eb9a0",
+      "out": "\"\\U0001ee58𞹙𞹙\\U0001ee5a\\U0001ee5a𞹛𞹛\\U0001ee5c\\U0001ee5c𞹝𞹝\\U0001ee5e\\U0001ee5e𞹟𞹟\\U0001ee60\""
+    },
+    {
+      "name": "is_print boundaries 1304 to 1311 (U+1EE61 to U+1EE73)",
+      "in_hex": "f09eb9a0f09eb9a1f09eb9a2f09eb9a3f09eb9a3f09eb9a4f09eb9a4f09eb9a5f09eb9a6f09eb9a7f09eb9aaf09eb9abf09eb9abf09eb9acf09eb9b2f09eb9b3",
+      "out": "\"\\U0001ee60𞹡𞹢\\U0001ee63\\U0001ee63𞹤𞹤\\U0001ee65\\U0001ee66𞹧𞹪\\U0001ee6b\\U0001ee6b𞹬𞹲\\U0001ee73\""
+    },
+    {
+      "name": "is_print boundaries 1312 to 1319 (U+1EE74 to U+1EE8A)",
+      "in_hex": "f09eb9b3f09eb9b4f09eb9b7f09eb9b8f09eb9b8f09eb9b9f09eb9bcf09eb9bdf09eb9bdf09eb9bef09eb9bef09eb9bff09eb9bff09eba80f09eba89f09eba8a",
+      "out": "\"\\U0001ee73𞹴𞹷\\U0001ee78\\U0001ee78𞹹𞹼\\U0001ee7d\\U0001ee7d𞹾𞹾\\U0001ee7f\\U0001ee7f𞺀𞺉\\U0001ee8a\""
+    },
+    {
+      "name": "is_print boundaries 1320 to 1327 (U+1EE8B to U+1EEBC)",
+      "in_hex": "f09eba8af09eba8bf09eba9bf09eba9cf09ebaa0f09ebaa1f09ebaa3f09ebaa4f09ebaa4f09ebaa5f09ebaa9f09ebaaaf09ebaaaf09ebaabf09ebabbf09ebabc",
+      "out": "\"\\U0001ee8a𞺋𞺛\\U0001ee9c\\U0001eea0𞺡𞺣\\U0001eea4\\U0001eea4𞺥𞺩\\U0001eeaa\\U0001eeaa𞺫𞺻\\U0001eebc\""
+    },
+    {
+      "name": "is_print boundaries 1328 to 1335 (U+1EEF0 to U+1F0AF)",
+      "in_hex": "f09ebbaff09ebbb0f09ebbb1f09ebbb2f09ebfbff09f8080f09f80abf09f80acf09f80aff09f80b0f09f8293f09f8294f09f829ff09f82a0f09f82aef09f82af",
+      "out": "\"\\U0001eeef𞻰𞻱\\U0001eef2\\U0001efff🀀🀫\\U0001f02c\\U0001f02f🀰🂓\\U0001f094\\U0001f09f🂠🂮\\U0001f0af\""
+    },
+    {
+      "name": "is_print boundaries 1336 to 1343 (U+1F0B1 to U+1F1AE)",
+      "in_hex": "f09f82b0f09f82b1f09f82bff09f8380f09f8380f09f8381f09f838ff09f8390f09f8390f09f8391f09f83b5f09f83b6f09f83bff09f8480f09f86adf09f86ae",
+      "out": "\"\\U0001f0b0🂱🂿\\U0001f0c0\\U0001f0c0🃁🃏\\U0001f0d0\\U0001f0d0🃑🃵\\U0001f0f6\\U0001f0ff🄀🆭\\U0001f1ae\""
+    },
+    {
+      "name": "is_print boundaries 1344 to 1351 (U+1F1E6 to U+1F252)",
+      "in_hex": "f09f87a5f09f87a6f09f8882f09f8883f09f888ff09f8890f09f88bbf09f88bcf09f88bff09f8980f09f8988f09f8989f09f898ff09f8990f09f8991f09f8992",
+      "out": "\"\\U0001f1e5🇦🈂\\U0001f203\\U0001f20f🈐🈻\\U0001f23c\\U0001f23f🉀🉈\\U0001f249\\U0001f24f🉐🉑\\U0001f252\""
+    },
+    {
+      "name": "is_print boundaries 1352 to 1359 (U+1F260 to U+1F6FD)",
+      "in_hex": "f09f899ff09f89a0f09f89a5f09f89a6f09f8bbff09f8c80f09f9b97f09f9b98f09f9b9bf09f9b9cf09f9bacf09f9badf09f9baff09f9bb0f09f9bbcf09f9bbd",
+      "out": "\"\\U0001f25f🉠🉥\\U0001f266\\U0001f2ff🌀🛗\\U0001f6d8\\U0001f6db🛜🛬\\U0001f6ed\\U0001f6ef🛰🛼\\U0001f6fd\""
+    },
+    {
+      "name": "is_print boundaries 1360 to 1367 (U+1F700 to U+1F7F1)",
+      "in_hex": "f09f9bbff09f9c80f09f9db6f09f9db7f09f9dbaf09f9dbbf09f9f99f09f9f9af09f9f9ff09f9fa0f09f9fabf09f9facf09f9faff09f9fb0f09f9fb0f09f9fb1",
+      "out": "\"\\U0001f6ff🜀🝶\\U0001f777\\U0001f77a🝻🟙\\U0001f7da\\U0001f7df🟠🟫\\U0001f7ec\\U0001f7ef🟰🟰\\U0001f7f1\""
+    },
+    {
+      "name": "is_print boundaries 1368 to 1375 (U+1F800 to U+1F888)",
+      "in_hex": "f09f9fbff09fa080f09fa08bf09fa08cf09fa08ff09fa090f09fa187f09fa188f09fa18ff09fa190f09fa199f09fa19af09fa19ff09fa1a0f09fa287f09fa288",
+      "out": "\"\\U0001f7ff🠀🠋\\U0001f80c\\U0001f80f🠐🡇\\U0001f848\\U0001f84f🡐🡙\\U0001f85a\\U0001f85f🡠🢇\\U0001f888\""
+    },
+    {
+      "name": "is_print boundaries 1376 to 1383 (U+1F890 to U+1FA6E)",
+      "in_hex": "f09fa28ff09fa290f09fa2adf09fa2aef09fa2aff09fa2b0f09fa2b1f09fa2b2f09fa3bff09fa480f09fa993f09fa994f09fa99ff09fa9a0f09fa9adf09fa9ae",
+      "out": "\"\\U0001f88f🢐🢭\\U0001f8ae\\U0001f8af🢰🢱\\U0001f8b2\\U0001f8ff🤀🩓\\U0001fa54\\U0001fa5f🩠🩭\\U0001fa6e\""
+    },
+    {
+      "name": "is_print boundaries 1384 to 1391 (U+1FA70 to U+1FAC6)",
+      "in_hex": "f09fa9aff09fa9b0f09fa9bcf09fa9bdf09fa9bff09faa80f09faa88f09faa89f09faa8ff09faa90f09faabdf09faabef09faabef09faabff09fab85f09fab86",
+      "out": "\"\\U0001fa6f🩰🩼\\U0001fa7d\\U0001fa7f🪀🪈\\U0001fa89\\U0001fa8f🪐🪽\\U0001fabe\\U0001fabe🪿🫅\\U0001fac6\""
+    },
+    {
+      "name": "is_print boundaries 1392 to 1399 (U+1FACE to U+1FB93)",
+      "in_hex": "f09fab8df09fab8ef09fab9bf09fab9cf09fab9ff09faba0f09faba8f09faba9f09fabaff09fabb0f09fabb8f09fabb9f09fabbff09fac80f09fae92f09fae93",
+      "out": "\"\\U0001facd🫎🫛\\U0001fadc\\U0001fadf🫠🫨\\U0001fae9\\U0001faef🫰🫸\\U0001faf9\\U0001faff🬀🮒\\U0001fb93\""
+    },
+    {
+      "name": "is_print boundaries 1400 to 1407 (U+1FB94 to U+2B73A)",
+      "in_hex": "f09fae93f09fae94f09faf8af09faf8bf09fafaff09fafb0f09fafb9f09fafbaf09fbfbff0a08080f0aa9b9ff0aa9ba0f0aa9bbff0aa9c80f0ab9cb9f0ab9cba",
+      "out": "\"\\U0001fb93🮔🯊\\U0001fbcb\\U0001fbef🯰🯹\\U0001fbfa\\U0001ffff𠀀𪛟\\U0002a6e0\\U0002a6ff𪜀𫜹\\U0002b73a\""
+    },
+    {
+      "name": "is_print boundaries 1408 to 1415 (U+2B740 to U+2FA1E)",
+      "in_hex": "f0ab9cbff0ab9d80f0aba09df0aba09ef0aba09ff0aba0a0f0acbaa1f0acbaa2f0acbaaff0acbab0f0aeafa0f0aeafa1f0af9fbff0afa080f0afa89df0afa89e",
+      "out": "\"\\U0002b73f𫝀𫠝\\U0002b81e\\U0002b81f𫠠𬺡\\U0002cea2\\U0002ceaf𬺰𮯠\\U0002ebe1\\U0002f7ff丽𪘀\\U0002fa1e\""
+    },
+    {
+      "name": "is_print boundaries 1416 to 1421 (U+30000 to U+E01F0)",
+      "in_hex": "f0afbfbff0b08080f0b18d8af0b18d8bf0b18d8ff0b18d90f0b28eaff0b28eb0f3a083bff3a08480f3a087aff3a087b0",
+      "out": "\"\\U0002ffff𰀀𱍊\\U0003134b\\U0003134f𱍐𲎯\\U000323b0\\U000e00ff󠄀󠇯\\U000e01f0\""
+    },
+    {
+      "name": "random 0",
+      "in_hex": "efbbbff201c38eee91ba2be29098e18595f185a4a4c2a012",
+      "out": "\"\\ufeff\\xf2\\x01Î\\ue47a+␘ᅕ\\U00045924\\u00a0\\x12\""
+    },
+    {
+      "name": "random 1",
+      "in_hex": "f09a97a8f48fbfbff0bd9b8546c3b28dc28587f391b599226f5118f18cb48ef38c83897d",
+      "out": "\"\\U0001a5e8\\U0010ffff\\U0003d6c5Fò\\x8d\\u0085\\x87\\U000d1d59\\\"oQ\\x18\\U0004cd0e\\U000cc0c9}\""
+    },
+    {
+      "name": "random 2",
+      "in_hex": "ee84a533c285c2a27fe2b398efbfbd32c399f3828886c285c2adc285",
+      "out": "\"\\ue1253\\u0085¢\\x7fⳘ�2Ù\\U000c2206\\u0085\\u00ad\\u0085\""
+    },
+    {
+      "name": "random 3",
+      "in_hex": "e280a8a86002cac3abc39cc2a1",
+      "out": "\"\\u2028\\xa8`\\x02\\xcaëÜ¡\""
+    },
+    {
+      "name": "random 4",
+      "in_hex": "c3a73fc3846bf3a080814340e2808bc28af3b383aac288e0aa956d585c",
+      "out": "\"ç?Äk\\U000e0001C@\\u200b\\u008a\\U000f30ea\\u0088કmX\\\\\""
+    },
+    {
+      "name": "random 5",
+      "in_hex": "f09f9880",
+      "out": "\"😀\""
+    },
+    {
+      "name": "random 6",
+      "in_hex": "f48fbfbfc299e19a8b28c2a07f65eaabb2e397aef09f98805ee3b889",
+      "out": "\"\\U0010ffff\\u0099ᚋ(\\u00a0\\x7feꫲ㗮😀^㸉\""
+    },
+    {
+      "name": "random 7",
+      "in_hex": "e4f3bea38df48abe85f3ba9db3c38a39",
+      "out": "\"\\xe4\\U000fe8cd\\U0010af85\\U000fa773Ê9\""
+    },
+    {
+      "name": "random 8",
+      "in_hex": "9f3634edc2aff29e8988226ac2a01c9222c3ad24c2adf29da19def88b5",
+      "out": "\"\\x9f64\\xed¯\\U0009e248\\\"j\\u00a0\\x1c\\x92\\\"í$\\u00ad\\U0009d85d\\uf235\""
+    },
+    {
+      "name": "random 9",
+      "in_hex": "e1b6bde3b8ba22f09f9880f3a8af82e39c9bf3a080817f",
+      "out": "\"ᶽ㸺\\\"😀\\U000e8bc2㜛\\U000e0001\\x7f\""
+    },
+    {
+      "name": "random 10",
+      "in_hex": "efbbbf5cfaf48fbfbf765c22",
+      "out": "\"\\ufeff\\\\\\xfa\\U0010ffffv\\\\\\\"\""
+    },
+    {
+      "name": "random 11",
+      "in_hex": "93c285c2a42be8b49af3bba3ab",
+      "out": "\"\\x93\\u0085¤+贚\\U000fb8eb\""
+    },
+    {
+      "name": "random 12",
+      "in_hex": "2ef29f9dbb5c1635e5b996ea9195c2ade29280cff09f9880712b2b",
+      "out": "\".\\U0009f77b\\\\\\x165幖ꑕ\\u00ad⒀\\xcf😀q++\""
+    },
+    {
+      "name": "random 13",
+      "in_hex": "f2c2bcc2983b7ff3a08081c2a0c295c285f48fbfbff09f9880e2808be3bc96c2a659f29a9b8ce8a4867f33",
+      "out": "\"\\xf2¼\\u0098;\\x7f\\U000e0001\\u00a0\\u0095\\u0085\\U0010ffff😀\\u200b㼖¦Y\\U0009a6cc褆\\x7f3\""
+    },
+    {
+      "name": "random 14",
+      "in_hex": "f48fbfbff4879abee8b8b509f3a2beb2e28fba71",
+      "out": "\"\\U0010ffff\\U001076be踵\\t\\U000e2fb2⏺q\""
+    },
+    {
+      "name": "random 15",
+      "in_hex": "e280a8f48fbfbf0aefbfbdecaea1e9898680f29486a3f2b2878cf3a080819022efbfbd7f",
+      "out": "\"\\u2028\\U0010ffff\\n�쮡鉆\\x80\\U000941a3\\U000b21cc\\U000e0001\\x90\\\"�\\x7f\""
+    },
+    {
+      "name": "random 16",
+      "in_hex": "7f1ce6928ce3b8b9f28586b9efbfbdc396f190b0a85c23f09f9880a221ca22c2adc38ef3a08081",
+      "out": "\"\\x7f\\x1c撌㸹\\U000851b9�Ö\\U00050c28\\\\#😀\\xa2!\\xca\\\"\\u00adÎ\\U000e0001\""
+    },
+    {
+      "name": "random 17",
+      "in_hex": "eab5adefbbbfe697a87ff2918fba51f0a5ab9c4dc2adc28650f2b88ea0c285f3b087a8c2a0c2ad9910c2efbfbdf2bba88ff3b3b99e08",
+      "out": "\"국\\ufeff旨\\x7f\\U000913faQ𥫜M\\u00ad\\u0086P\\U000b83a0\\u0085\\U000f01e8\\u00a0\\u00ad\\x99\\x10\\xc2�\\U000bba0f\\U000f3e5e\\b\""
+    },
+    {
+      "name": "random 18",
+      "in_hex": "c2a0f0b1bd8d17",
+      "out": "\"\\u00a0𱽍\\x17\""
+    },
+    {
+      "name": "random 19",
+      "in_hex": "10f7",
+      "out": "\"\\x10\\xf7\""
+    },
+    {
+      "name": "random 20",
+      "in_hex": "e1a690c3b5e2908a73f38e84b722a4efbfbdf4828585f1bdb386ec8089228d3507f3a08081f48fbfbf",
+      "out": "\"ᦐõ␊s\\U000ce137\\\"\\xa4�\\U00102145\\U0007dcc6쀉\\\"\\x8d5\\a\\U000e0001\\U0010ffff\""
+    },
+    {
+      "name": "random 21",
+      "in_hex": "e789b0748137f3a08081f09f9880c3b678f1bd9eb4c9c2a7efbbbf2af1b78a89f3a0808151f39bb7ac67ea88bc",
+      "out": "\"牰t\\x817\\U000e0001😀öx\\U0007d7b4\\xc9§\\ufeff*\\U00077289\\U000e0001Q\\U000dbdecgꈼ\""
+    },
+    {
+      "name": "random 22",
+      "in_hex": "c3b8d7e2808be280a8e2808bef9096c3b87f7f44f0b78eb3f09f9880",
+      "out": "\"ø\\xd7\\u200b\\u2028\\u200b\\uf416ø\\x7f\\x7fD\\U000373b3😀\""
+    },
+    {
+      "name": "random 23",
+      "in_hex": "e596a9ca5c27",
+      "out": "\"喩\\xca\\\\'\""
+    },
+    {
+      "name": "random 24",
+      "in_hex": "c290c2ad256eeaaea1c2a0e280a8efbbbf79c2b8c2bc5c",
+      "out": "\"\\u0090\\u00ad%nꮡ\\u00a0\\u2028\\ufeffy¸¼\\\\\""
+    },
+    {
+      "name": "random 25",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 26",
+      "in_hex": "08c39ba6a9f48fbfbfc29df8c3a1e8bfa8f48fbfbfc3aed2c28576c29b7fc3a4efbbbff098a4bfe2808bf2beb4aef19db69ef3a08081",
+      "out": "\"\\bÛ\\xa6\\xa9\\U0010ffff\\u009d\\xf8á迨\\U0010ffffî\\xd2\\u0085v\\u009b\\x7fä\\ufeff𘤿\\u200b\\U000bed2e\\U0005dd9e\\U000e0001\""
+    },
+    {
+      "name": "random 27",
+      "in_hex": "877fc29f3170",
+      "out": "\"\\x87\\x7f\\u009f1p\""
+    },
+    {
+      "name": "random 28",
+      "in_hex": "f0a9bc8e020ef2a481a5efbfbdf1a3be90c2b2efbea6e2808b3c3922f09f9880e6b29fe8a19cf48780afc2a6486e5c",
+      "out": "\"𩼎\\x02\\x0e\\U000a4065�\\U00063f90²ﾦ\\u200b\u003c9\\\"😀沟衜\\U0010702f¦Hn\\\\\""
+    },
+    {
+      "name": "random 29",
+      "in_hex": "f39fa293eab2a9faefbfbd0220c3953cb2efbbbf71c3aeeb9e9ef2af93a2f48fbfbfe393b8c382c2a0e2808b",
+      "out": "\"\\U000df893격\\xfa�\\x02 Õ\u003c\\xb2\\ufeffqî랞\\U000af4e2\\U0010ffff㓸Â\\u00a0\\u200b\""
+    },
+    {
+      "name": "random 30",
+      "in_hex": "e3839dc2a4c39ac2a5e580acf39ebbb3f09f988001c28f25c2bf",
+      "out": "\"ポ¤Ú¥倬\\U000deef3😀\\x01\\u008f%¿\""
+    },
+    {
+      "name": "random 31",
+      "in_hex": "79c2a6dfa1c39af28c9e8eef86b4b422f3a08081e280a8",
+      "out": "\"y¦ߡÚ\\U0008c78e\\uf1b4\\xb4\\\"\\U000e0001\\u2028\""
+    },
+    {
+      "name": "random 32",
+      "in_hex": "f48fbfbfebbe81de",
+      "out": "\"\\U0010ffff뾁\\xde\""
+    },
+    {
+      "name": "random 33",
+      "in_hex": "7f5cc2a0e280a8f0a7a8baf093b0a7efba83e2ac927f27c282f6f2bb9884f29088a9e381adeea1aec2ad22c285f0b3b9b2",
+      "out": "\"\\x7f\\\\\\u00a0\\u2028𧨺\\U00013c27ﺃ⬒\\x7f'\\u0082\\xf6\\U000bb604\\U00090229ね\\ue86e\\u00ad\\\"\\u0085\\U00033e72\""
+    },
+    {
+      "name": "random 34",
+      "in_hex": "efbbbf5c3de7c3a7e2808b53",
+      "out": "\"\\ufeff\\\\=\\xe7ç\\u200bS\""
+    },
+    {
+      "name": "random 35",
+      "in_hex": "f478e6acaf",
+      "out": "\"\\xf4x欯\""
+    },
+    {
+      "name": "random 36",
+      "in_hex": "f2a1b7ad",
+      "out": "\"\\U000a1ded\""
+    },
+    {
+      "name": "random 37",
+      "in_hex": "c2aaf1a5bf9f34e2808b282cf0a78f8b53f09f9880c2a1f48fbfbf2df2a49f8870f09684adf2ae878022f09f9880",
+      "out": "\"ª\\U00065fdf4\\u200b(,𧏋S😀¡\\U0010ffff-\\U000a47c8p\\U0001612d\\U000ae1c0\\\"😀\""
+    },
+    {
+      "name": "random 38",
+      "in_hex": "f2a4899ef3a080816bf31a455cc2aff2a1a5a445f2928e93f1b3a7baf0b48799bdc2a947",
+      "out": "\"\\U000a425e\\U000e0001k\\xf3\\x1aE\\\\¯\\U000a1964E\\U00092393\\U000739fa\\U000341d9\\xbd©G\""
+    },
+    {
+      "name": "random 39",
+      "in_hex": "c3985ceba4b0f181a88622c29eedb880e2808bf2959a86f2b0beb4e6a1bec38e5aed8f98efbfbd3c5214fef3a08081",
+      "out": "\"Ø\\\\뤰\\U00041a06\\\"\\u009e\\xed\\xb8\\x80\\u200b\\U00095686\\U000b0fb4桾ÎZ폘�\u003cR\\x14\\xfe\\U000e0001\""
+    },
+    {
+      "name": "random 40",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 41",
+      "in_hex": "c2a04220efbbbff2b3b08ec29ffaf0a49dadeea493e1a3b2c2a0f29fb8beefbbbfefbbbf",
+      "out": "\"\\u00a0B \\ufeff\\U000b3c0e\\u009f\\xfa𤝭\\ue913ᣲ\\u00a0\\U0009fe3e\\ufeff\\ufeff\""
+    },
+    {
+      "name": "random 42",
+      "in_hex": "f3b394a248f3839eb1c2baf28da1bc36e0b88dc285f2ac959522e8a59715e1a9a3f3a8b8bc1b",
+      "out": "\"\\U000f3522H\\U000c37b1º\\U0008d87c6ญ\\u0085\\U000ac555\\\"襗\\x15ᩣ\\U000e8e3c\\x1b\""
+    },
+    {
+      "name": "random 43",
+      "in_hex": "f48fbfbf507b",
+      "out": "\"\\U0010ffffP{\""
+    },
+    {
+      "name": "random 44",
+      "in_hex": "f3a08081e39a8af09f98806a87f3b8b585c3b4f48fbfbfc28ae4a195f2929397ed9d99f397869e3ff393be9e63",
+      "out": "\"\\U000e0001㚊😀j\\x87\\U000f8d45ô\\U0010ffff\\u008a䡕\\U000924d7흙\\U000d719e?\\U000d3f9ec\""
+    },
+    {
+      "name": "random 45",
+      "in_hex": "e8b6a5ee8fb44a0fc2a8c3b5f28091b6ee969a71c3927fc2a034f48fbfbfcac3a6f09f9880f0b3b398c384f2a6bc80e280a864",
+      "out": "\"趥\\ue3f4J\\x0f¨õ\\U00080476\\ue59aqÒ\\x7f\\u00a04\\U0010ffff\\xcaæ😀\\U00033cd8Ä\\U000a6f00\\u2028d\""
+    },
+    {
+      "name": "random 46",
+      "in_hex": "e280a82203f204c397c29ef09f9880e5af88e280a8f09f9880",
+      "out": "\"\\u2028\\\"\\x03\\xf2\\x04×\\u009e😀寈\\u2028😀\""
+    },
+    {
+      "name": "random 47",
+      "in_hex": "36f2a186b2ee9e95f2ac9da9e78f93c38996e2b6a3",
+      "out": "\"6\\U000a11b2\\ue795\\U000ac769珓É\\x96ⶣ\""
+    },
+    {
+      "name": "random 48",
+      "in_hex": "f3a89181e280a8e6868e2226b7bef18a9fa722f0b0aa99f0c2be",
+      "out": "\"\\U000e8441\\u2028憎\\\"\u0026\\xb7\\xbe\\U0004a7e7\\\"𰪙\\xf0¾\""
+    },
+    {
+      "name": "random 49",
+      "in_hex": "0c00c285c3bd00f48fbfbfe7ae917ac0",
+      "out": "\"\\f\\x00\\u0085ý\\x00\\U0010ffff箑z\\xc0\""
+    },
+    {
+      "name": "random 50",
+      "in_hex": "46c3b5e7b79561ee8880f282adbcf3b3ab97c3abd8f3a08081d1bac2b40c5c",
+      "out": "\"Fõ緕a\\ue200\\U00082b7c\\U000f3ad7ë\\xd8\\U000e0001Ѻ´\\f\\\\\""
+    },
+    {
+      "name": "random 51",
+      "in_hex": "34efbbbdc2bc",
+      "out": "\"4\\ufefd¼\""
+    },
+    {
+      "name": "random 52",
+      "in_hex": "7ff48fbfbfc2aef3a080816716ee808ac2adf0b782ba305ee78d8dc2a0c2a7",
+      "out": "\"\\x7f\\U0010ffff®\\U000e0001g\\x16\\ue00a\\u00ad\\U000370ba0^獍\\u00a0§\""
+    },
+    {
+      "name": "random 53",
+      "in_hex": "56efbfbd67aa024beb99b7efbbbfee9188eabfbb668586f48fbfbf153e51416a3ccbaf",
+      "out": "\"V�g\\xaa\\x02K뙷\\ufeff\\ue448꿻f\\x85\\x86\\U0010ffff\\x15\u003eQAj\u003c˯\""
+    },
+    {
+      "name": "random 54",
+      "in_hex": "c2a0f48fbfbf31c3b73a48c398efbbbff48fbfbf747cf1aa95a9ca815cfef39899aa6e56c2a50eb9",
+      "out": "\"\\u00a0\\U0010ffff1÷:HØ\\ufeff\\U0010fffft|\\U0006a569ʁ\\\\\\xfe\\U000d866anV¥\\x0e\\xb9\""
+    },
+    {
+      "name": "random 55",
+      "in_hex": "f2b0b2b6c2adefbbbf703ee280a85ce979f19aa283f281bf80c2ad937ff0b2aca1523c",
+      "out": "\"\\U000b0cb6\\u00ad\\ufeffp\u003e\\u2028\\\\\\xe9y\\U0005a883\\U00081fc0\\u00ad\\x93\\x7f\\U00032b21R\u003c\""
+    },
+    {
+      "name": "random 56",
+      "in_hex": "2222f48fbfbfc8c38061ef9c8ae2808b432329b6c2adf48fbfbf7fb0e3bebb5cf0a6828fc394f18296a9eab9aac285",
+      "out": "\"\\\"\\\"\\U0010ffff\\xc8Àa\\uf70a\\u200bC#)\\xb6\\u00ad\\U0010ffff\\x7f\\xb0㾻\\\\𦂏Ô\\U000425a9깪\\u0085\""
+    },
+    {
+      "name": "random 57",
+      "in_hex": "f2a68091f3a395b56a90f28cafa3e280a8c28b343ee681ad",
+      "out": "\"\\U000a6011\\U000e3575j\\x90\\U0008cbe3\\u2028\\u008b4\u003e恭\""
+    },
+    {
+      "name": "random 58",
+      "in_hex": "27f2f2a181baf8efbbbfe590afed9bbb",
+      "out": "\"'\\xf2\\U000a107a\\xf8\\ufeff启훻\""
+    },
+    {
+      "name": "random 59",
+      "in_hex": "c39af09f9880cbe2808bc39540eeb585e280a809fec381e280a8",
+      "out": "\"Ú😀\\xcb\\u200bÕ@\\ued45\\u2028\\t\\xfeÁ\\u2028\""
+    },
+    {
+      "name": "random 60",
+      "in_hex": "c3afc3a6c39938f397a594e7a4a4c2a0c2b24d229af29188895c",
+      "out": "\"ïæÙ8\\U000d7954礤\\u00a0²M\\\"\\x9a\\U00091209\\\\\""
+    },
+    {
+      "name": "random 61",
+      "in_hex": "efbbbf37f48e83b9a7c2a0e0a79ef29587b3c2a03bc2a0e6959ee280a83a",
+      "out": "\"\\ufeff7\\U0010e0f9\\xa7\\u00a0\\u09de\\U000951f3\\u00a0;\\u00a0敞\\u2028:\""
+    },
+    {
+      "name": "random 62",
+      "in_hex": "f489b3ab",
+      "out": "\"\\U00109ceb\""
+    },
+    {
+      "name": "random 63",
+      "in_hex": "22ea98958feca5a5e0bb9ee98ba5c3aeefbbbf7becbba4",
+      "out": "\"\\\"ꘕ\\x8f쥥ໞ鋥î\\ufeff{커\""
+    },
+    {
+      "name": "random 64",
+      "in_hex": "3ced818fc390f48e87bce99eb2eeaa85",
+      "out": "\"\u003c큏Ð\\U0010e1fc鞲\\uea85\""
+    },
+    {
+      "name": "random 65",
+      "in_hex": "c28a",
+      "out": "\"\\u008a\""
+    },
+    {
+      "name": "random 66",
+      "in_hex": "e1b7b025c2adb0e280a8f0b6b988e997",
+      "out": "\"ᷰ%\\u00ad\\xb0\\u2028\\U00036e48\\xe9\\x97\""
+    },
+    {
+      "name": "random 67",
+      "in_hex": "e9b69fe5babfc2a047c288e99384ed8bac5782f48196ac22e98eaa1fc3b6",
+      "out": "\"鶟庿\\u00a0G\\u0088铄틬W\\x82\\U001015ac\\\"鎪\\x1fö\""
+    },
+    {
+      "name": "random 68",
+      "in_hex": "f727c5e2808b",
+      "out": "\"\\xf7'\\xc5\\u200b\""
+    },
+    {
+      "name": "random 69",
+      "in_hex": "12",
+      "out": "\"\\x12\""
+    },
+    {
+      "name": "random 70",
+      "in_hex": "f39e9bb1c2857dc1e280a8c28df2bfb19ee280a8f1f0b5bfb4f09f9880c285c2ad5e3ef3a0a1a8b8e395abf1868681f09eb59eecad847ff09f9880",
+      "out": "\"\\U000de6f1\\u0085}\\xc1\\u2028\\u008d\\U000bfc5e\\u2028\\xf1\\U00035ff4😀\\u0085\\u00ad^\u003e\\U000e0868\\xb8㕫\\U00046181\\U0001ed5e쭄\\x7f😀\""
+    },
+    {
+      "name": "random 71",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 72",
+      "in_hex": "efbbbff199988bebaf88c285f0b29db0e8aca5f48fbfbfe2808b516ad9f0b8b8956c2d",
+      "out": "\"\\ufeff\\U0005960b믈\\u0085\\U00032770謥\\U0010ffff\\u200bQj\\xd9\\U00038e15l-\""
+    },
+    {
+      "name": "random 73",
+      "in_hex": "c2a87f1fa8c2ad5faff3b98081f390a9a3e280a8c2a009e7a69bf2838f9de280a8105cefbfbd3892",
+      "out": "\"¨\\x7f\\x1f\\xa8\\u00ad_\\xaf\\U000f9001\\U000d0a63\\u2028\\u00a0\\t禛\\U000833dd\\u2028\\x10\\\\�8\\x92\""
+    },
+    {
+      "name": "random 74",
+      "in_hex": "efbfbd55",
+      "out": "\"�U\""
+    },
+    {
+      "name": "random 75",
+      "in_hex": "edab88f3b49f8aeabe80068e73ec9c92",
+      "out": "\"\\xed\\xab\\x88\\U000f47ca꾀\\x06\\x8es윒\""
+    },
+    {
+      "name": "random 76",
+      "in_hex": "0559c287452cc3a87c58f3a08081f396ab9c22efbfbd",
+      "out": "\"\\x05Y\\u0087E,è|X\\U000e0001\\U000d6adc\\\"�\""
+    },
+    {
+      "name": "random 77",
+      "in_hex": "c29c5cf3a0808122e2808bdc909682",
+      "out": "\"\\u009c\\\\\\U000e0001\\\"\\u200bܐ\\x96\\x82\""
+    },
+    {
+      "name": "random 78",
+      "in_hex": "62efa38a4cc38d",
+      "out": "\"b\\uf8caLÍ\""
+    },
+    {
+      "name": "random 79",
+      "in_hex": "f299aaa64af3a08081f0efbfbd09c2b7c296f188a98f95c28fc39d56363deda2ba",
+      "out": "\"\\U00099aa6J\\U000e0001\\xf0�\\t·\\u0096\\U00048a4f\\x95\\u008fÝV6=\\xed\\xa2\\xba\""
+    },
+    {
+      "name": "random 80",
+      "in_hex": "14c2af187f1ab4e280a890e280a8004774eb948ae67c57e280a87eefbfbd",
+      "out": "\"\\x14¯\\x18\\x7f\\x1a\\xb4\\u2028\\x90\\u2028\\x00Gt딊\\xe6|W\\u2028~�\""
+    },
+    {
+      "name": "random 81",
+      "in_hex": "c2a0f48fbfbf5ee8b588",
+      "out": "\"\\u00a0\\U0010ffff^赈\""
+    },
+    {
+      "name": "random 82",
+      "in_hex": "f48fbfbf7ff48fbfbfc2adf188aa994df48fbfbff3a8bdb466c2b37fc28cc3b57c",
+      "out": "\"\\U0010ffff\\x7f\\U0010ffff\\u00ad\\U00048a99M\\U0010ffff\\U000e8f74f³\\x7f\\u008cõ|\""
+    },
+    {
+      "name": "random 83",
+      "in_hex": "f392b788c5a1eca6943cc295efbfbdf18bad97c28b19",
+      "out": "\"\\U000d2dc8š즔\u003c\\u0095�\\U0004bb57\\u008b\\x19\""
+    },
+    {
+      "name": "random 84",
+      "in_hex": "e99f8159e280a8f3b39da822f1898991093962e39ca3e7aaaeeb9789c281c2bc55f48fbfbfc3be28c3acbf6bc28ff09f9880",
+      "out": "\"韁Y\\u2028\\U000f3768\\\"\\U00049251\\t9b㜣窮뗉\\u0081¼U\\U0010ffffþ(ì\\xbfk\\u008f😀\""
+    },
+    {
+      "name": "random 85",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 86",
+      "in_hex": "7ff1b0b09d1490f3a080811ef2928a81c1e5a8bf5cf1b4ada142e58eac00e19295c2925cf39083a689",
+      "out": "\"\\x7f\\U00070c1d\\x14\\x90\\U000e0001\\x1e\\U00092281\\xc1娿\\\\\\U00074b61B厬\\x00ᒕ\\u0092\\\\\\U000d00e6\\x89\""
+    },
+    {
+      "name": "random 87",
+      "in_hex": "e2808b",
+      "out": "\"\\u200b\""
+    },
+    {
+      "name": "random 88",
+      "in_hex": "9c9f22efbfbdefbfbde9bea33bf18a9188e280a8f39aa8af39e2808b2232e2808bf09f9880",
+      "out": "\"\\x9c\\x9f\\\"��龣;\\U0004a448\\u2028\\U000daa2f9\\u200b\\\"2\\u200b😀\""
+    },
+    {
+      "name": "random 89",
+      "in_hex": "f2bb9d85c1b0f097a1b867f48baab1daf19dbe9d74f1a991ac1143acedb581e7a68ef48fbfbff3",
+      "out": "\"\\U000bb745\\xc1\\xb0𗡸g\\U0010bab1\\xda\\U0005df9dt\\U0006946c\\x11C\\xac\\xed\\xb5\\x81禎\\U0010ffff\\xf3\""
+    },
+    {
+      "name": "random 90",
+      "in_hex": "c2be2371efbbbfc2b6b07fe822c3aa",
+      "out": "\"¾#q\\ufeff¶\\xb0\\x7f\\xe8\\\"ê\""
+    },
+    {
+      "name": "random 91",
+      "in_hex": "c3ad6ac3a6b1c297",
+      "out": "\"íjæ\\xb1\\u0097\""
+    },
+    {
+      "name": "random 92",
+      "in_hex": "22f3a08081f395b683efbfbdf48c929ff1949f91c2be99f3b3b88df3a080816dd840f299919903",
+      "out": "\"\\\"\\U000e0001\\U000d5d83�\\U0010c49f\\U000547d1¾\\x99\\U000f3e0d\\U000e0001m\\xd8@\\U00099459\\x03\""
+    },
+    {
+      "name": "random 93",
+      "in_hex": "f1b797bcc390e2a3ae510df390a7b8eeae8e91e48b9eeba6b9",
+      "out": "\"\\U000775fcÐ⣮Q\\r\\U000d09f8\\ueb8e\\x91䋞릹\""
+    },
+    {
+      "name": "random 94",
+      "in_hex": "6ce48fb6",
+      "out": "\"l䏶\""
+    },
+    {
+      "name": "random 95",
+      "in_hex": "49e280a8c29fe9c285f09f9880ba",
+      "out": "\"I\\u2028\\u009f\\xe9\\u0085😀\\xba\""
+    },
+    {
+      "name": "random 96",
+      "in_hex": "c2ad43e782adefbfbdb75cf808c397c2bf22ed8baef18e8599f48684a9f3a08081e591aec2b8c28555",
+      "out": "\"\\u00adC炭�\\xb7\\\\\\xf8\\b×¿\\\"틮\\U0004e159\\U00106129\\U000e0001呮¸\\u0085U\""
+    },
+    {
+      "name": "random 97",
+      "in_hex": "f3aab49deeb5baf29fbc8e53",
+      "out": "\"\\U000ead1d\\ued7a\\U0009ff0eS\""
+    },
+    {
+      "name": "random 98",
+      "in_hex": "fc1fefbfbd2fc28b7fc3a931f281b6a251c2b4f39990a16dc2a0",
+      "out": "\"\\xfc\\x1f�/\\u008b\\x7fé1\\U00081da2Q´\\U000d9421m\\u00a0\""
+    },
+    {
+      "name": "random 99",
+      "in_hex": "efbfbdf292b38bf396b9bc9aefbbbfebb8ac33e9b58f",
+      "out": "\"�\\U00092ccb\\U000d6e7c\\x9a\\ufeff븬3鵏\""
+    },
+    {
+      "name": "random 100",
+      "in_hex": "e89987",
+      "out": "\"虇\""
+    },
+    {
+      "name": "random 101",
+      "in_hex": "c2adeaa79cc2918bf09f9880470ba6ee87afefbbbfe1baf1a9bc9ec3bd",
+      "out": "\"\\u00ad\\ua9dc\\u0091\\x8b😀G\\v\\xa6\\ue1ef\\ufeff\\xe1\\xba\\U00069f1eý\""
+    },
+    {
+      "name": "random 102",
+      "in_hex": "ee8285c288f3a08081ee9982c2a3a1f09f9880c285f1aebb82f0a68cb014b882c285f48fbfbfc2adacf1afb297ec8496e68a8fe795acf0b4bbb1",
+      "out": "\"\\ue085\\u0088\\U000e0001\\ue642£\\xa1😀\\u0085\\U0006eec2𦌰\\x14\\xb8\\x82\\u0085\\U0010ffff\\u00ad\\xac\\U0006fc97섖抏畬\\U00034ef1\""
+    },
+    {
+      "name": "random 103",
+      "in_hex": "e98585efbbbff48eb583c2ac3527668deeb7b2",
+      "out": "\"酅\\ufeff\\U0010ed43¬5'f\\x8d\\uedf2\""
+    },
+    {
+      "name": "random 104",
+      "in_hex": "c2855cc390f0bb97994a2d6df18d829d6eeef48d99a3daee93b5f1bd8283c2bf",
+      "out": "\"\\u0085\\\\Ð\\U0003b5d9J-m\\U0004d09dn\\xee\\U0010d663\\xda\\ue4f5\\U0007d083¿\""
+    },
+    {
+      "name": "random 105",
+      "in_hex": "9be8bd84248bf19d93a5a47f3222c3bd",
+      "out": "\"\\x9b轄$\\x8b\\U0005d4e5\\xa4\\x7f2\\\"ý\""
+    },
+    {
+      "name": "random 106",
+      "in_hex": "61cc2bcd5c22e585b3032d",
+      "out": "\"a\\xcc+\\xcd\\\\\\\"关\\x03-\""
+    },
+    {
+      "name": "random 107",
+      "in_hex": "c2854a",
+      "out": "\"\\u0085J\""
+    },
+    {
+      "name": "random 108",
+      "in_hex": "77a7f48fbfbfe280a87cf3a6ad9ff19fb3abf3a08081e6be9604efbfbdc39dc427310ac2ad1df09f9880eb8398",
+      "out": "\"w\\xa7\\U0010ffff\\u2028|\\U000e6b5f\\U0005fceb\\U000e0001澖\\x04�Ý\\xc4'1\\n\\u00ad\\x1d😀냘\""
+    },
+    {
+      "name": "random 109",
+      "in_hex": "c4f3a09883e280a8f28396a122",
+      "out": "\"\\xc4\\U000e0603\\u2028\\U000835a1\\\"\""
+    },
+    {
+      "name": "random 110",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 111",
+      "in_hex": "f09e8ba9c2a7f48fbfbff48fbfbfaef09f9880ecb3b6eeb487",
+      "out": "\"𞋩§\\U0010ffff\\U0010ffff\\xae😀쳶\\ued07\""
+    },
+    {
+      "name": "random 112",
+      "in_hex": "f29f8cb6f48fbfbfeb8093e280a8e7f2b590a8f48fbfbf10efa681c390f0b098a222e697b7efbfbdbdcd",
+      "out": "\"\\U0009f336\\U0010ffff뀓\\u2028\\xe7\\U000b5428\\U0010ffff\\x10女Ð𰘢\\\"旷�\\xbd\\xcd\""
+    },
+    {
+      "name": "random 113",
+      "in_hex": "edd9c280f2889ba7e6a3a7f3a08081f2b6a6a4f3a080815d2d",
+      "out": "\"\\xed\\xd9\\u0080\\U000886e7棧\\U000e0001\\U000b69a4\\U000e0001]-\""
+    },
+    {
+      "name": "random 114",
+      "in_hex": "acefbbbfec8b9cc38c22e280a8c392127022e280a8f0a28596e39c98c3be37",
+      "out": "\"\\xac\\ufeff시Ì\\\"\\u2028Ò\\x12p\\\"\\u2028𢅖㜘þ7\""
+    },
+    {
+      "name": "random 115",
+      "in_hex": "c285c2dde19588e2808b10eeb997c391e8b784f295b9be",
+      "out": "\"\\u0085\\xc2\\xddᕈ\\u200b\\x10\\uee57Ñ跄\\U00095e7e\""
+    },
+    {
+      "name": "random 116",
+      "in_hex": "f1e99d82f09f9880ae90",
+      "out": "\"\\xf1靂😀\\xae\\x90\""
+    },
+    {
+      "name": "random 117",
+      "in_hex": "e2808be6809af2a7acbfe0bda369",
+      "out": "\"\\u200b怚\\U000a7b3fལi\""
+    },
+    {
+      "name": "random 118",
+      "in_hex": "f9c2a1efa09e555ce9be9f22e280a8c38fed54ee8b9ff3988bb6e7919df48fbfbff6e280a89d2c2218c2a4",
+      "out": "\"\\xf9¡\\uf81eU\\\\龟\\\"\\u2028Ï\\xedT\\ue2df\\U000d82f6瑝\\U0010ffff\\xf6\\u2028\\x9d,\\\"\\x18¤\""
+    },
+    {
+      "name": "random 119",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 120",
+      "in_hex": "e280a8efbfbde88c95f0aa8e9a196004",
+      "out": "\"\\u2028�茕𪎚\\x19`\\x04\""
+    },
+    {
+      "name": "random 121",
+      "in_hex": "c2850ef1b2adb059c3b7f197a8b935c95c20f0a0a190f09f988098c2adf19eaaa9e2808b41ea999f",
+      "out": "\"\\u0085\\x0e\\U00072b70Y÷\\U00057a395\\xc9\\\\ 𠡐😀\\x98\\u00ad\\U0005eaa9\\u200bAꙟ\""
+    },
+    {
+      "name": "random 122",
+      "in_hex": "e49e9fc2b2c2b7c2b687e7b0af7bc2adc2ae36",
+      "out": "\"䞟²·¶\\x87簯{\\u00ad®6\""
+    },
+    {
+      "name": "random 123",
+      "in_hex": "e280a863f09f9880f3a39eb6f28ca387e9a792f18aa9b1",
+      "out": "\"\\u2028c😀\\U000e37b6\\U0008c8c7駒\\U0004aa71\""
+    },
+    {
+      "name": "random 124",
+      "in_hex": "83e7938730a895c2aff1a7a19b",
+      "out": "\"\\x83瓇0\\xa8\\x95¯\\U0006785b\""
+    },
+    {
+      "name": "random 125",
+      "in_hex": "40e98d9e",
+      "out": "\"@鍞\""
+    },
+    {
+      "name": "random 126",
+      "in_hex": "f48fbfbf22c3b13ff09f98804e7ef392a9b697",
+      "out": "\"\\U0010ffff\\\"ñ?😀N~\\U000d2a76\\x97\""
+    },
+    {
+      "name": "random 127",
+      "in_hex": "e4a5b0f48fbfbf56f1ac87b91cf098bc9413e280a8e7ab8aef9884c3904af3afa39ce7a1b3",
+      "out": "\"䥰\\U0010ffffV\\U0006c1f9\\x1c\\U00018f14\\x13\\u2028竊\\uf604ÐJ\\U000ef8dc硳\""
+    },
+    {
+      "name": "random 128",
+      "in_hex": "ed8497f09f988002f09f98806176b5ecc2b26eec9e8b8fe499b14ca4e4a08dabf48bb89b",
+      "out": "\"턗😀\\x02😀av\\xb5\\xec²n잋\\x8f䙱L\\xa4䠍\\xab\\U0010be1b\""
+    },
+    {
+      "name": "random 129",
+      "in_hex": "e7bab8c2baf09d82922c7cc389f2ac95893ab4f489898b5ceebb8f6cc381c2857fe492bc",
+      "out": "\"纸º𝂒,|É\\U000ac549:\\xb4\\U0010924b\\\\\\ueecflÁ\\u0085\\x7f䒼\""
+    },
+    {
+      "name": "random 130",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 131",
+      "in_hex": "4b",
+      "out": "\"K\""
+    },
+    {
+      "name": "random 132",
+      "in_hex": "6dc39fc3a8f39987a7c3b322096df3a08081c3b5",
+      "out": "\"mßè\\U000d91e7ó\\\"\\tm\\U000e0001õ\""
+    },
+    {
+      "name": "random 133",
+      "in_hex": "efbbbf69e6bd97e5a1abe492b1c5efbfbd61c2a0e8bcabf2878abcee9db930c2b0c2adefbfbdc38fd9f48fbfbf017fe280a8efbfa1",
+      "out": "\"\\ufeffi潗填䒱\\xc5�a\\u00a0輫\\U000872bc\\ue7790°\\u00ad�Ï\\xd9\\U0010ffff\\x01\\x7f\\u2028￡\""
+    },
+    {
+      "name": "random 134",
+      "in_hex": "c39a",
+      "out": "\"Ú\""
+    },
+    {
+      "name": "random 135",
+      "in_hex": "da1158c2ad",
+      "out": "\"\\xda\\x11X\\u00ad\""
+    },
+    {
+      "name": "random 136",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 137",
+      "in_hex": "e280a8ee85b6c6c2bfe280a8f482beb458e2808beca6a5e280a8c3895cf3a08081e58394",
+      "out": "\"\\u2028\\ue176\\xc6¿\\u2028\\U00102fb4X\\u200b즥\\u2028É\\\\\\U000e0001僔\""
+    },
+    {
+      "name": "random 138",
+      "in_hex": "e15cea83b50feea391f48fbfbf07e280a8c296c2a0c285c285c2a4e78b93c3aaefbfbd",
+      "out": "\"\\xe1\\\\ꃵ\\x0f\\ue8d1\\U0010ffff\\a\\u2028\\u0096\\u00a0\\u0085\\u0085¤狓ê�\""
+    },
+    {
+      "name": "random 139",
+      "in_hex": "07f2a39fa6c7c2b0efbfbd7fe280a8358443",
+      "out": "\"\\a\\U000a37e6\\xc7°�\\x7f\\u20285\\x84C\""
+    },
+    {
+      "name": "random 140",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 141",
+      "in_hex": "f3a0808122f09f98802ec2adf1bca39ec29ff09f9880473f5cf29891b374f195b099",
+      "out": "\"\\U000e0001\\\"😀.\\u00ad\\U0007c8de\\u009f😀G?\\\\\\U00098473t\\U00055c19\""
+    },
+    {
+      "name": "random 142",
+      "in_hex": "464c57c39c7fc3b906c3a9efbfbdd361777bc285c3806a99eca8ab",
+      "out": "\"FLWÜ\\x7fù\\x06é�\\xd3aw{\\u0085Àj\\x99쨫\""
+    },
+    {
+      "name": "random 143",
+      "in_hex": "c285c2857fe2808bf0efbbbfefbfbd5821e2808beba896c2826aa8d173096fe3bdbd0bc3a8",
+      "out": "\"\\u0085\\u0085\\x7f\\u200b\\xf0\\ufeff�X!\\u200b먖\\u0082j\\xa8\\xd1s\\to㽽\\vè\""
+    },
+    {
+      "name": "random 144",
+      "in_hex": "773e8bf3bc9abe78c2a0c2b0e89a92ea909bc293be0fc2a220",
+      "out": "\"w\u003e\\x8b\\U000fc6bex\\u00a0°蚒ꐛ\\u0093\\xbe\\x0f¢ \""
+    },
+    {
+      "name": "random 145",
+      "in_hex": "c9da7ff1bd9ca586f29e9b95e694aae0a586916f77f39fbe90e4e283bbc2966be9ae8ae193bf",
+      "out": "\"\\xc9\\xda\\x7f\\U0007d725\\x86\\U0009e6d5攪ॆ\\x91ow\\U000dff90\\xe4\\u20fb\\u0096k鮊ᓿ\""
+    },
+    {
+      "name": "random 146",
+      "in_hex": "c285eb8f8af2acad9ec28822c280e280a85c7f5ce280a8f48dbfb8779cc2adec94a7f2bca9a4c2a0c2bac28b95c2a329",
+      "out": "\"\\u0085돊\\U000acb5e\\u0088\\\"\\u0080\\u2028\\\\\\x7f\\\\\\u2028\\U0010dff8w\\x9c\\u00ad씧\\U000bca64\\u00a0º\\u008b\\x95£)\""
+    },
+    {
+      "name": "random 147",
+      "in_hex": "ee8f91c2b8e0bf8d78ea88b501f09f9880c3809acb73f3a08081e7f1b2babb7ac39ef39ea3a8eaaf9af1959c9f",
+      "out": "\"\\ue3d1¸\\u0fcdxꈵ\\x01😀À\\x9a\\xcbs\\U000e0001\\xe7\\U00072ebbzÞ\\U000de8e8ꯚ\\U0005571f\""
+    },
+    {
+      "name": "random 148",
+      "in_hex": "c289f09ea9890c79caf3a08081f09f9880f48fbfbfc2851eecbab8e280a80838",
+      "out": "\"\\u0089\\U0001ea49\\fy\\xca\\U000e0001😀\\U0010ffff\\u0085\\x1e캸\\u2028\\b8\""
+    },
+    {
+      "name": "random 149",
+      "in_hex": "c2a0ccc387c38efe",
+      "out": "\"\\u00a0\\xccÇÎ\\xfe\""
+    },
+    {
+      "name": "random 150",
+      "in_hex": "54c2a0f3a889b1c28ec2ad68f3a08081f190a59defbbbfefa7b1e18587ebb59dc285c2adec90bc",
+      "out": "\"T\\u00a0\\U000e8271\\u008e\\u00adh\\U000e0001\\U0005095d\\ufeff隣ᅇ뵝\\u0085\\u00ad쐼\""
+    },
+    {
+      "name": "random 151",
+      "in_hex": "c285",
+      "out": "\"\\u0085\""
+    },
+    {
+      "name": "random 152",
+      "in_hex": "db38ea93adf09eb5a228f2afa8b5c3b946e3ba96747fe2808b",
+      "out": "\"\\xdb8ꓭ\\U0001ed62(\\U000afa35ùF㺖t\\x7f\\u200b\""
+    },
+    {
+      "name": "random 153",
+      "in_hex": "e3b3b6dcddc285f094b88dc2a0efbfbd",
+      "out": "\"㳶\\xdc\\xdd\\u0085\\U00014e0d\\u00a0�\""
+    },
+    {
+      "name": "random 154",
+      "in_hex": "22c88bf48fbfbfc2bc7ff091abafc285d8",
+      "out": "\"\\\"ȋ\\U0010ffff¼\\x7f𑫯\\u0085\\xd8\""
+    },
+    {
+      "name": "random 155",
+      "in_hex": "008ac2ade99cb0f390b29ec2a0f28f97903522",
+      "out": "\"\\x00\\x8a\\u00ad霰\\U000d0c9e\\u00a0\\U0008f5d05\\\"\""
+    },
+    {
+      "name": "random 156",
+      "in_hex": "bbafacb4067cc2a2f3a080815ca2c2adedb3bbf0acbabbeaf9f38d86af684a1d7f081c",
+      "out": "\"\\xbb\\xaf\\xac\\xb4\\x06|¢\\U000e0001\\\\\\xa2\\u00ad\\xed\\xb3\\xbb𬺻\\xea\\xf9\\U000cd1afhJ\\x1d\\x7f\\b\\x1c\""
+    },
+    {
+      "name": "random 157",
+      "in_hex": "fe5c587f7f94aaf48fbfbf",
+      "out": "\"\\xfe\\\\X\\x7f\\x7f\\x94\\xaa\\U0010ffff\""
+    },
+    {
+      "name": "random 158",
+      "in_hex": "e2808b",
+      "out": "\"\\u200b\""
+    },
+    {
+      "name": "random 159",
+      "in_hex": "f2b88e8d5ce7f1a494a0f09f9880c380e691bce280a8e53e79f2b6a0b75c",
+      "out": "\"\\U000b838d\\\\\\xe7\\U00064520😀À摼\\u2028\\xe5\u003ey\\U000b6837\\\\\""
+    },
+    {
+      "name": "random 160",
+      "in_hex": "b1f48fbfbff181bd89f3a0808156c2a0c391f09f9880c2adc3aac392c285",
+      "out": "\"\\xb1\\U0010ffff\\U00041f49\\U000e0001V\\u00a0Ñ😀\\u00adêÒ\\u0085\""
+    },
+    {
+      "name": "random 161",
+      "in_hex": "f2a39cb815f294aca2f3a08081c3db1b",
+      "out": "\"\\U000a3738\\x15\\U00094b22\\U000e0001\\xc3\\xdb\\x1b\""
+    },
+    {
+      "name": "random 162",
+      "in_hex": "d874efa3bdc29a090ec380e892b5f29194bc08c2bb6af484aabe5ce4a9f28582bef2af978d2ff48987ad",
+      "out": "\"\\xd8t\\uf8fd\\u009a\\t\\x0eÀ蒵\\U0009153c\\b»j\\U00104abe\\\\\\xe4\\xa9\\U000850be\\U000af5cd/\\U001091ed\""
+    },
+    {
+      "name": "random 163",
+      "in_hex": "e280a8c2b3bdc2a0f3b4bf9d2178e2808be1b38ce79ba07fc658f0a28cb431f3a08081",
+      "out": "\"\\u2028³\\xbd\\u00a0\\U000f4fdd!x\\u200b\\u1ccc盠\\x7f\\xc6X𢌴1\\U000e0001\""
+    },
+    {
+      "name": "random 164",
+      "in_hex": "99c2bbe280a802c2b4f3bbabaaf09f9880",
+      "out": "\"\\x99»\\u2028\\x02´\\U000fbaea😀\""
+    },
+    {
+      "name": "random 165",
+      "in_hex": "b87d6f53c285c38ac03bc3ba2dcd4d0ec385e98cb9f1b2a6a83befbfbde3adad",
+      "out": "\"\\xb8}oS\\u0085Ê\\xc0;ú-\\xcdM\\x0eÅ錹\\U000729a8;�㭭\""
+    },
+    {
+      "name": "random 166",
+      "in_hex": "c7e4879ff48fbfbff1be97b4fc1d",
+      "out": "\"\\xc7䇟\\U0010ffff\\U0007e5f4\\xfc\\x1d\""
+    },
+    {
+      "name": "random 167",
+      "in_hex": "f6f397bea9cec399",
+      "out": "\"\\xf6\\U000d7fa9\\xceÙ\""
+    },
+    {
+      "name": "random 168",
+      "in_hex": "efbbbfc2a0f1a384a1a98d7ab7b9c395f09f9880c3ad4aed818c",
+      "out": "\"\\ufeff\\u00a0\\U00063121\\xa9\\x8dz\\xb7\\xb9Õ😀íJ큌\""
+    },
+    {
+      "name": "random 169",
+      "in_hex": "c382c2adc285c9c291c285e7ac9dd3e184a1c292e2af9e98f2b5ab8d5cc28103e2808b40e4ab9af28d84af",
+      "out": "\"Â\\u00ad\\u0085\\xc9\\u0091\\u0085笝\\xd3ᄡ\\u0092⯞\\x98\\U000b5acd\\\\\\u0081\\x03\\u200b@䫚\\U0008d12f\""
+    },
+    {
+      "name": "random 170",
+      "in_hex": "5c8dedc3913ec2ad32f2a1979d",
+      "out": "\"\\\\\\x8d\\xedÑ\u003e\\u00ad2\\U000a15dd\""
+    },
+    {
+      "name": "random 171",
+      "in_hex": "f2a2a7957410",
+      "out": "\"\\U000a29d5t\\x10\""
+    },
+    {
+      "name": "random 172",
+      "in_hex": "9ff0b8be9e4ef09f9880f3a89b97e391a3eabda6e69c9eee93abf48fbfbff3b7b9b223f09f9880f489bd87f39e9d99eeae94efbbbf",
+      "out": "\"\\x9f\\U00038f9eN😀\\U000e86d7㑣꽦朞\\ue4eb\\U0010ffff\\U000f7e72#😀\\U00109f47\\U000de759\\ueb94\\ufeff\""
+    },
+    {
+      "name": "random 173",
+      "in_hex": "e888a767f282a7bce790bac285e280a837f1919a9c70c28522f3a08081",
+      "out": "\"舧g\\U000829fc琺\\u0085\\u20287\\U0005169cp\\u0085\\\"\\U000e0001\""
+    },
+    {
+      "name": "random 174",
+      "in_hex": "b2c38a6ce4bd9238c2ad9e4e1bf29db6b5ee96bdc392f2b59fa7f395a392",
+      "out": "\"\\xb2Êl佒8\\u00ad\\x9eN\\x1b\\U0009ddb5\\ue5bdÒ\\U000b57e7\\U000d58d2\""
+    },
+    {
+      "name": "random 175",
+      "in_hex": "c3b0f285a1aa36f19db495e9a3a3c3b881f0af82a31b61c29b38c38f49f29bb99e6c55f196aebcf09c888f8c76f1",
+      "out": "\"ð\\U0008586a6\\U0005dd15飣ø\\x81\\U0002f0a3\\x1ba\\u009b8ÏI\\U0009be5elU\\U00056bbc\\U0001c20f\\x8cv\\xf1\""
+    },
+    {
+      "name": "random 176",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 177",
+      "in_hex": "c2a0f19190aa01c2b53168efbfbdc89967e78d91f48fbfbf633f33",
+      "out": "\"\\u00a0\\U0005142a\\x01µ1h�șg獑\\U0010ffffc?3\""
+    },
+    {
+      "name": "random 178",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 179",
+      "in_hex": "c399f19cae99eb85bee2808bc28531e2808bc3bff38b90b5f094bb84cef2858e8be2808b055d35efbfbdf48fbfbfc39a57",
+      "out": "\"Ù\\U0005cb99녾\\u200b\\u00851\\u200bÿ\\U000cb435\\U00014ec4\\xce\\U0008538b\\u200b\\x05]5�\\U0010ffffÚW\""
+    },
+    {
+      "name": "random 180",
+      "in_hex": "39787f",
+      "out": "\"9x\\x7f\""
+    },
+    {
+      "name": "random 181",
+      "in_hex": "c386",
+      "out": "\"Æ\""
+    },
+    {
+      "name": "random 182",
+      "in_hex": "2d7f9e1ad0c2bec387efbfbd5c00c381c2a0",
+      "out": "\"-\\x7f\\x9e\\x1a\\xd0¾Ç�\\\\\\x00Á\\u00a0\""
+    },
+    {
+      "name": "random 183",
+      "in_hex": "591e312722c285f280919bf48fbfbf5b56f48fbfbf2bf395b5a5c2b5c2a0",
+      "out": "\"Y\\x1e1'\\\"\\u0085\\U0008045b\\U0010ffff[V\\U0010ffff+\\U000d5d65µ\\u00a0\""
+    },
+    {
+      "name": "random 184",
+      "in_hex": "cb4c1bc2a0c285d4c2886eee989fc3baec96acc2be7fc2a832f0b49db55cf2a8a2875c2a",
+      "out": "\"\\xcbL\\x1b\\u00a0\\u0085\\xd4\\u0088n\\ue61fú얬¾\\x7f¨2\\U00034775\\\\\\U000a8887\\\\*\""
+    },
+    {
+      "name": "random 185",
+      "in_hex": "f3a68e947f64f191958c",
+      "out": "\"\\U000e6394\\x7fd\\U0005154c\""
+    },
+    {
+      "name": "random 186",
+      "in_hex": "19e490826f7f09",
+      "out": "\"\\x19䐂o\\x7f\\t\""
+    },
+    {
+      "name": "random 187",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 188",
+      "in_hex": "06d4ae10e49598f09f9880eaa49cf3afaabbf48995b900",
+      "out": "\"\\x06Ԯ\\x10䕘😀ꤜ\\U000efabb\\U00109579\\x00\""
+    },
+    {
+      "name": "random 189",
+      "in_hex": "ba7a4eefbbbf51cb",
+      "out": "\"\\xbazN\\ufeffQ\\xcb\""
+    },
+    {
+      "name": "random 190",
+      "in_hex": "e999a4f48fbfbf2b1e77dc78e280a8c2b0e2808b5c5dc38ef1ab9c9e89eea6bc135342",
+      "out": "\"除\\U0010ffff+\\x1ew\\xdcx\\u2028°\\u200b\\\\]Î\\U0006b71e\\x89\\ue9bc\\x13SB\""
+    },
+    {
+      "name": "random 191",
+      "in_hex": "c292e0b0b5c3b7f0b08f80ea91b74cf9c2a009",
+      "out": "\"\\u0092వ÷𰏀ꑷL\\xf9\\u00a0\\t\""
+    },
+    {
+      "name": "random 192",
+      "in_hex": "c2ad7c4fefbfbdc280abc3b3f396a099e59aa7",
+      "out": "\"\\u00ad|O�\\u0080\\xabó\\U000d6819嚧\""
+    },
+    {
+      "name": "random 193",
+      "in_hex": "11c2ad7cf0a1b89e90025cb1477fc287e5a58fefa597c2a0fc",
+      "out": "\"\\x11\\u00ad|𡸞\\x90\\x02\\\\\\xb1G\\x7f\\u0087奏綾\\u00a0\\xfc\""
+    },
+    {
+      "name": "random 194",
+      "in_hex": "f48fbfbf",
+      "out": "\"\\U0010ffff\""
+    },
+    {
+      "name": "random 195",
+      "in_hex": "e48a8aefbbbfe0b59d3414c39fc2a0794d4ae29f8ef2a3b483c294efbbbf04c29f",
+      "out": "\"䊊\\ufeff൝4\\x14ß\\u00a0yMJ⟎\\U000a3d03\\u0094\\ufeff\\x04\\u009f\""
+    },
+    {
+      "name": "random 196",
+      "in_hex": "e2bf98a0e7b7bbf3b19eb539efbfbd62edafad12e4bab46bf39996afe280a85d",
+      "out": "\"\\u2fd8\\xa0緻\\U000f17b59�b\\xed\\xaf\\xad\\x12亴k\\U000d95af\\u2028]\""
+    },
+    {
+      "name": "random 197",
+      "in_hex": "19c2ad22c2a0c289f38b80b3c296e280a82102921b",
+      "out": "\"\\x19\\u00ad\\\"\\u00a0\\u0089\\U000cb033\\u0096\\u2028!\\x02\\x92\\x1b\""
+    },
+    {
+      "name": "random 198",
+      "in_hex": "caee89b247e2bda2c2a053c2816df282ba8037c3994f4e58e2808befbfbdf3a08081f197b59ec394c2acc2ad5c",
+      "out": "\"\\xca\\ue272G⽢\\u00a0S\\u0081m\\U00082e807ÙONX\\u200b�\\U000e0001\\U00057d5eÔ¬\\u00ad\\\\\""
+    },
+    {
+      "name": "random 199",
+      "in_hex": "f28999bbc285c2a0c38ec3a816f3b1babcf1b988b0f3a080811bc285e4b4aaf29f85906dc2b463f195ae8acff3a08081c399f2b59db3",
+      "out": "\"\\U0008967b\\u0085\\u00a0Îè\\x16\\U000f1ebc\\U00079230\\U000e0001\\x1b\\u0085䴪\\U0009f150m´c\\U00055b8a\\xcf\\U000e0001Ù\\U000b5773\""
+    },
+    {
+      "name": "random 200",
+      "in_hex": "f3a08081e585b4f18d9881eeb9af566ef29da68befbbbfc28500515f57f0beee9bb7ecb188e280a816efbbbfe91a",
+      "out": "\"\\U000e0001兴\\U0004d601\\uee6fVn\\U0009d98b\\ufeff\\u0085\\x00Q_W\\xf0\\xbe\\ue6f7챈\\u2028\\x16\\ufeff\\xe9\\x1a\""
+    },
+    {
+      "name": "random 201",
+      "in_hex": "1be39aa3d4",
+      "out": "\"\\x1b㚣\\xd4\""
+    },
+    {
+      "name": "random 202",
+      "in_hex": "c3bc1ec39ac49b36c2b8",
+      "out": "\"ü\\x1eÚě6¸\""
+    },
+    {
+      "name": "random 203",
+      "in_hex": "3af3a080819dc4b07f47437f0eebb093f2ae9480e1aeb75cc299c392b9eaa592ea5f",
+      "out": "\":\\U000e0001\\x9dİ\\x7fGC\\x7f\\x0e밓\\U000ae500᮷\\\\\\u0099Ò\\xb9ꥒ\\xea_\""
+    },
+    {
+      "name": "random 204",
+      "in_hex": "c3abe29089c28cc285eb81a7c3ac7f4ee2808bf1a38387eb8089c2ade88ba7f095b292",
+      "out": "\"ë␉\\u008c\\u0085끧ì\\x7fN\\u200b\\U000630c7뀉\\u00ad苧\\U00015c92\""
+    },
+    {
+      "name": "random 205",
+      "in_hex": "c2ba356e7ff2acaf80e89eab2ff297b2af71c2851df29e9eb2f48fbfbf5c18c281a0c387c2adf3a08081",
+      "out": "\"º5n\\x7f\\U000acbc0螫/\\U00097cafq\\u0085\\x1d\\U0009e7b2\\U0010ffff\\\\\\x18\\u0081\\xa0Ç\\u00ad\\U000e0001\""
+    },
+    {
+      "name": "random 206",
+      "in_hex": "f093a0b553e2bcb11078c3b700c3af0ef1899da547027fc2ac9a",
+      "out": "\"\\U00013835S⼱\\x10x÷\\x00ï\\x0e\\U00049765G\\x02\\x7f¬\\x9a\""
+    },
+    {
+      "name": "random 207",
+      "in_hex": "44efbbbf",
+      "out": "\"D\\ufeff\""
+    },
+    {
+      "name": "random 208",
+      "in_hex": "0139a6a1f3b3bfa6f0b596a5efbbbfe8a8ac5dca5cee8face3819ec3a5e1a790ee85b6",
+      "out": "\"\\x019\\xa6\\xa1\\U000f3fe6\\U000355a5\\ufeff訬]\\xca\\\\\\ue3ecぞå᧐\\ue176\""
+    },
+    {
+      "name": "random 209",
+      "in_hex": "f48fbfbf22",
+      "out": "\"\\U0010ffff\\\"\""
+    },
+    {
+      "name": "random 210",
+      "in_hex": "f2b680b5e69aa8f0b484b423f2b2b380c284f48dafacf0958f8fa4c2bd122f17f090b3a713f19a9896e2808b5cecaca6f2ada0b8efbbbf34c396",
+      "out": "\"\\U000b6035暨\\U00034134#\\U000b2cc0\\u0084\\U0010dbec\\U000153cf\\xa4½\\x12/\\x17𐳧\\x13\\U0005a616\\u200b\\\\쬦\\U000ad838\\ufeff4Ö\""
+    },
+    {
+      "name": "random 211",
+      "in_hex": "ee9892c28a",
+      "out": "\"\\ue612\\u008a\""
+    },
+    {
+      "name": "random 212",
+      "in_hex": "c2afde5bc2adc3a7",
+      "out": "\"¯\\xde[\\u00adç\""
+    },
+    {
+      "name": "random 213",
+      "in_hex": "c3bb05b0efbbbfc2a0d46b3173f48c95ad1ef188b98bb8c29ac2ba89ebbc82f199aab6e280a83c",
+      "out": "\"û\\x05\\xb0\\ufeff\\u00a0\\xd4k1s\\U0010c56d\\x1e\\U00048e4b\\xb8\\u009aº\\x89뼂\\U00059ab6\\u2028\u003c\""
+    },
+    {
+      "name": "random 214",
+      "in_hex": "fac2b5c3b64eefbbbf08e2808bf48fbfbfadf1a1abbd41",
+      "out": "\"\\xfaµöN\\ufeff\\b\\u200b\\U0010ffff\\xad\\U00061afdA\""
+    },
+    {
+      "name": "random 215",
+      "in_hex": "c2bb94c399f3a08081eba5b1c39cf1b2979531c2806cf3a080812259ee8d8098f398babbe0f3a2afbe",
+      "out": "\"»\\x94Ù\\U000e0001륱Ü\\U000725d51\\u0080l\\U000e0001\\\"Y\\ue340\\x98\\U000d8ebb\\xe0\\U000e2bfe\""
+    },
+    {
+      "name": "random 216",
+      "in_hex": "e5bc96c381f383a5a5f09f98807bc3b9",
+      "out": "\"弖Á\\U000c3965😀{ù\""
+    },
+    {
+      "name": "random 217",
+      "in_hex": "c2b0bee18c87f3bfb09611c2b9c391d8ddec8db8e2808bed99b1",
+      "out": "\"°\\xbeጇ\\U000ffc16\\x11¹Ñ\\xd8\\xdd썸\\u200b홱\""
+    },
+    {
+      "name": "random 218",
+      "in_hex": "f48fbfbff03decc393e2808beab488",
+      "out": "\"\\U0010ffff\\xf0=\\xecÓ\\u200b괈\""
+    },
+    {
+      "name": "random 219",
+      "in_hex": "f39a80b732f385af9cc79022c2a0c39311345c6acb2cc3a258c3ba34f388b899c38ac2a0c299c285",
+      "out": "\"\\U000da0372\\U000c5bdcǐ\\\"\\u00a0Ó\\x114\\\\j\\xcb,âXú4\\U000c8e19Ê\\u00a0\\u0099\\u0085\""
+    },
+    {
+      "name": "random 220",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 221",
+      "in_hex": "f19fbb8ff2",
+      "out": "\"\\U0005fecf\\xf2\""
+    },
+    {
+      "name": "random 222",
+      "in_hex": "5ce4808af04368a2fae6",
+      "out": "\"\\\\䀊\\xf0Ch\\xa2\\xfa\\xe6\""
+    },
+    {
+      "name": "random 223",
+      "in_hex": "eebfaff3a08081f395bb85f1a4bbb3c3825df099ba95f3a08081",
+      "out": "\"\\uefef\\U000e0001\\U000d5ec5\\U00064ef3Â]\\U00019e95\\U000e0001\""
+    },
+    {
+      "name": "random 224",
+      "in_hex": "f3f18bb8a0267f5dc2bfe2808bea9fa7c3a5efbbbf6af18588a77f61825cd313e280a8",
+      "out": "\"\\xf3\\U0004be20\u0026\\x7f]¿\\u200b\\ua7e7å\\ufeffj\\U00045227\\x7fa\\x82\\\\\\xd3\\x13\\u2028\""
+    },
+    {
+      "name": "random 225",
+      "in_hex": "c5f48fbfbf22651e9071f286bc9ec388c388ea80a97f223e",
+      "out": "\"\\xc5\\U0010ffff\\\"e\\x1e\\x90q\\U00086f1eÈÈꀩ\\x7f\\\"\u003e\""
+    },
+    {
+      "name": "random 226",
+      "in_hex": "2ca802",
+      "out": "\",\\xa8\\x02\""
+    },
+    {
+      "name": "random 227",
+      "in_hex": "36",
+      "out": "\"6\""
+    },
+    {
+      "name": "random 228",
+      "in_hex": "c2b0",
+      "out": "\"°\""
+    },
+    {
+      "name": "random 229",
+      "in_hex": "eea2bc027deba79bf196a3b43df1a09e892cefbbbfd5f48295ab51",
+      "out": "\"\\ue8bc\\x02}맛\\U000568f4=\\U00060789,\\ufeff\\xd5\\U0010256bQ\""
+    },
+    {
+      "name": "random 230",
+      "in_hex": "e280a8c395521109f385ba82f2be91b2efbfbdcf7f5622",
+      "out": "\"\\u2028ÕR\\x11\\t\\U000c5e82\\U000be472�\\xcf\\x7fV\\\"\""
+    },
+    {
+      "name": "random 231",
+      "in_hex": "21f09f9880",
+      "out": "\"!😀\""
+    },
+    {
+      "name": "random 232",
+      "in_hex": "e7c3c79e",
+      "out": "\"\\xe7\\xc3Ǟ\""
+    },
+    {
+      "name": "random 233",
+      "in_hex": "0931e2808bf48fbfbff3859295f18ba8a14322",
+      "out": "\"\\t1\\u200b\\U0010ffff\\U000c5495\\U0004ba21C\\\"\""
+    },
+    {
+      "name": "random 234",
+      "in_hex": "ed87a1e5a5aff1afadb1ea85a5",
+      "out": "\"퇡奯\\U0006fb71ꅥ\""
+    },
+    {
+      "name": "random 235",
+      "in_hex": "c285f3a080815c5c",
+      "out": "\"\\u0085\\U000e0001\\\\\\\\\""
+    },
+    {
+      "name": "random 236",
+      "in_hex": "18e581a8e0b685e2808b5c",
+      "out": "\"\\x18偨අ\\u200b\\\\\""
+    },
+    {
+      "name": "random 237",
+      "in_hex": "c284eaa8b8e6aca27ff3a08081ebba90c522c2adc3aed05c64e2808bf09f9880",
+      "out": "\"\\u0084\\uaa38欢\\x7f\\U000e0001뺐\\xc5\\\"\\u00adî\\xd0\\\\d\\u200b😀\""
+    },
+    {
+      "name": "random 238",
+      "in_hex": "f48fbfbff48fbfbfc2ade99d97e7b485f2af968772c28c22c28b742e",
+      "out": "\"\\U0010ffff\\U0010ffff\\u00ad靗紅\\U000af587r\\u008c\\\"\\u008bt.\""
+    },
+    {
+      "name": "random 239",
+      "in_hex": "9de2808b1267ee95b7dbefbfbdf3b9978a0fe2808b7ff3a08081225af28e9896ba",
+      "out": "\"\\x9d\\u200b\\x12g\\ue577\\xdb�\\U000f95ca\\x0f\\u200b\\x7f\\U000e0001\\\"Z\\U0008e616\\xba\""
+    },
+    {
+      "name": "random 240",
+      "in_hex": "c3ae00a4f09f9880e588c7ec98bde2a9aac2a04c93d07fc2ade795b0f19bb387e5b68445c39ce0b986",
+      "out": "\"î\\x00\\xa4😀\\xe5\\x88\\xc7옽⩪\\u00a0L\\x93\\xd0\\x7f\\u00ad異\\U0005bcc7嶄EÜๆ\""
+    },
+    {
+      "name": "random 241",
+      "in_hex": "e998ab8fc2b15ccef3a08081c2bdc285f48fbfbf6ae7b7976f648bc3a65cf1aa8a8b",
+      "out": "\"阫\\x8f±\\\\\\xce\\U000e0001½\\u0085\\U0010ffffj緗od\\x8bæ\\\\\\U0006a28b\""
+    },
+    {
+      "name": "random 242",
+      "in_hex": "47cae2808befaa84e1eeb79e3cf3b09c9bc28cf48fbfbf783ef09f9880c2a622a2c2adc2a0e2808bc2a0c29e",
+      "out": "\"G\\xca\\u200b彩\\xe1\\uedde\u003c\\U000f071b\\u008c\\U0010ffffx\u003e😀¦\\\"\\xa2\\u00ad\\u00a0\\u200b\\u00a0\\u009e\""
+    },
+    {
+      "name": "random 243",
+      "in_hex": "29c293c381f0af85a9e8a49f1ec39aa2c38ac3b1",
+      "out": "\")\\u0093Á\\U0002f169褟\\x1eÚ\\xa2Êñ\""
+    },
+    {
+      "name": "random 244",
+      "in_hex": "",
+      "out": "\"\""
+    },
+    {
+      "name": "random 245",
+      "in_hex": "4a74ec9d94f487b1a17fc2b3",
+      "out": "\"Jt읔\\U00107c61\\x7f³\""
+    },
+    {
+      "name": "random 246",
+      "in_hex": "9b3df38a88bcf3a08081f3898db474e280a87f29f2a3ae91f09f98805c49efbbbfee93bd39c2a5065c13",
+      "out": "\"\\x9b=\\U000ca23c\\U000e0001\\U000c9374t\\u2028\\x7f)\\U000a3b91😀\\\\I\\ufeff\\ue4fd9¥\\x06\\\\\\x13\""
+    },
+    {
+      "name": "random 247",
+      "in_hex": "7ac2a6",
+      "out": "\"z¦\""
+    },
+    {
+      "name": "random 248",
+      "in_hex": "ec89aef0a8aba85c2024e58985c384c2a0c29a7fe27aee818aefae8de4b3b9",
+      "out": "\"쉮𨫨\\\\ $剅Ä\\u00a0\\u009a\\x7f\\xe2z\\ue04aﮍ䳹\""
+    },
+    {
+      "name": "random 249",
+      "in_hex": "5674f1a086a8c2a055efbfbd",
+      "out": "\"Vt\\U000601a8\\u00a0U�\""
+    },
+    {
+      "name": "random 250",
+      "in_hex": "2faeefbfbd55f48fbfbf2227",
+      "out": "\"/\\xae�U\\U0010ffff\\\"'\""
+    },
+    {
+      "name": "random 251",
+      "in_hex": "c2a03a4b312ec2a6c3aa",
+      "out": "\"\\u00a0:K1.¦ê\""
+    },
+    {
+      "name": "random 252",
+      "in_hex": "c3b98a25f48fbfbff09f9880f2a9aaad8dabae",
+      "out": "\"ù\\x8a%\\U0010ffff😀\\U000a9aad\\x8d\\xab\\xae\""
+    },
+    {
+      "name": "random 253",
+      "in_hex": "20e6be8f8cf3b78bacf38489baf28daaa5f487bab3",
+      "out": "\" 澏\\x8c\\U000f72ec\\U000c427a\\U0008daa5\\U00107eb3\""
+    },
+    {
+      "name": "random 254",
+      "in_hex": "22e280a84c",
+      "out": "\"\\\"\\u2028L\""
+    },
+    {
+      "name": "random 255",
+      "in_hex": "7de2808bee8abfefbfbded8dabb0c390222c",
+      "out": "\"}\\u200b\\ue2bf�퍫\\xb0Ð\\\",\""
+    }
+  ],
+  "is_print_flips": [
+    32,
+    127,
+    161,
+    173,
+    174,
+    888,
+    890,
+    896,
+    900,
+    907,
+    908,
+    909,
+    910,
+    930,
+    931,
+    1328,
+    1329,
+    1367,
+    1369,
+    1419,
+    1421,
+    1424,
+    1425,
+    1480,
+    1488,
+    1515,
+    1519,
+    1525,
+    1542,
+    1564,
+    1565,
+    1757,
+    1758,
+    1806,
+    1808,
+    1867,
+    1869,
+    1970,
+    1984,
+    2043,
+    2045,
+    2094,
+    2096,
+    2111,
+    2112,
+    2140,
+    2142,
+    2143,
+    2144,
+    2155,
+    2160,
+    2191,
+    2200,
+    2274,
+    2275,
+    2436,
+    2437,
+    2445,
+    2447,
+    2449,
+    2451,
+    2473,
+    2474,
+    2481,
+    2482,
+    2483,
+    2486,
+    2490,
+    2492,
+    2501,
+    2503,
+    2505,
+    2507,
+    2511,
+    2519,
+    2520,
+    2524,
+    2526,
+    2527,
+    2532,
+    2534,
+    2559,
+    2561,
+    2564,
+    2565,
+    2571,
+    2575,
+    2577,
+    2579,
+    2601,
+    2602,
+    2609,
+    2610,
+    2612,
+    2613,
+    2615,
+    2616,
+    2618,
+    2620,
+    2621,
+    2622,
+    2627,
+    2631,
+    2633,
+    2635,
+    2638,
+    2641,
+    2642,
+    2649,
+    2653,
+    2654,
+    2655,
+    2662,
+    2679,
+    2689,
+    2692,
+    2693,
+    2702,
+    2703,
+    2706,
+    2707,
+    2729,
+    2730,
+    2737,
+    2738,
+    2740,
+    2741,
+    2746,
+    2748,
+    2758,
+    2759,
+    2762,
+    2763,
+    2766,
+    2768,
+    2769,
+    2784,
+    2788,
+    2790,
+    2802,
+    2809,
+    2816,
+    2817,
+    2820,
+    2821,
+    2829,
+    2831,
+    2833,
+    2835,
+    2857,
+    2858,
+    2865,
+    2866,
+    2868,
+    2869,
+    2874,
+    2876,
+    2885,
+    2887,
+    2889,
+    2891,
+    2894,
+    2901,
+    2904,
+    2908,
+    2910,
+    2911,
+    2916,
+    2918,
+    2936,
+    2946,
+    2948,
+    2949,
+    2955,
+    2958,
+    2961,
+    2962,
+    2966,
+    2969,
+    2971,
+    2972,
+    2973,
+    2974,
+    2976,
+    2979,
+    2981,
+    2984,
+    2987,
+    2990,
+    3002,
+    3006,
+    3011,
+    3014,
+    3017,
+    3018,
+    3022,
+    3024,
+    3025,
+    3031,
+    3032,
+    3046,
+    3067,
+    3072,
+    3085,
+    3086,
+    3089,
+    3090,
+    3113,
+    3114,
+    3130,
+    3132,
+    3141,
+    3142,
+    3145,
+    3146,
+    3150,
+    3157,
+    3159,
+    3160,
+    3163,
+    3165,
+    3166,
+    3168,
+    3172,
+    3174,
+    3184,
+    3191,
+    3213,
+    3214,
+    3217,
+    3218,
+    3241,
+    3242,
+    3252,
+    3253,
+    3258,
+    3260,
+    3269,
+    3270,
+    3273,
+    3274,
+    3278,
+    3285,
+    3287,
+    3293,
+    3295,
+    3296,
+    3300,
+    3302,
+    3312,
+    3313,
+    3316,
+    3328,
+    3341,
+    3342,
+    3345,
+    3346,
+    3397,
+    3398,
+    3401,
+    3402,
+    3408,
+    3412,
+    3428,
+    3430,
+    3456,
+    3457,
+    3460,
+    3461,
+    3479,
+    3482,
+    3506,
+    3507,
+    3516,
+    3517,
+    3518,
+    3520,
+    3527,
+    3530,
+    3531,
+    3535,
+    3541,
+    3542,
+    3543,
+    3544,
+    3552,
+    3558,
+    3568,
+    3570,
+    3573,
+    3585,
+    3643,
+    3647,
+    3676,
+    3713,
+    3715,
+    3716,
+    3717,
+    3718,
+    3723,
+    3724,
+    3748,
+    3749,
+    3750,
+    3751,
+    3774,
+    3776,
+    3781,
+    3782,
+    3783,
+    3784,
+    3791,
+    3792,
+    3802,
+    3804,
+    3808,
+    3840,
+    3912,
+    3913,
+    3949,
+    3953,
+    3992,
+    3993,
+    4029,
+    4030,
+    4045,
+    4046,
+    4059,
+    4096,
+    4294,
+    4295,
+    4296,
+    4301,
+    4302,
+    4304,
+    4681,
+    4682,
+    4686,
+    4688,
+    4695,
+    4696,
+    4697,
+    4698,
+    4702,
+    4704,
+    4745,
+    4746,
+    4750,
+    4752,
+    4785,
+    4786,
+    4790,
+    4792,
+    4799,
+    4800,
+    4801,
+    4802,
+    4806,
+    4808,
+    4823,
+    4824,
+    4881,
+    4882,
+    4886,
+    4888,
+    4955,
+    4957,
+    4989,
+    4992,
+    5018,
+    5024,
+    5110,
+    5112,
+    5118,
+    5120,
+    5760,
+    5761,
+    5789,
+    5792,
+    5881,
+    5888,
+    5910,
+    5919,
+    5943,
+    5952,
+    5972,
+    5984,
+    5997,
+    5998,
+    6001,
+    6002,
+    6004,
+    6016,
+    6110,
+    6112,
+    6122,
+    6128,
+    6138,
+    6144,
+    6158,
+    6159,
+    6170,
+    6176,
+    6265,
+    6272,
+    6315,
+    6320,
+    6390,
+    6400,
+    6431,
+    6432,
+    6444,
+    6448,
+    6460,
+    6464,
+    6465,
+    6468,
+    6510,
+    6512,
+    6517,
+    6528,
+    6572,
+    6576,
+    6602,
+    6608,
+    6619,
+    6622,
+    6684,
+    6686,
+    6751,
+    6752,
+    6781,
+    6783,
+    6794,
+    6800,
+    6810,
+    6816,
+    6830,
+    6832,
+    6863,
+    6912,
+    6989,
+    6992,
+    7039,
+    7040,
+    7156,
+    7164,
+    7224,
+    7227,
+    7242,
+    7245,
+    7305,
+    7312,
+    7355,
+    7357,
+    7368,
+    7376,
+    7419,
+    7424,
+    7958,
+    7960,
+    7966,
+    7968,
+    8006,
+    8008,
+    8014,
+    8016,
+    8024,
+    8025,
+    8026,
+    8027,
+    8028,
+    8029,
+    8030,
+    8031,
+    8062,
+    8064,
+    8117,
+    8118,
+    8133,
+    8134,
+    8148,
+    8150,
+    8156,
+    8157,
+    8176,
+    8178,
+    8181,
+    8182,
+    8191,
+    8208,
+    8232,
+    8240,
+    8287,
+    8304,
+    8306,
+    8308,
+    8335,
+    8336,
+    8349,
+    8352,
+    8385,
+    8400,
+    8433,
+    8448,
+    8588,
+    8592,
+    9255,
+    9280,
+    9291,
+    9312,
+    11124,
+    11126,
+    11158,
+    11159,
+    11508,
+    11513,
+    11558,
+    11559,
+    11560,
+    11565,
+    11566,
+    11568,
+    11624,
+    11631,
+    11633,
+    11647,
+    11671,
+    11680,
+    11687,
+    11688,
+    11695,
+    11696,
+    11703,
+    11704,
+    11711,
+    11712,
+    11719,
+    11720,
+    11727,
+    11728,
+    11735,
+    11736,
+    11743,
+    11744,
+    11870,
+    11904,
+    11930,
+    11931,
+    12020,
+    12032,
+    12246,
+    12272,
+    12284,
+    12289,
+    12352,
+    12353,
+    12439,
+    12441,
+    12544,
+    12549,
+    12592,
+    12593,
+    12687,
+    12688,
+    12772,
+    12784,
+    12831,
+    12832,
+    42125,
+    42128,
+    42183,
+    42192,
+    42540,
+    42560,
+    42744,
+    42752,
+    42955,
+    42960,
+    42962,
+    42963,
+    42964,
+    42965,
+    42970,
+    42994,
+    43053,
+    43056,
+    43066,
+    43072,
+    43128,
+    43136,
+    43206,
+    43214,
+    43226,
+    43232,
+    43348,
+    43359,
+    43389,
+    43392,
+    43470,
+    43471,
+    43482,
+    43486,
+    43519,
+    43520,
+    43575,
+    43584,
+    43598,
+    43600,
+    43610,
+    43612,
+    43715,
+    43739,
+    43767,
+    43777,
+    43783,
+    43785,
+    43791,
+    43793,
+    43799,
+    43808,
+    43815,
+    43816,
+    43823,
+    43824,
+    43884,
+    43888,
+    44014,
+    44016,
+    44026,
+    44032,
+    55204,
+    55216,
+    55239,
+    55243,
+    55292,
+    63744,
+    64110,
+    64112,
+    64218,
+    64256,
+    64263,
+    64275,
+    64280,
+    64285,
+    64311,
+    64312,
+    64317,
+    64318,
+    64319,
+    64320,
+    64322,
+    64323,
+    64325,
+    64326,
+    64451,
+    64467,
+    64912,
+    64914,
+    64968,
+    64975,
+    64976,
+    65008,
+    65050,
+    65056,
+    65107,
+    65108,
+    65127,
+    65128,
+    65132,
+    65136,
+    65141,
+    65142,
+    65277,
+    65281,
+    65471,
+    65474,
+    65480,
+    65482,
+    65488,
+    65490,
+    65496,
+    65498,
+    65501,
+    65504,
+    65511,
+    65512,
+    65519,
+    65532,
+    65534,
+    65536,
+    65548,
+    65549,
+    65575,
+    65576,
+    65595,
+    65596,
+    65598,
+    65599,
+    65614,
+    65616,
+    65630,
+    65664,
+    65787,
+    65792,
+    65795,
+    65799,
+    65844,
+    65847,
+    65935,
+    65936,
+    65949,
+    65952,
+    65953,
+    66000,
+    66046,
+    66176,
+    66205,
+    66208,
+    66257,
+    66272,
+    66300,
+    66304,
+    66340,
+    66349,
+    66379,
+    66384,
+    66427,
+    66432,
+    66462,
+    66463,
+    66500,
+    66504,
+    66518,
+    66560,
+    66718,
+    66720,
+    66730,
+    66736,
+    66772,
+    66776,
+    66812,
+    66816,
+    66856,
+    66864,
+    66916,
+    66927,
+    66939,
+    66940,
+    66955,
+    66956,
+    66963,
+    66964,
+    66966,
+    66967,
+    66978,
+    66979,
+    66994,
+    66995,
+    67002,
+    67003,
+    67005,
+    67072,
+    67383,
+    67392,
+    67414,
+    67424,
+    67432,
+    67456,
+    67462,
+    67463,
+    67505,
+    67506,
+    67515,
+    67584,
+    67590,
+    67592,
+    67593,
+    67594,
+    67638,
+    67639,
+    67641,
+    67644,
+    67645,
+    67647,
+    67670,
+    67671,
+    67743,
+    67751,
+    67760,
+    67808,
+    67827,
+    67828,
+    67830,
+    67835,
+    67868,
+    67871,
+    67898,
+    67903,
+    67904,
+    67968,
+    68024,
+    68028,
+    68048,
+    68050,
+    68100,
+    68101,
+    68103,
+    68108,
+    68116,
+    68117,
+    68120,
+    68121,
+    68150,
+    68152,
+    68155,
+    68159,
+    68169,
+    68176,
+    68185,
+    68192,
+    68256,
+    68288,
+    68327,
+    68331,
+    68343,
+    68352,
+    68406,
+    68409,
+    68438,
+    68440,
+    68467,
+    68472,
+    68498,
+    68505,
+    68509,
+    68521,
+    68528,
+    68608,
+    68681,
+    68736,
+    68787,
+    68800,
+    68851,
+    68858,
+    68904,
+    68912,
+    68922,
+    69216,
+    69247,
+    69248,
+    69290,
+    69291,
+    69294,
+    69296,
+    69298,
+    69373,
+    69416,
+    69424,
+    69466,
+    69488,
+    69514,
+    69552,
+    69580,
+    69600,
+    69623,
+    69632,
+    69710,
+    69714,
+    69750,
+    69759,
+    69821,
+    69822,
+    69827,
+    69840,
+    69865,
+    69872,
+    69882,
+    69888,
+    69941,
+    69942,
+    69960,
+    69968,
+    70007,
+    70016,
+    70112,
+    70113,
+    70133,
+    70144,
+    70162,
+    70163,
+    70210,
+    70272,
+    70279,
+    70280,
+    70281,
+    70282,
+    70286,
+    70287,
+    70302,
+    70303,
+    70314,
+    70320,
+    70379,
+    70384,
+    70394,
+    70400,
+    70404,
+    70405,
+    70413,
+    70415,
+    70417,
+    70419,
+    70441,
+    70442,
+    70449,
+    70450,
+    70452,
+    70453,
+    70458,
+    70459,
+    70469,
+    70471,
+    70473,
+    70475,
+    70478,
+    70480,
+    70481,
+    70487,
+    70488,
+    70493,
+    70500,
+    70502,
+    70509,
+    70512,
+    70517,
+    70656,
+    70748,
+    70749,
+    70754,
+    70784,
+    70856,
+    70864,
+    70874,
+    71040,
+    71094,
+    71096,
+    71134,
+    71168,
+    71237,
+    71248,
+    71258,
+    71264,
+    71277,
+    71296,
+    71354,
+    71360,
+    71370,
+    71424,
+    71451,
+    71453,
+    71468,
+    71472,
+    71495,
+    71680,
+    71740,
+    71840,
+    71923,
+    71935,
+    71943,
+    71945,
+    71946,
+    71948,
+    71956,
+    71957,
+    71959,
+    71960,
+    71990,
+    71991,
+    71993,
+    71995,
+    72007,
+    72016,
+    72026,
+    72096,
+    72104,
+    72106,
+    72152,
+    72154,
+    72165,
+    72192,
+    72264,
+    72272,
+    72355,
+    72368,
+    72441,
+    72448,
+    72458,
+    72704,
+    72713,
+    72714,
+    72759,
+    72760,
+    72774,
+    72784,
+    72813,
+    72816,
+    72848,
+    72850,
+    72872,
+    72873,
+    72887,
+    72960,
+    72967,
+    72968,
+    72970,
+    72971,
+    73015,
+    73018,
+    73019,
+    73020,
+    73022,
+    73023,
+    73032,
+    73040,
+    73050,
+    73056,
+    73062,
+    73063,
+    73065,
+    73066,
+    73103,
+    73104,
+    73106,
+    73107,
+    73113,
+    73120,
+    73130,
+    73440,
+    73465,
+    73472,
+    73489,
+    73490,
+    73531,
+    73534,
+    73562,
+    73648,
+    73649,
+    73664,
+    73714,
+    73727,
+    74650,
+    74752,
+    74863,
+    74864,
+    74869,
+    74880,
+    75076,
+    77712,
+    77811,
+    77824,
+    78896,
+    78912,
+    78934,
+    82944,
+    83527,
+    92160,
+    92729,
+    92736,
+    92767,
+    92768,
+    92778,
+    92782,
+    92863,
+    92864,
+    92874,
+    92880,
+    92910,
+    92912,
+    92918,
+    92928,
+    92998,
+    93008,
+    93018,
+    93019,
+    93026,
+    93027,
+    93048,
+    93053,
+    93072,
+    93760,
+    93851,
+    93952,
+    94027,
+    94031,
+    94088,
+    94095,
+    94112,
+    94176,
+    94181,
+    94192,
+    94194,
+    94208,
+    100344,
+    100352,
+    101590,
+    101632,
+    101641,
+    110576,
+    110580,
+    110581,
+    110588,
+    110589,
+    110591,
+    110592,
+    110883,
+    110898,
+    110899,
+    110928,
+    110931,
+    110933,
+    110934,
+    110948,
+    110952,
+    110960,
+    111356,
+    113664,
+    113771,
+    113776,
+    113789,
+    113792,
+    113801,
+    113808,
+    113818,
+    113820,
+    113824,
+    118528,
+    118574,
+    118576,
+    118599,
+    118608,
+    118724,
+    118784,
+    119030,
+    119040,
+    119079,
+    119081,
+    119155,
+    119163,
+    119275,
+    119296,
+    119366,
+    119488,
+    119508,
+    119520,
+    119540,
+    119552,
+    119639,
+    119648,
+    119673,
+    119808,
+    119893,
+    119894,
+    119965,
+    119966,
+    119968,
+    119970,
+    119971,
+    119973,
+    119975,
+    119977,
+    119981,
+    119982,
+    119994,
+    119995,
+    119996,
+    119997,
+    120004,
+    120005,
+    120070,
+    120071,
+    120075,
+    120077,
+    120085,
+    120086,
+    120093,
+    120094,
+    120122,
+    120123,
+    120127,
+    120128,
+    120133,
+    120134,
+    120135,
+    120138,
+    120145,
+    120146,
+    120486,
+    120488,
+    120780,
+    120782,
+    121484,
+    121499,
+    121504,
+    121505,
+    121520,
+    122624,
+    122655,
+    122661,
+    122667,
+    122880,
+    122887,
+    122888,
+    122905,
+    122907,
+    122914,
+    122915,
+    122917,
+    122918,
+    122923,
+    122928,
+    122990,
+    123023,
+    123024,
+    123136,
+    123181,
+    123184,
+    123198,
+    123200,
+    123210,
+    123214,
+    123216,
+    123536,
+    123567,
+    123584,
+    123642,
+    123647,
+    123648,
+    124112,
+    124154,
+    124896,
+    124903,
+    124904,
+    124908,
+    124909,
+    124911,
+    124912,
+    124927,
+    124928,
+    125125,
+    125127,
+    125143,
+    125184,
+    125260,
+    125264,
+    125274,
+    125278,
+    125280,
+    126065,
+    126133,
+    126209,
+    126270,
+    126464,
+    126468,
+    126469,
+    126496,
+    126497,
+    126499,
+    126500,
+    126501,
+    126503,
+    126504,
+    126505,
+    126515,
+    126516,
+    126520,
+    126521,
+    126522,
+    126523,
+    126524,
+    126530,
+    126531,
+    126535,
+    126536,
+    126537,
+    126538,
+    126539,
+    126540,
+    126541,
+    126544,
+    126545,
+    126547,
+    126548,
+    126549,
+    126551,
+    126552,
+    126553,
+    126554,
+    126555,
+    126556,
+    126557,
+    126558,
+    126559,
+    126560,
+    126561,
+    126563,
+    126564,
+    126565,
+    126567,
+    126571,
+    126572,
+    126579,
+    126580,
+    126584,
+    126585,
+    126589,
+    126590,
+    126591,
+    126592,
+    126602,
+    126603,
+    126620,
+    126625,
+    126628,
+    126629,
+    126634,
+    126635,
+    126652,
+    126704,
+    126706,
+    126976,
+    127020,
+    127024,
+    127124,
+    127136,
+    127151,
+    127153,
+    127168,
+    127169,
+    127184,
+    127185,
+    127222,
+    127232,
+    127406,
+    127462,
+    127491,
+    127504,
+    127548,
+    127552,
+    127561,
+    127568,
+    127570,
+    127584,
+    127590,
+    127744,
+    128728,
+    128732,
+    128749,
+    128752,
+    128765,
+    128768,
+    128887,
+    128891,
+    128986,
+    128992,
+    129004,
+    129008,
+    129009,
+    129024,
+    129036,
+    129040,
+    129096,
+    129104,
+    129114,
+    129120,
+    129160,
+    129168,
+    129198,
+    129200,
+    129202,
+    129280,
+    129620,
+    129632,
+    129646,
+    129648,
+    129661,
+    129664,
+    129673,
+    129680,
+    129726,
+    129727,
+    129734,
+    129742,
+    129756,
+    129760,
+    129769,
+    129776,
+    129785,
+    129792,
+    129939,
+    129940,
+    129995,
+    130032,
+    130042,
+    131072,
+    173792,
+    173824,
+    177978,
+    177984,
+    178206,
+    178208,
+    183970,
+    183984,
+    191457,
+    194560,
+    195102,
+    196608,
+    201547,
+    201552,
+    205744,
+    917760,
+    918000
+  ]
+}

@@ -1,0 +1,3572 @@
+{
+  "cases": [
+    {
+      "name": "empty",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "",
+      "input_hex": "",
+      "ok": false,
+      "error": "ticket: empty",
+      "ids": ""
+    },
+    {
+      "name": "spaces",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "  ",
+      "input_hex": "2020",
+      "ok": false,
+      "error": "ticket: empty",
+      "ids": ""
+    },
+    {
+      "name": "tab-newline",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\t\n",
+      "input_hex": "090a",
+      "ok": false,
+      "error": "ticket: empty",
+      "ids": ""
+    },
+    {
+      "name": "prefix-only",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1",
+      "input_hex": "6473746f726531",
+      "ok": false,
+      "error": "ticket: EOF",
+      "ids": ""
+    },
+    {
+      "name": "nope",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "nope",
+      "input_hex": "6e6f7065",
+      "ok": false,
+      "error": "ticket: \"nope\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "separators-only",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": " , ,",
+      "input_hex": "202c202c",
+      "ok": false,
+      "error": "ticket: no members",
+      "ids": ""
+    },
+    {
+      "name": "hex-63",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "ab-x32",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "abababababababababababababababababababababababababababababababab",
+      "input_hex": "61626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162616261626162",
+      "ok": false,
+      "error": "ticket: \"abababababababababababababababababababababababababababababababab\" is neither a dstore1 ticket nor a node id: data is not a valid public key",
+      "ids": ""
+    },
+    {
+      "name": "hex-07-x32",
+      "source": "verification §5",
+      "input": "0707070707070707070707070707070707070707070707070707070707070707",
+      "input_hex": "30373037303730373037303730373037303730373037303730373037303730373037303730373037303730373037303730373037303730373037303730373037",
+      "ok": false,
+      "error": "ticket: \"0707070707070707070707070707070707070707070707070707070707070707\" is neither a dstore1 ticket nor a node id: data is not a valid public key",
+      "ids": ""
+    },
+    {
+      "name": "hex-comma-zz",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,zz",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c7a7a",
+      "ok": false,
+      "error": "ticket: \"zz\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "quote-escapes",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "zz\u0001\"é",
+      "input_hex": "7a7a0122c3a9",
+      "ok": false,
+      "error": "ticket: \"zz\\x01\\\"é\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "z32-id1",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "jq58mz1xcp5ksamuqy37qyksb3ndjxo7ch5fckznuqrdmp5d3w1y",
+      "input_hex": "6a7135386d7a31786370356b73616d757179333771796b7362336e646a786f3763683566636b7a6e757172646d70356433773179",
+      "ok": false,
+      "error": "ticket: \"jq58mz1xcp5ksamuqy37qyksb3ndjxo7ch5fckznuqrdmp5d3w1y\" is neither a dstore1 ticket nor a node id: failed to decode base32 string: input is z-base-32, use ParseEndpointIDZ32",
+      "ids": ""
+    },
+    {
+      "name": "hex-nbsp-hex",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234c2a036323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\\u00a062297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "hex-vt-hex",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\u000b62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432340b36323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\\v62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "hex-ff-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\f62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432340c36323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\\f62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "hex-semicolon-hex",
+      "source": "verification §5",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24;62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432343b36323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24;62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "hex-ideographic-space-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24　62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e3808036323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\\u300062297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "hex-all-separators-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,\t\r\n 62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c090d0a2036323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaakbkcacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsjiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+    },
+    {
+      "name": "probe-plus-a",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklya",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c7961",
+      "ok": false,
+      "error": "ticket: cbor: 1 bytes of extraneous data starting at index 109",
+      "ids": ""
+    },
+    {
+      "name": "probe-plus-aaa",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklyaaa",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79616161",
+      "ok": false,
+      "error": "ticket: cbor: 2 bytes of extraneous data starting at index 109",
+      "ids": ""
+    },
+    {
+      "name": "probe-plus-aaaaaa",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklyaaaaaa",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79616161616161",
+      "ok": false,
+      "error": "ticket: cbor: 4 bytes of extraneous data starting at index 109",
+      "ids": ""
+    },
+    {
+      "name": "probe-plus-aaaaaaaa",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklyaaaaaaaa",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c796161616161616161",
+      "ok": false,
+      "error": "ticket: cbor: 5 bytes of extraneous data starting at index 109",
+      "ids": ""
+    },
+    {
+      "name": "probe-plus-aa",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklyaa",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c796161",
+      "ok": false,
+      "error": "ticket: cbor: 1 bytes of extraneous data starting at index 109",
+      "ids": ""
+    },
+    {
+      "name": "bang-at-3",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1uma!ambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6121616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 3",
+      "ids": ""
+    },
+    {
+      "name": "eight-at-8",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambr8iztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627238697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 8",
+      "ids": ""
+    },
+    {
+      "name": "equals-at-0",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1=mafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f7265313d6d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 0",
+      "ids": ""
+    },
+    {
+      "name": "dstore1-bang-bang-bang",
+      "source": "cli §5.2",
+      "input": "dstore1!!!",
+      "input_hex": "6473746f726531212121",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 0",
+      "ids": ""
+    },
+    {
+      "name": "dstore1aaaa",
+      "source": "cli §5.2",
+      "input": "dstore1aaaa",
+      "input_hex": "6473746f72653161616161",
+      "ok": false,
+      "error": "ticket: cbor: 1 bytes of extraneous data starting at index 1",
+      "ids": ""
+    },
+    {
+      "name": "bogus",
+      "source": "cli §5.2",
+      "input": "bogus",
+      "input_hex": "626f677573",
+      "ok": false,
+      "error": "ticket: \"bogus\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "zz-yy",
+      "source": "cli §5.2",
+      "input": "zz,yy",
+      "input_hex": "7a7a2c7979",
+      "ok": false,
+      "error": "ticket: \"zz\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "probe",
+      "source": "verification §5",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "upper-case",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "DSTORE1UMAFAMBRGIZTINJWG44DSYLCMNSGKZQBAMBIDIQALAQAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQJYWS4B2GEZDOLRQFYYC4MJ2GQ2DGM3YDRZGK3DBPE5GQ5DUOBZTULZPOJSWYYLZFZSXQYLNOBWGKLY",
+      "input_hex": "4453544f524531554d4146414d425247495a54494e4a574734344453594c434d4e53474b5a5142414d4249444951414c4151414f414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414142514a59575334423247455a444f4c525146595943344d4a3247513244474d335944525a474b33444250453547513544554f425a54554c5a504f4a535759594c5a465a535851594c4e4f4257474b4c59",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "mixed-case-prefix-and-body",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "DsToRe1UmAfAmBrGiZtInJwG44dSyLcMnSgKzQbAmBiDiQaLaQaOaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAbQjYwS4B2GeZdOlRqFyYc4mJ2Gq2dGm3yDrZgK3DbPe5gQ5DuObZtUlZpOjSwYyLzFzSxQyLnObWgKlY",
+      "input_hex": "4473546f526531556d4166416d427247695a74496e4a774734346453794c634d6e53674b7a5162416d4269446951614c6151614f614161416141614161416141614161416141614161416141614161416141614161416141614161416141614161416141614162516a59775334423247655a644f6c527146795963346d4a3247713264476d337944725a674b33446250653567513544754f625a74556c5a704f6a537759794c7a467a537851794c6e4f6257674b6c59",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "prefix-dStOrE1",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dStOrE1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6453744f724531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "newline-cr-inside-body",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgi\n\rztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267690a0d7a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "crlf-every-8-symbols",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafambr\r\ngiztinjw\r\ng44dsylc\r\nmnsgkzqb\r\nambidiqa\r\nlaqaoaaa\r\naaaaaaaa\r\naaaaaaaa\r\naaaaaaaa\r\naaaaaaaa\r\naaaaaaaa\r\naaaaaaab\r\nqjyws4b2\r\ngezdolrq\r\nfyyc4mj2\r\ngq2dgm3y\r\ndrzgk3db\r\npe5gq5du\r\nobztulzp\r\nojswyylz\r\nfzsxqyln\r\nobwgkly\r\n",
+      "input_hex": "6473746f726531756d6166616d62720d0a67697a74696e6a770d0a6734346473796c630d0a6d6e73676b7a71620d0a616d6269646971610d0a6c6171616f6161610d0a61616161616161610d0a61616161616161610d0a61616161616161610d0a61616161616161610d0a61616161616161610d0a61616161616161620d0a716a7977733462320d0a67657a646f6c72710d0a66797963346d6a320d0a67713264676d33790d0a64727a676b3364620d0a70653567713564750d0a6f627a74756c7a700d0a6f6a737779796c7a0d0a667a737871796c6e0d0a6f6277676b6c790d0a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "nbsp-and-em-space-around",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "c2a06473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28083",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-dotless-i",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgıztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267c4b17a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-dotted-capital-i",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafambrgİztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267c4b07a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 9",
+      "ids": ""
+    },
+    {
+      "name": "body-long-s",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafambrgiztinjwg44dſylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a7767343464c5bf796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-kelvin-k",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgKzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e7367e284aa7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 28",
+      "ids": ""
+    },
+    {
+      "name": "body-last-symbol-a",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c61",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-b",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklb",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c62",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-c",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklc",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c63",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-d",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkld",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c64",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-e",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkle",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c65",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-f",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklf",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c66",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-g",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklg",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c67",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-h",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklh",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c68",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example,"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkla",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-i",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c69",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-j",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklj",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c6a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-k",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklk",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c6b",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-l",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkll",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c6c",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-m",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklm",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c6d",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-n",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkln",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c6e",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-o",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklo",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c6f",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-p",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklp",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c70",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example-"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkli",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-q",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c71",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-r",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklr",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c72",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-s",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkls",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c73",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-t",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklt",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c74",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-u",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklu",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c75",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-v",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklv",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c76",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-w",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklw",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c77",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-x",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklx",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c78",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example."
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklq",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-y",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-z",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklz",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c7a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-2",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl2",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c32",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-3",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl3",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c33",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-4",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl4",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c34",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-5",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl5",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c35",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-6",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl6",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c36",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "body-last-symbol-7",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl7",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c37",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "hex1",
+      "source": "verification §5",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "input_hex": "34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "hex1-comma-hex2",
+      "source": "verification §5",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c36323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaakbkcacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsjiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+    },
+    {
+      "name": "hex1-space-hex2",
+      "source": "verification §5",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342036323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaakbkcacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsjiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+    },
+    {
+      "name": "hex1-newline-b32id2",
+      "source": "verification §5",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,\nmiuxvgr7g3ua6orpfyh4zo5bbiripdprsb7wjrtvdhuymcuhzfca ",
+      "input_hex": "20346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c0a6d6975787667723767337561366f7270667968347a6f35626269726970647072736237776a727476646875796d6375687a66636120",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaakbkcacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsjiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+    },
+    {
+      "name": "upper-hex1",
+      "source": "verification §5",
+      "input": "4BB675DE4F6376AB61737033D701560E4434BE1D6736562AE29B8835B763CD24",
+      "input_hex": "34424236373544453446363337364142363137333730333344373031353630453434333442453144363733363536324145323942383833354237363343443234",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "hex1-hex2-hex1",
+      "source": "verification §5",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944,4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c363232393761396133663336653830663361326632653066636362626131306132323837386466313930376636346336373531396539383630613837633934342c34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": null
+          },
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaakb2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsjiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4srfbabmcas5woxpe6y3wvnqxg4bt24avmdsegs7b2zzwkyvofg4igw3whtje",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+    },
+    {
+      "name": "b32id1-upper",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "JO3HLXSPMN3KWYLTOAZ5OAKWBZCDJPQ5M43FMKXCTOEDLN3DZUSA",
+      "input_hex": "4a4f33484c5853504d4e334b57594c544f415a354f414b57425a43444a5051354d3433464d4b5843544f45444c4e33445a555341",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-length-48",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3d",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e3364",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3d\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-49",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dz",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dz\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-50",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzu",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzu\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-51",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a7573",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-52",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757361",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-length-53",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-54",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a7573616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-55",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757361616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-56",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736161616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-57",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a7573616161616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-58",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757361616161616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-59",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736161616161616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-length-60",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaaaaa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a7573616161616161616161",
+      "ok": false,
+      "error": "ticket: \"jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusaaaaaaaaa\" is neither a dstore1 ticket nor a node id: invalid length",
+      "ids": ""
+    },
+    {
+      "name": "b32id1-last-symbol-a",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusa",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757361",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-b",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusb",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757362",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-c",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusc",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757363",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-d",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusd",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757364",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-e",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzuse",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757365",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-f",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusf",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757366",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-g",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusg",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757367",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-h",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzush",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757368",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-i",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusi",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757369",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-j",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusj",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-k",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusk",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736b",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-l",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusl",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736c",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-m",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusm",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736d",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-n",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusn",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736e",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-o",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzuso",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736f",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-p",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusp",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757370",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "b32id1-last-symbol-q",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusq",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757371",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-r",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusr",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757372",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-s",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzuss",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757373",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-t",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzust",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757374",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-u",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusu",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757375",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-v",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusv",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757376",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-w",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusw",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757377",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-x",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusx",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757378",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-y",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusy",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757379",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-z",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusz",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75737a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-2",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus2",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757332",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-3",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus3",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757333",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-4",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus4",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757334",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-5",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus5",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757335",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-6",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus6",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757336",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id1-last-symbol-7",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzus7",
+      "input_hex": "6a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a757337",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsk",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd25"
+    },
+    {
+      "name": "b32id-dotted-capital-i",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "ls27k7tojİnqfhyhfzmacpt656245bd6zddtmji677c7irlyryoq",
+      "input_hex": "6c7332376b37746f6ac4b06e7166687968667a6d616370743635363234356264367a6464746d6a69363737633769726c7972796f71",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyeboll5l6nzfbwau7a4xfqaj6p3x3ltuep3emonrfd374l5cfpchb2",
+      "ids": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+    },
+    {
+      "name": "b32id-dotless-i",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "ls27k7tojınqfhyhfzmacpt656245bd6zddtmji677c7irlyryoq",
+      "input_hex": "6c7332376b37746f6ac4b16e7166687968667a6d616370743635363234356264367a6464746d6a69363737633769726c7972796f71",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyeboll5l6nzfbwau7a4xfqaj6p3x3ltuep3emonrfd374l5cfpchb2",
+      "ids": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+    },
+    {
+      "name": "b32id-long-s",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "lſ27k7tojinqfhyhfzmacpt656245bd6zddtmji677c7irlyryoq",
+      "input_hex": "6cc5bf32376b37746f6a696e7166687968667a6d616370743635363234356264367a6464746d6a69363737633769726c7972796f71",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyeboll5l6nzfbwau7a4xfqaj6p3x3ltuep3emonrfd374l5cfpchb2",
+      "ids": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+    },
+    {
+      "name": "b32id-kelvin-k",
+      "source": "codec-wire-ticket §2.4.9",
+      "input": "ls27K7tojinqfhyhfzmacpt656245bd6zddtmji677c7irlyryoq",
+      "input_hex": "6c733237e284aa37746f6a696e7166687968667a6d616370743635363234356264367a6464746d6a69363737633769726c7972796f71",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyeboll5l6nzfbwau7a4xfqaj6p3x3ltuep3emonrfd374l5cfpchb2",
+      "ids": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+    },
+    {
+      "name": "b32id-all-lookalikes",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "lſ27K7tojİnqfhyhfzmacpt656245bd6zddtmji677c7irlyryoq",
+      "input_hex": "6cc5bf3237e284aa37746f6ac4b06e7166687968667a6d616370743635363234356264367a6464746d6a69363737633769726c7972796f71",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyeboll5l6nzfbwau7a4xfqaj6p3x3ltuep3emonrfd374l5cfpchb2",
+      "ids": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+    },
+    {
+      "name": "z32-rfc-decodable-id33",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "s5crjihggznmximcjz7cm33wjrsf536hewbamnfkcxwx7xyex4ho",
+      "input_hex": "733563726a696867677a6e6d78696d636a7a37636d3333776a72736635333668657762616d6e666b63787778377879657834686f",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "974514a0e6365acba1824e7e266f764c645eefc725820634aa15ed7fdf04bf0e",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyeclukffa4y3fvs5bqjhh4jtpozggixxpy4syebruvik62767as7q4",
+      "ids": "974514a0e6365acba1824e7e266f764c645eefc725820634aa15ed7fdf04bf0e"
+    },
+    {
+      "name": "space-U+0009-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\t4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\t",
+      "input_hex": "093462623637356465346636333736616236313733373033336437303135363065343433346265316436373336353632616532396238383335623736336364323409",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+0009-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\tdstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\t",
+      "input_hex": "096473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c7909",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+000A-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\n4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\n",
+      "input_hex": "0a346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432340a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+000A-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\ndstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\n",
+      "input_hex": "0a6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c790a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+000B-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\u000b4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\u000b",
+      "input_hex": "0b346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432340b",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+000B-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\u000bdstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\u000b",
+      "input_hex": "0b6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c790b",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+000C-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\f4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\f",
+      "input_hex": "0c346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432340c",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+000C-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\fdstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\f",
+      "input_hex": "0c6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c790c",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+000D-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\r4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\r",
+      "input_hex": "0d346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432340d",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+000D-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\rdstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\r",
+      "input_hex": "0d6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c790d",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+0020-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "203462623637356465346636333736616236313733373033336437303135363065343433346265316436373336353632616532396238383335623736336364323420",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+0020-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "206473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c7920",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+0085-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "input_hex": "c28534626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234c285",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+0085-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "input_hex": "c2856473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79c285",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+00A0-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "c2a034626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234c2a0",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+00A0-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "c2a06473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79c2a0",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+1680-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e19a8034626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e19a80",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+1680-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e19a806473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e19a80",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2000-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808034626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28080",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2000-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280806473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28080",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2001-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808134626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28081",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2001-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280816473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28081",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2002-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808234626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28082",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2002-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280826473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28082",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2003-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808334626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28083",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2003-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280836473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28083",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2004-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808434626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28084",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2004-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280846473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28084",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2005-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808534626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28085",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2005-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280856473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28085",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2006-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808634626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28086",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2006-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280866473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28086",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2007-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808734626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28087",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2007-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280876473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28087",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2008-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808834626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28088",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2008-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280886473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28088",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2009-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808934626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e28089",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2009-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280896473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e28089",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+200A-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2808a34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e2808a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+200A-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e2808a6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e2808a",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2028-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\u20284bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\u2028",
+      "input_hex": "e280a834626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e280a8",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2028-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\u2028dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\u2028",
+      "input_hex": "e280a86473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e280a8",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+2029-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\u20294bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\u2029",
+      "input_hex": "e280a934626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e280a9",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+2029-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "\u2029dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly\u2029",
+      "input_hex": "e280a96473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e280a9",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+202F-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e280af34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e280af",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+202F-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e280af6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e280af",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+205F-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " 4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24 ",
+      "input_hex": "e2819f34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e2819f",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+205F-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": " dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly ",
+      "input_hex": "e2819f6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e2819f",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "space-U+3000-around-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "　4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24　",
+      "input_hex": "e3808034626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234e38080",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsi",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+    },
+    {
+      "name": "space-U+3000-around-ticket",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "　dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly　",
+      "input_hex": "e380806473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79e38080",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "not-space-U+180E-before-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "᠎4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "input_hex": "e1a08e34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234",
+      "ok": false,
+      "error": "ticket: \"\\u180e4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "not-space-U+200B-before-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "​4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "input_hex": "e2808b34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234",
+      "ok": false,
+      "error": "ticket: \"\\u200b4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "not-space-U+FEFF-before-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "﻿4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "input_hex": "efbbbf34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363643234",
+      "ok": false,
+      "error": "ticket: \"\\ufeff4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "full-quantum-body",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjp",
+      "input_hex": "6473746f726531756d616663796c636d6e73676b7a74686e6275777532336d6e767867363464726165627166616e6361626d63616279616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616167626863326c7168697974656e7a6f67617864616c727268693264696d7a7470616f68657a6c6d6d663474753264756f727968676f727066357a676b336462706578676b3664626e767967797a6a70",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "6162636465666768696a6b6c6d6e6f7071",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjp",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "full-quantum-plus-a",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjpa",
+      "input_hex": "6473746f726531756d616663796c636d6e73676b7a74686e6275777532336d6e767867363464726165627166616e6361626d63616279616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616167626863326c7168697974656e7a6f67617864616c727268693264696d7a7470616f68657a6c6d6d663474753264756f727968676f727066357a676b336462706578676b3664626e767967797a6a7061",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "6162636465666768696a6b6c6d6e6f7071",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjp",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "full-quantum-plus-aa",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjpaa",
+      "input_hex": "6473746f726531756d616663796c636d6e73676b7a74686e6275777532336d6e767867363464726165627166616e6361626d63616279616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616167626863326c7168697974656e7a6f67617864616c727268693264696d7a7470616f68657a6c6d6d663474753264756f727968676f727066357a676b336462706578676b3664626e767967797a6a706161",
+      "ok": false,
+      "error": "ticket: cbor: 1 bytes of extraneous data starting at index 110",
+      "ids": ""
+    },
+    {
+      "name": "full-quantum-plus-aaa",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjpaaa",
+      "input_hex": "6473746f726531756d616663796c636d6e73676b7a74686e6275777532336d6e767867363464726165627166616e6361626d63616279616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616167626863326c7168697974656e7a6f67617864616c727268693264696d7a7470616f68657a6c6d6d663474753264756f727968676f727066357a676b336462706578676b3664626e767967797a6a70616161",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "6162636465666768696a6b6c6d6e6f7071",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjp",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "full-quantum-plus-aaaaaa",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjpaaaaaa",
+      "input_hex": "6473746f726531756d616663796c636d6e73676b7a74686e6275777532336d6e767867363464726165627166616e6361626d63616279616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616167626863326c7168697974656e7a6f67617864616c727268693264696d7a7470616f68657a6c6d6d663474753264756f727968676f727066357a676b336462706578676b3664626e767967797a6a70616161616161",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "6162636465666768696a6b6c6d6e6f7071",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjp",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "full-quantum-plus-aaaaaaaa",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafcylcmnsgkzthnbuwu23mnvxg64draebqfancabmcabyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagbhc2lqhiytenzogaxdalrrhi2dimztpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjpaaaaaaaa",
+      "input_hex": "6473746f726531756d616663796c636d6e73676b7a74686e6275777532336d6e767867363464726165627166616e6361626d63616279616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616167626863326c7168697974656e7a6f67617864616c727268693264696d7a7470616f68657a6c6d6d663474753264756f727968676f727066357a676b336462706578676b3664626e767967797a6a706161616161616161",
+      "ok": false,
+      "error": "ticket: cbor: 5 bytes of extraneous data starting at index 110",
+      "ids": ""
+    },
+    {
+      "name": "dotted-i-then-62-hex",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "İ4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd",
+      "input_hex": "c4b03462623637356465346636333736616236313733373033336437303135363065343433346265316436373336353632616532396238383335623736336364",
+      "ok": false,
+      "error": "ticket: \"İ4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "61-hex-then-kelvin",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cK",
+      "input_hex": "34626236373564653466363337366162363137333730333364373031353630653434333462653164363733363536326165323962383833356237363363e284aa",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cK\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "62-hex-then-dotted-i",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cdİ",
+      "input_hex": "3462623637356465346636333736616236313733373033336437303135363065343433346265316436373336353632616532396238383335623736336364c4b0",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cdİ\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "63-hex-then-long-s",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2ſ",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432c5bf",
+      "ok": false,
+      "error": "ticket: \"4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2ſ\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "cbor-unknown-key-3",
+      "source": "verification §5",
+      "input": "dstore1uqafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklydae",
+      "input_hex": "6473746f72653175716166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79646165",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "cbor-null-members",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umaeaaiaal3a",
+      "input_hex": "6473746f726531756d616561616961616c3361",
+      "ok": false,
+      "error": "ticket: no members",
+      "ids": ""
+    },
+    {
+      "name": "cbor-empty-members",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umaeaaiaakaa",
+      "input_hex": "6473746f726531756d616561616961616b6161",
+      "ok": false,
+      "error": "ticket: no members",
+      "ids": ""
+    },
+    {
+      "name": "cbor-null-member-element",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umaeaaiaaka7m",
+      "input_hex": "6473746f726531756d616561616961616b61376d",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "",
+        "incarnation": "0",
+        "members": [
+          {
+            "id": null,
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umaeaaiaaka2cahw",
+      "ids": ""
+    },
+    {
+      "name": "cbor-member-31-byte-id",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umapmaiaaka2cacyd4eqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeq",
+      "input_hex": "6473746f726531756d61706d616961616b613263616379643465717363696a626565717363696a626565717363696a626565717363696a626565717363696a626565717363696a62656571",
+      "ok": true,
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "09090909090909090909090909090909090909090909090909090909090909",
+            "addrs": null
+          }
+        ]
+      },
+      "encoded": "dstore1umapmaiaaka2cacyd4eqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeq",
+      "ids": ""
+    },
+    {
+      "name": "cbor-incarnation-text",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umaeaalbmebia",
+      "input_hex": "6473746f726531756d616561616c626d65626961",
+      "ok": false,
+      "error": "ticket: cbor: cannot unmarshal UTF-8 text string into Go struct field ticket.Ticket.1 of type uint64",
+      "ids": ""
+    },
+    {
+      "name": "cbor-trailing-byte",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgklya",
+      "input_hex": "6473746f726531756d6166616d627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c7961",
+      "ok": false,
+      "error": "ticket: cbor: 1 bytes of extraneous data starting at index 109",
+      "ids": ""
+    },
+    {
+      "name": "cbor-top-null",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore16y",
+      "input_hex": "6473746f7265313679",
+      "ok": false,
+      "error": "ticket: no members",
+      "ids": ""
+    },
+    {
+      "name": "cbor-tag-55799",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore13hm7piyakaydcmrtgq2tmnzyhfqwey3emvtacaycqgraawbaa4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadatrnfydumjsg4xdalrqfyytunbugmzxqhdsmvwgc6j2nb2hi4dthixs64tfnrqxsltfpbqw24dmmuxq",
+      "input_hex": "6473746f72653133686d37706979616b617964636d7274677132746d6e7a7968667177657933656d76746163617963716772616177626161346161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161646174726e667964756d6a7367347864616c727166797974756e6275676d7a78716864736d76776763366a326e6232686934647468697873363474666e727178736c7466706271773234646d6d757871",
+      "ok": true,
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "cbor-top-array",
+      "source": "codec-wire-ticket §5 G7",
+      "input": "dstore1qnaabaa",
+      "input_hex": "6473746f726531716e6161626161",
+      "ok": false,
+      "error": "ticket: cbor: cannot unmarshal array into Go value of type ticket.Ticket (cannot decode CBOR array to struct without toarray option)",
+      "ids": ""
+    },
+    {
+      "name": "invalid-utf8-ff",
+      "source": "codec-wire-ticket §5 G7",
+      "input_hex": "ff",
+      "ok": false,
+      "error": "ticket: \"\\xff\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    },
+    {
+      "name": "invalid-utf8-in-body",
+      "source": "codec-wire-ticket §5 G7",
+      "input_hex": "6473746f726531756d616661c3627267697a74696e6a776734346473796c636d6e73676b7a7162616d6269646971616c6171616f616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162716a79777334623267657a646f6c727166797963346d6a3267713264676d337964727a676b33646270653567713564756f627a74756c7a706f6a737779796c7a667a737871796c6e6f6277676b6c79",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 5",
+      "ids": ""
+    },
+    {
+      "name": "invalid-utf8-after-prefix",
+      "source": "codec-wire-ticket §5 G7",
+      "input_hex": "6473746f726531ff",
+      "ok": false,
+      "error": "ticket: illegal base32 data at input byte 0",
+      "ids": ""
+    },
+    {
+      "name": "hex-comma-invalid-utf8",
+      "source": "codec-wire-ticket §5 G7",
+      "input_hex": "346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342cff",
+      "ok": false,
+      "error": "ticket: \"\\xff\" is neither a dstore1 ticket nor a node id: failed to decode base32 string",
+      "ids": ""
+    }
+  ]
+}

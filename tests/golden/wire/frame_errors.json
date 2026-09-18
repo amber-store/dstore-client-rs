@@ -1,0 +1,558 @@
+{
+  "reads": [
+    {
+      "name": "empty-stream",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "",
+      "reads": [
+        {
+          "result": "eof"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "eof"
+        }
+      ]
+    },
+    {
+      "name": "header-1-byte",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00",
+      "reads": [
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "header-2-bytes",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "0000",
+      "reads": [
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "header-3-bytes",
+      "source": "verification §5",
+      "stream_hex": "000000",
+      "reads": [
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "too-large-16777217",
+      "source": "verification §5",
+      "stream_hex": "01000001",
+      "reads": [
+        {
+          "result": "too_large",
+          "go_error": "wire: frame of 16777217 bytes exceeds limit 16777216"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "too_large",
+          "go_error": "protocol: frame of 16777217 bytes exceeds limit 16777216"
+        }
+      ]
+    },
+    {
+      "name": "too-large-max-u32",
+      "source": "codec-wire-ticket §2.2.4",
+      "stream_hex": "ffffffff",
+      "reads": [
+        {
+          "result": "too_large",
+          "go_error": "wire: frame of 4294967295 bytes exceeds limit 16777216"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "too_large",
+          "go_error": "protocol: frame of 4294967295 bytes exceeds limit 16777216"
+        }
+      ]
+    },
+    {
+      "name": "max-frame-no-payload",
+      "source": "codec-wire-ticket §2.2.4",
+      "stream_hex": "01000000",
+      "reads": [
+        {
+          "result": "short",
+          "go_error": "wire: short frame: EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "short",
+          "go_error": "protocol: short frame: EOF"
+        }
+      ]
+    },
+    {
+      "name": "len-5-with-1-byte",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000005a1",
+      "reads": [
+        {
+          "result": "short",
+          "go_error": "wire: short frame: unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "short",
+          "go_error": "protocol: short frame: unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "len-5-with-0-bytes",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000005",
+      "reads": [
+        {
+          "result": "short",
+          "go_error": "wire: short frame: EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "short",
+          "go_error": "protocol: short frame: EOF"
+        }
+      ]
+    },
+    {
+      "name": "len-4-with-2-bytes",
+      "source": "verification §5",
+      "stream_hex": "00000004a100",
+      "reads": [
+        {
+          "result": "short",
+          "go_error": "wire: short frame: unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "short",
+          "go_error": "protocol: short frame: unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "len-0",
+      "source": "verification §5",
+      "stream_hex": "00000000",
+      "reads": [
+        {
+          "result": "decode",
+          "go_error": "wire: decode frame: EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: EOF"
+        }
+      ]
+    },
+    {
+      "name": "decode-array",
+      "source": "codec-wire-ticket §2.2.4",
+      "stream_hex": "000000028100",
+      "reads": [
+        {
+          "result": "decode",
+          "go_error": "wire: decode frame: cbor: cannot unmarshal array into Go value of type wire.Msg (cannot decode CBOR array to struct without toarray option)"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: cbor: cannot unmarshal array into Go value of type protocol.Msg (cannot decode CBOR array to struct without toarray option)"
+        }
+      ]
+    },
+    {
+      "name": "decode-extraneous",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000005a100183500",
+      "reads": [
+        {
+          "result": "decode",
+          "go_error": "wire: decode frame: cbor: 1 bytes of extraneous data starting at index 4"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: cbor: 1 bytes of extraneous data starting at index 4"
+        }
+      ]
+    },
+    {
+      "name": "decode-invalid-utf8",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000004a10661ff",
+      "reads": [
+        {
+          "result": "decode",
+          "go_error": "wire: decode frame: cbor: invalid UTF-8 string"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: cbor: invalid UTF-8 string"
+        }
+      ]
+    },
+    {
+      "name": "top-null",
+      "source": "codec-wire-ticket §2.1.2 D1",
+      "stream_hex": "00000001f6",
+      "reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "0"
+          }
+        },
+        {
+          "result": "eof"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "0"
+          }
+        },
+        {
+          "result": "eof"
+        }
+      ]
+    },
+    {
+      "name": "two-frames",
+      "source": "verification §5",
+      "stream_hex": "00000004a100183500000008a300183502010307",
+      "reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53",
+            "incarnation": "1",
+            "epoch": "7"
+          }
+        },
+        {
+          "result": "eof"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8"
+        }
+      ]
+    },
+    {
+      "name": "frame-then-partial-header",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000004a10018350000",
+      "reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "unexpected_eof",
+          "go_error": "unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "frame-then-partial-payload",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000004a100183500000004a1",
+      "reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "short",
+          "go_error": "wire: short frame: unexpected EOF"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "short",
+          "go_error": "protocol: short frame: unexpected EOF"
+        }
+      ]
+    },
+    {
+      "name": "frame-then-bad-frame",
+      "source": "codec-wire-ticket §5 G3",
+      "stream_hex": "00000004a100183500000001ff",
+      "reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "decode",
+          "go_error": "wire: decode frame: cbor: unexpected \"break\" code"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "53"
+          }
+        },
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: cbor: unexpected \"break\" code"
+        }
+      ]
+    },
+    {
+      "name": "dstore-tdata-epoch",
+      "source": "codec-wire-ticket §2.3.5",
+      "stream_hex": "0000000aa4000702010307084100",
+      "reads": [
+        {
+          "result": "ok",
+          "msg": {
+            "typ": "7",
+            "incarnation": "1",
+            "epoch": "7",
+            "data": "00"
+          }
+        },
+        {
+          "result": "eof"
+        }
+      ],
+      "protocol_reads": [
+        {
+          "result": "decode",
+          "go_error": "protocol: decode frame: cbor: cannot unmarshal positive integer into Go struct field protocol.Msg.2 of type []uint8"
+        }
+      ]
+    }
+  ],
+  "writes": [
+    {
+      "name": "tdata-payload-exactly-max",
+      "msg": {
+        "typ": "7"
+      },
+      "data": {
+        "seed": "22",
+        "len": 16777207
+      },
+      "ok": true,
+      "bytes_written": 16777220,
+      "frame_blake3": "48a0c550ac3dd405e2045a1969c23077f1a2601c7af106760f639b2f6fc29b7c",
+      "head_hex": "01000000a20007085a00fffff7"
+    },
+    {
+      "name": "tdata-payload-max-plus-1",
+      "msg": {
+        "typ": "7"
+      },
+      "data": {
+        "seed": "22",
+        "len": 16777208
+      },
+      "ok": false,
+      "go_error": "wire: frame of 16777217 bytes exceeds limit 16777216",
+      "bytes_written": 0
+    },
+    {
+      "name": "tdata-16mib-data",
+      "msg": {
+        "typ": "7"
+      },
+      "data": {
+        "seed": "22",
+        "len": 16777216
+      },
+      "ok": false,
+      "go_error": "wire: frame of 16777225 bytes exceeds limit 16777216",
+      "bytes_written": 0
+    }
+  ],
+  "expect": [
+    {
+      "name": "terr-want-ok",
+      "stream_hex": "00000020a5000a0a6a7374616c652d766965770b66626568696e640c420102181c1905dc",
+      "want": "53",
+      "ok": false,
+      "msg": {
+        "typ": "10",
+        "code": "stale-view",
+        "text": "behind",
+        "view": "0102",
+        "retry_after": "1500"
+      },
+      "kind": "remote",
+      "go_error": "remote: stale-view: behind",
+      "remote": {
+        "code": "stale-view",
+        "text": "behind",
+        "view": "0102",
+        "retry_after_ns": "1500000000",
+        "retry_after": "1.5s",
+        "error": "remote: stale-view: behind"
+      }
+    },
+    {
+      "name": "terr-want-any",
+      "stream_hex": "00000020a5000a0a6a7374616c652d766965770b66626568696e640c420102181c1905dc",
+      "want": "0",
+      "ok": false,
+      "msg": {
+        "typ": "10",
+        "code": "stale-view",
+        "text": "behind",
+        "view": "0102",
+        "retry_after": "1500"
+      },
+      "kind": "remote",
+      "go_error": "remote: stale-view: behind",
+      "remote": {
+        "code": "stale-view",
+        "text": "behind",
+        "view": "0102",
+        "retry_after_ns": "1500000000",
+        "retry_after": "1.5s",
+        "error": "remote: stale-view: behind"
+      }
+    },
+    {
+      "name": "ok-want-ref",
+      "stream_hex": "00000004a1001835",
+      "want": "52",
+      "ok": false,
+      "msg": {
+        "typ": "53"
+      },
+      "kind": "protocol",
+      "go_error": "wire: unexpected frame: type 53, want 52"
+    },
+    {
+      "name": "ok-want-ok",
+      "stream_hex": "00000004a1001835",
+      "want": "53",
+      "ok": true,
+      "msg": {
+        "typ": "53"
+      }
+    },
+    {
+      "name": "ok-want-any",
+      "stream_hex": "00000004a1001835",
+      "want": "0",
+      "ok": true,
+      "msg": {
+        "typ": "53"
+      }
+    },
+    {
+      "name": "empty-want-ref",
+      "stream_hex": "",
+      "want": "52",
+      "ok": false,
+      "kind": "eof",
+      "go_error": "EOF"
+    },
+    {
+      "name": "decode-error-want-ok",
+      "stream_hex": "000000028100",
+      "want": "53",
+      "ok": false,
+      "kind": "decode",
+      "go_error": "wire: decode frame: cbor: cannot unmarshal array into Go value of type wire.Msg (cannot decode CBOR array to struct without toarray option)"
+    },
+    {
+      "name": "short-want-ok",
+      "stream_hex": "00000004a100",
+      "want": "53",
+      "ok": false,
+      "kind": "short",
+      "go_error": "wire: short frame: unexpected EOF"
+    }
+  ]
+}

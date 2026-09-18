@@ -1,0 +1,120 @@
+{
+  "handle_err": [
+    {
+      "failures": 1,
+      "backoff_ns": "5000000000"
+    },
+    {
+      "failures": 2,
+      "backoff_ns": "10000000000"
+    },
+    {
+      "failures": 3,
+      "backoff_ns": "20000000000"
+    },
+    {
+      "failures": 4,
+      "backoff_ns": "40000000000"
+    },
+    {
+      "failures": 5,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 6,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 7,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 8,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 9,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 10,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 11,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 12,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 16,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 64,
+      "backoff_ns": "60000000000"
+    },
+    {
+      "failures": 1000,
+      "backoff_ns": "60000000000"
+    }
+  ],
+  "watch_reconnect": [
+    {
+      "round": 1,
+      "delay_ns": "1000000000",
+      "jitter_max_ns": "500000000"
+    },
+    {
+      "round": 2,
+      "delay_ns": "2000000000",
+      "jitter_max_ns": "1000000000"
+    },
+    {
+      "round": 3,
+      "delay_ns": "4000000000",
+      "jitter_max_ns": "2000000000"
+    },
+    {
+      "round": 4,
+      "delay_ns": "8000000000",
+      "jitter_max_ns": "4000000000"
+    },
+    {
+      "round": 5,
+      "delay_ns": "16000000000",
+      "jitter_max_ns": "8000000000"
+    },
+    {
+      "round": 6,
+      "delay_ns": "30000000000",
+      "jitter_max_ns": "15000000000"
+    },
+    {
+      "round": 7,
+      "delay_ns": "30000000000",
+      "jitter_max_ns": "15000000000"
+    },
+    {
+      "round": 8,
+      "delay_ns": "30000000000",
+      "jitter_max_ns": "15000000000"
+    },
+    {
+      "round": 9,
+      "delay_ns": "30000000000",
+      "jitter_max_ns": "15000000000"
+    },
+    {
+      "round": 10,
+      "delay_ns": "30000000000",
+      "jitter_max_ns": "15000000000"
+    }
+  ],
+  "watch_served_pause_ns": "200000000",
+  "watch_refresh_timeout_ns": "15000000000",
+  "dial_member_timeout_ns": "15000000000",
+  "probe_timeout_ns": "3000000000"
+}

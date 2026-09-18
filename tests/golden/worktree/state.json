@@ -1,0 +1,761 @@
+{
+  "empty_tree": {
+    "key": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+    "bytes": "80",
+    "short": "2001bbe6a9f5a014"
+  },
+  "encode": [
+    {
+      "name": "no-remote",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20Z\"\n}\n"
+    },
+    {
+      "name": "no-remote-ignores-remote-fields",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "has_remote": false,
+        "remote_version": "010203",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20Z\"\n}\n"
+    },
+    {
+      "name": "probe",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "has_remote": true,
+        "remote_version": "010203",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 5,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote_version\": \"010203\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}\n"
+    },
+    {
+      "name": "remote-empty-version",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "has_remote": true,
+        "remote_version": "",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20Z\"\n}\n"
+    },
+    {
+      "name": "remote-nil-version",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "has_remote": true,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20Z\"\n}\n"
+    },
+    {
+      "name": "base-and-remote-differ",
+      "state": {
+        "base": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "remote": "00c8069dce890d2e93a2e70679f56a31d5efbdfb4981e1a7c6c80fe602a93f36",
+        "has_remote": true,
+        "remote_version": "00000001fedcba98",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 123456789,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\n  \"remote\": \"00c8069dce890d2e93a2e70679f56a31d5efbdfb4981e1a7c6c80fe602a93f36\",\n  \"remote_version\": \"00000001fedcba98\",\n  \"synced_at\": \"2023-11-14T22:13:20.123456789Z\"\n}\n"
+    },
+    {
+      "name": "ns-100",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 100,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20.0000001Z\"\n}\n"
+    },
+    {
+      "name": "ns-120000000",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 120000000,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20.12Z\"\n}\n"
+    },
+    {
+      "name": "ns-123456789",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 123456789,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20.123456789Z\"\n}\n"
+    },
+    {
+      "name": "ns-999999999",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 999999999,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20.999999999Z\"\n}\n"
+    },
+    {
+      "name": "pre-1970",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "-1",
+        "synced_at_nsec": 999999999,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"1969-12-31T23:59:59.999999999Z\"\n}\n"
+    },
+    {
+      "name": "pre-1970-whole-day",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "-86400",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"1969-12-31T00:00:00Z\"\n}\n"
+    },
+    {
+      "name": "year-0",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "-62167219200",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"0000-01-01T00:00:00Z\"\n}\n"
+    },
+    {
+      "name": "year-10000",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "253402300800",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"10000-01-01T00:00:00Z\"\n}\n"
+    },
+    {
+      "name": "fixed-zone-instant",
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 5,
+        "synced_at_offset_secs": 19800
+      },
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"\",\n  \"remote_version\": \"\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}\n"
+    }
+  ],
+  "decode": [
+    {
+      "name": "probe",
+      "setup": "file",
+      "file": "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote_version\": \"010203\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}\n",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "has_remote": true,
+        "remote_version": "010203",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 5,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "no-remote",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "no-remote-version-ignored",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"zz1\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "remote-empty-version",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "has_remote": true,
+        "remote_version": "",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "remote-version-key-missing",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "has_remote": true,
+        "remote_version": "",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "base-and-remote-differ",
+      "setup": "file",
+      "file": "{\"base\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote\":\"00c8069dce890d2e93a2e70679f56a31d5efbdfb4981e1a7c6c80fe602a93f36\",\"remote_version\":\"00000001fedcba98\",\"synced_at\":\"2023-11-14T22:13:20.123456789Z\"}",
+      "ok": true,
+      "state": {
+        "base": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "remote": "00c8069dce890d2e93a2e70679f56a31d5efbdfb4981e1a7c6c80fe602a93f36",
+        "has_remote": true,
+        "remote_version": "00000001fedcba98",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 123456789,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "uppercase-hex",
+      "setup": "file",
+      "file": "{\"base\":\"00644B75A8842DC16DED120EE1F96D229AC409028F4D5D429499A4AD548AAE85\",\"remote\":\"00C8069DCE890D2E93A2E70679F56A31D5EFBDFB4981E1A7C6C80FE602A93F36\",\"remote_version\":\"ABCDEF\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "remote": "00c8069dce890d2e93a2e70679f56a31d5efbdfb4981e1a7c6c80fe602a93f36",
+        "has_remote": true,
+        "remote_version": "abcdef",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "offset-plus-0200",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-15T00:13:20.5+02:00\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 500000000,
+        "synced_at_offset_secs": 7200
+      }
+    },
+    {
+      "name": "offset-minus-0330",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T18:43:20-03:30\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": -12600
+      }
+    },
+    {
+      "name": "offset-minus-0000",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20-00:00\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "lowercase-t-and-z",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14t22:13:20z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"2023-11-14t22:13:20z\" as \"2006-01-02T15:04:05.999999999Z07:00\": cannot parse \"t22:13:20z\" as \"T\""
+    },
+    {
+      "name": "fraction-1-digit",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20.1Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 100000000,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "fraction-12-digits",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20.123456789123Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 123456789,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "comma-fraction",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20,5Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 500000000,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "pre-1970",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"1969-12-31T23:59:59.999999999Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "-1",
+        "synced_at_nsec": 999999999,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "case-insensitive-keys",
+      "setup": "file",
+      "file": "{\"BASE\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"Remote\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"REMOTE_VERSION\":\"01\",\"Synced_At\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "has_remote": true,
+        "remote_version": "01",
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "duplicate-keys-last-wins",
+      "setup": "file",
+      "file": "{\"base\":\"zz\",\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"synced_at\":\"bad\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "unknown-keys",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"synced_at\":\"2023-11-14T22:13:20Z\",\"extra\":[1,2,{\"x\":null}]}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "null-values",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":null,\"remote_version\":null,\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1700000000",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 0
+      }
+    },
+    {
+      "name": "missing",
+      "setup": "missing",
+      "ok": false,
+      "state": null,
+      "error": "incomplete clone: delete the directory and clone again"
+    },
+    {
+      "name": "directory",
+      "setup": "directory",
+      "ok": false,
+      "state": null,
+      "error": "read {ROOT}/.dstore/state: is a directory"
+    },
+    {
+      "name": "empty-file",
+      "setup": "file",
+      "file": "",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: unexpected end of JSON input"
+    },
+    {
+      "name": "not-json",
+      "setup": "file",
+      "file": "base = 2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: invalid character 'b' looking for beginning of value"
+    },
+    {
+      "name": "array-document",
+      "setup": "file",
+      "file": "[]",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: json: cannot unmarshal array into Go value of type worktree.stateJSON"
+    },
+    {
+      "name": "number-base",
+      "setup": "file",
+      "file": "{\"base\":5,\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: json: cannot unmarshal number into Go struct field stateJSON.base of type string"
+    },
+    {
+      "name": "truncated",
+      "setup": "file",
+      "file": "{\"base\":\"",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: unexpected end of JSON input"
+    },
+    {
+      "name": "base-empty",
+      "setup": "file",
+      "file": "{\"base\":\"\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: data is not 32 bytes: got 0"
+    },
+    {
+      "name": "base-missing",
+      "setup": "file",
+      "file": "{\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: data is not 32 bytes: got 0"
+    },
+    {
+      "name": "base-invalid-hex",
+      "setup": "file",
+      "file": "{\"base\":\"zz01bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "name": "base-non-ascii-hex",
+      "setup": "file",
+      "file": "{\"base\":\"ébbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: encoding/hex: invalid byte: U+00C3 'Ã'"
+    },
+    {
+      "name": "base-odd-length",
+      "setup": "file",
+      "file": "{\"base\":\"001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: encoding/hex: odd length hex string"
+    },
+    {
+      "name": "base-invalid-byte-before-odd-length",
+      "setup": "file",
+      "file": "{\"base\":\"zzz\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "name": "base-31-bytes",
+      "setup": "file",
+      "file": "{\"base\":\"01bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: data is not 32 bytes: got 31"
+    },
+    {
+      "name": "base-33-bytes",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b00\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: data is not 32 bytes: got 33"
+    },
+    {
+      "name": "base-reserved-bit",
+      "setup": "file",
+      "file": "{\"base\":\"08644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: reserved header bit is set"
+    },
+    {
+      "name": "base-reserved-type",
+      "setup": "file",
+      "file": "{\"base\":\"50644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: reserved object type: 5"
+    },
+    {
+      "name": "base-non-canonical-length",
+      "setup": "file",
+      "file": "{\"base\":\"0100000000000000000000000000000000000000000000000000000000000000\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: key: non-canonical length encoding"
+    },
+    {
+      "name": "remote-invalid-hex",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"xyz\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: remote: encoding/hex: invalid byte: U+0078 'x'"
+    },
+    {
+      "name": "remote-short",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"00\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: remote: key: data is not 32 bytes: got 1"
+    },
+    {
+      "name": "remote-version-odd-length",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote_version\":\"123\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: remote_version: encoding/hex: odd length hex string"
+    },
+    {
+      "name": "remote-version-invalid-hex",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote_version\":\"0g\",\"synced_at\":\"2023-11-14T22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: remote_version: encoding/hex: invalid byte: U+0067 'g'"
+    },
+    {
+      "name": "synced-at-empty",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"\" as \"2006-01-02T15:04:05.999999999Z07:00\": cannot parse \"\" as \"2006\""
+    },
+    {
+      "name": "synced-at-missing",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"\" as \"2006-01-02T15:04:05.999999999Z07:00\": cannot parse \"\" as \"2006\""
+    },
+    {
+      "name": "synced-at-space",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14 22:13:20Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"2023-11-14 22:13:20Z\" as \"2006-01-02T15:04:05.999999999Z07:00\": cannot parse \" 22:13:20Z\" as \"T\""
+    },
+    {
+      "name": "synced-at-no-zone",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"2023-11-14T22:13:20\" as \"2006-01-02T15:04:05.999999999Z07:00\": cannot parse \"\" as \"Z07:00\""
+    },
+    {
+      "name": "synced-at-hour-24",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T24:00:00Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"2023-11-14T24:00:00Z\": hour out of range"
+    },
+    {
+      "name": "synced-at-february-30",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-02-30T00:00:00Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"2023-02-30T00:00:00Z\": day out of range"
+    },
+    {
+      "name": "synced-at-offset-hour-24",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"2023-11-14T22:13:20+24:00\"}",
+      "ok": true,
+      "state": {
+        "base": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
+        "remote": "0000000000000000000000000000000000000000000000000000000000000000",
+        "has_remote": false,
+        "remote_version": null,
+        "synced_at_unix": "1699913600",
+        "synced_at_nsec": 0,
+        "synced_at_offset_secs": 86400
+      }
+    },
+    {
+      "name": "synced-at-year-10000",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"\",\"remote_version\":\"\",\"synced_at\":\"10000-01-01T00:00:00Z\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: synced_at: parsing time \"10000-01-01T00:00:00Z\" as \"2006-01-02T15:04:05.999999999Z07:00\": cannot parse \"0-01-01T00:00:00Z\" as \"-\""
+    },
+    {
+      "name": "synced-at-number",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"synced_at\":5}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: json: cannot unmarshal number into Go struct field stateJSON.synced_at of type string"
+    },
+    {
+      "name": "errors-in-order-base-first",
+      "setup": "file",
+      "file": "{\"base\":\"zz\",\"remote\":\"yy\",\"remote_version\":\"xx\",\"synced_at\":\"\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: base: encoding/hex: invalid byte: U+007A 'z'"
+    },
+    {
+      "name": "errors-in-order-remote-before-version",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"yy\",\"remote_version\":\"xx\",\"synced_at\":\"\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: remote: encoding/hex: invalid byte: U+0079 'y'"
+    },
+    {
+      "name": "errors-in-order-version-before-synced-at",
+      "setup": "file",
+      "file": "{\"base\":\"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\"remote\":\"00644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85\",\"remote_version\":\"xx\",\"synced_at\":\"\"}",
+      "ok": false,
+      "state": null,
+      "error": "bad state file: remote_version: encoding/hex: invalid byte: U+0078 'x'"
+    }
+  ]
+}

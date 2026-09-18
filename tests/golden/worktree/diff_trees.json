@@ -1,0 +1,4205 @@
+{
+  "diff_trees": [
+    {
+      "name": "diff",
+      "a": "diff-a",
+      "b": "diff-b",
+      "get_calls": 2,
+      "changes": [
+        {
+          "path": "bin",
+          "kind": "modified",
+          "old": {
+            "name": "bin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "0003fdeb88a4c6f022465eedaf052a322770e2875b1052f697e5dd3b6ac7722d"
+          },
+          "new": {
+            "name": "bin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000012000000000",
+            "content_key": "0003ba6dca111a57a203e09d6d4012c1a9479cd3e064ac4695db993273466052"
+          }
+        },
+        {
+          "path": "edit.txt",
+          "kind": "modified",
+          "old": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "000e10e1a16f0805bd7128d2ff11264ffd33566f0ad1d980ebd0f2b3848815d2"
+          },
+          "new": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "000cba13ea9b04ef16c1a4a5b305069b68b3cb59764b57b970aaa8a9494d90cb"
+          }
+        },
+        {
+          "path": "gone.txt",
+          "kind": "deleted",
+          "old": {
+            "name": "gone.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "0004cb0fa91be247ee0f636bd06a2b417b59968e666f22e96c34d486e7f64c65"
+          },
+          "new": null
+        },
+        {
+          "path": "link",
+          "kind": "modified",
+          "old": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "link_target": "t1"
+          },
+          "new": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000017000000000",
+            "link_target": "t2"
+          }
+        },
+        {
+          "path": "new.txt",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "new.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "00030b8b60248fad7ac6dfac221b7e01a8b91c772421a15b387dd1fb2d6a94ae"
+          }
+        },
+        {
+          "path": "run.sh",
+          "kind": "mode",
+          "old": {
+            "name": "run.sh",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "000abc1f407a11c9377c8b9b13f956b279c8462775105eb958fc9ae3c40de87c"
+          },
+          "new": {
+            "name": "run.sh",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "000abc1f407a11c9377c8b9b13f956b279c8462775105eb958fc9ae3c40de87c"
+          }
+        },
+        {
+          "path": "sub",
+          "kind": "mode",
+          "old": {
+            "name": "sub",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "204061adeda68e93ad80bfdd02344d78f829c3d1787510853fdf70117923efa3"
+          },
+          "new": {
+            "name": "sub",
+            "mode": "16832",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "204061adeda68e93ad80bfdd02344d78f829c3d1787510853fdf70117923efa3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "diff-reverse",
+      "a": "diff-b",
+      "b": "diff-a",
+      "get_calls": 2,
+      "changes": [
+        {
+          "path": "bin",
+          "kind": "modified",
+          "old": {
+            "name": "bin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000012000000000",
+            "content_key": "0003ba6dca111a57a203e09d6d4012c1a9479cd3e064ac4695db993273466052"
+          },
+          "new": {
+            "name": "bin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "0003fdeb88a4c6f022465eedaf052a322770e2875b1052f697e5dd3b6ac7722d"
+          }
+        },
+        {
+          "path": "edit.txt",
+          "kind": "modified",
+          "old": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "000cba13ea9b04ef16c1a4a5b305069b68b3cb59764b57b970aaa8a9494d90cb"
+          },
+          "new": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "000e10e1a16f0805bd7128d2ff11264ffd33566f0ad1d980ebd0f2b3848815d2"
+          }
+        },
+        {
+          "path": "gone.txt",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "gone.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "0004cb0fa91be247ee0f636bd06a2b417b59968e666f22e96c34d486e7f64c65"
+          }
+        },
+        {
+          "path": "link",
+          "kind": "modified",
+          "old": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000017000000000",
+            "link_target": "t2"
+          },
+          "new": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "link_target": "t1"
+          }
+        },
+        {
+          "path": "new.txt",
+          "kind": "deleted",
+          "old": {
+            "name": "new.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "00030b8b60248fad7ac6dfac221b7e01a8b91c772421a15b387dd1fb2d6a94ae"
+          },
+          "new": null
+        },
+        {
+          "path": "run.sh",
+          "kind": "mode",
+          "old": {
+            "name": "run.sh",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "000abc1f407a11c9377c8b9b13f956b279c8462775105eb958fc9ae3c40de87c"
+          },
+          "new": {
+            "name": "run.sh",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "000abc1f407a11c9377c8b9b13f956b279c8462775105eb958fc9ae3c40de87c"
+          }
+        },
+        {
+          "path": "sub",
+          "kind": "mode",
+          "old": {
+            "name": "sub",
+            "mode": "16832",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "204061adeda68e93ad80bfdd02344d78f829c3d1787510853fdf70117923efa3"
+          },
+          "new": {
+            "name": "sub",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "204061adeda68e93ad80bfdd02344d78f829c3d1787510853fdf70117923efa3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "clone",
+      "a": "empty",
+      "b": "diff-a",
+      "get_calls": 3,
+      "changes": [
+        {
+          "path": "bin",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "bin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "0003fdeb88a4c6f022465eedaf052a322770e2875b1052f697e5dd3b6ac7722d"
+          }
+        },
+        {
+          "path": "edit.txt",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "000e10e1a16f0805bd7128d2ff11264ffd33566f0ad1d980ebd0f2b3848815d2"
+          }
+        },
+        {
+          "path": "gone.txt",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "gone.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "0004cb0fa91be247ee0f636bd06a2b417b59968e666f22e96c34d486e7f64c65"
+          }
+        },
+        {
+          "path": "link",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "link_target": "t1"
+          }
+        },
+        {
+          "path": "run.sh",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "run.sh",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "000abc1f407a11c9377c8b9b13f956b279c8462775105eb958fc9ae3c40de87c"
+          }
+        },
+        {
+          "path": "sub",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "sub",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "204061adeda68e93ad80bfdd02344d78f829c3d1787510853fdf70117923efa3"
+          }
+        },
+        {
+          "path": "sub/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "000244c77418e27569db9213c6b43d9049ecffb5496f7d0e3d4254bb68410ade"
+          }
+        }
+      ]
+    },
+    {
+      "name": "delete-all",
+      "a": "diff-a",
+      "b": "empty",
+      "get_calls": 3,
+      "changes": [
+        {
+          "path": "bin",
+          "kind": "deleted",
+          "old": {
+            "name": "bin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "0003fdeb88a4c6f022465eedaf052a322770e2875b1052f697e5dd3b6ac7722d"
+          },
+          "new": null
+        },
+        {
+          "path": "edit.txt",
+          "kind": "deleted",
+          "old": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "000e10e1a16f0805bd7128d2ff11264ffd33566f0ad1d980ebd0f2b3848815d2"
+          },
+          "new": null
+        },
+        {
+          "path": "gone.txt",
+          "kind": "deleted",
+          "old": {
+            "name": "gone.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "0004cb0fa91be247ee0f636bd06a2b417b59968e666f22e96c34d486e7f64c65"
+          },
+          "new": null
+        },
+        {
+          "path": "link",
+          "kind": "deleted",
+          "old": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "link_target": "t1"
+          },
+          "new": null
+        },
+        {
+          "path": "run.sh",
+          "kind": "deleted",
+          "old": {
+            "name": "run.sh",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "000abc1f407a11c9377c8b9b13f956b279c8462775105eb958fc9ae3c40de87c"
+          },
+          "new": null
+        },
+        {
+          "path": "sub",
+          "kind": "deleted",
+          "old": {
+            "name": "sub",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "204061adeda68e93ad80bfdd02344d78f829c3d1787510853fdf70117923efa3"
+          },
+          "new": null
+        },
+        {
+          "path": "sub/x",
+          "kind": "deleted",
+          "old": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "000244c77418e27569db9213c6b43d9049ecffb5496f7d0e3d4254bb68410ade"
+          },
+          "new": null
+        }
+      ]
+    },
+    {
+      "name": "identical",
+      "a": "diff-a",
+      "b": "diff-a",
+      "get_calls": 0,
+      "changes": null
+    },
+    {
+      "name": "every-kind",
+      "a": "every-a",
+      "b": "every-b",
+      "get_calls": 7,
+      "changes": [
+        {
+          "path": "becomes-file",
+          "kind": "type",
+          "old": {
+            "name": "becomes-file",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "link_target": "was-link"
+          },
+          "new": {
+            "name": "becomes-file",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "content_key": "000a32f8081d37f41befefd2678cd4fb9bd3fd7be9a37c00db73e8118a79ce72"
+          }
+        },
+        {
+          "path": "edit.txt",
+          "kind": "modified",
+          "old": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "0003d33fb48ab5adff269ae172b29a6913ff04f6f266207a7a8e976f2ecd571d"
+          },
+          "new": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "0003dc770fff53f50835f8cc957e01c0d5731d3c2ed544c375493a28c09be5e0"
+          }
+        },
+        {
+          "path": "flip",
+          "kind": "type",
+          "old": {
+            "name": "flip",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "20470b069b64ffa31eff3baef498672d1580c30a92b0ec9b64ce8bc1e3882b6c"
+          },
+          "new": {
+            "name": "flip",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "0004362859fc95bb4a0ef82a5733ce12fbe6e8c78a34016e49378e0cd84679fe"
+          }
+        },
+        {
+          "path": "flip/inner",
+          "kind": "deleted",
+          "old": {
+            "name": "inner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000012000000000",
+            "content_key": "00058f29baa61a7245fc5993eb146fe17858f85c6c6769042f91f05afe28b288"
+          },
+          "new": null
+        },
+        {
+          "path": "gone.txt",
+          "kind": "deleted",
+          "old": {
+            "name": "gone.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "00035f1db92bc97400b37160cf8455661caa8a982b0295aa70b22ef1b54f3792"
+          },
+          "new": null
+        },
+        {
+          "path": "link",
+          "kind": "modified",
+          "old": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "link_target": "t1"
+          },
+          "new": {
+            "name": "link",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "link_target": "t2"
+          }
+        },
+        {
+          "path": "mode.sh",
+          "kind": "mode",
+          "old": {
+            "name": "mode.sh",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "0009a29b927444ff13369f2ca327c3a3732337c0e489df31b3af7fb5bb478e82"
+          },
+          "new": {
+            "name": "mode.sh",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "0009a29b927444ff13369f2ca327c3a3732337c0e489df31b3af7fb5bb478e82"
+          }
+        },
+        {
+          "path": "new.txt",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "new.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "000285052e9aab1b67b6622d94a08441b09fd5b7aca61ee360416d70de5da67d"
+          }
+        },
+        {
+          "path": "newdir",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "newdir",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000014000000000",
+            "content_key": "203f82c29e52344fadc264f5143a40d14d3ce7deed7341636d3fb024e25e69c2"
+          }
+        },
+        {
+          "path": "newdir/y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "y",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000015000000000",
+            "content_key": "000108112a9e334ce73042b531c25668cf5cb12a1ee040a4326afeac06546107"
+          }
+        },
+        {
+          "path": "olddir",
+          "kind": "deleted",
+          "old": {
+            "name": "olddir",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "content_key": "203feccfc537d43343bce0ccf390ef823e85ba5d0880603ab7f063d06121ee5e"
+          },
+          "new": null
+        },
+        {
+          "path": "olddir/x",
+          "kind": "deleted",
+          "old": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000008000000000",
+            "content_key": "00013ae7d805f6789a6402acb70ad4096a85a56bf6804eaf25c0493ac697548d"
+          },
+          "new": null
+        },
+        {
+          "path": "same.txt",
+          "kind": "meta",
+          "old": {
+            "name": "same.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "000483fe82573ab536cf20caf1c78e9801a7debeb96a7f369637f438bb12c0e8"
+          },
+          "new": {
+            "name": "same.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000101000000000",
+            "content_key": "000483fe82573ab536cf20caf1c78e9801a7debeb96a7f369637f438bb12c0e8"
+          }
+        },
+        {
+          "path": "sub/deep.txt",
+          "kind": "meta",
+          "old": {
+            "name": "deep.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "0004767885516adbf240135fb4d401dc157f4be7b7bd3a24adb62d34f0eb6a7f"
+          },
+          "new": {
+            "name": "deep.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000106000000000",
+            "content_key": "0004767885516adbf240135fb4d401dc157f4be7b7bd3a24adb62d34f0eb6a7f"
+          }
+        }
+      ]
+    },
+    {
+      "name": "prunes-equal-subtrees",
+      "a": "prune-a",
+      "b": "prune-b",
+      "get_calls": 2,
+      "changes": [
+        {
+          "path": "top",
+          "kind": "modified",
+          "old": {
+            "name": "top",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "0001d63bd9a826af91c1fea371965a64e11ee20f13e46b5f52c59901136605b3"
+          },
+          "new": {
+            "name": "top",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "0001813e9b729141e7f385afa0a2d0df3e6c3789e427ffe4aeef566a565bc8f2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "walk-order",
+      "a": "walk-a",
+      "b": "walk-b",
+      "get_calls": 4,
+      "changes": [
+        {
+          "path": "a",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "a",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "20bda5e70aa5b29db9cc174427ef19ae388030b23efbd31dba6a62a3a858a275"
+          }
+        },
+        {
+          "path": "a/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "000244c77418e27569db9213c6b43d9049ecffb5496f7d0e3d4254bb68410ade"
+          }
+        },
+        {
+          "path": "a/y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "y",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000",
+            "content_key": "2040b4ab095684e38a48deb32946625d7f3a10d42e8ce8ea8c703a1f7d7719fc"
+          }
+        },
+        {
+          "path": "a/y/z",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "z",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "0002ffaa7f53830b0e1744450c94db3c1264ffcd799e0131f9911529b30af4a8"
+          }
+        },
+        {
+          "path": "a-b",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "a-b",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "000350775c692bfa731f2dcdaa9d9abe8b240b48f91e88291baa7dea79c8afbd"
+          }
+        },
+        {
+          "path": "café",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "café",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "content_key": "0005fbdf844dda24c44798b9a199577a4d27ae6e72f2a91ddba61dd3b284e505"
+          }
+        },
+        {
+          "path": "sp ace",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "sp ace",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "content_key": "00024b782a407c7b9c61b45298b9180a5675d6f3822deb17f7f95724a3b62c10"
+          }
+        },
+        {
+          "path": "tab\tname",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "tab\tname",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000008000000000",
+            "content_key": "0002e13597788a013154e8a2576e8858ffe9aa3b59b53a9f39062ece7936fe21"
+          }
+        }
+      ]
+    },
+    {
+      "name": "non-utf8",
+      "a": "nonutf8-a",
+      "b": "nonutf8-b",
+      "get_calls": 2,
+      "changes": [
+        {
+          "path_hex": "626164ff6e616d65",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name_hex": "626164ff6e616d65",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "00031188aafc48c6112fa2b7587b521d635b3988643406d34e5d361a32be701f"
+          }
+        },
+        {
+          "path": "latin1",
+          "kind": "modified",
+          "old": {
+            "name": "latin1",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "000582a306e7003b1e6f5c12e02a6dc2b7e6bee399970025d9726b4003223afb"
+          },
+          "new": {
+            "name": "latin1",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "00053d6bdb497014b44559244dbb9c475541592cdbf6cc36a1ef52c60f578bfb"
+          }
+        }
+      ]
+    },
+    {
+      "name": "special",
+      "a": "special-a",
+      "b": "special-b",
+      "get_calls": 7,
+      "changes": [
+        {
+          "path": "crlf",
+          "kind": "modified",
+          "old": {
+            "name": "crlf",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000019000000000",
+            "content_key": "0006e17e2ed2d9c3f5466860f16170f4ab2b77e0102c0038f596ac910a6f5a7b"
+          },
+          "new": {
+            "name": "crlf",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000019000000000",
+            "content_key": "00063bb9a4b9c22fa386a2680a93ec14a3fda3bb350689980210e0e4fb134a47"
+          }
+        },
+        {
+          "path": "d2f",
+          "kind": "type",
+          "old": {
+            "name": "d2f",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000024000000000",
+            "content_key": "20cac4dad92870862b88d25392c95e6dabf5672fdc8a6db90e6f042fb69313ec"
+          },
+          "new": {
+            "name": "d2f",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000024000000000",
+            "content_key": "0005429c11f67ca6c3c91562001357fcf13b8b856deed1c07b5ef9c257cb5552"
+          }
+        },
+        {
+          "path": "d2f/deeper",
+          "kind": "deleted",
+          "old": {
+            "name": "deeper",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000026000000000",
+            "content_key": "20402792d16e4fc07b3014cbe39c6521dcb1374bc2198a3aaca02e578ce60450"
+          },
+          "new": null
+        },
+        {
+          "path": "d2f/deeper/z",
+          "kind": "deleted",
+          "old": {
+            "name": "z",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000027000000000",
+            "content_key": "0002ffaa7f53830b0e1744450c94db3c1264ffcd799e0131f9911529b30af4a8"
+          },
+          "new": null
+        },
+        {
+          "path": "d2f/inner",
+          "kind": "deleted",
+          "old": {
+            "name": "inner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000025000000000",
+            "content_key": "00065bbc85533a78b537b21a51204a0fc3c8c1b0743953b42a883b06ad7a4da2"
+          },
+          "new": null
+        },
+        {
+          "path": "dev",
+          "kind": "modified",
+          "old": {
+            "name": "dev",
+            "mode": "8612",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "rdev": [
+              "1",
+              "3"
+            ]
+          },
+          "new": {
+            "name": "dev",
+            "mode": "8612",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "rdev": [
+              "1",
+              "5"
+            ]
+          }
+        },
+        {
+          "path": "dirmode",
+          "kind": "mode",
+          "old": {
+            "name": "dirmode",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "204027bcfde82adeefe13cdeb55119de3eec7e85239b22c4372172cc0b4d0bf4"
+          },
+          "new": {
+            "name": "dirmode",
+            "mode": "16832",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "204027bcfde82adeefe13cdeb55119de3eec7e85239b22c4372172cc0b4d0bf4"
+          }
+        },
+        {
+          "path": "empty-new",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "empty-new",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000043000000000",
+            "content_key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f"
+          }
+        },
+        {
+          "path": "empty-old",
+          "kind": "deleted",
+          "old": {
+            "name": "empty-old",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000018000000000",
+            "content_key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f"
+          },
+          "new": null
+        },
+        {
+          "path": "f2d",
+          "kind": "type",
+          "old": {
+            "name": "f2d",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000023000000000",
+            "content_key": "00051f5addd40861932817c8fc76991a13756ffd9f71698dc4ad7cd7d744bdeb"
+          },
+          "new": {
+            "name": "f2d",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000023000000000",
+            "content_key": "2044be7f15a65ad13fc4a10bd23f32d200fdd3d90336d106dd1c3b19613009eb"
+          }
+        },
+        {
+          "path": "f2d/inner",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "inner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000044000000000",
+            "content_key": "0002068151af5c8cff3bbc193cb5989ce7e38335f2d763f5b23fa304ffbbdbe3"
+          }
+        },
+        {
+          "path": "fifo",
+          "kind": "type",
+          "old": {
+            "name": "fifo",
+            "mode": "4516",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000"
+          },
+          "new": {
+            "name": "fifo",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "link_target": "somewhere"
+          }
+        },
+        {
+          "path": "fifo2",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "fifo2",
+            "mode": "4480",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000041000000000"
+          }
+        },
+        {
+          "path": "miscount",
+          "kind": "modified",
+          "old": {
+            "name": "miscount",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "0009629796066dee6a41aac3d60307038659bef038adcb6afcfb36114e4af573"
+          },
+          "new": {
+            "name": "miscount",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "00099130de8b47ed77c7de8b3f3effc3d7215b5dd3ab01d5a5e14d46942d990e"
+          }
+        },
+        {
+          "path": "modecontent",
+          "kind": "modified",
+          "old": {
+            "name": "modecontent",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "content_key": "0004e0e63aa4c8e1ed796cb104d8a074e553c99fff18d140e886667013ef2780"
+          },
+          "new": {
+            "name": "modecontent",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "content_key": "0004ef40086ad8a395c7a05b5f70cf2575ad187f637ad813136292cb39610694"
+          }
+        },
+        {
+          "path": "nonl",
+          "kind": "modified",
+          "old": {
+            "name": "nonl",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000014000000000",
+            "content_key": "000117762fddd969a453925d65717ac3eea21320b66b54342fde15128d6caf21"
+          },
+          "new": {
+            "name": "nonl",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000014000000000",
+            "content_key": "0003e1220d74c5179666f88b611a728a8b846863d0f5782760124b44f51b8c76"
+          }
+        },
+        {
+          "path": "nul8191",
+          "kind": "modified",
+          "old": {
+            "name": "nul8191",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000021000000000",
+            "content_key": "012000923341ef7c52cd4e562773032342be8a56cfbff4f71c3886dadaa07380"
+          },
+          "new": {
+            "name": "nul8191",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000021000000000",
+            "content_key": "012000fa289543a92a7230da52e68ac893641ff57b8e9e48f2963df9c4a4f359"
+          }
+        },
+        {
+          "path": "nul8192",
+          "kind": "modified",
+          "old": {
+            "name": "nul8192",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000022000000000",
+            "content_key": "012001f970c1ede85bc238403dc178db8217cb3b6f5e3e54f0c9f467e53fad36"
+          },
+          "new": {
+            "name": "nul8192",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000022000000000",
+            "content_key": "01200107b5709748b4aceae0c91c6a9f1a9c54cfdb354c6988648266936a69e1"
+          }
+        },
+        {
+          "path": "olddir",
+          "kind": "deleted",
+          "old": {
+            "name": "olddir",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000028000000000",
+            "content_key": "20c0635799c1869f02d4a4cfd7154a497dc769e130d66a0039eb7f0d5fdcd49e"
+          },
+          "new": null
+        },
+        {
+          "path": "olddir/deep",
+          "kind": "deleted",
+          "old": {
+            "name": "deep",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000030000000000",
+            "content_key": "2040e5e397953fbeb94b962e3200837439cf06169964d461cdc7032f939b3800"
+          },
+          "new": null
+        },
+        {
+          "path": "olddir/deep/y",
+          "kind": "deleted",
+          "old": {
+            "name": "y",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000031000000000",
+            "content_key": "0002cddce439b8c5df40d173141f8c9778778094d7dfaa47f443aecf5909a377"
+          },
+          "new": null
+        },
+        {
+          "path": "olddir/x",
+          "kind": "deleted",
+          "old": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000029000000000",
+            "content_key": "000244c77418e27569db9213c6b43d9049ecffb5496f7d0e3d4254bb68410ade"
+          },
+          "new": null
+        },
+        {
+          "path": "owner",
+          "kind": "meta",
+          "old": {
+            "name": "owner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000017000000000",
+            "content_key": "000277b762cebf0ea28fcd96f06941a36ab245ad80296d9718216050af5b47f7"
+          },
+          "new": {
+            "name": "owner",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "1600000017000000000",
+            "content_key": "000277b762cebf0ea28fcd96f06941a36ab245ad80296d9718216050af5b47f7"
+          }
+        },
+        {
+          "path": "same-bytes",
+          "kind": "type",
+          "old": {
+            "name": "same-bytes",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "link_target": "payload"
+          },
+          "new": {
+            "name": "same-bytes",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "content_key": "0007ec90915fa26ab012a89a88ecc8b47e4dd76c4adfd6abd1fc10e321b0fca1"
+          }
+        },
+        {
+          "path": "setuid",
+          "kind": "mode",
+          "old": {
+            "name": "setuid",
+            "mode": "35309",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000032000000000",
+            "content_key": "00024b782a407c7b9c61b45298b9180a5675d6f3822deb17f7f95724a3b62c10"
+          },
+          "new": {
+            "name": "setuid",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000032000000000",
+            "content_key": "00024b782a407c7b9c61b45298b9180a5675d6f3822deb17f7f95724a3b62c10"
+          }
+        },
+        {
+          "path": "touch",
+          "kind": "meta",
+          "old": {
+            "name": "touch",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000016000000000",
+            "content_key": "0002e13597788a013154e8a2576e8858ffe9aa3b59b53a9f39062ece7936fe21"
+          },
+          "new": {
+            "name": "touch",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000116000000000",
+            "content_key": "0002e13597788a013154e8a2576e8858ffe9aa3b59b53a9f39062ece7936fe21"
+          }
+        },
+        {
+          "path": "weird",
+          "kind": "mode",
+          "old": {
+            "name": "weird",
+            "mode": "57764",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000015000000000"
+          },
+          "new": {
+            "name": "weird",
+            "mode": "57837",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000015000000000"
+          }
+        },
+        {
+          "path": "xin",
+          "kind": "meta",
+          "old": {
+            "name": "xin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "0004b17b2e6bec626caf914daa66e618a49b290bdbb92bb870cbcc0f9937b253",
+            "xattrs_in": "a147757365722e77634131"
+          },
+          "new": {
+            "name": "xin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "0004b17b2e6bec626caf914daa66e618a49b290bdbb92bb870cbcc0f9937b253",
+            "xattrs_in": "a147757365722e77634132"
+          }
+        },
+        {
+          "path": "xsp",
+          "kind": "meta",
+          "old": {
+            "name": "xsp",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "0004336cb63a368367677a2a95a00b61d563104ed54362316cc5fd6fec088ddc",
+            "xattrs_key": "41019d9c4b01239e8e20d725aa93fc0ff48ef8a55c23eb437c8d4d6c17f34068"
+          },
+          "new": {
+            "name": "xsp",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "0004336cb63a368367677a2a95a00b61d563104ed54362316cc5fd6fec088ddc",
+            "xattrs_key": "41019d30ae26073975f016532f3a6ed3d17f382d2e77c761e83c8097334d685b"
+          }
+        },
+        {
+          "path": "zero",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "zero",
+            "mode": "0",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000042000000000"
+          }
+        }
+      ]
+    },
+    {
+      "name": "special-reverse",
+      "a": "special-b",
+      "b": "special-a",
+      "get_calls": 7,
+      "changes": [
+        {
+          "path": "crlf",
+          "kind": "modified",
+          "old": {
+            "name": "crlf",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000019000000000",
+            "content_key": "00063bb9a4b9c22fa386a2680a93ec14a3fda3bb350689980210e0e4fb134a47"
+          },
+          "new": {
+            "name": "crlf",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000019000000000",
+            "content_key": "0006e17e2ed2d9c3f5466860f16170f4ab2b77e0102c0038f596ac910a6f5a7b"
+          }
+        },
+        {
+          "path": "d2f",
+          "kind": "type",
+          "old": {
+            "name": "d2f",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000024000000000",
+            "content_key": "0005429c11f67ca6c3c91562001357fcf13b8b856deed1c07b5ef9c257cb5552"
+          },
+          "new": {
+            "name": "d2f",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000024000000000",
+            "content_key": "20cac4dad92870862b88d25392c95e6dabf5672fdc8a6db90e6f042fb69313ec"
+          }
+        },
+        {
+          "path": "d2f/deeper",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "deeper",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000026000000000",
+            "content_key": "20402792d16e4fc07b3014cbe39c6521dcb1374bc2198a3aaca02e578ce60450"
+          }
+        },
+        {
+          "path": "d2f/deeper/z",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "z",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000027000000000",
+            "content_key": "0002ffaa7f53830b0e1744450c94db3c1264ffcd799e0131f9911529b30af4a8"
+          }
+        },
+        {
+          "path": "d2f/inner",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "inner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000025000000000",
+            "content_key": "00065bbc85533a78b537b21a51204a0fc3c8c1b0743953b42a883b06ad7a4da2"
+          }
+        },
+        {
+          "path": "dev",
+          "kind": "modified",
+          "old": {
+            "name": "dev",
+            "mode": "8612",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "rdev": [
+              "1",
+              "5"
+            ]
+          },
+          "new": {
+            "name": "dev",
+            "mode": "8612",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "rdev": [
+              "1",
+              "3"
+            ]
+          }
+        },
+        {
+          "path": "dirmode",
+          "kind": "mode",
+          "old": {
+            "name": "dirmode",
+            "mode": "16832",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "204027bcfde82adeefe13cdeb55119de3eec7e85239b22c4372172cc0b4d0bf4"
+          },
+          "new": {
+            "name": "dirmode",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "204027bcfde82adeefe13cdeb55119de3eec7e85239b22c4372172cc0b4d0bf4"
+          }
+        },
+        {
+          "path": "empty-new",
+          "kind": "deleted",
+          "old": {
+            "name": "empty-new",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000043000000000",
+            "content_key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f"
+          },
+          "new": null
+        },
+        {
+          "path": "empty-old",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "empty-old",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000018000000000",
+            "content_key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f"
+          }
+        },
+        {
+          "path": "f2d",
+          "kind": "type",
+          "old": {
+            "name": "f2d",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000023000000000",
+            "content_key": "2044be7f15a65ad13fc4a10bd23f32d200fdd3d90336d106dd1c3b19613009eb"
+          },
+          "new": {
+            "name": "f2d",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000023000000000",
+            "content_key": "00051f5addd40861932817c8fc76991a13756ffd9f71698dc4ad7cd7d744bdeb"
+          }
+        },
+        {
+          "path": "f2d/inner",
+          "kind": "deleted",
+          "old": {
+            "name": "inner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000044000000000",
+            "content_key": "0002068151af5c8cff3bbc193cb5989ce7e38335f2d763f5b23fa304ffbbdbe3"
+          },
+          "new": null
+        },
+        {
+          "path": "fifo",
+          "kind": "type",
+          "old": {
+            "name": "fifo",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "link_target": "somewhere"
+          },
+          "new": {
+            "name": "fifo",
+            "mode": "4516",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000"
+          }
+        },
+        {
+          "path": "fifo2",
+          "kind": "deleted",
+          "old": {
+            "name": "fifo2",
+            "mode": "4480",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000041000000000"
+          },
+          "new": null
+        },
+        {
+          "path": "miscount",
+          "kind": "modified",
+          "old": {
+            "name": "miscount",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "00099130de8b47ed77c7de8b3f3effc3d7215b5dd3ab01d5a5e14d46942d990e"
+          },
+          "new": {
+            "name": "miscount",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "0009629796066dee6a41aac3d60307038659bef038adcb6afcfb36114e4af573"
+          }
+        },
+        {
+          "path": "modecontent",
+          "kind": "modified",
+          "old": {
+            "name": "modecontent",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "content_key": "0004ef40086ad8a395c7a05b5f70cf2575ad187f637ad813136292cb39610694"
+          },
+          "new": {
+            "name": "modecontent",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "content_key": "0004e0e63aa4c8e1ed796cb104d8a074e553c99fff18d140e886667013ef2780"
+          }
+        },
+        {
+          "path": "nonl",
+          "kind": "modified",
+          "old": {
+            "name": "nonl",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000014000000000",
+            "content_key": "0003e1220d74c5179666f88b611a728a8b846863d0f5782760124b44f51b8c76"
+          },
+          "new": {
+            "name": "nonl",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000014000000000",
+            "content_key": "000117762fddd969a453925d65717ac3eea21320b66b54342fde15128d6caf21"
+          }
+        },
+        {
+          "path": "nul8191",
+          "kind": "modified",
+          "old": {
+            "name": "nul8191",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000021000000000",
+            "content_key": "012000fa289543a92a7230da52e68ac893641ff57b8e9e48f2963df9c4a4f359"
+          },
+          "new": {
+            "name": "nul8191",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000021000000000",
+            "content_key": "012000923341ef7c52cd4e562773032342be8a56cfbff4f71c3886dadaa07380"
+          }
+        },
+        {
+          "path": "nul8192",
+          "kind": "modified",
+          "old": {
+            "name": "nul8192",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000022000000000",
+            "content_key": "01200107b5709748b4aceae0c91c6a9f1a9c54cfdb354c6988648266936a69e1"
+          },
+          "new": {
+            "name": "nul8192",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000022000000000",
+            "content_key": "012001f970c1ede85bc238403dc178db8217cb3b6f5e3e54f0c9f467e53fad36"
+          }
+        },
+        {
+          "path": "olddir",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "olddir",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000028000000000",
+            "content_key": "20c0635799c1869f02d4a4cfd7154a497dc769e130d66a0039eb7f0d5fdcd49e"
+          }
+        },
+        {
+          "path": "olddir/deep",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "deep",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000030000000000",
+            "content_key": "2040e5e397953fbeb94b962e3200837439cf06169964d461cdc7032f939b3800"
+          }
+        },
+        {
+          "path": "olddir/deep/y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "y",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000031000000000",
+            "content_key": "0002cddce439b8c5df40d173141f8c9778778094d7dfaa47f443aecf5909a377"
+          }
+        },
+        {
+          "path": "olddir/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000029000000000",
+            "content_key": "000244c77418e27569db9213c6b43d9049ecffb5496f7d0e3d4254bb68410ade"
+          }
+        },
+        {
+          "path": "owner",
+          "kind": "meta",
+          "old": {
+            "name": "owner",
+            "mode": "33188",
+            "uid": "0",
+            "gid": "0",
+            "mtime": "1600000017000000000",
+            "content_key": "000277b762cebf0ea28fcd96f06941a36ab245ad80296d9718216050af5b47f7"
+          },
+          "new": {
+            "name": "owner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000017000000000",
+            "content_key": "000277b762cebf0ea28fcd96f06941a36ab245ad80296d9718216050af5b47f7"
+          }
+        },
+        {
+          "path": "same-bytes",
+          "kind": "type",
+          "old": {
+            "name": "same-bytes",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "content_key": "0007ec90915fa26ab012a89a88ecc8b47e4dd76c4adfd6abd1fc10e321b0fca1"
+          },
+          "new": {
+            "name": "same-bytes",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "link_target": "payload"
+          }
+        },
+        {
+          "path": "setuid",
+          "kind": "mode",
+          "old": {
+            "name": "setuid",
+            "mode": "33261",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000032000000000",
+            "content_key": "00024b782a407c7b9c61b45298b9180a5675d6f3822deb17f7f95724a3b62c10"
+          },
+          "new": {
+            "name": "setuid",
+            "mode": "35309",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000032000000000",
+            "content_key": "00024b782a407c7b9c61b45298b9180a5675d6f3822deb17f7f95724a3b62c10"
+          }
+        },
+        {
+          "path": "touch",
+          "kind": "meta",
+          "old": {
+            "name": "touch",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000116000000000",
+            "content_key": "0002e13597788a013154e8a2576e8858ffe9aa3b59b53a9f39062ece7936fe21"
+          },
+          "new": {
+            "name": "touch",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000016000000000",
+            "content_key": "0002e13597788a013154e8a2576e8858ffe9aa3b59b53a9f39062ece7936fe21"
+          }
+        },
+        {
+          "path": "weird",
+          "kind": "mode",
+          "old": {
+            "name": "weird",
+            "mode": "57837",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000015000000000"
+          },
+          "new": {
+            "name": "weird",
+            "mode": "57764",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000015000000000"
+          }
+        },
+        {
+          "path": "xin",
+          "kind": "meta",
+          "old": {
+            "name": "xin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "0004b17b2e6bec626caf914daa66e618a49b290bdbb92bb870cbcc0f9937b253",
+            "xattrs_in": "a147757365722e77634132"
+          },
+          "new": {
+            "name": "xin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "0004b17b2e6bec626caf914daa66e618a49b290bdbb92bb870cbcc0f9937b253",
+            "xattrs_in": "a147757365722e77634131"
+          }
+        },
+        {
+          "path": "xsp",
+          "kind": "meta",
+          "old": {
+            "name": "xsp",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "0004336cb63a368367677a2a95a00b61d563104ed54362316cc5fd6fec088ddc",
+            "xattrs_key": "41019d30ae26073975f016532f3a6ed3d17f382d2e77c761e83c8097334d685b"
+          },
+          "new": {
+            "name": "xsp",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "0004336cb63a368367677a2a95a00b61d563104ed54362316cc5fd6fec088ddc",
+            "xattrs_key": "41019d9c4b01239e8e20d725aa93fc0ff48ef8a55c23eb437c8d4d6c17f34068"
+          }
+        },
+        {
+          "path": "zero",
+          "kind": "deleted",
+          "old": {
+            "name": "zero",
+            "mode": "0",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000042000000000"
+          },
+          "new": null
+        }
+      ]
+    },
+    {
+      "name": "clone-special",
+      "a": "empty",
+      "b": "special-a",
+      "get_calls": 7,
+      "changes": [
+        {
+          "path": "blk",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "blk",
+            "mode": "24960",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "rdev": [
+              "259",
+              "0"
+            ]
+          }
+        },
+        {
+          "path": "crlf",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "crlf",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000019000000000",
+            "content_key": "0006e17e2ed2d9c3f5466860f16170f4ab2b77e0102c0038f596ac910a6f5a7b"
+          }
+        },
+        {
+          "path": "d2f",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "d2f",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000024000000000",
+            "content_key": "20cac4dad92870862b88d25392c95e6dabf5672fdc8a6db90e6f042fb69313ec"
+          }
+        },
+        {
+          "path": "d2f/deeper",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "deeper",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000026000000000",
+            "content_key": "20402792d16e4fc07b3014cbe39c6521dcb1374bc2198a3aaca02e578ce60450"
+          }
+        },
+        {
+          "path": "d2f/deeper/z",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "z",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000027000000000",
+            "content_key": "0002ffaa7f53830b0e1744450c94db3c1264ffcd799e0131f9911529b30af4a8"
+          }
+        },
+        {
+          "path": "d2f/inner",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "inner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000025000000000",
+            "content_key": "00065bbc85533a78b537b21a51204a0fc3c8c1b0743953b42a883b06ad7a4da2"
+          }
+        },
+        {
+          "path": "dev",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "dev",
+            "mode": "8612",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "rdev": [
+              "1",
+              "3"
+            ]
+          }
+        },
+        {
+          "path": "dirmode",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "dirmode",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000011000000000",
+            "content_key": "204027bcfde82adeefe13cdeb55119de3eec7e85239b22c4372172cc0b4d0bf4"
+          }
+        },
+        {
+          "path": "dirmode/f",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000012000000000",
+            "content_key": "000274dba5dfc4518c85f7e9d69933a7008e7fccc9cb55633679aa96e47bcab1"
+          }
+        },
+        {
+          "path": "empty-old",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "empty-old",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000018000000000",
+            "content_key": "0000af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f"
+          }
+        },
+        {
+          "path": "f2d",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f2d",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000023000000000",
+            "content_key": "00051f5addd40861932817c8fc76991a13756ffd9f71698dc4ad7cd7d744bdeb"
+          }
+        },
+        {
+          "path": "fifo",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "fifo",
+            "mode": "4516",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000"
+          }
+        },
+        {
+          "path": "miscount",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "miscount",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000013000000000",
+            "content_key": "0009629796066dee6a41aac3d60307038659bef038adcb6afcfb36114e4af573"
+          }
+        },
+        {
+          "path": "modecontent",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "modecontent",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000010000000000",
+            "content_key": "0004e0e63aa4c8e1ed796cb104d8a074e553c99fff18d140e886667013ef2780"
+          }
+        },
+        {
+          "path": "nonl",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "nonl",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000014000000000",
+            "content_key": "000117762fddd969a453925d65717ac3eea21320b66b54342fde15128d6caf21"
+          }
+        },
+        {
+          "path": "nul8191",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "nul8191",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000021000000000",
+            "content_key": "012000923341ef7c52cd4e562773032342be8a56cfbff4f71c3886dadaa07380"
+          }
+        },
+        {
+          "path": "nul8192",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "nul8192",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000022000000000",
+            "content_key": "012001f970c1ede85bc238403dc178db8217cb3b6f5e3e54f0c9f467e53fad36"
+          }
+        },
+        {
+          "path": "olddir",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "olddir",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000028000000000",
+            "content_key": "20c0635799c1869f02d4a4cfd7154a497dc769e130d66a0039eb7f0d5fdcd49e"
+          }
+        },
+        {
+          "path": "olddir/deep",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "deep",
+            "mode": "16877",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000030000000000",
+            "content_key": "2040e5e397953fbeb94b962e3200837439cf06169964d461cdc7032f939b3800"
+          }
+        },
+        {
+          "path": "olddir/deep/y",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "y",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000031000000000",
+            "content_key": "0002cddce439b8c5df40d173141f8c9778778094d7dfaa47f443aecf5909a377"
+          }
+        },
+        {
+          "path": "olddir/x",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "x",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000029000000000",
+            "content_key": "000244c77418e27569db9213c6b43d9049ecffb5496f7d0e3d4254bb68410ade"
+          }
+        },
+        {
+          "path": "owner",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "owner",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000017000000000",
+            "content_key": "000277b762cebf0ea28fcd96f06941a36ab245ad80296d9718216050af5b47f7"
+          }
+        },
+        {
+          "path": "same-bytes",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "same-bytes",
+            "mode": "41471",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000009000000000",
+            "link_target": "payload"
+          }
+        },
+        {
+          "path": "setuid",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "setuid",
+            "mode": "35309",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000032000000000",
+            "content_key": "00024b782a407c7b9c61b45298b9180a5675d6f3822deb17f7f95724a3b62c10"
+          }
+        },
+        {
+          "path": "sock",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "sock",
+            "mode": "49645",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000004000000000"
+          }
+        },
+        {
+          "path": "touch",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "touch",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000016000000000",
+            "content_key": "0002e13597788a013154e8a2576e8858ffe9aa3b59b53a9f39062ece7936fe21"
+          }
+        },
+        {
+          "path": "weird",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "weird",
+            "mode": "57764",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000015000000000"
+          }
+        },
+        {
+          "path": "x256",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "x256",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000007000000000",
+            "content_key": "0005edb839b4fbfa819d029af92d3cc2d832bb108a0fe26da4ab85b91b58901d",
+            "xattrs_in": "a146757365722e7858f6767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676"
+          }
+        },
+        {
+          "path": "x257",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "x257",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000008000000000",
+            "content_key": "0005baddb7b58622730201dc26f8c8e0530a3f460bd2ffdac3c17b38bbb0b1bb",
+            "xattrs_key": "410101e8c8d21938e519a20ed7af60957c8aea320984c0d69841a388dc574042"
+          }
+        },
+        {
+          "path": "xin",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "xin",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000005000000000",
+            "content_key": "0004b17b2e6bec626caf914daa66e618a49b290bdbb92bb870cbcc0f9937b253",
+            "xattrs_in": "a147757365722e77634131"
+          }
+        },
+        {
+          "path": "xsp",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "xsp",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000006000000000",
+            "content_key": "0004336cb63a368367677a2a95a00b61d563104ed54362316cc5fd6fec088ddc",
+            "xattrs_key": "41019d9c4b01239e8e20d725aa93fc0ff48ef8a55c23eb437c8d4d6c17f34068"
+          }
+        }
+      ]
+    },
+    {
+      "name": "big",
+      "a": "big-a",
+      "b": "big-b",
+      "get_calls": 2,
+      "changes": [
+        {
+          "path": "exact16",
+          "kind": "modified",
+          "old": {
+            "name": "exact16",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "1301000000384d464c2a131841a5dd2473627e00743bc1b5563865e7b3772214"
+          },
+          "new": {
+            "name": "exact16",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000001000000000",
+            "content_key": "13010000000d0b10d84971ce9403f0191c83f04459cd125cc7d1706a17027be1"
+          }
+        },
+        {
+          "path": "grow",
+          "kind": "modified",
+          "old": {
+            "name": "grow",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "1301000000384d464c2a131841a5dd2473627e00743bc1b5563865e7b3772214"
+          },
+          "new": {
+            "name": "grow",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000003000000000",
+            "content_key": "1301000001552685e204996448ae765fecfc2be90082f139ea65e7b85a3195e0"
+          }
+        },
+        {
+          "path": "over16",
+          "kind": "modified",
+          "old": {
+            "name": "over16",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "13010000018622c65f855a0044f5f3e06aa2698259c97a06d98155bdb245790f"
+          },
+          "new": {
+            "name": "over16",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "1301000001c19aac5c0463d5502dc6b4f4c32195a75f8d6106f71bd440ff50df"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wide",
+      "a": "wide-a",
+      "b": "wide-b",
+      "get_calls": 10,
+      "changes": [
+        {
+          "path": "f100",
+          "kind": "modified",
+          "old": {
+            "name": "f100",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000100000000000",
+            "content_key": "000460e1d60014c49974f404f5051f4f94e5f262a71c14a1db5e7b9eb26f5521"
+          },
+          "new": {
+            "name": "f100",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000100000000000",
+            "content_key": "000cfd7db4070f0ada5849d126a6481b3b893a8755de5960e7d58f25b169ef46"
+          }
+        },
+        {
+          "path": "f200",
+          "kind": "deleted",
+          "old": {
+            "name": "f200",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000200000000000",
+            "content_key": "0004a73bbb14998d49cc28a500a1e3bb40a7d1a51a685ad5ca7a1ec75fa85530"
+          },
+          "new": null
+        },
+        {
+          "path": "f200a",
+          "kind": "new",
+          "old": null,
+          "new": {
+            "name": "f200a",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000200000000000",
+            "content_key": "000479d1d8da0b625035cdbfc9d51841030861b9f4cf7c5abbe442a8d13efc35"
+          }
+        },
+        {
+          "path": "f350",
+          "kind": "modified",
+          "old": {
+            "name": "f350",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000350000000000",
+            "content_key": "0004d9c47d48087842584dcd85b1ffe9941f79e9dd179893a06612aa36ff4aa7"
+          },
+          "new": {
+            "name": "f350",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000350000000000",
+            "content_key": "000c9032a22833bd852d49b7ade85c494961908df9bbf62c466642d69ad4c6d9"
+          }
+        }
+      ]
+    },
+    {
+      "name": "missing-content",
+      "a": "missing-content-a",
+      "b": "missing-content-b",
+      "get_calls": 2,
+      "changes": [
+        {
+          "path": "edit.txt",
+          "kind": "modified",
+          "old": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "00219eac59f6b68faaacbc6e2a3cb31ae4430ffe700c6f4d19bc26b6206d9998"
+          },
+          "new": {
+            "name": "edit.txt",
+            "mode": "33188",
+            "uid": "1000",
+            "gid": "1000",
+            "mtime": "1600000002000000000",
+            "content_key": "00207b26b2296e185f20c51f906d65cb5a9893dece6520c2ba4440a4ec6ede56"
+          }
+        }
+      ]
+    },
+    {
+      "name": "error-missing-subtree",
+      "a": "broken-a",
+      "b": "broken-b",
+      "get_calls": 4,
+      "changes": null,
+      "error": "fstree: reading 20a183d6557dd8529ca42d67654cd1c8420bb0c894a9db7c810c53bdbd6229e9: packstore: object not found"
+    },
+    {
+      "name": "error-not-a-directory",
+      "a": "empty",
+      "b": "notdir",
+      "get_calls": 2,
+      "changes": null,
+      "error": "fstree: 001cb602edc55fbc458ef47c972cedd1bed551dd75c4e8ebd2341a5f9c002663 is not a directory object (type Blob)"
+    },
+    {
+      "name": "error-bad-directory-content-key",
+      "a": "badkey-a",
+      "b": "badkey-b",
+      "get_calls": 2,
+      "changes": null,
+      "error": "key: data is not 32 bytes: got 3"
+    },
+    {
+      "name": "error-bad-added-directory-content-key",
+      "a": "empty",
+      "b": "badkey-add",
+      "get_calls": 2,
+      "changes": null,
+      "error": "key: data is not 32 bytes: got 3"
+    }
+  ],
+  "scan": [
+    {
+      "name": "clean",
+      "doc": "TestScan_CleanTreeHasNoChanges",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": null
+    },
+    {
+      "name": "every-kind",
+      "doc": "TestScan_EveryKind: modified, mode, deleted, new file and directory, mtime only, retargeted link; the root .dstore is invisible",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha 2"
+        },
+        {
+          "op": "chmod",
+          "path": "run.sh",
+          "mode": 493
+        },
+        {
+          "op": "remove",
+          "path": "gone.txt"
+        },
+        {
+          "op": "file",
+          "path": "new.txt",
+          "mode": 420,
+          "text": "new"
+        },
+        {
+          "op": "dir",
+          "path": "newdir",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "newdir/c.txt",
+          "mode": 420,
+          "text": "c"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1500000000",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "remove",
+          "path": "link"
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "run.sh"
+        },
+        {
+          "op": "dir",
+          "path": ".dstore",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": ".dstore/junk",
+          "mode": 420,
+          "text": "x"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "a.txt",
+          "kind": "modified",
+          "old_mode": "33188",
+          "new_mode": "33188"
+        },
+        {
+          "path": "gone.txt",
+          "kind": "deleted",
+          "old_mode": "33188",
+          "new_mode": null
+        },
+        {
+          "path": "link",
+          "kind": "modified",
+          "old_mode": "40960",
+          "new_mode": "40960"
+        },
+        {
+          "path": "new.txt",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "newdir",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "16877"
+        },
+        {
+          "path": "newdir/c.txt",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "run.sh",
+          "kind": "mode",
+          "old_mode": "33188",
+          "new_mode": "33261"
+        },
+        {
+          "path": "sub/b.txt",
+          "kind": "meta",
+          "old_mode": "33188",
+          "new_mode": "33188"
+        }
+      ]
+    },
+    {
+      "name": "ignored-base-path",
+      "doc": "TestScan_IgnoredBasePathIsDeleted: base entries are not filtered by .amberignore",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": ".amberignore",
+          "mode": 420,
+          "text": "gone.txt\n"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": ".amberignore",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "gone.txt",
+          "kind": "deleted",
+          "old_mode": "33188",
+          "new_mode": null
+        }
+      ]
+    },
+    {
+      "name": "ignored-in-subdirectory",
+      "doc": "a .amberignore below the root applies to its directory",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": "sub/.amberignore",
+          "mode": 420,
+          "text": "b.txt\n"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "sub",
+          "kind": "meta",
+          "old_mode": "16877",
+          "new_mode": "16877"
+        },
+        {
+          "path": "sub/.amberignore",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "sub/b.txt",
+          "kind": "deleted",
+          "old_mode": "33188",
+          "new_mode": null
+        }
+      ]
+    },
+    {
+      "name": "racy-window-exact",
+      "doc": "base mtime = syncedAt - 2s exactly: not hashed, the same-size same-mtime edit is invisible",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1699999998",
+          "mtime_nsec": 0
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "ALPHA"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1699999998",
+          "mtime_nsec": 0
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": null
+    },
+    {
+      "name": "racy-window-1ns-inside",
+      "doc": "base mtime = syncedAt - 2s + 1ns: hashed, the edit is found",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1699999998",
+          "mtime_nsec": 1
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "ALPHA"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1699999998",
+          "mtime_nsec": 1
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "a.txt",
+          "kind": "modified",
+          "old_mode": "33188",
+          "new_mode": "33188"
+        }
+      ]
+    },
+    {
+      "name": "stat-heuristic-size-differs",
+      "doc": "same mtime, other size: hashed",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha!"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "a.txt",
+          "kind": "modified",
+          "old_mode": "33188",
+          "new_mode": "33188"
+        }
+      ]
+    },
+    {
+      "name": "type-change-expands",
+      "doc": "TestScan_TypeChangeExpands: file to directory and directory to file",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "remove",
+          "path": "a.txt"
+        },
+        {
+          "op": "dir",
+          "path": "a.txt",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "a.txt/inner",
+          "mode": 420,
+          "text": "i"
+        },
+        {
+          "op": "remove",
+          "path": "sub"
+        },
+        {
+          "op": "file",
+          "path": "sub",
+          "mode": 420,
+          "text": "flat"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "a.txt",
+          "kind": "type",
+          "old_mode": "33188",
+          "new_mode": "16877"
+        },
+        {
+          "path": "a.txt/inner",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "sub",
+          "kind": "type",
+          "old_mode": "16877",
+          "new_mode": "33188"
+        },
+        {
+          "path": "sub/b.txt",
+          "kind": "deleted",
+          "old_mode": "33188",
+          "new_mode": null
+        }
+      ]
+    },
+    {
+      "name": "walk-order",
+      "doc": "added a/x, a-b: changes come in walk order, a directory before its contents",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "dir",
+          "path": "a",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "a/x",
+          "mode": 420,
+          "text": "x"
+        },
+        {
+          "op": "file",
+          "path": "a-b",
+          "mode": 420,
+          "text": "ab"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "a",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "16877"
+        },
+        {
+          "path": "a/x",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "a-b",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        }
+      ]
+    },
+    {
+      "name": "root-dstore-in-base",
+      "doc": "a .dstore the base tree holds at the root comes out deleted",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        },
+        {
+          "op": "dir",
+          "path": ".dstore",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": ".dstore/junk",
+          "mode": 420,
+          "text": "x"
+        },
+        {
+          "op": "mtime",
+          "path": ".dstore/junk",
+          "mtime_unix": "1600000006",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": ".dstore",
+          "mtime_unix": "1600000007",
+          "mtime_nsec": 0
+        }
+      ],
+      "edit": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": ".dstore",
+          "kind": "deleted",
+          "old_mode": "16877",
+          "new_mode": null
+        },
+        {
+          "path": ".dstore/junk",
+          "kind": "deleted",
+          "old_mode": "33188",
+          "new_mode": null
+        }
+      ]
+    },
+    {
+      "name": "nested-dstore-is-data",
+      "doc": "a .dstore below the root is ordinary data",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "dir",
+          "path": "sub/.dstore",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/.dstore/f",
+          "mode": 420,
+          "text": "f"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "sub",
+          "kind": "meta",
+          "old_mode": "16877",
+          "new_mode": "16877"
+        },
+        {
+          "path": "sub/.dstore",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "16877"
+        },
+        {
+          "path": "sub/.dstore/f",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        }
+      ]
+    },
+    {
+      "name": "symlink-to-directory-and-patterns",
+      "doc": "a directory-only pattern does not match a symlink to a directory; ignored names never appear",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        },
+        {
+          "op": "dir",
+          "path": "realdir",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "realdir/f",
+          "mode": 420,
+          "text": "f"
+        },
+        {
+          "op": "mtime",
+          "path": "realdir/f",
+          "mtime_unix": "1600000006",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "realdir",
+          "mtime_unix": "1600000007",
+          "mtime_nsec": 0
+        }
+      ],
+      "edit": [
+        {
+          "op": "file",
+          "path": ".amberignore",
+          "mode": 420,
+          "text": "linkdir/\nbuild/\n*.log\n"
+        },
+        {
+          "op": "symlink",
+          "path": "linkdir",
+          "target": "realdir"
+        },
+        {
+          "op": "dir",
+          "path": "build",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "build/o",
+          "mode": 420,
+          "text": "o"
+        },
+        {
+          "op": "file",
+          "path": "x.log",
+          "mode": 420,
+          "text": "l"
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": ".amberignore",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "33188"
+        },
+        {
+          "path": "linkdir",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "40960"
+        }
+      ]
+    },
+    {
+      "name": "fifo-and-directory-mode",
+      "doc": "an added fifo and a directory chmod",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "fifo",
+          "path": "pipe",
+          "mode": 420
+        },
+        {
+          "op": "chmod",
+          "path": "sub",
+          "mode": 448
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": [
+        {
+          "path": "pipe",
+          "kind": "new",
+          "old_mode": null,
+          "new_mode": "4516"
+        },
+        {
+          "path": "sub",
+          "kind": "mode",
+          "old_mode": "16877",
+          "new_mode": "16832"
+        }
+      ]
+    },
+    {
+      "name": "error-amberignore-is-a-directory",
+      "doc": "amberignore.Root's read error is returned raw",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "edit": [
+        {
+          "op": "dir",
+          "path": ".amberignore",
+          "mode": 493
+        }
+      ],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": null,
+      "error": "read {ROOT}/.amberignore: is a directory"
+    },
+    {
+      "name": "error-missing-base-object",
+      "doc": "the base key is not in the store",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "run.sh",
+          "mode": 420,
+          "text": "#!/bin/sh"
+        },
+        {
+          "op": "mtime",
+          "path": "run.sh",
+          "mtime_unix": "1600000002",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "dir",
+          "path": "sub",
+          "mode": 493
+        },
+        {
+          "op": "file",
+          "path": "sub/b.txt",
+          "mode": 420,
+          "text": "beta"
+        },
+        {
+          "op": "mtime",
+          "path": "sub/b.txt",
+          "mtime_unix": "1600000003",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "mtime",
+          "path": "sub",
+          "mtime_unix": "1600000004",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "file",
+          "path": "gone.txt",
+          "mode": 420,
+          "text": "bye"
+        },
+        {
+          "op": "mtime",
+          "path": "gone.txt",
+          "mtime_unix": "1600000005",
+          "mtime_nsec": 0
+        },
+        {
+          "op": "symlink",
+          "path": "link",
+          "target": "a.txt"
+        }
+      ],
+      "base_key": "2007fd689a4b55c242d60d71f0aed4a0ecb2cf4da6860c2b9c755f4ee68c08d3",
+      "edit": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": null,
+      "error": "fstree: reading 2007fd689a4b55c242d60d71f0aed4a0ecb2cf4da6860c2b9c755f4ee68c08d3: packstore: object not found"
+    },
+    {
+      "name": "error-bad-base-content-key",
+      "doc": "a base file entry with a 3-byte content key",
+      "setup": [
+        {
+          "op": "file",
+          "path": "a.txt",
+          "mode": 420,
+          "text": "alpha"
+        },
+        {
+          "op": "mtime",
+          "path": "a.txt",
+          "mtime_unix": "1600000001",
+          "mtime_nsec": 0
+        }
+      ],
+      "base_key": "202438e06d4d3bc380c47f4736e924c0a4227b06596effc4802dfc70db06935f",
+      "base_objects": [
+        {
+          "key": "202438e06d4d3bc380c47f4736e924c0a4227b06596effc4802dfc70db06935f",
+          "bytes": "81a60045612e747874011981a4021903e8031903e8041b16345786143aca000543010203"
+        }
+      ],
+      "edit": [],
+      "synced_at_unix": "1700000000",
+      "synced_at_nsec": 0,
+      "jobs": 2,
+      "changes": null,
+      "error": "key: data is not 32 bytes: got 3"
+    }
+  ]
+}

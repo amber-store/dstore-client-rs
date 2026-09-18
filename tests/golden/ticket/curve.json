@@ -1,0 +1,840 @@
+{
+  "cases": [
+    {
+      "name": "all-zero",
+      "bytes": "0000000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "all-0xff",
+      "bytes": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-1-sign-0",
+      "bytes": "0100000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-1-sign-1",
+      "bytes": "0100000000000000000000000000000000000000000000000000000000000080",
+      "valid": true
+    },
+    {
+      "name": "y-0-sign-1",
+      "bytes": "0000000000000000000000000000000000000000000000000000000000000080",
+      "valid": true
+    },
+    {
+      "name": "y-2-sign-0",
+      "bytes": "0200000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-3-sign-0",
+      "bytes": "0300000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-4-sign-0",
+      "bytes": "0400000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-5-sign-0",
+      "bytes": "0500000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-6-sign-0",
+      "bytes": "0600000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-7-sign-0",
+      "bytes": "0700000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-8-sign-0",
+      "bytes": "0800000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-9-sign-0",
+      "bytes": "0900000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-10-sign-0",
+      "bytes": "0a00000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-11-sign-0",
+      "bytes": "0b00000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-12-sign-0",
+      "bytes": "0c00000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-13-sign-0",
+      "bytes": "0d00000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-14-sign-0",
+      "bytes": "0e00000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-15-sign-0",
+      "bytes": "0f00000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-16-sign-0",
+      "bytes": "1000000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-17-sign-0",
+      "bytes": "1100000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-18-sign-0",
+      "bytes": "1200000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-19-sign-0",
+      "bytes": "1300000000000000000000000000000000000000000000000000000000000000",
+      "valid": true
+    },
+    {
+      "name": "y-20-sign-0",
+      "bytes": "1400000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-minus-1-sign-0",
+      "bytes": "ecffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-minus-1-sign-1",
+      "bytes": "ecffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-0-sign-0",
+      "bytes": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-0-sign-1",
+      "bytes": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-1-sign-0",
+      "bytes": "eeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-1-sign-1",
+      "bytes": "eeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-2-sign-0",
+      "bytes": "efffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-2-sign-1",
+      "bytes": "efffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-3-sign-0",
+      "bytes": "f0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-3-sign-1",
+      "bytes": "f0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-4-sign-0",
+      "bytes": "f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-4-sign-1",
+      "bytes": "f1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-5-sign-0",
+      "bytes": "f2ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-5-sign-1",
+      "bytes": "f2ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-6-sign-0",
+      "bytes": "f3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-6-sign-1",
+      "bytes": "f3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-7-sign-0",
+      "bytes": "f4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-7-sign-1",
+      "bytes": "f4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-8-sign-0",
+      "bytes": "f5ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-8-sign-1",
+      "bytes": "f5ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-9-sign-0",
+      "bytes": "f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-9-sign-1",
+      "bytes": "f6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-10-sign-0",
+      "bytes": "f7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-10-sign-1",
+      "bytes": "f7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-11-sign-0",
+      "bytes": "f8ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-11-sign-1",
+      "bytes": "f8ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-12-sign-0",
+      "bytes": "f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-12-sign-1",
+      "bytes": "f9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-13-sign-0",
+      "bytes": "faffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "y-p-plus-13-sign-1",
+      "bytes": "faffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "y-p-plus-14-sign-0",
+      "bytes": "fbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-14-sign-1",
+      "bytes": "fbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-15-sign-0",
+      "bytes": "fcffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-15-sign-1",
+      "bytes": "fcffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-16-sign-0",
+      "bytes": "fdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-16-sign-1",
+      "bytes": "fdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-17-sign-0",
+      "bytes": "feffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-17-sign-1",
+      "bytes": "feffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "y-p-plus-18-sign-0",
+      "bytes": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true
+    },
+    {
+      "name": "y-p-plus-18-sign-1",
+      "bytes": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true
+    },
+    {
+      "name": "07-x32",
+      "bytes": "0707070707070707070707070707070707070707070707070707070707070707",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key: input is z-base-32, use ParseEndpointIDZ32"
+    },
+    {
+      "name": "ab-x32",
+      "bytes": "abababababababababababababababababababababababababababababababab",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "id1",
+      "bytes": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "valid": true
+    },
+    {
+      "name": "id1-sign-flipped",
+      "bytes": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cda4",
+      "valid": true
+    },
+    {
+      "name": "id2",
+      "bytes": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "valid": true
+    },
+    {
+      "name": "id2-sign-flipped",
+      "bytes": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c9c4",
+      "valid": true
+    },
+    {
+      "name": "id3",
+      "bytes": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+      "valid": true
+    },
+    {
+      "name": "id3-sign-flipped",
+      "bytes": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b074dd",
+      "valid": true
+    },
+    {
+      "name": "id4",
+      "bytes": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+      "valid": true
+    },
+    {
+      "name": "id4-sign-flipped",
+      "bytes": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e9d",
+      "valid": true
+    },
+    {
+      "name": "id5",
+      "bytes": "bb21182139d2b0117acd28e2705e41537eda0f018f9e0c7445753f66d4e04395",
+      "valid": true
+    },
+    {
+      "name": "id5-sign-flipped",
+      "bytes": "bb21182139d2b0117acd28e2705e41537eda0f018f9e0c7445753f66d4e04315",
+      "valid": true
+    },
+    {
+      "name": "id6",
+      "bytes": "07c1c9e0833b8ab6f978b69a73e99878c4543d15e4d2ee5c47bad9cd05ddca80",
+      "valid": true
+    },
+    {
+      "name": "id6-sign-flipped",
+      "bytes": "07c1c9e0833b8ab6f978b69a73e99878c4543d15e4d2ee5c47bad9cd05ddca00",
+      "valid": true
+    },
+    {
+      "name": "id7",
+      "bytes": "59223fce6ee36455639c0de2a428ad8916cf0e60c1d7ea5ddc08f394a75bbbc2",
+      "valid": true
+    },
+    {
+      "name": "id7-sign-flipped",
+      "bytes": "59223fce6ee36455639c0de2a428ad8916cf0e60c1d7ea5ddc08f394a75bbb42",
+      "valid": true
+    },
+    {
+      "name": "id8",
+      "bytes": "2b6d6f2264b21dcc74e1b25d4647f1534611d92f82e9195d8302a5079938a650",
+      "valid": true
+    },
+    {
+      "name": "id8-sign-flipped",
+      "bytes": "2b6d6f2264b21dcc74e1b25d4647f1534611d92f82e9195d8302a5079938a6d0",
+      "valid": true
+    },
+    {
+      "name": "splitmix-200",
+      "bytes": "c992c5c8e3f4133fd9d3f724914365a75a420a45a30387483f34506ea5ee9262",
+      "valid": true
+    },
+    {
+      "name": "splitmix-201",
+      "bytes": "ec97cb1eb2d3a6a79423d67568048b76bad2497f4b6b21e409b42dc14c3456a1",
+      "valid": true
+    },
+    {
+      "name": "splitmix-202",
+      "bytes": "98e88d2745e399e6e48ea9952d927aaa8e7a10e376852def3c937c26efca2b59",
+      "valid": true
+    },
+    {
+      "name": "splitmix-203",
+      "bytes": "66c621d9145f14b5cd9094960cf09e93a27fde5300c6a488972e4249bcd6bf03",
+      "valid": true
+    },
+    {
+      "name": "splitmix-204",
+      "bytes": "ad0357e085342b17332cb21412d1a7ffc4868892d15a8f19e3160391ade14fca",
+      "valid": true
+    },
+    {
+      "name": "splitmix-205",
+      "bytes": "4c34a6728a4e2da90a8167dc1dd95e833bf02d01e638ecb6dcf01869c84b07c6",
+      "valid": true
+    },
+    {
+      "name": "splitmix-206",
+      "bytes": "644c3518fe65c26b1e9949684b3b6a88025cb919d433c9d5855c109bf5c8b124",
+      "valid": true
+    },
+    {
+      "name": "splitmix-207",
+      "bytes": "ebce55d7370a77826f4cccbad6219acb5da2def15694b8ade639be026c8de3e6",
+      "valid": true
+    },
+    {
+      "name": "splitmix-208",
+      "bytes": "d0dac89ec4e2044e26d6ecc33c6d59dc6715e9f7634d7f3795fd58ceef56a8db",
+      "valid": true
+    },
+    {
+      "name": "splitmix-209",
+      "bytes": "80ac0ed3d897b8a638d66e6dbaa5efb1bad96123b7a0b70bc64288f85716efc1",
+      "valid": true
+    },
+    {
+      "name": "splitmix-210",
+      "bytes": "09b167c7fa9acbe84576837e7004236f53007aa40d49c9f0b04f5bb0c1b604d6",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-211",
+      "bytes": "2bc22900672b3eedc643eea67242942d298585433262353237fdb26d81e00d8c",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-212",
+      "bytes": "85d11b21f8269c20486241d07108831a087f10a581e100b24fce921bb4b6c7dc",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-213",
+      "bytes": "aef49dd4d79d519688f0c413ef42d9b6260f63aaf37c62a464059eed3250c9d3",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-214",
+      "bytes": "29a228e0b2c4e738e5a8c6a36763d606cff351d2881152adb6096ac1e6b28801",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-215",
+      "bytes": "795113d23c075fe66e2a7f662f2a8048f87f42c572572d76e5da1439c9db27eb",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-216",
+      "bytes": "68cbae1bf246a2c9053cb84c95889d8a0595236a66213785dbb349d67890d406",
+      "valid": true
+    },
+    {
+      "name": "splitmix-217",
+      "bytes": "2f0b64363cd0a8d356a2eaa6cc89144fec23609706471e07084493bc1dd5e981",
+      "valid": true
+    },
+    {
+      "name": "splitmix-218",
+      "bytes": "67d565a34a1d4936a2f67233b3b49d2d69058d665c254cee49f0d715c2bc822c",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-219",
+      "bytes": "d13fe4b9b0f3a4dd0a25d01d94e53021673cd25dddfe72ff9ca2d094599cd156",
+      "valid": true
+    },
+    {
+      "name": "splitmix-220",
+      "bytes": "1493fa2fcc0f40085ba7cd3a114b39a6cdfc140aec5b81418efeb62c985c4216",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-221",
+      "bytes": "2728406895e3b164f465c9f57405c2bab6dd2319183709586cfe0212c15117df",
+      "valid": true
+    },
+    {
+      "name": "splitmix-222",
+      "bytes": "1386601c95b7e6861ea3df518a4935ec6f9231da33f00df180910b37e835ed03",
+      "valid": true
+    },
+    {
+      "name": "splitmix-223",
+      "bytes": "9268d1c1ba4fafea7e2660939436648330a5ef0dea182169bbb245f700ec1c06",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-224",
+      "bytes": "818c5c6fad6bad23dc1d449576307340ec44df21c0f772b0224089fd46b6f826",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-225",
+      "bytes": "f706a36334f6af8e81fd19784a17778a865a55fcd9f09cc48af0f5de6c7baff9",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-226",
+      "bytes": "4dc3cd4feba3529c05affe486a9e7e7193cd85e8ad253e2d4495b854f391e507",
+      "valid": true
+    },
+    {
+      "name": "splitmix-227",
+      "bytes": "4c442019fd2dea7022d7ab3767c479d36fe2e7fd9b51a73fedbcaa0a6320a2b1",
+      "valid": true
+    },
+    {
+      "name": "splitmix-228",
+      "bytes": "563c77b6c7c1dc84bfdb675c18b2d4452778b09e65cfa5f62a644fdc35d840cd",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-229",
+      "bytes": "2fc5b9913dd1f745d23edd5680d530b6b2056177f6c39ac1e0b0889c799745cb",
+      "valid": true
+    },
+    {
+      "name": "splitmix-230",
+      "bytes": "47cac3dc8d1130af8c304e9f304829794f2d56da3cf7b71280c05cbef3c02db7",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-231",
+      "bytes": "b2752a12e1b931694de7173497309d257589e504df99e456b2e9d2f255b1c21f",
+      "valid": true
+    },
+    {
+      "name": "splitmix-232",
+      "bytes": "9f045a4c8ebab56b53075beca449a363b05b87e12d87a791ca9d72b1ed6dd762",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-233",
+      "bytes": "2f9165ec2076b62e8f0715bad0bf6c862645f3442b8724fc14bcb2b970987ba6",
+      "valid": true
+    },
+    {
+      "name": "splitmix-234",
+      "bytes": "91895bd15b36f6a382e6d371322213065d8a359610fb38e2c4eeda7dbd8f6356",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-235",
+      "bytes": "7a7692a816f1a45fe5509d1b2868345576dfc7b8d82914f3bcb73754a7e1ed88",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-236",
+      "bytes": "5b2eaab5e9e2560f0d233431f2f6e53e8131c8abd03e718385f158c44cd1e2f5",
+      "valid": true
+    },
+    {
+      "name": "splitmix-237",
+      "bytes": "10c8d09915a5aff05a4bb95f95ff4dba56656365901dbe30ab61575f202acadd",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-238",
+      "bytes": "1751e153e9e85fbbf2db6491b430bf2558d9be85efb4b793b845b854841ac788",
+      "valid": true
+    },
+    {
+      "name": "splitmix-239",
+      "bytes": "15a299da776764b706e8bb9ed57a285780543b6869d6c8795fa75e6c1e1912bd",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-240",
+      "bytes": "dedc8ea24911abbed6e14398ad677fda754f679815e894bda3cdc5935d26841e",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-241",
+      "bytes": "5c364f6d076f96e9095b5c0d9693d503826480548d9a1b55adf20bb8751f2c15",
+      "valid": true
+    },
+    {
+      "name": "splitmix-242",
+      "bytes": "850398ced4f1f171106b1e222e1c73569d607b1f62fe3ec37c53dec32401be9f",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-243",
+      "bytes": "4619a4917a16d23cf6862660725feacebc110af6fd112155e203eb42880db476",
+      "valid": true
+    },
+    {
+      "name": "splitmix-244",
+      "bytes": "69570596c73797671dac2748345ff55a54f2f8ff0c23f02e73ea44576db62945",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-245",
+      "bytes": "e53b39563c567d43c1f5ca197e0062e4142257ada43673947211f5803a409109",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-246",
+      "bytes": "0484a784f7a76455153a8f7248309bfebf9e4d9d0ac55eb97f1304f5993515d0",
+      "valid": true
+    },
+    {
+      "name": "splitmix-247",
+      "bytes": "fb0140e24f67a86b8d5da25870f056264d210a1b8a8fa678f86edfe0d17904f4",
+      "valid": true
+    },
+    {
+      "name": "splitmix-248",
+      "bytes": "f42bef27306e98b637f4d6a51ed9a5bdd6c50e7d99a1c59096a74e1ff2dcf9ee",
+      "valid": true
+    },
+    {
+      "name": "splitmix-249",
+      "bytes": "ea694fd1b5efefe149d1b1c570d8d4a6f98ccbeafe8fcf70ec51482f90ece344",
+      "valid": true
+    },
+    {
+      "name": "splitmix-250",
+      "bytes": "4cfe5f2b9b4257d26bd44065e16bf26647cd9e2ed290f886f9388d0bd83e4641",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-251",
+      "bytes": "2d52380bc823547e1774a4ad8813024057261f7c71a2c88a820a61919544d7fc",
+      "valid": true
+    },
+    {
+      "name": "splitmix-252",
+      "bytes": "4efccdbe2ccf97492339a5864709b1c2ff3917f4b232288853c72456bf354635",
+      "valid": true
+    },
+    {
+      "name": "splitmix-253",
+      "bytes": "15bf862500e6d63156911454d6cee59d3af7007369849415ebbe8c8dfd13a15b",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-254",
+      "bytes": "019c77a7e55e2eda97af15e9185cc6c8e3288fed932736f3b39fb1d40297e8a8",
+      "valid": true
+    },
+    {
+      "name": "splitmix-255",
+      "bytes": "b43f284671508c33158d2c2ca8b984ef3dd662e917816cd6ade12a6e7ea816a6",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-256",
+      "bytes": "3f6524e301d20266e08aca271a4248f6ad025756539a637aaca6bf951a393d96",
+      "valid": true
+    },
+    {
+      "name": "splitmix-257",
+      "bytes": "2427605023322973eb7f2b3a2d2a1985769d295cc8f7e6eeecd815e690650d4d",
+      "valid": true
+    },
+    {
+      "name": "splitmix-258",
+      "bytes": "a49d5131a0f8091e0eea6f5d697548e7636768f0d26dbd0ed7bd0f8b4776af4b",
+      "valid": true
+    },
+    {
+      "name": "splitmix-259",
+      "bytes": "38cb94333d8dddffb3a5adacb1db0dee0c2a5ae21f0ba17936afe03a99953676",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-260",
+      "bytes": "1bee5af3511ebdbe3a67ace3450099f7017a2250ad4ff7f04c1b0a6bd41bcd9b",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-261",
+      "bytes": "c2e738636e5fc5180484989c23e112901bd39f7615ab7b9ae064bab7aaf12d21",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-262",
+      "bytes": "454afa539dd734e8fff2ecebc642907c0533651c59923901e6f2b21c075c0143",
+      "valid": false,
+      "hex_parse_error": "data is not a valid public key",
+      "base32_parse_error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix-263",
+      "bytes": "3d50cc47b799b30b31ee6d02062ccd9a2a73e80a6416d9f1898d59027c1ad7d3",
+      "valid": true
+    }
+  ]
+}

@@ -1,0 +1,5864 @@
+{
+  "encode": [
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "c7",
+      "out": "Y4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0abd",
+      "out": "BK6Q"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "e532a8",
+      "out": "4UZKQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "01d91015",
+      "out": "AHMRAFI"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "cf554d3963",
+      "out": "Z5KU2OLD"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "98a2ec4b59d1",
+      "out": "TCROYS2Z2E"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5c6b9c9b6c637e",
+      "out": "LRVZZG3MMN7A"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "05d3a15bb5c9baa7",
+      "out": "AXJ2CW5VZG5KO"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "2bf39052c8e699d5b2",
+      "out": "FPZZAUWI42M5LMQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "1e462e3f8cd3b97872ec",
+      "out": "DZDC4P4M2O4XQ4XM"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "eccd40b5cea1a42f747ce3",
+      "out": "5TGUBNOOUGSC65D44M"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5cd5a998c3d6466f702993dd",
+      "out": "LTK2TGGD2ZDG64BJSPOQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0deeaf5daceb2522fb6469569a",
+      "out": "BXXK6XNM5MSSF63ENFLJU"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "22dc43cbb1c8d0295188ad4ee2db",
+      "out": "ELOEHS5RZDICSUMIVVHOFWY"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "8731fca2235a6c91a8f556367bce83",
+      "out": "Q4Y7ZIRDLJWJDKHVKY3HXTUD"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a64a88060b93ac062c8a12915681b8e",
+      "out": "BJSKRADAXE5MAYWIUEURK2A3RY"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "77046369f4b9a4b1bd6556e50a9d4c64df",
+      "out": "O4CGG2PUXGSLDPLFK3SQVHKMMTPQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7736751390e206770d8f655969047ceb9fc3",
+      "out": "O43HKE4Q4IDHODMPMVMWSBD45OP4G"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "ffd5155ab3fc63df017ee5ee2b9f8e3ca67f46",
+      "out": "77KRKWVT7RR56AL64XXCXH4OHSTH6RQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "f4fead33a6a3816d90896a82676e544787a147b0",
+      "out": "6T7K2M5GUOAW3EEJNKBGO3SUI6D2CR5Q"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "f5a6a6a171cef2314a4d975eee2a41d79bf18f0955",
+      "out": "6WTKNILRZ3ZDCSSNS5PO4KSB26N7DDYJKU"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "c79fb10e5c7e23804dc35962268e470de232cca546b1",
+      "out": "Y6P3CDS4PYRYATODLFRCNDSHBXRDFTFFI2YQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d6d399d9f8d6b42d8b9ebeda4fe7ccc493fc19cb2d688",
+      "out": "JVWTTHM7RVVUFWFZ5PW2J7T4ZRET7QM4WLLIQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "cf46fd04b98bb2af8d687bd4272605bb2c1d0c05901c698e",
+      "out": "Z5DP2BFZROZK7DLIPPKCOJQFXMWB2DAFSAOGTDQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0bf1d962c2d92d67ef246f68116929f2979451f48f376b8cd4",
+      "out": "BPY5SYWC3EWWP3ZEN5UBC2JJ6KLZIUPUR43WXDGU"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "39182f6f3551e2e54f8e935944658922a6d6a771fac1f1bc0d01",
+      "out": "HEMC63ZVKHROKT4OSNMUIZMJEKTNNJ3R7LA7DPANAE"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "24adf8668f1c456ce2a233e14426bc1178a613ff718ea02f57cd8f",
+      "out": "ESW7QZUPDRCWZYVCGPQUIJV4CF4KME77OGHKAL2XZWHQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "54a3be71dd74766225eb4b8cc5f072dc77d8569844e5de7b82b03d06",
+      "out": "KSR344O5OR3GEJPLJOGML4DS3R35QVUYITS5464CWA6QM"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "fb1de69de45df1bcde248159a1a455ba043c6b74af9b17f68ebadf93d9",
+      "out": "7MO6NHPELXY3ZXREQFM2DJCVXICDY23UV6NRP5UOXLPZHWI"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d81bed0ad6b7c51a59a42f718ab3418ce891a20373a77a88021b6fb0f3f",
+      "out": "JWA35UFNNN6FDJM2IL3RRKZUDDHISGRAG45HPKEAEG3PWDZ7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "048549bbc7d6bf88794516d588d11ec765b76809d20343eb6de85037372c2c",
+      "out": "ASCUTO6H227YQ6KFC3KYRUI6Y5S3O2AJ2IBUH23N5BIDONZMFQ"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "12acf445bc84d20b5566a910886cf5826019d5608b68d38c0f19329a89a67e75",
+      "out": "CKWPIRN4QTJAWVLGVEIIQ3HVQJQBTVLARNUNHDAPDEZJVCNGPZ2Q"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "67a7b8ee0ee566481872eba77939d92230f6871e2a61353ecf5ec198fa21f0d5b1",
+      "out": "M6T3R3QO4VTEQGDS5OTXSOOZEIYPNBY6FJQTKPWPL3AZR6RB6DK3C"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "a1ef16cddf97d15948206eb8b98b80474ae8ef3288e5dd552010785378021ab1d7f3",
+      "out": "UHXRNTO7S7IVSSBAN24LTC4AI5FOR3ZSRDS52VJACB4FG6ACDKY5P4Y"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0c5ffbd1a4650a5219c2c27402c81378f5716f62c26a5805232dc6d0f0f51dc060621b",
+      "out": "BRP7XUNEMUFFEGOCYJ2AFSATPD2XC33CYJVFQBJDFXDNB4HVDXAGAYQ3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "ed150f49a6e478dacd1c01e36862667b05cddc17ee578cd10fb74b286d6e4d273a2450ec",
+      "out": "5UKQ6SNG4R4NVTI4AHRWQYTGPMC43XAX5ZLYZUIPW5FSQ3LOJUTTUJCQ5Q"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "00a32f6bd7be91ced0919b055c5ec84873b7d44936baf7708d618caa48063db3d4e123deb7",
+      "out": "ACRS626XX2I45UERTMCVYXWIJBZ3PVCJG25PO4ENMGGKUSAGHWZ5JYJD323Q"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "823251f1e7d301d57f701d69e4f4b5f3cfbffcfe81dee24731434a40795faaef78e0419dfc17",
+      "out": "QIZFD4PH2MA5K73QDVU6J5FV6PH377H6QHPOERZRINFEA6K7VLXXRYCBTX6BO"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "1c04ec55da91488164c2d00dc0689f8f3644a54f94149553439f4ed4e3b323cabf37a69e5543c9",
+      "out": "DQCOYVO2SFEICZGC2AG4A2E7R43EJJKPSQKJKU2DT5HNJY5TEPFL6N5GTZKUHSI"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "dd6bdcb8b75652f203c27c18c77a7a47741b1567e705727e8a912f9c42ff787f973f5189b98fe061",
+      "out": "3VV5ZOFXKZJPEA6CPQMMO6T2I52BWFLH44CXE7UKSEXZYQX7PB7ZOP2RRG4Y7YDB"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "92",
+      "out": "1e"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "02f1",
+      "out": "ymao"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "2fdde1",
+      "out": "f9q6n"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "c45e3c30",
+      "out": "atxdacy"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "dfe926d069",
+      "out": "59w1pwdj"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "98dc8674ef85",
+      "out": "udqec78xow"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "1270c1fb649c4d",
+      "out": "njacd65rutgo"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "e8653025588a0621",
+      "out": "7b1uyjkatednn"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "d9bb5607be2b80ddc2",
+      "out": "5g7icb76fqyp5oo"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "9ab92e8521361576e127",
+      "out": "ukh17bjbgakzpaj8"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "8bc4abceb0fbdcb7a2930e",
+      "out": "txnkzuio9xqmxewuba"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "ee99cb33184ade46ae45995d",
+      "out": "74chscaajmxrpm1fufqo"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4ed1fe1e248e5c2e24841ee33d",
+      "out": "j5e9h8trt3qnhjrrd5tu4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0bf010b5ce4cc7c0067ae4eef102",
+      "out": "bxabbpqqjudhybu4huzxnyo"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "8ca5c339475b3b661f0986b53ecdfb",
+      "out": "t11hgqk8mc7sc8ajo44u7ux5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "d5099040ad5cd6e33d5b9b5b6000fd45",
+      "out": "4wr3yofpmumqgxk5uppsyy87ew"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6fc13f94b64533745bf1726b541f13019c",
+      "out": "p9yu9ffsew3zes9tqjiie8auygqy"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "b6488c9d1db4afa1ffc28911db82c2bb99a3",
+      "out": "s3re38e7s1z4d96ntre7zysnzqc4g"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "d58ab09e3bb014e282c7b8418f186a2f32d20a",
+      "out": "4sfmb8t5sykqfys8zbya6gdkfh3prno"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "b0e9c38bd0de11dc32866ee11d0a0883541daba7",
+      "out": "sdwh8n6o5ae7acwgp5ot4noeopkb5k78"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "2211b2c281336e7ede06a2fcccd861fcfdcc69ae6d",
+      "out": "ree5fowbgpz87zogwm6c3sdb9u6ha4pqpw"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "ee8feac988588e1cf50c2a2f9795b0b85505272d5dc9",
+      "out": "7486i1cemn8b37ecfez3xfpozbkokj3pmzro"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "761f10f037c6fb0e5381a761ce3dd2a6e2df2084a76a72",
+      "out": "qaxtbhbza57ohwhbw7ohhxq1w5tp6errw7i8r"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "183b29776531f00c0c56afd943c2b41707d026629ed465d9",
+      "out": "dy71175fg8ayadnsi9cw8oiwnhd7yjunu5kgmse"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "9f465a1c00975f9864923009a06479e0dc7dadfa6a87936257",
+      "out": "u7dfw8yy17x3o3r1gyr4y3d3hdq85mx4pkd3ga1z"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0cc2d64b5056abb4692da7e57ba2a41ce27646fb6269cf7dee3d",
+      "out": "bubpc14ok4i5e4jpw91zzeirdut8ctz5cjwh69xq8w"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "493e89efc18cf40b8e89af85ccd9c2b63a6cd130bacef92b90f16f",
+      "out": "jr9eu56btu4yzdwji6nh3sqnsa7g3wjozm8x1kho6fzo"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "003071de10a5605a87f58cc1ea074a35234216c343f7b3502f7d8549",
+      "out": "yya8dzoowiofib9ituy6wb4kgwtwrfsdex55gwbxxsnw1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "8b28678b2e847f8308b7e18f55498d8f556bec1d966c44bf0e27d4e1fb",
+      "out": "tcwgxn3qot9agnfzhg8ik1cpt7ksz5y713srjxaqr9kqd6a"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "83b9e8e16e2af70e20ef06d4d39d0df53db8455595601837d638a304630c",
+      "out": "oqh6tamqfm5ohe8xy5kp88ep6w65otki1iobop6s8ntoeaac"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "1670921683e50987093d0103d24ab4fa4114efbc8bf08995cd6ca746c23ad5",
+      "out": "n3ajrfwdhwraqnj7yrb7r1iw9jytj57htxaeufqpp1uwpot44w"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "1fd755e65f72b25edb155773b772b0c70a7f5e634b1eba80dd9a44ee9aa9d505",
+      "out": "d9mim319qk3f7saik735qhioahf86zudjcxmiyg7ujnq7gij4wno"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "174560563c9c655974a55fab5581b1bd7bf827e1cc52a1020a3d680c67f99ee7f5",
+      "out": "n7nsyithut1i17ffm6iimyptzi79oj9b3tjknyok8iwya393u5u9k"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3c68ec720c6c7062b24ec03474e63fddec0412536ed610496187ee83bb7acc686cec",
+      "out": "8twqahocptagfc1qay48j3t95zsyer1up5mby1mbo9ze8q543twg35y"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "d3a518270cf212155d72576fb2559eeebc5a208882aab489ef49144b6ada4ae23b9083",
+      "out": "4q1tojac6ejbkzm1k7z5ric6746fwereokimjnxxjrkrs4s4jmtdzrrd"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "d42ecf4ee9b34646608ad2b17d8101dde68512b8a512a75ed6647bd9b87e66aaeb5ef401",
+      "out": "4ozc6uzjspdrcark4kaz5yeb5zuekriawwjkqzssct77uqd6c4iqszzwyr"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "ec8df39632fe3829f72c35e220627111a779f88324d104af980b013c8d0694c33e6974210c",
+      "out": "71g98ft19ahnu73cgztnyautnguzu6rdrueojmhabcyu3deg1ubuh4mwrrgy"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "9691c887cc8b1889459ec037fd593d0ae4a1016b2322245ebc3721bcadacf9428251040d0550",
+      "out": "14ehtb6ctcce1tc6ay594sj7bm1knymmrctnezihgho53mpc9fberwerbwniy"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "a8778c9590a1ae884d18ec6f63eb71d35cba1e610ab82a7746bb696000d0008bc9882987b83799",
+      "out": "ib5a3fcowgzeouea7tzs845t4pqmw8ubbkhnw74gzpwsyygoynfhunbjo6hdxge"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "19e4ca6e46b667404d8f87c8fcdd574b8e7ef8b1d9ebbe0b39daccc50116daebd12e2d453e99c798",
+      "out": "d81cw51gs3uwyucxo9rx3zkzjq8876ft58i5hn335mgckyes5mi7nmtpew9jutha"
+    }
+  ],
+  "decode": [
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d59",
+      "out_hex": "66",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a5851",
+      "out_hex": "666f",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a585736",
+      "out_hex": "666f6f",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a5857365951",
+      "out_hex": "666f6f62",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a585736595442",
+      "out_hex": "666f6f6261",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a5857365954424f49",
+      "out_hex": "666f6f626172",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4e3258455a4a4f",
+      "out_hex": "737572652e",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4e3258455a49",
+      "out_hex": "73757265",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4e525357433433564f4a535334",
+      "out_hex": "6c6561737572652e",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d593d3d3d3d3d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "21212121",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "783d3d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41413d413d3d3d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141413d41414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d4d4d4d4d4d4d4d4d",
+      "out_hex": "6318c6318c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d4d4d4d4d4d",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41413d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141",
+      "out_hex": "0000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141",
+      "out_hex": "000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141414141",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141414141",
+      "out_hex": "00000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141414141",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141414141414141",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d45",
+      "out_hex": "61",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d46",
+      "out_hex": "61",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3041",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "410a41",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4e3258455a0d0a49",
+      "out_hex": "73757265",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a0d",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4e32580d455a0a49",
+      "out_hex": "73757265",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a5857365954424f490d0a",
+      "out_hex": "666f6f626172",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141ffffffffffff",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141ffffffffffff4d59",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141ffff41ffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141ffffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141ffffffff",
+      "out_hex": "0000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141ffffff",
+      "out_hex": "000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141414141ff",
+      "out_hex": "00000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141414141ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a585736595442ffffffffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "ff41414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141ff0affffffffff",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59424e4452464738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4e3258455a4a4fc4b1",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5959",
+      "out_hex": "c6",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "595959",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59595959",
+      "out_hex": "c631",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5959595959",
+      "out_hex": "c6318c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "595959595959",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59595959595959",
+      "out_hex": "c6318c63",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5959595959595959",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "595959595959595959",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141414141414141",
+      "out_hex": "000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59595959595959595959",
+      "out_hex": "c6318c6318c6",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141414141414141",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5959595959595959595959",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141414141414141414141",
+      "out_hex": "00000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "616161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "595959595959595959595959",
+      "out_hex": "c6318c6318c631",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141414141414141414141",
+      "out_hex": "0000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61616161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79797979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59595959595959595959595959",
+      "out_hex": "c6318c6318c6318c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141414141414141414141",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6161616161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979797979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5959595959595959595959595959",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141414141414141414141414141",
+      "out_hex": "000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "616161616161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979797979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "595959595959595959595959595959",
+      "out_hex": "c6318c6318c6318c63",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141414141414141414141414141",
+      "out_hex": "00000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61616161616161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79797979797979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59595959595959595959595959595959",
+      "out_hex": "c6318c6318c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141414141414141414141414141",
+      "out_hex": "00000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6161616161616161616161616161616161",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979797979797979797979797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5959595959595959595959595959595959",
+      "out_hex": "c6318c6318c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d41414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d5a585736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d79797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d626e6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "413d414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d3d585736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "793d797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "793d6e6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41413d4141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a3d5736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79793d7979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79623d6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a583d36595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979793d79797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e3d72666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141413d414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a58573d595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979793d797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e643d666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41414141413d4141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a5857363d5442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79797979793d7979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e64723d6738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4141414141413d41",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a585736593d42",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "7979797979793d79",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e6472663d38",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141414141413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a58573659543d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "797979797979793d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e647266673d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a4d5a585736595442",
+      "out_hex": "666f6f6261",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a58570d0a365954420a",
+      "out_hex": "666f6f6261",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d5a0d58570a36590d0a54424f490d",
+      "out_hex": "666f6f626172",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0d0d0a0a4d59",
+      "out_hex": "66",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a0a0a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "410d0a3d0a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "79626e640d0a726667380a790d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0d79620a6e640d0a72660a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414141410a414141410d414141410d0a41414141",
+      "out_hex": "00000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5641494a500a52545853474c464a333721375a52",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 15"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5357334f554a43564a584e46595a554742424153",
+      "out_hex": "95b6ea24554dda5c66860841",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4744474f454457414a324a4455574f4e514a",
+      "out_hex": "30cce20ec04e923a59cd82",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3355",
+      "out_hex": "dd",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5949545751",
+      "out_hex": "c22768",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "52340d585553520d5a4253",
+      "out_hex": "8f2f494721",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c58414b43595a34",
+      "out_hex": "5dc0a1633c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59323446375144",
+      "out_hex": "c6b85fc0",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59513359344d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4a375358314544514dff37",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c4e4f464a344357",
+      "out_hex": "5b5c54f056",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "48514d495958354c4d5734314d50",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a414341540a59",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5652",
+      "out_hex": "ac",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "514d52325a44414b5249494b",
+      "out_hex": "8323ac8c0a8a10",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4e544a53425a4252474a584b463952594a4e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 13"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4433344d415436385745584a4a5743",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "354d35574d4d50585336385a5759574a5a5659",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "44534b485957583952525458320a3d4c213955",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "49445144524f5450466143474256525149",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 9"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "54585850554837534945343459",
+      "out_hex": "9deefa1ff24139cc",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41513554365350435a464c435a365a",
+      "out_hex": "043b3f49e2c9562cfb",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "545a2144",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "42553455524c5654ff2158365449483d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "554e595837350d55454536",
+      "out_hex": "a3717ff68427",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "57504645323957353350",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "46",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "384233355461595a4c0a5853320a5244350d4b35",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47360d45444d554f525038",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 9"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "57334f5a51424254464256514f54470d43",
+      "out_hex": "b6dd980433286b074cc2",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a545744374d",
+      "out_hex": "9d87f6",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a4236324b524d4a4d524a453448",
+      "out_hex": "c87da54589",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d614e41433637353542423437463d325856444d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "573556",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "545a4143",
+      "out_hex": "9e40",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3435530d31584b59594c58",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f5454484c3d37",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "525350",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d3421495a585857444d4b584c3537",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3049494c5a434b5a4d4d4a44365747334153",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c540a535648534d4749536121",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d524b334a41554444",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "21434f52ff585a473637365a3241",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "334c350d4259324e334947564d37573033463633",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 14"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5149424e345136335654ff43514e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 14"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "575a4e51",
+      "out_hex": "b65b",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "473656574b5a3931454b58384b473747344c4454",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "335348",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6155572153534759544141354e4447",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "32544f544e59594f4736354a4a324e614d535159",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 15"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5352565259323558440d474f21444b5045",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5159",
+      "out_hex": "86",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4651385652320a343236574454465656",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4542492157",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "55485a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "6144324249423842214b495951",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a50375a4b4e434d5248574144354b3542344851",
+      "out_hex": "cbff95344c89ec01f55d0f0f",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414d5242564c49533553494e464f354e51",
+      "out_hex": "03221aad12ec90d2bbad",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5355",
+      "out_hex": "95",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "464c3442365a594b5254524d5542305833324737",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 14"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "364b593748355558494330414b304151553832",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d585843",
+      "out_hex": "65ee",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5730",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "493147505044533746424453570a460a4434",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "48534e4f4c4e4d4d48",
+      "out_hex": "3c9ae5b58c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "343d43320a300a4b5a553721",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "523d55594d4c434c50484b5a415156",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "434b574a",
+      "out_hex": "12ac",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4321344c",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "33434b4e525a4d4e52464b54",
+      "out_hex": "d894d8e58d8955",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4959595257214c5431315445365956",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "564d574d42505041350d46373935",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f56444e505a4757594161334749344b355156",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a55545a4f305157",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "533836524e5a37525243534f4d3341535041",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "46434f524f474541445a46",
+      "out_hex": "289d171880",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "36340a45475746355937544443523257",
+      "out_hex": "f7086b17b8fcc628ea",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "55",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "44514f573452495a5a",
+      "out_hex": "1c1d6e4519",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "513541",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3847524e46",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "344b534a",
+      "out_hex": "e2a4",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47585347504b",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4e42",
+      "out_hex": "68",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59493348ff524e4d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "463321555153574a4f4f32345a44",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "324d46",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "37374e3d504a4b48",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "33464856554556434743354a424e4e46",
+      "out_hex": "d94f5a12a230ba90b5a5",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47333652353761ff4a434a215a4543414b",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4757ff423641463258",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "415a43414e59",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a4d450d5a48394341",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a5735305a37374b3650434eff47",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5233363554345938445544",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "46615948592158",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4b585a0d4253344f373d4d495521575035583651",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4445554d5337503150",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "33524b5a464231374c48495952445236",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "53",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "44515232534a534942455330434a2137",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "33515952",
+      "out_hex": "dc31",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d4f",
+      "out_hex": "63",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "0a4c51",
+      "out_hex": "5c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "423559374343544d4e575855465453524c59",
+      "out_hex": "0f71f10a6c6daf42ce515e",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "465a4834335930414d34574739374852",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d594e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "364f55464946343059",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "37420d50364d4946210a32",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "46414f344e5346",
+      "out_hex": "281dc6c8",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5139534c42ff4643363d5a4d4541",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f320a4959574245",
+      "out_hex": "76918b04",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "42394d4a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3534524754485153364a4d4a580d4b",
+      "out_hex": "ef22699e12",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "544e4f4f335021344f4c5658464253544d4d5659",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4439325355584350525a3353504643344c46",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "324947452151",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c494a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "555556523456484845",
+      "out_hex": "a52b1e54e7",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3945354351375752413d4a50534647494d39",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "57553153",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "61594d4f52",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5554",
+      "out_hex": "a4",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "35373734515046",
+      "out_hex": "efffc83c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "49584f563153574c534353",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59544e4937593737",
+      "out_hex": "c4da8fe3ff",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "434858480a56",
+      "out_hex": "11ee7a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3061",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "43",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "41334446524c",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "544d4130554e47554c334e364e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a4a2151",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "49383537414c41ff4534",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5734454455370a325036",
+      "out_hex": "b7083a7f4f",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "34554b564e51475933",
+      "out_hex": "e51556c0d8",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "54",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "464e415a5535354c354d4d5751",
+      "out_hex": "2b419a77abeb1968",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "414d4b3751413634",
+      "out_hex": "0315f803dc",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "54415a49513549",
+      "out_hex": "98328875",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "554c3432",
+      "out_hex": "a2f9",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "44",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a3d414349334c4f503742455845",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "494b4a49504d485535",
+      "out_hex": "429287b0f4",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "445952553456574737504c",
+      "out_hex": "1e234e56c6",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "454f564f5a",
+      "out_hex": "23aaec",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "393445335945350a325648495644",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d38500a44505950575653524b325a3236444a48",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f56354a57",
+      "out_hex": "757a9b",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "494133344b54565a32574b354a36",
+      "out_hex": "4037c54eb9",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "594a5132323337394b54565a47",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c4d5650444641315936363859324f41513561",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c37",
+      "out_hex": "5f",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5035494c45594352395a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5857484a425a30374a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "344554385845534e43314235",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "52424f315645455949363948473652323d52",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59453246514e334c584a4457524b554134584e58",
+      "out_hex": "c13458376bba4768aa80e5db",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5243484b4347374f584649",
+      "out_hex": "888ea11bee",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "324d554359415a49",
+      "out_hex": "d3282c0328",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5961544d4b4952594a334e475245494943534c43",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "593456383353344a4a344b42",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "520a4b4e365a415543374544465858524f",
+      "out_hex": "8a9bec8282f9065bde2e",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5345473230345446474f490d5735423747",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "565a5946475754584d5345",
+      "out_hex": "ae70535a77",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4a0d0a364f41550d5537360d343735413245",
+      "out_hex": "4f9c0a53fe",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5257485845534847414e4553564e0d5a",
+      "out_hex": "8d8f7248e603492ab7",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "53493356473d4b464e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "424c3332574a55560d595350",
+      "out_hex": "0af7ab2695",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4c42554a42465256564c32484f",
+      "out_hex": "5868909635aaf477",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d514b32594e4a354e52ff4821580d5657464a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "375a5359594552444151485a4a4d3421",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 15"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3754335a4c56344c35",
+      "out_hex": "fcf795d78b",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "51324f51484952453d534a5a43304f4c",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "54474a39464f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "524e535648554e4259",
+      "out_hex": "8b6553d1a1",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "30493d535445414561545359304a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4b574b344f5a45",
+      "out_hex": "72acae3b24",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "52494e48515935465a4f4e4d",
+      "out_hex": "8a1a7863a5cb9a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47514b",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "51554e30562141464d553544",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "525a475658554e",
+      "out_hex": "8e4d5bd1",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d4b555850384f5a4a21515851483637",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "51594d5451515641583252424a4b4c4245",
+      "out_hex": "86193842a0bea214a961",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3254",
+      "out_hex": "d4",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "573d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4535",
+      "out_hex": "27",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "43313237414e325258354e3634",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f4956503537494d",
+      "out_hex": "722afefd0c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "335344354b4d5a443d374358",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "304c4b583452374d324d50523732354154",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "58534f46524a4361364841",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3233575555484758593441425455534b",
+      "out_hex": "d6ed4a1cd7c70019d24a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4fff5247333753364e4e493535213343",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "344e4d575941",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "53594e565a5a57424932595635",
+      "out_hex": "961b5ce6c146b15e",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3333554a5758584b5837505a",
+      "out_hex": "dee89b5eeabfdf",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4b4a51514c",
+      "out_hex": "526105",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "513546330a4b57364553435a5559354c47344658",
+      "out_hex": "874bb55bc490b34c7566",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "515a4649454b413048",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47514155445232",
+      "out_hex": "340141c7",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "21514b454c41464e435936474c304d4249593251",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "58333655444d5950ffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d524d384b474a4943424d374f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "554a31",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "49344646474c42",
+      "out_hex": "470a532c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "31454d55",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "47444b534b33594735",
+      "out_hex": "30d5256f06",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "56326145335a3646454754413932584a4d3347",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "58",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "334f4248524347435948",
+      "out_hex": "db827888c2c1",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "514e445041484f485a4f4b0d5051525932",
+      "out_hex": "8346f01dc7cb94f8471a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "524b533048610a464252493d325a4e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "434e554f542134574e45515761524249",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "50614b464d4f4d55",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "434c4e5955500d4f304652445a4945435643",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "31325038ff50590d4f454f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "385653544458494a50ff215158334d37534b34",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "36",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3951374635454a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3659514c575653554435435a51",
+      "out_hex": "f620bb56541f4598",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "433359",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "53484c42375a50514d514a5639524635",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 12"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "33553246574c3d41424b4f4e5759544f44483036",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "42574449325657545056564b51365044563431",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 18"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "445a44314255324951545852414255",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4857425232555a5236334953595347365257",
+      "out_hex": "3d831d5331f6d12c48de8d",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4751336144444859514d595733444e303546",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "554e4361574a5821565a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "373946483d53",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "365a5657455841544648504d554a3461",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 15"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d4f544b443d375644",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "494a50",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "42ff4e433555524447ff384b480a425a30",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "444d59524b544545",
+      "out_hex": "1b31154c84",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "55574d514a4936",
+      "out_hex": "a59904a3",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "57555144444157574755525643565637",
+      "out_hex": "b5203182d635235156bf",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "50414e4951494f32",
+      "out_hex": "781a8821da",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "435456545249353d53314c4655",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "544a",
+      "out_hex": "9a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5a323251494356",
+      "out_hex": "ceb5040a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4a4eff46414c44535143ff415856333334",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "43374a5341484f5945",
+      "out_hex": "17d3201dd8",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "42494a50",
+      "out_hex": "0a12",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4733375451ff50524c52464f3d4e4b4a32360a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "583834",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4e34544a",
+      "out_hex": "6f26",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "59354531",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4a4c",
+      "out_hex": "4a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "35454a395147",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "5758484c",
+      "out_hex": "b5ce",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "57",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "550d455a544e",
+      "out_hex": "a13336",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3147323933564157346134593721380a52",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3447475955504f48555a48355933484f5a555949",
+      "out_hex": "e18d8a3dc7a64fdc6ceecd30",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "3543ff32424d36504445ff50214c334849",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d364649324c5154",
+      "out_hex": "678a8d2e13",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "51413458",
+      "out_hex": "8039",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "480d3750494a4b444c334844545752",
+      "out_hex": "3fde84a86b",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "444c0d475448544b4b50",
+      "out_hex": "1acd33cd4a",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f414b5654324853464f3434564544535254",
+      "out_hex": "701559e8f22bb9ca90728c",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4f344849524a54",
+      "out_hex": "770e88a6",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4d33415a3651364c574255474147",
+      "out_hex": "66c19f43cb",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "384f445337553232",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4b32593457",
+      "out_hex": "56b1cb",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "37513021494e5055324f3458585743334a374759",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "52414e",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "21453747503647",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "484250360a4952323348483339",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "314853",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "334d594b4833",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "45454143424f5a4436583d5961",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "48515543574349463330464332",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 9"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "523434544c55554854574849545a583243",
+      "out_hex": "8f3935d2879d8e89e6fa",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "54",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "57494754464c",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4e4f415a53514348",
+      "out_hex": "6b81994047",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "34215a4a4e49563352525a354b",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "33",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "474f4b34324e594c4842524f3559360a5233",
+      "out_hex": "3395cd370b3862eee3d1",
+      "error": ""
+    },
+    {
+      "alphabet": "std",
+      "in_hex": "4830590d34",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d59",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a5851",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a585736",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a5857365951",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a585736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a5857365954424f49",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4f4e3258455a4a4f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4f4e3258455a49",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4e525357433433564f4a535334",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d593d3d3d3d3d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "21212121",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "783d3d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41413d413d3d3d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141413d41414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d4d4d4d4d4d4d4d4d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d4d4d4d4d4d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41413d3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d45",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d46",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3041",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "410a41",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4f4e3258455a0d0a49",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0a0d",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0a413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4f4e32580d455a0a49",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a5857365954424f490d0a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141ffffffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141ffffffffffff4d59",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141ffff41ffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141ffffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141ffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141ffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141414141ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141414141ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a585736595442ffffffffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "ff41414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141ff0affffffffff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e6472666738",
+      "out_hex": "00443214c7",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59424e4452464738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4f4e3258455a4a4fc4b1",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6161",
+      "out_hex": "c6",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979",
+      "out_hex": "00",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "5959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616161",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61616161",
+      "out_hex": "c631",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79797979",
+      "out_hex": "0000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6161616161",
+      "out_hex": "c6318c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979797979",
+      "out_hex": "000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "5959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616161616161",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979797979",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61616161616161",
+      "out_hex": "c6318c63",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79797979797979",
+      "out_hex": "00000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6161616161616161",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979797979797979",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "5959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616161616161616161",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979797979797979",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61616161616161616161",
+      "out_hex": "c6318c6318c6",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79797979797979797979",
+      "out_hex": "000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6161616161616161616161",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979797979797979797979",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "5959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616161616161616161616161",
+      "out_hex": "c6318c6318c631",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979797979797979797979",
+      "out_hex": "00000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "595959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61616161616161616161616161",
+      "out_hex": "c6318c6318c6318c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79797979797979797979797979",
+      "out_hex": "0000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59595959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6161616161616161616161616161",
+      "out_hex": "c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979797979797979797979797979",
+      "out_hex": "0000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "5959595959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141414141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616161616161616161616161616161",
+      "out_hex": "c6318c6318c6318c63",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979797979797979797979797979",
+      "out_hex": "000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "595959595959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141414141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61616161616161616161616161616161",
+      "out_hex": "c6318c6318c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79797979797979797979797979797979",
+      "out_hex": "00000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "59595959595959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141414141414141414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6161616161616161616161616161616161",
+      "out_hex": "c6318c6318c6318c6318",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979797979797979797979797979797979",
+      "out_hex": "00000000000000000000",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "5959595959595959595959595959595959",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3d41414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3d5a585736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3d79797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3d626e6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "413d414141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d3d585736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "793d797979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "793d6e6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41413d4141414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a3d5736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79793d7979797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79623d6472666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a583d36595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979793d79797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e3d72666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141413d414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a58573d595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979793d797979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e643d666738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "41414141413d4141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a5857363d5442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79797979793d7979",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e64723d6738",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4141414141413d41",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a585736593d42",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7979797979793d79",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e6472663d38",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141414141413d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a58573659543d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "797979797979793d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e647266673d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0a4d5a585736595442",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a58570d0a365954420a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "4d5a0d58570a36590d0a54424f490d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0d0d0a0a4d59",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0a0a0a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "410d0a3d0a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79626e640d0a726667380a790d",
+      "out_hex": "00443214c7",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0d79620a6e640d0a72660a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "414141410a414141410d414141410d0a41414141",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "713871387438387261787836377937316e73",
+      "out_hex": "71dc789ce4c3dfee83b215",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7578336a7531797a6379640a6770736f627165",
+      "out_hex": "9bf299c817600666da0172",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "386f34777236376637",
+      "out_hex": "3c35427ba5",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3336687479736163727a796967",
+      "out_hex": "cfb9105b0c25c153",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f656d7330707a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "656e743d686972ff70",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "78726870",
+      "out_hex": "7938",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6761316177ff79716a34656f3964",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "756a7968307972773d6575636f63673172637077",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "37686e78",
+      "out_hex": "ef04",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "646f6f",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7072726d396a387a35666273773631746a61",
+      "out_hex": "6908bfa4f7d9436a7a514e",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3838616436616f6368",
+      "out_hex": "39f03f620c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a316b6673366d630d6f",
+      "out_hex": "4c945b796c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7861726a757337376361776a646965",
+      "out_hex": "7e0899dbbd662891d5",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3838346b3575617765656f3169633868",
+      "out_hex": "39f4adcf1442212ab0fc",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "706161726e35ff6d6873367262773d747338",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3837746f6e7a34670a",
+      "out_hex": "3f63015f46",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0a376472396938306d34617172",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6d6d6d3965346a6965786f6e3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 12"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a6269710d626e78666e313971",
+      "out_hex": "486ae089e514be",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "75616139376536396669ff6a7533706e3138",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3573216335",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3470366d3834687a3773796761383178",
+      "out_hex": "d37cb3eb97ed806c1e4f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "376e657a7a6d6f6e6d",
+      "out_hex": "e8917bae02",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0d7721627a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a706373753d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "356b6879637238720d73397839",
+      "out_hex": "dab80610e4b7df",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e666937396f3d683761356465647438",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3963356537386764733337716b746870346f",
+      "out_hex": "fb368e9cc3b67ae5478dd4",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "336e7572657333347a34723961",
+      "out_hex": "c8a6445b3abe89fc",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "77346d6938313779",
+      "out_hex": "a69753cba0",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6766ff6361316a34",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "663161643d65",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "736d7070616f31",
+      "out_hex": "b2dadc42",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e73",
+      "out_hex": "15",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "62657067387a34746b39",
+      "out_hex": "0a1a63df5157",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7268656b6f6863",
+      "out_hex": "2710a871",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "726a7935367872746d6939",
+      "out_hex": "2241bf3c91",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e64346f336b7469333d380a733835",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 9"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "31ff746464346631",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6437",
+      "out_hex": "1f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "316438736e33626e796b",
+      "out_hex": "90cf61642202",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6530397a3734",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "67617521686661673865627735",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6463616f",
+      "out_hex": "1b31",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3666786869",
+      "out_hex": "f15fca",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a743572216561776e686437626f753567",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "65",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "756e",
+      "out_hex": "98",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "366a306f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "67736b747534",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6437696a6e737466376377393168786f6f666a",
+      "out_hex": "1f6a915a25eb29f971f0",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a396f0a65623831337363686e39383578367864",
+      "out_hex": "bfe0809e59b3382f9f6f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616a703539336678740a",
+      "out_hex": "c25bbfe4af",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616b6f7039753468667821666e78330a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e6a6f6d656b0a6e72646179623465353934",
+      "out_hex": "1260b428441e001d237f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "77726d3d6a6fff77733673",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3567726f663635696968346f313631",
+      "out_hex": "d98902fb75af35097a",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3137617a6239396437366d61",
+      "out_hex": "977170ffe3ef97",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e74626f6362636a3178347a6f6a396473",
+      "out_hex": "144306058993f57827e3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "696e786a6e6271366b6573",
+      "out_hex": "a89e9105de",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a7031733378726638353d3369376131",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6369",
+      "out_hex": "65",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "357978696a",
+      "out_hex": "d81f54",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "383865",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "356e6a3561356a72383831636638",
+      "out_hex": "d893bc6d24",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "633838",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "336b34306e",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616d352165",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "357969716b6a72796f77736b",
+      "out_hex": "d82ae52480852c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "696d3d0a66",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3433746e3036",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "73316465",
+      "out_hex": "b486",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f73756f713933756a",
+      "out_hex": "85a7077f33",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "68",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e38",
+      "out_hex": "11",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "690d7a626f3365697564386e",
+      "out_hex": "adc30ca2b3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "677778",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "796d7461",
+      "out_hex": "02e3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6d6e6221",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "693868647970336f39796b217a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6170",
+      "out_hex": "c3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "70726a74707235346831",
+      "out_hex": "691316937ae4",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "71343470757a7a68",
+      "out_hex": "76b4d9defc",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "ff6b78616766747a6f316f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "796174646f317162666377723663370d6f",
+      "out_hex": "06223849c12b284f33b0",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79377a6f6833",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "74736e3163",
+      "out_hex": "8d8526",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "36",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6bff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "37ff37",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3562ff31613439676a6736",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a706962366b6b7a6f6163696674367a68",
+      "out_hex": "4b6a1f2957861952c7d7",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "777073",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f396d72656f36626f",
+      "out_hex": "87d64443c1",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "713168626d773461697a71726377366d",
+      "out_hex": "74b815d358addc4653cb",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "626d6b696f35",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "666d",
+      "out_hex": "2a",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "68346a6d70317773353469",
+      "out_hex": "e692b6ca96",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "336a6f6a653861386f7274ff787a667535647a6f",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "353777616d317a3968",
+      "out_hex": "df6985caff",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a6b650d62",
+      "out_hex": "ba90",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a0a6272666e7266386972736a",
+      "out_hex": "b8485110a7a92c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a31737561",
+      "out_hex": "bcad3c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "796167",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "67753968636b6472646a",
+      "out_hex": "34ffc628641a",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6dff6763216d6669786f6569",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f3138610d3438216379777a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6971776a64687878383766",
+      "out_hex": "aba891f1ef",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0d73693870656464637378",
+      "out_hex": "b54ed40c6cb3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "31637a3838663675393733356f39633d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 15"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b7a636d783564",
+      "out_hex": "55d8b7ec",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "79",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "75716e37617369366531616b6631",
+      "out_hex": "9b85dc5abe",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6362687737ff6d357964386a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "71317739746b6f65",
+      "out_hex": "74a9f8aa08",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "393178386f617368353362386761347433357271",
+      "out_hex": "fc9e7862dcde42736351cec8",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "65ff",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "396a6e39",
+      "out_hex": "fa45",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7333317961397238",
+      "out_hex": "b6640c7c87",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "736634786478746e376373787a0d",
+      "out_hex": "b174f1be22eb2cfb",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "733835393369667166620a706772703671717221",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 18"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "73740d343978616d623779",
+      "out_hex": "b475f7e161e8",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "633d6d69",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6266387a686b676e75777139216d0d6b6f3621",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 12"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7221663339783664657336396b",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e697134636a747973616a657766366475776f35",
+      "out_hex": "155da62620b6128a17c39d21",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "787a31657535",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "67746961396178773569",
+      "out_hex": "346b8fe1f4dd",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "73787767",
+      "out_hex": "b3e8",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "63773164",
+      "out_hex": "6524",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "ff69706436",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6631677939",
+      "out_hex": "2c8c0f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "37706439627a6363616d706d713d3039636e62",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 13"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e67726d756b786b7868623334646465683931",
+      "out_hex": "1188b9a9ea7f039d0c68",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a35786e36787a676b703869656a61387439",
+      "out_hex": "4ede2f3ee6534f5427078f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "726a6e783478676f61633761",
+      "out_hex": "2244fd3cd0c33b",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "78ff6869ff7074376970",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "62696974",
+      "out_hex": "0d6b",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7971357a697836616d746437",
+      "out_hex": "03b77abfd85c47",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3864633972386f726b3874646d666f",
+      "out_hex": "38d9f21e0451e23596",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "617a6169726e3174",
+      "out_hex": "c5f1520a51",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "646d",
+      "out_hex": "1a",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "74393730383568643534787171656431757462",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "75",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "63616e656739367a366931797a6672",
+      "out_hex": "6604837fd7f5640b94",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "786564336f6a6b6577",
+      "out_hex": "7a07982548",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6d6564300d6d743969347a75657531386f756236",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "37796b3475646a",
+      "out_hex": "e815a98d",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6966746e663d37683571677a753971",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "706b77386365317261733163386d79ff78353670",
+      "out_hex": "6aa8762244c5a4c3ac",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7765",
+      "out_hex": "a2",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6961340a706f6e6265626e70743d796f756d3370",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 12"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6937786f",
+      "out_hex": "af5f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "61626b35626a33716977333463626f3961",
+      "out_hex": "c055b0a72ead33a6061f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3938396b72757763",
+      "out_hex": "f9fea24e8c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "680a74756e333039",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "356e39650d62706d38337a3331786272706f",
+      "out_hex": "d8be80b567cdf327848d",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "68736a626e34317139",
+      "out_hex": "e592116a4e",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "34386f347133743575636775666f35",
+      "out_hex": "d1e1a7663b9b0d32c3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "647534646a3d723839746478363971383136",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "793171377a6d65753937656a73726d78736f67",
+      "out_hex": "049ddbad13ff509b116f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "697a340d727a6e726e68346d6b72643169",
+      "out_hex": "adf44b8882e696a20e55",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "683875367978",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "71",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "317569646273",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "737a34667539313567386dff37646465387774",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "77776661610a68377a6b71676e21",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 12"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3136616d",
+      "out_hex": "97b0",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e34376839780a623874746262727835367239",
+      "out_hex": "16bbcfbc278c42123f7e27",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b7078753839ff77666d637434717a63",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "796a787731746e613878657a6470",
+      "out_hex": "025f494458",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a6a6b6a6e6d21647821636e6334ff6373",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f6b753572396862686f7279697364677071696d",
+      "out_hex": "82a7b27f81e4080ad8666baa",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "656d",
+      "out_hex": "42",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "643139",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6d6334356b",
+      "out_hex": "5b35b5",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3369697566343861",
+      "out_hex": "cd6b32e8f8",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "726475646b396e3d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b66746a7364706b723766",
+      "out_hex": "51629b0daa",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3563",
+      "out_hex": "db",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "63696b3736306a6f6b",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7078743d386f37683363",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3463",
+      "out_hex": "d3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "71376d746474366a33356631",
+      "out_hex": "775711c7c9cecb",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7465660a36367873",
+      "out_hex": "8a0bef3e",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6d716f6a776e3164396f73ff7768796172396f77",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 11"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3939366b39653d746a787177ff6b75",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "69686678353170",
+      "out_hex": "af0afdc9",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "34316e796331",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "367374386a6b",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "64",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "69",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "75787262",
+      "out_hex": "9bc8",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "65753439633938716a6764737933",
+      "out_hex": "44f5f67cee",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "346270",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "66726772633738",
+      "out_hex": "290c4674",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e36633d796133",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 3"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6834736b6d726e666d",
+      "out_hex": "e6aca59045",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "633839396d6d65696e68757a7534780d",
+      "out_hex": "61fff5ad15172779e9",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "397a31647568390d",
+      "out_hex": "fde439f3",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a6b6d7a6b0a6465633739397833",
+      "out_hex": "4a97750d0ceffefc",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "2133777273773173657a36",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a69773562623374707a376579386d6a66",
+      "out_hex": "4d69b087316dfa801d69",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "35",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "38",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6d3978676871366d6b3477647538627037",
+      "out_hex": "5fde6e3bcb56a8399c2d",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "75736979336d79363569626f796d6a61613177",
+      "out_hex": "9daa0cac1edd43002d38",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7771626d78777273626a64720d67346f370a",
+      "out_hex": "a382b7d0960a46436a1d",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "696d337a7535786a3164216e35396f6361686d67",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 10"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "386b63396637616d71",
+      "out_hex": "3a99f2f70b",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "34746936366e3874",
+      "out_hex": "d46bef08f1",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "62",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "36623861",
+      "out_hex": "f04f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "626e63703031676f74366f756a757a6b65636577",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3438",
+      "out_hex": "d1",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "656739",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b716d696237",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "70356a3663776b7566677a6d642162737a",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 13"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "30617975787134666d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 0"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "623078636b61",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "78",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "660a0a726a38316274706b6e6d6a71",
+      "out_hex": "291279062d509697",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616771",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f39",
+      "out_hex": "87",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7867693566",
+      "out_hex": "79abb2",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6378673931746e67657477666b71636f65736f",
+      "out_hex": "63cdf944464468553990",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f387177316f6b70626f386f70357136656a3871",
+      "out_hex": "81dd49414d0c0f06edde424e",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "39750d66623478746b6f676b697272ff67",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 14"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "39ff37313d6a7261367a7338303139",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "736e71",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "75716b69777331346e716f716e6f687261386a",
+      "out_hex": "9b955a5a5a13a0e14384",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7739316e636b6f6f733839676e793d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 14"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "613061387738377767756a3574756e34",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "38646e703363686d6664647834700d646536",
+      "out_hex": "38c4dcb38b28c6fd3468",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "793666",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "386f77756d683167617361637a6a3665",
+      "out_hex": "3c2935f246c5b0cba7c8",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "380d73643961697564",
+      "out_hex": "3d87fc5663",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "713363347a6e716a756362333d346d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 12"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "696d39336f616f6f353d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 9"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "726a7162",
+      "out_hex": "225c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "67",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e31653364656774316a776e3835636d6d",
+      "out_hex": "149191a0d1926823ed8b",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "0d663d36",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "396d38",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7161647a68396a3578",
+      "out_hex": "76077e7d3b",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "730d680d7a677a796333",
+      "out_hex": "b72e6b8199",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "356f7175306f616737",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6e",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "676a6239376d3438623679387165396a",
+      "out_hex": "3243feaf470f807723e9",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6736703831707238787771636d6d6b786d6a6368",
+      "out_hex": "379a7934877d1cc5ad4f5a59",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3633376974350d726172726665",
+      "out_hex": "f67b58ec98210a",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "626962",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "38623939686671737a31313834713170383866",
+      "out_hex": "387ffe15d6bca47d3a4d",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b647067386bff687368667964",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 6"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7737ff736f3539356f6668756e673971696168",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 2"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "747135357a3478357a646e7164747331366f",
+      "out_hex": "8bb7bbe9fbb8c4e1c6d2f4",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "77ff38757531373336336a716e732133",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "34756877713336ff7a336231377272643d39",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 7"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a7875696f306a62",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 5"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "68726e6b3736707421",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 8"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3870710a6561653631650d356278",
+      "out_hex": "3b5c8c23d246c2",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "39ff6466656d",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 1"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "73396569",
+      "out_hex": "b7d1",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3537626d6d6f7778",
+      "out_hex": "df42b5c28f",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "686f6e7a33677131333938616b797a6f347a6174",
+      "out_hex": "e4057c99d2cfcf8502f0d5f1",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "616878",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "37356770386b37",
+      "out_hex": "eeccd3ab",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "346d6e6530613d33733364316677",
+      "out_hex": null,
+      "error": "illegal base32 data at input byte 4"
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a33686272336465696171656f73687a",
+      "out_hex": "4e78126468ae1c885b97",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6b743469737a366a676f376a6f",
+      "out_hex": "54755b5fc9343a98",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7a7939317939716b6d6975346a623777666a66",
+      "out_hex": "b83f207dca5d67a487b4",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6a6d627a357a6f70",
+      "out_hex": "4ac37dde0d",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "337461633172396e6737616a376d347a773838",
+      "out_hex": "cc70c913e237709eaf57",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "396733757367776670",
+      "out_hex": "f9b33b1a85",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "643978616f383877386f65727866",
+      "out_hex": "1fdf881cf4",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "35397439360d736a6b376d356e33",
+      "out_hex": "dfe3ff592aeaf62c",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7171726a336e",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "786d6f337072677a737836713433",
+      "out_hex": "7ae19690d7",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "7038706a",
+      "out_hex": "69da",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "6f",
+      "out_hex": "",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3938396f7168376171613463376d3668713670",
+      "out_hex": "f9ff0773b87634ceafdc",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "77687863787579623575777a6e77",
+      "out_hex": "a71ec7cc01",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "3139376f6b636d696f3934336436",
+      "out_hex": "97fb053175",
+      "error": ""
+    },
+    {
+      "alphabet": "zbase32",
+      "in_hex": "78613170776175786a61626978",
+      "out_hex": "7e24da626f4e0357",
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,1401 @@
+{
+  "scripts": [
+    {
+      "name": "grow_to_per_peer_then_round_robin",
+      "description": "Get dials a new connection until per_peer are live, then rotates through them by a counter that is never reset.",
+      "per_peer": 4,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 2,
+          "dials": 2
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 2,
+          "dial_attempts": 3,
+          "dials": 3
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 3,
+          "dial_attempts": 4,
+          "dials": 4
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 4,
+          "dials": 4
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 4,
+          "dials": 4
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 2,
+          "dial_attempts": 4,
+          "dials": 4
+        }
+      ]
+    },
+    {
+      "name": "per_peer_zero_means_one",
+      "description": "NewPool turns per_peer \u003c= 0 into 1.",
+      "per_peer": 0,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        }
+      ]
+    },
+    {
+      "name": "failed_dial_window",
+      "description": "A failed dial with no live connection refuses further dials for 2 s without dialing.",
+      "per_peer": 2,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "set_down",
+          "peer": "a",
+          "down": true,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "mem: 62297a9a unreachable",
+          "dial_attempts": 1,
+          "dials": 0
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "transport: peer recently unreachable",
+          "dial_attempts": 1,
+          "dials": 0
+        },
+        {
+          "op": "set_down",
+          "peer": "a",
+          "down": false,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "transport: peer recently unreachable",
+          "dial_attempts": 1,
+          "dials": 0
+        },
+        {
+          "op": "sleep",
+          "ms": 2100,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 2,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 3,
+          "dials": 2
+        }
+      ]
+    },
+    {
+      "name": "failed_dial_ignored_with_live_conn",
+      "description": "The failed-dial window applies only while no connection is live.",
+      "per_peer": 2,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "fail_next_dial",
+          "text": "scripted dial failure",
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "scripted dial failure",
+          "dial_attempts": 2,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 3,
+          "dials": 2
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 3,
+          "dials": 2
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 3,
+          "dials": 2
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 3,
+          "dials": 2
+        }
+      ]
+    },
+    {
+      "name": "drop_close_and_path",
+      "description": "Drop and Close forget connections (a later Get dials again); Path reports the first live connection.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "path",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "path",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "path": {
+            "direct": true,
+            "rtt_ns": "1000000"
+          }
+        },
+        {
+          "op": "drop",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true
+        },
+        {
+          "op": "path",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 2,
+          "dials": 2
+        },
+        {
+          "op": "close",
+          "ok": true
+        },
+        {
+          "op": "path",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 2,
+          "dial_attempts": 3,
+          "dials": 3
+        },
+        {
+          "op": "path",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "path": {
+            "direct": true,
+            "rtt_ns": "1000000"
+          }
+        }
+      ]
+    },
+    {
+      "name": "closed_conns_are_filtered",
+      "description": "Get filters closed connections in place; a peer going down closes them without a dial failure.",
+      "per_peer": 2,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 2,
+          "dials": 2
+        },
+        {
+          "op": "set_down",
+          "peer": "a",
+          "down": true,
+          "ok": true
+        },
+        {
+          "op": "path",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false
+        },
+        {
+          "op": "set_down",
+          "peer": "a",
+          "down": false,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 2,
+          "dial_attempts": 3,
+          "dials": 3
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 3,
+          "dial_attempts": 4,
+          "dials": 4
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 2,
+          "dial_attempts": 4,
+          "dials": 4
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 3,
+          "dial_attempts": 4,
+          "dials": 4
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 2,
+          "dial_attempts": 4,
+          "dials": 4
+        }
+      ]
+    },
+    {
+      "name": "mem_dial_errors",
+      "description": "In-memory transport dial failures, one pool key per failure so the failed-dial window does not hide them.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1",
+            "amber-dstore-cluster/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        },
+        {
+          "name": "b",
+          "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+          "bound": true,
+          "alpns": [
+            "amber-dstore-cluster/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        },
+        {
+          "name": "c",
+          "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+          "bound": false,
+          "alpns": [],
+          "server": null
+        }
+      ],
+      "steps": [
+        {
+          "op": "get",
+          "peer": "b",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "mem: b44b49be does not speak amber-dstore/1",
+          "dial_attempts": 1,
+          "dials": 0
+        },
+        {
+          "op": "get",
+          "peer": "c",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "mem: 5cb5f57e not bound",
+          "dial_attempts": 2,
+          "dials": 0
+        },
+        {
+          "op": "partition",
+          "a": "client",
+          "b": "a",
+          "cut": true,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "mem: 62297a9a unreachable",
+          "dial_attempts": 3,
+          "dials": 0
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": false,
+          "error": "transport: peer recently unreachable",
+          "dial_attempts": 3,
+          "dials": 0
+        },
+        {
+          "op": "partition",
+          "a": "client",
+          "b": "a",
+          "cut": false,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore-cluster/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 4,
+          "dials": 1
+        },
+        {
+          "op": "set_down",
+          "peer": "client",
+          "down": true,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore-test/1",
+          "ok": false,
+          "error": "mem: local endpoint is down",
+          "dial_attempts": 5,
+          "dials": 1
+        },
+        {
+          "op": "set_down",
+          "peer": "client",
+          "down": false,
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore-test/2",
+          "ok": false,
+          "error": "mem: 62297a9a does not speak amber-dstore-test/2",
+          "dial_attempts": 6,
+          "dials": 1
+        },
+        {
+          "op": "close_endpoint",
+          "peer": "client",
+          "ok": true
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore-test/3",
+          "ok": false,
+          "error": "transport: closed",
+          "dial_attempts": 7,
+          "dials": 1
+        }
+      ]
+    },
+    {
+      "name": "call_reply",
+      "description": "Call writes the request, finishes the send side and reads one reply frame; the connection stays pooled.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "pong"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "call",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "request": {
+            "type": 105,
+            "epoch": "7",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "ok": true,
+          "reply": {
+            "type": 106,
+            "epoch": "8",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "call",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "request": {
+            "type": 105,
+            "epoch": "0",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "ok": true,
+          "reply": {
+            "type": 106,
+            "epoch": "1",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        }
+      ]
+    },
+    {
+      "name": "call_remote_error",
+      "description": "A TErr reply is returned both as the reply and as a *wire.Error.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "err",
+            "code": "busy",
+            "text": "slow down",
+            "retry_after_ms": "1500"
+          }
+        },
+        {
+          "name": "b",
+          "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "err",
+            "code": "stale-view"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "call",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "request": {
+            "type": 105,
+            "epoch": "7",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "ok": false,
+          "error": "remote: busy: slow down",
+          "reply": {
+            "type": 10,
+            "epoch": "0",
+            "code": "busy",
+            "text": "slow down",
+            "retry_after_ms": "1500"
+          },
+          "remote": {
+            "code": "busy",
+            "text": "slow down",
+            "retry_after_ns": "1500000000"
+          },
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "call",
+          "peer": "b",
+          "alpn": "amber-dstore/1",
+          "request": {
+            "type": 105,
+            "epoch": "7",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "ok": false,
+          "error": "remote: stale-view",
+          "reply": {
+            "type": 10,
+            "epoch": "0",
+            "code": "stale-view",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "remote": {
+            "code": "stale-view",
+            "text": "",
+            "retry_after_ns": "0"
+          },
+          "dial_attempts": 2,
+          "dials": 2
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 2,
+          "dials": 2
+        },
+        {
+          "op": "get",
+          "peer": "b",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 2,
+          "dials": 2
+        }
+      ]
+    },
+    {
+      "name": "call_ctx_deadline",
+      "description": "Call under an expiring ctx cancels the read side (the peer's writes fail) and keeps the connection pooled.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "manual"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "call",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "timeout_ms": 50,
+          "request": {
+            "type": 105,
+            "epoch": "7",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "ok": false,
+          "error": "context deadline exceeded",
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "server_accept",
+          "peer": "a",
+          "server_conn": 0,
+          "ok": true
+        },
+        {
+          "op": "server_accept_stream",
+          "server_conn": 0,
+          "server_stream": 0,
+          "ok": true
+        },
+        {
+          "op": "server_read",
+          "server_stream": 0,
+          "buf_len": 64,
+          "ok": true,
+          "n": 10,
+          "read": "00000006a20018690307"
+        },
+        {
+          "op": "server_read",
+          "server_stream": 0,
+          "buf_len": 64,
+          "ok": false,
+          "error": "EOF",
+          "n": 0
+        },
+        {
+          "op": "server_write",
+          "server_stream": 0,
+          "data": "78",
+          "ok": false,
+          "error": "mem: stream reset by peer",
+          "n": 0
+        }
+      ]
+    },
+    {
+      "name": "call_eof_does_not_drop",
+      "description": "A read error in Call is returned without dropping the connection.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "eof"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "call",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "request": {
+            "type": 105,
+            "epoch": "7",
+            "code": "",
+            "text": "",
+            "retry_after_ms": "0"
+          },
+          "ok": false,
+          "error": "EOF",
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 0,
+          "dial_attempts": 1,
+          "dials": 1
+        }
+      ]
+    },
+    {
+      "name": "open_stream_failure_drops",
+      "description": "The mem peer buffers 256 unaccepted streams; the next OpenStream blocks until ctx ends, and that failure drops the pool's connections.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "none"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "open",
+          "repeat": 256,
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "stream": 255,
+          "ok": true,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "open",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "timeout_ms": 50,
+          "ok": false,
+          "error": "context deadline exceeded",
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "get",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true,
+          "conn": 1,
+          "dial_attempts": 2,
+          "dials": 2
+        }
+      ]
+    },
+    {
+      "name": "mem_stream_pipes",
+      "description": "In-memory stream semantics: FIN, write after close, cancelled reads and resets, and streams of a closed connection.",
+      "per_peer": 1,
+      "nodes": [
+        {
+          "name": "client",
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "bound": true,
+          "alpns": [],
+          "server": null
+        },
+        {
+          "name": "a",
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "bound": true,
+          "alpns": [
+            "amber-dstore/1"
+          ],
+          "server": {
+            "mode": "manual"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "op": "open",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "stream": 0,
+          "ok": true,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "server_accept",
+          "peer": "a",
+          "server_conn": 0,
+          "ok": true
+        },
+        {
+          "op": "server_accept_stream",
+          "server_conn": 0,
+          "server_stream": 0,
+          "ok": true
+        },
+        {
+          "op": "stream_write",
+          "stream": 0,
+          "data": "68656c6c6f",
+          "ok": true,
+          "n": 5
+        },
+        {
+          "op": "server_read",
+          "server_stream": 0,
+          "buf_len": 16,
+          "ok": true,
+          "n": 5,
+          "read": "68656c6c6f"
+        },
+        {
+          "op": "stream_close_write",
+          "stream": 0,
+          "ok": true
+        },
+        {
+          "op": "server_read",
+          "server_stream": 0,
+          "buf_len": 16,
+          "ok": false,
+          "error": "EOF",
+          "n": 0
+        },
+        {
+          "op": "stream_write",
+          "stream": 0,
+          "data": "78",
+          "ok": false,
+          "error": "io: read/write on closed pipe",
+          "n": 0
+        },
+        {
+          "op": "server_write",
+          "server_stream": 0,
+          "data": "616263",
+          "ok": true,
+          "n": 3
+        },
+        {
+          "op": "stream_read",
+          "stream": 0,
+          "buf_len": 2,
+          "ok": true,
+          "n": 2,
+          "read": "6162"
+        },
+        {
+          "op": "stream_read",
+          "stream": 0,
+          "buf_len": 16,
+          "ok": true,
+          "n": 1,
+          "read": "63"
+        },
+        {
+          "op": "server_close_write",
+          "server_stream": 0,
+          "ok": true
+        },
+        {
+          "op": "stream_read",
+          "stream": 0,
+          "buf_len": 16,
+          "ok": false,
+          "error": "EOF",
+          "n": 0
+        },
+        {
+          "op": "server_write",
+          "server_stream": 0,
+          "data": "6c617465",
+          "ok": false,
+          "error": "io: read/write on closed pipe",
+          "n": 0
+        },
+        {
+          "op": "open",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "stream": 1,
+          "ok": true,
+          "dial_attempts": 1,
+          "dials": 1
+        },
+        {
+          "op": "server_accept_stream",
+          "server_conn": 0,
+          "server_stream": 1,
+          "ok": true
+        },
+        {
+          "op": "stream_cancel_read",
+          "stream": 1,
+          "ok": true
+        },
+        {
+          "op": "stream_read",
+          "stream": 1,
+          "buf_len": 16,
+          "ok": false,
+          "error": "mem: read canceled",
+          "n": 0
+        },
+        {
+          "op": "server_write",
+          "server_stream": 1,
+          "data": "7a",
+          "ok": false,
+          "error": "mem: stream reset by peer",
+          "n": 0
+        },
+        {
+          "op": "server_cancel_read",
+          "server_stream": 1,
+          "ok": true
+        },
+        {
+          "op": "stream_write",
+          "stream": 1,
+          "data": "71",
+          "ok": false,
+          "error": "mem: stream reset by peer",
+          "n": 0
+        },
+        {
+          "op": "drop",
+          "peer": "a",
+          "alpn": "amber-dstore/1",
+          "ok": true
+        },
+        {
+          "op": "server_wait_closed",
+          "ms": 2000,
+          "server_conn": 0,
+          "ok": true
+        },
+        {
+          "op": "server_accept_stream",
+          "server_conn": 0,
+          "ok": false,
+          "error": "transport: closed"
+        },
+        {
+          "op": "server_open_stream",
+          "server_conn": 0,
+          "ok": false,
+          "error": "transport: closed"
+        }
+      ]
+    }
+  ],
+  "rtt_round": [
+    {
+      "ns": "0",
+      "rounded_ns": "0",
+      "string": "0s"
+    },
+    {
+      "ns": "400000",
+      "rounded_ns": "0",
+      "string": "0s"
+    },
+    {
+      "ns": "499999",
+      "rounded_ns": "0",
+      "string": "0s"
+    },
+    {
+      "ns": "500000",
+      "rounded_ns": "1000000",
+      "string": "1ms"
+    },
+    {
+      "ns": "1499000",
+      "rounded_ns": "1000000",
+      "string": "1ms"
+    },
+    {
+      "ns": "1500000",
+      "rounded_ns": "2000000",
+      "string": "2ms"
+    },
+    {
+      "ns": "12300000",
+      "rounded_ns": "12000000",
+      "string": "12ms"
+    },
+    {
+      "ns": "1234500000",
+      "rounded_ns": "1235000000",
+      "string": "1.235s"
+    },
+    {
+      "ns": "1000000",
+      "rounded_ns": "1000000",
+      "string": "1ms"
+    },
+    {
+      "ns": "333000000",
+      "rounded_ns": "333000000",
+      "string": "333ms"
+    },
+    {
+      "ns": "59999500000",
+      "rounded_ns": "60000000000",
+      "string": "1m0s"
+    },
+    {
+      "ns": "5400000000000",
+      "rounded_ns": "5400000000000",
+      "string": "1h30m0s"
+    }
+  ],
+  "error_texts": [
+    {
+      "name": "err_closed",
+      "text": "transport: closed"
+    },
+    {
+      "name": "invalid_key",
+      "text": "data is not a valid public key"
+    },
+    {
+      "name": "no_address",
+      "text": "iroh: no reachable address for endpoint"
+    },
+    {
+      "name": "dial_ip",
+      "text": "dial ip:127.0.0.1:9: x"
+    },
+    {
+      "name": "dial_ipv6",
+      "text": "dial ip:[::1]:9: y"
+    },
+    {
+      "name": "dial_custom",
+      "text": "dial 1_abcd: x"
+    },
+    {
+      "name": "dial_relay",
+      "text": "dial relay:https://use1-1.relay.n0.iroh-canary.iroh.link./: x"
+    },
+    {
+      "name": "joined_dial_discovery",
+      "text": "dial ip:127.0.0.1:9: x\ndiscovery: y"
+    },
+    {
+      "name": "joined_dial_discovery_no_address",
+      "text": "dial ip:127.0.0.1:9: x\ndiscovery: iroh: no reachable address for endpoint"
+    },
+    {
+      "name": "joined_two_dials",
+      "text": "dial ip:127.0.0.1:9: x\ndial ip:[::1]:9: y"
+    },
+    {
+      "name": "joined_nil_skipped",
+      "text": "dial ip:127.0.0.1:9: x"
+    },
+    {
+      "name": "no_candidates",
+      "text": "transport: no candidate addresses for 79b5562e8f"
+    },
+    {
+      "name": "bootstrap_wrapper",
+      "text": "client: no bootstrap node answered: dial ip:127.0.0.1:9: x\ndiscovery: iroh: no reachable address for endpoint"
+    }
+  ]
+}

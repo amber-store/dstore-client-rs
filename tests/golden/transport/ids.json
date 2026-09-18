@@ -1,0 +1,532 @@
+{
+  "endpoint_ids": [
+    {
+      "name": "first_byte_0",
+      "bytes": "0000000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "first_byte_1",
+      "bytes": "0100000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "first_byte_2",
+      "bytes": "0200000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "first_byte_3",
+      "bytes": "0300000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "first_byte_4",
+      "bytes": "0400000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "first_byte_5",
+      "bytes": "0500000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "first_byte_6",
+      "bytes": "0600000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "first_byte_7",
+      "bytes": "0700000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "first_byte_8",
+      "bytes": "0800000000000000000000000000000000000000000000000000000000000000",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "first_byte_9",
+      "bytes": "0900000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "all_ff",
+      "bytes": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_identity",
+      "bytes": "0100000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_2",
+      "bytes": "ecffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_4_zero",
+      "bytes": "0000000000000000000000000000000000000000000000000000000000000000",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_4_sign",
+      "bytes": "0000000000000000000000000000000000000000000000000000000000000080",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_8_a",
+      "bytes": "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_8_b",
+      "bytes": "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_8_a_sign",
+      "bytes": "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc85",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "small_order_8_b_sign",
+      "bytes": "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac03fa",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "noncanonical_y1_sign",
+      "bytes": "0100000000000000000000000000000000000000000000000000000000000080",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "noncanonical_y_p",
+      "bytes": "edffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "noncanonical_y_p_plus_1",
+      "bytes": "eeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "noncanonical_y_p_minus_1_sign",
+      "bytes": "ecffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "basepoint",
+      "bytes": "5866666666666666666666666666666666666666666666666666666666666666",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "basepoint_sign",
+      "bytes": "58666666666666666666666666666666666666666666666666666666666666e6",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_1",
+      "bytes": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_1_sign_flipped",
+      "bytes": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cda4",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_2",
+      "bytes": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_2_sign_flipped",
+      "bytes": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c9c4",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_3",
+      "bytes": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_3_sign_flipped",
+      "bytes": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b074dd",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_4",
+      "bytes": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "ed25519_seed_4_sign_flipped",
+      "bytes": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e9d",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7000",
+      "bytes": "8f6c84851f887c9fe6d62665bcd9d81000cbcc25c8a367de05c90626c0561df2",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7001",
+      "bytes": "44c995c67cf7e9ecc973bf776f2f85947086cea6bc639e26414ee54226fc9f27",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7002",
+      "bytes": "3198a56563d9b59ce2520a12a03e69213cfce947eb614a20b8cab51a182b1b4f",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7003",
+      "bytes": "67448e897345ca06a9c596b52c2875524c7c208544bd1ee17184656b0c3186f2",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7004",
+      "bytes": "cbcf94c0bb9df6ff537fa5c56b0a5139814cf342d76ec397b77d3ffcbaf9280b",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7005",
+      "bytes": "4bd20baeb80b6dede1ec96fe565b639b5f44510f9988b8b8f148a09e918c96ee",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7006",
+      "bytes": "b7fb120952c3de5e40c209d97c10bfc52cb49b728a929e2daef740286c32e2d8",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7007",
+      "bytes": "256d07197df25da09b9ba627d4585bffd464805f9f2adab1b92f1e5ae20fa5e2",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7008",
+      "bytes": "5c9a8829739cdafc7e7be1eac87f2d85565f52b2a92d7dd3e3ffd3f3bcc34172",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7009",
+      "bytes": "8099885224acb68adf9ad342412ad7f8b0d4a8ba7f26097547b7951dd8a0261b",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7010",
+      "bytes": "24c75d79329e553feaa0737d1149ef52d841a8c35f696fa03dd52c6ba8a9eacf",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7011",
+      "bytes": "bdd4d275340ad31b8037ba2031d4993b97cdabcd265b174293d1799d71cccc04",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7012",
+      "bytes": "e139f5c51f6c1634c2ac88970cafdb1157015b6941b3029f89c46b5f5921032a",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7013",
+      "bytes": "8baa1a896c98940d08f2a71752e396e2a3d2a111ca7914cb0038b7edba71d179",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7014",
+      "bytes": "3f5187de1fe0df6a433e15acfa100ac30782aa337dcf1ad4cd0dfbccf3ccc3e8",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7015",
+      "bytes": "93e482800e5ef017a58bdf9400494db9e7fc34f0a21a801db758f38b74c209fc",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7016",
+      "bytes": "499dedb6056b98aae6af7befe5456f5f82bbb20be8f7f9e905d69d9765174d8b",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7017",
+      "bytes": "f600be718f44a8e2f8b297b66cd183bd3b18da3eb0cc603ec7d02041ce3a8961",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7018",
+      "bytes": "5d0fd6b48d4b0155b6a7de602d40f8ec1f7aff7bf975164da13d4800dc917480",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7019",
+      "bytes": "eee098625d54228e3fd2c3796f845fb11dc53edc580e4829bead75b33911c374",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7020",
+      "bytes": "7696d03bfeb064a4781c47b1c5de034d7db9a92deeda66a9a69247cf534d1e94",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7021",
+      "bytes": "fe3290346306392f73d2f297b9ae594c158fa1191f4ad69a634ad92cf385088d",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7022",
+      "bytes": "66614af1d1d26eaecaf7b25432e2a7be78c95948b3596dde14d78146108131bf",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7023",
+      "bytes": "4b66879059b7f32af7f411db831367c424173a1bcf2656754b8e350c9fe00314",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7024",
+      "bytes": "cb91a0324272512a146eb226f72f7d55a996db79ae1ade51ad3e46fbde233a53",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7025",
+      "bytes": "ece7a701dfef59fb993658eb3a6f0f31e5a84691cb78b29dee5a999f06579d57",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7026",
+      "bytes": "c7cd55ce74849bf3c0230c0e4269429d3eaccffe3e51a65fbb90fca15c282e61",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7027",
+      "bytes": "21ce68ed48b805fa30c95de0bb7210f4e6ac584e97cf47737bbc857e2b090385",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7028",
+      "bytes": "f14b295a8bd31d32cb662f5f5978423a9f2d1fc745065d731450c9faa52ab7fc",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7029",
+      "bytes": "bb7520fa128d66b87f46ff0330bf80a44ca8e65ebdc730596e36e4a9f3fa9abe",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7030",
+      "bytes": "c4d21429171c4d3a19360440c6f6a8beb8d2106555a31f91ceb570d13effff33",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7031",
+      "bytes": "6f21cc040527fa3e1deb900bd208ae7b512668a760757d106162daee2e6aa809",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7032",
+      "bytes": "e65bfa73b9ec96904ca8d74194133b4e620afc7ae6e8215c76555e642ab88919",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7033",
+      "bytes": "11a8bbc7c8878d900e1d109fc6f16c94753e92024c66c11b92a52009046e2bc2",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7034",
+      "bytes": "663a9a280fce61529f6e98a696c52cf0e1a94d38f6e3ddd27b90cd60fec513d4",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7035",
+      "bytes": "fcd484002042960a6af37087c009195442042a2e143c0416a82701548fea210a",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7036",
+      "bytes": "26d91ea79984d1fc4d2c9137427148411c8e811f9673743e4365269819f35a72",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7037",
+      "bytes": "cd89e6886c8ab576bfb73d46ade70f89659725541b00efe562fdbe7423ba6964",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7038",
+      "bytes": "bea4f8493ba0ed7482faaec172864b5e5bc4796c829805390aa22372c9672c3d",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7039",
+      "bytes": "d2f518f343a852d17fd1d13c297ad60aa40c49c95e3b082db76d462823c6fff1",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7040",
+      "bytes": "7e3b1baba105ee243b5e407540f3c586ea89c20505819793c9d4012fdf507628",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7041",
+      "bytes": "0e768124376726e4286f634408b4b48f8c23614768d62c6e83e94ad3059a8125",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7042",
+      "bytes": "4ee15169d5fcd53317eff1a896c5c28b02465239c7365088942fa94c1e405286",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7043",
+      "bytes": "f9ec6063ddf27b9099e1dd204ee7f3d95f923a4dcbd853f0cd846475b7e5fba2",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7044",
+      "bytes": "5aaea9a8712e3ec2a04ee6590e00cefc968322250b6c1671a5ae89622fcc4278",
+      "valid": true,
+      "error": null
+    },
+    {
+      "name": "splitmix_7045",
+      "bytes": "b28ecf01d633aa2b57e4bab5ef44a6091aa9205db8665e56ce1462800ad296da",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7046",
+      "bytes": "9c0d3e82f056086d0abb4ef49735b8479f7f4aac713aa4e8323bfe8cd7c1f801",
+      "valid": false,
+      "error": "data is not a valid public key"
+    },
+    {
+      "name": "splitmix_7047",
+      "bytes": "909fe32ce0b53adc8c2596fa274b9561ad8bce78a4ebd46b7719ba71c13973fc",
+      "valid": false,
+      "error": "data is not a valid public key"
+    }
+  ],
+  "identities": [
+    {
+      "name": "seed_01_to_20",
+      "seed": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20",
+      "id": "79b5562e8fe654f94078b112e8a98ba7901f853ae695bed7e0e3910bad049664",
+      "string": "79b5562e8fe654f94078b112e8a98ba7901f853ae695bed7e0e3910bad049664",
+      "short": "79b5562e8f",
+      "z32": "xg4icmwxh3kx1odasrjqtkcmw6eb9bj4h4k57i9yhqeozmer131y",
+      "mdns_label": "pg2vmlup4zkpsqdywejorkmlu6ib7bj242k35v7a4oiqxlieszsa",
+      "no_candidates_error": "transport: no candidate addresses for 79b5562e8f"
+    },
+    {
+      "name": "splitmix_seed_1",
+      "seed": "c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171",
+      "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "string": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "short": "4bb675de4f",
+      "z32": "jq58mz1xcp5ksamuqy37qyksb3ndjxo7ch5fckznuqrdmp5d3w1y",
+      "mdns_label": "jo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusa",
+      "no_candidates_error": "transport: no candidate addresses for 4bb675de4f"
+    },
+    {
+      "name": "splitmix_seed_2",
+      "seed": "ce56971cde355897421efc0b1046c8bf2f537eddbfbc7b9864f6e7ff7a82f2c3",
+      "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "string": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "short": "62297a9a3f",
+      "z32": "cewzigt9g5wy6qtxfa8h3q7bbetexdxt1b9sjtuid8wacnw83fny",
+      "mdns_label": "miuxvgr7g3ua6orpfyh4zo5bbiripdprsb7wjrtvdhuymcuhzfca",
+      "no_candidates_error": "transport: no candidate addresses for 62297a9a3f"
+    },
+    {
+      "name": "splitmix_seed_3",
+      "seed": "ed8f01dbe4140b1d89a9817b8a6f46b301dd50d0a6e8eb9ccfc9ab66fb64a712",
+      "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+      "string": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+      "short": "b44b49be9a",
+      "z32": "stfwuxw4a1h3ta3fmmoc5zqj1z11pjrcmq3zqbtxp9jcepfoqtqo",
+      "mdns_label": "wrfutpu2ys4zryzfllqm3xojsxssnjemlozxobrpn7jminfqoroq",
+      "no_candidates_error": "transport: no candidate addresses for b44b49be9a"
+    }
+  ]
+}

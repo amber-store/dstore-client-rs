@@ -1,0 +1,1884 @@
+{
+  "kind_string": [
+    {
+      "kind": 0,
+      "out": "new"
+    },
+    {
+      "kind": 1,
+      "out": "deleted"
+    },
+    {
+      "kind": 2,
+      "out": "modified"
+    },
+    {
+      "kind": 3,
+      "out": "type"
+    },
+    {
+      "kind": 4,
+      "out": "mode"
+    },
+    {
+      "kind": 5,
+      "out": "meta"
+    },
+    {
+      "kind": 6,
+      "out": "Kind(6)"
+    },
+    {
+      "kind": -1,
+      "out": "Kind(-1)"
+    }
+  ],
+  "type_name": [
+    {
+      "mode": "33188",
+      "out": "file"
+    },
+    {
+      "mode": "16877",
+      "out": "directory"
+    },
+    {
+      "mode": "41471",
+      "out": "symlink"
+    },
+    {
+      "mode": "4480",
+      "out": "fifo"
+    },
+    {
+      "mode": "49645",
+      "out": "socket"
+    },
+    {
+      "mode": "8612",
+      "out": "char device"
+    },
+    {
+      "mode": "25008",
+      "out": "block device"
+    },
+    {
+      "mode": "0",
+      "out": "type 0"
+    },
+    {
+      "mode": "493",
+      "out": "type 0"
+    },
+    {
+      "mode": "57344",
+      "out": "type 0160000"
+    },
+    {
+      "mode": "57764",
+      "out": "type 0160000"
+    },
+    {
+      "mode": "61440",
+      "out": "type 0170000"
+    },
+    {
+      "mode": "12288",
+      "out": "type 030000"
+    },
+    {
+      "mode": "20480",
+      "out": "type 050000"
+    },
+    {
+      "mode": "295332",
+      "out": "file"
+    },
+    {
+      "mode": "9223372036854792192",
+      "out": "directory"
+    }
+  ],
+  "describe_change": [
+    {
+      "name": "added file",
+      "change": {
+        "path": "docs/new.txt",
+        "kind": "new",
+        "old": null,
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "docs/new.txt"
+    },
+    {
+      "name": "added directory",
+      "change": {
+        "path": "sub",
+        "kind": "new",
+        "old": null,
+        "new": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "sub/"
+    },
+    {
+      "name": "deleted file",
+      "change": {
+        "path": "old.txt",
+        "kind": "deleted",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": null
+      },
+      "out": "old.txt"
+    },
+    {
+      "name": "deleted directory",
+      "change": {
+        "path": "old",
+        "kind": "deleted",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": null
+      },
+      "out": "old/"
+    },
+    {
+      "name": "modified file",
+      "change": {
+        "path": "src/main.go",
+        "kind": "modified",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "src/main.go"
+    },
+    {
+      "name": "modified symlink",
+      "change": {
+        "path": "link",
+        "kind": "modified",
+        "old": {
+          "name": "",
+          "mode": "41471",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0",
+          "link_target": "t"
+        },
+        "new": {
+          "name": "",
+          "mode": "41471",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0",
+          "link_target": "t"
+        }
+      },
+      "out": "link"
+    },
+    {
+      "name": "type file to directory",
+      "change": {
+        "path": "a.txt",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "a.txt/ (file → directory)"
+    },
+    {
+      "name": "type directory to file",
+      "change": {
+        "path": "sub",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "sub (directory → file)"
+    },
+    {
+      "name": "type file to symlink",
+      "change": {
+        "path": "bin/tool",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "33261",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "41471",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0",
+          "link_target": "t"
+        }
+      },
+      "out": "bin/tool (file → symlink)"
+    },
+    {
+      "name": "type unknown to zero",
+      "change": {
+        "path": "x",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "57764",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "0",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "x (type 0160000 → type 0)"
+    },
+    {
+      "name": "type fifo to socket",
+      "change": {
+        "path": "p",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "4480",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "49536",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "p (fifo → socket)"
+    },
+    {
+      "name": "type char to block device",
+      "change": {
+        "path": "dev",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "8576",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "24960",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "dev (char device → block device)"
+    },
+    {
+      "name": "mode file",
+      "change": {
+        "path": "run.sh",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33261",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "run.sh (0644 → 0755)"
+    },
+    {
+      "name": "mode directory",
+      "change": {
+        "path": "sub",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "16832",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "sub/ (0755 → 0700)"
+    },
+    {
+      "name": "mode setuid sticky",
+      "change": {
+        "path": "s",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "35309",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33791",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "s (4755 → 1777)"
+    },
+    {
+      "name": "mode zero",
+      "change": {
+        "path": "z",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "32768",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "36863",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "z (0000 → 7777)"
+    },
+    {
+      "name": "meta file",
+      "change": {
+        "path": "touched",
+        "kind": "meta",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "touched"
+    },
+    {
+      "name": "meta directory",
+      "change": {
+        "path": "d",
+        "kind": "meta",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "d/"
+    },
+    {
+      "name": "non-UTF-8 path",
+      "change": {
+        "path_hex": "636166e9",
+        "kind": "new",
+        "old": null,
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out_hex": "636166e9"
+    },
+    {
+      "name": "path with spaces and unicode",
+      "change": {
+        "path": "sp ace/é",
+        "kind": "deleted",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": null
+      },
+      "out": "sp ace/é/"
+    }
+  ],
+  "status_row": [
+    {
+      "name": "added file",
+      "change": {
+        "path": "docs/new.txt",
+        "kind": "new",
+        "old": null,
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  new       docs/new.txt\n"
+    },
+    {
+      "name": "added directory",
+      "change": {
+        "path": "sub",
+        "kind": "new",
+        "old": null,
+        "new": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  new       sub/\n"
+    },
+    {
+      "name": "deleted file",
+      "change": {
+        "path": "old.txt",
+        "kind": "deleted",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": null
+      },
+      "out": "  deleted   old.txt\n"
+    },
+    {
+      "name": "deleted directory",
+      "change": {
+        "path": "old",
+        "kind": "deleted",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": null
+      },
+      "out": "  deleted   old/\n"
+    },
+    {
+      "name": "modified file",
+      "change": {
+        "path": "src/main.go",
+        "kind": "modified",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  modified  src/main.go\n"
+    },
+    {
+      "name": "modified symlink",
+      "change": {
+        "path": "link",
+        "kind": "modified",
+        "old": {
+          "name": "",
+          "mode": "41471",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0",
+          "link_target": "t"
+        },
+        "new": {
+          "name": "",
+          "mode": "41471",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0",
+          "link_target": "t"
+        }
+      },
+      "out": "  modified  link\n"
+    },
+    {
+      "name": "type file to directory",
+      "change": {
+        "path": "a.txt",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  type      a.txt/ (file → directory)\n"
+    },
+    {
+      "name": "type directory to file",
+      "change": {
+        "path": "sub",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  type      sub (directory → file)\n"
+    },
+    {
+      "name": "type file to symlink",
+      "change": {
+        "path": "bin/tool",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "33261",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "41471",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0",
+          "link_target": "t"
+        }
+      },
+      "out": "  type      bin/tool (file → symlink)\n"
+    },
+    {
+      "name": "type unknown to zero",
+      "change": {
+        "path": "x",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "57764",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "0",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  type      x (type 0160000 → type 0)\n"
+    },
+    {
+      "name": "type fifo to socket",
+      "change": {
+        "path": "p",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "4480",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "49536",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  type      p (fifo → socket)\n"
+    },
+    {
+      "name": "type char to block device",
+      "change": {
+        "path": "dev",
+        "kind": "type",
+        "old": {
+          "name": "",
+          "mode": "8576",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "24960",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  type      dev (char device → block device)\n"
+    },
+    {
+      "name": "mode file",
+      "change": {
+        "path": "run.sh",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33261",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  mode      run.sh (0644 → 0755)\n"
+    },
+    {
+      "name": "mode directory",
+      "change": {
+        "path": "sub",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "16832",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  mode      sub/ (0755 → 0700)\n"
+    },
+    {
+      "name": "mode setuid sticky",
+      "change": {
+        "path": "s",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "35309",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33791",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  mode      s (4755 → 1777)\n"
+    },
+    {
+      "name": "mode zero",
+      "change": {
+        "path": "z",
+        "kind": "mode",
+        "old": {
+          "name": "",
+          "mode": "32768",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "36863",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  mode      z (0000 → 7777)\n"
+    },
+    {
+      "name": "meta file",
+      "change": {
+        "path": "touched",
+        "kind": "meta",
+        "old": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  meta      touched\n"
+    },
+    {
+      "name": "meta directory",
+      "change": {
+        "path": "d",
+        "kind": "meta",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out": "  meta      d/\n"
+    },
+    {
+      "name": "non-UTF-8 path",
+      "change": {
+        "path_hex": "636166e9",
+        "kind": "new",
+        "old": null,
+        "new": {
+          "name": "",
+          "mode": "33188",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        }
+      },
+      "out_hex": "20206e657720202020202020636166e90a"
+    },
+    {
+      "name": "path with spaces and unicode",
+      "change": {
+        "path": "sp ace/é",
+        "kind": "deleted",
+        "old": {
+          "name": "",
+          "mode": "16877",
+          "uid": "0",
+          "gid": "0",
+          "mtime": "0"
+        },
+        "new": null
+      },
+      "out": "  deleted   sp ace/é/\n"
+    }
+  ],
+  "resolve_ticket": [
+    {
+      "flag": "f",
+      "stored": "s",
+      "env": "e",
+      "ok": true,
+      "out": "f"
+    },
+    {
+      "flag": "",
+      "stored": "s",
+      "env": "e",
+      "ok": true,
+      "out": "s"
+    },
+    {
+      "flag": "",
+      "stored": "",
+      "env": "e",
+      "ok": true,
+      "out": "e"
+    },
+    {
+      "flag": "",
+      "stored": "",
+      "env": "",
+      "ok": false,
+      "out": "",
+      "error": "no cluster: set --ticket or $DSTORE_TICKET"
+    },
+    {
+      "flag": " ",
+      "stored": "s",
+      "env": "e",
+      "ok": true,
+      "out": " "
+    },
+    {
+      "flag": "f",
+      "stored": "",
+      "env": "",
+      "ok": true,
+      "out": "f"
+    }
+  ],
+  "filter_paths": [
+    {
+      "name": "dot",
+      "cwd": ".",
+      "args": [
+        "."
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ]
+    },
+    {
+      "name": "subdirectory",
+      "cwd": ".",
+      "args": [
+        "sub"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "sub",
+        "sub/x",
+        "sub/y/z"
+      ]
+    },
+    {
+      "name": "trailing slash",
+      "cwd": ".",
+      "args": [
+        "sub/"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "sub",
+        "sub/x",
+        "sub/y/z"
+      ]
+    },
+    {
+      "name": "unclean",
+      "cwd": ".",
+      "args": [
+        "./sub/../sub"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "sub",
+        "sub/x",
+        "sub/y/z"
+      ]
+    },
+    {
+      "name": "two paths keep change order",
+      "cwd": ".",
+      "args": [
+        "sub/x",
+        "a"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "a",
+        "sub/x"
+      ]
+    },
+    {
+      "name": "absolute",
+      "cwd": ".",
+      "args": [
+        "{ROOT}/sub"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "sub",
+        "sub/x",
+        "sub/y/z"
+      ]
+    },
+    {
+      "name": "absolute root",
+      "cwd": ".",
+      "args": [
+        "{ROOT}"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ]
+    },
+    {
+      "name": "dot-dot-prefixed name is inside",
+      "cwd": ".",
+      "args": [
+        "..foo"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "..foo"
+      ]
+    },
+    {
+      "name": "no match",
+      "cwd": ".",
+      "args": [
+        "nomatch"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null
+    },
+    {
+      "name": "outside",
+      "cwd": ".",
+      "args": [
+        "../outside"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null,
+      "error": "../outside is outside the working copy"
+    },
+    {
+      "name": "parent",
+      "cwd": ".",
+      "args": [
+        ".."
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null,
+      "error": ".. is outside the working copy"
+    },
+    {
+      "name": "filesystem root",
+      "cwd": ".",
+      "args": [
+        "/"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null,
+      "error": "/ is outside the working copy"
+    },
+    {
+      "name": "absolute outside",
+      "cwd": ".",
+      "args": [
+        "{ROOT}/../other"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null,
+      "error": "{ROOT}/../other is outside the working copy"
+    },
+    {
+      "name": "second argument outside",
+      "cwd": ".",
+      "args": [
+        "sub",
+        "../x"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null,
+      "error": "../x is outside the working copy"
+    },
+    {
+      "name": "from subdirectory: dot",
+      "cwd": "sub",
+      "args": [
+        "."
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "sub",
+        "sub/x",
+        "sub/y/z"
+      ]
+    },
+    {
+      "name": "from subdirectory: parent",
+      "cwd": "sub",
+      "args": [
+        ".."
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ]
+    },
+    {
+      "name": "from subdirectory: child",
+      "cwd": "sub",
+      "args": [
+        "x"
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": [
+        "sub/x"
+      ]
+    },
+    {
+      "name": "from subdirectory: outside",
+      "cwd": "sub",
+      "args": [
+        "../.."
+      ],
+      "changes": [
+        "..foo",
+        "a",
+        "sub",
+        "sub-b",
+        "sub/x",
+        "sub/y/z",
+        "subx"
+      ],
+      "kept": null,
+      "error": "../.. is outside the working copy"
+    }
+  ],
+  "printf": [
+    {
+      "name": "clone",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "cloned %s into %s: root %s, %d objects fetched (%d bytes)\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        },
+        {
+          "type": "int",
+          "value": "12"
+        },
+        {
+          "type": "int",
+          "value": "34567"
+        }
+      ],
+      "out": "cloned trees/demo into demo: root 2001bbe6a9f5a014, 12 objects fetched (34567 bytes)\n"
+    },
+    {
+      "name": "clone-unicode",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "cloned %s into %s: root %s, %d objects fetched (%d bytes)\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/é"
+        },
+        {
+          "type": "string",
+          "value": "é/sub dir"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        },
+        {
+          "type": "int",
+          "value": "0"
+        },
+        {
+          "type": "int",
+          "value": "0"
+        }
+      ],
+      "out": "cloned trees/é into é/sub dir: root 2001bbe6a9f5a014, 0 objects fetched (0 bytes)\n"
+    },
+    {
+      "name": "init-exists",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "initialised working copy of %s; the reference exists (root %s): status shows everything as new, pull merges\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        }
+      ],
+      "out": "initialised working copy of trees/demo; the reference exists (root 2001bbe6a9f5a014): status shows everything as new, pull merges\n"
+    },
+    {
+      "name": "init-absent",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "initialised working copy of %s; the reference does not exist yet: push creates it\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/new"
+        }
+      ],
+      "out": "initialised working copy of trees/new; the reference does not exist yet: push creates it\n"
+    },
+    {
+      "name": "fetch-absent",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "%s does not exist on the cluster\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        }
+      ],
+      "out": "trees/demo does not exist on the cluster\n"
+    },
+    {
+      "name": "fetch-up-to-date",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "%s: up to date (%s)\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        }
+      ],
+      "out": "trees/demo: up to date (2001bbe6a9f5a014)\n"
+    },
+    {
+      "name": "fetch",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "fetched %s: root %s, %d objects fetched (%d bytes)\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        },
+        {
+          "type": "int",
+          "value": "3"
+        },
+        {
+          "type": "int",
+          "value": "1099511627776"
+        }
+      ],
+      "out": "fetched trees/demo: root 2001bbe6a9f5a014, 3 objects fetched (1099511627776 bytes)\n"
+    },
+    {
+      "name": "pull-conflicts-header",
+      "stream": "stderr",
+      "func": "Fprintln",
+      "format": "conflicts:",
+      "args": [],
+      "out": "conflicts:\n"
+    },
+    {
+      "name": "pull-conflict-row",
+      "stream": "stderr",
+      "func": "Fprintf",
+      "format": "  %s (local: %s, cluster: %s)\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "d/y"
+        },
+        {
+          "type": "kind",
+          "value": "1"
+        },
+        {
+          "type": "kind",
+          "value": "0"
+        }
+      ],
+      "out": "  d/y (local: deleted, cluster: new)\n"
+    },
+    {
+      "name": "pull-conflict-row-meta-type",
+      "stream": "stderr",
+      "func": "Fprintf",
+      "format": "  %s (local: %s, cluster: %s)\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "a b"
+        },
+        {
+          "type": "kind",
+          "value": "5"
+        },
+        {
+          "type": "kind",
+          "value": "3"
+        }
+      ],
+      "out": "  a b (local: meta, cluster: type)\n"
+    },
+    {
+      "name": "pull-up-to-date",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "already up to date",
+      "args": [],
+      "out": "already up to date\n"
+    },
+    {
+      "name": "pull-applied",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "pulled: %d paths updated",
+      "args": [
+        {
+          "type": "int",
+          "value": "3"
+        }
+      ],
+      "out": "pulled: 3 paths updated"
+    },
+    {
+      "name": "pull-conflicts-taken",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": ", %d conflicts taken from the cluster",
+      "args": [
+        {
+          "type": "int",
+          "value": "2"
+        }
+      ],
+      "out": ", 2 conflicts taken from the cluster"
+    },
+    {
+      "name": "pull-line-end",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "",
+      "args": [],
+      "out": "\n"
+    },
+    {
+      "name": "push-nothing",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "nothing to push",
+      "args": [],
+      "out": "nothing to push\n"
+    },
+    {
+      "name": "push-recovered",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "%s already holds %s (an earlier push completed); state updated\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        }
+      ],
+      "out": "trees/demo already holds 2001bbe6a9f5a014 (an earlier push completed); state updated\n"
+    },
+    {
+      "name": "push",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "pushed %s: root %s, %d objects, %d uploaded, version %x\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        },
+        {
+          "type": "int",
+          "value": "5"
+        },
+        {
+          "type": "int",
+          "value": "2"
+        },
+        {
+          "type": "bytes",
+          "value": "01ab00"
+        }
+      ],
+      "out": "pushed trees/demo: root 2001bbe6a9f5a014, 5 objects, 2 uploaded, version 01ab00\n"
+    },
+    {
+      "name": "push-empty-version",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "pushed %s: root %s, %d objects, %d uploaded, version %x\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        },
+        {
+          "type": "int",
+          "value": "0"
+        },
+        {
+          "type": "int",
+          "value": "0"
+        },
+        {
+          "type": "bytes",
+          "value": ""
+        }
+      ],
+      "out": "pushed trees/demo: root 2001bbe6a9f5a014, 0 objects, 0 uploaded, version \n"
+    },
+    {
+      "name": "status-header",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "reference %s, synced to %s\n",
+      "args": [
+        {
+          "type": "string",
+          "value": "trees/demo"
+        },
+        {
+          "type": "string",
+          "value": "2001bbe6a9f5a014"
+        }
+      ],
+      "out": "reference trees/demo, synced to 2001bbe6a9f5a014\n"
+    },
+    {
+      "name": "status-remote-up-to-date",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "remote: up to date",
+      "args": [],
+      "out": "remote: up to date\n"
+    },
+    {
+      "name": "status-remote-absent",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "remote: the reference does not exist on the cluster",
+      "args": [],
+      "out": "remote: the reference does not exist on the cluster\n"
+    },
+    {
+      "name": "status-remote-moved",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "remote: moved since your last fetch (+%d ~%d -%d; run pull)\n",
+      "args": [
+        {
+          "type": "int",
+          "value": "1"
+        },
+        {
+          "type": "int",
+          "value": "2"
+        },
+        {
+          "type": "int",
+          "value": "0"
+        }
+      ],
+      "out": "remote: moved since your last fetch (+1 ~2 -0; run pull)\n"
+    },
+    {
+      "name": "status-changes",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "changes:",
+      "args": [],
+      "out": "changes:\n"
+    },
+    {
+      "name": "status-row",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "  %-9s %s\n",
+      "args": [
+        {
+          "type": "kind",
+          "value": "3"
+        },
+        {
+          "type": "string",
+          "value": "bin/tool (file → symlink)"
+        }
+      ],
+      "out": "  type      bin/tool (file → symlink)\n"
+    },
+    {
+      "name": "status-row-deleted-directory",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "  %-9s %s\n",
+      "args": [
+        {
+          "type": "kind",
+          "value": "1"
+        },
+        {
+          "type": "string",
+          "value": "old/"
+        }
+      ],
+      "out": "  deleted   old/\n"
+    },
+    {
+      "name": "status-meta-only",
+      "stream": "stdout",
+      "func": "Printf",
+      "format": "%d paths differ only in mtime, ownership or xattrs\n",
+      "args": [
+        {
+          "type": "int",
+          "value": "1"
+        }
+      ],
+      "out": "1 paths differ only in mtime, ownership or xattrs\n"
+    },
+    {
+      "name": "status-nothing",
+      "stream": "stdout",
+      "func": "Println",
+      "format": "nothing to push",
+      "args": [],
+      "out": "nothing to push\n"
+    }
+  ],
+  "ticket_from_view": [
+    {
+      "name": "no-nodes",
+      "cluster_id": "000102030405060708090a0b0c0d0e0f",
+      "incarnation": "1",
+      "nodes": null,
+      "ticket": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebpm"
+    },
+    {
+      "name": "one-node-no-addrs",
+      "cluster_id": "000102030405060708090a0b0c0d0e0f",
+      "incarnation": "1",
+      "nodes": [
+        {
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "addrs": null
+        }
+      ],
+      "ticket": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42ja"
+    },
+    {
+      "name": "one-node",
+      "cluster_id": "000102030405060708090a0b0c0d0e0f",
+      "incarnation": "2",
+      "nodes": [
+        {
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "addrs": [
+            "ip:127.0.0.1:4433",
+            "relay:https://relay.example/"
+          ]
+        }
+      ],
+      "ticket": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaibidiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly"
+    },
+    {
+      "name": "four-nodes",
+      "cluster_id": "000102030405060708090a0b0c0d0e0f",
+      "incarnation": "3",
+      "nodes": [
+        {
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "addrs": [
+            "ip:127.0.0.1:4433",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "addrs": [
+            "ip:127.0.0.1:4434",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+          "addrs": [
+            "ip:127.0.0.1:4435",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+          "addrs": [
+            "ip:127.0.0.1:4436",
+            "relay:https://relay.example/"
+          ]
+        }
+      ],
+      "ticket": "dstore1umafaaabaibqibiga4eascqlbqgq4dybambijiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl5cabmcayrjpknd6nxib45c6lqpzs52ccrcq6g7ded7mtdhkgpjqyfipskeagbhc2lqhiytenzogaxdalrrhi2dimzupaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjpuiafqifujne35gwexgmogjk24dg53smv4utkjdc3wn3qml3p2lcdjmduluaye4ljoa5dcmrxfyyc4mboge5dinbtgv4by4tfnrqxsotior2ha4z2f4xxezlmmf4s4zlymfwxa3dff6raawbals27k7tojinqfhyhfzmacpt656245bd6zddtmji677c7irlyryoqdatrnfydumjsg4xdalrqfyytunbugm3hqhdsmvwgc6j2nb2hi4dthixs64tfnrqxsltfpbqw24dmmuxq"
+    },
+    {
+      "name": "five-nodes-capped-at-four",
+      "cluster_id": "000102030405060708090a0b0c0d0e0f",
+      "incarnation": "18446744073709551615",
+      "nodes": [
+        {
+          "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+          "addrs": [
+            "ip:127.0.0.1:4433",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+          "addrs": [
+            "ip:127.0.0.1:4434",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+          "addrs": [
+            "ip:127.0.0.1:4435",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+          "addrs": [
+            "ip:127.0.0.1:4436",
+            "relay:https://relay.example/"
+          ]
+        },
+        {
+          "id": "bb21182139d2b0117acd28e2705e41537eda0f018f9e0c7445753f66d4e04395",
+          "addrs": [
+            "ip:127.0.0.1:4437",
+            "relay:https://relay.example/"
+          ]
+        }
+      ],
+      "ticket": "dstore1umafaaabaibqibiga4eascqlbqgq4dybdp777777777777ycqsraawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusadatrnfydumjsg4xdalrqfyytunbugmzxqhdsmvwgc6j2nb2hi4dthixs64tfnrqxsltfpbqw24dmmux2eacyebrcs6u2h43oqdz2f4xa7tf3uefcfb4n6gih6zggoum6tbqkq7euiamcofuxaorrgi3s4mbogaxdcorugqzti6a4ojswyylzhjuhi5dqom5c6l3smvwgc6jomv4gc3lqnrss7iqalaqlis2jx2nmjomy4msvvygn3xezlzjgusgfxm3xayxw7uwegsyhixibqjyws4b2gezdolrqfyyc4mj2gq2dgnlydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkl5cabmcaxfv6v7g4sq3akpqolsyae7h535vz2ch5sghgysr576f6rcxrdq5agbhc2lqhiytenzogaxdalrrhi2dimzwpaohezlmmf4tu2duoryhgorpf5zgk3dbpexgk6dbnvygyzjp"
+    }
+  ]
+}

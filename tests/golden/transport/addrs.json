@@ -1,0 +1,2046 @@
+{
+  "parse_transport_addr": [
+    {
+      "input": "ip:127.0.0.1:9",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:127.0.0.1:9",
+        "relay_url": null,
+        "ip": "127.0.0.1",
+        "zone": null,
+        "port": 9,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:127.0.0.1:9",
+          "relay_url": null,
+          "ip": "127.0.0.1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[::1]:9",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::1]:9",
+        "relay_url": null,
+        "ip": "::1",
+        "zone": null,
+        "port": 9,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::1]:9",
+          "relay_url": null,
+          "ip": "::1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[fe80::1%en0]:9",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[fe80::1%en0]:9",
+        "relay_url": null,
+        "ip": "fe80::1",
+        "zone": "en0",
+        "port": 9,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[fe80::1%en0]:9",
+          "relay_url": null,
+          "ip": "fe80::1",
+          "zone": "en0",
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "127.0.0.1:9",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"127.0.0.1:9\": unknown kind \"127.0.0.1\"",
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:127.0.0.1:9",
+          "relay_url": null,
+          "ip": "127.0.0.1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "[::1]:9",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"[::1]:9\": unknown kind \"[\"",
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::1]:9",
+          "relay_url": null,
+          "ip": "::1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "[::ffff:1.2.3.4]:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"[::ffff:1.2.3.4]:5\": unknown kind \"[\"",
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::ffff:1.2.3.4]:5",
+          "relay_url": null,
+          "ip": "::ffff:1.2.3.4",
+          "zone": null,
+          "port": 5,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[::ffff:1.2.3.4]:5",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::ffff:1.2.3.4]:5",
+        "relay_url": null,
+        "ip": "::ffff:1.2.3.4",
+        "zone": null,
+        "port": 5,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::ffff:1.2.3.4]:5",
+          "relay_url": null,
+          "ip": "::ffff:1.2.3.4",
+          "zone": null,
+          "port": 5,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:1.2.3.4",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4\": not an ip:port",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:999.1.1.1:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:999.1.1.1:5\": ParseAddr(\"999.1.1.1\"): IPv4 field has value \u003e255",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:01.2.3.4:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:01.2.3.4:5\": ParseAddr(\"01.2.3.4\"): IPv4 field has octet with leading zero",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:0",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:1.2.3.4:0",
+        "relay_url": null,
+        "ip": "1.2.3.4",
+        "zone": null,
+        "port": 0,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:1.2.3.4:0",
+          "relay_url": null,
+          "ip": "1.2.3.4",
+          "zone": null,
+          "port": 0,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:1.2.3.4:65536",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:65536\": invalid port \"65536\" parsing \"1.2.3.4:65536\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "relay:https://use1-1.relay.n0.iroh-canary.iroh.link./",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://use1-1.relay.n0.iroh-canary.iroh.link./",
+        "relay_url": "https://use1-1.relay.n0.iroh-canary.iroh.link./",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://use1-1.relay.n0.iroh-canary.iroh.link./",
+          "relay_url": "https://use1-1.relay.n0.iroh-canary.iroh.link./",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:https://Example.COM",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://example.com/",
+        "relay_url": "https://example.com/",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://example.com/",
+          "relay_url": "https://example.com/",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:http://example.com:80",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:http://example.com:80/",
+        "relay_url": "http://example.com:80/",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:http://example.com:80/",
+          "relay_url": "http://example.com:80/",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:example.com",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:example.com",
+        "relay_url": "example.com",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:example.com",
+          "relay_url": "example.com",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:",
+        "relay_url": "",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:",
+          "relay_url": "",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:https://ex ample.com",
+      "ok": false,
+      "addr": null,
+      "error": "failed to parse relay URL: parse \"https://ex ample.com\": invalid character \" \" in host name",
+      "parse_addrs": []
+    },
+    {
+      "input": "relay:https://example.com:443/x?y=1",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://example.com:443/x?y=1",
+        "relay_url": "https://example.com:443/x?y=1",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://example.com:443/x?y=1",
+          "relay_url": "https://example.com:443/x?y=1",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "mem:0102abcd",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"mem:0102abcd\": unknown kind \"mem\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:1_abcd",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "1_abcd",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "1",
+        "custom_data": "abcd"
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "1_abcd",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": "abcd"
+        }
+      ]
+    },
+    {
+      "input": "1_abcd",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "1_abcd",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "1",
+        "custom_data": "abcd"
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "1_abcd",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": "abcd"
+        }
+      ]
+    },
+    {
+      "input": "abc",
+      "ok": false,
+      "addr": null,
+      "error": "missing '_' separator",
+      "parse_addrs": []
+    },
+    {
+      "input": "",
+      "ok": false,
+      "addr": null,
+      "error": "missing '_' separator",
+      "parse_addrs": []
+    },
+    {
+      "input": "http://x",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"http://x\": unknown kind \"http\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:zz_00",
+      "ok": false,
+      "addr": null,
+      "error": "invalid ID",
+      "parse_addrs": []
+    },
+    {
+      "input": "IP:1.2.3.4:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"IP:1.2.3.4:5\": unknown kind \"IP\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:192.168.1.10:51820",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:192.168.1.10:51820",
+        "relay_url": null,
+        "ip": "192.168.1.10",
+        "zone": null,
+        "port": 51820,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:192.168.1.10:51820",
+          "relay_url": null,
+          "ip": "192.168.1.10",
+          "zone": null,
+          "port": 51820,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[2001:db8::1]:4433",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[2001:db8::1]:4433",
+        "relay_url": null,
+        "ip": "2001:db8::1",
+        "zone": null,
+        "port": 4433,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[2001:db8::1]:4433",
+          "relay_url": null,
+          "ip": "2001:db8::1",
+          "zone": null,
+          "port": 4433,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+        "relay_url": "https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+          "relay_url": "https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[2001:DB8:0:0:0:0:0:1]:1",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[2001:db8::1]:1",
+        "relay_url": null,
+        "ip": "2001:db8::1",
+        "zone": null,
+        "port": 1,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[2001:db8::1]:1",
+          "relay_url": null,
+          "ip": "2001:db8::1",
+          "zone": null,
+          "port": 1,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[fe80::1%2]:4433",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[fe80::1%2]:4433",
+        "relay_url": null,
+        "ip": "fe80::1",
+        "zone": "2",
+        "port": 4433,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[fe80::1%2]:4433",
+          "relay_url": null,
+          "ip": "fe80::1",
+          "zone": "2",
+          "port": 4433,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[fe80::1%]:9",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:[fe80::1%]:9\": ParseAddr(\"fe80::1%\"): zone must be a non-empty string",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:[::1]",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:[::1]\": missing ]",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:::1:9",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:::1:9\": invalid ip:port \"::1:9\", IPv6 addresses must be surrounded by square brackets",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:\": no port",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:+1",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:+1\": invalid port \"+1\" parsing \"1.2.3.4:+1\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:-1",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:-1\": invalid port \"-1\" parsing \"1.2.3.4:-1\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:0x10",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:0x10\": invalid port \"0x10\" parsing \"1.2.3.4:0x10\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:080",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:1.2.3.4:80",
+        "relay_url": null,
+        "ip": "1.2.3.4",
+        "zone": null,
+        "port": 80,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:1.2.3.4:80",
+          "relay_url": null,
+          "ip": "1.2.3.4",
+          "zone": null,
+          "port": 80,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[1.2.3.4]:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:[1.2.3.4]:5\": invalid ip:port \"[1.2.3.4]:5\", square brackets can only be used with IPv6 addresses",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3:5\": ParseAddr(\"1.2.3\"): IPv4 address too short",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:[::ffff:1.2.3.4%eth0]:5",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::ffff:1.2.3.4%eth0]:5",
+        "relay_url": null,
+        "ip": "::ffff:1.2.3.4",
+        "zone": "eth0",
+        "port": 5,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::ffff:1.2.3.4%eth0]:5",
+          "relay_url": null,
+          "ip": "::ffff:1.2.3.4",
+          "zone": "eth0",
+          "port": 5,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip: 1.2.3.4:5",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip: 1.2.3.4:5\": ParseAddr(\" 1.2.3.4\"): unexpected character (at \" 1.2.3.4\")",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:1.2.3.4:5 ",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:5 \": invalid port \"5 \" parsing \"1.2.3.4:5 \"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:[::1]:9:9",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:[::1]:9:9\": missing ]",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:\": not an ip:port",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip",
+      "ok": false,
+      "addr": null,
+      "error": "missing '_' separator",
+      "parse_addrs": []
+    },
+    {
+      "input": "[fe80::1%en0]:9",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"[fe80::1%en0]:9\": unknown kind \"[fe80\"",
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[fe80::1%en0]:9",
+          "relay_url": null,
+          "ip": "fe80::1",
+          "zone": "en0",
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "1.2.3.4:5:6",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"1.2.3.4:5:6\": unknown kind \"1.2.3.4\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:[::1.2.3.4]:5",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::102:304]:5",
+        "relay_url": null,
+        "ip": "::102:304",
+        "zone": null,
+        "port": 5,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::102:304]:5",
+          "relay_url": null,
+          "ip": "::102:304",
+          "zone": null,
+          "port": 5,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[fe80::1%en0%x]:9",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[fe80::1%en0%x]:9",
+        "relay_url": null,
+        "ip": "fe80::1",
+        "zone": "en0%x",
+        "port": 9,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[fe80::1%en0%x]:9",
+          "relay_url": null,
+          "ip": "fe80::1",
+          "zone": "en0%x",
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:0.0.0.0:0",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:0.0.0.0:0",
+        "relay_url": null,
+        "ip": "0.0.0.0",
+        "zone": null,
+        "port": 0,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:0.0.0.0:0",
+          "relay_url": null,
+          "ip": "0.0.0.0",
+          "zone": null,
+          "port": 0,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:255.255.255.255:65535",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:255.255.255.255:65535",
+        "relay_url": null,
+        "ip": "255.255.255.255",
+        "zone": null,
+        "port": 65535,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:255.255.255.255:65535",
+          "relay_url": null,
+          "ip": "255.255.255.255",
+          "zone": null,
+          "port": 65535,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[::]:0",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::]:0",
+        "relay_url": null,
+        "ip": "::",
+        "zone": null,
+        "port": 0,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::]:0",
+          "relay_url": null,
+          "ip": "::",
+          "zone": null,
+          "port": 0,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[0:0:0:0:0:ffff:a00:1]:7",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::ffff:10.0.0.1]:7",
+        "relay_url": null,
+        "ip": "::ffff:10.0.0.1",
+        "zone": null,
+        "port": 7,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::ffff:10.0.0.1]:7",
+          "relay_url": null,
+          "ip": "::ffff:10.0.0.1",
+          "zone": null,
+          "port": 7,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:1.2.3.4:5%x",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:1.2.3.4:5%x\": invalid port \"5%x\" parsing \"1.2.3.4:5%x\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "ip:[::1]:65535",
+      "ok": true,
+      "addr": {
+        "kind": "ip",
+        "string": "ip:[::1]:65535",
+        "relay_url": null,
+        "ip": "::1",
+        "zone": null,
+        "port": 65535,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "ip",
+          "string": "ip:[::1]:65535",
+          "relay_url": null,
+          "ip": "::1",
+          "zone": null,
+          "port": 65535,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "ip:[::1]:99999",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"ip:[::1]:99999\": invalid port \"99999\" parsing \"[::1]:99999\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:ff_",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "ff_",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "255",
+        "custom_data": ""
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "ff_",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "255",
+          "custom_data": ""
+        }
+      ]
+    },
+    {
+      "input": "custom:_00",
+      "ok": false,
+      "addr": null,
+      "error": "invalid ID",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:1_0",
+      "ok": false,
+      "addr": null,
+      "error": "invalid data",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:1_ABCD",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "1_abcd",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "1",
+        "custom_data": "abcd"
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "1_abcd",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": "abcd"
+        }
+      ]
+    },
+    {
+      "input": "custom:0x1_ab",
+      "ok": false,
+      "addr": null,
+      "error": "invalid ID",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:10000000000000000_ab",
+      "ok": false,
+      "addr": null,
+      "error": "invalid ID",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:ffffffffffffffff_00",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "ffffffffffffffff_00",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "18446744073709551615",
+        "custom_data": "00"
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "ffffffffffffffff_00",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "18446744073709551615",
+          "custom_data": "00"
+        }
+      ]
+    },
+    {
+      "input": "custom:1_2_3",
+      "ok": false,
+      "addr": null,
+      "error": "invalid data",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:custom:1_ab",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "1_ab",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "1",
+        "custom_data": "ab"
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "1_ab",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": "ab"
+        }
+      ]
+    },
+    {
+      "input": "1_",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "1_",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "1",
+        "custom_data": ""
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "1_",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": ""
+        }
+      ]
+    },
+    {
+      "input": "_",
+      "ok": false,
+      "addr": null,
+      "error": "invalid ID",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom:",
+      "ok": false,
+      "addr": null,
+      "error": "missing '_' separator",
+      "parse_addrs": []
+    },
+    {
+      "input": "custom",
+      "ok": false,
+      "addr": null,
+      "error": "missing '_' separator",
+      "parse_addrs": []
+    },
+    {
+      "input": "0_",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "0_",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "0",
+        "custom_data": ""
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "0_",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "0",
+          "custom_data": ""
+        }
+      ]
+    },
+    {
+      "input": "DEADbeef_CAFE",
+      "ok": true,
+      "addr": {
+        "kind": "custom",
+        "string": "deadbeef_cafe",
+        "relay_url": null,
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": "3735928559",
+        "custom_data": "cafe"
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "custom",
+          "string": "deadbeef_cafe",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "3735928559",
+          "custom_data": "cafe"
+        }
+      ]
+    },
+    {
+      "input": "custom:+1_ab",
+      "ok": false,
+      "addr": null,
+      "error": "invalid ID",
+      "parse_addrs": []
+    },
+    {
+      "input": "relay:https://Example.COM./",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://example.com./",
+        "relay_url": "https://example.com./",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://example.com./",
+          "relay_url": "https://example.com./",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:%zz",
+      "ok": false,
+      "addr": null,
+      "error": "failed to parse relay URL: parse \"%zz\": invalid URL escape \"%zz\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "relay:https://example.com:abc",
+      "ok": false,
+      "addr": null,
+      "error": "failed to parse relay URL: parse \"https://example.com:abc\": invalid port \":abc\" after host",
+      "parse_addrs": []
+    },
+    {
+      "input": "relay:ftp://Host",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:ftp://host/",
+        "relay_url": "ftp://host/",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:ftp://host/",
+          "relay_url": "ftp://host/",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:mailto:x@y",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:mailto:x@y",
+        "relay_url": "mailto:x@y",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:mailto:x@y",
+          "relay_url": "mailto:x@y",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay://host",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay://host",
+        "relay_url": "//host",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay://host",
+          "relay_url": "//host",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:relay:https://x",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:relay:https://x",
+        "relay_url": "relay:https://x",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:relay:https://x",
+          "relay_url": "relay:https://x",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:HTTPS://EX.example",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://ex.example/",
+        "relay_url": "https://ex.example/",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://ex.example/",
+          "relay_url": "https://ex.example/",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "relay:https://[::1]:443",
+      "ok": true,
+      "addr": {
+        "kind": "relay",
+        "string": "relay:https://[::1]:443/",
+        "relay_url": "https://[::1]:443/",
+        "ip": null,
+        "zone": null,
+        "port": null,
+        "custom_id": null,
+        "custom_data": null
+      },
+      "error": null,
+      "parse_addrs": [
+        {
+          "kind": "relay",
+          "string": "relay:https://[::1]:443/",
+          "relay_url": "https://[::1]:443/",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "input": "mem:",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"mem:\": unknown kind \"mem\"",
+      "parse_addrs": []
+    },
+    {
+      "input": "RELAY:https://x",
+      "ok": false,
+      "addr": null,
+      "error": "transport address \"RELAY:https://x\": unknown kind \"RELAY\"",
+      "parse_addrs": []
+    }
+  ],
+  "parse_addrs": [
+    {
+      "name": "empty",
+      "input": [],
+      "output": []
+    },
+    {
+      "name": "nil",
+      "input": [],
+      "output": []
+    },
+    {
+      "name": "order_kept_skips_unparseable_no_dedup",
+      "input": [
+        "ip:127.0.0.1:9",
+        "bogus",
+        "relay:https://r.example./",
+        "127.0.0.1:9",
+        "custom:1_ab",
+        "mem:01020304",
+        "ip:127.0.0.1:9",
+        "[::1]:9"
+      ],
+      "output": [
+        {
+          "kind": "ip",
+          "string": "ip:127.0.0.1:9",
+          "relay_url": null,
+          "ip": "127.0.0.1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "relay",
+          "string": "relay:https://r.example./",
+          "relay_url": "https://r.example./",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "ip",
+          "string": "ip:127.0.0.1:9",
+          "relay_url": null,
+          "ip": "127.0.0.1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "custom",
+          "string": "1_ab",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": "ab"
+        },
+        {
+          "kind": "ip",
+          "string": "ip:127.0.0.1:9",
+          "relay_url": null,
+          "ip": "127.0.0.1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "ip",
+          "string": "ip:[::1]:9",
+          "relay_url": null,
+          "ip": "::1",
+          "zone": null,
+          "port": 9,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "name": "init_view_node",
+      "input": [
+        "ip:192.168.1.10:51820",
+        "ip:[fe80::1]:51820",
+        "relay:https://euw1-1.relay.n0.iroh-canary.iroh.link./"
+      ],
+      "output": [
+        {
+          "kind": "ip",
+          "string": "ip:192.168.1.10:51820",
+          "relay_url": null,
+          "ip": "192.168.1.10",
+          "zone": null,
+          "port": 51820,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "ip",
+          "string": "ip:[fe80::1]:51820",
+          "relay_url": null,
+          "ip": "fe80::1",
+          "zone": null,
+          "port": 51820,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "relay",
+          "string": "relay:https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+          "relay_url": "https://euw1-1.relay.n0.iroh-canary.iroh.link./",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        }
+      ]
+    },
+    {
+      "name": "mem_endpoint_addrs",
+      "input": [
+        "mem:0102abcd"
+      ],
+      "output": []
+    },
+    {
+      "name": "relay_between_direct",
+      "input": [
+        "ip:10.0.0.1:1",
+        "relay:https://a.example./",
+        "ip:10.0.0.2:2",
+        "relay:b.example",
+        "1_ff"
+      ],
+      "output": [
+        {
+          "kind": "ip",
+          "string": "ip:10.0.0.1:1",
+          "relay_url": null,
+          "ip": "10.0.0.1",
+          "zone": null,
+          "port": 1,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "relay",
+          "string": "relay:https://a.example./",
+          "relay_url": "https://a.example./",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "ip",
+          "string": "ip:10.0.0.2:2",
+          "relay_url": null,
+          "ip": "10.0.0.2",
+          "zone": null,
+          "port": 2,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "relay",
+          "string": "relay:b.example",
+          "relay_url": "b.example",
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": null,
+          "custom_data": null
+        },
+        {
+          "kind": "custom",
+          "string": "1_ff",
+          "relay_url": null,
+          "ip": null,
+          "zone": null,
+          "port": null,
+          "custom_id": "1",
+          "custom_data": "ff"
+        }
+      ]
+    }
+  ],
+  "parse_addr_port": [
+    {
+      "input": "127.0.0.1:9",
+      "ok": true,
+      "ip": "127.0.0.1",
+      "zone": null,
+      "port": 9,
+      "string": "127.0.0.1:9",
+      "error": null
+    },
+    {
+      "input": "[::1]:9",
+      "ok": true,
+      "ip": "::1",
+      "zone": null,
+      "port": 9,
+      "string": "[::1]:9",
+      "error": null
+    },
+    {
+      "input": "[fe80::1%en0]:9",
+      "ok": true,
+      "ip": "fe80::1",
+      "zone": "en0",
+      "port": 9,
+      "string": "[fe80::1%en0]:9",
+      "error": null
+    },
+    {
+      "input": "1.2.3.4",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "not an ip:port"
+    },
+    {
+      "input": "999.1.1.1:5",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"999.1.1.1\"): IPv4 field has value \u003e255"
+    },
+    {
+      "input": "01.2.3.4:5",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"01.2.3.4\"): IPv4 field has octet with leading zero"
+    },
+    {
+      "input": "1.2.3.4:65536",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid port \"65536\" parsing \"1.2.3.4:65536\""
+    },
+    {
+      "input": "[::ffff:1.2.3.4]:5",
+      "ok": true,
+      "ip": "::ffff:1.2.3.4",
+      "zone": null,
+      "port": 5,
+      "string": "[::ffff:1.2.3.4]:5",
+      "error": null
+    },
+    {
+      "input": "::1:9",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid ip:port \"::1:9\", IPv6 addresses must be surrounded by square brackets"
+    },
+    {
+      "input": "[::1]",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "missing ]"
+    },
+    {
+      "input": "1.2.3.4:",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "no port"
+    },
+    {
+      "input": ":9",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "no IP"
+    },
+    {
+      "input": "[]:9",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"\"): unable to parse IP"
+    },
+    {
+      "input": "[::1%]:9",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"::1%\"): zone must be a non-empty string"
+    },
+    {
+      "input": "1.2.3.4:+1",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid port \"+1\" parsing \"1.2.3.4:+1\""
+    },
+    {
+      "input": "1.2.3.4:0x10",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid port \"0x10\" parsing \"1.2.3.4:0x10\""
+    },
+    {
+      "input": "localhost:9",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"localhost\"): unable to parse IP"
+    },
+    {
+      "input": "[1.2.3.4]:5",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid ip:port \"[1.2.3.4]:5\", square brackets can only be used with IPv6 addresses"
+    },
+    {
+      "input": "1.2.3:5",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"1.2.3\"): IPv4 address too short"
+    },
+    {
+      "input": "[2001:DB8::1]:1",
+      "ok": true,
+      "ip": "2001:db8::1",
+      "zone": null,
+      "port": 1,
+      "string": "[2001:db8::1]:1",
+      "error": null
+    },
+    {
+      "input": "[::1.2.3.4]:5",
+      "ok": true,
+      "ip": "::102:304",
+      "zone": null,
+      "port": 5,
+      "string": "[::102:304]:5",
+      "error": null
+    },
+    {
+      "input": "[fe80::1%en0%x]:9",
+      "ok": true,
+      "ip": "fe80::1",
+      "zone": "en0%x",
+      "port": 9,
+      "string": "[fe80::1%en0%x]:9",
+      "error": null
+    },
+    {
+      "input": "0.0.0.0:0",
+      "ok": true,
+      "ip": "0.0.0.0",
+      "zone": null,
+      "port": 0,
+      "string": "0.0.0.0:0",
+      "error": null
+    },
+    {
+      "input": "255.255.255.255:65535",
+      "ok": true,
+      "ip": "255.255.255.255",
+      "zone": null,
+      "port": 65535,
+      "string": "255.255.255.255:65535",
+      "error": null
+    },
+    {
+      "input": "[::]:0",
+      "ok": true,
+      "ip": "::",
+      "zone": null,
+      "port": 0,
+      "string": "[::]:0",
+      "error": null
+    },
+    {
+      "input": "1.2.3.4:5 ",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid port \"5 \" parsing \"1.2.3.4:5 \""
+    },
+    {
+      "input": " 1.2.3.4:5",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\" 1.2.3.4\"): unexpected character (at \" 1.2.3.4\")"
+    },
+    {
+      "input": "192.168.1.2:4242",
+      "ok": true,
+      "ip": "192.168.1.2",
+      "zone": null,
+      "port": 4242,
+      "string": "192.168.1.2:4242",
+      "error": null
+    },
+    {
+      "input": "[2001:db8::1]:4242",
+      "ok": true,
+      "ip": "2001:db8::1",
+      "zone": null,
+      "port": 4242,
+      "string": "[2001:db8::1]:4242",
+      "error": null
+    },
+    {
+      "input": "[::ffff:10.0.0.1]:1",
+      "ok": true,
+      "ip": "::ffff:10.0.0.1",
+      "zone": null,
+      "port": 1,
+      "string": "[::ffff:10.0.0.1]:1",
+      "error": null
+    },
+    {
+      "input": "[fe80::1%en0]:7",
+      "ok": true,
+      "ip": "fe80::1",
+      "zone": "en0",
+      "port": 7,
+      "string": "[fe80::1%en0]:7",
+      "error": null
+    },
+    {
+      "input": "[fe80::1%2]:4433",
+      "ok": true,
+      "ip": "fe80::1",
+      "zone": "2",
+      "port": 4433,
+      "string": "[fe80::1%2]:4433",
+      "error": null
+    },
+    {
+      "input": "",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "not an ip:port"
+    },
+    {
+      "input": "1.2.3.4:080",
+      "ok": true,
+      "ip": "1.2.3.4",
+      "zone": null,
+      "port": 80,
+      "string": "1.2.3.4:80",
+      "error": null
+    },
+    {
+      "input": "[0:0:0:0:0:0:0:1]:1",
+      "ok": true,
+      "ip": "::1",
+      "zone": null,
+      "port": 1,
+      "string": "[::1]:1",
+      "error": null
+    },
+    {
+      "input": "[::ffff:0:0]:1",
+      "ok": true,
+      "ip": "::ffff:0.0.0.0",
+      "zone": null,
+      "port": 1,
+      "string": "[::ffff:0.0.0.0]:1",
+      "error": null
+    },
+    {
+      "input": "1.2.3.256:1",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"1.2.3.256\"): IPv4 field has value \u003e255"
+    },
+    {
+      "input": "1.2.3.4.5:1",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"1.2.3.4.5\"): IPv4 address too long"
+    },
+    {
+      "input": "[1:2:3:4:5:6:7:8:9]:1",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"1:2:3:4:5:6:7:8:9\"): trailing garbage after address (at \"9\")"
+    },
+    {
+      "input": "[1::2::3]:1",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"1::2::3\"): multiple :: in address (at \":3\")"
+    },
+    {
+      "input": "[fe80::1%]:9",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "ParseAddr(\"fe80::1%\"): zone must be a non-empty string"
+    },
+    {
+      "input": "1.2.3.4:-0",
+      "ok": false,
+      "ip": null,
+      "zone": null,
+      "port": null,
+      "string": null,
+      "error": "invalid port \"-0\" parsing \"1.2.3.4:-0\""
+    }
+  ]
+}

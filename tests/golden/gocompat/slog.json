@@ -1,0 +1,3734 @@
+{
+  "levels": [
+    {
+      "level": -20,
+      "text": "DEBUG-16"
+    },
+    {
+      "level": -19,
+      "text": "DEBUG-15"
+    },
+    {
+      "level": -18,
+      "text": "DEBUG-14"
+    },
+    {
+      "level": -17,
+      "text": "DEBUG-13"
+    },
+    {
+      "level": -16,
+      "text": "DEBUG-12"
+    },
+    {
+      "level": -15,
+      "text": "DEBUG-11"
+    },
+    {
+      "level": -14,
+      "text": "DEBUG-10"
+    },
+    {
+      "level": -13,
+      "text": "DEBUG-9"
+    },
+    {
+      "level": -12,
+      "text": "DEBUG-8"
+    },
+    {
+      "level": -11,
+      "text": "DEBUG-7"
+    },
+    {
+      "level": -10,
+      "text": "DEBUG-6"
+    },
+    {
+      "level": -9,
+      "text": "DEBUG-5"
+    },
+    {
+      "level": -8,
+      "text": "DEBUG-4"
+    },
+    {
+      "level": -7,
+      "text": "DEBUG-3"
+    },
+    {
+      "level": -6,
+      "text": "DEBUG-2"
+    },
+    {
+      "level": -5,
+      "text": "DEBUG-1"
+    },
+    {
+      "level": -4,
+      "text": "DEBUG"
+    },
+    {
+      "level": -3,
+      "text": "DEBUG+1"
+    },
+    {
+      "level": -2,
+      "text": "DEBUG+2"
+    },
+    {
+      "level": -1,
+      "text": "DEBUG+3"
+    },
+    {
+      "level": 0,
+      "text": "INFO"
+    },
+    {
+      "level": 1,
+      "text": "INFO+1"
+    },
+    {
+      "level": 2,
+      "text": "INFO+2"
+    },
+    {
+      "level": 3,
+      "text": "INFO+3"
+    },
+    {
+      "level": 4,
+      "text": "WARN"
+    },
+    {
+      "level": 5,
+      "text": "WARN+1"
+    },
+    {
+      "level": 6,
+      "text": "WARN+2"
+    },
+    {
+      "level": 7,
+      "text": "WARN+3"
+    },
+    {
+      "level": 8,
+      "text": "ERROR"
+    },
+    {
+      "level": 9,
+      "text": "ERROR+1"
+    },
+    {
+      "level": 10,
+      "text": "ERROR+2"
+    },
+    {
+      "level": 11,
+      "text": "ERROR+3"
+    },
+    {
+      "level": 12,
+      "text": "ERROR+4"
+    },
+    {
+      "level": 13,
+      "text": "ERROR+5"
+    },
+    {
+      "level": 14,
+      "text": "ERROR+6"
+    },
+    {
+      "level": 15,
+      "text": "ERROR+7"
+    },
+    {
+      "level": 16,
+      "text": "ERROR+8"
+    },
+    {
+      "level": 17,
+      "text": "ERROR+9"
+    },
+    {
+      "level": 18,
+      "text": "ERROR+10"
+    },
+    {
+      "level": 19,
+      "text": "ERROR+11"
+    },
+    {
+      "level": 20,
+      "text": "ERROR+12"
+    },
+    {
+      "level": -1000,
+      "text": "DEBUG-996"
+    },
+    {
+      "level": 1000,
+      "text": "ERROR+992"
+    },
+    {
+      "level": -2147483648,
+      "text": "DEBUG-2147483644"
+    },
+    {
+      "level": -2147483644,
+      "text": "DEBUG-2147483640"
+    },
+    {
+      "level": 2147483639,
+      "text": "ERROR+2147483631"
+    },
+    {
+      "level": 2147483647,
+      "text": "ERROR+2147483639"
+    }
+  ],
+  "log_levels": [
+    {
+      "in": "",
+      "level": 0
+    },
+    {
+      "in": "debug",
+      "level": -4
+    },
+    {
+      "in": "DEBUG",
+      "level": -4
+    },
+    {
+      "in": "Debug",
+      "level": -4
+    },
+    {
+      "in": "dEbUg",
+      "level": -4
+    },
+    {
+      "in": "info",
+      "level": 0
+    },
+    {
+      "in": "INFO",
+      "level": 0
+    },
+    {
+      "in": "Info",
+      "level": 0
+    },
+    {
+      "in": "warn",
+      "level": 4
+    },
+    {
+      "in": "WARN",
+      "level": 4
+    },
+    {
+      "in": "Warn",
+      "level": 4
+    },
+    {
+      "in": "warning",
+      "level": 0
+    },
+    {
+      "in": "WARNING",
+      "level": 0
+    },
+    {
+      "in": "error",
+      "level": 8
+    },
+    {
+      "in": "ERROR",
+      "level": 8
+    },
+    {
+      "in": "Error",
+      "level": 8
+    },
+    {
+      "in": "err",
+      "level": 0
+    },
+    {
+      "in": "verbose",
+      "level": 0
+    },
+    {
+      "in": "trace",
+      "level": 0
+    },
+    {
+      "in": "fatal",
+      "level": 0
+    },
+    {
+      "in": "debug ",
+      "level": 0
+    },
+    {
+      "in": " debug",
+      "level": 0
+    },
+    {
+      "in": "\tdebug",
+      "level": 0
+    },
+    {
+      "in": "4",
+      "level": 0
+    },
+    {
+      "in": "-4",
+      "level": 0
+    },
+    {
+      "in": "0",
+      "level": 0
+    },
+    {
+      "in": "8",
+      "level": 0
+    },
+    {
+      "in": "İnfo",
+      "level": 0
+    },
+    {
+      "in": "Kebug",
+      "level": 0
+    },
+    {
+      "in": "DEBUGİ",
+      "level": 0
+    },
+    {
+      "in": "ｄｅｂｕｇ",
+      "level": 0
+    },
+    {
+      "in": "ERROʀ",
+      "level": 0
+    }
+  ],
+  "needs_quoting": [
+    {
+      "in_hex": "",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "61",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "6162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613d62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "3d",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "22616222",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "612262",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "0708",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610962",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610a62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "00",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "1f",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "20",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "612062",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "5c",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "7f",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "7e21232425262728292a2b2c2d2e2f3a3b3c3e3f405b5d5e5f607b7c7d",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "74726565732f2a2a",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "3161326233633464",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "72656d6f74653a20756e617661696c61626c653a206e6f2076696577",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "312e30204d69422f73",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "c2b5c3a5cf80",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "c3a9",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "e697a5e69cace8aa9e",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "f09f9880",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "65cc81",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "c2a0",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "61c2a062",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "c285",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e19a80",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e28080",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e280a8",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e280a9",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e280af",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e2819f",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e38080",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e2808b",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "c2ad",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "cdb8",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "ee8080",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "f3a08081",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "f48fbfbf",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "efbbbf",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "efbfbd",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "61efbfbd62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "62616475746638f6",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "ff",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "61ff62",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "c080",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "eda080",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "f4908080",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "e282",
+      "valid_utf8": false,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610062",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610162",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610262",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610362",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610462",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610562",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610662",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610762",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610862",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610962",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610a62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610b62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610c62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610d62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610e62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "610f62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611062",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611162",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611262",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611362",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611462",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611562",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611662",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611762",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611862",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611962",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611a62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611b62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611c62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611d62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611e62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "611f62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "612062",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "612162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612262",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "612362",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612462",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612562",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612662",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612762",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612862",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612962",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612a62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612b62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612d62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612e62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "612f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613062",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613262",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613362",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613462",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613562",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613662",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613762",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613862",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613962",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613a62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613b62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613d62",
+      "valid_utf8": true,
+      "needs_quoting": true
+    },
+    {
+      "in_hex": "613e62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "613f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614062",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614262",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614362",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614462",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614562",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614662",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614762",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614862",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614962",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614a62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614b62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614d62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614e62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "614f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615062",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615262",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615362",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615462",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615562",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615662",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615762",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615862",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615962",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615a62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615b62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615d62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615e62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "615f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616062",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616262",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616362",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616462",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616562",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616662",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616762",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616862",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616962",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616a62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616b62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616d62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616e62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "616f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617062",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617162",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617262",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617362",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617462",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617562",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617662",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617762",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617862",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617962",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617a62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617b62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617c62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617d62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617e62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    },
+    {
+      "in_hex": "617f62",
+      "valid_utf8": true,
+      "needs_quoting": false
+    }
+  ],
+  "records": [
+    {
+      "name": "connected direct",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "connected",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "nodes",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "str": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "duration",
+          "num": "2000000"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=connected node=1a2b3c4d nodes=3 path=direct rtt=2ms\n"
+    },
+    {
+      "name": "connected none +02:00",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "connected",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "nodes",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "str": "none"
+        }
+      ],
+      "line": "time=2026-09-18T12:11:12.345+02:00 level=INFO msg=connected node=1a2b3c4d nodes=3 path=none\n"
+    },
+    {
+      "name": "connected relay -05:30",
+      "offset_secs": -19800,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "connected",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "nodes",
+          "kind": "int64",
+          "num": "1"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "str": "relay"
+        },
+        {
+          "key": "rtt",
+          "kind": "duration",
+          "num": "0"
+        }
+      ],
+      "line": "time=2026-09-18T04:41:12.345-05:30 level=INFO msg=connected node=1a2b3c4d nodes=1 path=relay rtt=0s\n"
+    },
+    {
+      "name": "watch retrying",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "watch: no node answered, retrying",
+      "with": [],
+      "attrs": [
+        {
+          "key": "pattern",
+          "kind": "string",
+          "str": "trees/**"
+        },
+        {
+          "key": "in",
+          "kind": "duration",
+          "num": "1000000000"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=\"watch: no node answered, retrying\" pattern=trees/** in=1s\n"
+    },
+    {
+      "name": "watch idle",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "watch: stream idle, reconnecting",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=\"watch: stream idle, reconnecting\" node=1a2b3c4d\n"
+    },
+    {
+      "name": "watch ended",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "watch: stream ended, reconnecting",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "error",
+          "kind": "any",
+          "str": "EOF",
+          "go_type": "*errors.errorString"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=\"watch: stream ended, reconnecting\" node=1a2b3c4d error=EOF\n"
+    },
+    {
+      "name": "watch refused",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "watch: node refused, trying the next",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "error",
+          "kind": "any",
+          "str": "remote: unavailable: no view",
+          "go_type": "*errors.errorString"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=\"watch: node refused, trying the next\" node=1a2b3c4d error=\"remote: unavailable: no view\"\n"
+    },
+    {
+      "name": "watch synced",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "watch: synced",
+      "with": [],
+      "attrs": [
+        {
+          "key": "pattern",
+          "kind": "string",
+          "str": "trees/**"
+        },
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "refs",
+          "kind": "int64",
+          "num": "2"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"watch: synced\" pattern=trees/** node=1a2b3c4d refs=2\n"
+    },
+    {
+      "name": "quoting",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "quoting",
+      "with": [],
+      "attrs": [
+        {
+          "key": "empty",
+          "kind": "string",
+          "str": ""
+        },
+        {
+          "key": "space",
+          "kind": "string",
+          "str": "a b"
+        },
+        {
+          "key": "eq",
+          "kind": "string",
+          "str": "a=b"
+        },
+        {
+          "key": "quote",
+          "kind": "string",
+          "str": "a\"b"
+        },
+        {
+          "key": "backslash",
+          "kind": "string",
+          "str": "a\\b"
+        },
+        {
+          "key": "tab",
+          "kind": "string",
+          "str": "a\tb"
+        },
+        {
+          "key": "nl",
+          "kind": "string",
+          "str": "a\nb"
+        },
+        {
+          "key": "unicode",
+          "kind": "string",
+          "str": "é"
+        },
+        {
+          "key": "nbsp",
+          "kind": "string",
+          "str": "a b"
+        },
+        {
+          "key": "ctrl",
+          "kind": "string",
+          "str": "a\u0001b"
+        },
+        {
+          "key": "del",
+          "kind": "string",
+          "str": "ab"
+        },
+        {
+          "key": "invalid",
+          "kind": "bytes",
+          "hex": "61ff62"
+        },
+        {
+          "key": "zwsp",
+          "kind": "string",
+          "str": "a​b"
+        },
+        {
+          "key": "u64",
+          "kind": "uint64",
+          "num": "5"
+        },
+        {
+          "key": "i64",
+          "kind": "int64",
+          "num": "-5"
+        },
+        {
+          "key": "f",
+          "kind": "float64",
+          "num": "4602678819172646912"
+        },
+        {
+          "key": "b",
+          "kind": "bool",
+          "bool": true
+        },
+        {
+          "key": "bytes",
+          "kind": "bytes",
+          "hex": "6869"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=quoting empty=\"\" space=\"a b\" eq=\"a=b\" quote=\"a\\\"b\" backslash=a\\b tab=\"a\\tb\" nl=\"a\\nb\" unicode=é nbsp=\"a\\u00a0b\" ctrl=\"a\\x01b\" del=ab invalid=\"a\\xffb\" zwsp=\"a\\u200bb\" u64=5 i64=-5 f=0.5 b=true bytes=\"hi\"\n"
+    },
+    {
+      "name": "truncate ms",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 346677901
+      },
+      "level": 8,
+      "msg": "truncate ms",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.346Z level=ERROR msg=\"truncate ms\"\n"
+    },
+    {
+      "name": "zero time",
+      "offset_secs": 0,
+      "time": null,
+      "level": -4,
+      "msg": "zero time",
+      "with": [],
+      "attrs": [],
+      "line": "level=DEBUG msg=\"zero time\"\n"
+    },
+    {
+      "name": "warn plus two",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 6,
+      "msg": "warn plus two",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN+2 msg=\"warn plus two\"\n"
+    },
+    {
+      "name": "uploaded",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "uploaded",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "objects",
+          "kind": "int64",
+          "num": "12"
+        },
+        {
+          "key": "bytes",
+          "kind": "int64",
+          "num": "3145728"
+        },
+        {
+          "key": "took",
+          "kind": "duration",
+          "num": "1235000000"
+        },
+        {
+          "key": "rate",
+          "kind": "string",
+          "str": "2.4 MiB/s"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=uploaded node=1a2b3c4d objects=12 bytes=3145728 took=1.235s rate=\"2.4 MiB/s\"\n"
+    },
+    {
+      "name": "reference written",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "reference written",
+      "with": [],
+      "attrs": [
+        {
+          "key": "name",
+          "kind": "string",
+          "str": "trees/main"
+        },
+        {
+          "key": "version",
+          "kind": "string",
+          "str": "0102abcd"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"reference written\" name=trees/main version=0102abcd\n"
+    },
+    {
+      "name": "mdns unavailable",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "transport: mdns discovery unavailable",
+      "with": [],
+      "attrs": [
+        {
+          "key": "error",
+          "kind": "any",
+          "str": "listen udp4 224.0.0.251:5353: bind: address already in use",
+          "go_type": "*fmt.wrapError"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=\"transport: mdns discovery unavailable\" error=\"listen udp4 224.0.0.251:5353: bind: address already in use\"\n"
+    },
+    {
+      "name": "cli connected",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": 0,
+      "msg": "connected",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "abcd0123"
+        },
+        {
+          "key": "nodes",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "str": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "duration",
+          "num": "3000000"
+        }
+      ],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=INFO msg=connected node=abcd0123 nodes=3 path=direct rtt=3ms\n"
+    },
+    {
+      "name": "cli upload failed",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 5000000
+      },
+      "level": 4,
+      "msg": "upload failed",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "abcd0123"
+        },
+        {
+          "key": "objects",
+          "kind": "int64",
+          "num": "12"
+        },
+        {
+          "key": "err",
+          "kind": "any",
+          "str": "timeout: no recent network activity",
+          "go_type": "*errors.errorString"
+        }
+      ],
+      "line": "time=2026-09-18T10:34:56.005Z level=WARN msg=\"upload failed\" node=abcd0123 objects=12 err=\"timeout: no recent network activity\"\n"
+    },
+    {
+      "name": "cli kinds",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": -4,
+      "msg": "x",
+      "with": [],
+      "attrs": [
+        {
+          "key": "empty",
+          "kind": "string",
+          "str": ""
+        },
+        {
+          "key": "eq",
+          "kind": "string",
+          "str": "a=b"
+        },
+        {
+          "key": "quote",
+          "kind": "string",
+          "str": "say \"hi\""
+        },
+        {
+          "key": "uni",
+          "kind": "string",
+          "str": "é…"
+        },
+        {
+          "key": "tab",
+          "kind": "string",
+          "str": "a\tb"
+        },
+        {
+          "key": "bs",
+          "kind": "string",
+          "str": "a\\b"
+        },
+        {
+          "key": "f",
+          "kind": "float64",
+          "num": "4609434218613702656"
+        },
+        {
+          "key": "b",
+          "kind": "bool",
+          "bool": true
+        },
+        {
+          "key": "bytes",
+          "kind": "bytes",
+          "hex": "6869"
+        },
+        {
+          "key": "i64",
+          "kind": "int64",
+          "num": "-5"
+        },
+        {
+          "key": "u64",
+          "kind": "uint64",
+          "num": "7"
+        },
+        {
+          "key": "dur",
+          "kind": "duration",
+          "num": "1500000000"
+        },
+        {
+          "key": "nilerr",
+          "kind": "any",
+          "str": "\u003cnil\u003e",
+          "go_type": "\u003cnil\u003e"
+        }
+      ],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=DEBUG msg=x empty=\"\" eq=\"a=b\" quote=\"say \\\"hi\\\"\" uni=é… tab=\"a\\tb\" bs=a\\b f=1.5 b=true bytes=\"hi\" i64=-5 u64=7 dur=1.5s nilerr=\u003cnil\u003e\n"
+    },
+    {
+      "name": "cli strings",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": 8,
+      "msg": "msg with space",
+      "with": [],
+      "attrs": [
+        {
+          "key": "rate",
+          "kind": "string",
+          "str": "3.0 MiB/s"
+        },
+        {
+          "key": "addrs",
+          "kind": "any",
+          "str": "[1.2.3.4:5 [::1]:6]",
+          "go_type": "[]string"
+        },
+        {
+          "key": "version",
+          "kind": "string",
+          "str": "0102"
+        },
+        {
+          "key": "in",
+          "kind": "duration",
+          "num": "1000000000"
+        },
+        {
+          "key": "took",
+          "kind": "duration",
+          "num": "1235000000"
+        }
+      ],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=ERROR msg=\"msg with space\" rate=\"3.0 MiB/s\" addrs=\"[1.2.3.4:5 [::1]:6]\" version=0102 in=1s took=1.235s\n"
+    },
+    {
+      "name": "cli empty message",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": 0,
+      "msg": "",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=INFO msg=\"\"\n"
+    },
+    {
+      "name": "cli node started",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": 0,
+      "msg": "node started",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "abcd0123"
+        },
+        {
+          "key": "id",
+          "kind": "string",
+          "str": "abababababababababababababababababababababababababababababababab"
+        }
+      ],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=INFO msg=\"node started\" node=abcd0123 id=abababababababababababababababababababababababababababababababab\n"
+    },
+    {
+      "name": "cli odd argument",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": 0,
+      "msg": "odd",
+      "with": [],
+      "attrs": [
+        {
+          "key": "!BADKEY",
+          "kind": "string",
+          "str": "lonely"
+        }
+      ],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=INFO msg=odd !BADKEY=lonely\n"
+    },
+    {
+      "name": "cli custom level",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789727696",
+        "nanos": 789654321
+      },
+      "level": 2,
+      "msg": "custom level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T12:34:56.789+02:00 level=INFO+2 msg=\"custom level\"\n"
+    },
+    {
+      "name": "go unquoted",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "946782245",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "a message",
+      "with": [],
+      "attrs": [
+        {
+          "key": "a",
+          "kind": "int64",
+          "num": "1"
+        }
+      ],
+      "line": "time=2000-01-02T03:04:05.000Z level=INFO msg=\"a message\" a=1\n"
+    },
+    {
+      "name": "go quoted",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "946782245",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "a message",
+      "with": [],
+      "attrs": [
+        {
+          "key": "x = y",
+          "kind": "string",
+          "str": "qu\"o"
+        }
+      ],
+      "line": "time=2000-01-02T03:04:05.000Z level=INFO msg=\"a message\" \"x = y\"=\"qu\\\"o\"\n"
+    },
+    {
+      "name": "go String method",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "946782245",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "a message",
+      "with": [],
+      "attrs": [
+        {
+          "key": "name",
+          "kind": "any",
+          "str": "Hoek, Ren",
+          "go_type": "main.slogvName"
+        }
+      ],
+      "line": "time=2000-01-02T03:04:05.000Z level=INFO msg=\"a message\" name=\"Hoek, Ren\"\n"
+    },
+    {
+      "name": "go struct",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "946782245",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "a message",
+      "with": [],
+      "attrs": [
+        {
+          "key": "x",
+          "kind": "any",
+          "str": "\u0026{A:1 b:2}",
+          "go_type": "*struct { A int; b int }"
+        }
+      ],
+      "line": "time=2000-01-02T03:04:05.000Z level=INFO msg=\"a message\" x=\"\u0026{A:1 b:2}\"\n"
+    },
+    {
+      "name": "go nil value",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "946782245",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "a message",
+      "with": [],
+      "attrs": [
+        {
+          "key": "a",
+          "kind": "any",
+          "str": "\u003cnil\u003e",
+          "go_type": "\u003cnil\u003e"
+        }
+      ],
+      "line": "time=2000-01-02T03:04:05.000Z level=INFO msg=\"a message\" a=\u003cnil\u003e\n"
+    },
+    {
+      "name": "go preformatted",
+      "offset_secs": 0,
+      "time": null,
+      "level": 0,
+      "msg": "m",
+      "with": [
+        [
+          {
+            "key": "dur",
+            "kind": "duration",
+            "num": "60000000000"
+          },
+          {
+            "key": "b",
+            "kind": "bool",
+            "bool": true
+          }
+        ]
+      ],
+      "attrs": [
+        {
+          "key": "a",
+          "kind": "int64",
+          "num": "1"
+        }
+      ],
+      "line": "level=INFO msg=m dur=1m0s b=true a=1\n"
+    },
+    {
+      "name": "with twice",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "uploaded",
+      "with": [
+        [
+          {
+            "key": "node",
+            "kind": "string",
+            "str": "abcd"
+          }
+        ],
+        [
+          {
+            "key": "round",
+            "kind": "int64",
+            "num": "1"
+          }
+        ]
+      ],
+      "attrs": [
+        {
+          "key": "objects",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "bytes",
+          "kind": "int64",
+          "num": "3145728"
+        },
+        {
+          "key": "took",
+          "kind": "duration",
+          "num": "2000000000"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "str": "direct"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=uploaded node=abcd round=1 objects=3 bytes=3145728 took=2s path=direct\n"
+    },
+    {
+      "name": "with only",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "upload failed",
+      "with": [
+        [
+          {
+            "key": "node",
+            "kind": "string",
+            "str": "abcd"
+          }
+        ]
+      ],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=\"upload failed\" node=abcd\n"
+    },
+    {
+      "name": "with three calls",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "m",
+      "with": [
+        [
+          {
+            "key": "a",
+            "kind": "int64",
+            "num": "1"
+          }
+        ],
+        [
+          {
+            "key": "b",
+            "kind": "string",
+            "str": "x y"
+          }
+        ],
+        [
+          {
+            "key": "c",
+            "kind": "bool",
+            "bool": true
+          },
+          {
+            "key": "d",
+            "kind": "uint64",
+            "num": "4"
+          }
+        ]
+      ],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=m a=1 b=\"x y\" c=true d=4\n"
+    },
+    {
+      "name": "many attributes",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "many",
+      "with": [
+        [
+          {
+            "key": "w",
+            "kind": "int64",
+            "num": "0"
+          }
+        ]
+      ],
+      "attrs": [
+        {
+          "key": "a0",
+          "kind": "int64",
+          "num": "0"
+        },
+        {
+          "key": "a1",
+          "kind": "int64",
+          "num": "1"
+        },
+        {
+          "key": "a2",
+          "kind": "int64",
+          "num": "2"
+        },
+        {
+          "key": "a3",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "a4",
+          "kind": "int64",
+          "num": "4"
+        },
+        {
+          "key": "a5",
+          "kind": "int64",
+          "num": "5"
+        },
+        {
+          "key": "a6",
+          "kind": "int64",
+          "num": "6"
+        },
+        {
+          "key": "a7",
+          "kind": "int64",
+          "num": "7"
+        },
+        {
+          "key": "a8",
+          "kind": "int64",
+          "num": "8"
+        },
+        {
+          "key": "a9",
+          "kind": "int64",
+          "num": "9"
+        },
+        {
+          "key": "a10",
+          "kind": "int64",
+          "num": "10"
+        },
+        {
+          "key": "a11",
+          "kind": "int64",
+          "num": "11"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=many w=0 a0=0 a1=1 a2=2 a3=3 a4=4 a5=5 a6=6 a7=7 a8=8 a9=9 a10=10 a11=11\n"
+    },
+    {
+      "name": "keys",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "keys",
+      "with": [],
+      "attrs": [
+        {
+          "key": "",
+          "kind": "string",
+          "str": "empty key"
+        },
+        {
+          "key": "a b",
+          "kind": "int64",
+          "num": "1"
+        },
+        {
+          "key": "a=b",
+          "kind": "int64",
+          "num": "2"
+        },
+        {
+          "key": "a\"b",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "é",
+          "kind": "int64",
+          "num": "4"
+        },
+        {
+          "key": "k\n",
+          "kind": "int64",
+          "num": "5"
+        },
+        {
+          "key": "\\",
+          "kind": "int64",
+          "num": "6"
+        },
+        {
+          "key": " ",
+          "kind": "int64",
+          "num": "7"
+        },
+        {
+          "key": "日本",
+          "kind": "int64",
+          "num": "8"
+        },
+        {
+          "key": "",
+          "kind": "int64",
+          "num": "9"
+        },
+        {
+          "key": "!BADKEY",
+          "kind": "int64",
+          "num": "10"
+        },
+        {
+          "key": "trees/**",
+          "kind": "int64",
+          "num": "11"
+        },
+        {
+          "key": "a.b",
+          "kind": "int64",
+          "num": "12"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=keys \"\"=\"empty key\" \"a b\"=1 \"a=b\"=2 \"a\\\"b\"=3 é=4 \"k\\n\"=5 \\=6 \"\\u00a0\"=7 日本=8 =9 !BADKEY=10 trees/**=11 a.b=12\n"
+    },
+    {
+      "name": "message 0",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "tab\tin",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"tab\\tin\"\n"
+    },
+    {
+      "name": "message 1",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "line\nbreak",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"line\\nbreak\"\n"
+    },
+    {
+      "name": "message 2",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "é",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=é\n"
+    },
+    {
+      "name": "message 3",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "​",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"\\u200b\"\n"
+    },
+    {
+      "name": "message 4",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "quote\"",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"quote\\\"\"\n"
+    },
+    {
+      "name": "message 5",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "a=b",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"a=b\"\n"
+    },
+    {
+      "name": "message 6",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\n"
+    },
+    {
+      "name": "message 7",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "trailing\n",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"trailing\\n\"\n"
+    },
+    {
+      "name": "message 8",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "日本語",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=日本語\n"
+    },
+    {
+      "name": "message 9",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "😀",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=😀\n"
+    },
+    {
+      "name": "message 10",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "é",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=é\n"
+    },
+    {
+      "name": "message 11",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "　",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"\\u3000\"\n"
+    },
+    {
+      "name": "message 12",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "�",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"�\"\n"
+    },
+    {
+      "name": "message 13",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "\\",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\\\n"
+    },
+    {
+      "name": "message 14",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "\u003cb\u003e\u0026amp;\u003c/b\u003e",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\u003cb\u003e\u0026amp;\u003c/b\u003e\n"
+    },
+    {
+      "name": "message 15",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": " ",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\" \"\n"
+    },
+    {
+      "name": "message 16",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "\u0000",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"\\x00\"\n"
+    },
+    {
+      "name": "message 17",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "\u2028",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=\"\\u2028\"\n"
+    },
+    {
+      "name": "level DEBUG-96",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": -100,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=DEBUG-96 msg=level\n"
+    },
+    {
+      "name": "level DEBUG-1",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": -5,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=DEBUG-1 msg=level\n"
+    },
+    {
+      "name": "level DEBUG",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": -4,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=DEBUG msg=level\n"
+    },
+    {
+      "name": "level DEBUG+3",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": -1,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=DEBUG+3 msg=level\n"
+    },
+    {
+      "name": "level INFO",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=level\n"
+    },
+    {
+      "name": "level INFO+3",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 3,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO+3 msg=level\n"
+    },
+    {
+      "name": "level WARN",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN msg=level\n"
+    },
+    {
+      "name": "level WARN+3",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 7,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=WARN+3 msg=level\n"
+    },
+    {
+      "name": "level ERROR",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 8,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=ERROR msg=level\n"
+    },
+    {
+      "name": "level ERROR+4",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 12,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=ERROR+4 msg=level\n"
+    },
+    {
+      "name": "level ERROR+92",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 100,
+      "msg": "level",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.345Z level=ERROR+92 msg=level\n"
+    },
+    {
+      "name": "float64",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "floats",
+      "with": [],
+      "attrs": [
+        {
+          "key": "zero",
+          "kind": "float64",
+          "num": "0"
+        },
+        {
+          "key": "negzero",
+          "kind": "float64",
+          "num": "9223372036854775808"
+        },
+        {
+          "key": "half",
+          "kind": "float64",
+          "num": "4602678819172646912"
+        },
+        {
+          "key": "onehalf",
+          "kind": "float64",
+          "num": "4609434218613702656"
+        },
+        {
+          "key": "big",
+          "kind": "float64",
+          "num": "4705200100845027328"
+        },
+        {
+          "key": "e20",
+          "kind": "float64",
+          "num": "4906019910204099648"
+        },
+        {
+          "key": "e21",
+          "kind": "float64",
+          "num": "4921056587992461136"
+        },
+        {
+          "key": "e-4",
+          "kind": "float64",
+          "num": "4547007122018943789"
+        },
+        {
+          "key": "e-5",
+          "kind": "float64",
+          "num": "4532020583610935537"
+        },
+        {
+          "key": "e-7",
+          "kind": "float64",
+          "num": "4502148214488346440"
+        },
+        {
+          "key": "int",
+          "kind": "float64",
+          "num": "4728057454347157504"
+        },
+        {
+          "key": "hundred",
+          "kind": "float64",
+          "num": "4636737291354636288"
+        },
+        {
+          "key": "third",
+          "kind": "float64",
+          "num": "4599676419421066581"
+        },
+        {
+          "key": "max",
+          "kind": "float64",
+          "num": "9218868437227405311"
+        },
+        {
+          "key": "min",
+          "kind": "float64",
+          "num": "1"
+        },
+        {
+          "key": "f32",
+          "kind": "float64",
+          "num": "4591870180174331904"
+        },
+        {
+          "key": "nan",
+          "kind": "float64",
+          "num": "9221120237041090561"
+        },
+        {
+          "key": "inf",
+          "kind": "float64",
+          "num": "9218868437227405312"
+        },
+        {
+          "key": "neginf",
+          "kind": "float64",
+          "num": "18442240474082181120"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=floats zero=0 negzero=-0 half=0.5 onehalf=1.5 big=3.7e+06 e20=1e+20 e21=1e+21 e-4=0.0001 e-5=1e-05 e-7=1e-07 int=1.23456789e+08 hundred=100 third=0.3333333333333333 max=1.7976931348623157e+308 min=5e-324 f32=0.10000000149011612 nan=NaN inf=+Inf neginf=-Inf\n"
+    },
+    {
+      "name": "integers",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "ints",
+      "with": [],
+      "attrs": [
+        {
+          "key": "min",
+          "kind": "int64",
+          "num": "-9223372036854775808"
+        },
+        {
+          "key": "max",
+          "kind": "int64",
+          "num": "9223372036854775807"
+        },
+        {
+          "key": "zero",
+          "kind": "int64",
+          "num": "0"
+        },
+        {
+          "key": "umax",
+          "kind": "uint64",
+          "num": "18446744073709551615"
+        },
+        {
+          "key": "int",
+          "kind": "int64",
+          "num": "42"
+        },
+        {
+          "key": "u8",
+          "kind": "uint64",
+          "num": "255"
+        },
+        {
+          "key": "i32",
+          "kind": "int64",
+          "num": "-7"
+        },
+        {
+          "key": "uint",
+          "kind": "uint64",
+          "num": "9"
+        },
+        {
+          "key": "i8",
+          "kind": "int64",
+          "num": "-128"
+        },
+        {
+          "key": "u16",
+          "kind": "uint64",
+          "num": "65535"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=ints min=-9223372036854775808 max=9223372036854775807 zero=0 umax=18446744073709551615 int=42 u8=255 i32=-7 uint=9 i8=-128 u16=65535\n"
+    },
+    {
+      "name": "durations",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "durations",
+      "with": [],
+      "attrs": [
+        {
+          "key": "zero",
+          "kind": "duration",
+          "num": "0"
+        },
+        {
+          "key": "ns",
+          "kind": "duration",
+          "num": "1"
+        },
+        {
+          "key": "999ns",
+          "kind": "duration",
+          "num": "999"
+        },
+        {
+          "key": "us",
+          "kind": "duration",
+          "num": "1000"
+        },
+        {
+          "key": "1.5ms",
+          "kind": "duration",
+          "num": "1500000"
+        },
+        {
+          "key": "2m",
+          "kind": "duration",
+          "num": "120000000000"
+        },
+        {
+          "key": "26h0m3s",
+          "kind": "duration",
+          "num": "93603000000000"
+        },
+        {
+          "key": "neg",
+          "kind": "duration",
+          "num": "-1000000000"
+        },
+        {
+          "key": "min",
+          "kind": "duration",
+          "num": "-9223372036854775808"
+        },
+        {
+          "key": "max",
+          "kind": "duration",
+          "num": "9223372036854775807"
+        },
+        {
+          "key": "frac",
+          "kind": "duration",
+          "num": "1234567000"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=durations zero=0s ns=1ns 999ns=999ns us=1µs 1.5ms=1.5ms 2m=2m0s 26h0m3s=26h0m3s neg=-1s min=-2562047h47m16.854775808s max=2562047h47m16.854775807s frac=1.234567s\n"
+    },
+    {
+      "name": "time attributes",
+      "offset_secs": 7200,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "times",
+      "with": [],
+      "attrs": [
+        {
+          "key": "at",
+          "kind": "time",
+          "time": {
+            "unix_secs": "1789726272",
+            "nanos": 345678901
+          }
+        },
+        {
+          "key": "epoch",
+          "kind": "time",
+          "time": {
+            "unix_secs": "0",
+            "nanos": 0
+          }
+        },
+        {
+          "key": "pre-epoch",
+          "kind": "time",
+          "time": {
+            "unix_secs": "-1",
+            "nanos": 999999999
+          }
+        },
+        {
+          "key": "exact",
+          "kind": "time",
+          "time": {
+            "unix_secs": "1789726272",
+            "nanos": 0
+          }
+        },
+        {
+          "key": "y2000",
+          "kind": "time",
+          "time": {
+            "unix_secs": "946782245",
+            "nanos": 0
+          }
+        }
+      ],
+      "line": "time=2026-09-18T12:11:12.345+02:00 level=INFO msg=times at=2026-09-18T12:11:12.345+02:00 epoch=1970-01-01T02:00:00.000+02:00 pre-epoch=1970-01-01T01:59:59.999+02:00 exact=2026-09-18T12:11:12.000+02:00 y2000=2000-01-02T05:04:05.000+02:00\n"
+    },
+    {
+      "name": "exact second",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.000Z level=INFO msg=t\n"
+    },
+    {
+      "name": "last nanosecond",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 999999999
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:12.999Z level=INFO msg=t\n"
+    },
+    {
+      "name": "pre-epoch",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "-1",
+        "nanos": 999500000
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=1969-12-31T23:59:59.999Z level=INFO msg=t\n"
+    },
+    {
+      "name": "epoch",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "0",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=1970-01-01T00:00:00.000Z level=INFO msg=t\n"
+    },
+    {
+      "name": "year 1900",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "-2208988800",
+        "nanos": 1
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=1900-01-01T00:00:00.000Z level=INFO msg=t\n"
+    },
+    {
+      "name": "year 2000 +05:30",
+      "offset_secs": 19800,
+      "time": {
+        "unix_secs": "946782245",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2000-01-02T08:34:05.000+05:30 level=INFO msg=t\n"
+    },
+    {
+      "name": "-03:30",
+      "offset_secs": -12600,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T06:41:12.345-03:30 level=INFO msg=t\n"
+    },
+    {
+      "name": "offset with seconds",
+      "offset_secs": 3661,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T11:12:13.345+01:01 level=INFO msg=t\n"
+    },
+    {
+      "name": "negative offset with seconds",
+      "offset_secs": -3599,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T09:11:13.345-00:59 level=INFO msg=t\n"
+    },
+    {
+      "name": "offset below a minute",
+      "offset_secs": 30,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-18T10:11:42.345+00:00 level=INFO msg=t\n"
+    },
+    {
+      "name": "+14:00 across midnight",
+      "offset_secs": 50400,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [],
+      "line": "time=2026-09-19T00:11:12.345+14:00 level=INFO msg=t\n"
+    },
+    {
+      "name": "bytes",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "bytes",
+      "with": [],
+      "attrs": [
+        {
+          "key": "empty",
+          "kind": "bytes",
+          "hex": ""
+        },
+        {
+          "key": "nil",
+          "kind": "bytes",
+          "hex": ""
+        },
+        {
+          "key": "hi",
+          "kind": "bytes",
+          "hex": "6869"
+        },
+        {
+          "key": "quote",
+          "kind": "bytes",
+          "hex": "6122625c63"
+        },
+        {
+          "key": "binary",
+          "kind": "bytes",
+          "hex": "ff007f"
+        },
+        {
+          "key": "utf8",
+          "kind": "bytes",
+          "hex": "c3a9"
+        },
+        {
+          "key": "all",
+          "kind": "bytes",
+          "hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+        },
+        {
+          "key": "ls",
+          "kind": "bytes",
+          "hex": "e280a8"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=bytes empty=\"\" nil=\"\" hi=\"hi\" quote=\"a\\\"b\\\\c\" binary=\"\\xff\\x00\\x7f\" utf8=\"é\" all=\"\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\a\\b\\t\\n\\v\\f\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\\\"#$%\u0026'()*+,-./0123456789:;\u003c=\u003e?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\\x7f\\x80\\x81\\x82\\x83\\x84\\x85\\x86\\x87\\x88\\x89\\x8a\\x8b\\x8c\\x8d\\x8e\\x8f\\x90\\x91\\x92\\x93\\x94\\x95\\x96\\x97\\x98\\x99\\x9a\\x9b\\x9c\\x9d\\x9e\\x9f\\xa0\\xa1\\xa2\\xa3\\xa4\\xa5\\xa6\\xa7\\xa8\\xa9\\xaa\\xab\\xac\\xad\\xae\\xaf\\xb0\\xb1\\xb2\\xb3\\xb4\\xb5\\xb6\\xb7\\xb8\\xb9\\xba\\xbb\\xbc\\xbd\\xbe\\xbf\\xc0\\xc1\\xc2\\xc3\\xc4\\xc5\\xc6\\xc7\\xc8\\xc9\\xca\\xcb\\xcc\\xcd\\xce\\xcf\\xd0\\xd1\\xd2\\xd3\\xd4\\xd5\\xd6\\xd7\\xd8\\xd9\\xda\\xdb\\xdc\\xdd\\xde\\xdf\\xe0\\xe1\\xe2\\xe3\\xe4\\xe5\\xe6\\xe7\\xe8\\xe9\\xea\\xeb\\xec\\xed\\xee\\xef\\xf0\\xf1\\xf2\\xf3\\xf4\\xf5\\xf6\\xf7\\xf8\\xf9\\xfa\\xfb\\xfc\\xfd\\xfe\\xff\" ls=\"\\u2028\"\n"
+    },
+    {
+      "name": "any values",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "any",
+      "with": [],
+      "attrs": [
+        {
+          "key": "eof",
+          "kind": "any",
+          "str": "EOF",
+          "go_type": "*errors.errorString"
+        },
+        {
+          "key": "wrapped",
+          "kind": "any",
+          "str": "dial ip:1.2.3.4:5: timeout",
+          "go_type": "*fmt.wrapError"
+        },
+        {
+          "key": "joined",
+          "kind": "any",
+          "str": "a\nb",
+          "go_type": "*errors.joinError"
+        },
+        {
+          "key": "nil",
+          "kind": "any",
+          "str": "\u003cnil\u003e",
+          "go_type": "\u003cnil\u003e"
+        },
+        {
+          "key": "empty",
+          "kind": "any",
+          "str": "[]",
+          "go_type": "[]string"
+        },
+        {
+          "key": "one",
+          "kind": "any",
+          "str": "[a]",
+          "go_type": "[]string"
+        },
+        {
+          "key": "ints",
+          "kind": "any",
+          "str": "[1 2 3]",
+          "go_type": "[]int"
+        },
+        {
+          "key": "struct",
+          "kind": "any",
+          "str": "{A:1 B:x y}",
+          "go_type": "struct { A int; B string }"
+        },
+        {
+          "key": "nilptr",
+          "kind": "any",
+          "str": "\u003cnil\u003e",
+          "go_type": "*int"
+        },
+        {
+          "key": "quoted",
+          "kind": "any",
+          "str": "say \"hi\"",
+          "go_type": "*errors.errorString"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=any eof=EOF wrapped=\"dial ip:1.2.3.4:5: timeout\" joined=\"a\\nb\" nil=\u003cnil\u003e empty=[] one=[a] ints=\"[1 2 3]\" struct=\"{A:1 B:x y}\" nilptr=\u003cnil\u003e quoted=\"say \\\"hi\\\"\"\n"
+    },
+    {
+      "name": "unicode",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "unicode",
+      "with": [],
+      "attrs": [
+        {
+          "key": "cjk",
+          "kind": "string",
+          "str": "日本語"
+        },
+        {
+          "key": "emoji",
+          "kind": "string",
+          "str": "😀"
+        },
+        {
+          "key": "combining",
+          "kind": "string",
+          "str": "é"
+        },
+        {
+          "key": "soft_hyphen",
+          "kind": "string",
+          "str": "­"
+        },
+        {
+          "key": "tag",
+          "kind": "string",
+          "str": "󠀁"
+        },
+        {
+          "key": "unassigned",
+          "kind": "string",
+          "str": "͸"
+        },
+        {
+          "key": "private",
+          "kind": "string",
+          "str": ""
+        },
+        {
+          "key": "line_sep",
+          "kind": "string",
+          "str": "\u2028"
+        },
+        {
+          "key": "ideographic_space",
+          "kind": "string",
+          "str": "　"
+        },
+        {
+          "key": "nel",
+          "kind": "string",
+          "str": ""
+        },
+        {
+          "key": "replacement",
+          "kind": "string",
+          "str": "�"
+        },
+        {
+          "key": "greek",
+          "kind": "string",
+          "str": "µåπ"
+        },
+        {
+          "key": "bom",
+          "kind": "string",
+          "str": "﻿"
+        },
+        {
+          "key": "max",
+          "kind": "string",
+          "str": "􏿿"
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=unicode cjk=日本語 emoji=😀 combining=é soft_hyphen=\"\\u00ad\" tag=\"\\U000e0001\" unassigned=\"\\u0378\" private=\"\\ue000\" line_sep=\"\\u2028\" ideographic_space=\"\\u3000\" nel=\"\\u0085\" replacement=\"�\" greek=µåπ bom=\"\\ufeff\" max=\"\\U0010ffff\"\n"
+    },
+    {
+      "name": "non-string argument",
+      "offset_secs": 0,
+      "time": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "badkey",
+      "with": [],
+      "attrs": [
+        {
+          "key": "!BADKEY",
+          "kind": "int64",
+          "num": "42"
+        },
+        {
+          "key": "k",
+          "kind": "string",
+          "str": "v"
+        },
+        {
+          "key": "!BADKEY",
+          "kind": "bool",
+          "bool": true
+        }
+      ],
+      "line": "time=2026-09-18T10:11:12.345Z level=INFO msg=badkey !BADKEY=42 k=v !BADKEY=true\n"
+    }
+  ],
+  "default_logger": [
+    {
+      "name": "connected +02:00",
+      "offset_secs": 7200,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "connected",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "nodes",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "path",
+          "kind": "string",
+          "str": "none"
+        }
+      ],
+      "line": "2026/09/18 12:11:12 INFO connected node=1a2b3c4d nodes=3 path=none\n"
+    },
+    {
+      "name": "message with spaces",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "watch: synced",
+      "with": [],
+      "attrs": [
+        {
+          "key": "pattern",
+          "kind": "string",
+          "str": "trees/**"
+        },
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "refs",
+          "kind": "int64",
+          "num": "2"
+        }
+      ],
+      "line": "2026/09/18 10:11:12 INFO watch: synced pattern=trees/** node=1a2b3c4d refs=2\n"
+    },
+    {
+      "name": "trailing newline",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "hello\n",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 INFO hello\n"
+    },
+    {
+      "name": "trailing newline then attributes",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "hello\n",
+      "with": [],
+      "attrs": [
+        {
+          "key": "k",
+          "kind": "string",
+          "str": "v"
+        }
+      ],
+      "line": "2026/09/18 10:11:12 INFO hello\n k=v\n"
+    },
+    {
+      "name": "empty message",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 INFO \n"
+    },
+    {
+      "name": "upload failed",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 4,
+      "msg": "upload failed",
+      "with": [],
+      "attrs": [
+        {
+          "key": "node",
+          "kind": "string",
+          "str": "1a2b3c4d"
+        },
+        {
+          "key": "objects",
+          "kind": "int64",
+          "num": "12"
+        },
+        {
+          "key": "err",
+          "kind": "any",
+          "str": "timeout: no recent network activity",
+          "go_type": "*errors.errorString"
+        }
+      ],
+      "line": "2026/09/18 10:11:12 WARN upload failed node=1a2b3c4d objects=12 err=\"timeout: no recent network activity\"\n"
+    },
+    {
+      "name": "info plus two",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 2,
+      "msg": "custom",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 INFO+2 custom\n"
+    },
+    {
+      "name": "error plus four",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 12,
+      "msg": "custom",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 ERROR+4 custom\n"
+    },
+    {
+      "name": "debug",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": -4,
+      "msg": "debug",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 DEBUG debug\n"
+    },
+    {
+      "name": "debug minus one",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": -5,
+      "msg": "debug",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 DEBUG-1 debug\n"
+    },
+    {
+      "name": "with",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "uploaded",
+      "with": [
+        [
+          {
+            "key": "node",
+            "kind": "string",
+            "str": "abcd"
+          }
+        ]
+      ],
+      "attrs": [
+        {
+          "key": "objects",
+          "kind": "int64",
+          "num": "3"
+        },
+        {
+          "key": "took",
+          "kind": "duration",
+          "num": "2000000000"
+        }
+      ],
+      "line": "2026/09/18 10:11:12 INFO uploaded node=abcd objects=3 took=2s\n"
+    },
+    {
+      "name": "quoting",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "q",
+      "with": [],
+      "attrs": [
+        {
+          "key": "empty",
+          "kind": "string",
+          "str": ""
+        },
+        {
+          "key": "space",
+          "kind": "string",
+          "str": "a b"
+        },
+        {
+          "key": "quote",
+          "kind": "string",
+          "str": "a\"b"
+        },
+        {
+          "key": "tab",
+          "kind": "string",
+          "str": "a\tb"
+        },
+        {
+          "key": "bytes",
+          "kind": "bytes",
+          "hex": "61ff62"
+        },
+        {
+          "key": "f",
+          "kind": "float64",
+          "num": "4602678819172646912"
+        },
+        {
+          "key": "nilerr",
+          "kind": "any",
+          "str": "\u003cnil\u003e",
+          "go_type": "\u003cnil\u003e"
+        },
+        {
+          "key": "",
+          "kind": "string",
+          "str": "empty key"
+        }
+      ],
+      "line": "2026/09/18 10:11:12 INFO q empty=\"\" space=\"a b\" quote=\"a\\\"b\" tab=\"a\\tb\" bytes=\"a\\xffb\" f=0.5 nilerr=\u003cnil\u003e \"\"=\"empty key\"\n"
+    },
+    {
+      "name": "raw message characters",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "a\"b\tc=d",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 10:11:12 INFO a\"b\tc=d\n"
+    },
+    {
+      "name": "time attribute -05:30",
+      "offset_secs": -19800,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "t",
+      "with": [],
+      "attrs": [
+        {
+          "key": "at",
+          "kind": "time",
+          "time": {
+            "unix_secs": "1789726272",
+            "nanos": 345678901
+          }
+        }
+      ],
+      "line": "2026/09/18 04:41:12 INFO t at=2026-09-18T04:41:12.345-05:30\n"
+    },
+    {
+      "name": "header -05:30",
+      "offset_secs": -19800,
+      "now": {
+        "unix_secs": "1789726272",
+        "nanos": 345678901
+      },
+      "level": 0,
+      "msg": "x",
+      "with": [],
+      "attrs": [],
+      "line": "2026/09/18 04:41:12 INFO x\n"
+    },
+    {
+      "name": "header pre-epoch",
+      "offset_secs": 0,
+      "now": {
+        "unix_secs": "-1",
+        "nanos": 0
+      },
+      "level": 0,
+      "msg": "x",
+      "with": [],
+      "attrs": [],
+      "line": "1969/12/31 23:59:59 INFO x\n"
+    },
+    {
+      "name": "header year 2000 +05:30",
+      "offset_secs": 19800,
+      "now": {
+        "unix_secs": "946782245",
+        "nanos": 999999999
+      },
+      "level": 0,
+      "msg": "x",
+      "with": [],
+      "attrs": [],
+      "line": "2000/01/02 08:34:05 INFO x\n"
+    }
+  ]
+}

@@ -1,0 +1,1906 @@
+{
+  "tracker": [
+    {
+      "name": "ids_sort_reversed_from_first_use",
+      "nodes": [
+        "f000000000000000000000000000000000000000000000000000000000000001",
+        "0a00000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "paths": [
+        null,
+        null
+      ],
+      "progress": true,
+      "ops": [
+        {
+          "op": "totals",
+          "objects": 10,
+          "done": 4,
+          "bytes": "600",
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "0",
+            "total_bytes": "600",
+            "nodes": []
+          }
+        },
+        {
+          "op": "start",
+          "node": 0,
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "0",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 0,
+          "n": 100,
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "100",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "start",
+          "node": 1,
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "100",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 1,
+          "n": 50,
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "150",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "50"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "flushed",
+          "node": 0,
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "150",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "50"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 0,
+          "flushed": true,
+          "report": {
+            "objects": 4,
+            "total_objects": 10,
+            "bytes": "150",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "50"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "objects",
+          "n": 2,
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "150",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "50"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 1,
+          "n": 25,
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "600",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "more",
+          "bytes": "120",
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "720",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "flushed",
+          "node": 1,
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "720",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "start",
+          "node": 1,
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "720",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 2,
+                "awaiting": 1,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 1,
+          "flushed": false,
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "720",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 1,
+          "flushed": true,
+          "report": {
+            "objects": 6,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "720",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "objects",
+          "n": 4,
+          "report": {
+            "objects": 10,
+            "total_objects": 10,
+            "bytes": "175",
+            "total_bytes": "720",
+            "nodes": [
+              {
+                "id": "0a00000000000000000000000000000000000000000000000000000000000002",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "75"
+              },
+              {
+                "id": "f000000000000000000000000000000000000000000000000000000000000001",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "bytes",
+          "result": "175",
+          "report": null
+        }
+      ]
+    },
+    {
+      "name": "live_mem_paths",
+      "nodes": [
+        "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+        "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+        "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d"
+      ],
+      "paths": [
+        {
+          "direct": true,
+          "rtt_ns": "1000000"
+        },
+        null,
+        {
+          "direct": true,
+          "rtt_ns": "1000000"
+        }
+      ],
+      "progress": true,
+      "ops": [
+        {
+          "op": "totals",
+          "objects": 3,
+          "done": 0,
+          "bytes": "300",
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "0",
+            "total_bytes": "300",
+            "nodes": []
+          }
+        },
+        {
+          "op": "start",
+          "node": 2,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "0",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "start",
+          "node": 0,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "0",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "start",
+          "node": 1,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "0",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 0,
+          "n": 100,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "100",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 1,
+          "n": 100,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "200",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 2,
+          "n": 100,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "flushed",
+          "node": 1,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "flushed",
+          "node": 0,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "flushed",
+          "node": 2,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 0,
+          "flushed": true,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 2,
+          "flushed": true,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 1,
+          "flushed": true,
+          "report": {
+            "objects": 0,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "objects",
+          "n": 3,
+          "report": {
+            "objects": 3,
+            "total_objects": 3,
+            "bytes": "300",
+            "total_bytes": "300",
+            "nodes": [
+              {
+                "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+                "direct": false,
+                "rtt_ns": "0",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              },
+              {
+                "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+                "direct": true,
+                "rtt_ns": "1000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "100"
+              }
+            ]
+          }
+        },
+        {
+          "op": "bytes",
+          "result": "300",
+          "report": null
+        }
+      ]
+    },
+    {
+      "name": "relayed_path",
+      "nodes": [
+        "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+      ],
+      "paths": [
+        {
+          "direct": false,
+          "rtt_ns": "37000000"
+        }
+      ],
+      "progress": true,
+      "ops": [
+        {
+          "op": "start",
+          "node": 0,
+          "report": {
+            "objects": 0,
+            "total_objects": 0,
+            "bytes": "0",
+            "total_bytes": "0",
+            "nodes": [
+              {
+                "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+                "direct": false,
+                "rtt_ns": "37000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "0"
+              }
+            ]
+          }
+        },
+        {
+          "op": "sent",
+          "node": 0,
+          "n": 4096,
+          "report": {
+            "objects": 0,
+            "total_objects": 0,
+            "bytes": "4096",
+            "total_bytes": "0",
+            "nodes": [
+              {
+                "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+                "direct": false,
+                "rtt_ns": "37000000",
+                "in_flight": 1,
+                "awaiting": 0,
+                "bytes": "4096"
+              }
+            ]
+          }
+        },
+        {
+          "op": "flushed",
+          "node": 0,
+          "report": {
+            "objects": 0,
+            "total_objects": 0,
+            "bytes": "4096",
+            "total_bytes": "0",
+            "nodes": [
+              {
+                "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+                "direct": false,
+                "rtt_ns": "37000000",
+                "in_flight": 1,
+                "awaiting": 1,
+                "bytes": "4096"
+              }
+            ]
+          }
+        },
+        {
+          "op": "done",
+          "node": 0,
+          "flushed": true,
+          "report": {
+            "objects": 0,
+            "total_objects": 0,
+            "bytes": "4096",
+            "total_bytes": "0",
+            "nodes": [
+              {
+                "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+                "direct": false,
+                "rtt_ns": "37000000",
+                "in_flight": 0,
+                "awaiting": 0,
+                "bytes": "4096"
+              }
+            ]
+          }
+        },
+        {
+          "op": "bytes",
+          "result": "4096",
+          "report": null
+        }
+      ]
+    },
+    {
+      "name": "push_without_upload",
+      "nodes": [],
+      "paths": [],
+      "progress": true,
+      "ops": [
+        {
+          "op": "totals",
+          "objects": 5,
+          "done": 5,
+          "bytes": "0",
+          "report": {
+            "objects": 5,
+            "total_objects": 5,
+            "bytes": "0",
+            "total_bytes": "0",
+            "nodes": []
+          }
+        },
+        {
+          "op": "bytes",
+          "result": "0",
+          "report": null
+        }
+      ]
+    },
+    {
+      "name": "no_progress_callback",
+      "nodes": [
+        "bb21182139d2b0117acd28e2705e41537eda0f018f9e0c7445753f66d4e04395"
+      ],
+      "paths": [
+        null
+      ],
+      "progress": false,
+      "ops": [
+        {
+          "op": "totals",
+          "objects": 2,
+          "done": 0,
+          "bytes": "200",
+          "report": null
+        },
+        {
+          "op": "start",
+          "node": 0,
+          "report": null
+        },
+        {
+          "op": "sent",
+          "node": 0,
+          "n": 150,
+          "report": null
+        },
+        {
+          "op": "done",
+          "node": 0,
+          "flushed": false,
+          "report": null
+        },
+        {
+          "op": "more",
+          "bytes": "50",
+          "report": null
+        },
+        {
+          "op": "objects",
+          "n": 1,
+          "report": null
+        },
+        {
+          "op": "bytes",
+          "result": "150",
+          "report": null
+        }
+      ]
+    }
+  ],
+  "count_keys": [
+    {
+      "name": "empty",
+      "lists": [],
+      "objects": 0,
+      "bytes": "0"
+    },
+    {
+      "name": "one_node",
+      "lists": [
+        [
+          146,
+          246,
+          46
+        ]
+      ],
+      "objects": 3,
+      "bytes": "438"
+    },
+    {
+      "name": "three_nodes",
+      "lists": [
+        [
+          1048622
+        ],
+        [],
+        [
+          46,
+          47,
+          48,
+          49
+        ]
+      ],
+      "objects": 5,
+      "bytes": "1048812"
+    }
+  ],
+  "human_bytes": [
+    {
+      "n": "0",
+      "out": "0 B"
+    },
+    {
+      "n": "1",
+      "out": "1 B"
+    },
+    {
+      "n": "1023",
+      "out": "1023 B"
+    },
+    {
+      "n": "1024",
+      "out": "1.0 KiB"
+    },
+    {
+      "n": "1025",
+      "out": "1.0 KiB"
+    },
+    {
+      "n": "1126",
+      "out": "1.1 KiB"
+    },
+    {
+      "n": "1152",
+      "out": "1.1 KiB"
+    },
+    {
+      "n": "1177",
+      "out": "1.1 KiB"
+    },
+    {
+      "n": "1228",
+      "out": "1.2 KiB"
+    },
+    {
+      "n": "1280",
+      "out": "1.2 KiB"
+    },
+    {
+      "n": "1331",
+      "out": "1.3 KiB"
+    },
+    {
+      "n": "1536",
+      "out": "1.5 KiB"
+    },
+    {
+      "n": "1792",
+      "out": "1.8 KiB"
+    },
+    {
+      "n": "3584",
+      "out": "3.5 KiB"
+    },
+    {
+      "n": "10239",
+      "out": "10.0 KiB"
+    },
+    {
+      "n": "10240",
+      "out": "10.0 KiB"
+    },
+    {
+      "n": "10291",
+      "out": "10.0 KiB"
+    },
+    {
+      "n": "10342",
+      "out": "10.1 KiB"
+    },
+    {
+      "n": "1048575",
+      "out": "1024.0 KiB"
+    },
+    {
+      "n": "1048576",
+      "out": "1.0 MiB"
+    },
+    {
+      "n": "1101004",
+      "out": "1.0 MiB"
+    },
+    {
+      "n": "1310720",
+      "out": "1.2 MiB"
+    },
+    {
+      "n": "1073741823",
+      "out": "1024.0 MiB"
+    },
+    {
+      "n": "5368709120",
+      "out": "5.0 GiB"
+    },
+    {
+      "n": "1099511627776",
+      "out": "1.0 TiB"
+    },
+    {
+      "n": "1125899906842623",
+      "out": "1024.0 TiB"
+    },
+    {
+      "n": "1125899906842624",
+      "out": "1.0 PiB"
+    },
+    {
+      "n": "1152921504606846976",
+      "out": "1.0 EiB"
+    },
+    {
+      "n": "9223372036854775807",
+      "out": "8.0 EiB"
+    },
+    {
+      "n": "-1",
+      "out": "-1 B"
+    },
+    {
+      "n": "-5",
+      "out": "-5 B"
+    },
+    {
+      "n": "-1024",
+      "out": "-1024 B"
+    },
+    {
+      "n": "-2048",
+      "out": "-2048 B"
+    },
+    {
+      "n": "-9223372036854775808",
+      "out": "-9223372036854775808 B"
+    },
+    {
+      "n": "8163102324857043638",
+      "out": "7.1 EiB"
+    },
+    {
+      "n": "3944754309553876302",
+      "out": "3.4 EiB"
+    },
+    {
+      "n": "762046559647567830",
+      "out": "676.8 PiB"
+    },
+    {
+      "n": "756869291715730378",
+      "out": "672.2 PiB"
+    },
+    {
+      "n": "281379925044681976",
+      "out": "249.9 PiB"
+    },
+    {
+      "n": "18011265054959475",
+      "out": "16.0 PiB"
+    },
+    {
+      "n": "86017694285088252",
+      "out": "76.4 PiB"
+    },
+    {
+      "n": "53521281176793717",
+      "out": "47.5 PiB"
+    },
+    {
+      "n": "14535875485875671",
+      "out": "12.9 PiB"
+    },
+    {
+      "n": "7762969079148922",
+      "out": "6.9 PiB"
+    },
+    {
+      "n": "7318739056353596",
+      "out": "6.5 PiB"
+    },
+    {
+      "n": "1118416524530053",
+      "out": "1017.2 TiB"
+    },
+    {
+      "n": "835714111702714",
+      "out": "760.1 TiB"
+    },
+    {
+      "n": "1035733129788181",
+      "out": "942.0 TiB"
+    },
+    {
+      "n": "477418679027150",
+      "out": "434.2 TiB"
+    },
+    {
+      "n": "74601432682506",
+      "out": "67.8 TiB"
+    },
+    {
+      "n": "108620873017992",
+      "out": "98.8 TiB"
+    },
+    {
+      "n": "37135436669083",
+      "out": "33.8 TiB"
+    },
+    {
+      "n": "11426878935278",
+      "out": "10.4 TiB"
+    },
+    {
+      "n": "16344069277386",
+      "out": "14.9 TiB"
+    },
+    {
+      "n": "76582707513",
+      "out": "71.3 GiB"
+    },
+    {
+      "n": "3297768587310",
+      "out": "3.0 TiB"
+    },
+    {
+      "n": "214415413198",
+      "out": "199.7 GiB"
+    },
+    {
+      "n": "661757999855",
+      "out": "616.3 GiB"
+    },
+    {
+      "n": "76083458840",
+      "out": "70.9 GiB"
+    },
+    {
+      "n": "26594811776",
+      "out": "24.8 GiB"
+    },
+    {
+      "n": "60222978153",
+      "out": "56.1 GiB"
+    },
+    {
+      "n": "12799865320",
+      "out": "11.9 GiB"
+    },
+    {
+      "n": "6101918342",
+      "out": "5.7 GiB"
+    },
+    {
+      "n": "8871663882",
+      "out": "8.3 GiB"
+    },
+    {
+      "n": "6574877339",
+      "out": "6.1 GiB"
+    },
+    {
+      "n": "3522677854",
+      "out": "3.3 GiB"
+    },
+    {
+      "n": "219019783",
+      "out": "208.9 MiB"
+    },
+    {
+      "n": "1071138182",
+      "out": "1021.5 MiB"
+    },
+    {
+      "n": "170778508",
+      "out": "162.9 MiB"
+    },
+    {
+      "n": "243702616",
+      "out": "232.4 MiB"
+    },
+    {
+      "n": "111404922",
+      "out": "106.2 MiB"
+    },
+    {
+      "n": "16215744",
+      "out": "15.5 MiB"
+    },
+    {
+      "n": "30531411",
+      "out": "29.1 MiB"
+    },
+    {
+      "n": "7120960",
+      "out": "6.8 MiB"
+    }
+  ],
+  "rate": [
+    {
+      "bytes": "1048576",
+      "took_ns": "2000000000",
+      "out": "512.0 KiB/s"
+    },
+    {
+      "bytes": "0",
+      "took_ns": "1000000000",
+      "out": "0 B/s"
+    },
+    {
+      "bytes": "5",
+      "took_ns": "0",
+      "out": "-"
+    },
+    {
+      "bytes": "100",
+      "took_ns": "-1000000000",
+      "out": "-"
+    },
+    {
+      "bytes": "1073741824",
+      "took_ns": "3000000000",
+      "out": "341.3 MiB/s"
+    },
+    {
+      "bytes": "123456789",
+      "took_ns": "1234000000",
+      "out": "95.4 MiB/s"
+    },
+    {
+      "bytes": "1048576",
+      "took_ns": "1000000000",
+      "out": "1.0 MiB/s"
+    },
+    {
+      "bytes": "0",
+      "took_ns": "0",
+      "out": "-"
+    },
+    {
+      "bytes": "1000",
+      "took_ns": "3000000000",
+      "out": "333 B/s"
+    },
+    {
+      "bytes": "5368709120",
+      "took_ns": "2000000000",
+      "out": "2.5 GiB/s"
+    },
+    {
+      "bytes": "100",
+      "took_ns": "-1",
+      "out": "-"
+    },
+    {
+      "bytes": "1048576",
+      "took_ns": "1500000000",
+      "out": "682.7 KiB/s"
+    },
+    {
+      "bytes": "3145728",
+      "took_ns": "2000000000",
+      "out": "1.5 MiB/s"
+    },
+    {
+      "bytes": "1",
+      "took_ns": "1",
+      "out": "953.7 MiB/s"
+    },
+    {
+      "bytes": "7",
+      "took_ns": "3",
+      "out": "2.2 GiB/s"
+    },
+    {
+      "bytes": "1",
+      "took_ns": "10800000000000",
+      "out": "0 B/s"
+    },
+    {
+      "bytes": "-1048576",
+      "took_ns": "1000000000",
+      "out": "-1048576 B/s"
+    },
+    {
+      "bytes": "1099511627776",
+      "took_ns": "1000000",
+      "out": "1000.0 TiB/s"
+    },
+    {
+      "bytes": "4611686018427387904",
+      "took_ns": "1000000000",
+      "out": "4.0 EiB/s"
+    },
+    {
+      "bytes": "392",
+      "took_ns": "1234567000",
+      "out": "317 B/s"
+    },
+    {
+      "bytes": "6158720719341",
+      "took_ns": "2247091000000",
+      "out": "2.6 GiB/s"
+    },
+    {
+      "bytes": "3178091441881",
+      "took_ns": "934546500000",
+      "out": "3.2 GiB/s"
+    },
+    {
+      "bytes": "452190219207",
+      "took_ns": "329568333333",
+      "out": "1.3 GiB/s"
+    },
+    {
+      "bytes": "6935746341356",
+      "took_ns": "600460750000",
+      "out": "10.8 GiB/s"
+    },
+    {
+      "bytes": "9611216350054",
+      "took_ns": "402819600000",
+      "out": "22.2 GiB/s"
+    },
+    {
+      "bytes": "3692857907449",
+      "took_ns": "228217666666",
+      "out": "15.1 GiB/s"
+    },
+    {
+      "bytes": "11387831412091",
+      "took_ns": "503081000000",
+      "out": "21.1 GiB/s"
+    },
+    {
+      "bytes": "6847622926601",
+      "took_ns": "890710000000",
+      "out": "7.2 GiB/s"
+    },
+    {
+      "bytes": "15109148750949",
+      "took_ns": "223948500000",
+      "out": "62.8 GiB/s"
+    },
+    {
+      "bytes": "7506931047681",
+      "took_ns": "768466666666",
+      "out": "9.1 GiB/s"
+    },
+    {
+      "bytes": "2991341031896",
+      "took_ns": "734521000000",
+      "out": "3.8 GiB/s"
+    },
+    {
+      "bytes": "16094243896330",
+      "took_ns": "288347600000",
+      "out": "52.0 GiB/s"
+    },
+    {
+      "bytes": "6784549736200",
+      "took_ns": "491228666666",
+      "out": "12.9 GiB/s"
+    },
+    {
+      "bytes": "15852167801329",
+      "took_ns": "11456857142",
+      "out": "1.3 TiB/s"
+    },
+    {
+      "bytes": "9438384370450",
+      "took_ns": "3350628000000",
+      "out": "2.6 GiB/s"
+    },
+    {
+      "bytes": "12176150689150",
+      "took_ns": "164895500000",
+      "out": "68.8 GiB/s"
+    },
+    {
+      "bytes": "9728746253952",
+      "took_ns": "987206333333",
+      "out": "9.2 GiB/s"
+    },
+    {
+      "bytes": "6509471081854",
+      "took_ns": "323099250000",
+      "out": "18.8 GiB/s"
+    },
+    {
+      "bytes": "12444429960328",
+      "took_ns": "145672000000",
+      "out": "79.6 GiB/s"
+    },
+    {
+      "bytes": "5609566602104",
+      "took_ns": "528316333333",
+      "out": "9.9 GiB/s"
+    },
+    {
+      "bytes": "7885732185374",
+      "took_ns": "285010285714",
+      "out": "25.8 GiB/s"
+    },
+    {
+      "bytes": "14953480404884",
+      "took_ns": "3146520000000",
+      "out": "4.4 GiB/s"
+    },
+    {
+      "bytes": "3278822939837",
+      "took_ns": "214242000000",
+      "out": "14.3 GiB/s"
+    },
+    {
+      "bytes": "7167033722966",
+      "took_ns": "271233000000",
+      "out": "24.6 GiB/s"
+    },
+    {
+      "bytes": "14877292413684",
+      "took_ns": "780573000000",
+      "out": "17.8 GiB/s"
+    },
+    {
+      "bytes": "17264327317912",
+      "took_ns": "202641600000",
+      "out": "79.3 GiB/s"
+    },
+    {
+      "bytes": "16520770908938",
+      "took_ns": "415098833333",
+      "out": "37.1 GiB/s"
+    },
+    {
+      "bytes": "17279844550325",
+      "took_ns": "352033000000",
+      "out": "45.7 GiB/s"
+    },
+    {
+      "bytes": "6395459571816",
+      "took_ns": "757174000000",
+      "out": "7.9 GiB/s"
+    },
+    {
+      "bytes": "2284494143715",
+      "took_ns": "1631405000000",
+      "out": "1.3 GiB/s"
+    },
+    {
+      "bytes": "15254882913943",
+      "took_ns": "331805333333",
+      "out": "42.8 GiB/s"
+    },
+    {
+      "bytes": "10897427880224",
+      "took_ns": "40498000000",
+      "out": "250.6 GiB/s"
+    }
+  ],
+  "path_attrs": [
+    {
+      "path": null,
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "none"
+        }
+      ],
+      "text": "path=none"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "0"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "0"
+        }
+      ],
+      "text": "path=direct rtt=0s"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "1000000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "1000000"
+        }
+      ],
+      "text": "path=direct rtt=1ms"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "1499000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "1000000"
+        }
+      ],
+      "text": "path=direct rtt=1ms"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "1500000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "2000000"
+        }
+      ],
+      "text": "path=direct rtt=2ms"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "2500000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "3000000"
+        }
+      ],
+      "text": "path=direct rtt=3ms"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "499000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "0"
+        }
+      ],
+      "text": "path=direct rtt=0s"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "500000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "1000000"
+        }
+      ],
+      "text": "path=direct rtt=1ms"
+    },
+    {
+      "path": {
+        "direct": false,
+        "rtt_ns": "37200000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "relay"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "37000000"
+        }
+      ],
+      "text": "path=relay rtt=37ms"
+    },
+    {
+      "path": {
+        "direct": false,
+        "rtt_ns": "0"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "relay"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "0"
+        }
+      ],
+      "text": "path=relay rtt=0s"
+    },
+    {
+      "path": {
+        "direct": true,
+        "rtt_ns": "333000000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "direct"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "333000000"
+        }
+      ],
+      "text": "path=direct rtt=333ms"
+    },
+    {
+      "path": {
+        "direct": false,
+        "rtt_ns": "3600000499000"
+      },
+      "attrs": [
+        {
+          "key": "path",
+          "kind": "String",
+          "string": "relay"
+        },
+        {
+          "key": "rtt",
+          "kind": "Duration",
+          "duration_ns": "3600000000000"
+        }
+      ],
+      "text": "path=relay rtt=1h0m0s"
+    }
+  ]
+}

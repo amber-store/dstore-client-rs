@@ -1,0 +1,450 @@
+{
+  "parse": [
+    {
+      "in": "0",
+      "ok": true,
+      "out": "0"
+    },
+    {
+      "in": "1024",
+      "ok": true,
+      "out": "1024"
+    },
+    {
+      "in": "512Ki",
+      "ok": true,
+      "out": "524288"
+    },
+    {
+      "in": "256Mi",
+      "ok": true,
+      "out": "268435456"
+    },
+    {
+      "in": "2Gi",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "1Ti",
+      "ok": true,
+      "out": "1099511627776"
+    },
+    {
+      "in": "2gi",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "2GiB",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "2G",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "2GB",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": " 2Gi ",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "",
+      "ok": false,
+      "error": "bad size \"\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "in": "Gi",
+      "ok": false,
+      "error": "bad size \"Gi\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "in": "2X",
+      "ok": false,
+      "error": "bad size \"2X\": unknown unit \"X\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2.5Gi",
+      "ok": false,
+      "error": "bad size \"2.5Gi\": unknown unit \".5Gi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "-1",
+      "ok": false,
+      "error": "bad size \"-1\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "in": "1e3",
+      "ok": false,
+      "error": "bad size \"1e3\": unknown unit \"e3\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "9999999999Ti",
+      "ok": false,
+      "error": "bad size \"9999999999Ti\": too large"
+    },
+    {
+      "in": "2Gib",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "2b",
+      "ok": true,
+      "out": "2"
+    },
+    {
+      "in": "2kb",
+      "ok": true,
+      "out": "2048"
+    },
+    {
+      "in": "8Ti",
+      "ok": true,
+      "out": "8796093022208"
+    },
+    {
+      "in": "8388607Ti",
+      "ok": true,
+      "out": "9223370937343148032"
+    },
+    {
+      "in": "8388608Ti",
+      "ok": false,
+      "error": "bad size \"8388608Ti\": too large"
+    },
+    {
+      "in": "99999999999999999999",
+      "ok": false,
+      "error": "bad size \"99999999999999999999\": strconv.ParseInt: parsing \"99999999999999999999\": value out of range"
+    },
+    {
+      "in": "2 Gi",
+      "ok": false,
+      "error": "bad size \"2 Gi\": unknown unit \" Gi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": " 1 Gi",
+      "ok": false,
+      "error": "bad size \"1 Gi\": unknown unit \" Gi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "+1",
+      "ok": false,
+      "error": "bad size \"+1\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "in": "1KiBB",
+      "ok": false,
+      "error": "bad size \"1KiBB\": unknown unit \"KiBB\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2K",
+      "ok": true,
+      "out": "2048"
+    },
+    {
+      "in": "2k",
+      "ok": true,
+      "out": "2048"
+    },
+    {
+      "in": "2KiB",
+      "ok": true,
+      "out": "2048"
+    },
+    {
+      "in": "2kib",
+      "ok": true,
+      "out": "2048"
+    },
+    {
+      "in": "2KIB",
+      "ok": true,
+      "out": "2048"
+    },
+    {
+      "in": "2M",
+      "ok": true,
+      "out": "2097152"
+    },
+    {
+      "in": "2m",
+      "ok": true,
+      "out": "2097152"
+    },
+    {
+      "in": "2Mb",
+      "ok": true,
+      "out": "2097152"
+    },
+    {
+      "in": "2T",
+      "ok": true,
+      "out": "2199023255552"
+    },
+    {
+      "in": "2tb",
+      "ok": true,
+      "out": "2199023255552"
+    },
+    {
+      "in": "2B",
+      "ok": true,
+      "out": "2"
+    },
+    {
+      "in": "00012",
+      "ok": true,
+      "out": "12"
+    },
+    {
+      "in": "9223372036854775807",
+      "ok": true,
+      "out": "9223372036854775807"
+    },
+    {
+      "in": "9223372036854775807b",
+      "ok": true,
+      "out": "9223372036854775807"
+    },
+    {
+      "in": "9223372036854775808",
+      "ok": false,
+      "error": "bad size \"9223372036854775808\": strconv.ParseInt: parsing \"9223372036854775808\": value out of range"
+    },
+    {
+      "in": "8796093022207Mi",
+      "ok": true,
+      "out": "9223372036853727232"
+    },
+    {
+      "in": "8796093022208Mi",
+      "ok": false,
+      "error": "bad size \"8796093022208Mi\": too large"
+    },
+    {
+      "in": "9007199254740991Ki",
+      "ok": true,
+      "out": "9223372036854774784"
+    },
+    {
+      "in": "9007199254740992Ki",
+      "ok": false,
+      "error": "bad size \"9007199254740992Ki\": too large"
+    },
+    {
+      "in": "\t2Gi\n",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": " 2Gi ",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "in": "3 ",
+      "ok": true,
+      "out": "3"
+    },
+    {
+      "in": "1.5Gi",
+      "ok": false,
+      "error": "bad size \"1.5Gi\": unknown unit \".5Gi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "b",
+      "ok": false,
+      "error": "bad size \"b\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "in": "0x10",
+      "ok": false,
+      "error": "bad size \"0x10\": unknown unit \"x10\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "1_000",
+      "ok": false,
+      "error": "bad size \"1_000\": unknown unit \"_000\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "２Gi",
+      "ok": false,
+      "error": "bad size \"２Gi\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "in": "2 Gi",
+      "ok": false,
+      "error": "bad size \"2\\u00a0Gi\": unknown unit \"\\u00a0Gi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2i",
+      "ok": false,
+      "error": "bad size \"2i\": unknown unit \"i\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2bb",
+      "ok": false,
+      "error": "bad size \"2bb\": unknown unit \"bb\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2Kb2",
+      "ok": false,
+      "error": "bad size \"2Kb2\": unknown unit \"Kb2\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2Pi",
+      "ok": false,
+      "error": "bad size \"2Pi\": unknown unit \"Pi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "2E",
+      "ok": false,
+      "error": "bad size \"2E\": unknown unit \"E\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "1 ",
+      "ok": true,
+      "out": "1"
+    },
+    {
+      "in": "1e",
+      "ok": false,
+      "error": "bad size \"1e\": unknown unit \"e\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "in": "0Ti",
+      "ok": true,
+      "out": "0"
+    }
+  ],
+  "pack_size": [
+    {
+      "name": "default",
+      "flag": null,
+      "env": null,
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "name": "flag",
+      "flag": "512Mi",
+      "env": null,
+      "ok": true,
+      "out": "536870912"
+    },
+    {
+      "name": "env",
+      "flag": null,
+      "env": "1Gi",
+      "ok": true,
+      "out": "1073741824"
+    },
+    {
+      "name": "env-empty-is-default",
+      "flag": null,
+      "env": "",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "name": "flag-zero",
+      "flag": "0",
+      "env": null,
+      "ok": false,
+      "error": "--pack-size: 0 is not a positive size"
+    },
+    {
+      "name": "flag-x",
+      "flag": "x",
+      "env": null,
+      "ok": false,
+      "error": "--pack-size: bad size \"x\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "name": "flag-fraction",
+      "flag": "1.5Gi",
+      "env": null,
+      "ok": false,
+      "error": "--pack-size: bad size \"1.5Gi\": unknown unit \".5Gi\" (want Ki, Mi, Gi or Ti)"
+    },
+    {
+      "name": "env-x",
+      "flag": null,
+      "env": "x",
+      "ok": false,
+      "error": "--pack-size: bad size \"x\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "name": "flag-blank-is-default",
+      "flag": " ",
+      "env": null,
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "name": "env-trimmed",
+      "flag": null,
+      "env": " 1Gi ",
+      "ok": true,
+      "out": "1073741824"
+    },
+    {
+      "name": "flag-over-env",
+      "flag": "512Mi",
+      "env": "1Gi",
+      "ok": true,
+      "out": "536870912"
+    },
+    {
+      "name": "empty-flag-over-env",
+      "flag": "",
+      "env": "1Gi",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "name": "flag-negative",
+      "flag": "-1",
+      "env": null,
+      "ok": false,
+      "error": "--pack-size: bad size \"-1\": want a number with an optional Ki/Mi/Gi/Ti suffix"
+    },
+    {
+      "name": "flag-too-large",
+      "flag": "9999999999Ti",
+      "env": null,
+      "ok": false,
+      "error": "--pack-size: bad size \"9999999999Ti\": too large"
+    },
+    {
+      "name": "flag-over-bad-env",
+      "flag": "2Gi",
+      "env": "x",
+      "ok": true,
+      "out": "2147483648"
+    },
+    {
+      "name": "flag-one-byte",
+      "flag": "1b",
+      "env": null,
+      "ok": true,
+      "out": "1"
+    },
+    {
+      "name": "flag-zero-ti",
+      "flag": "0Ti",
+      "env": null,
+      "ok": false,
+      "error": "--pack-size: 0 is not a positive size"
+    }
+  ]
+}

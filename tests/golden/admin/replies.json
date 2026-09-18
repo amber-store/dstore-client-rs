@@ -1,0 +1,441 @@
+{
+  "cases": [
+    {
+      "name": "text-ok",
+      "source": "cli §3.8",
+      "reply": {
+        "text": "ok",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a100626f6b",
+      "frame_hex": "00000010a400183a02010307183945a100626f6b",
+      "printed": "ok\n",
+      "printed_token_create": "ok\n"
+    },
+    {
+      "name": "names-2",
+      "source": "cli §3.8",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [
+          "trees/a",
+          "trees/b"
+        ],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a103826774726565732f616774726565732f62",
+      "frame_hex": "0000001ea400183a02010307183953a103826774726565732f616774726565732f62",
+      "printed": "trees/a\ntrees/b\n",
+      "printed_token_create": "\n"
+    },
+    {
+      "name": "key-and-text",
+      "source": "cli §3.8",
+      "reply": {
+        "text": "backup written",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a2006e6261636b7570207772697474656e0458205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "frame_hex": "00000040a400183a0201030718395834a2006e6261636b7570207772697474656e0458205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "printed": "backup written\nkey 5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a\n",
+      "printed_token_create": "backup written\n"
+    },
+    {
+      "name": "token",
+      "source": "cli §3.8",
+      "reply": {
+        "text": "0101010101010101010101010101010101010101010101010101010101010101",
+        "token": "0101010101010101010101010101010101010101010101010101010101010101",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a2007840303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130310158200101010101010101010101010101010101010101010101010101010101010101",
+      "frame_hex": "00000073a400183a0201030718395867a2007840303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130313031303130310158200101010101010101010101010101010101010101010101010101010101010101",
+      "printed": "0101010101010101010101010101010101010101010101010101010101010101\n",
+      "printed_token_create": "0101010101010101010101010101010101010101010101010101010101010101\n"
+    },
+    {
+      "name": "empty",
+      "source": "cli §3.8",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a0",
+      "frame_hex": "0000000ca400183a02010307183941a0",
+      "printed": "",
+      "printed_token_create": "\n"
+    },
+    {
+      "name": "short-key-names-text",
+      "source": "cli §3.8",
+      "reply": {
+        "text": "t",
+        "token": "",
+        "view": "",
+        "names": [
+          "x"
+        ],
+        "key": "010203",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a3006174038161780443010203",
+      "frame_hex": "00000018a400183a0201030718394da3006174038161780443010203",
+      "printed": "t\nx\n",
+      "printed_token_create": "t\n"
+    },
+    {
+      "name": "names-3",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [
+          "trees/a",
+          "trees/b",
+          "bäume/c"
+        ],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a103836774726565732f616774726565732f626862c3a4756d652f63",
+      "frame_hex": "00000028a400183a020103071839581ca103836774726565732f616774726565732f626862c3a4756d652f63",
+      "printed": "trees/a\ntrees/b\nbäume/c\n",
+      "printed_token_create": "\n"
+    },
+    {
+      "name": "key-31",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a104581f5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "frame_hex": "0000002fa400183a0201030718395823a104581f5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "printed": "",
+      "printed_token_create": "\n"
+    },
+    {
+      "name": "key-33",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a10458215a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "frame_hex": "00000031a400183a0201030718395825a10458215a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "printed": "",
+      "printed_token_create": "\n"
+    },
+    {
+      "name": "text-names-key",
+      "source": "verification §5",
+      "reply": {
+        "text": "t",
+        "token": "",
+        "view": "",
+        "names": [
+          "a",
+          "b"
+        ],
+        "key": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a30061740382616161620458205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "frame_hex": "00000039a400183a020103071839582da30061740382616161620458205a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+      "printed": "t\na\nb\nkey 5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a\n",
+      "printed_token_create": "t\n"
+    },
+    {
+      "name": "ticket",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebihiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqjzws4b2ge4telrrgy4c4mjoge5dinbtgn4dk4tfnrqxsotior2ha4z2f4xxk43fgewtcltsmvwgc6jonyyc42lsn5uc2y3bnzqxe6jonfzg62bonruw42zof6raawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusadaltnfydumjzgixdcnryfyys4mj2gq2dgm5cabmcayrjpknd6nxib45c6lqpzs52ccrcq6g7ded7mtdhkgpjqyfipskeagaxg2lqhiytsmroge3dqlrrfyzdunbugmzq",
+        "gc": ""
+      },
+      "status_hex": "a10579019b6473746f726531756d6166616161626169627169626967613465617363716c627167713464796261656269686971616c617165786e7476337a68776735766c6d667a78616d367861666c613472627578796f776f6e7377666c726a7863627677357234326a6162716a7a777334623267653474656c727267793463346d6a6f67653564696e6274676e34646b3474666e727178736f74696f72326861347a32663478786b34336667657774636c74736d76776763366a6f6e79796334326c736e357563327933626e7a717865366a6f6e667a673632626f6e72757734327a6f66367261617762616a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736164616c746e667964756d6a7a67697864636e727966797973346d6a3267713264676d356361626d636179726a706b6e64366e786962343563366c71707a7335326363726371366737646564376d7464686b67706a7179666970736b656167617867326c7168697974736d726f67653364716c727266797a64756e6275676d7a71",
+      "frame_hex": "000001ada400183a0201030718395901a0a10579019b6473746f726531756d6166616161626169627169626967613465617363716c627167713464796261656269686971616c617165786e7476337a68776735766c6d667a78616d367861666c613472627578796f776f6e7377666c726a7863627677357234326a6162716a7a777334623267653474656c727267793463346d6a6f67653564696e6274676e34646b3474666e727178736f74696f72326861347a32663478786b34336667657774636c74736d76776763366a6f6e79796334326c736e357563327933626e7a717865366a6f6e667a673632626f6e72757734327a6f66367261617762616a6f33686c7873706d6e336b77796c746f617a356f616b77627a63646a7071356d3433666d6b7863746f65646c6e33647a75736164616c746e667964756d6a7a67697864636e727966797973346d6a3267713264676d356361626d636179726a706b6e64366e786962343563366c71707a7335326363726371366737646564376d7464686b67706a7179666970736b656167617867326c7168697974736d726f67653364716c727266797a64756e6275676d7a71",
+      "printed": "",
+      "printed_token_create": "\n",
+      "cluster_ticket": {
+        "ok": true,
+        "printed": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebihiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqjzws4b2ge4telrrgy4c4mjoge5dinbtgn4dk4tfnrqxsotior2ha4z2f4xxk43fgewtcltsmvwgc6jonyyc42lsn5uc2y3bnzqxe6jonfzg62bonruw42zof6raawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusadaltnfydumjzgixdcnryfyys4mj2gq2dgm5cabmcayrjpknd6nxib45c6lqpzs52ccrcq6g7ded7mtdhkgpjqyfipskeagaxg2lqhiytsmroge3dqlrrfyzdunbugmzq\n",
+        "printed_ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\n"
+      }
+    },
+    {
+      "name": "ticket-ids-form",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+        "gc": ""
+      },
+      "status_hex": "a1057881346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c36323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "frame_hex": "00000091a400183a0201030718395885a1057881346262363735646534663633373661623631373337303333643730313536306534343334626531643637333635363261653239623838333562373633636432342c36323239376139613366333665383066336132663265306663636262613130613232383738646631393037663634633637353139653938363061383763393434",
+      "printed": "",
+      "printed_token_create": "\n",
+      "cluster_ticket": {
+        "ok": true,
+        "printed": "dstore1umapmaiaakbkcacyebf3m5o6j5rxnk3bonydhvybkyheinf6dvttmvrk4knyqnnxmpgsjiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra\n",
+        "printed_ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944\n"
+      }
+    },
+    {
+      "name": "ticket-invalid",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "dstore1!!!",
+        "gc": ""
+      },
+      "status_hex": "a1056a6473746f726531212121",
+      "frame_hex": "00000018a400183a0201030718394da1056a6473746f726531212121",
+      "printed": "",
+      "printed_token_create": "\n",
+      "cluster_ticket": {
+        "ok": false,
+        "error": "ticket: illegal base32 data at input byte 0"
+      }
+    },
+    {
+      "name": "ticket-empty",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a0",
+      "frame_hex": "0000000ca400183a02010307183941a0",
+      "printed": "",
+      "printed_token_create": "\n",
+      "cluster_ticket": {
+        "ok": false,
+        "error": "ticket: empty"
+      }
+    },
+    {
+      "name": "transition-proposed-view",
+      "source": "cli §2.7",
+      "reply": {
+        "text": "transition proposed at epoch 8",
+        "token": "",
+        "view": "aa0050000102030405060708090a0b0c0d0e0f0101020703090407050306020781a20058201111111111111111111111111111111111111111111111111111111111111111010108000a81a4005820111111111111111111111111111111111111111111111111111111111111111101186402817469703a3139322e3136382e312e31303a3434333307f5",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a200781e7472616e736974696f6e2070726f706f7365642061742065706f6368203802588baa0050000102030405060708090a0b0c0d0e0f0101020703090407050306020781a20058201111111111111111111111111111111111111111111111111111111111111111010108000a81a4005820111111111111111111111111111111111111111111111111111111111111111101186402817469703a3139322e3136382e312e31303a3434333307f5",
+      "frame_hex": "000000bca400183a02010307183958b0a200781e7472616e736974696f6e2070726f706f7365642061742065706f6368203802588baa0050000102030405060708090a0b0c0d0e0f0101020703090407050306020781a20058201111111111111111111111111111111111111111111111111111111111111111010108000a81a4005820111111111111111111111111111111111111111111111111111111111111111101186402817469703a3139322e3136382e312e31303a3434333307f5",
+      "printed": "transition proposed at epoch 8\n",
+      "printed_token_create": "transition proposed at epoch 8\n"
+    },
+    {
+      "name": "transition-status-text",
+      "source": "cli §2.7",
+      "reply": {
+        "text": "id 3 round 2 (replicas 2): 1/3 done, waiting for [ab12cd34 ef56ab78]",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a10078446964203320726f756e64203220287265706c696361732032293a20312f3320646f6e652c2077616974696e6720666f72205b61623132636433342065663536616237385d",
+      "frame_hex": "00000054a400183a0201030718395848a10078446964203320726f756e64203220287265706c696361732032293a20312f3320646f6e652c2077616974696e6720666f72205b61623132636433342065663536616237385d",
+      "printed": "id 3 round 2 (replicas 2): 1/3 done, waiting for [ab12cd34 ef56ab78]\n",
+      "printed_token_create": "id 3 round 2 (replicas 2): 1/3 done, waiting for [ab12cd34 ef56ab78]\n"
+    },
+    {
+      "name": "gc-status",
+      "source": "cli §2.7",
+      "reply": {
+        "text": "epoch 3 idle; last epoch 2: 10 live records, 2048 bytes freed",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": "a10003"
+      },
+      "status_hex": "a200783d65706f636820332069646c653b206c6173742065706f636820323a203130206c697665207265636f7264732c20323034382062797465732066726565640643a10003",
+      "frame_hex": "00000052a400183a0201030718395846a200783d65706f636820332069646c653b206c6173742065706f636820323a203130206c697665207265636f7264732c20323034382062797465732066726565640643a10003",
+      "printed": "epoch 3 idle; last epoch 2: 10 live records, 2048 bytes freed\n",
+      "printed_token_create": "epoch 3 idle; last epoch 2: 10 live records, 2048 bytes freed\n"
+    },
+    {
+      "name": "text-with-newline",
+      "source": "verification §5",
+      "reply": {
+        "text": "a\nb",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a10063610a62",
+      "frame_hex": "00000011a400183a02010307183946a10063610a62",
+      "printed": "a\nb\n",
+      "printed_token_create": "a\nb\n"
+    },
+    {
+      "name": "names-empty-string",
+      "source": "verification §5",
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [
+          ""
+        ],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "status_hex": "a1038160",
+      "frame_hex": "0000000fa400183a02010307183944a1038160",
+      "printed": "\n",
+      "printed_token_create": "\n"
+    }
+  ],
+  "decode": [
+    {
+      "name": "unknown-key-99",
+      "status_hex": "a200626f6b186301",
+      "ok": true,
+      "reply": {
+        "text": "ok",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "printed": "ok\n"
+    },
+    {
+      "name": "break",
+      "status_hex": "ff",
+      "ok": false,
+      "go_error": "cbor: unexpected \"break\" code"
+    },
+    {
+      "name": "null",
+      "status_hex": "f6",
+      "ok": true,
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      }
+    },
+    {
+      "name": "text-as-bytes",
+      "status_hex": "a1004161",
+      "ok": false,
+      "go_error": "cbor: cannot unmarshal byte string into Go struct field node.AdminReply.0 of type string"
+    },
+    {
+      "name": "duplicate-text",
+      "status_hex": "a200626f6b006161",
+      "ok": true,
+      "reply": {
+        "text": "ok",
+        "token": "",
+        "view": "",
+        "names": [],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "printed": "ok\n"
+    },
+    {
+      "name": "names-null-element",
+      "status_hex": "a10382f66161",
+      "ok": true,
+      "reply": {
+        "text": "",
+        "token": "",
+        "view": "",
+        "names": [
+          "",
+          "a"
+        ],
+        "key": "",
+        "ticket": "",
+        "gc": ""
+      },
+      "printed": "\na\n"
+    },
+    {
+      "name": "empty-payload",
+      "status_hex": "",
+      "ok": false,
+      "go_error": "EOF"
+    }
+  ]
+}

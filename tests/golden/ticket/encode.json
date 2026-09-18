@@ -1,0 +1,561 @@
+{
+  "cases": [
+    {
+      "name": "probe",
+      "source": "codec-wire-ticket §2.4.2; ticket_test TestRoundTrip",
+      "ticket": {
+        "cluster_id": "30313233343536373839616263646566",
+        "incarnation": "3",
+        "members": [
+          {
+            "id": "0700000000000000000000000000000000000000000000000000000000000000",
+            "addrs": [
+              "ip:127.0.0.1:4433",
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "cbor_hex": "a300503031323334353637383961626364656601030281a2005820070000000000000000000000000000000000000000000000000000000000000001827169703a3132372e302e302e313a34343333781c72656c61793a68747470733a2f2f72656c61792e6578616d706c652f",
+      "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+      "ids": "0700000000000000000000000000000000000000000000000000000000000000",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "30313233343536373839616263646566",
+          "incarnation": "3",
+          "members": [
+            {
+              "id": "0700000000000000000000000000000000000000000000000000000000000000",
+              "addrs": [
+                "ip:127.0.0.1:4433",
+                "relay:https://relay.example/"
+              ]
+            }
+          ]
+        },
+        "encoded": "dstore1umafambrgiztinjwg44dsylcmnsgkzqbambidiqalaqaoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabqjyws4b2gezdolrqfyyc4mj2gq2dgm3ydrzgk3dbpe5gq5duobztulzpojswyylzfzsxqylnobwgkly",
+        "ids": "0700000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "name": "cli-four-members",
+      "source": "cli §5.4",
+      "ticket": {
+        "cluster_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "incarnation": "1",
+        "members": [
+          {
+            "id": "0101010101010101010101010101010101010101010101010101010101010101",
+            "addrs": [
+              "192.168.1.10:4433"
+            ]
+          },
+          {
+            "id": "abababababababababababababababababababababababababababababababab",
+            "addrs": null
+          },
+          {
+            "id": "0101010101010101010101010101010101010101010101010101010101010101",
+            "addrs": null
+          },
+          {
+            "id": "0102",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a30050aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa01010284a200582001010101010101010101010101010101010101010101010101010101010101010181713139322e3136382e312e31303a34343333a1005820ababababababababababababababababababababababababababababababababa10058200101010101010101010101010101010101010101010101010101010101010101a100420102",
+      "encoded": "dstore1umafbkvkvkvkvkvkvkvkvkvkvkvkvkqbaebijiqalaqacaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibqfytcojsfyytmobogexdcmb2gq2dgm5babmcbk5lvov2xk5lvov2xk5lvov2xk5lvov2xk5lvov2xk5lvov2xk5lueafqiabaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibagqqaqqbai",
+      "ids": "0101010101010101010101010101010101010101010101010101010101010101,abababababababababababababababababababababababababababababababab",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "incarnation": "1",
+          "members": [
+            {
+              "id": "0101010101010101010101010101010101010101010101010101010101010101",
+              "addrs": [
+                "192.168.1.10:4433"
+              ]
+            },
+            {
+              "id": "abababababababababababababababababababababababababababababababab",
+              "addrs": null
+            },
+            {
+              "id": "0101010101010101010101010101010101010101010101010101010101010101",
+              "addrs": null
+            },
+            {
+              "id": "0102",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umafbkvkvkvkvkvkvkvkvkvkvkvkvkqbaebijiqalaqacaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibqfytcojsfyytmobogexdcmb2gq2dgm5babmcbk5lvov2xk5lvov2xk5lvov2xk5lvov2xk5lvov2xk5lvov2xk5lueafqiabaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibaeaqcaibagqqaqqbai",
+        "ids": "0101010101010101010101010101010101010101010101010101010101010101,abababababababababababababababababababababababababababababababab"
+      }
+    },
+    {
+      "name": "zero",
+      "source": "codec-wire-ticket §2.4.1",
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": null
+      },
+      "cbor_hex": "a300f6010002f6",
+      "encoded": "dstore1umapmaiaal3a",
+      "ids": "",
+      "parse": {
+        "ok": false,
+        "error": "ticket: no members",
+        "ids": ""
+      }
+    },
+    {
+      "name": "nil-id-empty-addrs",
+      "source": "codec-wire-ticket §2.4.1",
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": null,
+            "addrs": []
+          }
+        ]
+      },
+      "cbor_hex": "a300f601000281a100f6",
+      "encoded": "dstore1umapmaiaaka2cahw",
+      "ids": "",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": null,
+          "incarnation": "0",
+          "members": [
+            {
+              "id": null,
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umapmaiaaka2cahw",
+        "ids": ""
+      }
+    },
+    {
+      "name": "empty-cluster-id-empty-members",
+      "source": "codec-wire-ticket §2.4.1; verification §5",
+      "ticket": {
+        "cluster_id": "",
+        "incarnation": "0",
+        "members": []
+      },
+      "cbor_hex": "a3004001000280",
+      "encoded": "dstore1umaeaaiaakaa",
+      "ids": "",
+      "parse": {
+        "ok": false,
+        "error": "ticket: no members",
+        "ids": ""
+      }
+    },
+    {
+      "name": "no-addrs",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "1",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01010281a10058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42ja",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "1",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42ja",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+      }
+    },
+    {
+      "name": "relay-addr",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "1",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": [
+              "relay:https://relay.example/"
+            ]
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01010281a20058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd240181781c72656c61793a68747470733a2f2f72656c61792e6578616d706c652f",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqf4by4tfnrqxsotior2ha4z2f4xxezlmmf4s4zlymfwxa3dff4",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "1",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": [
+                "relay:https://relay.example/"
+              ]
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqf4by4tfnrqxsotior2ha4z2f4xxezlmmf4s4zlymfwxa3dff4",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+      }
+    },
+    {
+      "name": "four-members",
+      "source": "verification §5 (TicketFromView cap)",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "2",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": [
+              "ip:192.168.1.1:4433"
+            ]
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": [
+              "ip:192.168.1.2:4433",
+              "relay:https://use1-1.relay.n0.iroh-canary.iroh.link./"
+            ]
+          },
+          {
+            "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+            "addrs": [
+              "ip:[fe80::1]:4433"
+            ]
+          },
+          {
+            "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01020284a20058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2401817369703a3139322e3136382e312e313a34343333a200582062297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c94401827369703a3139322e3136382e312e323a34343333783572656c61793a68747470733a2f2f757365312d312e72656c61792e6e302e69726f682d63616e6172792e69726f682e6c696e6b2e2fa2005820b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d01817169703a5b666538303a3a315d3a34343333a10058205cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaibijiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqfzws4b2ge4telrrgy4c4mjoge5dinbtgoraawbamiuxvgr7g3ua6orpfyh4zo5bbiripdprsb7wjrtvdhuymcuhzfcadattnfydumjzgixdcnryfyys4mr2gq2dgm3ygvzgk3dbpe5gq5duobztulzpovzwkmjngexhezlmmf4s43rqfzuxe33ifvrwc3tboj4s42lsn5uc43djnzvs4l5cabmcbncljg7jvrfztdrskwxazxo4tfpfe2siyw5to4dc636syq2la5c5agaxc2lqhjnwmzjyga5dumk5hi2dimztueafqic4wx2x43skdmbj6bzolaat47xpwxhii7wiy43ckhx7yx2ek6eodu",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944,b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d,5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "2",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": [
+                "ip:192.168.1.1:4433"
+              ]
+            },
+            {
+              "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+              "addrs": [
+                "ip:192.168.1.2:4433",
+                "relay:https://use1-1.relay.n0.iroh-canary.iroh.link./"
+              ]
+            },
+            {
+              "id": "b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d",
+              "addrs": [
+                "ip:[fe80::1]:4433"
+              ]
+            },
+            {
+              "id": "5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaibijiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqfzws4b2ge4telrrgy4c4mjoge5dinbtgoraawbamiuxvgr7g3ua6orpfyh4zo5bbiripdprsb7wjrtvdhuymcuhzfcadattnfydumjzgixdcnryfyys4mr2gq2dgm3ygvzgk3dbpe5gq5duobztulzpovzwkmjngexhezlmmf4s43rqfzuxe33ifvrwc3tboj4s42lsn5uc43djnzvs4l5cabmcbncljg7jvrfztdrskwxazxo4tfpfe2siyw5to4dc636syq2la5c5agaxc2lqhjnwmzjyga5dumk5hi2dimztueafqic4wx2x43skdmbj6bzolaat47xpwxhii7wiy43ckhx7yx2ek6eodu",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944,b44b49be9ac4b998e3255ae0cdddc995e526a48c5bb377062f6fd2c434b0745d,5cb5f57e6e4a1b029f072e58013e7eefb5ce847ec8c736251effc5f445788e1d"
+      }
+    },
+    {
+      "name": "incarnation-0",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01000281a10058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaabidiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42ja",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "0",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaabidiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42ja",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+      }
+    },
+    {
+      "name": "incarnation-max",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "18446744073709551615",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f011bffffffffffffffff0281a10058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybdp777777777777ycqgqqawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusa",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "18446744073709551615",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybdp777777777777ycqgqqawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusa",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+      }
+    },
+    {
+      "name": "nil-members",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "1",
+        "members": null
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f010102f6",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebpm",
+      "ids": "",
+      "parse": {
+        "ok": false,
+        "error": "ticket: no members",
+        "ids": ""
+      }
+    },
+    {
+      "name": "short-id",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "1",
+        "members": [
+          {
+            "id": "09090909090909090909090909090909090909090909090909090909090909",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01010282a100581f09090909090909090909090909090909090909090909090909090909090909a100582062297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebifiialapqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqtiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra",
+      "ids": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "1",
+          "members": [
+            {
+              "id": "09090909090909090909090909090909090909090909090909090909090909",
+              "addrs": null
+            },
+            {
+              "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebifiialapqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqtiialaqgekl2ti7tn2aphixs4d6mxoqquiuhrxyza73eyz2rt2mgbkd4sra",
+        "ids": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+      }
+    },
+    {
+      "name": "only-short-ids",
+      "source": "codec-wire-ticket §2.4.3",
+      "ticket": {
+        "cluster_id": null,
+        "incarnation": "0",
+        "members": [
+          {
+            "id": "09090909090909090909090909090909090909090909090909090909090909",
+            "addrs": null
+          },
+          {
+            "id": "090909090909090909090909090909090909090909090909090909090909090909",
+            "addrs": null
+          }
+        ]
+      },
+      "cbor_hex": "a300f601000282a100581f09090909090909090909090909090909090909090909090909090909090909a1005821090909090909090909090909090909090909090909090909090909090909090909",
+      "encoded": "dstore1umapmaiaakbkcacyd4eqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbee2cacyeeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqsci",
+      "ids": "",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": null,
+          "incarnation": "0",
+          "members": [
+            {
+              "id": "09090909090909090909090909090909090909090909090909090909090909",
+              "addrs": null
+            },
+            {
+              "id": "090909090909090909090909090909090909090909090909090909090909090909",
+              "addrs": null
+            }
+          ]
+        },
+        "encoded": "dstore1umapmaiaakbkcacyd4eqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbee2cacyeeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqscijbeeqsci",
+        "ids": ""
+      }
+    },
+    {
+      "name": "duplicate-ids",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "1",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": null
+          },
+          {
+            "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+            "addrs": [
+              "ip:10.0.0.2:1"
+            ]
+          },
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": [
+              "ip:10.0.0.1:1"
+            ]
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01010283a10058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24a200582062297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c94401816d69703a31302e302e302e323a31a20058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd2401816d69703a31302e302e302e313a31",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebihiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jfcabmcayrjpknd6nxib45c6lqpzs52ccrcq6g7ded7mtdhkgpjqyfipskeagaw22lqhiytalrqfyyc4mr2ggraawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusadalnnfydumjqfyyc4mboge5dc",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "1",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": null
+            },
+            {
+              "id": "62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944",
+              "addrs": [
+                "ip:10.0.0.2:1"
+              ]
+            },
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": [
+                "ip:10.0.0.1:1"
+              ]
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebihiialaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jfcabmcayrjpknd6nxib45c6lqpzs52ccrcq6g7ded7mtdhkgpjqyfipskeagaw22lqhiytalrqfyyc4mr2ggraawbajo3hlxspmn3kwyltoaz5oakwbzcdjpq5m43fmkxctoedln3dzusadalnnfydumjqfyyc4mboge5dc",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24,62297a9a3f36e80f3a2f2e0fccbba10a22878df1907f64c67519e9860a87c944"
+      }
+    },
+    {
+      "name": "unicode-addr",
+      "source": "verification §5",
+      "ticket": {
+        "cluster_id": "000102030405060708090a0b0c0d0e0f",
+        "incarnation": "1",
+        "members": [
+          {
+            "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+            "addrs": [
+              "relay:https://rélay.example/",
+              "ip:[fe80::1%eth0]:4433"
+            ]
+          }
+        ]
+      },
+      "cbor_hex": "a30050000102030405060708090a0b0c0d0e0f01010281a20058204bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd240182781d72656c61793a68747470733a2f2f72c3a96c61792e6578616d706c652f7669703a5b666538303a3a3125657468305d3a34343333",
+      "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqj4b24tfnrqxsotior2ha4z2f4xxfq5jnrqxsltfpbqw24dmmuxxm2lqhjnwmzjyga5dumjfmv2gqmc5hi2dimzt",
+      "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+      "parse": {
+        "ok": true,
+        "ticket": {
+          "cluster_id": "000102030405060708090a0b0c0d0e0f",
+          "incarnation": "1",
+          "members": [
+            {
+              "id": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24",
+              "addrs": [
+                "relay:https://rélay.example/",
+                "ip:[fe80::1%eth0]:4433"
+              ]
+            }
+          ]
+        },
+        "encoded": "dstore1umafaaabaibqibiga4eascqlbqgq4dybaebidiqalaqexntv3zhwg5vlmfzxam6xafla4rbuxyowonswflrjxcbvw5r42jabqj4b24tfnrqxsotior2ha4z2f4xxfq5jnrqxsltfpbqw24dmmuxxm2lqhjnwmzjyga5dumjfmv2gqmc5hi2dimzt",
+        "ids": "4bb675de4f6376ab61737033d701560e4434be1d6736562ae29b8835b763cd24"
+      }
+    }
+  ]
+}

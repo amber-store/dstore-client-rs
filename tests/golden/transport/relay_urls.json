@@ -1,0 +1,297 @@
+{
+  "parse_relay_url": [
+    {
+      "input": "https://Example.COM",
+      "ok": true,
+      "string": "https://example.com/",
+      "error": null
+    },
+    {
+      "input": "https://example.com:443",
+      "ok": true,
+      "string": "https://example.com:443/",
+      "error": null
+    },
+    {
+      "input": "https://example.com/path",
+      "ok": true,
+      "string": "https://example.com/path",
+      "error": null
+    },
+    {
+      "input": "HTTPS://example.com",
+      "ok": true,
+      "string": "https://example.com/",
+      "error": null
+    },
+    {
+      "input": "relay.example.com",
+      "ok": true,
+      "string": "relay.example.com",
+      "error": null
+    },
+    {
+      "input": "https://example.com?x=1",
+      "ok": true,
+      "string": "https://example.com/?x=1",
+      "error": null
+    },
+    {
+      "input": "https://user@example.com",
+      "ok": true,
+      "string": "https://user@example.com/",
+      "error": null
+    },
+    {
+      "input": "https://ex ample.com",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"https://ex ample.com\": invalid character \" \" in host name"
+    },
+    {
+      "input": ":bad",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \":bad\": missing protocol scheme"
+    },
+    {
+      "input": "https://use1-1.relay.n0.iroh-canary.iroh.link.",
+      "ok": true,
+      "string": "https://use1-1.relay.n0.iroh-canary.iroh.link./",
+      "error": null
+    },
+    {
+      "input": "https://use1-1.relay.n0.iroh-canary.iroh.link./",
+      "ok": true,
+      "string": "https://use1-1.relay.n0.iroh-canary.iroh.link./",
+      "error": null
+    },
+    {
+      "input": "http://example.com:80",
+      "ok": true,
+      "string": "http://example.com:80/",
+      "error": null
+    },
+    {
+      "input": "ws://Example.com",
+      "ok": true,
+      "string": "ws://example.com/",
+      "error": null
+    },
+    {
+      "input": "wss://EX.com:1",
+      "ok": true,
+      "string": "wss://ex.com:1/",
+      "error": null
+    },
+    {
+      "input": "ftp://h",
+      "ok": true,
+      "string": "ftp://h/",
+      "error": null
+    },
+    {
+      "input": "file:///tmp/x",
+      "ok": true,
+      "string": "file:///tmp/x",
+      "error": null
+    },
+    {
+      "input": "mailto:x@y.z",
+      "ok": true,
+      "string": "mailto:x@y.z",
+      "error": null
+    },
+    {
+      "input": "//host",
+      "ok": true,
+      "string": "//host",
+      "error": null
+    },
+    {
+      "input": "",
+      "ok": true,
+      "string": "",
+      "error": null
+    },
+    {
+      "input": "%zz",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"%zz\": invalid URL escape \"%zz\""
+    },
+    {
+      "input": "https://example.com:abc",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"https://example.com:abc\": invalid port \":abc\" after host"
+    },
+    {
+      "input": "https://[::1]:443",
+      "ok": true,
+      "string": "https://[::1]:443/",
+      "error": null
+    },
+    {
+      "input": "https://[fe80::1%25en0]:443",
+      "ok": true,
+      "string": "https://[fe80::1%25en0]:443/",
+      "error": null
+    },
+    {
+      "input": "https://Example.COM./",
+      "ok": true,
+      "string": "https://example.com./",
+      "error": null
+    },
+    {
+      "input": "https://example.com/a b",
+      "ok": true,
+      "string": "https://example.com/a%20b",
+      "error": null
+    },
+    {
+      "input": "https://example.com#frag",
+      "ok": true,
+      "string": "https://example.com/#frag",
+      "error": null
+    },
+    {
+      "input": "HTTPS://EXAMPLE.COM/PATH",
+      "ok": true,
+      "string": "https://example.com/PATH",
+      "error": null
+    },
+    {
+      "input": "https://user:pass@Host.Example",
+      "ok": true,
+      "string": "https://user:pass@host.example/",
+      "error": null
+    },
+    {
+      "input": "http://a b.com",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"http://a b.com\": invalid character \" \" in host name"
+    },
+    {
+      "input": "https://host:99999",
+      "ok": true,
+      "string": "https://host:99999/",
+      "error": null
+    },
+    {
+      "input": "https://example.com/",
+      "ok": true,
+      "string": "https://example.com/",
+      "error": null
+    },
+    {
+      "input": "https://example.com//",
+      "ok": true,
+      "string": "https://example.com//",
+      "error": null
+    },
+    {
+      "input": "HtTpS://x.y",
+      "ok": true,
+      "string": "https://x.y/",
+      "error": null
+    },
+    {
+      "input": "custom://Host",
+      "ok": true,
+      "string": "custom://host",
+      "error": null
+    },
+    {
+      "input": "https://example.com?",
+      "ok": true,
+      "string": "https://example.com/?",
+      "error": null
+    },
+    {
+      "input": "https://example.com/%41",
+      "ok": true,
+      "string": "https://example.com/%41",
+      "error": null
+    },
+    {
+      "input": "https://%41.com",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"https://%41.com\": invalid URL escape \"%41\""
+    },
+    {
+      "input": "https://example.com:",
+      "ok": true,
+      "string": "https://example.com:/",
+      "error": null
+    },
+    {
+      "input": "https://ex%zzample.com",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"https://ex%zzample.com\": invalid URL escape \"%zz\""
+    },
+    {
+      "input": "relay:https://x",
+      "ok": true,
+      "string": "relay:https://x",
+      "error": null
+    },
+    {
+      "input": "https://exämple.com",
+      "ok": true,
+      "string": "https://ex%C3%A4mple.com/",
+      "error": null
+    },
+    {
+      "input": "http://[::1",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"http://[::1\": missing ']' in host"
+    },
+    {
+      "input": "",
+      "ok": false,
+      "string": null,
+      "error": "failed to parse relay URL: parse \"\\x7f\": net/url: invalid control character in URL"
+    }
+  ],
+  "default_quic_port": 7842,
+  "default_map": [
+    {
+      "url": "https://aps1-1.relay.n0.iroh-canary.iroh.link./",
+      "quic_port": 7842
+    },
+    {
+      "url": "https://euc1-1.relay.n0.iroh-canary.iroh.link./",
+      "quic_port": 7842
+    },
+    {
+      "url": "https://use1-1.relay.n0.iroh-canary.iroh.link./",
+      "quic_port": 7842
+    },
+    {
+      "url": "https://usw1-1.relay.n0.iroh-canary.iroh.link./",
+      "quic_port": 7842
+    }
+  ],
+  "default_relay_addrs": [
+    "relay:https://aps1-1.relay.n0.iroh-canary.iroh.link./",
+    "relay:https://euc1-1.relay.n0.iroh-canary.iroh.link./",
+    "relay:https://use1-1.relay.n0.iroh-canary.iroh.link./",
+    "relay:https://usw1-1.relay.n0.iroh-canary.iroh.link./"
+  ],
+  "custom_url_map": [
+    {
+      "url": "http://relay.example:8080/",
+      "quic_port": 7842
+    },
+    {
+      "url": "https://relay.example./",
+      "quic_port": 7842
+    }
+  ]
+}
