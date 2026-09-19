@@ -1136,6 +1136,18 @@ impl RelayActor {
         // ActiveRelayActor.  We can not process further datagrams during this time.
         let mut datagram_send_fut = std::pin::pin!(MaybeFuture::None);
 
+        // dstore-client-rs patch: a bootstrap home relay, the first of the relay map, so relay
+        // connectivity starts before the first net_report finishes (go-iroh's rule). A net_report
+        // that prefers another relay replaces it.
+        if self.config.my_relay.get().is_none()
+            && let Some(url) = self.config.relay_map.urls::<Vec<_>>().into_iter().next()
+        {
+            self.config
+                .my_relay
+                .set(url.clone(), RelayConnectionState::Connecting);
+            self.set_home_relay(url).await;
+        }
+
         loop {
             tokio::select! {
                 biased;

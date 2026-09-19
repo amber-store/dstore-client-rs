@@ -12,7 +12,7 @@ decisions, the build order, and how compatibility is proven.
 | Go dstore (normative behaviour) | `github.com/amber-store/dstore` tag `v0.1.9`, HEAD `368f2c7`, checkout `/Users/dragan/amber-store/dstore`. Ignore the uncommitted formatting-only change to `cmd/dstore/wc.go`; read files with `git show HEAD:<path>`. |
 | Go dependencies | `github.com/amber-store/core` v0.0.8; `github.com/amber-store/transport-iroh` v0.4.0 (`protocol`); `github.com/tmc/go-iroh` v0.2.0; `github.com/fxamacker/cbor/v2` v2.9.3; `github.com/aymanbagabas/go-udiff` v0.4.1; `github.com/urfave/cli/v2` v2.27.7; `charm.land/bubbletea/v2` v2.0.9, `lipgloss/v2` v2.0.6, `bubbles/v2` v2.2.1; Go toolchain go1.26.5 (stdlib behaviour: `encoding/base32`, `encoding/json` v1, `strconv`, `unicode`, `sort`, `log/slog`, `flag`, `time`). |
 | core-rs | crate `amber-store-core` 0.3.0, git rev `a85ffa1eb5ed363b9072ab224de179196cd0a046` (= public tag v0.3.0) |
-| Rust iroh | `iroh = "=1.2.0"` (iroh-base/iroh-relay 1.2.0, noq 1.3.0): the latest release, by user decision (2026-09-18). go-iroh v0.2.0's matrix verifies 1.0.3; compatibility with 1.2.0 is proven by the live interop suite (§7), not assumed. The crate comes through `[patch.crates-io]` from `third_party/iroh-1.2.0`: the published 1.2.0 with one change, no NAT traversal round while a direct path is selected (§5.12). |
+| Rust iroh | `iroh = "=1.2.0"` (iroh-base/iroh-relay 1.2.0, noq 1.3.0): the latest release, by user decision (2026-09-18). go-iroh v0.2.0's matrix verifies 1.0.3; compatibility with 1.2.0 is proven by the live interop suite (§7), not assumed. The crate comes through `[patch.crates-io]` from `third_party/iroh-1.2.0`: the published 1.2.0 with two changes: no NAT traversal round while a direct path is selected, and a bootstrap home relay at bind (§5.12). |
 | Toolchain | nixpkgs `nixos-26.05`: rustc/cargo/clippy/rustfmt 1.95.0, go 1.26.5. Workspace `rust-version = "1.91"`, edition 2024. |
 
 **Override (user decision, 2026-09-18): Rust iroh is the latest release, `iroh = "=1.2.0"`.** Area specs
@@ -2303,6 +2303,12 @@ rustls 0.23.43, ring 0.17.14). Commit `Cargo.lock`.
     interop suite.
   - No public iroh 1.2.0 API turns the round off. Connections over a relay still holepunch.
   - `third_party/README.md` has the diff. Drop the patch once go-iroh or iroh fixes this.
+- **Patch 2: a bootstrap home relay.** `RelayActor::run` (`src/socket/transports/relay/actor.rs`) names the
+  first relay of the map as the home relay before any net_report, as go-iroh `Bind` does
+  (`iroh/endpoint.go:635-645`). Why: stock 1.2.0 has no home relay until the first net_report, so
+  `online()`, and with it `bind_iroh`, waited the full 3 s `PROBES_TIMEOUT` on hosts that have an IPv6
+  address but no IPv6 route. The map is sorted by URL, so the bootstrap relay is `aps1-1` where go-iroh
+  picks `use1-1`. The preferred relay replaces it after the first net_report, as in Go.
 - **Builder.** `Endpoint::builder(presets::Minimal)` with `.secret_key`, `.alpns`,
   `.transport_config(...)`, `.portmapper_config(PortmapperConfig::Disabled)`, `.relay_mode(...)`.
   No `.address_lookup(...)`. Never use `presets::N0`, `RelayMode::Default`, `DnsAddressLookup::n0_dns`

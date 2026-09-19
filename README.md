@@ -218,8 +218,9 @@ The endpoint follows go-iroh's choices: the same default relays, mDNS through a 
 resolver (which reads go-iroh's announcements), number0 DNS discovery only when dialling an id, and no
 tracing output (PORTING.md §5.12).
 
-iroh itself carries one change. `third_party/iroh-1.2.0` is the published 1.2.0 plus a two-hunk patch, used
-through `[patch.crates-io]`: no NAT traversal round starts while a direct path is selected. go-iroh follows
+iroh itself carries two changes. `third_party/iroh-1.2.0` is the published 1.2.0 plus two small patches, used
+through `[patch.crates-io]`. The second names a bootstrap home relay at bind, as go-iroh does, so a dial does not
+wait for the first net_report. The first stops a NAT traversal round from starting while a direct path is selected. go-iroh follows
 the same rule. Stock 1.2.0 starts a round on every new connection. That round triggers two go-iroh v0.2.0 node
 bugs, a key-update error and a stateless reset after a retired connection ID is reused. Together they killed
 about 1 Rust connection in 180 in the interop suite. [`third_party/README.md`](third_party/README.md) has the
