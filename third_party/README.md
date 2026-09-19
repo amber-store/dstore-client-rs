@@ -1,13 +1,14 @@
 # Third-party code
 
-## `iroh-1.2.0`: Rust iroh 1.2.0 with one change
+## `iroh-1.2.0`: Rust iroh 1.2.0 with two changes
 
 **What it is.** The crates.io package `iroh` 1.2.0 (upstream `https://github.com/n0-computer/iroh`), unpacked as
 cargo unpacks it. The index checksum is `b2f8d1cfffc83efe39a1031aab423ce09cb8048071baba550508931e9a81ce46`.
 Two things differ from the package:
 
 - `.cargo-ok` is left out;
-- `src/socket/remote_map/remote_state.rs` carries the patch below.
+- `src/socket/remote_map/remote_state.rs` carries patch 1 below;
+- `src/socket/transports/relay/actor.rs` carries patch 2 below.
 
 **Licence.** The package's licence is `MIT OR Apache-2.0`. The package ships only `LICENSE-BSD3`, which covers
 the code derived from tailscale. It is redistributed here under Apache-2.0. The Apache License 2.0 text was
@@ -19,7 +20,7 @@ and `exclude = ["third_party"]`. The crate is therefore a dependency, not a work
 package source. The version stays 1.2.0 (PORTING.md §0, §5.12). The features (`tls-ring`,
 `fast-apple-datapath`) and every other iroh crate are unchanged.
 
-**The patch: no NAT traversal round while a direct path is selected.**
+**Patch 1: no NAT traversal round while a direct path is selected.**
 
 ```diff
 @@ fn handle_msg_add_connection
@@ -75,9 +76,48 @@ and the suite runs with and without the patch.
 that slows the dialled path. The connection must stay on that path, and every request must be answered.
 
 **Checking the copy.**
-`diff -r ~/.cargo/registry/src/index.crates.io-*/iroh-1.2.0 third_party/iroh-1.2.0` shows exactly the patch,
+`diff -r ~/.cargo/registry/src/index.crates.io-*/iroh-1.2.0 third_party/iroh-1.2.0` shows exactly the two patches,
 `LICENSE-APACHE` and `.cargo-ok`.
 
-**Removing it.** Once go-iroh fixes both bugs, or iroh gains a switch, delete the directory, the
+**Patch 2: a bootstrap home relay at bind.**
+
+```diff
+@@ impl RelayActor, fn run
+         let mut datagram_send_fut = std::pin::pin!(MaybeFuture::None);
+ 
++        // dstore-client-rs patch: a bootstrap home relay, the first of the relay map, so relay
++        // connectivity starts before the first net_report finishes (go-iroh's rule). A net_report
++        // that prefers another relay replaces it.
++        if self.config.my_relay.get().is_none()
++            && let Some(url) = self.config.relay_map.urls::<Vec<_>>().into_iter().next()
++        {
++            self.config
++                .my_relay
++                .set(url.clone(), RelayConnectionState::Connecting);
++            self.set_home_relay(url).await;
++        }
++
+         loop {
+```
+
+**Why.** Stock 1.2.0 has no home relay until the first net_report names a preferred one, so
+`Endpoint::online()` waits for that report. `BindIroh` waits for `online()` whenever relays are on, which
+covers every CLI command. The report ends early only after at least one IPv6 QAD probe has finished,
+successfully or not. A host that has an IPv6 address but no IPv6 route therefore waits the full 3 s
+`PROBES_TIMEOUT` before every dial. A Tailscale ULA (`fd7a:…`) is enough to cause this. go-iroh `Bind` sets
+the first relay of its map as the home relay before any net_report (`iroh/endpoint.go:635-645`), and
+`applyNetReport` swaps in the preferred relay later. Stock iroh already does that swap in
+`on_network_change`. Against the live cluster, `dstore refs` went from 4.05 s to 1.78 s, and the time to
+`connected` went from 3.2 s to 0.60 s, where Go takes 0.62 s.
+
+One difference remains: Rust's `RelayMap` is sorted by URL, so the bootstrap relay for the Go default map is
+`aps1-1`, where go-iroh picks `use1-1`. Only the relay URL a client lists before its first net_report differs.
+
+**Covered by.** `crates/transport-iroh/src/endpoint.rs` `bind_names_a_bootstrap_home_relay`: with a relay that
+never answers, a home relay is set straight after bind. Stock iroh leaves it unset.
+
+**Removing it.** Once go-iroh fixes both bugs, or iroh gains a switch, patch 1 can go. Patch 2 can go once iroh
+names a home relay before its first net_report. With both gone, delete the directory, the
 `[patch.crates-io]` entry and the `exclude` line, and run `cargo update -p iroh --offline`. Then remove
-`./third_party` from `flake.nix`, and change the two E3 tests back to expecting the switch to a direct path.
+`./third_party` from `flake.nix`, change the two E3 tests back to expecting the switch to a direct path, and
+invert `bind_names_a_bootstrap_home_relay`.

@@ -1224,6 +1224,37 @@ mod tests {
         assert_eq!(got.addrs.len(), 1);
     }
 
+    /// go-iroh `Bind` names a bootstrap home relay (the first of the relay map) before any net_report, so
+    /// `Online` waits only for that relay's connection. The iroh patch does the same: with a relay that
+    /// never answers, the home relay is set at once, where unpatched iroh leaves it unset until a net_report
+    /// prefers a relay (third_party/README.md, patch 2).
+    #[tokio::test]
+    async fn bind_names_a_bootstrap_home_relay() {
+        use iroh::Watcher;
+        let url: RelayUrl = "https://relay.invalid./".parse().expect("url");
+        let ep = iroh::Endpoint::builder(presets::Minimal)
+            .portmapper_config(PortmapperConfig::Disabled)
+            .relay_mode(RelayMode::Custom(RelayMap::from(url.clone())))
+            .bind()
+            .await
+            .expect("bind");
+        let mut status = ep.home_relay_status();
+        let home = tokio::time::timeout(Duration::from_secs(1), async {
+            loop {
+                if let Some(s) = status.get().first() {
+                    return s.url().clone();
+                }
+                if status.updated().await.is_err() {
+                    std::future::pending::<()>().await;
+                }
+            }
+        })
+        .await
+        .expect("a home relay right after bind");
+        assert_eq!(home, url);
+        ep.close().await;
+    }
+
     /// Go `Close` stops discovery: closing the endpoint's discovery ends the mDNS listener.
     #[test]
     fn closing_discovery_stops_the_mdns_listener() {
