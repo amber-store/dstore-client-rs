@@ -1,0 +1,210 @@
+name: release
+
+# A pushed tag v* builds the dstore CLI for Linux (static, musl) and macOS, smoke-tests each binary and
+# creates a draft GitHub release with the tarballs and SHA256SUMS. The notes are written by hand before the
+# draft is published. A manual run is a dry run: it builds, tests and uploads the tarballs as workflow
+# artifacts, and releases nothing.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version stamped into the binaries (a dry run: nothing is released)"
+        type: string
+        default: v0.0.0-dryrun
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_TOOLCHAIN: "1.95.0" # = ci.yml
+  DSTORE_GO_REF: v0.1.9 # the Go dstore release this port follows (= ci.yml)
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  version:
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - id: version
+        name: Resolve the version (the tag, or the dry run's input)
+        env:
+          VERSION: ${{ github.event_name == 'push' && github.ref_name || inputs.version }}
+        run: |
+          if ! [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::version \"$VERSION\" is not v<major>.<minor>.<patch>[-<pre-release>]"
+            exit 1
+          fi
+          if [ "$GITHUB_EVENT_NAME" = push ]; then
+            crate=$(python3 -c 'import tomllib; print(tomllib.load(open("Cargo.toml", "rb"))["workspace"]["package"]["version"])')
+            if [ "$VERSION" != "v$crate" ]; then
+              echo "::error::tag $VERSION does not match the workspace version $crate in Cargo.toml"
+              exit 1
+            fi
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: build (${{ matrix.target }})
+    needs: version
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-musl
+            runner: ubuntu-24.04
+            arch: x86-64 # as `file` prints it
+          - target: aarch64-unknown-linux-musl
+            runner: ubuntu-24.04-arm
+            arch: ARM aarch64
+          - target: aarch64-apple-darwin
+            runner: macos-latest
+            arch: arm64
+          # Built and run natively on an Intel image, so the shipped binary is smoke-tested. macos-13 was
+          # retired in December 2025; macos-15-intel and macos-26-intel are the last Intel images. When they
+          # go, cross-compile on macos-latest: the smoke test then needs Rosetta 2 (see below).
+          - target: x86_64-apple-darwin
+            runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    env:
+      TARGET: ${{ matrix.target }}
+      VERSION: ${{ needs.version.outputs.version }}
+      # dstore --version prints "dstore version $DSTORE_VERSION" (option_env! in crates/cli). rustc records the
+      # variable in dep-info, so cargo rebuilds dstore-cli whenever it differs from a cached build.
+      DSTORE_VERSION: ${{ needs.version.outputs.version }}
+      # Symbols only: panic messages and backtrace frames with file/line stay out of release binaries anyway.
+      CARGO_PROFILE_RELEASE_STRIP: symbols
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: musl C toolchain (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends musl-tools
+          # ring, zstd-sys and blake3 compile C through cc-rs, which looks for aarch64-linux-musl-gcc on
+          # aarch64. musl-tools provides musl-gcc on both architectures.
+          echo "CC_${TARGET//-/_}=musl-gcc" >> "$GITHUB_ENV"
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_TOOLCHAIN }}
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+          # A tag's cache is visible to that tag only. Dry runs on main fill the cache that tag builds read.
+          save-if: ${{ github.event_name == 'workflow_dispatch' }}
+      - name: cargo build
+        run: cargo build --release --locked --bin dstore --target "$TARGET"
+      - name: Smoke test
+        env:
+          ARCH: ${{ matrix.arch }}
+        run: |
+          bin="target/$TARGET/release/dstore"
+          kind=$(file -b "$bin")
+          echo "$kind"
+          case "$kind" in
+            *"$ARCH"*) ;;
+            *) echo "::error::$bin is not a $ARCH binary"; exit 1 ;;
+          esac
+          if [ "$RUNNER_OS" = Linux ]; then
+            case "$kind" in
+              *"static-pie linked"* | *"statically linked"*) ;;
+              *) echo "::error::$bin is not statically linked"; exit 1 ;;
+            esac
+            deps=$(ldd "$bin" 2>&1 || true)
+            echo "ldd: $deps"
+            case "$deps" in
+              *"not a dynamic executable"* | *"statically linked"*) ;;
+              *) echo "::error::ldd lists shared libraries for $bin"; exit 1 ;;
+            esac
+          else
+            otool -L "$bin"
+            if otool -L "$bin" | tail -n +2 | grep -v -E '^[[:space:]]+(/usr/lib/|/System/Library/)'; then
+              echo "::error::$bin links libraries outside /usr/lib and /System/Library"
+              exit 1
+            fi
+          fi
+          run=()
+          if [ "$TARGET" = x86_64-apple-darwin ]; then
+            # Best effort: install Rosetta 2 when the image lacks it; without it the binary is not run.
+            arch -x86_64 /usr/bin/true 2>/dev/null ||
+              sudo softwareupdate --install-rosetta --agree-to-license || true
+            if ! arch -x86_64 /usr/bin/true 2>/dev/null; then
+              echo "::warning::Rosetta 2 is not available: $TARGET was built but not run"
+              exit 0
+            fi
+            run=(arch -x86_64)
+          fi
+          "${run[@]}" "$bin" --version > "$RUNNER_TEMP/version.txt"
+          cat "$RUNNER_TEMP/version.txt"
+          printf 'dstore version %s\n' "$VERSION" > "$RUNNER_TEMP/version.want"
+          if ! cmp -s "$RUNNER_TEMP/version.want" "$RUNNER_TEMP/version.txt"; then
+            echo "::error::dstore --version must print exactly \"dstore version $VERSION\""
+            exit 1
+          fi
+          "${run[@]}" "$bin" --help > "$RUNNER_TEMP/help.txt"
+          head -n 9 "$RUNNER_TEMP/help.txt"
+          grep -qx 'USAGE:' "$RUNNER_TEMP/help.txt"
+          grep -qxF "   $VERSION" "$RUNNER_TEMP/help.txt"
+      - name: Package
+        run: |
+          name="dstore-$VERSION-$TARGET"
+          mkdir -p "dist/$name"
+          cp "target/$TARGET/release/dstore" LICENSE COPYING README.md "dist/$name/"
+          # --no-xattrs, COPYFILE_DISABLE: no macOS metadata (com.apple.provenance, ._ files) in the archive
+          COPYFILE_DISABLE=1 tar -C dist --no-xattrs -czf "dist/$name.tar.gz" "$name"
+          tar -tvzf "dist/$name.tar.gz"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dstore-${{ env.VERSION }}-${{ matrix.target }}
+          path: dist/dstore-${{ env.VERSION }}-${{ matrix.target }}.tar.gz
+          if-no-files-found: error
+
+  release:
+    # Tag pushes only: a dispatch (the dry run), wherever it runs, releases nothing.
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: [version, build]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: dstore-*
+          merge-multiple: true
+      - name: SHA256SUMS
+        working-directory: dist
+        run: |
+          sha256sum dstore-*.tar.gz > SHA256SUMS
+          cat SHA256SUMS
+      # No body: the notes are written by hand on the draft. softprops sets an existing release's body to the
+      # `body` input when there is one, so a re-run would replace the hand-written notes; without it the
+      # existing body is kept. A re-run also keeps an existing release's draft state.
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }} — dstore ${{ env.DSTORE_GO_REF }}
+          draft: true
+          generate_release_notes: false
+          fail_on_unmatched_files: true
+          files: |
+            dist/dstore-*.tar.gz
+            dist/SHA256SUMS
