@@ -64,7 +64,7 @@ by the CLI snapshot gate and the L5 reviews:
 | H1 | `cat NAME /`: the DD-7 panic line and exit 2, after the ref and the root tree are fetched |
 | H2 | `cat NAME big.bin \| head -c1`: both die by SIGPIPE (status 141) |
 | H3 | `watch 'trees/**' \| head -1`: both die by SIGPIPE on the write after `head` exits |
-| H4 | the TUI with stderr on `/dev/null` (a character device, so the TUI path runs): `store pull`, `clone` |
+| H4 | the TUI with stderr on `/dev/null` (a character device, so the TUI path runs): `store pull`, `clone`. Go is the reference. On macOS both succeed. On Linux, Bubble Tea's epoll input reader refuses the harness's `/dev/null` stdin, and both exit 1 before transferring anything |
 | H5 | the TUI through a pty (`script`), with truecolor, 256-colour, `NO_COLOR` and `TERM=dumb`: both draw frames, print the same `pulled` line, and use the same kinds of styling (24-bit colours, 256 colours, basic colours, bold; DD-6) |
 | H6 | the working-copy `push` checks `--user` after dialing |
 | H7 | `catalog restore KEY` fetches the backup object, then requires `--store` |

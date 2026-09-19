@@ -1469,12 +1469,21 @@ check_H3() {
 check_H4() {
 	need B1 || return
 	pair H4.pull stdout+exit -C "$W" -E /dev/null -u DSTORE_NO_TUI -- store pull --no-relay --local h4-@IMPL@ trees/rs
-	expect_exit H4.pull rs 0
-	expect_lines "$CK/H4.pull.rs.out" "^pulled trees/rs: root [0-9a-f]{64}, [0-9]+ objects fetched \\([0-9]+ bytes\\)\$"
+	# Go is the reference. Its TUI hands Bubble Tea stdin, which run_bounded makes /dev/null. On Linux,
+	# Bubble Tea's epoll input reader refuses /dev/null, and both clients exit 1 before transferring
+	# anything (port-notes/impl-interop-fixes.md). On macOS the TUI runs and the transfer succeeds.
+	local go_pull go_clone
+	go_pull=$(code H4.pull go)
+	if [ "$go_pull" = 0 ]; then
+		expect_lines "$CK/H4.pull.rs.out" "^pulled trees/rs: root [0-9a-f]{64}, [0-9]+ objects fetched \\([0-9]+ bytes\\)\$"
+	else
+		note_info "go exited $go_pull (Bubble Tea cannot read a non-pollable stdin here); rs must match"
+	fi
 	rm -rf "$WC/h4-go" "$WC/h4-rs"
 	run_one go H4.clone -C "$WC" -E /dev/null -u DSTORE_NO_TUI -- clone --no-relay trees/rs h4-go
 	run_one rs H4.clone -C "$WC" -E /dev/null -u DSTORE_NO_TUI -- clone --no-relay trees/rs h4-rs
-	expect_exit H4.clone rs 0
+	go_clone=$(code H4.clone go)
+	expect_exit H4.clone rs "$go_clone"
 	sed 's/ into h4-go: / into DIR: /' "$CK/H4.clone.go.out" >"$CK/H4.clone.go.sub"
 	sed 's/ into h4-rs: / into DIR: /' "$CK/H4.clone.rs.out" >"$CK/H4.clone.rs.sub"
 	same "$CK/H4.clone.go.sub" "$CK/H4.clone.rs.sub" ||
