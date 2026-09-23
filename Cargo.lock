@@ -650,7 +650,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-cli"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "crossterm",
@@ -676,7 +676,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-client"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "async-channel",
@@ -701,7 +701,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-client-rs"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "blake3",
@@ -732,7 +732,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-codec"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "dstore-gocompat",
@@ -741,7 +741,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-gocli"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "dstore-gocompat",
  "thiserror 2.0.20",
@@ -750,7 +750,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-gocompat"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "libc",
  "thiserror 2.0.20",
@@ -760,7 +760,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-testkit"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "dstore-codec",
@@ -777,7 +777,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-ticket"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "data-encoding",
  "dstore-codec",
@@ -788,7 +788,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-transport"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "dstore-gocompat",
@@ -802,7 +802,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-transport-iroh"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "async-trait",
  "data-encoding",
@@ -826,11 +826,11 @@ dependencies = [
 
 [[package]]
 name = "dstore-udiff"
-version = "0.1.0"
+version = "0.2.0"
 
 [[package]]
 name = "dstore-view"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "blake3",
  "dstore-codec",
@@ -844,7 +844,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-wire"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "dstore-codec",
@@ -856,7 +856,7 @@ dependencies = [
 
 [[package]]
 name = "dstore-worktree"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "amber-store-core",
  "dstore-client",

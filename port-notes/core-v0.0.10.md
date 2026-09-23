@@ -1,10 +1,12 @@
 # core v0.0.10: the dstore v0.1.11 delta
 
-Area: what changed for the client between Go dstore v0.1.10 and v0.1.11 (branch `core-v0.0.10`: `1b6583e`
+Area: what changed for the client between Go dstore v0.1.10 and v0.1.11 (tag `v0.1.11` = `7a21311`, the merge
+of branch `core-v0.0.10`: `1b6583e`
 "Follow core v0.0.10: commit footprints, shared local stores", `53b88ae` "Working copies keep their own lock;
 ref-put refuses what it cannot read", `6c808de` "ref-put refuses an unreadable commit whichever node
-coordinates", and beside them a script, README texts and a test; head `6c808de`), and how dstore-client-rs
-follows it. Most of the change is not in dstore: Go core went from v0.0.9 to v0.0.10 and
+coordinates", and beside them a script, README texts and a test), and how dstore-client-rs follows it. The
+port was made from the branch head `6c808de`, before the tag existed (§7); the tag's tree is that commit's,
+byte for byte. Most of the change is not in dstore: Go core went from v0.0.9 to v0.0.10 and
 core-rs from 0.4.0 to 0.7.0, and both changed what a commit's key is, where local references live and who may
 open a packstore. For the parts listed here this note decides over the area specs of L0-L6 and over
 `commit-objects.md`; everything else in them stands.
@@ -13,7 +15,7 @@ Pins after the change (PORTING.md §0, §5.11):
 
 | What | Before | After |
 |---|---|---|
-| Go dstore | v0.1.10, `7bd788e` | v0.1.11 (the branch above) |
+| Go dstore | v0.1.10, `7bd788e` | v0.1.11, `7a21311d4f4be404e8ee7029311675f40c447e9f` (a lightweight tag on the merge of the branch above) |
 | Go core | v0.0.9 (`e318780`) | v0.0.10 (`9026f42`) |
 | core-rs | 0.4.0, `7386914b56b9c43ea42b166d81c1f2fbce3aaffb` | 0.7.0, `1a8bca1079e85713052b99c9bde144625015652c` (tag v0.7.0, at parity with core v0.0.10) |
 
@@ -177,19 +179,24 @@ are not at hand in a test here; core-rs and core test their imports.
 
 ## 7. When the upstream tag does not exist yet
 
-This change was made before Go dstore v0.1.11 was tagged, from a checkout of its branch. The generator
-pins Go modules by version and refuses anything else, so:
+This change was made in two steps, the first before Go dstore v0.1.11 was tagged, from a checkout of its
+branch. The generator pins Go modules by version and refuses anything else, so:
 
 - For the work, `tools/vectorgen/go.mod` got `github.com/amber-store/dstore v0.1.11`,
   `github.com/amber-store/core v0.0.10` and a temporary `replace github.com/amber-store/dstore => <checkout>`,
   and two self-checks were patched by hand to accept the replace (`clientModuleDir` in `family_client.go`,
   `tspCheckVersions` in `family_transport.go`). Neither the replace, nor the patches, nor a `go.sum` made
-  under them is committed: `go.mod` and `go.sum` stay as they were until the tag exists, and until then
-  the generator's self-checks fail on purpose.
-- `interop/check.sh` takes a prebuilt Go CLI (`DSTORE_GO_BIN`), built from `git archive HEAD` of the
+  under them was committed: the first commit left `go.mod` and `go.sum` at dstore v0.1.10, and in that
+  state the generator's version self-checks fail on purpose (`go test ./...` in `cmd/clisnap/mainpkg`), and
+  `interop/check.sh` builds a `holdlock-go` that knows no `.dstore/lock`.
+- `interop/check.sh` took a prebuilt Go CLI (`DSTORE_GO_BIN`), built from `git archive HEAD` of the
   checkout with `CGO_ENABLED=0 go build -trimpath ./cmd/dstore`.
-- Once the tag exists: `go get github.com/amber-store/dstore@v0.1.11 github.com/amber-store/core@v0.0.10`
-  and `go mod tidy` in `tools/vectorgen`, then every generation command of VECTORS.md "Regenerating". The
-  bytes must be the committed ones (`git status` stays clean under `tests/golden` and
-  `crates/gocompat/src`), because a replace changes no vector: the module version in `cli/snapshots.json`
-  comes from the build information, where a replaced module keeps the required version.
+- Once the tag existed (the second commit): `go get github.com/amber-store/dstore@v0.1.11
+  github.com/amber-store/core@v0.0.10` and `go mod tidy` in `tools/vectorgen`, through the default proxy
+  and checksum database, then every generation command of VECTORS.md "Regenerating". `go.mod` came out as
+  it was under the replace, less the replace line, and `go.sum` gained exactly the two dstore v0.1.11
+  lines. The bytes were the committed ones: `git status --porcelain tests/golden crates/gocompat/src`
+  printed nothing, and the sha256 of every generated file equalled the list taken under the replace. A
+  replace changes no vector: the module version in `cli/snapshots.json` comes from the build information,
+  where a replaced module keeps the required version. `interop/check.sh` then ran without
+  `DSTORE_GO_BIN`, against a checkout of the tag, so that its own tag check ran.

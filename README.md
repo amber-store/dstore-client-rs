@@ -35,7 +35,7 @@ cargo install --locked --path .
 ```
 
 `dstore --version` prints `dstore version dev` unless the build sets `DSTORE_VERSION`
-(`DSTORE_VERSION=v0.1.0 cargo build …`).
+(`DSTORE_VERSION=v0.2.0 cargo build …`).
 
 ## Usage
 

@@ -59,7 +59,7 @@ resolver = "3"
 iroh = { path = "third_party/iroh-1.2.0" }
 
 [workspace.package]
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.91"
 license = "LGPL-3.0-only"
@@ -67,19 +67,19 @@ repository = "https://github.com/amber-store/dstore-client-rs"
 
 [workspace.dependencies]
 # Workspace crates (PORTING.md §3.1).
-dstore-cli = { path = "crates/cli", version = "0.1.0" }
-dstore-client = { path = "crates/client", version = "0.1.0" }
-dstore-codec = { path = "crates/codec", version = "0.1.0" }
-dstore-gocli = { path = "crates/gocli", version = "0.1.0" }
-dstore-gocompat = { path = "crates/gocompat", version = "0.1.0" }
-dstore-testkit = { path = "crates/testkit", version = "0.1.0" }
-dstore-ticket = { path = "crates/ticket", version = "0.1.0" }
-dstore-transport = { path = "crates/transport", version = "0.1.0" }
-dstore-transport-iroh = { path = "crates/transport-iroh", version = "0.1.0" }
-dstore-udiff = { path = "crates/udiff", version = "0.1.0" }
-dstore-view = { path = "crates/view", version = "0.1.0" }
-dstore-wire = { path = "crates/wire", version = "0.1.0" }
-dstore-worktree = { path = "crates/worktree", version = "0.1.0" }
+dstore-cli = { path = "crates/cli", version = "0.2.0" }
+dstore-client = { path = "crates/client", version = "0.2.0" }
+dstore-codec = { path = "crates/codec", version = "0.2.0" }
+dstore-gocli = { path = "crates/gocli", version = "0.2.0" }
+dstore-gocompat = { path = "crates/gocompat", version = "0.2.0" }
+dstore-testkit = { path = "crates/testkit", version = "0.2.0" }
+dstore-ticket = { path = "crates/ticket", version = "0.2.0" }
+dstore-transport = { path = "crates/transport", version = "0.2.0" }
+dstore-transport-iroh = { path = "crates/transport-iroh", version = "0.2.0" }
+dstore-udiff = { path = "crates/udiff", version = "0.2.0" }
+dstore-view = { path = "crates/view", version = "0.2.0" }
+dstore-wire = { path = "crates/wire", version = "0.2.0" }
+dstore-worktree = { path = "crates/worktree", version = "0.2.0" }
 
 # core-rs v0.7.0 (PORTING.md §5.11). Bump the flake's outputHashes."amber-store-core-0.7.0" with every rev.
 amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "1a8bca1079e85713052b99c9bde144625015652c" }
