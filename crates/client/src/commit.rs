@@ -124,14 +124,32 @@ mod tests {
         // A commit stands for its tree.
         assert_eq!(tree_of(ck, |k| get(&objs, k)).expect("commit"), dir.key);
 
-        // A conflicted commit stands for its first side, and its terms count towards the footprint.
+        // A conflicted commit stands for its first side, and its terms count towards the footprint. The
+        // terms are other directories than the tree, so that the first side is told from any other (Go's
+        // TestTreeOf records the same tree three times, and would pass with the last side as well).
+        let blob = fstree::encode_blob(b"x");
+        let side = |name: &[u8]| {
+            fstree::encode_dir_leaf(&[fstree::Entry {
+                name: name.to_vec(),
+                mode: 0o100644,
+                content_key: blob.key.0.to_vec(),
+                ..fstree::Entry::default()
+            }])
+            .expect("dir leaf")
+            .key
+        };
+        let (removed, added) = (side(b"removed"), side(b"added"));
+        assert!(removed != dir.key && added != dir.key && removed != added);
         let (xk, xraw) = Commit {
-            conflict_terms: vec![dir.key, dir.key],
+            conflict_terms: vec![removed, added],
             ..plain
         }
         .object()
         .expect("conflicted commit");
-        assert_eq!(xk.length(), xraw.len() as u64 + 3 * dir.key.length());
+        assert_eq!(
+            xk.length(),
+            xraw.len() as u64 + dir.key.length() + removed.length() + added.length()
+        );
         objs.insert(xk, xraw);
         assert_eq!(tree_of(xk, |k| get(&objs, k)).expect("conflicted"), dir.key);
 

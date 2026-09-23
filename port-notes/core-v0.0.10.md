@@ -130,6 +130,16 @@ already needs.
   earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or
   later, which does`. The old check, which listed `DIR/refs` for Pebble's file names, had to go: Go's
   import leaves the poison marker `marker.format-version.999999.999`, which it would have refused.
+- **SQLite driver texts are a documented difference (DD-12), not re-rendered.** A review of the first
+  commit ran both binaries over broken `--local` directories: with `refs/refs.sqlite` a directory (or
+  `refs/` read-only) Go prints `refstore: opening sqlite <path>: unable to open database file (14)` and Rust
+  `…: unable to open database file: <path>`; over garbage, `file is not a database (26)` against `file is
+  not a database`. Both exit 1, and core's own texts (application id, schema version) are identical.
+  core-rs boxes the driver's error in `Error::Open` and does not re-export rusqlite, so reaching the code
+  would take rusqlite as a direct dependency; and modernc's text is made of `sqlite3_errstr`,
+  `sqlite3_errmsg`, the extended code and a `SQLITE_BUSY` suffix, so matching two messages by their text
+  would be exact for those two and wrong for the rest. PORTING.md DD-12 and §2.3 say so, and a unit test
+  pins the Rust texts.
 - **`refstore: creating <DIR>/refs: …` is rendered here**, like `packstore: creating …`: core-rs creates
   with 0777 and words the errno as Rust does (core-rs-gaps G5, G6).
 - **The `pebble_refs` fixture step opens Pebble itself.** It made its directory through core's
@@ -164,18 +174,22 @@ Regenerated with the generator at dstore v0.1.11 (§7) and core v0.0.10. Only th
 
 | Go | Rust |
 |---|---|
-| `client/commit_test.go` `TestTreeOf` (a conflicted commit, a key of the older rule) | `crates/client/src/commit.rs` `tree_of_resolves_commits`, with the exact text |
+| `client/commit_test.go` `TestTreeOf` (a conflicted commit, a key of the older rule) | `crates/client/src/commit.rs` `tree_of_resolves_commits`, with the exact text. Go's test records the same directory as the tree and as both conflict terms, so it cannot tell "the first side" from any other (a `TreeOf` that returned the last term would pass it; it is released that way). The port gives the terms directories of their own |
 | `worktree/lock_test.go` `TestWorkingCopyTakesOneCommandAtATime` | `crates/worktree/src/tree.rs` `working_copy_takes_one_command_at_a_time`, plus a dropped tree, `the_lock_comes_before_the_config` and `a_copy_held_by_an_older_release_reports_it_before_the_state` |
 | `worktree/lock_test.go` `TestWorkingCopyLockHoldsAcrossProcesses` (the holder is a re-executed test process) | `tests/cli_wc.rs` `a_working_copy_in_use_is_refused`: the test process holds the working copy and `dstore` processes are refused, which is the same proof with the roles the CLI has. A re-executed test binary would bring fork windows into the worktree crate's lock tests (§4) |
 | `node/verify_test.go` `TestVerifyRecordCommitFootprint` | `crates/testkit/src/fake.rs` `verify_record_accepts_and_rejects_as_the_node` |
 | `node/oldrule_test.go` `TestRefPutRefusesACommitOfTheOlderKeyRule`, with its control case and the bad-request code | `tests/fake_cluster.rs` `ref_put_refuses_a_commit_of_the_older_key_rule`, plus `RefPutLocal` |
 | `node/oldrule_test.go` `TestRefPutRefusesACommitTheCoordinatorDoesNotHold` | `tests/fake_cluster.rs` `ref_put_refuses_a_commit_the_coordinator_does_not_hold`, with the exact text |
 | core `fstree/dirof.go` texts | `crates/client/src/corefmt.rs` `commit_key_rule_errors_match_go` |
-| — | `tests/cli_wc.rs` `a_working_copy_in_use_is_refused` (every working-copy command, and from a subdirectory) and `a_working_copy_held_by_an_older_release_is_refused`; `crates/cli/src/common.rs` `open_local_creates_both_stores` (shared; an older release), `open_local_refuses_pebble_refs_and_releases_the_packstore`, `open_local_opens_refs_that_go_imported`, `open_local_refs_errors_have_go_texts` |
-| live | `interop/check.sh` D12: a Go holder blocks Rust and a Rust holder blocks Go, same line and status from both; an exclusive flock on the packstore blocks both. G1: Rust refuses Pebble refs; each client runs on the `--local` directory the other wrote, and no second reference store appears |
+| — | `tests/cli_wc.rs` `a_working_copy_in_use_is_refused` (every working-copy command, and from a subdirectory) and `a_working_copy_held_by_an_older_release_is_refused`; `crates/cli/src/common.rs` `open_local_creates_both_stores` (shared; an older release), `open_local_refuses_pebble_refs_and_releases_the_packstore`, `open_local_opens_refs_that_go_imported`, `open_local_refs_errors_have_go_texts`, `open_local_sqlite_errors_are_the_rust_drivers` (DD-12) |
+| live | `interop/check.sh` D12: a Go holder blocks Rust and a Rust holder blocks Go, same line and status from both; an exclusive flock on the packstore blocks both. G1: over a real Pebble store (`tools/vectorgen/cmd/pebblerefs`) Rust refuses and changes nothing, Go imports it, and Rust opens what the import left; then each client runs on the `--local` directory the other wrote, and no second reference store appears |
 
-Not ported: nothing of core's own tests (core-rs ports them). A legacy `refs.redb` and a real Pebble store
-are not at hand in a test here; core-rs and core test their imports.
+Not ported: nothing of core's own tests (core-rs ports them). A legacy `refs.redb` is not at hand in a test
+here; core-rs tests its import. A real Pebble store is, since `pebblerefs`, in interop G1 only: the unit
+test `open_local_opens_refs_that_go_imported` stands in with an empty `refs.sqlite` and marker files.
+
+No test of their own, here as in Go: the order in which `Tree::close` lets go of the store and the lock,
+and the fake node's unread-but-held branch of the completeness walk.
 
 ## 7. When the upstream tag does not exist yet
 

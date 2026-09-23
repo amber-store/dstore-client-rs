@@ -2960,7 +2960,7 @@ Owner: vectorgen-worktree. Used by the live interop harness (layer L6).
 - `go run ./cmd/treekey [-exclude NAME]... [-jobs N] [-no-ignore] PATH` prints the root key core ingest
   computes for `PATH` without storing anything (`ingest.Objects`). A working copy needs `-exclude .dstore`.
 
-### `storecmp` and `holdlock`
+### `storecmp`, `holdlock` and `pebblerefs`
 
 Owner: the interop harness (layer L6).
 
@@ -2972,6 +2972,10 @@ Owner: the interop harness (layer L6).
   (interop check D12). Up to dstore v0.1.10 it opened `DIR/.dstore/packstore`, whose single-owner lock kept
   two commands apart; since core v0.0.10 a packstore is shared and locks nobody out. The Rust twin is
   `examples/holdlock.rs` (`cargo run --example holdlock -- DIR SECONDS`), over `Tree::open`.
+- `go run ./cmd/pebblerefs DIR` makes `DIR` a Pebble reference store as Go dstore v0.1.10 and earlier left
+  one in `<local>/refs`: `pebble.Open` as core v0.0.9's `refstore.Open` called it, then close (the clisnap
+  fixture step `pebble_refs` does the same). It prints the directory's entries. Interop check G1 has the
+  Rust client refuse that directory, the Go client import it, and the Rust client open the result.
 
 ## Not generated
 

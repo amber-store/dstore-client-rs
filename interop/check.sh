@@ -64,7 +64,7 @@ D14|branch: go push -m starts it; rs clones and pushes on top; go pulls; ls, cat
 E1|SIGINT and SIGTERM end watch with exit 0
 E2|DSTORE_LOG_LEVEL=warn hides INFO lines; info shows the same messages
 E3|cargo test live_go_node_* against n1 (Rust iroh 1.2.0 to go-iroh)
-G1|DD-2: Pebble refs refused by rs; refs.sqlite shared, rs on Go refs and go on Rust refs
+G1|DD-2: a real Pebble refs store refused by rs, imported by go, then opened by rs; refs.sqlite shared both ways
 G2|DD-3: --store ticket derivation and catalog restore texts
 H1|cat NAME /: DD-7 panic line and exit 2
 H2|cat NAME big.bin piped into head -c1: killed by SIGPIPE
@@ -188,7 +188,7 @@ build_go() {
 }
 
 build_tools() {
-	(cd "$REPO/tools/vectorgen" && go build -trimpath -o "$BIN/" ./cmd/mktree ./cmd/treekey ./cmd/storecmp ./cmd/holdlock) \
+	(cd "$REPO/tools/vectorgen" && go build -trimpath -o "$BIN/" ./cmd/mktree ./cmd/treekey ./cmd/storecmp ./cmd/holdlock ./cmd/pebblerefs) \
 		>"$LOGS/tools-build.log" 2>&1 || { cat "$LOGS/tools-build.log"; die "go build of the vectorgen helpers failed"; }
 	mv "$BIN/holdlock" "$BIN/holdlock-go"
 }
@@ -1449,16 +1449,14 @@ RESTORE_TEXT="catalog restore writes through the node's paxos acceptor, which ds
 check_G1() {
 	[ "$BASELINE" = 1 ] && { skip_current "baseline run (Rust-only texts)"; return; }
 	need B2 || return
-	local f impl
+	local impl
 	# DD-2 (PORTING.md §2.3): what Go dstore v0.1.10 and earlier kept in <local>/refs is a Pebble store. Go
 	# imports it on its first open; core-rs cannot, knows one by the marker that names its manifest with no
-	# refs.sqlite beside it, and refuses. No release that writes Pebble is at hand, so the directory holds
-	# empty files under the names of a fresh Pebble store (the clisnap fixture pebble-refs): Rust only.
+	# refs.sqlite beside it, and refuses. pebblerefs makes a real one, as core v0.0.9's refstore did.
 	rm -rf "$W/g1p"
-	mkdir -p "$W/g1p/refs"
-	for f in 000002.log LOCK MANIFEST-000001 OPTIONS-000003 marker.format-version.000001.013 marker.manifest.000001.MANIFEST-000001; do
-		: >"$W/g1p/refs/$f"
-	done
+	mkdir -p "$W/g1p"
+	"$BIN/pebblerefs" "$W/g1p/refs" >"$CK/G1.pebble.names" 2>&1 || { note_fail "G1: pebblerefs failed: $(cat "$CK/G1.pebble.names")"; return; }
+	has_line "$CK/G1.pebble.names" '^marker\.manifest\.' || note_fail "G1: pebblerefs made no Pebble store: $(tr '\n' ' ' <"$CK/G1.pebble.names")"
 	run_one rs G1.pull -C "$W" -- store pull --no-relay --local g1p trees/rs
 	expect_exit G1.pull rs 1
 	expect_eq "G1 rs store pull on Pebble refs" "$(last_dstore_line "$CK/G1.pull.rs.err")" "dstore: refstore: g1p/refs $PEBBLE_REFUSAL"
@@ -1466,6 +1464,17 @@ check_G1() {
 	expect_exit G1.push rs 1
 	expect_eq "G1 rs store push on Pebble refs" "$(last_dstore_line "$CK/G1.push.rs.err")" "dstore: refstore: g1p/refs $PEBBLE_REFUSAL"
 	[ -e "$W/g1p/refs/refs.sqlite" ] && note_fail "G1: the refused open created refs.sqlite next to the Pebble store"
+	ls "$W/g1p/refs" | sort | cmp -s - "$CK/G1.pebble.names" ||
+		note_fail "G1: the refused opens changed the Pebble directory: $(ls "$W/g1p/refs" | tr '\n' ' ')"
+	# Go imports the store on its first open; what it leaves behind (refs.sqlite, the retired files, the
+	# poison marker that keeps Pebble-based releases out) is a directory the Rust client opens.
+	run_one go G1.import -C "$W" -- store pull --no-relay --local g1p trees/rs
+	expect_exit G1.import go 0
+	[ -f "$W/g1p/refs/refs.sqlite" ] || note_fail "G1: go did not import the Pebble store: $(ls "$W/g1p/refs" | tr '\n' ' ')"
+	[ -d "$W/g1p/refs/pebble-migrated" ] || note_fail "G1: go kept no pebble-migrated/: $(ls "$W/g1p/refs" | tr '\n' ' ')"
+	run_one rs G1.imported -C "$W" -- store pull --no-relay --local g1p trees/rs
+	expect_exit G1.imported rs 0
+	note_info "after go's import g1p/refs holds: $(ls "$W/g1p/refs" | tr '\n' ' ')"
 	# Since core v0.0.10 both keep local references in <local>/refs/refs.sqlite, one file they share: rs
 	# on the directory Go wrote (B2), go on the one Rust wrote (B1), then the writer again.
 	[ -f "$W/goL/refs/refs.sqlite" ] || note_fail "G1: goL/refs has no refs.sqlite: $(ls "$W/goL/refs" | tr '\n' ' ')"
