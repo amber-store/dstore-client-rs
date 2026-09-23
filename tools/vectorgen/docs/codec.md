@@ -4,7 +4,7 @@ Files: `tests/golden/codec/encode.json`, `tests/golden/codec/decode.json`. Gener
 `tools/vectorgen/family_codec.go` (`go run . ../../tests/golden codec`). Rust tests:
 `tests/golden_tests/codec.rs` (`encode_scalars`, `encode_structs`, `decode_cases`).
 
-The values come from dstore v0.1.10 `codec.Marshal` and `codec.Unmarshal`, which are fxamacker/cbor v2.9.3
+The values come from dstore v0.1.11 `codec.Marshal` and `codec.Unmarshal`, which are fxamacker/cbor v2.9.3
 `CanonicalEncOptions().EncMode()` and `DecOptions{}.DecMode()`. The inputs are Go test structs that mirror
 every field kind and struct-tag combination dstore declares. The Rust tests declare the same structs with
 `cbor_struct!`, with the same Go names (`main.codecOmit`, …), so error texts compare verbatim.

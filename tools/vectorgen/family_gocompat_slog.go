@@ -4,7 +4,7 @@
 // documented in docs/gocompat-d.md.
 //
 // Every expected text comes from the Go standard library (go1.26.5) or from a
-// verbatim copy of cmd/dstore code that is checked against the dstore v0.1.10
+// verbatim copy of cmd/dstore code that is checked against the dstore v0.1.11
 // module source before generating.
 package main
 
@@ -208,7 +208,7 @@ func slogvLevels() []slogvLevel {
 	return out
 }
 
-// slogvDstoreLogLevel is a verbatim copy of cmd/dstore logLevel (dstore v0.1.10
+// slogvDstoreLogLevel is a verbatim copy of cmd/dstore logLevel (dstore v0.1.11
 // cmd/dstore/main.go), checked by slogvCheckLogLevelCopy. The name differs so
 // that it cannot collide with other copies in package main.
 func slogvDstoreLogLevel(c *cli.Context) slog.Level {

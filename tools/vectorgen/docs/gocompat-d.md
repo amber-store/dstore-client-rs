@@ -26,7 +26,7 @@ nix develop -c go -C tools/vectorgen run . ../../tests/golden gocompat-slog
     years 1000 to 9999.
   - Before generating, a self-check handles a record with the real `LstdFlags` at the current local time and
     requires the header of the time before or after the call, followed by the flags-0 text.
-- **`log_levels`.** `slogvDstoreLogLevel` is a verbatim copy of cmd/dstore `logLevel` (dstore v0.1.10
+- **`log_levels`.** `slogvDstoreLogLevel` is a verbatim copy of cmd/dstore `logLevel` (dstore v0.1.11
   `cmd/dstore/main.go`). It runs on a urfave `cli.Context` whose flag set holds `--log-level`. Before
   generating, the copy's signature and body are printed with `go/printer` and compared with the function
   in the module source (`go list -m -f {{.Dir}} github.com/amber-store/dstore`).

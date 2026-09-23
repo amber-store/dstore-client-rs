@@ -15,8 +15,8 @@ nix develop -c go -C tools/vectorgen run . ../../tests/golden client refglob
 The family owns exactly these files. `client/transcripts/` belongs to a later family.
 
 Specs: port-notes/client-core.md §5, port-notes/client-transfer.md §5.2 items 3-5 and 8,
-port-notes/verification.md §4.3 items 22-23. Normative Go: `github.com/amber-store/dstore` v0.1.10 (`client/`,
-`refglob/`), `github.com/amber-store/core` v0.0.9, `transport-iroh` v0.4.0 `protocol`.
+port-notes/verification.md §4.3 items 22-23. Normative Go: `github.com/amber-store/dstore` v0.1.11 (`client/`,
+`refglob/`), `github.com/amber-store/core` v0.0.10, `transport-iroh` v0.4.0 `protocol`.
 
 Conventions are those of the root `VECTORS.md`: 64-bit integers and durations are decimal strings (`I64`/`U64`
 in `util.go`; Rust `dstore_testkit::golden::decimal_i64`/`decimal_u64`), bytes are lowercase hex, small
@@ -29,7 +29,7 @@ names are snake_case.
 get batch constants), `tracker` with its methods, `newTracker`, `countKeys` and `(*Cluster).pathAttrs` are
 unexported, so `family_client.go` holds verbatim copies. Before generating anything, `clientSelfCheck`:
 
-1. checks from the build info that the generator is built against dstore v0.1.10 without a replace, and finds
+1. checks from the build info that the generator is built against dstore v0.1.11 without a replace, and finds
    the module directory with `go list -m`;
 2. parses the dstore sources and `family_client.go` (embedded with `//go:embed`), and compares each copy with
    its original after dropping comments and renaming identifiers (`Cluster` → `clientStubCluster`, `Progress`,
@@ -159,8 +159,10 @@ methods, `refglob.Compile`) are called directly.
   is the exact Go text. `error_portable: false` marks texts from the zstd library (klauspost), which core-rs
   (libzstd) cannot reproduce: assert only that the record is refused.
 - Cases: raw Blob, empty Blob, zstd Blob (4096 × `a`), DirLeaf and FileNode with logical lengths, XattrSet, a
-  Blob whose length field is 999 over 100 bytes (accepted), a Commit and a Commit whose length field is one
-  too large (accepted: the client, unlike the node, checks no length field), a flipped payload byte, another key's payload (raw and
+  Blob whose length field is 999 over 100 bytes (accepted), a Commit (its length field is its footprint, core
+  v0.0.10), a Commit whose length field is one above the footprint and one keyed by core v0.0.9's rule, its own
+  length (`commit_keyed_by_own_length`; both accepted: `client.VerifyRecord` checks no length field, where the
+  node's `verifyRecord`, `client.TreeOf` and core's `ChildKeys` hold a commit to the rule), a flipped payload byte, another key's payload (raw and
   zstd), a zstd frame stored raw, reserved header bit, reserved types 6 and 15 (5 is Commit since core v0.0.9), non-canonical length, unknown flag
   bit 2 (accepted, raw) and 3 (accepted, zstd), raw `ulen` ignored, zstd `ulen` one more than the frame (portable
   `decompressed to 4096 bytes, header says 4097`), one less, and a garbage frame.

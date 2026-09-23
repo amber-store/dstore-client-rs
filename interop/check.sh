@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Live interop suite of dstore-client-rs (port-notes/verification.md §4.5, PORTING.md §7): a 3-node Go
-# dstore v0.1.10 cluster on loopback, and the Go and the Rust client run side by side against it.
+# dstore v0.1.11 cluster on loopback, and the Go and the Rust client run side by side against it.
 # interop/README.md describes the inputs, the checks and the comparison modes.
 #
 #   bash interop/check.sh [--list] [ID | GROUP ...]
@@ -58,13 +58,13 @@ D8|init in an existing directory, status, push, fetch up to date
 D9|lost state: push recovers (both directions)
 D10|missing .dstore/state: incomplete clone
 D11|clone into a non-empty dir, onto a file, of an unknown ref; init inside a working copy
-D12|lock interop: a Go holder blocks rs, a Rust holder blocks go
+D12|lock interop: a Go holder blocks rs, a Rust holder blocks go; an older release blocks both
 D13|stored-ticket refresh: a stale ticket is rewritten identically
 D14|branch: go push -m starts it; rs clones and pushes on top; go pulls; ls, cat; lost state on a branch
 E1|SIGINT and SIGTERM end watch with exit 0
 E2|DSTORE_LOG_LEVEL=warn hides INFO lines; info shows the same messages
 E3|cargo test live_go_node_* against n1 (Rust iroh 1.2.0 to go-iroh)
-G1|DD-2: Pebble refs refused by rs; Go on Rust refs; refused after
+G1|DD-2: Pebble refs refused by rs; refs.sqlite shared, rs on Go refs and go on Rust refs
 G2|DD-3: --store ticket derivation and catalog restore texts
 H1|cat NAME /: DD-7 panic line and exit 2
 H2|cat NAME big.bin piped into head -c1: killed by SIGPIPE
@@ -173,15 +173,15 @@ build_go() {
 	if [ -n "$repo" ]; then
 		local tag
 		tag=$(git -C "$repo" describe --tags --exact-match HEAD 2>/dev/null)
-		[ "$tag" = v0.1.10 ] || die "$repo: HEAD is ${tag:-not a tag}, want v0.1.10"
+		[ "$tag" = v0.1.11 ] || die "$repo: HEAD is ${tag:-not a tag}, want v0.1.11"
 		say "building Go dstore $tag from $repo (git archive HEAD, CGO_ENABLED=0)"
 		mkdir -p "$W/go-src" && git -C "$repo" archive HEAD | tar -x -C "$W/go-src" || die "git archive failed"
 		(cd "$W/go-src" && go build -trimpath -o "$BIN/dstore-go" ./cmd/dstore) >"$LOGS/go-build.log" 2>&1 ||
 			{ cat "$LOGS/go-build.log"; die "go build of dstore failed"; }
 		rm -rf "$W/go-src"
 	else
-		say "installing github.com/amber-store/dstore/cmd/dstore@v0.1.10"
-		GOBIN="$W/gobin" go install github.com/amber-store/dstore/cmd/dstore@v0.1.10 >"$LOGS/go-build.log" 2>&1 ||
+		say "installing github.com/amber-store/dstore/cmd/dstore@v0.1.11"
+		GOBIN="$W/gobin" go install github.com/amber-store/dstore/cmd/dstore@v0.1.11 >"$LOGS/go-build.log" 2>&1 ||
 			{ cat "$LOGS/go-build.log"; die "go install of dstore failed"; }
 		mv "$W/gobin/dstore" "$BIN/dstore-go" && rm -rf "$W/gobin"
 	fi
@@ -1196,7 +1196,9 @@ check_D11() {
 	pair D11.badname exact -C "$d" -- clone --no-relay 'bad@name'
 }
 
-# d12_held HOLDER: HOLDER's holdlock on wcA, then status from both clients.
+# d12_held HOLDER: HOLDER's holdlock has wcA open, then status from both clients. One command at a time
+# has a working copy open: dstore v0.1.11 takes .dstore/lock (an exclusive flock), which the Go and the
+# Rust client share. (Until core v0.0.10 the packstore's own lock did this on the side.)
 d12_held() {
 	local holder=$1 pid
 	"$BIN/holdlock-$holder" "$WC/wcA" 30 >"$CK/D12.$holder.hold" 2>&1 &
@@ -1210,7 +1212,35 @@ d12_held() {
 	pair "D12.$holder-held" exact -C "$WC/wcA" -- status
 	expect_exit "D12.$holder-held" go 1
 	expect_exit "D12.$holder-held" rs 1
-	expect_lines "$(errfile "D12.$holder-held" go)" "^dstore: packstore: .*/\\.dstore/packstore is already open: resource temporarily unavailable\$"
+	expect_lines "$(errfile "D12.$holder-held" go)" "^dstore: working copy $WC/wcA: in use by another dstore command\$"
+	pair "D12.$holder-held-sub" exact -C "$WC/wcA/deep" -- diff
+	expect_exit "D12.$holder-held-sub" rs 1
+	stop_pid "$pid"
+}
+
+# A dstore v0.1.10 command (core v0.0.9) knows no .dstore/lock, but it holds the packstore directory's
+# flock exclusively while it has the store open, and a packstore of core v0.0.10 refuses to join it. perl
+# takes that lock here (no such release is at hand, and flock(1) is not everywhere); both clients must
+# refuse with the same line.
+d12_older() {
+	local pid
+	if ! command -v perl >/dev/null 2>&1; then
+		note_info "D12: no perl, the older-release lock was not checked live (unit tests and errors/worktree_text.json pin its text)"
+		return
+	fi
+	perl -e 'use Fcntl ":flock"; $| = 1; open(my $d, "<", $ARGV[0]) or die "open: $!"; flock($d, LOCK_EX | LOCK_NB) or die "flock: $!"; print "locked\n"; sleep 30;' \
+		"$WC/wcA/.dstore/packstore" >"$CK/D12.older.hold" 2>&1 &
+	pid=$!
+	track_pid "$pid"
+	if ! wait_until 15 has_line "$CK/D12.older.hold" '^locked'; then
+		note_fail "D12: perl did not take the exclusive flock: $(cat "$CK/D12.older.hold")"
+		stop_pid "$pid"
+		return
+	fi
+	pair D12.older-held exact -C "$WC/wcA" -- status
+	expect_exit D12.older-held go 1
+	expect_exit D12.older-held rs 1
+	expect_lines "$(errfile D12.older-held go)" "^dstore: packstore: .*/\\.dstore/packstore is held by an older release, which needs the store to itself: resource temporarily unavailable\$"
 	stop_pid "$pid"
 }
 
@@ -1218,6 +1248,7 @@ check_D12() {
 	need D1 || return
 	d12_held go
 	d12_held rs
+	d12_older
 	pair D12.free exact -C "$WC/wcA" -- status
 	expect_exit D12.free rs 0
 }
@@ -1411,32 +1442,49 @@ check_E3() {
 
 # ---- G: documented exceptions ----
 
-PEBBLE_REFUSAL='holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)'
+PEBBLE_REFUSAL='holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does'
 STORE_TICKET_TEXT="deriving a ticket from --store needs the node's Pebble meta store, which dstore-client-rs does not implement; pass --ticket or \$DSTORE_TICKET, or use the Go dstore binary"
 RESTORE_TEXT="catalog restore writes through the node's paxos acceptor, which dstore-client-rs does not implement; use the Go dstore binary"
 
 check_G1() {
 	[ "$BASELINE" = 1 ] && { skip_current "baseline run (Rust-only texts)"; return; }
 	need B2 || return
-	run_one rs G1.pull -C "$W" -- store pull --no-relay --local goL trees/rs
+	local f impl
+	# DD-2 (PORTING.md §2.3): what Go dstore v0.1.10 and earlier kept in <local>/refs is a Pebble store. Go
+	# imports it on its first open; core-rs cannot, knows one by the marker that names its manifest with no
+	# refs.sqlite beside it, and refuses. No release that writes Pebble is at hand, so the directory holds
+	# empty files under the names of a fresh Pebble store (the clisnap fixture pebble-refs): Rust only.
+	rm -rf "$W/g1p"
+	mkdir -p "$W/g1p/refs"
+	for f in 000002.log LOCK MANIFEST-000001 OPTIONS-000003 marker.format-version.000001.013 marker.manifest.000001.MANIFEST-000001; do
+		: >"$W/g1p/refs/$f"
+	done
+	run_one rs G1.pull -C "$W" -- store pull --no-relay --local g1p trees/rs
 	expect_exit G1.pull rs 1
-	expect_eq "G1 rs store pull on Go refs" "$(last_dstore_line "$CK/G1.pull.rs.err")" "dstore: refstore: goL/refs $PEBBLE_REFUSAL"
-	run_one rs G1.push -C "$W" -- store push --no-relay --local goL --user interop src1 trees/g1
+	expect_eq "G1 rs store pull on Pebble refs" "$(last_dstore_line "$CK/G1.pull.rs.err")" "dstore: refstore: g1p/refs $PEBBLE_REFUSAL"
+	run_one rs G1.push -C "$W" -- store push --no-relay --local g1p --user interop src1 trees/g1
 	expect_exit G1.push rs 1
-	expect_eq "G1 rs store push on Go refs" "$(last_dstore_line "$CK/G1.push.rs.err")" "dstore: refstore: goL/refs $PEBBLE_REFUSAL"
-	# Go on a Rust-written directory opens a second (Pebble) database next to refs.redb (PORTING.md §2.3),
-	# after which the Rust client refuses the directory.
-	rm -rf "$W/g1r"
-	cp -Rp "$W/rsL" "$W/g1r"
-	[ -f "$W/g1r/refs/refs.redb" ] || note_fail "G1: rsL/refs has no refs.redb"
-	run_one go G1.go -C "$W" -- store pull --no-relay --local g1r trees/rs
-	expect_exit G1.go go 0
-	ls "$W/g1r/refs" | grep -Eq '^(CURRENT|MANIFEST-.*|OPTIONS-.*)$' ||
-		note_fail "G1: go store pull on Rust refs left no Pebble files in refs/: $(ls "$W/g1r/refs" | tr '\n' ' ')"
-	run_one rs G1.after -C "$W" -- store pull --no-relay --local g1r trees/rs
-	expect_exit G1.after rs 1
-	expect_eq "G1 rs store pull after go" "$(last_dstore_line "$CK/G1.after.rs.err")" "dstore: refstore: g1r/refs $PEBBLE_REFUSAL"
-	note_info "go store pull on a Rust-written --local directory succeeds (it adds Pebble files next to refs.redb): PORTING.md §2.3"
+	expect_eq "G1 rs store push on Pebble refs" "$(last_dstore_line "$CK/G1.push.rs.err")" "dstore: refstore: g1p/refs $PEBBLE_REFUSAL"
+	[ -e "$W/g1p/refs/refs.sqlite" ] && note_fail "G1: the refused open created refs.sqlite next to the Pebble store"
+	# Since core v0.0.10 both keep local references in <local>/refs/refs.sqlite, one file they share: rs
+	# on the directory Go wrote (B2), go on the one Rust wrote (B1), then the writer again.
+	[ -f "$W/goL/refs/refs.sqlite" ] || note_fail "G1: goL/refs has no refs.sqlite: $(ls "$W/goL/refs" | tr '\n' ' ')"
+	[ -f "$W/rsL/refs/refs.sqlite" ] || note_fail "G1: rsL/refs has no refs.sqlite: $(ls "$W/rsL/refs" | tr '\n' ' ')"
+	rm -rf "$W/g1g" "$W/g1r"
+	cp -Rp "$W/goL" "$W/g1g" && cp -Rp "$W/rsL" "$W/g1r" || { note_fail "G1: cannot copy the local stores"; return; }
+	run_one rs G1.rs-on-go -C "$W" -- store pull --no-relay --local g1g trees/rs
+	expect_exit G1.rs-on-go rs 0
+	run_one go G1.go-after -C "$W" -- store pull --no-relay --local g1g trees/rs
+	expect_exit G1.go-after go 0
+	run_one go G1.go-on-rs -C "$W" -- store pull --no-relay --local g1r trees/rs
+	expect_exit G1.go-on-rs go 0
+	run_one rs G1.rs-after -C "$W" -- store pull --no-relay --local g1r trees/rs
+	expect_exit G1.rs-after rs 0
+	for impl in g1g g1r; do
+		ls "$W/$impl/refs" | grep -Eq '^(refs\.redb|CURRENT|MANIFEST-.*|OPTIONS-.*)$' &&
+			note_fail "G1: $impl/refs holds a second reference store: $(ls "$W/$impl/refs" | tr '\n' ' ')"
+	done
+	note_info "rs and go used each other's --local directory: one refs.sqlite (PORTING.md §2.3)"
 }
 
 check_G2() {

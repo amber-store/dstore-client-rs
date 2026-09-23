@@ -1,7 +1,7 @@
 package main
 
-// Family worktree: working-copy vectors from github.com/amber-store/dstore v0.1.10 package worktree over
-// github.com/amber-store/core v0.0.9 (port-notes/worktree.md §5 items 1-16, port-notes/verification.md
+// Family worktree: working-copy vectors from github.com/amber-store/dstore v0.1.11 package worktree over
+// github.com/amber-store/core v0.0.10 (port-notes/worktree.md §5 items 1-16, port-notes/verification.md
 // §4.3 items 13-18 and 22). Schemas: docs/vectorgen-worktree.md.
 //
 // Every top-level identifier of this file starts with "wt" so that the families of other owners never
@@ -353,7 +353,7 @@ func wtSelfCheck() error {
 			return fmt.Errorf("%s: %w", wcPath, err)
 		}
 		if a != b {
-			return fmt.Errorf("%s is not a verbatim copy of cmd/dstore %s:\n--- copy\n%s\n--- dstore v0.1.10\n%s", c.mine, c.theirs, a, b)
+			return fmt.Errorf("%s is not a verbatim copy of cmd/dstore %s:\n--- copy\n%s\n--- dstore v0.1.11\n%s", c.mine, c.theirs, a, b)
 		}
 	}
 	if err := wtCheckLiterals(wcPath, wcSrc, wtWcLiterals); err != nil {
@@ -2717,13 +2717,46 @@ func wtTreeErrors(addErr func(string, error, string) error) error {
 			defer t.Close()
 			return open(root)
 		}},
-		{"tree/open-locked-before-state-check", create, func(root string) error {
-			// The copy has no state file: the lock is taken first, so Open reports the lock.
-			st, err := packstore.Open(filepath.Join(root, worktree.Dir, "packstore"))
+		{"tree/open-locked-before-state-check", nil, func(root string) error {
+			// The copy has no state file, as during a clone or init: the lock (.dstore/lock, dstore
+			// v0.1.11) is taken first, so Open reports the lock.
+			t, err := worktree.Create(root, cfg)
 			if err != nil {
 				return err
 			}
-			defer st.Close()
+			defer t.Close()
+			return open(root)
+		}},
+		{"tree/open-locked-before-config-check", func(root string) error {
+			return os.Mkdir(filepath.Join(root, worktree.Dir), 0o755)
+		}, func(root string) error {
+			// The copy has no config: the lock is taken before the config is read, because the command
+			// that holds the working copy may rewrite it, so Open reports the lock.
+			unlock, err := wtFlock(filepath.Join(root, worktree.Dir, "lock"), true)
+			if err != nil {
+				return err
+			}
+			defer unlock()
+			return open(root)
+		}},
+		{"tree/open-lock-is-a-directory", func(root string) error {
+			// A lock file that cannot be opened names the working copy.
+			if err := create(root); err != nil {
+				return err
+			}
+			lock := filepath.Join(root, worktree.Dir, "lock")
+			if err := os.Remove(lock); err != nil {
+				return err
+			}
+			return os.Mkdir(lock, 0o755)
+		}, open},
+		{"tree/open-held-by-an-older-release", create, func(root string) error {
+			// A dstore v0.1.10 command knows no .dstore/lock, but holds the packstore directory.
+			unlock, err := wtHoldAsOlderRelease(root)
+			if err != nil {
+				return err
+			}
+			defer unlock()
 			return open(root)
 		}},
 		{"tree/create-over-existing", create, func(root string) error {
@@ -2848,4 +2881,32 @@ func wtApplyErrors(addErr func(string, error, string) error) error {
 		}
 	}
 	return nil
+}
+
+// wtHoldAsOlderRelease takes the exclusive flock that a release from before core v0.0.10 holds on a
+// working copy's packstore directory while it has the store open. Since core v0.0.10 a store is shared by
+// any number of processes, and dstore v0.1.11 keeps two commands apart with its own .dstore/lock (the
+// tree/open-locked cases); an older release knows nothing of that file, and this is how it still locks a
+// newer one out.
+func wtHoldAsOlderRelease(root string) (func(), error) {
+	return wtFlock(filepath.Join(root, worktree.Dir, "packstore"), false)
+}
+
+// wtFlock takes an exclusive flock on path without waiting, as another process would hold it: flock is
+// per open file description, so a second handle in this process is refused like one in another. With
+// create, a missing regular file is made first.
+func wtFlock(path string, create bool) (func(), error) {
+	flags := os.O_RDONLY
+	if create {
+		flags = os.O_RDWR | os.O_CREATE
+	}
+	f, err := os.OpenFile(path, flags, 0o644)
+	if err != nil {
+		return nil, err
+	}
+	if err := unix.Flock(int(f.Fd()), unix.LOCK_EX|unix.LOCK_NB); err != nil {
+		f.Close()
+		return nil, err
+	}
+	return func() { f.Close() }, nil
 }

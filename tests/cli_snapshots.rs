@@ -387,7 +387,7 @@ fn cases_are_classified_and_substitutes_match() {
                 dstore_cli::nodeside::CATALOG_RESTORE_UNSUPPORTED
             ),
             "DD-2" => format!(
-                "dstore: refstore: {}/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)\n",
+                "dstore: refstore: {}/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does\n",
                 flag_value(&case.args, "local").unwrap_or_default()
             ),
             other => {
@@ -604,8 +604,8 @@ fn fixture_builder_builds_every_fixture() {
             .iter()
             .any(|s| matches!(s, Step::WcState { .. }))
         {
-            let tree = retry_locked(|| {
-                dstore_worktree::Tree::open(root.as_os_str().as_bytes()).map_err(|e| e.to_string())
+            let tree = retry_in_use(|| {
+                dstore_worktree::Tree::open(root.as_os_str().as_bytes()).map_err(Box::new)
             })
             .unwrap_or_else(|e| panic!("{}: open the working copy: {e}", fixture.name));
             tree.close().expect("close the working copy");
@@ -966,10 +966,8 @@ fn apply_step(
                 "scratch" => scratch.join("packstore"),
                 other => return Err(format!("unknown ingest target {other:?}")),
             };
-            let st = retry_locked(|| {
-                packstore::Store::open_with(&store_dir, packstore::Options::new().sync(true))
-                    .map_err(|e| e.to_string())
-            })?;
+            let st = packstore::Store::open_with(&store_dir, packstore::Options::new().sync(true))
+                .map_err(|e| e.to_string())?;
             let src = if dir == "." {
                 root.to_path_buf()
             } else {
@@ -1015,17 +1013,15 @@ fn apply_step(
                 ),
                 None => (Key([0; 32]), false, None),
             };
-            let store = retry_locked(|| {
-                packstore::Store::open_with(
-                    root.join(".dstore").join("packstore"),
-                    packstore::Options::new().sync(true),
-                )
-                .map_err(|e| e.to_string())
-            })?;
-            let tree = dstore_worktree::Tree {
-                root: root.as_os_str().as_bytes().to_vec(),
-                config: dstore_worktree::Config::default(),
-                state: dstore_worktree::State {
+            let store = packstore::Store::open_with(
+                root.join(".dstore").join("packstore"),
+                packstore::Options::new().sync(true),
+            )
+            .map_err(|e| e.to_string())?;
+            let tree = dstore_worktree::Tree::from_parts(
+                root.as_os_str().as_bytes().to_vec(),
+                dstore_worktree::Config::default(),
+                dstore_worktree::State {
                     base,
                     remote,
                     remote_commit: Key([0; 32]),
@@ -1033,8 +1029,8 @@ fn apply_step(
                     remote_version,
                     synced_at: dstore_gocompat::time::GoTime::from_unix_nano(*synced_at_unix_ns),
                 },
-                store: Arc::new(store),
-            };
+                Arc::new(store),
+            );
             tree.save_state().map_err(|e| e.to_string())?;
             tree.close().map_err(|e| e.to_string())
         }
@@ -1049,15 +1045,18 @@ fn apply_step(
     }
 }
 
-/// Runs `open` until it stops failing on a packstore lock conflict, for up to 10 s. This test binary
-/// spawns `dstore` processes from other threads, and between fork and exec a child holds a copy of every
-/// descriptor, a packstore's flock included, so reopening a store right after closing it can briefly
-/// report "is already open" (EAGAIN/EWOULDBLOCK). The CLI never forks; only the fixture builder retries.
-fn retry_locked<T>(mut open: impl FnMut() -> Result<T, String>) -> Result<T, String> {
+/// Runs `open` until it stops failing on the working copy's lock, for up to 10 s. This test binary spawns
+/// `dstore` processes from other threads, and between fork and exec a child holds a copy of every
+/// descriptor, the flock of a `.dstore/lock` included, so opening a working copy right after closing it
+/// can briefly report "in use by another dstore command". The CLI never forks; only the fixture builder
+/// retries. (A packstore needs no such care since core v0.0.10: it is shared.)
+fn retry_in_use<T>(
+    mut open: impl FnMut() -> Result<T, Box<dstore_worktree::Error>>,
+) -> Result<T, Box<dstore_worktree::Error>> {
     let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
     loop {
         match open() {
-            Err(e) if e.contains("is already open") && std::time::Instant::now() < deadline => {
+            Err(e) if e.is_in_use() && std::time::Instant::now() < deadline => {
                 std::thread::sleep(std::time::Duration::from_millis(20));
             }
             r => return r,

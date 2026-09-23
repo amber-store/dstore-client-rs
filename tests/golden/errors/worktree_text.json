@@ -130,11 +130,23 @@
     },
     {
       "name": "tree/open-locked",
-      "out": "packstore: {ROOT}/.dstore/packstore is already open: resource temporarily unavailable"
+      "out": "working copy {ROOT}: in use by another dstore command"
     },
     {
       "name": "tree/open-locked-before-state-check",
-      "out": "packstore: {ROOT}/.dstore/packstore is already open: resource temporarily unavailable"
+      "out": "working copy {ROOT}: in use by another dstore command"
+    },
+    {
+      "name": "tree/open-locked-before-config-check",
+      "out": "working copy {ROOT}: in use by another dstore command"
+    },
+    {
+      "name": "tree/open-lock-is-a-directory",
+      "out": "working copy {ROOT}: open {ROOT}/.dstore/lock: is a directory"
+    },
+    {
+      "name": "tree/open-held-by-an-older-release",
+      "out": "packstore: {ROOT}/.dstore/packstore is held by an older release, which needs the store to itself: resource temporarily unavailable"
     },
     {
       "name": "tree/create-over-existing",

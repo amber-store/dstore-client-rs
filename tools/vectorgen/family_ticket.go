@@ -1,7 +1,7 @@
 package main
 
 // Family "ticket" (ticket/encode.json, ticket/parse.json, ticket/curve.json):
-// dstore v0.1.10 ticket.Ticket Encode/IDs/Parse and go-iroh v0.2.0 endpoint-id
+// dstore v0.1.11 ticket.Ticket Encode/IDs/Parse and go-iroh v0.2.0 endpoint-id
 // parsing and curve-point acceptance. Schemas: docs/vectorgen-proto.md.
 
 import (

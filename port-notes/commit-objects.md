@@ -126,21 +126,37 @@ the version constants moved.
 
 ## 7. Following the next upstream release
 
-The steps this change took, in order:
+The steps this change took, in order. The dstore v0.1.11 bump (`core-v0.0.10.md`) followed them and added
+what is marked "(v0.1.11)".
 
 1. Read the delta: `git -C ../dstore diff --stat vOLD vNEW`, then the client-side files in full. Check
    `go.mod` for moved dependencies, and `cmd/dstore/*_test.go` and the files the generator copies verbatim.
-2. core-rs: move `rev` in `Cargo.toml`, run `cargo check`, fix what the new API breaks. Move the flake's
-   `outputHashes` entry: its key is `amber-store-core-<crate version>`, its value `nix hash path` over
-   `git archive <rev>`.
+   (v0.1.11) When a core moved, read its delta and the core-rs release notes too
+   (`gh release view vX -R amber-store/core-rs`): a core release can change what dstore does without a line
+   of dstore changing. Where it changes what a store directory holds or who may open it, build the Go CLI
+   and the generator's helpers and try it; the old behaviour is written into tests, vectors, fixture
+   steps that build stores through core (`pebble_refs`), the interop checks and several documents.
+2. core-rs: move `rev` in `Cargo.toml`, run `cargo check --workspace --all-targets`, fix what the new API
+   breaks. Move the flake's `outputHashes` entry: its key is `amber-store-core-<crate version>`, its value
+   `nix hash path` over `git archive <rev>` (the bare repository under `~/.cargo/git/db/core-rs-*` has the
+   rev after the first fetch). (v0.1.11) The compiler finds struct literals and non-exhaustive matches
+   (`crates/client/src/corefmt.rs` renders every `ChildKeysError` and `WalkError` with Go's text); it does
+   not find a type name missing from `corefmt::type_name`, a key hard-coded in a test (grep for the old
+   test commit's key), or a text that core-rs now words differently.
 3. Port the code and the Go tests.
 4. `tools/vectorgen`: `go get github.com/amber-store/dstore@vNEW github.com/amber-store/core@vNEW`,
    `go mod tidy`, move the version constants (`family_client.go`, `family_transport.go`,
    `cmd/clisnap/mainpkg/selfcheck.go`, the node-side text in `cmd/clisnap/main.go`), extend the families,
    then regenerate all families and `clisnap` (VECTORS.md "Regenerating"). `gotables` and `goerrno` only
-   change with the Go toolchain.
+   change with the Go toolchain. (v0.1.11) `tools/vectorgen/docs/` holds the per-family sources of
+   VECTORS.md: a change to one goes into the other. When the upstream tag does not exist yet, see
+   `core-v0.0.10.md` §7 for working from a checkout, and for what must not be committed.
 5. Move the pins in the documents and the automation: PORTING.md §0, §5.11 and §7, README.md, VECTORS.md,
-   `interop/` (the tag `check.sh` requires of `../dstore`), `DSTORE_GO_REF` in `.github/workflows/`, the
-   node-side refusal text in `crates/cli/src/nodeside.rs`.
-6. Run `cargo test --workspace`, the generator's `go test ./...`, a second generation run (identical bytes),
-   and `bash interop/check.sh`.
+   `interop/` (the tag `check.sh` requires of `../dstore`), `DSTORE_GO_REF` in `.github/workflows/`
+   (`ci.yml` and `release.yml`), the node-side refusal text in `crates/cli/src/nodeside.rs`, the
+   descriptions in `Cargo.toml` and `flake.nix`. Mentions that record history ("added with dstore
+   v0.1.10", "5 is Commit since core v0.0.9") stay.
+6. Run `cargo fmt --all --check`, `cargo clippy --workspace --all-targets --locked -- -D warnings`,
+   `TZ=UTC cargo test --workspace --all-targets --locked`, the generator's `go vet ./...` and
+   `go test ./...`, a second generation run (identical bytes), `bash interop/check.sh`, and
+   `nix build .#dstore` (it proves the `outputHashes` entry).

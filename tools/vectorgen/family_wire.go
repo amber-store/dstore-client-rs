@@ -3,8 +3,8 @@ package main
 // Families "wire" (wire/frames.json, wire/decode.json, wire/frame_errors.json)
 // and "wire-pack" (wire/pack_frames.json, wire/pack_reader.json): client-ALPN
 // frames, fxamacker decoding decisions, frame I/O edge cases and pack framing,
-// all computed by dstore v0.1.10 wire/codec, transport-iroh v0.4.0 protocol and
-// core v0.0.9 amberpack. Schemas: docs/vectorgen-proto.md.
+// all computed by dstore v0.1.11 wire/codec, transport-iroh v0.4.0 protocol and
+// core v0.0.10 amberpack. Schemas: docs/vectorgen-proto.md.
 
 import (
 	"bytes"

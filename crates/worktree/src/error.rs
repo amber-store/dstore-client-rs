@@ -27,6 +27,10 @@ pub enum Error {
     UnknownRefName(Vec<u8>),
     #[error("too large to diff")]
     TooLarge,
+    /// Go `ErrInUse` as `Open` and `Create` return it, wrapped `working copy <root>: %w`: another dstore
+    /// command, of either implementation, has the working copy open (`.dstore/lock`, dstore v0.1.11).
+    #[error("working copy {}: in use by another dstore command", String::from_utf8_lossy(.0))]
+    InUse(Vec<u8>),
     /// Fully formatted Go texts without a typed cause.
     #[error("{0}")]
     Msg(String),
@@ -55,6 +59,11 @@ impl Error {
     /// Go `errors.Is(err, ErrConflict)`.
     pub fn is_conflict(&self) -> bool {
         self.chain_any(|e| matches!(e, Error::Conflict))
+    }
+
+    /// Go `errors.Is(err, ErrInUse)`.
+    pub fn is_in_use(&self) -> bool {
+        self.chain_any(|e| matches!(e, Error::InUse(_)))
     }
 
     /// Go `errors.Is(err, ErrNoRemote)`.

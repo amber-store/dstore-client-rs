@@ -4,7 +4,7 @@
 //!   is never stored, and clone and init take the environment;
 //! - `status` and `diff` install no signal handler, so SIGINT kills them (PORTING.md §1.4, §5.4);
 //! - `os.Getwd`'s `$PWD` rule decides the working-copy root that `diff PATH` resolves against;
-//! - the packstore lock is taken before anything else is read;
+//! - the working copy's lock (`.dstore/lock`) is taken before the state is read;
 //! - paths are printed as raw bytes.
 //!
 //! No test opens a socket: every connection command here fails at the ticket parse, before an endpoint binds.
@@ -260,28 +260,86 @@ fn pwd_decides_the_working_copy_root() {
     assert_eq!(got, (1, Vec::new(), outside));
 }
 
-/// `worktree.Open` takes the packstore lock before it reads the state; the connection commands open the
-/// working copy before they look at the ticket.
+/// One command at a time has a working copy open (dstore v0.1.11: `.dstore/lock`, which Go and Rust
+/// commands share; until core v0.0.10 the packstore's own lock did this on the side). `worktree.Open` takes
+/// the lock before it reads the state; the connection commands open the working copy before they look at
+/// the ticket.
 #[test]
-fn a_locked_working_copy_is_refused() {
+fn a_working_copy_in_use_is_refused() {
     let w = wc("storedbogus");
     // Other tests spawn dstore processes from their threads, and between fork and exec a child holds a
-    // copy of every descriptor, a packstore's flock included. So right after the fixture closes the
-    // store, or after `held` releases it, the lock can briefly look taken: retry for up to 10 s.
+    // copy of every descriptor, the flock of `.dstore/lock` included. So right after the fixture closes
+    // the working copy, or after `held` releases it, the lock can briefly look taken: retry for up to 10 s.
     let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
     let held = loop {
         match Tree::open(w.root.as_os_str().as_bytes()) {
-            Err(e)
-                if e.to_string().contains("is already open")
-                    && std::time::Instant::now() < deadline =>
-            {
+            Err(e) if e.is_in_use() && std::time::Instant::now() < deadline => {
                 std::thread::sleep(std::time::Duration::from_millis(20));
             }
             r => break r.expect("hold the working copy"),
         }
     };
+    let in_use = format!(
+        "dstore: working copy {}: in use by another dstore command\n",
+        w.root.display()
+    );
+    for args in [
+        &["status"][..],
+        &["diff"],
+        &["diff", "--stat", "a"],
+        &["fetch"],
+        &["pull"],
+        &["push", "--ticket", "bogus"],
+    ] {
+        let got = run(&mut dstore(&w.root, args, &[]));
+        assert_eq!(got, (1, Vec::new(), in_use.clone()), "{args:?}");
+    }
+    // From a subdirectory the message names the working copy's root, as `Find` returns it.
+    fs::create_dir(w.root.join("sub")).expect("mkdir sub");
+    let got = run(&mut dstore(&w.root.join("sub"), &["status"], &[]));
+    assert_eq!(got, (1, Vec::new(), in_use.clone()));
+    held.close().expect("release");
+    // The same fork window as above can briefly keep the released lock alive.
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    let got = loop {
+        let got = run(&mut dstore(&w.root, &["status"], &[]));
+        if got.2.contains("in use by another dstore command")
+            && std::time::Instant::now() < deadline
+        {
+            std::thread::sleep(std::time::Duration::from_millis(20));
+            continue;
+        }
+        break got;
+    };
+    assert_eq!(got.0, 0, "{got:?}");
+}
+
+/// A dstore v0.1.10 command (core v0.0.9) knows no `.dstore/lock`, but it holds the packstore directory's
+/// flock exclusively while it has the store open, and a packstore of core v0.0.10 refuses to join it.
+#[test]
+fn a_working_copy_held_by_an_older_release_is_refused() {
+    let w = wc("storedbogus");
+    // Other tests spawn dstore processes from their threads, and between fork and exec a child holds a
+    // copy of every descriptor, a packstore's flock included. So right after the fixture closes the
+    // store its shared lock can briefly look held, and after `held` is dropped the exclusive one: retry
+    // for up to 10 s.
+    let dir = fs::File::open(w.root.join(".dstore").join("packstore")).expect("open the packstore");
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    let held = loop {
+        match rustix::fs::flock(&dir, rustix::fs::FlockOperation::NonBlockingLockExclusive) {
+            Err(e)
+                if e == rustix::io::Errno::WOULDBLOCK && std::time::Instant::now() < deadline =>
+            {
+                std::thread::sleep(std::time::Duration::from_millis(20));
+            }
+            r => {
+                r.expect("hold the store as an older release does");
+                break dir;
+            }
+        }
+    };
     let locked = format!(
-        "dstore: packstore: {}/.dstore/packstore is already open: resource temporarily unavailable\n",
+        "dstore: packstore: {}/.dstore/packstore is held by an older release, which needs the store to itself: resource temporarily unavailable\n",
         w.root.display()
     );
     for args in [
@@ -295,12 +353,12 @@ fn a_locked_working_copy_is_refused() {
         let got = run(&mut dstore(&w.root, args, &[]));
         assert_eq!(got, (1, Vec::new(), locked.clone()), "{args:?}");
     }
-    held.close().expect("release");
+    drop(held);
     // The same fork window as above can briefly keep the released lock alive.
     let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
     let got = loop {
         let got = run(&mut dstore(&w.root, &["status"], &[]));
-        if got.2.contains("is already open") && std::time::Instant::now() < deadline {
+        if got.2.contains("is held by an older release") && std::time::Instant::now() < deadline {
             std::thread::sleep(std::time::Duration::from_millis(20));
             continue;
         }

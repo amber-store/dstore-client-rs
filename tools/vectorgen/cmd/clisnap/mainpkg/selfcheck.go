@@ -21,7 +21,7 @@ import (
 // and DstoreVersion the version they are copied from.
 const (
 	DstoreModule  = "github.com/amber-store/dstore"
-	DstoreVersion = "v0.1.10"
+	DstoreVersion = "v0.1.11"
 )
 
 //go:embed copied.go

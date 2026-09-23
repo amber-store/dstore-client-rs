@@ -61,14 +61,14 @@ func TestNodeSideTexts(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if want := "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"; ns.Rust.Stderr != want || ns.Rust.Exit != 1 {
+	if want := "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"; ns.Rust.Stderr != want || ns.Rust.Exit != 1 {
 		t.Errorf("kind A: %+v", ns.Rust)
 	}
 	ns, err = nodeSideOf(spec{nodeSideKind: "DD-2", localDir: "P"})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if want := "dstore: refstore: P/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)\n"; ns.Rust.Stderr != want || ns.Rust.Exit != 1 || ns.Kind != "DD-2" {
+	if want := "dstore: refstore: P/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does\n"; ns.Rust.Stderr != want || ns.Rust.Exit != 1 || ns.Kind != "DD-2" {
 		t.Errorf("kind DD-2: %+v", ns)
 	}
 	for _, bad := range []spec{{nodeSideKind: "A"}, {nodeSideKind: "D"}, {nodeSideKind: "DD-2"}} {

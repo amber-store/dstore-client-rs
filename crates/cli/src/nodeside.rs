@@ -7,11 +7,11 @@ use dstore_gocompat::path::join;
 use dstore_ticket::Ticket;
 
 /// `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go
-/// dstore binary (github.com/amber-store/dstore v0.1.10)`, where `<cmd>` is `serve`, `cluster init` or
+/// dstore binary (github.com/amber-store/dstore v0.1.11)`, where `<cmd>` is `serve`, `cluster init` or
 /// `node join`.
 pub fn node_side_error(cmd: &str) -> CliError {
     CliError::Msg(format!(
-        "{cmd} is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)"
+        "{cmd} is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)"
     ))
 }
 
@@ -77,7 +77,7 @@ mod tests {
     fn node_side_texts() {
         assert_eq!(
             text(node_side_error("cluster init")),
-            "cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)"
+            "cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)"
         );
     }
 

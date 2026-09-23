@@ -1,6 +1,6 @@
 // Command vectorgen generates the golden test vectors of dstore-client-rs
 // (tests/golden, conventions in VECTORS.md) by driving the Go implementation:
-// github.com/amber-store/dstore v0.1.10 and the modules it pins, the normative
+// github.com/amber-store/dstore v0.1.11 and the modules it pins, the normative
 // reference for the Rust port. Usage:
 //
 //	go run . <out-dir> [family...]
