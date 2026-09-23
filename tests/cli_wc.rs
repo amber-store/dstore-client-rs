@@ -50,6 +50,7 @@ fn wc(ticket: &str) -> Wc {
     t.state = State {
         base: dstore_worktree::empty_tree().0,
         remote: Key([0; 32]),
+        remote_commit: Key([0; 32]),
         has_remote: false,
         remote_version: None,
         synced_at: GoTime::from_unix_nano(0),

@@ -549,6 +549,8 @@ async fn ls_with<W: Write + Send + 'static>(
     let mut get = cluster_get(tokio::runtime::Handle::current(), ctx, cl);
     let path = path.to_vec();
     let entries = blocking(move || {
+        // A branch is listed through its commit's tree.
+        let root = dstore_client::tree_of(root, &mut get).map_err(CliError::msg)?;
         let mut dir = root;
         if !path.is_empty() && path != b"/" {
             dir = resolve_path(root, trim_slashes(&path), &mut get)?;
@@ -577,6 +579,7 @@ async fn cat_with<W: Write + Send + 'static>(
     let mut get = cluster_get(tokio::runtime::Handle::current(), ctx, cl);
     let path = trim_slashes(path).to_vec();
     blocking(move || {
+        let root = dstore_client::tree_of(root, &mut get).map_err(CliError::msg)?;
         let Some(e) = resolve_entry(root, &path, &mut get)? else {
             return Ok(None);
         };

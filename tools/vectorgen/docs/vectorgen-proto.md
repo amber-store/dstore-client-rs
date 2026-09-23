@@ -1,8 +1,8 @@
 # vectorgen-proto: wire, pack, ticket, admin and status vectors
 
-Owner: vectorgen-proto (L1). Every value comes from the Go libraries pinned in PORTING.md §0: dstore v0.1.9
+Owner: vectorgen-proto (L1). Every value comes from the Go libraries pinned in PORTING.md §0: dstore v0.1.10
 (`wire`, `codec`, `ticket`, `client` error types, `node` payload types, `view.IDsOf`), transport-iroh v0.4.0
-`protocol`, core v0.0.8 `amberpack`, `key`, `reference`, go-iroh v0.2.0 `key`, urfave/cli v2.27.7.
+`protocol`, core v0.0.9 `amberpack`, `key`, `reference`, go-iroh v0.2.0 `key`, urfave/cli v2.27.7.
 
 | Family | Files | Generator |
 |---|---|---|

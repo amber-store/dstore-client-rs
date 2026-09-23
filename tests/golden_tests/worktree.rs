@@ -507,17 +507,39 @@ struct EmptyTreeJson {
 struct StateJson {
     base: String,
     remote: String,
+    remote_commit: String,
     has_remote: bool,
+    is_branch: bool,
+    remote_key: String,
     remote_version: Option<String>,
     synced_at_unix: String,
     synced_at_nsec: u32,
 }
 
 impl StateJson {
+    /// `State.IsBranch` and `State.RemoteKey` of `st` against Go's.
+    fn check_branch(&self, name: &str, st: &wt::State, failures: &mut Vec<String>) {
+        if st.is_branch() != self.is_branch {
+            failures.push(format!(
+                "{name}: is_branch {}, want {}",
+                st.is_branch(),
+                self.is_branch
+            ));
+        }
+        if st.remote_key() != key_of(&self.remote_key) {
+            failures.push(format!(
+                "{name}: remote_key {}, want {}",
+                st.remote_key(),
+                self.remote_key
+            ));
+        }
+    }
+
     fn to_state(&self) -> wt::State {
         wt::State {
             base: key_of(&self.base),
             remote: key_of(&self.remote),
+            remote_commit: key_of(&self.remote_commit),
             has_remote: self.has_remote,
             remote_version: self.remote_version.as_deref().map(hex),
             synced_at: GoTime {
@@ -549,6 +571,7 @@ struct StateDecodeCase {
 #[derive(Deserialize)]
 struct StateVectors {
     empty_tree: EmptyTreeJson,
+    commit: EmptyTreeJson,
     encode: Vec<StateEncodeCase>,
     decode: Vec<StateDecodeCase>,
 }
@@ -621,6 +644,34 @@ fn empty_tree() {
     assert_eq!(k.to_string(), v.empty_tree.key);
     assert_eq!(b, hex(&v.empty_tree.bytes));
     assert_eq!(&k.to_string()[..16], v.empty_tree.short);
+}
+
+/// The commit of the branch cases: the empty tree by "tester" at 1 ns (dstore's own test commit), which
+/// core-rs must encode to Go's bytes and key.
+#[test]
+fn test_commit() {
+    use amber_store_core::commit::{Commit, Identity};
+    let v: StateVectors = load_json("worktree/state.json");
+    let id = Identity {
+        name: "tester".into(),
+        when: 1,
+        ..Identity::default()
+    };
+    let (k, b) = Commit {
+        tree: wt::empty_tree().0,
+        parents: Vec::new(),
+        author: id.clone(),
+        committer: id,
+        message: String::new(),
+        signature: Vec::new(),
+        public_key: Vec::new(),
+    }
+    .object()
+    .expect("commit");
+    assert_eq!(k.to_string(), v.commit.key);
+    assert_eq!(b, hex(&v.commit.bytes));
+    assert_eq!(&k.to_string()[..16], v.commit.short);
+    assert_eq!(Commit::decode(&b).expect("decode").tree, wt::empty_tree().0);
 }
 
 #[test]
@@ -710,6 +761,7 @@ fn state_encode() {
         let dir = Temp::new();
         let mut tr = wt::Tree::create(&dir.bytes(), small_config()).expect("create");
         tr.state = c.state.to_state();
+        c.state.check_branch(&c.name, &tr.state, &mut failures);
         if let Err(e) = tr.save_state() {
             failures.push(format!("{}: save_state: {e}", c.name));
         }
@@ -752,6 +804,9 @@ fn state_decode() {
                 let want = c.state.as_ref().map(StateJson::to_state);
                 if Some(&t.state) != want.as_ref() {
                     failures.push(format!("{}: state {:?}, want {want:?}", c.name, t.state));
+                }
+                if let Some(s) = &c.state {
+                    s.check_branch(&c.name, &t.state, &mut failures);
                 }
                 t.close().expect("close");
             }

@@ -24,7 +24,7 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   RUST_TOOLCHAIN: "1.95.0" # = ci.yml
-  DSTORE_GO_REF: v0.1.9 # the Go dstore release this port follows (= ci.yml)
+  DSTORE_GO_REF: v0.1.10 # the Go dstore release this port follows (= ci.yml)
 
 defaults:
   run:

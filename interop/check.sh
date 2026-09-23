@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Live interop suite of dstore-client-rs (port-notes/verification.md §4.5, PORTING.md §7): a 3-node Go
-# dstore v0.1.9 cluster on loopback, and the Go and the Rust client run side by side against it.
+# dstore v0.1.10 cluster on loopback, and the Go and the Rust client run side by side against it.
 # interop/README.md describes the inputs, the checks and the comparison modes.
 #
 #   bash interop/check.sh [--list] [ID | GROUP ...]
@@ -60,6 +60,7 @@ D10|missing .dstore/state: incomplete clone
 D11|clone into a non-empty dir, onto a file, of an unknown ref; init inside a working copy
 D12|lock interop: a Go holder blocks rs, a Rust holder blocks go
 D13|stored-ticket refresh: a stale ticket is rewritten identically
+D14|branch: go push -m starts it; rs clones and pushes on top; go pulls; ls, cat; lost state on a branch
 E1|SIGINT and SIGTERM end watch with exit 0
 E2|DSTORE_LOG_LEVEL=warn hides INFO lines; info shows the same messages
 E3|cargo test live_go_node_* against n1 (Rust iroh 1.2.0 to go-iroh)
@@ -79,7 +80,7 @@ H8|cluster status with a cluster id shorter than 4 bytes
 ORDER='A1 A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 H7 H8
 B1 B2 B3 B4 B5 B6 B7 B8 H1 H2 B9 B10 B11 B12 B13 B14 H3 H4 H5
 C2 E1 E2
-D1 D2 D3 D4 D5 D6 D7 D8 D9 D10 D11 D12 D13 H6
+D1 D2 D3 D4 D5 D6 D7 D8 D9 D10 D11 D12 D13 D14 H6
 C1 G1 G2 A12 A13 C3 E3'
 
 check_desc() { printf '%s\n' "$CHECKS" | awk -F'|' -v id="$1" '$1 == id { print $2 }'; }
@@ -172,15 +173,15 @@ build_go() {
 	if [ -n "$repo" ]; then
 		local tag
 		tag=$(git -C "$repo" describe --tags --exact-match HEAD 2>/dev/null)
-		[ "$tag" = v0.1.9 ] || die "$repo: HEAD is ${tag:-not a tag}, want v0.1.9"
+		[ "$tag" = v0.1.10 ] || die "$repo: HEAD is ${tag:-not a tag}, want v0.1.10"
 		say "building Go dstore $tag from $repo (git archive HEAD, CGO_ENABLED=0)"
 		mkdir -p "$W/go-src" && git -C "$repo" archive HEAD | tar -x -C "$W/go-src" || die "git archive failed"
 		(cd "$W/go-src" && go build -trimpath -o "$BIN/dstore-go" ./cmd/dstore) >"$LOGS/go-build.log" 2>&1 ||
 			{ cat "$LOGS/go-build.log"; die "go build of dstore failed"; }
 		rm -rf "$W/go-src"
 	else
-		say "installing github.com/amber-store/dstore/cmd/dstore@v0.1.9"
-		GOBIN="$W/gobin" go install github.com/amber-store/dstore/cmd/dstore@v0.1.9 >"$LOGS/go-build.log" 2>&1 ||
+		say "installing github.com/amber-store/dstore/cmd/dstore@v0.1.10"
+		GOBIN="$W/gobin" go install github.com/amber-store/dstore/cmd/dstore@v0.1.10 >"$LOGS/go-build.log" 2>&1 ||
 			{ cat "$LOGS/go-build.log"; die "go install of dstore failed"; }
 		mv "$W/gobin/dstore" "$BIN/dstore-go" && rm -rf "$W/gobin"
 	fi
@@ -1242,6 +1243,84 @@ d13_refresh() {
 check_D13() {
 	need D1 || return
 	d13_refresh D13
+}
+
+# wc_state_sans_time DIR: .dstore/state without its synced_at line.
+wc_state_sans_time() { grep -v '"synced_at"' "$1/.dstore/state"; }
+
+# remote_commit_of DIR: the commit the working copy's branch names (empty when it is no branch).
+remote_commit_of() { sed -n 's/^  "remote_commit": "\([0-9a-f]*\)",\{0,1\}$/\1/p' "$1/.dstore/state"; }
+
+# A reference naming a commit is a branch (dstore v0.1.10): either client starts it, clones it, commits on
+# top of the other's commit and pulls the other's, and both recognise an interrupted push by its commit.
+check_D14() {
+	local a=$WC/br-go b=$WC/br-rs k c1 c2 c4
+	rm -rf "$a" "$b" "$WC/br-twin-go" "$WC/br-twin-rs"
+	mkdir -p "$a" && printf 'one\n' >"$a/f.txt"
+	# Go starts the branch: a message turns a new reference into one.
+	run_one go D14.init -C "$a" -- init --no-relay trees/branch
+	run_one go D14.first -C "$a" -- push --user alice -m first
+	expect_exit D14.init go 0 && expect_exit D14.first go 0 || return
+	k=$(tree_key "$a" -exclude .dstore)
+	expect_lines "$CK/D14.first.go.out" "^pushed trees/branch: commit 5[0-9a-f]{15}, root ${k:0:16}, [0-9]+ objects, [0-9]+ uploaded, version [0-9a-f]+\$"
+	c1=$(remote_commit_of "$a")
+	expect_match "remote_commit after the Go push" "$c1" '^5[0-9a-f]{63}$'
+	# Rust clones it: the commit's tree, and the state Go has.
+	run_one rs D14.clone -C "$WC" -- clone --no-relay trees/branch br-rs
+	expect_exit D14.clone rs 0 || return
+	expect_lines "$CK/D14.clone.rs.out" "^cloned trees/branch into br-rs: commit ${c1:0:16}, root ${k:0:16}, [0-9]+ objects fetched \\([0-9]+ bytes\\)\$"
+	same "$a/f.txt" "$b/f.txt" || note_fail "D14: the rs clone of the branch differs from the Go working copy"
+	wc_state_sans_time "$a" >"$CK/D14.go.state"
+	wc_state_sans_time "$b" >"$CK/D14.rs.state"
+	same "$CK/D14.go.state" "$CK/D14.rs.state" ||
+		diff_into_fail "$CK/D14.go.state" "$CK/D14.rs.state" "D14 .dstore/state of the branch without synced_at, go vs rs:"
+	pair D14.status exact -C "$b" -- status
+	pair D14.fetch exact -C "$b" -- fetch
+	expect_lines "$CK/D14.fetch.rs.out" "^trees/branch: up to date \\(${c1:0:16}\\)\$"
+	# ls and cat read the commit's tree.
+	pair D14.ls exact -- ls --no-relay trees/branch
+	expect_lines "$CK/D14.ls.rs.out" '^f\.txt$'
+	pair D14.cat exact -- cat --no-relay trees/branch f.txt
+	expect_lines "$CK/D14.cat.rs.out" '^one$'
+	# Rust pushes without a message: still a commit, on top of Go's.
+	printf 'two\n' >"$b/f.txt"
+	run_one rs D14.second -C "$b" -- push --user bob
+	expect_exit D14.second rs 0 || return
+	k=$(tree_key "$b" -exclude .dstore)
+	expect_lines "$CK/D14.second.rs.out" "^pushed trees/branch: commit 5[0-9a-f]{15}, root ${k:0:16}, [0-9]+ objects, [0-9]+ uploaded, version [0-9a-f]+\$"
+	c2=$(remote_commit_of "$b")
+	expect_match "remote_commit after the rs push" "$c2" '^5[0-9a-f]{63}$'
+	[ "$c2" != "$c1" ] || note_fail "D14: the rs push did not move the branch"
+	# Go fetches and pulls Rust's commit, and agrees on the state.
+	run_one go D14.fetch2 -C "$a" -- fetch
+	expect_lines "$CK/D14.fetch2.go.out" "^fetched trees/branch: commit ${c2:0:16}, root ${k:0:16}, [0-9]+ objects fetched \\([0-9]+ bytes\\)\$"
+	run_one go D14.pull -C "$a" -- pull
+	expect_exit D14.pull go 0
+	same "$a/f.txt" "$b/f.txt" || note_fail "D14: go did not pull the rs commit's tree"
+	wc_state_sans_time "$a" >"$CK/D14.go.state2"
+	wc_state_sans_time "$b" >"$CK/D14.rs.state2"
+	same "$CK/D14.go.state2" "$CK/D14.rs.state2" ||
+		diff_into_fail "$CK/D14.go.state2" "$CK/D14.rs.state2" "D14 .dstore/state after go pulled the rs commit, go vs rs:"
+	# Go commits on top of Rust's commit; Rust pulls it.
+	printf 'three\n' >"$a/f.txt"
+	run_one go D14.third -C "$a" -- push --user alice -m third
+	expect_exit D14.third go 0
+	run_one rs D14.pull2 -C "$b" -- pull
+	expect_exit D14.pull2 rs 0 && expect_lines "$CK/D14.pull2.rs.out" '^pulled: 1 paths updated$'
+	same "$a/f.txt" "$b/f.txt" || note_fail "D14: rs did not pull the go commit's tree"
+	# A lost state on a branch: in twin copies both clients recognise the rs push by the commit it stored,
+	# although their own attempt's commit has another timestamp, and so another key.
+	cp "$b/.dstore/state" "$CK/D14.saved-state"
+	printf 'four\n' >"$b/f.txt"
+	run_one rs D14.fourth -C "$b" -- push --user bob -m fourth
+	expect_exit D14.fourth rs 0 || return
+	c4=$(remote_commit_of "$b")
+	cp "$CK/D14.saved-state" "$b/.dstore/state"
+	cp -Rp "$b" "$WC/br-twin-go" && cp -Rp "$b" "$WC/br-twin-rs"
+	pair D14.recover exact -C "$WC/br-twin-@IMPL@" -- push --user bob -m fourth
+	expect_lines "$CK/D14.recover.rs.out" "^trees/branch already holds ${c4:0:16} \\(an earlier push completed\\); state updated\$"
+	pair D14.recover-status exact -C "$WC/br-twin-@IMPL@" -- status
+	rm -rf "$a" "$b" "$WC/br-twin-go" "$WC/br-twin-rs"
 }
 
 # ---- E: CLI behaviour ----

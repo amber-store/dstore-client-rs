@@ -3,7 +3,7 @@
 use std::sync::Arc;
 
 use amber_store_core::fstree;
-use amber_store_core::key::Key;
+use amber_store_core::key::{Key, Type};
 use amber_store_core::packstore;
 use dstore_gocompat::errno::{PathError, rewrite_os_errors};
 use dstore_gocompat::json::{self, JsonField, JsonFieldSpec, JsonKind, JsonValue};
@@ -18,7 +18,7 @@ const CONFIG_FILE: &[u8] = b"config";
 const STATE_FILE: &[u8] = b"state";
 const STORE_DIR: &[u8] = b"packstore";
 
-/// The empty tree's key (`fstree.EncodeDirLeaf(nil)` in core v0.0.8).
+/// The empty tree's key (`fstree.EncodeDirLeaf(nil)` in core v0.0.9).
 const EMPTY_TREE_KEY: [u8; 32] = [
     0x20, 0x01, 0xbb, 0xe6, 0xa9, 0xf5, 0xa0, 0x14, 0x6a, 0x1f, 0x4d, 0x03, 0x81, 0xe9, 0xb0, 0xed,
     0x1a, 0xc2, 0xf1, 0xa9, 0x79, 0xce, 0x9d, 0x5a, 0xd8, 0x4e, 0x46, 0xff, 0x0b, 0x58, 0xf3, 0x6b,
@@ -41,14 +41,41 @@ pub struct Config {
     pub user: Vec<u8>,
 }
 
-/// `worktree.State` (`.dstore/state`).
+/// `worktree.State` (`.dstore/state`): base is the tree the directory was last synced to; remote the
+/// reference's tree as of the last fetch, with its cluster version (`has_remote` false: the reference does
+/// not exist). When the reference names a commit (a branch), `remote_commit` is that commit and `remote` its
+/// tree; otherwise `remote_commit` is the zero key.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct State {
     pub base: Key,
     pub remote: Key,
+    pub remote_commit: Key,
     pub has_remote: bool,
     pub remote_version: Option<Vec<u8>>,
     pub synced_at: GoTime,
+}
+
+impl State {
+    /// `State.IsBranch`: whether the fetched reference names a commit.
+    pub fn is_branch(&self) -> bool {
+        self.has_remote && is_commit(&self.remote_commit)
+    }
+
+    /// `State.RemoteKey`: the key the reference named at the last fetch: the commit on a branch, else the
+    /// tree.
+    pub fn remote_key(&self) -> Key {
+        if self.is_branch() {
+            self.remote_commit
+        } else {
+            self.remote
+        }
+    }
+}
+
+/// Go `k.Type() == key.Commit`, read from the type nibble: core-rs `Key::type_` panics on a reserved one,
+/// and the zero key is a Blob key.
+pub(crate) fn is_commit(k: &Key) -> bool {
+    Type::from_u8(k.0[0] >> 4) == Some(Type::Commit)
 }
 
 /// `*worktree.Tree`.
@@ -142,6 +169,7 @@ impl Tree {
             state: State {
                 base: empty,
                 remote: Key([0; 32]),
+                remote_commit: Key([0; 32]),
                 has_remote: false,
                 remote_version: None,
                 synced_at: GO_ZERO_TIME,
@@ -175,6 +203,7 @@ impl Tree {
             state: State {
                 base: empty,
                 remote: Key([0; 32]),
+                remote_commit: Key([0; 32]),
                 has_remote: false,
                 remote_version: None,
                 synced_at: GoTime::now(),
@@ -209,12 +238,21 @@ impl Tree {
         } else {
             (String::new(), String::new())
         };
-        let fields = [
+        // `remote_commit,omitempty`: written only on a branch.
+        let commit = if s.is_branch() {
+            hex::encode(&s.remote_commit.0)
+        } else {
+            String::new()
+        };
+        let mut fields = vec![
             ("base", JsonField::Str(base.as_bytes())),
             ("remote", JsonField::Str(remote.as_bytes())),
-            ("remote_version", JsonField::Str(version.as_bytes())),
-            ("synced_at", JsonField::Str(synced_at.as_bytes())),
         ];
+        if !commit.is_empty() {
+            fields.push(("remote_commit", JsonField::Str(commit.as_bytes())));
+        }
+        fields.push(("remote_version", JsonField::Str(version.as_bytes())));
+        fields.push(("synced_at", JsonField::Str(synced_at.as_bytes())));
         let p = path::join(&[&self.root, DIR.as_bytes(), STATE_FILE]);
         write_json(&p, json::marshal_indent_object(&fields))
     }
@@ -314,6 +352,10 @@ const STATE_FIELDS: &[JsonFieldSpec] = &[
         kind: JsonKind::String,
     },
     JsonFieldSpec {
+        name: "remote_commit",
+        kind: JsonKind::String,
+    },
+    JsonFieldSpec {
         name: "remote_version",
         kind: JsonKind::String,
     },
@@ -404,6 +446,7 @@ fn load_state(root: &[u8]) -> Result<State, Error> {
     let mut s = State {
         base,
         remote: Key([0; 32]),
+        remote_commit: Key([0; 32]),
         has_remote: false,
         remote_version: None,
         synced_at: GO_ZERO_TIME,
@@ -411,11 +454,23 @@ fn load_state(root: &[u8]) -> Result<State, Error> {
     if !remote_hex.is_empty() {
         s.has_remote = true;
         s.remote = parse_key(&remote_hex, "remote")?;
-        let version = hex::decode_string(&slot_str(&slots, 2))
+        let commit_hex = slot_str(&slots, 2);
+        if !commit_hex.is_empty() {
+            // parse_key validated the key, so `type_` cannot panic.
+            let rc = parse_key(&commit_hex, "remote_commit")?;
+            if !is_commit(&rc) {
+                return Err(Error::Msg(format!(
+                    "bad state file: remote_commit {rc} is a {}",
+                    rc.type_()
+                )));
+            }
+            s.remote_commit = rc;
+        }
+        let version = hex::decode_string(&slot_str(&slots, 3))
             .map_err(|e| wrap(format!("bad state file: remote_version: {e}"), e))?;
         s.remote_version = Some(version);
     }
-    let synced = slot_str(&slots, 3);
+    let synced = slot_str(&slots, 4);
     // JSON strings decode to valid UTF-8 (invalid bytes become U+FFFD).
     let synced = String::from_utf8_lossy(&synced);
     s.synced_at = dstore_gocompat::time::parse_rfc3339nano(&synced)
@@ -473,6 +528,8 @@ mod tests {
         let mut tr = Tree::open_raw(&root).expect("open raw");
         tr.state.has_remote = true;
         tr.state.remote = empty;
+        let branch = test_commit(&tr, empty);
+        tr.state.remote_commit = branch;
         tr.state.remote_version = Some(vec![1, 2, 3]);
         tr.state.synced_at = GoTime {
             unix_secs: 1_700_000_000,
@@ -483,7 +540,9 @@ mod tests {
         let state = std::fs::read(dir.join(".dstore/state")).expect("state file");
         assert_eq!(
             String::from_utf8_lossy(&state),
-            "{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote_version\": \"010203\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}\n"
+            format!(
+                "{{\n  \"base\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote\": \"2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b\",\n  \"remote_commit\": \"{branch}\",\n  \"remote_version\": \"010203\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}}\n"
+            )
         );
         let config = std::fs::read(dir.join(".dstore/config")).expect("config file");
         assert_eq!(
@@ -497,6 +556,9 @@ mod tests {
         let got = Tree::open(&dir.join_bytes("a/b")).expect("open from a subdirectory");
         assert_eq!(got.root, root);
         assert_eq!(got.config, cfg());
+        assert!(got.state.is_branch());
+        assert_eq!(got.state.remote_commit, branch);
+        assert_eq!(got.state.remote_key(), branch);
         assert!(got.state.has_remote);
         assert_eq!(got.state.remote, empty);
         assert_eq!(got.state.remote_version.as_deref(), Some(&[1u8, 2, 3][..]));
@@ -508,6 +570,109 @@ mod tests {
             }
         );
         got.close().expect("close");
+    }
+
+    /// A commit of `tree` by "tester" at 1 ns, stored in the working copy (the Go tests' commit).
+    fn test_commit(tr: &Tree, tree: Key) -> Key {
+        use amber_store_core::commit::{Commit, Identity};
+        let id = Identity {
+            name: "tester".into(),
+            when: 1,
+            ..Identity::default()
+        };
+        let (k, raw) = Commit {
+            tree,
+            parents: Vec::new(),
+            author: id.clone(),
+            committer: id,
+            message: String::new(),
+            signature: Vec::new(),
+            public_key: Vec::new(),
+        }
+        .object()
+        .expect("commit");
+        tr.store.put(k, &raw).expect("put commit");
+        k
+    }
+
+    /// `remote_commit` in the state file: written only on a branch, read only beside a remote, and it
+    /// must name a commit.
+    #[test]
+    fn remote_commit_in_the_state_file() {
+        let dir = Scratch::new();
+        let root = dir.bytes();
+        let mut tr = Tree::create(&root, cfg()).expect("create");
+        let (empty, _) = empty_tree();
+        let branch = test_commit(&tr, empty);
+        let state_path = dir.join(".dstore/state");
+        let read =
+            || String::from_utf8(std::fs::read(&state_path).expect("state file")).expect("utf-8");
+
+        // Not a branch: a zero remote_commit, a tree key in remote_commit, or no remote at all.
+        tr.state.has_remote = true;
+        tr.state.remote = empty;
+        tr.state.remote_version = Some(vec![1]);
+        assert!(!tr.state.is_branch());
+        assert_eq!(tr.state.remote_key(), empty);
+        tr.save_state().expect("save");
+        assert!(!read().contains("remote_commit"), "{}", read());
+        tr.state.remote_commit = empty;
+        assert!(!tr.state.is_branch());
+        tr.save_state().expect("save");
+        assert!(!read().contains("remote_commit"), "{}", read());
+        tr.state.remote_commit = branch;
+        tr.state.has_remote = false;
+        assert!(!tr.state.is_branch());
+        assert_eq!(tr.state.remote_key(), empty);
+        tr.save_state().expect("save");
+        assert!(!read().contains("remote_commit"), "{}", read());
+        tr.close().expect("close");
+
+        let e = empty.to_string();
+        let file = |remote: &str, commit: &str| {
+            format!(
+                r#"{{"base":"{e}","remote":"{remote}","remote_commit":"{commit}","remote_version":"01","synced_at":"2023-11-14T22:13:20Z"}}"#
+            )
+        };
+        let open = |text: String| {
+            std::fs::write(&state_path, text).expect("write state");
+            Tree::open(&root).map(|t| {
+                let s = t.state.clone();
+                t.close().expect("close");
+                s
+            })
+        };
+        let s = open(file(&e, &branch.to_string())).expect("branch state");
+        assert!(s.is_branch());
+        assert_eq!(
+            (s.remote, s.remote_commit, s.remote_key()),
+            (empty, branch, branch)
+        );
+        // Without a remote the commit is not read, not even a malformed one.
+        let s = open(file("", "zz")).expect("no remote");
+        assert!(!s.has_remote && !s.is_branch());
+        assert_eq!(s.remote_commit, Key([0; 32]));
+        let err = |text: String| match open(text) {
+            Ok(s) => panic!("opened: {s:?}"),
+            Err(e) => e.to_string(),
+        };
+        assert_eq!(
+            err(file(&e, "zz")),
+            "bad state file: remote_commit: encoding/hex: invalid byte: U+007A 'z'"
+        );
+        assert_eq!(
+            err(file(&e, &e)),
+            format!("bad state file: remote_commit {e} is a DirLeaf")
+        );
+        // remote is parsed before remote_commit, remote_commit before remote_version.
+        assert_eq!(
+            err(file("yy", "zz")),
+            "bad state file: remote: encoding/hex: invalid byte: U+0079 'y'"
+        );
+        assert_eq!(
+            err(file(&e, &e).replace(r#""remote_version":"01""#, r#""remote_version":"xx""#)),
+            format!("bad state file: remote_commit {e} is a DirLeaf")
+        );
     }
 
     // Port of TestFindOutsideWorkingCopy.

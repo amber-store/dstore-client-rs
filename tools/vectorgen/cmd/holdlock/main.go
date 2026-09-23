@@ -1,4 +1,4 @@
-// Command holdlock opens DIR/.dstore/packstore with github.com/amber-store/core v0.0.8 packstore, which
+// Command holdlock opens DIR/.dstore/packstore with github.com/amber-store/core v0.0.9 packstore, which
 // takes the directory's flock, and holds it for SECONDS. The lock-interop check (D12) runs a Rust command
 // against a working copy while this Go process holds its store; examples/holdlock.rs is the Rust twin.
 //

@@ -4,7 +4,7 @@
     "go": "go1.26.5",
     "module": {
       "path": "github.com/amber-store/dstore",
-      "version": "v0.1.9"
+      "version": "v0.1.10"
     },
     "deps": [
       {
@@ -21,7 +21,7 @@
       },
       {
         "path": "github.com/amber-store/core",
-        "version": "v0.0.8"
+        "version": "v0.0.9"
       },
       {
         "path": "github.com/amber-store/transport-iroh",
@@ -1170,7 +1170,7 @@
       "subdir": "",
       "stdin": "",
       "exit": 0,
-      "stdout": "NAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nOPTIONS:\n   --ticket value  cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value   relay URL for the fallback path (default: the built-in relay map)\n   --no-relay      direct addresses only, no relay (default: false)\n   --no-discovery  neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value    user identity recorded in the reference (default: the stored one, then the OS user)\n   --force         replace the reference unconditionally (default: false)\n   --jobs value    parallelism (0 = cores) (default: 0)\n   --no-tui        plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h      show help\n",
+      "stdout": "NAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nOPTIONS:\n   --ticket value             cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value              relay URL for the fallback path (default: the built-in relay map)\n   --no-relay                 direct addresses only, no relay (default: false)\n   --no-discovery             neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value               user identity recorded in the reference (default: the stored one, then the OS user)\n   --force                    replace the reference unconditionally (default: false)\n   --message value, -m value  commit message; on a branch (a reference naming a commit) every push makes a commit, and a message makes one on any reference\n   --jobs value               parallelism (0 = cores) (default: 0)\n   --no-tui                   plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h                 show help\n",
       "stderr": "",
       "node_side": null
     },
@@ -1186,7 +1186,7 @@
       "subdir": "",
       "stdin": "",
       "exit": 0,
-      "stdout": "NAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nOPTIONS:\n   --ticket value  cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value   relay URL for the fallback path (default: the built-in relay map)\n   --no-relay      direct addresses only, no relay (default: false)\n   --no-discovery  neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value    user identity recorded in the reference (default: the stored one, then the OS user)\n   --force         replace the reference unconditionally (default: false)\n   --jobs value    parallelism (0 = cores) (default: 0)\n   --no-tui        plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h      show help\n",
+      "stdout": "NAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nOPTIONS:\n   --ticket value             cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value              relay URL for the fallback path (default: the built-in relay map)\n   --no-relay                 direct addresses only, no relay (default: false)\n   --no-discovery             neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value               user identity recorded in the reference (default: the stored one, then the OS user)\n   --force                    replace the reference unconditionally (default: false)\n   --message value, -m value  commit message; on a branch (a reference naming a commit) every push makes a commit, and a message makes one on any reference\n   --jobs value               parallelism (0 = cores) (default: 0)\n   --no-tui                   plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h                 show help\n",
       "stderr": "",
       "node_side": null
     },
@@ -3039,6 +3039,55 @@
       "exit": 1,
       "stdout": "Incorrect Usage: flag provided but not defined: -local\n\nNAME:\n   dstore clone - clone the tree under NAME into DIR (default: the last segment of NAME) as a working copy\n\nUSAGE:\n   dstore clone [command options] NAME [DIR]\n\nCOMMANDS:\n   help, h  Shows a list of commands or help for one command\n\nOPTIONS:\n   --ticket value  cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value   relay URL for the fallback path (default: the built-in relay map)\n   --no-relay      direct addresses only, no relay (default: false)\n   --no-discovery  neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value    user identity stored for pushes\n   --jobs value    parallelism (0 = cores) (default: 0)\n   --no-tui        plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h      show help\n",
       "stderr": "dstore: flag provided but not defined: -local\n",
+      "node_side": null
+    },
+    {
+      "name": "usage/push -m",
+      "group": "usage",
+      "args": [
+        "push",
+        "-m"
+      ],
+      "env": [],
+      "fixture": "empty",
+      "subdir": "",
+      "stdin": "",
+      "exit": 1,
+      "stdout": "Incorrect Usage: flag needs an argument: -m\n\nNAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nCOMMANDS:\n   help, h  Shows a list of commands or help for one command\n\nOPTIONS:\n   --ticket value             cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value              relay URL for the fallback path (default: the built-in relay map)\n   --no-relay                 direct addresses only, no relay (default: false)\n   --no-discovery             neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value               user identity recorded in the reference (default: the stored one, then the OS user)\n   --force                    replace the reference unconditionally (default: false)\n   --message value, -m value  commit message; on a branch (a reference naming a commit) every push makes a commit, and a message makes one on any reference\n   --jobs value               parallelism (0 = cores) (default: 0)\n   --no-tui                   plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h                 show help\n",
+      "stderr": "dstore: flag needs an argument: -m\n",
+      "node_side": null
+    },
+    {
+      "name": "usage/push --message",
+      "group": "usage",
+      "args": [
+        "push",
+        "--message"
+      ],
+      "env": [],
+      "fixture": "empty",
+      "subdir": "",
+      "stdin": "",
+      "exit": 1,
+      "stdout": "Incorrect Usage: flag needs an argument: -message\n\nNAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nCOMMANDS:\n   help, h  Shows a list of commands or help for one command\n\nOPTIONS:\n   --ticket value             cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value              relay URL for the fallback path (default: the built-in relay map)\n   --no-relay                 direct addresses only, no relay (default: false)\n   --no-discovery             neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value               user identity recorded in the reference (default: the stored one, then the OS user)\n   --force                    replace the reference unconditionally (default: false)\n   --message value, -m value  commit message; on a branch (a reference naming a commit) every push makes a commit, and a message makes one on any reference\n   --jobs value               parallelism (0 = cores) (default: 0)\n   --no-tui                   plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h                 show help\n",
+      "stderr": "dstore: flag needs an argument: -message\n",
+      "node_side": null
+    },
+    {
+      "name": "usage/push --force -m",
+      "group": "usage",
+      "args": [
+        "push",
+        "--force",
+        "-m"
+      ],
+      "env": [],
+      "fixture": "empty",
+      "subdir": "",
+      "stdin": "",
+      "exit": 1,
+      "stdout": "Incorrect Usage: flag needs an argument: -m\n\nNAME:\n   dstore push - build the working directory's tree, upload it and write the reference\n\nUSAGE:\n   dstore push [command options]\n\nCOMMANDS:\n   help, h  Shows a list of commands or help for one command\n\nOPTIONS:\n   --ticket value             cluster ticket (dstore1…) or comma-separated node ids; overrides the stored one for this run\n   --relay value              relay URL for the fallback path (default: the built-in relay map)\n   --no-relay                 direct addresses only, no relay (default: false)\n   --no-discovery             neither announce this endpoint nor resolve node ids by discovery (default: false)\n   --user value               user identity recorded in the reference (default: the stored one, then the OS user)\n   --force                    replace the reference unconditionally (default: false)\n   --message value, -m value  commit message; on a branch (a reference naming a commit) every push makes a commit, and a message makes one on any reference\n   --jobs value               parallelism (0 = cores) (default: 0)\n   --no-tui                   plain log lines instead of the progress display (default: false) [$DSTORE_NO_TUI]\n   --help, -h                 show help\n",
+      "stderr": "dstore: flag needs an argument: -m\n",
       "node_side": null
     },
     {
@@ -5486,7 +5535,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5515,7 +5564,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5544,7 +5593,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5571,7 +5620,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5605,7 +5654,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5635,7 +5684,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5669,7 +5718,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -5705,7 +5754,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"
+          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
         }
       }
     },
@@ -6659,6 +6708,58 @@
         "--ticket",
         "bogus",
         "trees/x"
+      ],
+      "env": [],
+      "fixture": "wc1",
+      "subdir": "",
+      "stdin": "",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "dstore: ticket: \"bogus\" is neither a dstore1 ticket nor a node id: invalid length\n",
+      "node_side": null
+    },
+    {
+      "name": "wc/wc1 push -m msg",
+      "group": "wc",
+      "args": [
+        "push",
+        "-m",
+        "msg"
+      ],
+      "env": [],
+      "fixture": "wc1",
+      "subdir": "",
+      "stdin": "",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "dstore: ticket: \"bogus\" is neither a dstore1 ticket nor a node id: invalid length\n",
+      "node_side": null
+    },
+    {
+      "name": "wc/wc1 push --message=msg --user \"\"",
+      "group": "wc",
+      "args": [
+        "push",
+        "--message=msg",
+        "--user",
+        ""
+      ],
+      "env": [],
+      "fixture": "wc1",
+      "subdir": "",
+      "stdin": "",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "dstore: ticket: \"bogus\" is neither a dstore1 ticket nor a node id: invalid length\n",
+      "node_side": null
+    },
+    {
+      "name": "wc/wc1 push -message msg",
+      "group": "wc",
+      "args": [
+        "push",
+        "-message",
+        "msg"
       ],
       "env": [],
       "fixture": "wc1",

@@ -16,8 +16,8 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   RUST_TOOLCHAIN: "1.95.0" # = nixpkgs nixos-26.05 rustc
-  GO_VERSION: "1.26.5" # = tools/vectorgen/go.mod and dstore v0.1.9's go.mod
-  DSTORE_GO_REF: v0.1.9
+  GO_VERSION: "1.26.5" # = tools/vectorgen/go.mod and dstore v0.1.10's go.mod
+  DSTORE_GO_REF: v0.1.10
 
 jobs:
   rust:

@@ -9,9 +9,9 @@ decisions, the build order, and how compatibility is proven.
 
 | What | Pin |
 |---|---|
-| Go dstore (normative behaviour) | `github.com/amber-store/dstore` tag `v0.1.9`, HEAD `368f2c7`, checkout `/Users/dragan/amber-store/dstore`. Ignore the uncommitted formatting-only change to `cmd/dstore/wc.go`; read files with `git show HEAD:<path>`. |
-| Go dependencies | `github.com/amber-store/core` v0.0.8; `github.com/amber-store/transport-iroh` v0.4.0 (`protocol`); `github.com/tmc/go-iroh` v0.2.0; `github.com/fxamacker/cbor/v2` v2.9.3; `github.com/aymanbagabas/go-udiff` v0.4.1; `github.com/urfave/cli/v2` v2.27.7; `charm.land/bubbletea/v2` v2.0.9, `lipgloss/v2` v2.0.6, `bubbles/v2` v2.2.1; Go toolchain go1.26.5 (stdlib behaviour: `encoding/base32`, `encoding/json` v1, `strconv`, `unicode`, `sort`, `log/slog`, `flag`, `time`). |
-| core-rs | crate `amber-store-core` 0.3.0, git rev `a85ffa1eb5ed363b9072ab224de179196cd0a046` (= public tag v0.3.0) |
+| Go dstore (normative behaviour) | `github.com/amber-store/dstore` tag `v0.1.10`, HEAD `7bd788e`, checkout `/Users/dragan/amber-store/dstore`; read files with `git show v0.1.10:<path>`. The port was written against `v0.1.9` (`368f2c7`) and then followed v0.1.10, whose client-side delta is commit objects (`port-notes/commit-objects.md`). |
+| Go dependencies | `github.com/amber-store/core` v0.0.9; `github.com/amber-store/transport-iroh` v0.4.0 (`protocol`); `github.com/tmc/go-iroh` v0.2.0; `github.com/fxamacker/cbor/v2` v2.9.3; `github.com/aymanbagabas/go-udiff` v0.4.1; `github.com/urfave/cli/v2` v2.27.7; `charm.land/bubbletea/v2` v2.0.9, `lipgloss/v2` v2.0.6, `bubbles/v2` v2.2.1; Go toolchain go1.26.5 (stdlib behaviour: `encoding/base32`, `encoding/json` v1, `strconv`, `unicode`, `sort`, `log/slog`, `flag`, `time`). |
+| core-rs | crate `amber-store-core` 0.4.0, git rev `7386914b56b9c43ea42b166d81c1f2fbce3aaffb` (= public tag v0.4.0, the backport of core v0.0.9's Commit object) |
 | Rust iroh | `iroh = "=1.2.0"` (iroh-base/iroh-relay 1.2.0, noq 1.3.0): the latest release, by user decision (2026-09-18). go-iroh v0.2.0's matrix verifies 1.0.3; compatibility with 1.2.0 is proven by the live interop suite (§7), not assumed. The crate comes through `[patch.crates-io]` from `third_party/iroh-1.2.0`: the published 1.2.0 with two changes: no NAT traversal round while a direct path is selected, and a bootstrap home relay at bind (§5.12). |
 | Toolchain | nixpkgs `nixos-26.05`: rustc/cargo/clippy/rustfmt 1.95.0, go 1.26.5. Workspace `rust-version = "1.91"`, edition 2024. |
 
@@ -34,8 +34,9 @@ Area specs (read the one for your crate completely before coding):
 | `port-notes/client-transfer.md` | client part B: Missing, Put, Placed, Get/fetcher, VerifyRecord, Push, Pull/PullTree |
 | `port-notes/worktree.md` | working copies, go-udiff port, Go stdlib behaviour the working-copy CLI observes |
 | `port-notes/cli.md` | `cmd/dstore`: urfave/cli behaviour, every command, help texts, slog, TUI, signals, node-side needs |
-| `port-notes/core-rs-gaps.md` | every core v0.0.8 API used client-side and its core-rs equivalent, gaps G1-G22 |
+| `port-notes/core-rs-gaps.md` | every core v0.0.8 API used client-side and its core-rs equivalent, gaps G1-G22 (core v0.0.9 adds only the `commit` package and `key.Commit` to that list: commit-objects.md §2) |
 | `port-notes/verification.md` | golden-vector generator, live interop harness, fake node, Nix flake, CI |
+| `port-notes/commit-objects.md` | the dstore v0.1.10 delta over all of the above: commit objects (core v0.0.9, core-rs 0.4.0), branches in working copies, `push --message`, `TreeOf`, and the checklist for following an upstream release |
 
 Precedence when sources disagree:
 
@@ -48,7 +49,8 @@ Precedence when sources disagree:
 
 Line numbers: `worktree.md` and `cli.md` cite `cmd/dstore/wc.go` from the working tree, which is
 HEAD + 12 lines after line 46; `verification.md` cites HEAD. `scripts/e2e-loopback.sh` stale lines
-are 42 and 46 at HEAD.
+are 42 and 46 at HEAD. All of these are v0.1.9 line numbers: v0.1.10 moved `cmd/dstore/wc.go`,
+`cmd/dstore/client.go`, `worktree/tree.go` and `worktree/flow.go` (commit-objects.md §1).
 
 ---
 
@@ -72,6 +74,7 @@ Locked by golden vectors from the Go libraries (§7) and by CLI snapshots from t
 - **Placement.** `slot`, `salt`, `fmix64`, `log2fix`, `L`, rank, owners, write set, read order.
 - **Working-copy files.** `.dstore/config` and `.dstore/state` (Go `encoding/json` v1 `MarshalIndent`
   plus `\n`, written via `<path>.tmp` then rename), the empty-tree key, and the derived stored ticket.
+  On a branch the state file carries `remote_commit` (omitted otherwise).
 - **Diff output.** `dstore diff` unified hunks and `--stat` (go-udiff v0.4.1 with Go pdqsort,
   including the `--`/`++` miscount).
 - **CLI surface.** Command and subcommand names, aliases, flag names, types, defaults and usage
@@ -86,16 +89,21 @@ Locked by golden vectors from the Go libraries (§7) and by CLI snapshots from t
 - **Text formats.** `HumanBytes`, `Rate`, `Duration.String` and `Round`, RFC3339 in the local zone,
   RFC3339Nano UTC, `%q`, `%x`, Go errno texts, `encoding/hex` errors.
 - **Records.** Raw (uncompressed) records built by core-rs.
+- **Commits.** The Commit object (core type 5) a push records: for the same tree, parents, identity and
+  message, the bytes and the key are Go's (core-rs 0.4.0; pinned here by `worktree/state.json` `commit`).
+  Two pushes differ in their timestamp, as two Go pushes do.
 
 ### 1.2 Interoperable
 
 These work together with Go, but their bytes are not compared:
 
-- A Rust client against Go dstore v0.1.9 nodes on `amber-dstore/1`: direct paths, relay, number0 DNS
+- A Rust client against Go dstore v0.1.10 nodes on `amber-dstore/1`: direct paths, relay, number0 DNS
   discovery, and id-only tickets over mDNS (through a port of go-iroh's mDNS resolver, §5.12).
 - Packstores (`.dstore/packstore`, `<local>/packstore`) used by Go and Rust processes one after the
   other; the directory flock excludes both.
 - Working copies created or updated by one implementation and used by the other.
+- Branches (references naming a commit): either implementation clones, fetches and pulls the other's
+  commits with their history, and pushes on top of them.
 - Records pushed by Rust accepted by Go nodes (CRC and payload hash verified), and the reverse.
 - zstd records: each side decodes the other's frames; compressed bytes differ (DD-1).
 
@@ -110,7 +118,7 @@ These work together with Go, but their bytes are not compared:
 | DD-5 | "RTT not measured" is detected when the selected path's RTT equals noq's initial RTT (333 ms), so a real 333.000 ms sample reads as unmeasured. | noq exposes no has-sample flag. |
 | DD-6 | TUI terminal bytes: the renderer's control sequences and how it writes styles. Only `UiModel::view()` is byte-identical. The styling on screen is Go's: each frame is downsampled to the profile colorprofile v0.4.3 `Detect(stderr, environ)` picks (`NoTTY` for `TERM` unset or `dumb` or a non-terminal stderr: no SGR at all; `NO_COLOR`: attributes without colours; 16, 256 or 24-bit colours), with colorprofile `Writer`'s SGR rewriting and x/ansi `Convert256`/`Convert16` as Go computes them on arm64 (`progress::colorprofile`). The terminfo search takes the home directory from `$HOME` (Go: `user.Current()`). | Bubble Tea has no Rust port; the renderer is a hand-rolled crossterm inline renderer. Colour downsampling was first left out; the L6 interop suite (H5) showed Go's visibly different output (impl-interop-fixes.md). |
 | DD-7 | The Go runtime panics in `dstore cat NAME /` (nil entry) and `cluster status` with a cluster id shorter than 4 bytes: Rust writes only the panic's first line to stderr and exits 2, without the goroutine dump. | Exit status parity without imitating a Go crash dump. |
-| DD-8 | A non-UTF-8 command-line argument placed into a CBOR text field (`ref get/delete NAME`, `store pull NAME`, `ls/cat NAME`, `watch PATTERN`, `node zone ID ZONE`) is sent lossily (U+FFFD). Go sends invalid UTF-8, and the node fails to decode the frame; for `store pull NAME` Rust also writes the lossy name into the local refstore when the cluster has it. Likewise, non-UTF-8 argument bytes and file paths inside error messages (`PathError`, `… is outside the working copy`, the framework's flag errors) are rendered lossily on stderr, as are non-UTF-8 relay and user-data bytes of an mDNS announcement. Stdout texts that print names and paths (`ls`, `status`, `diff`, `refs`) stay byte-exact. | `wire::Msg` text fields are `String`; error `Display` produces a `String`. Only pathological inputs are affected. |
+| DD-8 | A non-UTF-8 command-line argument placed into a CBOR text field (`ref get/delete NAME`, `store pull NAME`, `ls/cat NAME`, `watch PATTERN`, `node zone ID ZONE`) is sent lossily (U+FFFD). Go sends invalid UTF-8, and the node fails to decode the frame; for `store pull NAME` Rust also writes the lossy name into the local refstore when the cluster has it. Likewise, non-UTF-8 argument bytes and file paths inside error messages (`PathError`, `… is outside the working copy`, the framework's flag errors) are rendered lossily on stderr, as are non-UTF-8 relay and user-data bytes of an mDNS announcement. Stdout texts that print names and paths (`ls`, `status`, `diff`, `refs`) stay byte-exact. A `push --message` that is not UTF-8 is not sent lossily: it fails as in Go (`commit: commit message must be valid UTF-8`). | `wire::Msg` text fields are `String`; error `Display` produces a `String`. Only pathological inputs are affected. |
 | DD-9 | Packstore segment files under a non-022 umask get `0666 & ~umask` (Go: `0644 & ~umask`) until core-rs is patched. Rust pre-creates store directories with 0755. | core-rs `create_active` mode (core-rs-gaps G5); upstream patch proposed. |
 | DD-10 | Where Go iterates a map, Rust uses a deterministic order: anyNode's bootstrap fallback, the ref-watch known list, `shortError` names, `negotiate %x`/`record %x rejected` picks, pickBatch ties, primary goroutine order, xattr set order, directory chmod restore order. | Go's order is random, so any order is compatible. |
 | DD-11 | At CLI exit Rust awaits `Endpoint::close()` (bounded to 3 s) after `Cluster::close()`. | Go's `CloseWithError` blocks until CONNECTION_CLOSE is sent; noq only queues it. This restores parity for the peer. |
@@ -137,7 +145,7 @@ Do not "fix" these; each is observable:
   - Working-copy `push` checks the user after dialing.
   - `catalog restore` fetches before requiring `--store`.
   - `diff --remote --incoming` fails before opening the working copy.
-- **Client v0.1.9 behaviour** (client-transfer §8.1, client-core §8.3):
+- **Client behaviour of v0.1.9, unchanged in v0.1.10** (client-transfer §8.1, client-core §8.3):
   - A malformed `Keys32` list in a missing reply is ignored (every key counts as held), and unreadable records are skipped during upload.
   - `busy` sleeps without watching ctx; the stale-view retry goes to the same primary.
   - Unrequested and duplicate get records are emitted; the read order is re-ranked per retry; the view is refreshed at most once per fetcher; a Blob's length field is not checked.
@@ -188,9 +196,9 @@ definition, flags, help and pre-store validation are identical, then the action 
 | `catalog backup`, `catalog backups` | main.go:644-650 | client | implemented |
 | `catalog restore KEY\|FILE` | main.go:651-695 | mixed | argument check, dial and fetch implemented; restore step is §2.2 C |
 | `store` (parent), `store push PATH NAME`, `store pull NAME` | client.go:205-342 | client + local store | implemented (DD-2 policy §2.3) |
-| `clone NAME [DIR]`, `init NAME`, `fetch`, `pull`, `push` | wc.go:115-338 (HEAD) | client + working copy | implemented |
-| `status`, `diff [PATH...]` | wc.go:339-488 (HEAD) | offline working copy | implemented |
-| `refs [PREFIX]`, `watch PATTERN`, `ref` (parent), `ref get NAME`, `ref delete NAME`, `ls NAME [PATH]`, `cat NAME PATH` | client.go:344-574 | client | implemented (`cat NAME /` → DD-7) |
+| `clone NAME [DIR]`, `init NAME`, `fetch`, `pull`, `push [--message/-m MSG]` | wc.go:116-359 (v0.1.10) | client + working copy | implemented; on a branch (a reference naming a commit) every push records a commit, and a message makes one on any reference (commit-objects.md) |
+| `status`, `diff [PATH...]` | wc.go:361-511 (v0.1.10) | offline working copy | implemented |
+| `refs [PREFIX]`, `watch PATTERN`, `ref` (parent), `ref get NAME`, `ref delete NAME`, `ls NAME [PATH]`, `cat NAME PATH` | client.go:344-580 (v0.1.10) | client | implemented (`cat NAME /` → DD-7); `ls` and `cat` read a commit's tree (`TreeOf`) |
 
 That is 21 top-level commands, 30 subcommands (cluster 4, token 1, node 6, voter 2, transition 5, gc 5,
 catalog 3, store 2, ref 2) and the `help` command. Library scope: everything in Go
@@ -213,7 +221,7 @@ work, in order:
 3. `--store == ""` → `no store directory: set --store or $DSTORE_STORE`.
 4. `pack_size(c)` → `--pack-size: …` errors (cli §2.9).
 5. Fail with
-   `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)`,
+   `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)`,
    where `<cmd>` is `serve`, `cluster init` or `node join`.
 
 **B. `--store` ticket derivation** (`cluster status`, `cluster ticket`, and `catalog restore` without
@@ -1404,7 +1412,8 @@ pub mod ifaces {
 ### 4.8 `dstore-client`
 
 **Ports:** dstore `client/client.go` (403), `rank.go` (71), `batch.go` (29), `progress.go` (181),
-`refs.go` (150), `watch.go` (245), `objects.go` (395), `fetch.go` (309), `tree.go` (479).
+`refs.go` (150), `watch.go` (245), `objects.go` (395), `fetch.go` (309), `tree.go` (479), `commit.go` (26,
+v0.1.10).
 
 **Specs:**
 - client-core (part A, all);
@@ -1603,6 +1612,16 @@ impl Cluster {
 }
 pub(crate) fn stored_size_of(st: &packstore::Store, k: &[u8; 32]) -> usize;   // 46 + slen when stored, else key length
 
+// ---- commit.rs: dstore v0.1.10 client/commit.go (commit-objects.md) ----
+#[derive(Debug, thiserror::Error)]
+pub enum TreeOfError<E: std::error::Error + 'static> {
+    #[error("reading commit {key}: {source}")] Read { key: key::Key, #[source] source: E },
+    #[error("commit {key}: {source}")] Decode { key: key::Key, #[source] source: amber_store_core::commit::Error },
+}
+/// client.TreeOf: a Commit's recorded tree, or `k` itself for any other key (a reserved type nibble included).
+pub fn tree_of<G, E>(k: key::Key, get: G) -> Result<key::Key, TreeOfError<E>>
+where G: FnMut(key::Key) -> Result<Vec<u8>, E>, E: std::error::Error + 'static;
+
 // ---- corefmt.rs (part A): Go texts for core-rs errors that reach users (core-rs-gaps G4, §2.7) ----
 pub mod corefmt {
     /// fstree WalkError Display with names re-quoted by gocompat::quote (Go %q), else identical to core-rs.
@@ -1659,7 +1678,7 @@ impl Error {
 impl From<dstore_transport::CallError> for Error { .. }                        // Remote/Transport/Wire/Ctx 1:1
 ```
 
-Seams used across crates: the worktree calls `ref_get`, `pull_tree`, `push`, `view`; the CLI calls
+Seams used across crates: the worktree calls `ref_get`, `pull_tree`, `push`, `view`, `tree_of`; the CLI calls
 everything public.
 
 ### 4.9 `dstore-udiff`
@@ -1697,8 +1716,8 @@ pub mod gosort {
 
 ### 4.10 `dstore-worktree`
 
-**Ports:** dstore `worktree/tree.go` (245), `change.go` (238), `scan.go` (284), `merge.go` (80),
-`apply.go` (310), `diff.go` (206), `flow.go` (331), `xattr.go` (55), `xattr_darwin.go`,
+**Ports:** dstore `worktree/tree.go` (274 in v0.1.10), `change.go` (238), `scan.go` (284), `merge.go` (80),
+`apply.go` (310), `diff.go` (206), `flow.go` (404 in v0.1.10), `xattr.go` (55), `xattr_darwin.go`,
 `xattr_linux.go`. `TicketFromView` lives in `dstore-view` and is re-exported here.
 
 **Specs:**
@@ -1726,7 +1745,8 @@ pub const MAX_DIFF_BYTES: u64 = 16 << 20;
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Config { pub ticket: Vec<u8>, pub name: Vec<u8>, pub relay: Vec<u8>, pub no_relay: bool, pub no_discovery: bool, pub user: Vec<u8> }
 #[derive(Clone, Debug, PartialEq, Eq)]
-pub struct State { pub base: Key, pub remote: Key, pub has_remote: bool, pub remote_version: Option<Vec<u8>>, pub synced_at: dstore_gocompat::time::GoTime }
+pub struct State { pub base: Key, pub remote: Key, pub remote_commit: Key, pub has_remote: bool, pub remote_version: Option<Vec<u8>>, pub synced_at: dstore_gocompat::time::GoTime }
+impl State { pub fn is_branch(&self) -> bool; pub fn remote_key(&self) -> Key; }   // remote_commit: the commit a branch names, else the zero key; remote stays its tree
 pub struct Tree { pub root: Vec<u8>, pub config: Config, pub state: State, pub store: std::sync::Arc<packstore::Store> }
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Kind { Added, Deleted, Modified, TypeChanged, ModeChanged, MetaChanged }
@@ -1735,9 +1755,9 @@ impl std::fmt::Display for Kind { .. }                       // "new" "deleted" 
 pub struct Change { pub path: Vec<u8>, pub kind: Kind, pub old: Option<std::sync::Arc<Entry>>, pub new: Option<std::sync::Arc<Entry>> }
 #[derive(Clone, Debug)]
 pub struct Conflict { pub path: Vec<u8>, pub local: Change, pub incoming: Change }
-pub struct FetchResult { pub exists: bool, pub up_to_date: bool, pub key: Key, pub stats: dstore_client::PullStats }
+pub struct FetchResult { pub exists: bool, pub up_to_date: bool, pub key: Key, pub tree: Key, pub stats: dstore_client::PullStats }   // key: what the reference names; tree: what it stands for
 pub struct PullResult { pub fetch: FetchResult, pub up_to_date: bool, pub applied: Vec<Change>, pub conflicts: Vec<Conflict> }
-pub struct PushResult { pub root: Key, pub nothing: bool, pub recovered: bool, pub built: packstore::WriteStats, pub stats: dstore_client::PushStats }
+pub struct PushResult { pub root: Key, pub commit: Key, pub nothing: bool, pub recovered: bool, pub built: packstore::WriteStats, pub stats: dstore_client::PushStats }   // commit: zero for a plain tree
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RemoteState { UpToDate, Moved, Absent }
 pub struct Status { pub changes: Vec<Change>, pub meta_only: usize, pub remote: RemoteState, pub incoming: Vec<Change> }
@@ -1803,7 +1823,7 @@ pub fn stat(w: &mut dyn std::io::Write, changes: &[Change], old: &dyn Source, ne
 impl Tree {
     pub async fn fetch(&mut self, ctx: &dstore_gocompat::ctx::Ctx, cl: &dstore_client::Cluster, prog: Option<dstore_client::Progress>) -> Result<FetchResult, Error>;  // Go Fetch (saves state)
     pub async fn pull(&mut self, ctx: &dstore_gocompat::ctx::Ctx, cl: &dstore_client::Cluster, force: bool, jobs: usize, prog: Option<dstore_client::Progress>) -> (PullResult, Result<(), Error>);
-    pub async fn push(&mut self, ctx: &dstore_gocompat::ctx::Ctx, cl: &dstore_client::Cluster, user: &str, force: bool, jobs: usize, prog: Option<dstore_client::Progress>) -> Result<PushResult, Error>;
+    pub async fn push(&mut self, ctx: &dstore_gocompat::ctx::Ctx, cl: &dstore_client::Cluster, user: &str, message: &[u8], force: bool, jobs: usize, prog: Option<dstore_client::Progress>) -> Result<PushResult, Error>;   // message: a Go string (commit-objects.md §4)
     pub fn refresh_ticket(&mut self, cl: &dstore_client::Cluster) -> Result<(), Error>;
 }
 pub async fn clone(ctx: &dstore_gocompat::ctx::Ctx, cl: &dstore_client::Cluster, dir: &[u8], cfg: Config, prog: Option<dstore_client::Progress>) -> Result<(Tree, FetchResult), Error>;
@@ -2234,7 +2254,7 @@ Declare them in `[workspace.dependencies]`.
 
 | Crate | Version | Features / notes |
 |---|---|---|
-| `amber-store-core` | git rev `a85ffa1eb5ed363b9072ab224de179196cd0a046` | §5.11 |
+| `amber-store-core` | git rev `7386914b56b9c43ea42b166d81c1f2fbce3aaffb` | §5.11 |
 | `iroh` | `=1.2.0` | `default-features = false`, `features = ["tls-ring", "fast-apple-datapath"]` |
 | `iroh-base` | `=1.2.0` | ticket curve check |
 | `tokio` | `1.53.1` | `rt-multi-thread`, `macros`, `sync`, `time`, `io-util`, `net`, `signal`, `fs` (dev: `test-util`) |
@@ -2273,10 +2293,11 @@ rustls 0.23.43, ring 0.17.14). Commit `Cargo.lock`.
 ### 5.11 core-rs pin
 
 - **Manifest entry:**
-  `amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "a85ffa1eb5ed363b9072ab224de179196cd0a046" }`
-  (public repo; tag v0.3.0 is the same commit).
-- **Nix `outputHashes."amber-store-core-0.3.0"`** = `sha256-ZnXXnztVqGXq5ILG29kkJIIRo9/TTW3XqULx1chbLXA=`
-  (computed from `git archive`; confirm on the first `nix build`, bump with every rev).
+  `amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "7386914b56b9c43ea42b166d81c1f2fbce3aaffb" }`
+  (public repo; tag v0.4.0 is the same commit; v0.3.0 was `a85ffa1eb5ed363b9072ab224de179196cd0a046`).
+- **Nix `outputHashes."amber-store-core-0.4.0"`** = `sha256-V7DidCX4QDQXzvzWsiXDex1UVlAmmN0BIphvXlC1974=`
+  (`nix hash path` over `git archive <rev>`, the method that reproduces the v0.3.0 hash; the key carries
+  the crate version, so it changes with it; confirmed by `nix build .#dstore`; bump with every rev).
 - **Effective MSRV** is 1.88 for core-rs and 1.91 for iroh; the workspace declares
   `rust-version = "1.91"`.
 - **Upstream proposals, none required:**
@@ -2362,7 +2383,7 @@ Notes:
 ## 7. Golden vectors and tests
 
 **Generator.** One Go module, `tools/vectorgen`:
-- **Requires:** dstore v0.1.9, core v0.0.8, go-udiff v0.4.1, fxamacker/cbor v2.9.3, go-iroh v0.2.0,
+- **Requires:** dstore v0.1.10, core v0.0.9, go-udiff v0.4.1, fxamacker/cbor v2.9.3, go-iroh v0.2.0,
   zeebo/blake3 v0.2.4; built with go1.26.5, `GOTOOLCHAIN=local`, `CGO_ENABLED=0`.
 - **Output.** `vectorgen <out-dir> [family…]` deletes exactly what it owns and regenerates. JSON is
   built from structs only, `u64`/`i64` are decimal strings, bytes are lowercase hex, payloads use
@@ -2431,9 +2452,11 @@ were decided.
   hook, a custom `HelpName`, `HideHelp` (impl-gocli.md).
 
 **Live interop** (`interop/check.sh`, `interop/README.md`, verification §4.5):
-- **Cluster.** 3 Go v0.1.9 nodes on loopback, built with `CGO_ENABLED=0` into `mktemp -d` and removed on
+- **Cluster.** 3 Go v0.1.10 nodes on loopback, built with `CGO_ENABLED=0` into `mktemp -d` and removed on
   exit. It uses `store push/pull`, not the stale script lines.
-- **Checks.** A1-A13, B1-B14, C1-C3, D1-D13, E1-E3, G1-G2 and H1-H8:
+- **Checks.** A1-A13, B1-B14, C1-C3, D1-D14, E1-E3, G1-G2 and H1-H8:
+  - D14 (added with dstore v0.1.10) is the branch check: commits pushed by either client, cloned, fetched
+    and pulled by the other, and the lost-state recovery on a branch (commit-objects.md §6);
   - G1 asserts the §2.3 refusal, and G2 the §2.2 texts;
   - H1-H8 are the live cases handed over by the CLI snapshots and the L5 reviews. H8 is always skipped,
     because real nodes send a 16-byte cluster id.
@@ -2451,7 +2474,7 @@ were decided.
   `445d861c6d31b4af0c79d8d4be2331f762a361d7`).
 - **`packages.dstore`.**
   - `rustPlatform.buildRustPackage` over `lib.fileset.unions [ ./Cargo.toml ./Cargo.lock ./src ./crates ./tests ./examples ./third_party ]`;
-  - `cargoLock.outputHashes."amber-store-core-0.3.0"` per §5.11;
+  - `cargoLock.outputHashes."amber-store-core-0.4.0"` per §5.11;
   - `cargoBuildFlags = [ "-p" "dstore-client-rs" "--bin" "dstore" ]`, `doCheck = false`
     (the Darwin sandbox refuses UDP binds).
 - **`checks`:**
@@ -2477,7 +2500,7 @@ were decided.
 |---|---|---|
 | `rust` | ubuntu-latest, macos-latest | toolchain 1.95.0; `cargo fmt --all --check`; `cargo clippy --workspace --all-targets --locked -- -D warnings`; `cargo test --workspace --all-targets --locked` (includes iroh loopback), `TZ=UTC` |
 | `vectors` | ubuntu-latest | `go vet ./...`; `go test ./...`; regenerate twice and diff; diff against `tests/golden`; regenerate `crates/gocompat/src/tables.rs` and `errno_tables.rs` and diff; `clisnap` and diff |
-| `interop` | ubuntu-latest, 45 min timeout | check out dstore at `v0.1.9`; `cargo build --release --locked --bin dstore --examples`; `bash interop/check.sh`; upload logs on failure; heavy and chaos groups on `workflow_dispatch` |
+| `interop` | ubuntu-latest, 45 min timeout | check out dstore at `v0.1.10`; `cargo build --release --locked --bin dstore --examples`; `bash interop/check.sh`; upload logs on failure; heavy and chaos groups on `workflow_dispatch` |
 | `nix` | ubuntu-latest, macos-latest | `nix flake check -L`; `nix build .#dstore -L && ./result/bin/dstore --version` |
 
 ---

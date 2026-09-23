@@ -1,5 +1,5 @@
 // Command gotables prints crates/gocompat/src/tables.rs of dstore-client-rs: the Unicode and strconv
-// tables of go1.26.5, the toolchain of dstore v0.1.9 (PORTING.md §4.1 and DD-14):
+// tables of go1.26.5, the toolchain of dstore v0.1.10 (PORTING.md §4.1 and DD-14):
 //
 //   - strconv's isPrint16, isNotPrint16, isPrint32, isNotPrint32 and isGraphic, computed from
 //     strconv.IsPrint and strconv.IsGraphic with the algorithm of strconv/makeisprint.go;

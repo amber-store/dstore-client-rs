@@ -79,6 +79,32 @@
       "out_key": "4028b3baeb5e370588d1264f61963e6d67f5a12d620513ac0681afeb851189cf"
     },
     {
+      "name": "commit",
+      "raw": {
+        "key": "50498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5",
+        "flags": 0,
+        "ulen": 73,
+        "slen": 73,
+        "bytes": "0150498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe50000000049000000496b225c5ba50058202001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b018002a4006674657374657201600201030003a4006674657374657201600201030004616d"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "50498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5"
+    },
+    {
+      "name": "commit_length_field_off_by_one",
+      "raw": {
+        "key": "504a8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5",
+        "flags": 0,
+        "ulen": 73,
+        "slen": 73,
+        "bytes": "01504a8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5000000004900000049d328295fa50058202001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b018002a4006674657374657201600201030003a4006674657374657201600201030004616d"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "504a8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5"
+    },
+    {
       "name": "blob_length_field_999_over_100_bytes",
       "raw": {
         "key": "0103e74b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae",
@@ -162,17 +188,17 @@
       "error_portable": true
     },
     {
-      "name": "key_reserved_type_5",
+      "name": "key_reserved_type_6",
       "raw": {
-        "key": "50644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
+        "key": "60644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85",
         "flags": 0,
         "ulen": 100,
         "slen": 100,
-        "bytes": "0150644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae8500000000640000006454d739b8c15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
+        "bytes": "0160644b75a8842dc16ded120ee1f96d229ac409028f4d5d429499a4ad548aae85000000006400000064de1a1acdc15c0289ec2d0a9167ec8e65a18debbe5e5532fbeea293f80bc942ee9086c171b9b501d1d854bb7180021590ff0b4dc3a53c36d76cec99e0758527120fbbe785a83d7e35de181749966761748e5c43cb614f560177dc7567fe8bcf144dd4fc9ac05daa4b"
       },
       "parses": false,
       "ok": false,
-      "error": "key: reserved object type: 5",
+      "error": "key: reserved object type: 6",
       "error_portable": true
     },
     {

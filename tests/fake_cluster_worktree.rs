@@ -2,6 +2,9 @@
 //!
 //! - Ports of `node/worktree_test.go`: `TestWorktreeInitPushCloneEditPull`, `TestWorktreeConflict` and
 //!   `TestWorktreePushRecoversAfterLostState`.
+//! - Port of `node/branch_test.go` `TestWorktreeBranch` (dstore v0.1.10), without its garbage-collection
+//!   part (the fake nodes have no GC), and the branch scenarios beside it: a message on a plain reference,
+//!   a message that is not UTF-8, and the up-to-date fetch of a branch.
 //! - The flow scenarios of port-notes/worktree.md §2.9, §5 and §6:
 //!   - a fetch of an unknown name, and the up-to-date fetch that does not re-pull;
 //!   - the pull refusals, with the fetch state saved and base kept;
@@ -23,8 +26,9 @@ use std::path::{Path, PathBuf};
 use std::sync::Arc;
 use std::time::Duration;
 
+use amber_store_core::commit::Commit;
 use amber_store_core::fstree;
-use amber_store_core::key::Key;
+use amber_store_core::key::{Key, Type};
 use dstore_client::{CasMismatch, Cluster, Cond, Config as ClientConfig, Ctx, Logger, NodeId};
 use dstore_gocompat::slog::{Attr, Handler, Level, Record};
 use dstore_testkit::fake::{FakeCluster, FakeClusterConfig};
@@ -191,14 +195,17 @@ async fn worktree_init_push_clone_edit_pull() {
     assert_eq!(kind_of(&k, "sub"), Some(Kind::Added), "{k:?}");
     assert_eq!(kind_of(&k, "sub/deep.txt"), Some(Kind::Added), "{k:?}");
     assert_eq!(st.remote, RemoteState::Absent);
-    let pr = ok(ta.push(&ctx, &ca, "tester", false, 2, None).await, "push");
+    let pr = ok(
+        ta.push(&ctx, &ca, "tester", b"", false, 2, None).await,
+        "push",
+    );
     assert!(!pr.nothing, "{pr:?}");
     let st = ok(ta.status(2), "status after push");
     assert!(st.changes.is_empty(), "{:?}", kinds(&st.changes));
     assert_eq!(st.meta_only, 0);
     assert_eq!(st.remote, RemoteState::UpToDate);
     let pr = ok(
-        ta.push(&ctx, &ca, "tester", false, 2, None).await,
+        ta.push(&ctx, &ca, "tester", b"", false, 2, None).await,
         "second push",
     );
     assert!(pr.nothing, "{pr:?}");
@@ -228,7 +235,7 @@ async fn worktree_init_push_clone_edit_pull() {
     assert_eq!(kind_of(&k, "sub/deep.txt"), Some(Kind::Deleted), "{k:?}");
     assert_eq!(st.changes.len(), 3, "{k:?}");
     ok(
-        tb.push(&ctx, &cb, "tester", false, 2, None).await,
+        tb.push(&ctx, &cb, "tester", b"", false, 2, None).await,
         "push from B",
     );
 
@@ -283,7 +290,10 @@ async fn clone_two(h: &Harness, name: &str) -> Two {
         wt::init(&ctx, &c0, &bytes(src.path()), cfg(name), None).await,
         "init",
     );
-    ok(t0.push(&ctx, &c0, "tester", false, 2, None).await, "push");
+    ok(
+        t0.push(&ctx, &c0, "tester", b"", false, 2, None).await,
+        "push",
+    );
     ok(t0.close(), "close");
     c0.close();
     let (ca, cb) = (h.client(103).await, h.client(104).await);
@@ -321,10 +331,10 @@ async fn worktree_conflict() {
     write_wc(&ra, "f.txt", "A\n");
     write_wc(&rb, "f.txt", "B\n");
     write_wc(&rb, "b.txt", "b\n");
-    let pa = ok(ta.push(&ctx, &ca, "a", false, 2, None).await, "push A");
+    let pa = ok(ta.push(&ctx, &ca, "a", b"", false, 2, None).await, "push A");
     // B has not fetched: the cluster refuses its push.
     let before = tb.state.clone();
-    let e = fails(tb.push(&ctx, &cb, "b", false, 2, None).await, "push B");
+    let e = fails(tb.push(&ctx, &cb, "b", b"", false, 2, None).await, "push B");
     assert!(matches!(e, wt::Error::RefChanged(_)), "push B: {e}");
     assert_eq!(
         e.to_string(),
@@ -367,7 +377,7 @@ async fn worktree_conflict() {
         Some(b"f.txt".as_slice())
     );
     ok(
-        tb.push(&ctx, &cb, "b", false, 2, None).await,
+        tb.push(&ctx, &cb, "b", b"", false, 2, None).await,
         "push B after pull",
     );
     let (_, res) = ta.pull(&ctx, &ca, false, 2, None).await;
@@ -393,16 +403,22 @@ async fn worktree_push_recovers_after_lost_state() {
         wt::init(&ctx, &c, &bytes(dir.path()), cfg("trees/recover"), None).await,
         "init",
     );
-    ok(tr.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    ok(
+        tr.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     write_wc(dir.path(), "f.txt", "2\n");
     let before = tr.state.clone();
-    let pr = ok(tr.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let pr = ok(
+        tr.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     assert!(!pr.recovered, "{pr:?}");
     // The reference write landed but the state write was lost.
     tr.state = before;
     ok(tr.save_state(), "save state");
     let pr = ok(
-        tr.push(&ctx, &c, "tester", false, 2, None).await,
+        tr.push(&ctx, &c, "tester", b"", false, 2, None).await,
         "retried push",
     );
     assert!(pr.recovered, "{pr:?}");
@@ -419,6 +435,243 @@ async fn worktree_push_recovers_after_lost_state() {
     let st = ok(tr.status(2), "status after recovery");
     assert!(st.changes.is_empty(), "{:?}", kinds(&st.changes));
     assert_eq!(st.remote, RemoteState::UpToDate);
+
+    ok(tr.close(), "close");
+    c.close();
+    h.close().await;
+}
+
+// ---- branches: a reference naming a commit (node/branch_test.go) ----
+
+/// Go `readCommit`: the commit `k` from the working copy's store.
+fn read_commit(t: &Tree, k: Key) -> Commit {
+    let data = ok(t.get(k), "commit object");
+    ok(Commit::decode(&data), "decode commit")
+}
+
+fn is_commit(k: Key) -> bool {
+    Type::from_u8(k.0[0] >> 4) == Some(Type::Commit)
+}
+
+/// A reference naming a commit is a branch: working copies clone and pull its tree, every push adds a
+/// commit on top, and transfers carry the whole history.
+#[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+async fn worktree_branch() {
+    let h = Harness::cluster3().await;
+    let ctx = Ctx::background();
+    let ca = h.client(110).await;
+
+    // A message turns a new reference into a branch.
+    let a = tempdir();
+    write_wc(a.path(), "f.txt", "one\n");
+    let (mut ta, _) = ok(
+        wt::init(&ctx, &ca, &bytes(a.path()), cfg("trees/branch"), None).await,
+        "init",
+    );
+    let pr = ok(
+        ta.push(&ctx, &ca, "alice", b"first", false, 2, None).await,
+        "push",
+    );
+    assert!(is_commit(pr.commit), "{pr:?}");
+    let (first, tree1) = (pr.commit, pr.root);
+    let c = read_commit(&ta, first);
+    assert_eq!(c.tree, tree1);
+    assert!(c.parents.is_empty(), "{c:?}");
+    assert_eq!(c.message, "first");
+    assert_eq!(c.author.name, "alice");
+    assert_eq!(c.committer, c.author);
+    assert!(
+        c.author.when > 0 && (-1439..=1439).contains(&c.author.tz_offset),
+        "{c:?}"
+    );
+    let r = ok(ca.ref_get(&ctx, "trees/branch").await, "ref get");
+    assert_eq!(r.reference.key.as_slice(), &first.0[..]);
+    let st = ok(ta.status(2), "status after push");
+    assert!(st.changes.is_empty(), "{:?}", kinds(&st.changes));
+    assert_eq!(st.remote, RemoteState::UpToDate);
+    assert!(ta.state.is_branch());
+    assert_eq!((ta.state.base, ta.state.remote), (tree1, tree1));
+    assert_eq!(ta.state.remote_key(), first);
+    assert_eq!(state_json(a.path())["remote"], tree1.to_string());
+    assert_eq!(state_json(a.path())["remote_commit"], first.to_string());
+    let pr = ok(
+        ta.push(&ctx, &ca, "alice", b"", false, 2, None).await,
+        "second push",
+    );
+    assert!(pr.nothing, "{pr:?}");
+
+    // A clone checks out the commit's tree.
+    let cb = h.client(111).await;
+    let b = tempdir();
+    let (mut tb, fr) = ok(
+        wt::clone(
+            &ctx,
+            &cb,
+            &bytes(&b.path().join("b")),
+            cfg("trees/branch"),
+            None,
+        )
+        .await,
+        "clone",
+    );
+    assert_eq!((fr.key, fr.tree), (first, tree1));
+    assert_eq!((tb.state.base, tb.state.remote_commit), (tree1, first));
+    assert_eq!(read_wc(&root_of(&tb), "f.txt"), "one\n");
+
+    // An up-to-date fetch of a branch compares the commit, and pulls nothing.
+    let gets = h.count(T_GET);
+    let fr = ok(tb.fetch(&ctx, &cb, None).await, "fetch");
+    assert!(fr.exists && fr.up_to_date, "{fr:?}");
+    assert_eq!((fr.key, fr.tree), (first, tree1));
+    assert_eq!(h.count(T_GET), gets, "an up-to-date fetch pulled");
+
+    // B's push, without a message, still commits on top of first.
+    write_wc(&root_of(&tb), "f.txt", "two\n");
+    let pr = ok(
+        tb.push(&ctx, &cb, "bob", b"", false, 2, None).await,
+        "push from B",
+    );
+    assert!(is_commit(pr.commit), "{pr:?}");
+    let second = pr.commit;
+    let c = read_commit(&tb, second);
+    assert_eq!((c.tree, c.parents.as_slice()), (pr.root, &[first][..]));
+    assert_eq!((c.author.name.as_str(), c.message.as_str()), ("bob", ""));
+
+    // A pulls B's commit.
+    let (plr, res) = ta.pull(&ctx, &ca, false, 2, None).await;
+    ok(res, "pull");
+    assert!(plr.conflicts.is_empty());
+    assert_eq!(read_wc(a.path(), "f.txt"), "two\n");
+    assert_eq!(ta.state.remote_commit, second);
+
+    // An interrupted push (reference written, state lost) is recognised on retry although the retry's
+    // commit carries a new timestamp.
+    write_wc(a.path(), "f.txt", "three\n");
+    let before = ta.state.clone();
+    let pr = ok(
+        ta.push(&ctx, &ca, "alice", b"", false, 2, None).await,
+        "push",
+    );
+    assert!(!pr.recovered, "{pr:?}");
+    let third = pr.commit;
+    tokio::time::sleep(Duration::from_millis(2)).await; // a distinct timestamp for the retry
+    ta.state = before.clone();
+    let pr = ok(
+        ta.push(&ctx, &ca, "alice", b"", false, 2, None).await,
+        "retried push",
+    );
+    assert!(pr.recovered, "{pr:?}");
+    assert_eq!(pr.commit, third);
+    assert_eq!(ta.state.remote_commit, third);
+    assert_eq!(state_json(a.path())["remote_commit"], third.to_string());
+    assert_eq!(read_commit(&ta, third).parents, vec![second]);
+    // The same lost state, but over another parent: the cluster's commit records the same tree onto
+    // other parents, so it is not this push, and the reference changed.
+    let mut stale = before;
+    stale.remote_commit = first;
+    let kept = std::mem::replace(&mut ta.state, stale);
+    let e = fails(
+        ta.push(&ctx, &ca, "alice", b"", false, 2, None).await,
+        "a retry onto another parent",
+    );
+    assert!(e.to_string().starts_with(REF_CHANGED), "{e}");
+    ta.state = kept;
+
+    // History is carried: the first commit's tree is reachable only through the branch's ancestry, and
+    // the nodes hold it; a fresh clone has the whole history locally.
+    let hist = ok(fstree::reachable_keys(third, |k| ta.get(k)), "reachable");
+    assert!(
+        hist.contains(&tree1),
+        "the first commit's tree is not reachable from the tip"
+    );
+    assert!(hist.contains(&first) && hist.contains(&second));
+    let mut held: std::collections::HashSet<[u8; 32]> = std::collections::HashSet::new();
+    for id in h.fc.ids() {
+        held.extend(h.fc.stored(id).into_keys());
+    }
+    for k in &hist {
+        assert!(
+            held.contains(&k.0),
+            "history key {k} ({}) is on no node",
+            k.type_()
+        );
+    }
+    let cc = h.client(112).await;
+    let c_dir = tempdir();
+    let (tc, fr) = ok(
+        wt::clone(
+            &ctx,
+            &cc,
+            &bytes(&c_dir.path().join("c")),
+            cfg("trees/branch"),
+            None,
+        )
+        .await,
+        "clone of the history",
+    );
+    assert_eq!(fr.key, third);
+    assert_eq!(read_wc(&root_of(&tc), "f.txt"), "three\n");
+    let cloned = ok(
+        fstree::reachable_keys(third, |k| tc.get(k)),
+        "reachable in the clone",
+    );
+    assert_eq!(cloned.len(), hist.len());
+
+    ok(ta.close(), "close");
+    ok(tb.close(), "close");
+    ok(tc.close(), "close");
+    ca.close();
+    cb.close();
+    cc.close();
+    h.close().await;
+}
+
+/// A message on a plain reference makes a root commit and so starts a branch; a message that is not
+/// UTF-8 fails as Go's commit validation fails it, after the tree is built and before the reference moves.
+#[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+async fn a_message_turns_a_plain_reference_into_a_branch() {
+    let h = Harness::cluster3().await;
+    let ctx = Ctx::background();
+    let c = h.client(113).await;
+    let dir = tempdir();
+    write_wc(dir.path(), "f.txt", "1\n");
+    let (mut tr, _) = ok(
+        wt::init(&ctx, &c, &bytes(dir.path()), cfg("trees/plain"), None).await,
+        "init",
+    );
+    let pr = ok(
+        tr.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
+    assert_eq!(pr.commit, Key([0; 32]), "a plain push made a commit");
+    assert!(!tr.state.is_branch());
+    assert_eq!(tr.state.remote_key(), pr.root);
+    assert!(state_json(dir.path()).get("remote_commit").is_none());
+    let plain = ok(c.ref_get(&ctx, "trees/plain").await, "ref get");
+    assert_eq!(plain.reference.key.as_slice(), &pr.root.0[..]);
+
+    write_wc(dir.path(), "f.txt", "2\n");
+    let e = fails(
+        tr.push(&ctx, &c, "tester", b"caf\xe9", false, 2, None)
+            .await,
+        "a message that is not UTF-8",
+    );
+    assert_eq!(e.to_string(), "commit: commit message must be valid UTF-8");
+    let r = ok(c.ref_get(&ctx, "trees/plain").await, "ref get");
+    assert_eq!(r.version, plain.version, "the reference moved");
+
+    let pr = ok(
+        tr.push(&ctx, &c, "tester", "née".as_bytes(), false, 2, None)
+            .await,
+        "push with a message",
+    );
+    assert!(is_commit(pr.commit), "{pr:?}");
+    let cm = read_commit(&tr, pr.commit);
+    assert!(cm.parents.is_empty(), "{cm:?}");
+    assert_eq!((cm.tree, cm.message.as_str()), (pr.root, "née"));
+    assert!(tr.state.is_branch());
+    let r = ok(c.ref_get(&ctx, "trees/plain").await, "ref get");
+    assert_eq!(r.reference.key.as_slice(), &pr.commit.0[..]);
 
     ok(tr.close(), "close");
     c.close();
@@ -454,14 +707,20 @@ async fn fetch_of_an_unknown_name_and_the_up_to_date_fetch() {
     assert!(!plr.fetch.exists && !plr.up_to_date, "{plr:?}");
 
     // An empty directory against an absent name: nothing to push, and the name stays absent.
-    let pr = ok(t.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let pr = ok(
+        t.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     assert!(pr.nothing, "{pr:?}");
     assert_eq!(pr.root, empty_key());
     assert!(fails(c.ref_get(&ctx, "trees/new").await, "ref get").is_unknown_ref());
 
     // A file: the push creates the name. A fetch is then up to date.
     write_wc(dir.path(), "x.txt", "x\n");
-    let pr = ok(t.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let pr = ok(
+        t.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     assert!(!pr.nothing && !pr.recovered, "{pr:?}");
     assert!(pr.stats.keys > 0, "{pr:?}");
     let fr = ok(t.fetch(&ctx, &c, None).await, "fetch");
@@ -507,19 +766,22 @@ async fn push_refusals_and_force() {
 
     // The cluster moves; A fetches it.
     write_wc(&rb, "f.txt", "B\n");
-    ok(tb.push(&ctx, &cb, "b", false, 2, None).await, "push B");
+    ok(tb.push(&ctx, &cb, "b", b"", false, 2, None).await, "push B");
     write_wc(&ra, "f.txt", "A\n");
     let fr = ok(ta.fetch(&ctx, &ca, None).await, "fetch");
     assert!(fr.exists && !fr.up_to_date, "{fr:?}");
     let before = ta.state.clone();
     let e = fails(
-        ta.push(&ctx, &ca, "a", false, 2, None).await,
+        ta.push(&ctx, &ca, "a", b"", false, 2, None).await,
         "push after the move",
     );
     assert!(matches!(e, wt::Error::RemoteMoved), "{e}");
     assert_eq!(ta.state, before);
     // --force replaces the reference unconditionally.
-    let pr = ok(ta.push(&ctx, &ca, "a", true, 2, None).await, "forced push");
+    let pr = ok(
+        ta.push(&ctx, &ca, "a", b"", true, 2, None).await,
+        "forced push",
+    );
     assert!(!pr.nothing && !pr.recovered, "{pr:?}");
     let r = ok(ca.ref_get(&ctx, name).await, "ref get");
     assert_eq!(r.reference.key, pr.root.0.to_vec());
@@ -547,12 +809,15 @@ async fn push_refusals_and_force() {
     assert!(!fr.exists, "{fr:?}");
     assert!(!ta.state.has_remote);
     let e = fails(
-        ta.push(&ctx, &ca, "a", false, 2, None).await,
+        ta.push(&ctx, &ca, "a", b"", false, 2, None).await,
         "push after the deletion",
     );
     assert!(matches!(e, wt::Error::RemoteDeleted), "{e}");
     // --force recreates it, even though the tree equals base.
-    let pr2 = ok(ta.push(&ctx, &ca, "a", true, 2, None).await, "forced push");
+    let pr2 = ok(
+        ta.push(&ctx, &ca, "a", b"", true, 2, None).await,
+        "forced push",
+    );
     assert!(!pr2.nothing, "{pr2:?}");
     assert_eq!(pr2.root, pr.root);
     let r = ok(ca.ref_get(&ctx, name).await, "ref get");
@@ -584,11 +849,17 @@ async fn push_ref_changed_texts() {
         "init 2",
     );
     assert!(!fr1.exists && !fr2.exists);
-    let p1 = ok(t1.push(&ctx, &c1, "one", false, 2, None).await, "push 1");
+    let p1 = ok(
+        t1.push(&ctx, &c1, "one", b"", false, 2, None).await,
+        "push 1",
+    );
 
     // The name must be new, but the cluster holds the other copy's tree.
     let before = t2.state.clone();
-    let e = fails(t2.push(&ctx, &c2, "two", false, 2, None).await, "push 2");
+    let e = fails(
+        t2.push(&ctx, &c2, "two", b"", false, 2, None).await,
+        "push 2",
+    );
     assert!(matches!(e, wt::Error::RefChanged(_)), "{e}");
     assert_eq!(
         e.to_string(),
@@ -610,7 +881,10 @@ async fn push_ref_changed_texts() {
         "ref delete",
     );
     write_wc(d1.path(), "a.txt", "a2\n");
-    let e = fails(t1.push(&ctx, &c1, "one", false, 2, None).await, "push 1");
+    let e = fails(
+        t1.push(&ctx, &c1, "one", b"", false, 2, None).await,
+        "push 1",
+    );
     assert!(matches!(e, wt::Error::RefChanged(_)), "{e}");
     assert_eq!(e.to_string(), want(&v, "flow/push-ref-changed-absent"));
     assert_eq!(
@@ -639,7 +913,10 @@ async fn push_excludes_only_the_root_dstore() {
         wt::init(&ctx, &c, &bytes(dir.path()), cfg("trees/excl"), None).await,
         "init",
     );
-    let pr = ok(t.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let pr = ok(
+        t.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     let store = Arc::clone(&t.store);
     let get = move |k: Key| store.get(k);
     let paths = kinds(&ok(wt::diff_trees(&get, empty_key(), pr.root), "diff"));
@@ -717,7 +994,10 @@ async fn clone_cleans_up_what_it_created() {
         wt::init(&ctx, &c, &bytes(src.path()), cfg("trees/cl"), None).await,
         "init",
     );
-    let p0 = ok(t0.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let p0 = ok(
+        t0.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     ok(t0.close(), "close");
     let dir = base.path().join("ok");
     let config = Config {
@@ -768,7 +1048,10 @@ async fn init_of_an_existing_name_then_pull() {
         wt::init(&ctx, &c, &bytes(src.path()), cfg("trees/init"), None).await,
         "init",
     );
-    let p0 = ok(t0.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let p0 = ok(
+        t0.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     ok(t0.close(), "close");
 
     let dir = tempdir();
@@ -791,7 +1074,10 @@ async fn init_of_an_existing_name_then_pull() {
     assert_eq!(kind_of(&k, "f.txt"), Some(Kind::Added), "{k:?}");
     assert_eq!(kind_of(&k, "g.txt"), Some(Kind::Added), "{k:?}");
     // Base and remote differ: push refuses.
-    let e = fails(t.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    let e = fails(
+        t.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     assert!(matches!(e, wt::Error::RemoteMoved), "{e}");
     // pull merges: the equal addition is no conflict, the local addition stays.
     let (plr, res) = t.pull(&ctx, &c, false, 2, None).await;
@@ -851,7 +1137,10 @@ async fn pull_with_a_failed_apply_keeps_base() {
         wt::init(&ctx, &c0, &bytes(src.path()), cfg(name), None).await,
         "init",
     );
-    ok(t0.push(&ctx, &c0, "tester", false, 2, None).await, "push");
+    ok(
+        t0.push(&ctx, &c0, "tester", b"", false, 2, None).await,
+        "push",
+    );
     ok(t0.close(), "close");
     c0.close();
     let (ca, cb) = (h.client(141).await, h.client(142).await);
@@ -868,7 +1157,7 @@ async fn pull_with_a_failed_apply_keeps_base() {
 
     // A edits below sub and pushes; B turns sub into a file.
     write_wc(&ra, "sub/deep.txt", "deep A\n");
-    let pa = ok(ta.push(&ctx, &ca, "a", false, 2, None).await, "push A");
+    let pa = ok(ta.push(&ctx, &ca, "a", b"", false, 2, None).await, "push A");
     ok(std::fs::remove_dir_all(rb.join("sub")), "remove sub");
     write_wc(&rb, "sub", "file\n");
     let before = tb.state.clone();
@@ -1001,7 +1290,10 @@ async fn refresh_ticket_stores_the_view_ticket() {
         wt::init(&ctx, &c, &bytes(src.path()), cfg("trees/tk"), None).await,
         "init",
     );
-    ok(t0.push(&ctx, &c, "tester", false, 2, None).await, "push");
+    ok(
+        t0.push(&ctx, &c, "tester", b"", false, 2, None).await,
+        "push",
+    );
     ok(t0.close(), "close");
 
     let base = tempdir();

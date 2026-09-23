@@ -71,7 +71,7 @@ struct RawJson {
 #[test]
 fn verify_record_vectors() {
     let v: VerifyVectors = golden::load_json("client/verify_record.json");
-    assert_eq!(v.cases.len(), 21, "verify_record cases");
+    assert_eq!(v.cases.len(), 23, "verify_record cases");
     for c in &v.cases {
         let bytes = golden::hex(&c.raw.bytes);
         let raw = RawRecord {

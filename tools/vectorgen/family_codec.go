@@ -2,7 +2,7 @@ package main
 
 // Family codec: codec/encode.json and codec/decode.json.
 //
-// The values come from dstore v0.1.9 codec.Marshal and codec.Unmarshal, which
+// The values come from dstore v0.1.10 codec.Marshal and codec.Unmarshal, which
 // are fxamacker/cbor v2.9.3 CanonicalEncOptions().EncMode() and
 // DecOptions{}.DecMode(), over test structs that mirror every field kind and
 // struct-tag combination dstore declares. The Rust tests

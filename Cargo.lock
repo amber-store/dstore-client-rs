@@ -54,8 +54,8 @@ checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 
 [[package]]
 name = "amber-store-core"
-version = "0.3.0"
-source = "git+https://github.com/amber-store/core-rs?rev=a85ffa1eb5ed363b9072ab224de179196cd0a046#a85ffa1eb5ed363b9072ab224de179196cd0a046"
+version = "0.4.0"
+source = "git+https://github.com/amber-store/core-rs?rev=7386914b56b9c43ea42b166d81c1f2fbce3aaffb#7386914b56b9c43ea42b166d81c1f2fbce3aaffb"
 dependencies = [
  "blake3",
  "crc32c",

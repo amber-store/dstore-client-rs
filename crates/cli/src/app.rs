@@ -76,6 +76,18 @@ fn string(name: &'static str, usage: &'static str) -> FlagDef {
     flag(name, FlagKind::String { default: "" }, usage)
 }
 
+/// `cli.StringFlag` with `Aliases`, default "".
+fn string_aliased(
+    name: &'static str,
+    aliases: &'static [&'static str],
+    usage: &'static str,
+) -> FlagDef {
+    FlagDef {
+        aliases,
+        ..string(name, usage)
+    }
+}
+
 /// `cli.BoolFlag`, default false.
 fn boolean(name: &'static str, usage: &'static str) -> FlagDef {
     flag(name, FlagKind::Bool { default: false }, usage)
@@ -626,6 +638,11 @@ fn push_cmd() -> CommandDef {
                     "user identity recorded in the reference (default: the stored one, then the OS user)",
                 ),
                 boolean("force", "replace the reference unconditionally"),
+                string_aliased(
+                    "message",
+                    &["m"],
+                    "commit message; on a branch (a reference naming a commit) every push makes a commit, and a message makes one on any reference",
+                ),
                 jobs_flag(),
                 no_tui_flag(),
             ],
@@ -972,7 +989,11 @@ mod tests {
             ("init", "NAME", cat(WC, &["user", "no-tui"])),
             ("fetch", "", cat(WC, &["no-tui"])),
             ("pull", "", cat(WC, &["force", "jobs", "no-tui"])),
-            ("push", "", cat(WC, &["user", "force", "jobs", "no-tui"])),
+            (
+                "push",
+                "",
+                cat(WC, &["user", "force", "message", "jobs", "no-tui"]),
+            ),
             ("status", "", vec!["jobs"]),
             (
                 "diff",
@@ -1033,7 +1054,13 @@ mod tests {
             let mut seen = BTreeSet::new();
             for f in &c.flags {
                 assert!(seen.insert(f.name), "{path}: flag {} defined twice", f.name);
-                assert!(f.aliases.is_empty(), "{path}: --{} has aliases", f.name);
+                // push --message/-m is the only aliased flag.
+                let want: &[&str] = if path == "push" && f.name == "message" {
+                    &["m"]
+                } else {
+                    &[]
+                };
+                assert_eq!(f.aliases, want, "{path}: --{} aliases", f.name);
                 assert!(!f.disable_default_text, "{path}: --{}", f.name);
                 env.extend(f.env.iter().map(|e| (f.name, *e)));
                 if f.required {

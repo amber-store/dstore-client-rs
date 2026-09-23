@@ -1,7 +1,7 @@
 package main
 
 // Family refglob: refglob/refglob.json, the reference-name glob of dstore
-// v0.1.9 (refglob/refglob.go) that the Rust fake node's watch handler ports
+// v0.1.10 (refglob/refglob.go) that the Rust fake node's watch handler ports
 // (dstore_testkit::refglob). Schema: docs/vectorgen-client.md.
 
 import (

@@ -1,6 +1,6 @@
 package main
 
-// Family client: the client-package vectors of dstore v0.1.9 (client-core §5,
+// Family client: the client-package vectors of dstore v0.1.10 (client-core §5,
 // client-transfer §5.2 items 3-5 and 8, verification §4.3 item 22):
 //
 //	client/rank.json                rankOwners and rttClass scenarios
@@ -13,7 +13,7 @@ package main
 //	errors/client_text.json         client error texts
 //
 // Unexported Go functions are copied verbatim below. Before generating,
-// clientSelfCheck parses the dstore v0.1.9 sources and this file and compares
+// clientSelfCheck parses the dstore v0.1.10 sources and this file and compares
 // every copy with its original (comments dropped, identifiers renamed per
 // clientRenames), so a copy that drifts fails the run. Schemas:
 // docs/vectorgen-client.md.
@@ -45,6 +45,7 @@ import (
 	"time"
 
 	"github.com/amber-store/core/amberpack"
+	"github.com/amber-store/core/commit"
 	"github.com/amber-store/core/fstree"
 	"github.com/amber-store/core/ingest"
 	"github.com/amber-store/core/key"
@@ -95,7 +96,7 @@ func genClient(out string) error {
 //go:embed family_client.go
 var clientSelfSource []byte
 
-const clientDstorePath, clientDstoreVersion = "github.com/amber-store/dstore", "v0.1.9"
+const clientDstorePath, clientDstoreVersion = "github.com/amber-store/dstore", "v0.1.10"
 
 // clientRenames maps identifiers of the dstore sources to the names the copies
 // use in package main, where the originals would be too generic or would
@@ -152,7 +153,7 @@ type clientExpr struct {
 var clientExprs []clientExpr
 
 // clientModuleDir returns the directory of the dstore module the generator is
-// built against, after checking that it is v0.1.9 without a replace.
+// built against, after checking that it is v0.1.10 without a replace.
 func clientModuleDir() (string, error) {
 	bi, ok := debug.ReadBuildInfo()
 	if !ok {
@@ -463,7 +464,7 @@ func clientIndexKey(i int) [32]byte {
 
 // ---- client/rank.json ----
 
-// rttClass is a verbatim copy of dstore v0.1.9 client/rank.go rttClass.
+// rttClass is a verbatim copy of dstore v0.1.10 client/rank.go rttClass.
 func rttClass(rtt time.Duration) int {
 	switch {
 	case rtt < 5*time.Millisecond:
@@ -477,7 +478,7 @@ func rttClass(rtt time.Duration) int {
 	}
 }
 
-// rankOwners is a verbatim copy of dstore v0.1.9 client/rank.go rankOwners.
+// rankOwners is a verbatim copy of dstore v0.1.10 client/rank.go rankOwners.
 func rankOwners(ids []view.NodeID, penalty func(view.NodeID) int, path func(view.NodeID) (transport.PathInfo, bool)) []view.NodeID {
 	type scored struct {
 		id    view.NodeID
@@ -677,7 +678,7 @@ type clientRecordSizer = func(k [32]byte) int
 // The alias must keep client.RecordSizer's signature.
 var _ clientRecordSizer = client.RecordSizer(nil)
 
-// batches is a verbatim copy of dstore v0.1.9 client/batch.go batches
+// batches is a verbatim copy of dstore v0.1.10 client/batch.go batches
 // (RecordSizer renamed).
 func batches(keys [][32]byte, size clientRecordSizer, maxBytes, maxKeys int) [][][32]byte {
 	var out [][][32]byte
@@ -821,7 +822,7 @@ func genClientBatches() (any, error) {
 
 // ---- client/fetch.json ----
 
-// Verbatim copies of dstore v0.1.9 client/fetch.go: the get batch limits,
+// Verbatim copies of dstore v0.1.10 client/fetch.go: the get batch limits,
 // estSize, fetchKey, fetchJob, fetchAcc and pickBatch.
 const (
 	getBatchKeys  = 2048
@@ -1223,6 +1224,31 @@ func genClientVerifyRecord() (any, error) {
 			return nil, err
 		}
 	}
+	// A Commit (core v0.0.9): its length field is its own serialized length, which the client, unlike the
+	// node, does not check either.
+	dirLeaf, err := fstree.EncodeDirLeaf(nil)
+	if err != nil {
+		return nil, err
+	}
+	cid := commit.Identity{Name: "tester", When: 1}
+	ck, cdata, err := commit.Commit{Tree: dirLeaf.Key, Author: cid, Committer: cid, Message: "m"}.Object()
+	if err != nil {
+		return nil, err
+	}
+	crec, err := encode(ck, cdata)
+	if err != nil {
+		return nil, err
+	}
+	if err := add("commit", crec, true, true); err != nil {
+		return nil, err
+	}
+	cbad, err := encode(newKey(key.Commit, uint64(len(cdata))+1, cdata), cdata)
+	if err != nil {
+		return nil, err
+	}
+	if err := add("commit_length_field_off_by_one", cbad, true, true); err != nil {
+		return nil, err
+	}
 	// The client does not check a Blob's length field against the payload.
 	r999, err := encode(newKey(key.Blob, 999, p100), p100)
 	if err != nil {
@@ -1251,9 +1277,10 @@ func genClientVerifyRecord() (any, error) {
 	if err := add("key_reserved_header_bit", clientRecord(reserved, 0, 100, p100), false, false); err != nil {
 		return nil, err
 	}
-	type5 := k100
-	type5[0] = 0x50 | type5[0]&0x0f
-	if err := add("key_reserved_type_5", clientRecord(type5, 0, 100, p100), false, false); err != nil {
+	// Type 5 is Commit since core v0.0.9; 6..15 are reserved.
+	type6 := k100
+	type6[0] = 0x60 | type6[0]&0x0f
+	if err := add("key_reserved_type_6", clientRecord(type6, 0, 100, p100), false, false); err != nil {
 		return nil, err
 	}
 	type15 := k100
@@ -1317,7 +1344,7 @@ func (p *clientStubPool) Path(id view.NodeID, alpn string) (transport.PathInfo, 
 	return pi, ok
 }
 
-// Verbatim copies of dstore v0.1.9 client/progress.go: tracker, newTracker,
+// Verbatim copies of dstore v0.1.10 client/progress.go: tracker, newTracker,
 // its methods, countKeys and (*Cluster).pathAttrs (types renamed).
 type tracker struct {
 	c     *clientStubCluster
@@ -1736,7 +1763,7 @@ type clientBackoffState struct {
 	failures map[view.NodeID]int
 }
 
-// clientBackoff runs the statements of dstore v0.1.9 client/client.go
+// clientBackoff runs the statements of dstore v0.1.10 client/client.go
 // (*Cluster).handleErr that compute a node's backoff after a failure.
 func clientBackoff(c *clientBackoffState, id view.NodeID) time.Duration {
 	d := 5 * time.Second << min(c.failures[id]-1, 4)
@@ -1746,7 +1773,7 @@ func clientBackoff(c *clientBackoffState, id view.NodeID) time.Duration {
 	return d
 }
 
-// clientWatchDelays runs the reconnect delay of dstore v0.1.9 client/watch.go
+// clientWatchDelays runs the reconnect delay of dstore v0.1.10 client/watch.go
 // WatchRefs over rounds in which no node served the watch: the delay logged as
 // "in" and the jitter bound of each round's wait.
 func clientWatchDelays(rounds int) (delays, jitterMax []time.Duration) {

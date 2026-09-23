@@ -1,5 +1,5 @@
 // Command clisnap captures tests/golden/cli/snapshots.json: the stdout, stderr
-// and exit status of the Go dstore v0.1.9 CLI for every case of
+// and exit status of the Go dstore v0.1.10 CLI for every case of
 // port-notes/cli.md §5.2-§5.3 and verification.md §4.3 item 24 and §5 that
 // runs without a cluster (help, usage errors, unknown commands and flags,
 // required flags, --version, argument validation before dialing, node-side
@@ -13,7 +13,7 @@
 //
 // It first runs the AST self-check of the cmd/dstore copies (mainpkg), then
 // builds github.com/amber-store/dstore/cmd/dstore with the vectorgen module's
-// build list (identical to dstore v0.1.9's go.mod) into a temporary directory,
+// build list (identical to dstore v0.1.10's go.mod) into a temporary directory,
 // runs every case there with a clean environment (PATH, a temporary HOME,
 // TZ=UTC) in a freshly built fixture directory, and deletes the binary and
 // every fixture afterwards. Schema: docs/vectorgen-cli.md.
@@ -184,7 +184,7 @@ const (
 )
 
 func nodeSideCommandText(cmd string) string {
-	return cmd + " is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)"
+	return cmd + " is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)"
 }
 
 // pebbleRefsText is the PORTING.md §2.3 refusal for a --local directory whose
@@ -193,7 +193,7 @@ func pebbleRefsText(local string) string {
 	return "refstore: " + local + "/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)"
 }
 
-// pebbleRefsNames are the entries of a fresh core v0.0.8 refstore (Pebble)
+// pebbleRefsNames are the entries of a fresh core v0.0.9 refstore (Pebble)
 // directory after Open and Close. The pebble_refs step checks them, so a
 // Pebble upgrade that changes them fails the run.
 var pebbleRefsNames = []string{"000002.log", "LOCK", "MANIFEST-000001", "OPTIONS-000003", "marker.format-version.000001.013", "marker.manifest.000001.MANIFEST-000001"}
@@ -580,6 +580,8 @@ func cases() ([]spec, error) {
 		{"token", "create", "--weight", "-1"}, {"token", "create", "--weight", "18446744073709551616"},
 		{"serve", "--jobs", "9223372036854775808"}, {"serve", "--rate", "1.5"}, {"cluster", "init", "--replicas", "x"},
 		{"diff", "--stat=maybe"}, {"serve", "--advertise-addr"}, {"diff", "--jobs", "0x"}, {"clone", "--local", "L", "trees/x"},
+		// push --message/-m (dstore v0.1.10) without its value: the alias is named as it was given.
+		{"push", "-m"}, {"push", "--message"}, {"push", "--force", "-m"},
 	} {
 		addArgs("usage", args...)
 	}
@@ -740,6 +742,8 @@ func cases() ([]spec, error) {
 		{"status"}, {"diff"}, {"diff", "--stat"}, {"diff", "a.txt"}, {"diff", "a.txt", "--stat"}, {"diff", "../"}, {"diff", "sub"},
 		{"diff", "--incoming"}, {"diff", "--remote"}, {"push"}, {"push", "--user", ""}, {"fetch", "--ticket", "zz"},
 		{"init", "--ticket", "bogus", "trees/x"},
+		// push --message/-m (dstore v0.1.10): the only aliased flag of a command.
+		{"push", "-m", "msg"}, {"push", "--message=msg", "--user", ""}, {"push", "-message", "msg"},
 	} {
 		wc("wc1", "", args...)
 	}

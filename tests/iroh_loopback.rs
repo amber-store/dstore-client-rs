@@ -1120,11 +1120,11 @@ fn live_store_node() -> (NodeId, Vec<String>) {
     (id, vec![format!("ip:127.0.0.1:{port}")])
 }
 
-/// Interop check E3: a Rust client's `TPing` to a Go dstore v0.1.9 node over the client ALPN is answered with
+/// Interop check E3: a Rust client's `TPing` to a Go dstore v0.1.10 node over the client ALPN is answered with
 /// `TPong`, stamped (`stampReply`) with the node's view incarnation and epoch, the stamp its view reply
 /// carries.
 #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
-#[ignore = "live interop: needs a running Go dstore v0.1.9 node; set DSTORE_LIVE_STORE to its store directory"]
+#[ignore = "live interop: needs a running Go dstore v0.1.10 node; set DSTORE_LIVE_STORE to its store directory"]
 async fn live_go_node_ping_is_stamped() {
     within(async {
         let (id, addrs) = live_store_node();
@@ -1173,11 +1173,11 @@ async fn live_go_node_ping_is_stamped() {
     .await;
 }
 
-/// Dials a running Go dstore v0.1.9 node (`dstore serve --store DIR --no-relay --loopback`) through
+/// Dials a running Go dstore v0.1.10 node (`dstore serve --store DIR --no-relay --loopback`) through
 /// `bind_iroh` and `Endpoint::dial`, does a view call through `Pool::call`, and resolves the node by id over
 /// mDNS (the node announces).
 #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
-#[ignore = "live interop: needs a running Go dstore v0.1.9 node; set DSTORE_LIVE_STORE to its store directory"]
+#[ignore = "live interop: needs a running Go dstore v0.1.10 node; set DSTORE_LIVE_STORE to its store directory"]
 async fn live_go_node_view_call() {
     within(async {
         let store = std::env::var("DSTORE_LIVE_STORE").expect("DSTORE_LIVE_STORE");
@@ -1402,14 +1402,14 @@ async fn ping_within(ctx: &Ctx, conn: &dyn Conn, epoch: u64) -> Result<Msg, Stri
         .unwrap_or_else(|_| Err("no reply within 5 s".to_string()))
 }
 
-/// A Go dstore v0.1.9 node dialled through `slow_relay` from the CLI's endpoint answers every ping, and the
+/// A Go dstore v0.1.10 node dialled through `slow_relay` from the CLI's endpoint answers every ping, and the
 /// connection stays on the dialled path. That path is direct (an IP path), so the vendored iroh patch starts no
 /// NAT traversal round. Stock iroh 1.2.0 would send REACH_OUT frames with every interface address, the node
 /// would probe them, and the client would move to a loopback path. That round exposes two go-iroh v0.2.0 bugs,
 /// a `KEY_UPDATE_ERROR` and a stateless reset after a retired connection ID is reused, which killed about 1
 /// connection in 180 (interop D9, interop-fix-1 in port-notes/impl-interop-fixes.md).
 #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
-#[ignore = "live interop: needs a running Go dstore v0.1.9 node; set DSTORE_LIVE_STORE to its store directory"]
+#[ignore = "live interop: needs a running Go dstore v0.1.10 node; set DSTORE_LIVE_STORE to its store directory"]
 async fn live_go_node_stays_direct_behind_a_slow_path() {
     within(async {
         let (id, addrs) = live_store_node();
@@ -1458,7 +1458,7 @@ async fn live_go_node_stays_direct_behind_a_slow_path() {
 /// address, carries at most 1252 (interop-fix-3 in port-notes/impl-interop-fixes.md). The loopback bind keeps
 /// the test independent of the host's interfaces, with or without the patch.
 #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
-#[ignore = "live interop: needs a running Go dstore v0.1.9 node; set DSTORE_LIVE_STORE to its store directory"]
+#[ignore = "live interop: needs a running Go dstore v0.1.10 node; set DSTORE_LIVE_STORE to its store directory"]
 async fn live_go_node_pool_stays_direct_behind_a_slow_path() {
     within(async {
         let (id, addrs) = live_store_node();

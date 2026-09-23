@@ -1,4 +1,4 @@
-// Command treekey prints the root key github.com/amber-store/core v0.0.8 ingest computes for a directory
+// Command treekey prints the root key github.com/amber-store/core v0.0.9 ingest computes for a directory
 // (or a single regular file) without storing anything, as 64 lowercase hex digits. The interop checks
 // compare it with the root a push reports.
 //
