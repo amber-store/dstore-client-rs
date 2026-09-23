@@ -21,7 +21,7 @@ fails with the first ten mismatches.
 ## `gocompat/json.json`
 
 `encoding/json` v1 (`json.MarshalIndent(v, "", "  ")` and `json.Unmarshal`) over two structs:
-`worktree.Config` from dstore v0.1.9 and `main.stateJSON`, a copy of the unexported `worktree.stateJSON`.
+`worktree.Config` from dstore v0.1.10 and `main.stateJSON`, a copy of the unexported `worktree.stateJSON`.
 
 ```json
 {

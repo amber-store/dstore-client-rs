@@ -6,8 +6,8 @@ require (
 	charm.land/bubbles/v2 v2.2.1
 	charm.land/bubbletea/v2 v2.0.9
 	charm.land/lipgloss/v2 v2.0.6
-	github.com/amber-store/core v0.0.8
-	github.com/amber-store/dstore v0.1.9
+	github.com/amber-store/core v0.0.9
+	github.com/amber-store/dstore v0.1.10
 	github.com/amber-store/transport-iroh v0.4.0
 	github.com/aymanbagabas/go-udiff v0.4.1
 	github.com/charmbracelet/colorprofile v0.4.3

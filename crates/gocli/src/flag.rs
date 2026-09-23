@@ -28,7 +28,7 @@ pub enum FlagKind {
 #[derive(Clone, Debug, PartialEq)]
 pub struct FlagDef {
     pub name: &'static str,
-    /// Only help/h, version/v.
+    /// Only help/h, version/v and push's message/m.
     pub aliases: &'static [&'static str],
     pub kind: FlagKind,
     pub usage: &'static str,

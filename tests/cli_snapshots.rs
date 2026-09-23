@@ -1028,6 +1028,7 @@ fn apply_step(
                 state: dstore_worktree::State {
                     base,
                     remote,
+                    remote_commit: Key([0; 32]),
                     has_remote,
                     remote_version,
                     synced_at: dstore_gocompat::time::GoTime::from_unix_nano(*synced_at_unix_ns),

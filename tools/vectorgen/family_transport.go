@@ -2,7 +2,7 @@ package main
 
 // Family "transport": transport/addrs.json, transport/relay_urls.json,
 // transport/ids.json, transport/mdns.json and transport/pool_scripts.json
-// (port-notes/transport.md §5), produced by dstore v0.1.9 transport and wire,
+// (port-notes/transport.md §5), produced by dstore v0.1.10 transport and wire,
 // go-iroh v0.2.0 netaddr, relay, key, iroh and iroh/mdns, and Go net/netip.
 // Schemas: docs/vectorgen-view.md.
 //
@@ -81,7 +81,7 @@ func tspCheckVersions() error {
 	if !ok {
 		return errors.New("no build info: cannot check module versions")
 	}
-	want := map[string]string{"github.com/tmc/go-iroh": "v0.2.0", "github.com/amber-store/dstore": "v0.1.9"}
+	want := map[string]string{"github.com/tmc/go-iroh": "v0.2.0", "github.com/amber-store/dstore": "v0.1.10"}
 	for _, dep := range bi.Deps {
 		v, ok := want[dep.Path]
 		if !ok {

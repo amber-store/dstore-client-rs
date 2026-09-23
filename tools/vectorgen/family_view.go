@@ -1,7 +1,7 @@
 package main
 
 // Families "view" (view/view_placement.json) and "placement"
-// (placement/all_slots.json): golden vectors of the dstore v0.1.9 view and
+// (placement/all_slots.json): golden vectors of the dstore v0.1.10 view and
 // placement packages, worktree.TicketFromView and node.ShortID
 // (port-notes/view-placement.md §5 and Appendix A, port-notes/verification.md
 // §4.3 item 9). Schemas: docs/vectorgen-view.md.

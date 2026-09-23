@@ -8,16 +8,18 @@
 use std::ffi::OsString;
 use std::sync::Arc;
 
+use amber_store_core::commit::{self, Commit, Identity};
 use amber_store_core::key::Key;
 use amber_store_core::{ingest, packstore};
-use dstore_client::{Cluster, Cond, Progress, PullStats, PushStats};
+use dstore_client::{Cluster, Cond, Progress, PullStats, PushStats, tree_of};
 use dstore_gocompat::ctx::Ctx;
 use dstore_gocompat::errno::PathError;
 use dstore_gocompat::os;
 use dstore_gocompat::path::to_path;
-use dstore_gocompat::time::GoTime;
+use dstore_gocompat::time::{GoTime, SystemZone, Zone};
 
-use crate::error::lossy;
+use crate::error::{lossy, wrap};
+use crate::tree::is_commit;
 use crate::{Change, Config, Conflict, DIR, Error, Tree};
 
 /// `worktree.FetchResult`.
@@ -27,17 +29,21 @@ pub struct FetchResult {
     pub exists: bool,
     /// Its tree was already the stored remote.
     pub up_to_date: bool,
+    /// What the reference names: a tree, or a commit on a branch.
     pub key: Key,
+    /// The tree it stands for.
+    pub tree: Key,
     pub stats: PullStats,
 }
 
-/// The zero `FetchResult` (key all zero).
+/// The zero `FetchResult` (keys all zero).
 impl Default for FetchResult {
     fn default() -> FetchResult {
         FetchResult {
             exists: false,
             up_to_date: false,
             key: Key([0; 32]),
+            tree: Key([0; 32]),
             stats: PullStats::default(),
         }
     }
@@ -56,6 +62,8 @@ pub struct PullResult {
 #[derive(Clone, Debug)]
 pub struct PushResult {
     pub root: Key,
+    /// The commit pushed on a branch; zero for a plain tree.
+    pub commit: Key,
     /// The tree equals base and base is what the cluster holds.
     pub nothing: bool,
     /// The cluster already held this tree from an interrupted push.
@@ -64,11 +72,12 @@ pub struct PushResult {
     pub stats: PushStats,
 }
 
-/// The zero `PushResult` (root all zero).
+/// The zero `PushResult` (root and commit all zero).
 impl Default for PushResult {
     fn default() -> PushResult {
         PushResult {
             root: Key([0; 32]),
+            commit: Key([0; 32]),
             nothing: false,
             recovered: false,
             built: packstore::WriteStats::default(),
@@ -128,6 +137,7 @@ impl Tree {
             Err(e) if e.is_unknown_ref() => {
                 self.state.has_remote = false;
                 self.state.remote = Key([0; 32]);
+                self.state.remote_commit = Key([0; 32]);
                 self.state.remote_version = None;
                 return (r, Ok(()));
             }
@@ -139,17 +149,30 @@ impl Tree {
         };
         r.exists = true;
         r.key = k;
-        if self.state.has_remote && self.state.remote == k {
-            // No PullTree, even when the local packstore lost objects (Go v0.1.9).
+        if self.state.has_remote && self.state.remote_key() == k {
+            // No PullTree, even when the local packstore lost objects (as Go).
             r.up_to_date = true;
         } else if let Err(e) = cl
             .pull_tree(ctx, Arc::clone(&self.store), k, &mut r.stats, prog)
             .await
         {
+            // On a branch this pulls the commit's whole history too.
             return (r, Err(Error::Client(e)));
         }
+        // `client.TreeOf(k, t.Get)`: a tree stands for itself and is not read.
+        let tree = if is_commit(&k) {
+            let get = getter(&self.store);
+            match blocking(move || tree_of(k, &get).map_err(|e| wrap(e.to_string(), e))).await {
+                Ok(tree) => tree,
+                Err(e) => return (r, Err(e)),
+            }
+        } else {
+            k
+        };
+        r.tree = tree;
         self.state.has_remote = true;
-        self.state.remote = k;
+        self.state.remote = tree;
+        self.state.remote_commit = if is_commit(&k) { k } else { Key([0; 32]) };
         self.state.remote_version = Some(rf.version);
         (r, Ok(()))
     }
@@ -240,11 +263,19 @@ impl Tree {
     /// Go `Push`: builds the working directory's tree (`.dstore` excluded at the root), uploads it and writes
     /// the reference under compare-and-swap on the stored remote version. It refuses when base and remote
     /// differ unless `force`, which replaces the reference unconditionally. Push does not fetch first.
+    ///
+    /// When the reference is a branch (it names a commit), the tree is recorded as a new commit whose parent
+    /// is the fetched one, with `user` as author and committer and `message` as its message, and the
+    /// reference moves to that commit. A non-empty message makes a commit on a plain or new reference too,
+    /// turning it into a branch. `message` is a Go string: bytes that are not UTF-8 fail as Go's commit
+    /// validation fails them, after the tree is built.
+    #[allow(clippy::too_many_arguments)] // signature fixed by PORTING.md §4.10
     pub async fn push(
         &mut self,
         ctx: &Ctx,
         cl: &Cluster,
         user: &str,
+        message: &[u8],
         force: bool,
         jobs: usize,
         prog: Option<Progress>,
@@ -280,6 +311,15 @@ impl Tree {
             r.nothing = true;
             return Ok(r);
         }
+        let mut target = root;
+        let mut parents: Vec<Key> = Vec::new();
+        if self.state.is_branch() || !message.is_empty() {
+            if self.state.is_branch() {
+                parents.push(self.state.remote_commit);
+            }
+            target = self.commit(root, &parents, user, message).await?;
+            r.commit = target;
+        }
         let mut cond = Cond {
             force,
             ..Cond::default()
@@ -291,7 +331,15 @@ impl Tree {
         }
         let name = lossy(&self.config.name).into_owned();
         match cl
-            .push(ctx, Arc::clone(&self.store), root, &name, user, cond, prog)
+            .push(
+                ctx,
+                Arc::clone(&self.store),
+                target,
+                &name,
+                user,
+                cond,
+                prog,
+            )
             .await
         {
             Ok(ps) => {
@@ -299,29 +347,93 @@ impl Tree {
                 r.stats = ps;
             }
             Err(e) => {
-                // errors.As(err, &cm): a mismatch whose current key is this root is the trace of an
-                // interrupted push; any other mismatch means the reference moved.
+                // errors.As(err, &cm): a mismatch whose current key is what this push would have written
+                // is the trace of an interrupted push; any other mismatch means the reference moved.
                 let mismatch = e.cas_mismatch().map(|cm| {
-                    let same =
-                        cm.has_current && Key::parse(&cm.current).is_ok_and(|cur| cur == root);
-                    (same, cm.version.clone())
+                    let cur = if cm.has_current {
+                        Key::parse(&cm.current).ok()
+                    } else {
+                        None
+                    };
+                    (cur, cm.version.clone())
                 });
-                match mismatch {
-                    None => return Err(Error::Client(e)),
-                    Some((false, _)) => return Err(Error::RefChanged(e)),
-                    Some((true, version)) => {
-                        r.recovered = true;
-                        self.state.remote_version = Some(version);
-                    }
+                let Some((cur, version)) = mismatch else {
+                    return Err(Error::Client(e));
+                };
+                let same = match cur {
+                    Some(cur) => self.same_push(cur, target, root, &parents).await,
+                    None => false,
+                };
+                let Some(cur) = cur.filter(|_| same) else {
+                    return Err(Error::RefChanged(e));
+                };
+                r.recovered = true;
+                self.state.remote_version = Some(version);
+                if is_commit(&target) {
+                    // The earlier attempt's commit: its timestamp, and so its key, differ from this one's.
+                    target = cur;
+                    r.commit = cur;
                 }
             }
         }
         self.state.base = root;
         self.state.remote = root;
+        self.state.remote_commit = if is_commit(&target) {
+            target
+        } else {
+            Key([0; 32])
+        };
         self.state.has_remote = true;
         self.state.synced_at = GoTime::now();
         self.save_state()?;
         Ok(r)
+    }
+
+    /// Go `commit`: records `tree` as a commit with the given parents in the local store and returns its
+    /// key. The identity is `user` at now, with the local zone's offset in whole minutes (Go `now.Zone()`).
+    async fn commit(
+        &self,
+        tree: Key,
+        parents: &[Key],
+        user: &str,
+        message: &[u8],
+    ) -> Result<Key, Error> {
+        let now = GoTime::now();
+        let id = Identity {
+            name: user.to_owned(),
+            email: String::new(),
+            when: now.unix_nano(),
+            tz_offset: SystemZone.offset_at(now.unix_secs) / 60,
+        };
+        let (k, raw) = commit_object(tree, parents, id, message)
+            .map_err(|e| wrap(format!("commit: {e}"), e))?;
+        let store = Arc::clone(&self.store);
+        blocking(move || store.put(k, &raw).map_err(Error::Packstore)).await?;
+        Ok(k)
+    }
+
+    /// Go `samePush`: whether the cluster's current key `cur` is what this push would have written: the
+    /// same key, or, on a branch, a commit made by an interrupted earlier push of the same tree onto the
+    /// same parents (its timestamp, and so its key, differ from this attempt's).
+    async fn same_push(&self, cur: Key, target: Key, tree: Key, parents: &[Key]) -> bool {
+        if cur == target {
+            return true;
+        }
+        if !is_commit(&cur) || !is_commit(&target) {
+            return false;
+        }
+        // An earlier attempt stored its commit locally.
+        let store = Arc::clone(&self.store);
+        let parents = parents.to_vec();
+        blocking(move || {
+            Ok(store
+                .get(cur)
+                .ok()
+                .and_then(|data| Commit::decode(&data).ok())
+                .is_some_and(|c| c.tree == tree && c.parents == parents))
+        })
+        .await
+        .unwrap_or(false)
     }
 
     /// Go `RefreshTicket`: stores the ticket derived from the connected cluster's view when it differs from
@@ -336,6 +448,40 @@ impl Tree {
         }
         self.config.ticket = s.into_bytes();
         self.save_config()
+    }
+}
+
+/// Go `commit.Commit{…}.Object()` with `id` as author and committer. `message` is a Go string: when it is
+/// not UTF-8, the rules Go's `validate` checks before the message (tree, parents, identities) still fail
+/// first, then its length, then `commit message must be valid UTF-8`.
+fn commit_object(
+    tree: Key,
+    parents: &[Key],
+    id: Identity,
+    message: &[u8],
+) -> Result<(Key, Vec<u8>), commit::Error> {
+    let mut c = Commit {
+        tree,
+        parents: parents.to_vec(),
+        author: id.clone(),
+        committer: id,
+        message: String::new(),
+        signature: Vec::new(),
+        public_key: Vec::new(),
+    };
+    match std::str::from_utf8(message) {
+        Ok(m) => {
+            c.message = m.to_owned();
+            c.object()
+        }
+        Err(_) => {
+            c.encode()?;
+            Err(if message.len() > commit::MAX_MESSAGE_LEN {
+                commit::Error::MessageTooLong
+            } else {
+                commit::Error::MessageNotUtf8
+            })
+        }
     }
 }
 
@@ -456,4 +602,62 @@ pub async fn init(
         return Err(e);
     }
     Ok((t, r))
+}
+
+#[cfg(test)]
+mod tests {
+    use amber_store_core::key::Type;
+
+    use super::*;
+
+    fn id(name: &str) -> Identity {
+        Identity {
+            name: name.to_owned(),
+            email: String::new(),
+            when: 1,
+            tz_offset: 0,
+        }
+    }
+
+    /// A message that is not UTF-8 fails where Go's `validate` fails it: after the tree, parent and
+    /// identity rules, and after the length rule.
+    #[test]
+    fn commit_object_checks_the_message_in_go_order() {
+        let (tree, _) = crate::empty_tree();
+        // dstore's own test commit (`worktree/state.json` `commit`).
+        let (k, raw) = commit_object(tree, &[], id("tester"), b"").expect("commit");
+        assert_eq!(
+            k.to_string(),
+            "5048b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329"
+        );
+        assert_eq!(Commit::decode(&raw).expect("decode").tree, tree);
+        let (with_parent, _) =
+            commit_object(tree, &[k], id("tester"), "née".as_bytes()).expect("child");
+        assert_ne!(with_parent, k);
+
+        let text = |r: Result<(Key, Vec<u8>), commit::Error>| r.expect_err("refused").to_string();
+        assert_eq!(
+            text(commit_object(tree, &[], id("tester"), b"caf\xe9")),
+            "commit message must be valid UTF-8"
+        );
+        assert_eq!(
+            text(commit_object(tree, &[], id("a\x7fb"), b"caf\xe9")),
+            "commit author: name must not contain control characters"
+        );
+        let blob = Key::new(Type::Blob, 1, b"x");
+        assert_eq!(
+            text(commit_object(blob, &[], id("tester"), b"\xff")),
+            format!("commit tree {blob} is not a directory key (type Blob)")
+        );
+        assert_eq!(
+            text(commit_object(tree, &[tree], id("tester"), b"\xff")),
+            format!("commit parent 0: {tree} is not a commit key (type DirLeaf)")
+        );
+        let mut long = vec![b'a'; commit::MAX_MESSAGE_LEN + 1];
+        long[0] = 0xff;
+        assert_eq!(
+            text(commit_object(tree, &[], id("tester"), &long)),
+            format!("commit message exceeds {} bytes", commit::MAX_MESSAGE_LEN)
+        );
+    }
 }

@@ -33,7 +33,7 @@ Every output is deterministic: two runs give identical bytes.
 ## `view/view_placement.json`
 
 **Go:**
-- dstore v0.1.9 `placement` (`Fmix64`, `Log2Fix`, `Slot`, `Salt`, `L`, `NewSet`, `Set.Rank`, `Set.Owners`);
+- dstore v0.1.10 `placement` (`Fmix64`, `Log2Fix`, `Slot`, `Salt`, `L`, `NewSet`, `Set.Rank`, `Set.Owners`);
 - `view` (`Encode`, `Decode`, `NewPlacement`, the lookups and helpers, `ParseNodeID`, `ShortID`, `IDString`,
   `SortNodes`, `DefaultMinReplicas`, `ValidateChange`);
 - `worktree.TicketFromView`, `node.ShortID`.
@@ -215,7 +215,7 @@ The generator is port-notes/view-placement.md Appendix A, with the JSON changes 
 
 ## `placement/all_slots.json`
 
-**Go:** dstore v0.1.9 `placement.NewSet`, `Set.Rank` and `Set.Owners` over all 2^20 slots (verification.md §4.3
+**Go:** dstore v0.1.10 `placement.NewSet`, `Set.Rank` and `Set.Owners` over all 2^20 slots (verification.md §4.3
 item 9). **Rust tests:** `tests/golden_tests/view.rs`.
 
 ```json
@@ -252,7 +252,7 @@ run it with optimisation or expect a slow debug test.
 
 ## `transport/addrs.json`
 
-**Go:** go-iroh v0.2.0 `netaddr.ParseTransportAddr`, dstore v0.1.9 `transport.ParseAddrs`, and go1.26.5
+**Go:** go-iroh v0.2.0 `netaddr.ParseTransportAddr`, dstore v0.1.10 `transport.ParseAddrs`, and go1.26.5
 `net/netip.ParseAddrPort` (port-notes/transport.md §5.1, §5.4). **Rust tests:** `tests/golden_tests/transport.rs`
 (`dstore_transport::addr`).
 
@@ -355,7 +355,7 @@ run it with optimisation or expect a slow debug test.
 `parseAnnouncement`, `parseQuestions`; `mdns.go`: `(*Discovery).announcementInfo`, `endpointLabel`,
 `serviceName`, `instanceName`, `hostName`). The generator reaches these through `go:linkname`:
 - it declares mirror structs for `announcementData` and `dnsQuestion`;
-- it refuses to run unless the build info shows go-iroh v0.2.0 and dstore v0.1.9;
+- it refuses to run unless the build info shows go-iroh v0.2.0 and dstore v0.1.10;
 - it parses every announcement back as a layout check.
 
 Hand-made packets (the swarm-discovery layout, compression, malformed packets) come from the generator's own DNS
@@ -421,7 +421,7 @@ writer. Transport §5.8. **Rust tests:** `tests/golden_tests/transport_mdns.rs` 
 
 ## `transport/pool_scripts.json`
 
-**Go:** dstore v0.1.9 `transport.Pool` over `transport.NewNetwork()` (the in-memory transport), `wire.ReadMsg`,
+**Go:** dstore v0.1.10 `transport.Pool` over `transport.NewNetwork()` (the in-memory transport), `wire.ReadMsg`,
 `WriteMsg`, `ErrMsg` and `CloseStream`, and `time.Duration` (transport §5.7, §5.9). **Rust tests:**
 `tests/golden_tests/transport.rs` (`Pool`, `mem`).
 

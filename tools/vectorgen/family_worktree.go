@@ -1,7 +1,7 @@
 package main
 
-// Family worktree: working-copy vectors from github.com/amber-store/dstore v0.1.9 package worktree over
-// github.com/amber-store/core v0.0.8 (port-notes/worktree.md §5 items 1-16, port-notes/verification.md
+// Family worktree: working-copy vectors from github.com/amber-store/dstore v0.1.10 package worktree over
+// github.com/amber-store/core v0.0.9 (port-notes/worktree.md §5 items 1-16, port-notes/verification.md
 // §4.3 items 13-18 and 22). Schemas: docs/vectorgen-worktree.md.
 //
 // Every top-level identifier of this file starts with "wt" so that the families of other owners never
@@ -35,6 +35,7 @@ import (
 
 	"github.com/amber-store/core/cborx"
 	"github.com/amber-store/core/chunkers"
+	"github.com/amber-store/core/commit"
 	"github.com/amber-store/core/fstree"
 	"github.com/amber-store/core/ingest"
 	"github.com/amber-store/core/key"
@@ -278,18 +279,22 @@ var wtCopies = []struct{ mine, theirs string }{
 	{"wtDescribeChange", "describeChange"},
 	{"wtResolveTicket", "resolveTicket"},
 	{"wtFilterPaths", "filterPaths"},
+	{"wtFetchedDesc", "fetchedDesc"},
+	{"wtPushedKey", "pushedKey"},
 }
 
 // wtWcLiterals are the string literals of cmd/dstore/wc.go the vectors use; wtFlowLiterals those of
 // worktree/flow.go the error vectors reproduce with fmt.Errorf.
 var (
 	wtWcLiterals = []string{
-		"cloned %s into %s: root %s, %d objects fetched (%d bytes)\n",
-		"initialised working copy of %s; the reference exists (root %s): status shows everything as new, pull merges\n",
+		"cloned %s into %s: %s, %d objects fetched (%d bytes)\n",
+		"initialised working copy of %s; the reference exists (%s): status shows everything as new, pull merges\n",
 		"initialised working copy of %s; the reference does not exist yet: push creates it\n",
 		"%s does not exist on the cluster\n",
 		"%s: up to date (%s)\n",
-		"fetched %s: root %s, %d objects fetched (%d bytes)\n",
+		"fetched %s: %s, %d objects fetched (%d bytes)\n",
+		"commit %s, root %s",
+		"root ",
 		"conflicts:",
 		"  %s (local: %s, cluster: %s)\n",
 		"already up to date",
@@ -297,6 +302,7 @@ var (
 		", %d conflicts taken from the cluster",
 		"nothing to push",
 		"%s already holds %s (an earlier push completed); state updated\n",
+		"pushed %s: commit %s, root %s, %d objects, %d uploaded, version %x\n",
 		"pushed %s: root %s, %d objects, %d uploaded, version %x\n",
 		"reference %s, synced to %s\n",
 		"remote: up to date",
@@ -347,7 +353,7 @@ func wtSelfCheck() error {
 			return fmt.Errorf("%s: %w", wcPath, err)
 		}
 		if a != b {
-			return fmt.Errorf("%s is not a verbatim copy of cmd/dstore %s:\n--- copy\n%s\n--- dstore v0.1.9\n%s", c.mine, c.theirs, a, b)
+			return fmt.Errorf("%s is not a verbatim copy of cmd/dstore %s:\n--- copy\n%s\n--- dstore v0.1.10\n%s", c.mine, c.theirs, a, b)
 		}
 	}
 	if err := wtCheckLiterals(wcPath, wcSrc, wtWcLiterals); err != nil {
@@ -448,6 +454,20 @@ func wtDescribeChange(ch worktree.Change) string {
 		return fmt.Sprintf("%s (%04o → %04o)", p, ch.Old.Mode&0o7777, ch.New.Mode&0o7777)
 	}
 	return p
+}
+
+func wtFetchedDesc(fr worktree.FetchResult) string {
+	if fr.Key.Type() == key.Commit {
+		return fmt.Sprintf("commit %s, root %s", fr.Key.String()[:16], fr.Tree.String()[:16])
+	}
+	return "root " + fr.Key.String()[:16]
+}
+
+func wtPushedKey(r worktree.PushResult) key.Key {
+	if r.Commit.Type() == key.Commit {
+		return r.Commit
+	}
+	return r.Root
 }
 
 func wtResolveTicket(flag, stored, env string) (string, error) {
@@ -648,12 +668,21 @@ func wtWriteConfig(cfg worktree.Config) ([]byte, error) {
 	return b, nil
 }
 
+// wtTestCommit is the commit dstore's own tests use: tree by "tester" at 1 ns, no parents, no message.
+func wtTestCommit(tree key.Key) (key.Key, []byte, error) {
+	id := commit.Identity{Name: "tester", When: 1}
+	return commit.Commit{Tree: tree, Author: id, Committer: id}.Object()
+}
+
 // ---- worktree/state.json ----
 
 type wtStateJSON struct {
 	Base               Hex  `json:"base"`
 	Remote             Hex  `json:"remote"`
+	RemoteCommit       Hex  `json:"remote_commit"`
 	HasRemote          bool `json:"has_remote"`
+	IsBranch           bool `json:"is_branch"`
+	RemoteKey          Hex  `json:"remote_key"`
 	RemoteVersion      Hex  `json:"remote_version"`
 	SyncedAtUnix       I64  `json:"synced_at_unix"`
 	SyncedAtNsec       int  `json:"synced_at_nsec"`
@@ -665,12 +694,20 @@ func wtState(s worktree.State) *wtStateJSON {
 	return &wtStateJSON{
 		Base:               Hex(s.Base[:]),
 		Remote:             Hex(s.Remote[:]),
+		RemoteCommit:       Hex(s.RemoteCommit[:]),
 		HasRemote:          s.HasRemote,
+		IsBranch:           s.IsBranch(),
+		RemoteKey:          wtRemoteKey(s),
 		RemoteVersion:      Hex(s.RemoteVersion),
 		SyncedAtUnix:       I64(s.SyncedAt.Unix()),
 		SyncedAtNsec:       s.SyncedAt.Nanosecond(),
 		SyncedAtOffsetSecs: off,
 	}
+}
+
+func wtRemoteKey(s worktree.State) Hex {
+	k := s.RemoteKey()
+	return Hex(k[:])
 }
 
 type wtEmptyTreeJSON struct {
@@ -697,6 +734,7 @@ type wtStateDecode struct {
 
 type wtStateFile struct {
 	EmptyTree wtEmptyTreeJSON `json:"empty_tree"`
+	Commit    wtEmptyTreeJSON `json:"commit"`
 	Encode    []wtStateEncode `json:"encode"`
 	Decode    []wtStateDecode `json:"decode"`
 }
@@ -706,6 +744,11 @@ func wtStateVectors() (any, error) {
 	v := wtStateFile{EmptyTree: wtEmptyTreeJSON{Key: Hex(empty[:]), Bytes: Hex(emptyBytes), Short: empty.String()[:16]}}
 	k1 := wtBlobKey(smData(1, 100))
 	k2 := wtBlobKey(smData(2, 200))
+	ck, ckBytes, err := wtTestCommit(empty)
+	if err != nil {
+		return nil, err
+	}
+	v.Commit = wtEmptyTreeJSON{Key: Hex(ck[:]), Bytes: Hex(ckBytes), Short: ck.String()[:16]}
 	at := func(s, ns int64) time.Time { return time.Unix(s, ns).UTC() }
 	encode := []struct {
 		name string
@@ -717,6 +760,11 @@ func wtStateVectors() (any, error) {
 		{"remote-empty-version", worktree.State{Base: empty, Remote: k1, HasRemote: true, RemoteVersion: []byte{}, SyncedAt: at(wtSynced, 0)}},
 		{"remote-nil-version", worktree.State{Base: empty, Remote: k1, HasRemote: true, SyncedAt: at(wtSynced, 0)}},
 		{"base-and-remote-differ", worktree.State{Base: k1, Remote: k2, HasRemote: true, RemoteVersion: []byte{0, 0, 0, 1, 0xfe, 0xdc, 0xba, 0x98}, SyncedAt: at(wtSynced, 123456789)}},
+		{"branch", worktree.State{Base: empty, Remote: empty, RemoteCommit: ck, HasRemote: true, RemoteVersion: []byte{1, 2, 3}, SyncedAt: at(wtSynced, 5)}},
+		{"branch-base-and-remote-differ", worktree.State{Base: k1, Remote: k2, RemoteCommit: ck, HasRemote: true, RemoteVersion: []byte{}, SyncedAt: at(wtSynced, 0)}},
+		{"remote-commit-not-a-commit-omitted", worktree.State{Base: empty, Remote: empty, RemoteCommit: k1, HasRemote: true, RemoteVersion: []byte{1}, SyncedAt: at(wtSynced, 0)}},
+		{"remote-commit-is-a-tree-omitted", worktree.State{Base: empty, Remote: empty, RemoteCommit: empty, HasRemote: true, RemoteVersion: []byte{1}, SyncedAt: at(wtSynced, 0)}},
+		{"no-remote-ignores-remote-commit", worktree.State{Base: empty, Remote: empty, RemoteCommit: ck, SyncedAt: at(wtSynced, 0)}},
 		{"ns-100", worktree.State{Base: empty, SyncedAt: at(wtSynced, 100)}},
 		{"ns-120000000", worktree.State{Base: empty, SyncedAt: at(wtSynced, 120000000)}},
 		{"ns-123456789", worktree.State{Base: empty, SyncedAt: at(wtSynced, 123456789)}},
@@ -739,12 +787,16 @@ func wtStateVectors() (any, error) {
 	st := func(base, remote, version, synced string) string {
 		return fmt.Sprintf(`{"base":%q,"remote":%q,"remote_version":%q,"synced_at":%q}`, base, remote, version, synced)
 	}
+	stc := func(base, remote, rc, version, synced string) string {
+		return fmt.Sprintf(`{"base":%q,"remote":%q,"remote_commit":%q,"remote_version":%q,"synced_at":%q}`, base, remote, rc, version, synced)
+	}
+	c := ck.String()
 	var reservedBit, reservedType, nonCanonical [32]byte
 	copy(reservedBit[:], k1[:])
 	reservedBit[0] |= 0x08
 	copy(reservedType[:], k1[:])
-	reservedType[0] = 0x50 | reservedType[0]&0x0f
-	nonCanonical[0] = 0x01 // Blob, 2-byte length field 00 00
+	reservedType[0] = 0x60 | reservedType[0]&0x0f // 5 is Commit since core v0.0.9; 6..15 are reserved
+	nonCanonical[0] = 0x01                        // Blob, 2-byte length field 00 00
 	decode := []struct{ name, setup, file string }{
 		{"probe", "file", "{\n  \"base\": \"" + e + "\",\n  \"remote\": \"" + e + "\",\n  \"remote_version\": \"010203\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}\n"},
 		{"no-remote", "file", st(e, "", "", syncedAt)},
@@ -783,6 +835,24 @@ func wtStateVectors() (any, error) {
 		{"base-reserved-bit", "file", st(hex.EncodeToString(reservedBit[:]), "", "", syncedAt)},
 		{"base-reserved-type", "file", st(hex.EncodeToString(reservedType[:]), "", "", syncedAt)},
 		{"base-non-canonical-length", "file", st(hex.EncodeToString(nonCanonical[:]), "", "", syncedAt)},
+		{"base-is-a-commit", "file", st(c, "", "", syncedAt)},
+		{"remote-is-a-commit", "file", st(e, c, "01", syncedAt)},
+		{"branch", "file", stc(e, e, c, "010203", syncedAt)},
+		{"branch-indented", "file", "{\n  \"base\": \"" + e + "\",\n  \"remote\": \"" + e + "\",\n  \"remote_commit\": \"" + c + "\",\n  \"remote_version\": \"010203\",\n  \"synced_at\": \"2023-11-14T22:13:20.000000005Z\"\n}\n"},
+		{"branch-uppercase-hex", "file", stc(e, e2, strings.ToUpper(c), "01", syncedAt)},
+		{"branch-case-insensitive-key", "file", fmt.Sprintf(`{"base":%q,"remote":%q,"Remote_COMMIT":%q,"remote_version":"01","synced_at":%q}`, e, e, c, syncedAt)},
+		{"remote-commit-empty", "file", stc(e, e, "", "01", syncedAt)},
+		{"remote-commit-null", "file", fmt.Sprintf(`{"base":%q,"remote":%q,"remote_commit":null,"remote_version":"01","synced_at":%q}`, e, e, syncedAt)},
+		{"remote-commit-without-remote-ignored", "file", stc(e, "", "zz", "", syncedAt)},
+		{"remote-commit-invalid-hex", "file", stc(e, e, "zz"+c[2:], "01", syncedAt)},
+		{"remote-commit-short", "file", stc(e, e, "50", "01", syncedAt)},
+		{"remote-commit-is-a-tree", "file", stc(e, e, e, "01", syncedAt)},
+		{"remote-commit-is-a-blob", "file", stc(e, e, e1, "01", syncedAt)},
+		{"remote-commit-reserved-type", "file", stc(e, e, hex.EncodeToString(reservedType[:]), "01", syncedAt)},
+		{"remote-commit-number", "file", fmt.Sprintf(`{"base":%q,"remote":%q,"remote_commit":5,"synced_at":%q}`, e, e, syncedAt)},
+		{"errors-in-order-remote-before-commit", "file", stc(e, "yy", "zz", "xx", "")},
+		{"errors-in-order-commit-before-version", "file", stc(e, e, "zz", "xx", "")},
+		{"errors-in-order-commit-type-before-version", "file", stc(e, e, e, "xx", "")},
 		{"remote-invalid-hex", "file", st(e, "xyz", "", syncedAt)},
 		{"remote-short", "file", st(e, "00", "", syncedAt)},
 		{"remote-version-odd-length", "file", st(e, e1, "123", syncedAt)},
@@ -2152,6 +2222,20 @@ type wtTicketFromViewCase struct {
 	Ticket      string       `json:"ticket"`
 }
 
+type wtFetchedDescCase struct {
+	Name string `json:"name"`
+	Key  Hex    `json:"key"`
+	Tree Hex    `json:"tree"`
+	Out  string `json:"out"`
+}
+
+type wtPushedKeyCase struct {
+	Name   string `json:"name"`
+	Root   Hex    `json:"root"`
+	Commit Hex    `json:"commit"`
+	Out    Hex    `json:"out"`
+}
+
 type wtCLIFile struct {
 	KindString     []wtKindString         `json:"kind_string"`
 	TypeName       []wtTypeName           `json:"type_name"`
@@ -2159,6 +2243,8 @@ type wtCLIFile struct {
 	StatusRow      []wtDescribeCase       `json:"status_row"`
 	ResolveTicket  []wtResolveTicketCase  `json:"resolve_ticket"`
 	FilterPaths    []wtFilterPathsCase    `json:"filter_paths"`
+	FetchedDesc    []wtFetchedDescCase    `json:"fetched_desc"`
+	PushedKey      []wtPushedKeyCase      `json:"pushed_key"`
 	Printf         []wtPrintfCase         `json:"printf"`
 	TicketFromView []wtTicketFromViewCase `json:"ticket_from_view"`
 }
@@ -2223,7 +2309,36 @@ func wtCLIVectors() (any, error) {
 		return nil, err
 	}
 	v.FilterPaths = fp
-	pf, err := wtPrintfVectors()
+	empty, _ := worktree.EmptyTree()
+	ck, _, err := wtTestCommit(empty)
+	if err != nil {
+		return nil, err
+	}
+	blob := wtBlobKey(smData(1, 100))
+	for _, c := range []struct {
+		name      string
+		key, tree key.Key
+	}{
+		{"tree", empty, empty},
+		{"branch", ck, empty},
+		{"absent reference", key.Key{}, key.Key{}},
+		{"blob", blob, blob},
+	} {
+		v.FetchedDesc = append(v.FetchedDesc, wtFetchedDescCase{Name: c.name, Key: Hex(c.key[:]), Tree: Hex(c.tree[:]),
+			Out: wtFetchedDesc(worktree.FetchResult{Key: c.key, Tree: c.tree})})
+	}
+	for _, c := range []struct {
+		name         string
+		root, commit key.Key
+	}{
+		{"plain tree", empty, key.Key{}},
+		{"branch", empty, ck},
+		{"commit field holding a tree", blob, empty},
+	} {
+		k := wtPushedKey(worktree.PushResult{Root: c.root, Commit: c.commit})
+		v.PushedKey = append(v.PushedKey, wtPushedKeyCase{Name: c.name, Root: Hex(c.root[:]), Commit: Hex(c.commit[:]), Out: Hex(k[:])})
+	}
+	pf, err := wtPrintfVectors(ck)
 	if err != nil {
 		return nil, err
 	}
@@ -2302,19 +2417,32 @@ func wtFilterPathsVectors() ([]wtFilterPathsCase, error) {
 	return out, nil
 }
 
-func wtPrintfVectors() ([]wtPrintfCase, error) {
+func wtPrintfVectors(ck key.Key) ([]wtPrintfCase, error) {
 	key16 := "2001bbe6a9f5a014"
+	commit16 := ck.String()[:16]
+	empty, _ := worktree.EmptyTree()
+	if empty.String()[:16] != key16 {
+		return nil, fmt.Errorf("printf: the empty tree is %s", empty)
+	}
+	// What fetchedDesc gives the clone, init and fetch lines.
+	rootDesc := wtFetchedDesc(worktree.FetchResult{Key: empty, Tree: empty})
+	commitDesc := wtFetchedDesc(worktree.FetchResult{Key: ck, Tree: empty})
 	cases := []struct {
 		name, stream, fn, format string
 		args                     []any
 	}{
-		{"clone", "stdout", "Printf", "cloned %s into %s: root %s, %d objects fetched (%d bytes)\n", []any{"trees/demo", "demo", key16, 12, int64(34567)}},
-		{"clone-unicode", "stdout", "Printf", "cloned %s into %s: root %s, %d objects fetched (%d bytes)\n", []any{"trees/é", "é/sub dir", key16, 0, int64(0)}},
-		{"init-exists", "stdout", "Printf", "initialised working copy of %s; the reference exists (root %s): status shows everything as new, pull merges\n", []any{"trees/demo", key16}},
+		{"clone", "stdout", "Printf", "cloned %s into %s: %s, %d objects fetched (%d bytes)\n", []any{"trees/demo", "demo", rootDesc, 12, int64(34567)}},
+		{"clone-unicode", "stdout", "Printf", "cloned %s into %s: %s, %d objects fetched (%d bytes)\n", []any{"trees/é", "é/sub dir", rootDesc, 0, int64(0)}},
+		{"clone-branch", "stdout", "Printf", "cloned %s into %s: %s, %d objects fetched (%d bytes)\n", []any{"trees/demo", "demo", commitDesc, 13, int64(34700)}},
+		{"init-exists", "stdout", "Printf", "initialised working copy of %s; the reference exists (%s): status shows everything as new, pull merges\n", []any{"trees/demo", rootDesc}},
+		{"init-exists-branch", "stdout", "Printf", "initialised working copy of %s; the reference exists (%s): status shows everything as new, pull merges\n", []any{"trees/demo", commitDesc}},
 		{"init-absent", "stdout", "Printf", "initialised working copy of %s; the reference does not exist yet: push creates it\n", []any{"trees/new"}},
 		{"fetch-absent", "stdout", "Printf", "%s does not exist on the cluster\n", []any{"trees/demo"}},
 		{"fetch-up-to-date", "stdout", "Printf", "%s: up to date (%s)\n", []any{"trees/demo", key16}},
-		{"fetch", "stdout", "Printf", "fetched %s: root %s, %d objects fetched (%d bytes)\n", []any{"trees/demo", key16, 3, int64(1 << 40)}},
+		{"fetch-up-to-date-branch", "stdout", "Printf", "%s: up to date (%s)\n", []any{"trees/demo", commit16}},
+		{"fetch", "stdout", "Printf", "fetched %s: %s, %d objects fetched (%d bytes)\n", []any{"trees/demo", rootDesc, 3, int64(1 << 40)}},
+		{"fetch-branch", "stdout", "Printf", "fetched %s: %s, %d objects fetched (%d bytes)\n", []any{"trees/demo", commitDesc, 4, int64(133)}},
+		{"fetched-desc-commit", "stdout", "Sprintf", "commit %s, root %s", []any{commit16, key16}},
 		{"pull-conflicts-header", "stderr", "Fprintln", "conflicts:", nil},
 		{"pull-conflict-row", "stderr", "Fprintf", "  %s (local: %s, cluster: %s)\n", []any{"d/y", worktree.Deleted, worktree.Added}},
 		{"pull-conflict-row-meta-type", "stderr", "Fprintf", "  %s (local: %s, cluster: %s)\n", []any{"a b", worktree.MetaChanged, worktree.TypeChanged}},
@@ -2324,6 +2452,8 @@ func wtPrintfVectors() ([]wtPrintfCase, error) {
 		{"pull-line-end", "stdout", "Println", "", nil},
 		{"push-nothing", "stdout", "Println", "nothing to push", nil},
 		{"push-recovered", "stdout", "Printf", "%s already holds %s (an earlier push completed); state updated\n", []any{"trees/demo", key16}},
+		{"push-recovered-branch", "stdout", "Printf", "%s already holds %s (an earlier push completed); state updated\n", []any{"trees/demo", commit16}},
+		{"push-commit", "stdout", "Printf", "pushed %s: commit %s, root %s, %d objects, %d uploaded, version %x\n", []any{"trees/demo", commit16, key16, 6, 3, []byte{0x01, 0xab, 0x00}}},
 		{"push", "stdout", "Printf", "pushed %s: root %s, %d objects, %d uploaded, version %x\n", []any{"trees/demo", key16, 5, 2, []byte{0x01, 0xab, 0x00}}},
 		{"push-empty-version", "stdout", "Printf", "pushed %s: root %s, %d objects, %d uploaded, version %x\n", []any{"trees/demo", key16, 0, 0, []byte{}}},
 		{"status-header", "stdout", "Printf", "reference %s, synced to %s\n", []any{"trees/demo", key16}},
@@ -2341,7 +2471,7 @@ func wtPrintfVectors() ([]wtPrintfCase, error) {
 		pc := wtPrintfCase{Name: c.name, Stream: c.stream, Func: c.fn, Format: c.format, Args: []wtPrintfArg{}}
 		var text string
 		switch c.fn {
-		case "Printf", "Fprintf":
+		case "Printf", "Fprintf", "Sprintf":
 			text = fmt.Sprintf(c.format, c.args...)
 		case "Println", "Fprintln":
 			if c.format == "" {

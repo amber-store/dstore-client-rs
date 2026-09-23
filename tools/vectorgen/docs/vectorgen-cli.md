@@ -11,7 +11,7 @@ PORTING.md §1.1 (CLI surface), §2.2 (node-side handling), §2.3 (local refs po
 
 ## Where the values come from
 
-- **Go dstore v0.1.9 `cmd/dstore`** is `package main`, so `tools/vectorgen/cmd/clisnap/mainpkg/copied.go`
+- **Go dstore v0.1.10 `cmd/dstore`** is `package main`, so `tools/vectorgen/cmd/clisnap/mainpkg/copied.go`
   holds verbatim copies of the declarations the vectors need:
   - `main.go`: `logLevel`, `storeFlag`, `noDiscoveryFlag`, `netFlags`, `nodeFlags`, `defaultPackSize`,
     `packSize`;
@@ -21,18 +21,18 @@ PORTING.md §1.1 (CLI surface), §2.2 (node-side handling), §2.3 (local refs po
     types, `maxEvents`, `tickEvery`, the five styles, `uiModel` and its methods, `newUIModel`, `tick`,
     `appendEvent`, `nodeState`, `formatEvent`, `teaHandler` and its methods, `attrValue`.
 - **The self-check.** `mainpkg.SelfCheck` finds the dstore module with `go list -m` (falling back to the
-  build information and `$GOMODCACHE`), requires version v0.1.9, parses `cmd/dstore/*.go` (non-test)
+  build information and `$GOMODCACHE`), requires version v0.1.10, parses `cmd/dstore/*.go` (non-test)
   without comments, and prints every declaration with `go/printer`. Each copy must print identically,
   and a declaration that `cmd/dstore` lacks fails the check. The `cli` family and `clisnap` run it
   before generating anything.
 - **The Go tests.** `mainpkg` also holds verbatim copies of `size_test.go`, `tui_test.go` and
   `wc_test.go`, which `go test ./cmd/clisnap/mainpkg` runs against the copies.
-- **Libraries.** `client.HumanBytes` and `client.Rate` (dstore v0.1.9); `lipgloss.Blend1D` (v2.0.6);
+- **Libraries.** `client.HumanBytes` and `client.Rate` (dstore v0.1.10); `lipgloss.Blend1D` (v2.0.6);
   bubbles v2.2.1 `progress`.
 - **Snapshots.** `clisnap` builds `github.com/amber-store/dstore/cmd/dstore` with the vectorgen build list,
-  which equals dstore v0.1.9's `go.mod`. It builds with go1.26.5 and `CGO_ENABLED=0`, without ldflags (so
+  which equals dstore v0.1.10's `go.mod`. It builds with go1.26.5 and `CGO_ENABLED=0`, without ldflags (so
   `version` is `dev`), into a temporary directory, and checks the binary's build information (main module
-  dstore v0.1.9). It runs every case there and deletes the binary and all fixtures afterwards.
+  dstore v0.1.10). It runs every case there and deletes the binary and all fixtures afterwards.
 
 ## Regenerating
 
@@ -163,7 +163,7 @@ that zone.
 
 ```json
 {
-  "generator":   {"program": "tools/vectorgen/cmd/clisnap", "go": "go1.26.5", "module": {"path": "github.com/amber-store/dstore", "version": "v0.1.9"}, "deps": [{"path": "…", "version": "…"}]},
+  "generator":   {"program": "tools/vectorgen/cmd/clisnap", "go": "go1.26.5", "module": {"path": "github.com/amber-store/dstore", "version": "v0.1.10"}, "deps": [{"path": "…", "version": "…"}]},
   "environment": {"inherited": ["PATH"], "set": [{"name": "HOME", "value": "{HOME}"}, {"name": "TZ", "value": "UTC"}]},
   "fixtures":    [ {"name": "wc1", "steps": [Step, …]} ],
   "cases":       [ Case ]

@@ -1,5 +1,5 @@
 //! The dstore client library: a compatible Rust port of the client side of Go dstore
-//! (`github.com/amber-store/dstore` v0.1.9). This facade re-exports the workspace crates; PORTING.md holds
+//! (`github.com/amber-store/dstore` v0.1.10). This facade re-exports the workspace crates; PORTING.md holds
 //! the compatibility contract.
 #![deny(unsafe_op_in_unsafe_fn)]
 

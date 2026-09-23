@@ -932,6 +932,7 @@ Rust bugs from harness bugs.
 | D11 | `clone` into a non-empty dir (`dstore: <dir> is not empty`), onto a file (`… is not a directory`), unknown ref (`dstore: client: unknown reference: trees/none`, dir removed afterwards); `init` inside wcA (`<abs> is inside the working copy at <root>`) | exact (paths normalized) |
 | D12 | lock interop: `holdlock wcA 10 &` then `rs status` in wcA fails (exit 1); the mirror image with a Rust holder (`examples/holdlock.rs`) and `go status` | exit only (texts from core vs core-rs, §7) |
 | D13 | stored-ticket refresh: after A12/A13 changes the view, `rs fetch` rewrites `.dstore/config` exactly as `go fetch` does in a twin copy | exact |
+| D14 | (dstore v0.1.10, commit-objects.md) a branch: `go push -m` starts it, `rs clone` and `rs push` commit on top, `go fetch`/`pull` take the Rust commit and `rs pull` the next Go commit; `.dstore/state` equal but `synced_at`; `ls`/`cat` of the branch; a lost state recovered by both in twin copies | format for the lines naming a commit, exact for the rest |
 | **E: CLI behaviour** | | |
 | E1 | SIGINT and SIGTERM to `watch` exit 0 (both clients) | exit |
 | E2 | `DSTORE_LOG_LEVEL=warn`: no `level=INFO` lines on stderr for push (both) | effect |

@@ -1,12 +1,12 @@
 # dstore-client-rs
 
-A Rust port of the client side of [dstore](https://github.com/amber-store/dstore) v0.1.9: the client
+A Rust port of the client side of [dstore](https://github.com/amber-store/dstore) v0.1.10: the client
 library (the Go packages `client`, `codec`, `wire`, `ticket`, `view`, `placement`, `transport` and
 `worktree`) and the `dstore` command-line interface, built to be 100% compatible with Go dstore. A Rust
 client talks to Go dstore nodes over `amber-dstore/1`, shares working copies and local stores with Go
 processes, and prints the same texts with the same exit statuses.
 
-It builds on [core-rs](https://github.com/amber-store/core-rs) (`amber-store-core` 0.3.0) for trees,
+It builds on [core-rs](https://github.com/amber-store/core-rs) (`amber-store-core` 0.4.0) for trees,
 records and local stores, and on [Rust iroh](https://github.com/n0-computer/iroh) 1.2.0 for QUIC. The nodes
 stay Go: dstore-client-rs has no node (see "Node-side commands").
 
@@ -39,13 +39,13 @@ cargo install --locked --path .
 
 ## Usage
 
-The commands, flags and environment variables are those of Go dstore v0.1.9. `dstore --help` and
+The commands, flags and environment variables are those of Go dstore v0.1.10. `dstore --help` and
 `dstore <command> --help` list them.
 
 ### A cluster
 
 The nodes are Go dstore processes. Create and join them with the Go binary
-([github.com/amber-store/dstore](https://github.com/amber-store/dstore) v0.1.9); every other command works
+([github.com/amber-store/dstore](https://github.com/amber-store/dstore) v0.1.10); every other command works
 with either binary:
 
 ```
@@ -95,7 +95,7 @@ dstore refs --ticket 3f9a…,b71c…             # member ids, found by discover
 
 ### Working copies
 
-A reference can be worked on like a git branch without history:
+A reference can be worked on like a git branch:
 
 ```
 dstore clone --ticket dstore1… trees/demo [DIR]   # DIR defaults to "demo"
@@ -105,7 +105,7 @@ dstore diff [--stat] [PATH…]     # unified diffs against the last synced tree
 dstore fetch                     # learn the cluster's current tree
 dstore diff --incoming           # what pull would apply; --remote: against the fetched tree
 dstore pull [--force]            # apply the cluster's changes, keeping local ones
-dstore push [--force] [--user U] # build, upload, write the reference under CAS
+dstore push [--force] [--user U] [-m MSG]  # build, upload, write the reference under CAS
 dstore init --ticket dstore1… trees/new   # make an existing directory a working copy; push creates the reference
 ```
 
@@ -115,6 +115,12 @@ takes precedence over `$DSTORE_TICKET`, and `--ticket` overrides it for one run.
 reference moved since the last fetch; `pull` refuses a path changed on both sides unless `--force`. Go and
 Rust use the same working copies: the files in `.dstore/` are byte-identical, and the packstore's lock
 keeps the two from using it at the same time.
+
+A reference that names a commit (core object type 5, made by `amber-store commit create` or by `push -m`)
+is a branch. Clone, fetch and pull take the commit's tree and bring its history along. Each `push` on a
+branch records a new commit with the fetched one as parent, the user as author and `-m` as the message, so
+the cluster keeps the whole history alive. A message on a plain reference turns it into a branch. `ls` and
+`cat` accept a branch too. The state file then also holds `remote_commit`.
 
 ## Compatibility contract
 
@@ -164,7 +170,7 @@ The full contract is PORTING.md §1. In short:
 | DD-15 | `cluster status` treats a cluster id shorter than 4 bytes as DD-7, where Go, for a hand-crafted indefinite-length id, prints it zero-padded. |
 
 **Go quirks reproduced on purpose** (PORTING.md §1.4). urfave/cli's parsing and help quirks, validation
-orders, dstore v0.1.9 client behaviours and CLI text details stay as Go has them. Do not "fix" them.
+orders, dstore v0.1.10 client behaviours and CLI text details stay as Go has them. Do not "fix" them.
 
 ### Node-side commands
 
@@ -173,7 +179,7 @@ acceptor. The node-side commands keep Go's definitions, flags, help and pre-stor
 fail with `dstore: <text>` and exit status 1, without touching the filesystem:
 
 - `serve`, `cluster init` and `node join`:
-  `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)`
+  `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)`
 - `cluster status`, `cluster ticket` and `catalog restore` given `--store` without `--ticket`, after reading
   `<store>/identity`:
   `deriving a ticket from --store needs the node's Pebble meta store, which dstore-client-rs does not implement; pass --ticket or $DSTORE_TICKET, or use the Go dstore binary`
@@ -207,7 +213,7 @@ by running against Go nodes, not assumed:
   existed. A Rust iroh 1.2.0 endpoint connected to a Go dstore v0.1.9 node and exchanged a `view` request
   and reply. That covered the handshake, raw-public-key TLS, ALPN, bidirectional streams, FIN and framing
   over direct UDP.
-- [`interop/`](interop/): the live interop suite, `interop/check.sh`. It builds a 3-node Go dstore v0.1.9
+- [`interop/`](interop/): the live interop suite, `interop/check.sh`. It builds a 3-node Go dstore v0.1.10
   cluster on loopback into a temporary directory and deletes it on exit, then runs the Rust CLI against it.
   The checks compare Go and Rust outputs (exactly, or stdout and exit status only, or after normalisation)
   and cross-read trees, references, working copies and local stores between the two implementations
@@ -271,7 +277,7 @@ Tests:
 ### Golden vectors
 
 `tools/vectorgen` is a Go module that generates the golden vectors under `tests/golden/` from the Go
-implementation, with dstore v0.1.9 and its dependencies as they are pinned. [`VECTORS.md`](VECTORS.md)
+implementation, with dstore v0.1.10 and its dependencies as they are pinned. [`VECTORS.md`](VECTORS.md)
 documents every family and schema:
 
 ```sh
@@ -287,16 +293,16 @@ runs every offline CLI case and deletes the binary.
 
 ### The interop harness
 
-`interop/check.sh` needs Go dstore v0.1.9. It takes, in this order:
+`interop/check.sh` needs Go dstore v0.1.10. It takes, in this order:
 - a prebuilt binary (`DSTORE_GO_BIN`);
-- a checkout whose HEAD is tag v0.1.9 (`DSTORE_GO_REPO`, default `../dstore`);
-- otherwise `go install …@v0.1.9`.
+- a checkout whose HEAD is tag v0.1.10 (`DSTORE_GO_REPO`, default `../dstore`);
+- otherwise `go install …@v0.1.10`.
 
 The Rust CLI comes from `DSTORE_RS_BIN`, with the `holdlock` example next to it in `examples/`. Without it, the
 script runs `cargo build --release --locked --bin dstore --examples` itself:
 
 ```sh
-git clone --branch v0.1.9 https://github.com/amber-store/dstore ../dstore
+git clone --branch v0.1.10 https://github.com/amber-store/dstore ../dstore
 nix develop -c cargo build --release --locked --bin dstore --examples
 nix develop -c env DSTORE_GO_REPO=../dstore DSTORE_RS_BIN=target/release/dstore bash interop/check.sh
 ```
@@ -313,7 +319,7 @@ process it started. [`interop/README.md`](interop/README.md) lists the checks an
 |---|---|---|
 | `rust` | ubuntu-latest, macos-latest | `cargo fmt --check`, clippy with `-D warnings`, `cargo test --workspace --all-targets --locked` with `TZ=UTC` |
 | `vectors` | ubuntu-latest | `go vet`, `go test`; every vector family regenerated twice and diffed against `tests/golden`; `tables.rs`, `errno_tables.rs` and `cli/snapshots.json` regenerated and diffed |
-| `interop` | ubuntu-latest | Go dstore v0.1.9 checked out next to this repository, then `bash interop/check.sh` |
+| `interop` | ubuntu-latest | Go dstore v0.1.10 checked out next to this repository, then `bash interop/check.sh` |
 | `nix` | ubuntu-latest, macos-latest | `nix flake check -L`, `nix build .#dstore` |
 
 ## License

@@ -1,7 +1,7 @@
 # Live interop suite
 
-`interop/check.sh` runs the Go dstore v0.1.9 CLI and the Rust `dstore` side by side against a real
-3-node Go v0.1.9 cluster on loopback, and compares what they print, their exit codes and their effects
+`interop/check.sh` runs the Go dstore v0.1.10 CLI and the Rust `dstore` side by side against a real
+3-node Go v0.1.10 cluster on loopback, and compares what they print, their exit codes and their effects
 (port-notes/verification.md §4.5, PORTING.md §7). `interop/lib.sh` holds the helpers.
 
 ```sh
@@ -20,9 +20,9 @@ summary. The exit status is 0 when nothing failed, 1 when a check failed and 2 w
    copy and log lives there, and the exit trap stops every process the suite started (nodes,
    watchers, lock holders) and removes the directory.
 2. **Binaries**, all into the work directory:
-   - Go dstore v0.1.9 with `CGO_ENABLED=0`: from `$DSTORE_GO_BIN` (copied); else from a checkout
-     (`$DSTORE_GO_REPO`, or `../dstore` next to this repository) whose HEAD must be tag `v0.1.9`, built
-     from `git archive HEAD` (uncommitted changes are ignored); else `go install …/cmd/dstore@v0.1.9`.
+   - Go dstore v0.1.10 with `CGO_ENABLED=0`: from `$DSTORE_GO_BIN` (copied); else from a checkout
+     (`$DSTORE_GO_REPO`, or `../dstore` next to this repository) whose HEAD must be tag `v0.1.10`, built
+     from `git archive HEAD` (uncommitted changes are ignored); else `go install …/cmd/dstore@v0.1.10`.
    - The vectorgen helpers `mktree`, `treekey`, `storecmp` and `holdlock` (tools/vectorgen/cmd).
    - The Rust CLI and `examples/holdlock.rs`: from `$DSTORE_RS_BIN` (the holdlock example next to it in
      `examples/`, or `$DSTORE_RS_HOLDLOCK`); else `cargo build --release --locked --bin dstore --examples`
@@ -99,6 +99,12 @@ Deviations from verification.md §4.5, each explained in the check's code:
 - **D7** conflicts on `run.sh` (modified on both sides) instead of a new `f.txt`.
 - **D13** plants the n1-only init ticket in `.dstore/config`; one fetch rewrites it from the view. With
   `INTEROP_HEAVY=1`, A13 repeats it after the replica count changed.
+- **D14** (dstore v0.1.10) works on a branch, a reference naming a commit. Go starts it with `push -m`, Rust
+  clones it and pushes a commit on top without a message, Go fetches and pulls that commit, Go commits again
+  and Rust pulls. The `.dstore/state` files must agree but for `synced_at` (they hold `remote_commit`), `ls`
+  and `cat` of the branch are compared exactly, and after a lost state both clients, in twin copies, report
+  the earlier push by the commit it stored. Commit keys differ between runs (they hold a timestamp), so the
+  lines that print one are checked by format and against the state file.
 - **G1** follows PORTING.md §2.3: Go on a Rust-written `--local` directory succeeds and adds Pebble files
   next to `refs.redb`, after which the Rust client refuses the directory.
 
@@ -106,8 +112,8 @@ Deviations from verification.md §4.5, each explained in the check's code:
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `DSTORE_GO_BIN` | | a prebuilt Go dstore v0.1.9 (copied into the work directory) |
-| `DSTORE_GO_REPO` | `../dstore` | a dstore checkout whose HEAD is tag v0.1.9 |
+| `DSTORE_GO_BIN` | | a prebuilt Go dstore v0.1.10 (copied into the work directory) |
+| `DSTORE_GO_REPO` | `../dstore` | a dstore checkout whose HEAD is tag v0.1.10 |
 | `DSTORE_RS_BIN`, `DSTORE_RS_HOLDLOCK` | | a prebuilt Rust CLI and holdlock example |
 | `INTEROP_CARGO_TARGET_DIR` | work dir `target/` | where `cargo build` and E3's `cargo test` build |
 | `INTEROP_MDNS` | `auto` | `auto`: B13 is skipped when the Go client cannot resolve ids over mDNS either; `require`: it fails; `skip` |

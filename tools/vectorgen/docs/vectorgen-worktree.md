@@ -4,8 +4,8 @@ Owner: vectorgen-worktree. Generator: `tools/vectorgen/family_worktree.go`, whic
 `worktree`. Helper programs: `tools/vectorgen/cmd/mktree` and `tools/vectorgen/cmd/treekey`. Specs:
 port-notes/worktree.md §5 (items 1-4, 8-15) and port-notes/verification.md §4.3 items 13-18 and 22.
 
-Every value comes from the real Go code: `github.com/amber-store/dstore` v0.1.9 package `worktree` over
-`github.com/amber-store/core` v0.0.8, run through temporary directories and packstores where the Go API
+Every value comes from the real Go code: `github.com/amber-store/dstore` v0.1.10 package `worktree` over
+`github.com/amber-store/core` v0.0.9, run through temporary directories and packstores where the Go API
 needs them. The conventions of the root `VECTORS.md` apply: 64-bit integers are decimal strings, bytes are
 lowercase hex, and a Go string that is not valid UTF-8 goes into a field whose name ends in `_hex`. When a
 text field comes in two forms (`path` / `path_hex`), exactly one of them is present. Before writing a file the
@@ -94,6 +94,7 @@ Rust (worktree-offline, `tests/golden_tests/worktree.rs`, and gocompat-c for `go
 ```json
 {
   "empty_tree": { "key": "2001bbe6…f36b", "bytes": "80", "short": "2001bbe6a9f5a014" },
+  "commit": { "key": "5048b642…0329", "bytes": "a5005820…", "short": "5048b642d37e2772" },
   "encode": [ { "name": "probe", "state": State, "file": "{\n  \"base\": …}\n" } ],
   "decode": [ { "name": "offset-plus-0200", "setup": "file", "file": "…" | "file_hex": "…", "ok": true,
                 "state": State | null, "error": "bad state file: …" } ]
@@ -103,11 +104,14 @@ Rust (worktree-offline, `tests/golden_tests/worktree.rs`, and gocompat-c for `go
 `State` is:
 
 ```json
-{ "base": "<64 hex>", "remote": "<64 hex>", "has_remote": true, "remote_version": "010203" | "" | null,
+{ "base": "<64 hex>", "remote": "<64 hex>", "remote_commit": "<64 hex>", "has_remote": true,
+  "is_branch": false, "remote_key": "<64 hex>", "remote_version": "010203" | "" | null,
   "synced_at_unix": "1700000000", "synced_at_nsec": 5, "synced_at_offset_secs": 0 }
 ```
 
 - `remote` is the zero key when `has_remote` is false.
+- `remote_commit` (dstore v0.1.10) is the commit a branch names, and the zero key otherwise. `is_branch` and
+  `remote_key` are `State.IsBranch()` and `State.RemoteKey()` of that state.
 - `remote_version` is null for Go nil and `""` for an empty non-nil slice. A decoded state without a remote
   has nil; a remote with `"remote_version": ""` decodes to empty.
 - `synced_at_unix`/`synced_at_nsec` give the instant.
@@ -116,10 +120,15 @@ Rust (worktree-offline, `tests/golden_tests/worktree.rs`, and gocompat-c for `go
 
 Go:
 - **empty_tree.** `worktree.EmptyTree()`.
+- **commit.** The commit of dstore's own tests, which the branch cases use: `commit.Commit{Tree: empty,
+  Author: id, Committer: id}.Object()` with `id = commit.Identity{Name: "tester", When: 1}` (core v0.0.9).
 - **encode.** `worktree.Create` in a temporary directory, set `Tree.State`, `SaveState()`, read
   `.dstore/state` (no `state.tmp` left). The cases:
   - with and without a remote; a state without a remote but with remote fields set, which are not written;
   - an empty and a nil version;
+  - a branch (`remote_commit` written between `remote` and `remote_version`), and the states that are no
+    branch, whose `remote_commit` is not written: a `RemoteCommit` that is a Blob or a tree key, and one
+    without a remote;
   - RFC3339Nano fractions 0, 100, 5, 120000000, 123456789 and 999999999 ns (trailing zeros trimmed);
   - pre-1970 instants, year 0 and year 10000.
 - **decode.** `worktree.Create`, `Close`, then `.dstore/state` is laid out per `setup`: `file` holds the
@@ -127,13 +136,18 @@ Go:
   `state` or `error`. The cases:
   - accepted: upper-case hex, `+02:00`/`-03:30`/`-00:00` offsets, 1- and 12-digit fractions, a comma
     fraction, case-folded, duplicate, unknown and `null` keys;
+  - `remote_commit`: a branch (compact, indented, upper-case hex, case-folded key); empty and `null`; ignored
+    unread without a remote; refused when it is not hex, not 32 bytes, a reserved type, a number, or a key
+    of another type (`bad state file: remote_commit <key> is a DirLeaf`); checked after `remote` and before
+    `remote_version`. A commit key is accepted as `base` and as `remote` (no type check there);
   - rejected: every `bad state file: …` path of `loadState`, with Go's texts for `encoding/hex`, `key.Parse`
     and `time.Parse`. This includes lower-case `t`/`z` (rejected), hour 24, February 30, year 10000, and
     the order of the checks;
   - `missing` gives `ErrIncomplete`; `directory` gives the raw read error with `{ROOT}`.
 
 Rust (worktree-offline): `Tree::save_state` writes `file`; `Tree::open` (or the state loader) gives `state` or
-`error`; `empty_tree()` gives `empty_tree`.
+`error`; `empty_tree()` gives `empty_tree`; `State::is_branch` and `State::remote_key` give `is_branch` and
+`remote_key`; core-rs `Commit::object` gives `commit`.
 
 ## `worktree/trees/`
 
@@ -150,7 +164,7 @@ Rust (worktree-offline): `Tree::save_state` writes `file`; `Tree::open` (or the 
 }
 ```
 
-The trees are built in memory (no filesystem) through the public core v0.0.8 builders, exactly as `ingest`
+The trees are built in memory (no filesystem) through the public core v0.0.9 builders, exactly as `ingest`
 builds them from disk:
 - file content goes through `chunkers.SplitBytes` with the default sizes, then `fstree.EncodeBlob`, then
   `fstree.NewFileIndexBuilder(chunkers.NewItemChunker(7))`; an empty file is one empty Blob;
@@ -325,6 +339,8 @@ Rust (worktree-offline): `unified` and `stat` write the same bytes and return th
   "resolve_ticket": [ { "flag": "", "stored": "s", "env": "e", "ok": true, "out": "s", "error": "…" } ],
   "filter_paths": [ { "name": "outside", "cwd": ".", "args": ["../outside"], "changes": ["..foo", …],
                       "kept": ["…"] | null, "error": "../outside is outside the working copy" } ],
+  "fetched_desc": [ { "name": "branch", "key": "<64 hex>", "tree": "<64 hex>", "out": "commit 5048…, root 2001…" } ],
+  "pushed_key": [ { "name": "branch", "root": "<64 hex>", "commit": "<64 hex>", "out": "<64 hex>" } ],
   "printf": [ { "name": "push", "stream": "stdout", "func": "Printf", "format": "pushed %s: …\n",
                 "args": [ { "type": "string" | "int" | "bytes" | "kind", "value": "…" } ], "out": "…" } ],
   "ticket_from_view": [ { "name": "five-nodes-capped-at-four", "cluster_id": "<hex>", "incarnation": "u64",
@@ -344,11 +360,15 @@ Rust (worktree-offline): `unified` and `stat` write the same bytes and return th
   `cwd` (relative to the root) inside a temporary working-copy root whose symlinks are resolved, over changes
   at `changes` (all `new` files). `{ROOT}` in `args` and `error` stands for the root. `kept` lists the kept
   paths, and is null when Go returned nil.
+- **fetched_desc**, **pushed_key.** The verbatim `fetchedDesc` and `pushedKey` copies (dstore v0.1.10) over a
+  `worktree.FetchResult{Key, Tree}` and a `worktree.PushResult{Root, Commit}`: a tree, a branch, the zero key
+  of an absent reference, and keys of other types.
 - **printf.** Every stdout/stderr format of the working-copy commands (`cmd/dstore/wc.go`, literals checked by
-  the self-check), run with fixed arguments. `func` is `Printf`/`Fprintf` (`out = fmt.Sprintf(format,
+  the self-check), run with fixed arguments. `func` is `Printf`/`Fprintf`/`Sprintf` (`out = fmt.Sprintf(format,
   args…)`) or `Println`/`Fprintln` (`out = format + "\n"`; an empty `format` is the bare `fmt.Println()` that
   ends the `pulled:` line). `int` values are decimal, `bytes` hex (`%x`), and `kind` a `worktree.Kind`
-  printed with `%s`.
+  printed with `%s`. The `%s` that the clone, init and fetch lines take for what was fetched is
+  `fetchedDesc`'s text, once for a tree and once for a branch.
 - **ticket_from_view.** `worktree.TicketFromView(&view).Encode()` for 0, 1 (with and without addresses), 4
   and 5 nodes (capped at 4). Node ids are ed25519 public keys of `data(1+i, 32)`, and the cluster id is
   `00…0f`.

@@ -61,7 +61,7 @@ func TestNodeSideTexts(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if want := "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.9)\n"; ns.Rust.Stderr != want || ns.Rust.Exit != 1 {
+	if want := "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"; ns.Rust.Stderr != want || ns.Rust.Exit != 1 {
 		t.Errorf("kind A: %+v", ns.Rust)
 	}
 	ns, err = nodeSideOf(spec{nodeSideKind: "DD-2", localDir: "P"})

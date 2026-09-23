@@ -1,4 +1,4 @@
-//! A fake dstore cluster over `dstore_transport::mem`: the client-ALPN handlers of dstore v0.1.9
+//! A fake dstore cluster over `dstore_transport::mem`: the client-ALPN handlers of dstore v0.1.10
 //! `node/server.go`, `data.go`, `put.go`, `refs.go`, `watch.go`, `admin.go` and `status.go`
 //! (verification §4.6), with fault injection and request transcripts.
 //!
@@ -311,8 +311,9 @@ fn key_of_record(rec: &[u8]) -> Option<Vec<u8>> {
     Reference::decode(rec).ok().map(|r| r.key)
 }
 
-/// node `verifyRecord` (data.go): canonical key, payload decodes, hashes to the key, and a Blob or
-/// XattrSet length field equals the payload length.
+/// node `verifyRecord` (data.go): canonical key, payload decodes, hashes to the key, and a Blob,
+/// XattrSet or Commit length field equals the payload length (these carry their own serialized length;
+/// directory and file nodes carry their subtree's).
 fn verify_record(raw: &RawRecord) -> Result<([u8; 32], Vec<u8>), String> {
     let k = raw.record.key;
     k.validate().map_err(|e| e.to_string())?;
@@ -326,7 +327,8 @@ fn verify_record(raw: &RawRecord) -> Result<([u8; 32], Vec<u8>), String> {
     if want != k {
         return Err(format!("payload hashes to {want}"));
     }
-    if matches!(t, Type::Blob | Type::XattrSet) && k.length() != payload.len() as u64 {
+    if matches!(t, Type::Blob | Type::XattrSet | Type::Commit) && k.length() != payload.len() as u64
+    {
         return Err("length field mismatch".to_string());
     }
     Ok((k.0, raw.bytes.clone()))
@@ -2914,6 +2916,33 @@ mod tests {
         let data = crate::splitmix::data(2, 100);
         let k = Key::new(Type::Blob, 999, &data);
         let rec = must(amberpack::encode_record(k, &data), "encode_record");
+        assert_eq!(
+            verify_record(&raw_record(&rec)).err().as_deref(),
+            Some("length field mismatch")
+        );
+
+        // A Commit's length field is its own serialized length, checked like a Blob's (node
+        // TestVerifyRecordCommitLength).
+        let dir = must(fstree::encode_dir_leaf(&[]), "empty tree");
+        let id = amber_store_core::commit::Identity {
+            name: "tester".into(),
+            when: 1,
+            ..Default::default()
+        };
+        let commit = amber_store_core::commit::Commit {
+            tree: dir.key,
+            parents: Vec::new(),
+            author: id.clone(),
+            committer: id,
+            message: "m".into(),
+            signature: Vec::new(),
+            public_key: Vec::new(),
+        };
+        let (ck, cdata) = must(commit.object(), "commit");
+        let rec = must(amberpack::encode_record(ck, &cdata), "encode_record");
+        assert!(verify_record(&raw_record(&rec)).is_ok());
+        let bad = Key::new(Type::Commit, cdata.len() as u64 + 1, &cdata);
+        let rec = must(amberpack::encode_record(bad, &cdata), "encode_record");
         assert_eq!(
             verify_record(&raw_record(&rec)).err().as_deref(),
             Some("length field mismatch")

@@ -1,5 +1,5 @@
 // Package mainpkg holds verbatim copies of the github.com/amber-store/dstore
-// v0.1.9 cmd/dstore declarations that the CLI vector families need. Package
+// v0.1.10 cmd/dstore declarations that the CLI vector families need. Package
 // main cannot be imported, so the declarations are copied; SelfCheck
 // (selfcheck.go) prints every declaration of this file with go/printer and
 // compares it with the declaration of the same name in the module's

@@ -59,6 +59,10 @@ fn child_keys_error_text(e: &ChildKeysError) -> String {
                 fstree_error_text(source)
             )
         }
+        // A commit's error texts hold no quoted names (core v0.0.9 `commit`), so core-rs's text is Go's.
+        ChildKeysError::DecodeCommit { key, source } => {
+            format!("fstree: decoding Commit {key}: {source}")
+        }
         ChildKeysError::EntryContentKey { name, source } => {
             format!("fstree: {}: content key: {source}", quote(name))
         }

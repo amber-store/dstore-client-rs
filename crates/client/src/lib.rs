@@ -1,5 +1,5 @@
 //! dstore `client` (`client.go`, `rank.go`, `batch.go`, `progress.go`, `refs.go`, `watch.go`,
-//! `objects.go`, `fetch.go`, `tree.go`).
+//! `objects.go`, `fetch.go`, `tree.go`, `commit.go`).
 //!
 //! `Cluster` requires a multi-thread tokio runtime.
 //!
@@ -15,6 +15,7 @@ pub use dstore_view::NodeId;
 
 mod batch;
 mod cluster;
+mod commit;
 pub mod corefmt;
 mod error;
 mod fetch;
@@ -27,6 +28,7 @@ mod watch;
 
 pub use batch::*;
 pub use cluster::*;
+pub use commit::*;
 pub use error::*;
 pub use objects::*;
 pub use progress::*;

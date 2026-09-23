@@ -18,7 +18,7 @@ use std::io::Write;
 use std::os::unix::ffi::{OsStrExt, OsStringExt};
 use std::sync::{Arc, Mutex, MutexGuard, PoisonError};
 
-use amber_store_core::key::Key;
+use amber_store_core::key::{Key, Type};
 use dstore_client::{Cluster, Progress};
 use dstore_gocli::{CliError, Context};
 use dstore_gocompat::ctx::Ctx;
@@ -193,15 +193,48 @@ async fn blocking<T: Send + 'static>(
 
 // ---- output lines (the Printf/Println formats of wc.go) ----
 
-fn cloned(name: &[u8], dir: &[u8], root16: &str, fetched: i64, bytes: i64) -> Vec<u8> {
-    let tail = format!(": root {root16}, {fetched} objects fetched ({bytes} bytes)\n");
+/// Go `k.Type() == key.Commit`, read from the type nibble (the zero key of a result is a Blob key).
+fn is_commit(k: &Key) -> bool {
+    Type::from_u8(k.0[0] >> 4) == Some(Type::Commit)
+}
+
+/// `"root " + key16`: a fetch that found a plain tree.
+fn root_desc(root16: &str) -> String {
+    format!("root {root16}")
+}
+
+/// `fmt.Sprintf("commit %s, root %s", …)`: a fetch that found a branch.
+fn commit_desc(commit16: &str, root16: &str) -> String {
+    format!("commit {commit16}, root {root16}")
+}
+
+/// `fetchedDesc`: names what a fetch found: the tree, or the commit and its tree on a branch.
+fn fetched_desc(fr: &FetchResult) -> String {
+    if is_commit(&fr.key) {
+        commit_desc(&key16(&fr.key), &key16(&fr.tree))
+    } else {
+        root_desc(&key16(&fr.key))
+    }
+}
+
+/// `pushedKey`: what the reference names after a push: the commit on a branch, else the tree.
+fn pushed_key(r: &PushResult) -> Key {
+    if is_commit(&r.commit) {
+        r.commit
+    } else {
+        r.root
+    }
+}
+
+/// `desc` is [`fetched_desc`]'s text.
+fn cloned(name: &[u8], dir: &[u8], desc: &str, fetched: i64, bytes: i64) -> Vec<u8> {
+    let tail = format!(": {desc}, {fetched} objects fetched ({bytes} bytes)\n");
     [b"cloned ", name, b" into ", dir, tail.as_bytes()].concat()
 }
 
-fn init_exists(name: &[u8], root16: &str) -> Vec<u8> {
-    let tail = format!(
-        "; the reference exists (root {root16}): status shows everything as new, pull merges\n"
-    );
+fn init_exists(name: &[u8], desc: &str) -> Vec<u8> {
+    let tail =
+        format!("; the reference exists ({desc}): status shows everything as new, pull merges\n");
     [b"initialised working copy of ", name, tail.as_bytes()].concat()
 }
 
@@ -223,8 +256,8 @@ fn fetch_up_to_date(name: &[u8], root16: &str) -> Vec<u8> {
     [name, tail.as_bytes()].concat()
 }
 
-fn fetched(name: &[u8], root16: &str, fetched: i64, bytes: i64) -> Vec<u8> {
-    let tail = format!(": root {root16}, {fetched} objects fetched ({bytes} bytes)\n");
+fn fetched(name: &[u8], desc: &str, fetched: i64, bytes: i64) -> Vec<u8> {
+    let tail = format!(": {desc}, {fetched} objects fetched ({bytes} bytes)\n");
     [b"fetched ", name, tail.as_bytes()].concat()
 }
 
@@ -285,6 +318,22 @@ fn push_recovered(name: &[u8], root16: &str) -> Vec<u8> {
 fn pushed(name: &[u8], root16: &str, keys: i64, uploaded: i64, version: &[u8]) -> Vec<u8> {
     let tail = format!(
         ": root {root16}, {keys} objects, {uploaded} uploaded, version {}\n",
+        dstore_gocompat::fmt::hex_lower(version)
+    );
+    [b"pushed ", name, tail.as_bytes()].concat()
+}
+
+/// The `pushed` line of a push that made a commit.
+fn pushed_commit(
+    name: &[u8],
+    commit16: &str,
+    root16: &str,
+    keys: i64,
+    uploaded: i64,
+    version: &[u8],
+) -> Vec<u8> {
+    let tail = format!(
+        ": commit {commit16}, root {root16}, {keys} objects, {uploaded} uploaded, version {}\n",
         dstore_gocompat::fmt::hex_lower(version)
     );
     [b"pushed ", name, tail.as_bytes()].concat()
@@ -493,6 +542,8 @@ impl WcOp for PullOp {
 struct PushOp {
     /// `c.String("user")`.
     user: Vec<u8>,
+    /// `c.String("message")`.
+    message: Vec<u8>,
     force: bool,
     jobs: usize,
 }
@@ -509,9 +560,17 @@ impl WcOp for PushOp {
     ) -> Result<PushResult, CliError> {
         // The user is checked after dialing (PORTING.md §1.4), against the stored config.
         let user = push_user(&self.user, &tree.config)?;
-        tree.push(ctx, cl, &user, self.force, self.jobs, Some(prog))
-            .await
-            .map_err(CliError::msg)
+        tree.push(
+            ctx,
+            cl,
+            &user,
+            &self.message,
+            self.force,
+            self.jobs,
+            Some(prog),
+        )
+        .await
+        .map_err(CliError::msg)
     }
 }
 
@@ -602,7 +661,7 @@ pub(crate) async fn clone(c: &Context) -> Result<(), CliError> {
     stdout_write(&cloned(
         &name,
         &dir,
-        &key16(&fr.key),
+        &fetched_desc(&fr),
         fr.stats.fetched,
         fr.stats.bytes,
     ));
@@ -640,7 +699,7 @@ pub(crate) async fn init(c: &Context) -> Result<(), CliError> {
     )
     .await?;
     let line = if fr.exists {
-        init_exists(&name, &key16(&fr.key))
+        init_exists(&name, &fetched_desc(&fr))
     } else {
         init_absent(&name)
     };
@@ -657,7 +716,7 @@ pub(crate) async fn fetch(c: &Context) -> Result<(), CliError> {
     } else if fr.up_to_date {
         fetch_up_to_date(&name, &key16(&fr.key))
     } else {
-        fetched(&name, &key16(&fr.key), fr.stats.fetched, fr.stats.bytes)
+        fetched(&name, &fetched_desc(&fr), fr.stats.fetched, fr.stats.bytes)
     };
     stdout_write(&line);
     let _ = tree.close();
@@ -689,10 +748,11 @@ pub(crate) async fn pull(c: &Context) -> Result<(), CliError> {
     Ok(())
 }
 
-/// `push [--force] [--user U]`.
+/// `push [--force] [--user U] [-m MSG]`.
 pub(crate) async fn push(c: &Context) -> Result<(), CliError> {
     let op = PushOp {
         user: c.os_string("user").into_vec(),
+        message: c.os_string("message").into_vec(),
         force: c.bool("force"),
         jobs: jobs_of(c),
     };
@@ -700,7 +760,16 @@ pub(crate) async fn push(c: &Context) -> Result<(), CliError> {
     let line = if r.nothing {
         NOTHING_TO_PUSH.to_vec()
     } else if r.recovered {
-        push_recovered(&name, &key16(&r.root))
+        push_recovered(&name, &key16(&pushed_key(&r)))
+    } else if is_commit(&r.commit) {
+        pushed_commit(
+            &name,
+            &key16(&r.commit),
+            &key16(&r.root),
+            r.stats.keys,
+            r.stats.uploaded,
+            &r.stats.version,
+        )
     } else {
         pushed(
             &name,
@@ -1110,12 +1179,49 @@ mod tests {
         assert_eq!(err, Err("getwd: no such file or directory".to_string()));
     }
 
+    /// `fetchedDesc` and `pushedKey` over Go's results.
+    #[test]
+    fn fetched_desc_and_pushed_key_vectors() {
+        let v = vectors("worktree/cli.json");
+        let key = |h: &str| Key(unhex(h).try_into().expect("a 32-byte key"));
+        let cases = v.at("fetched_desc").arr();
+        assert!(cases.len() >= 4);
+        for c in cases {
+            let fr = FetchResult {
+                key: key(c.at("key").str()),
+                tree: key(c.at("tree").str()),
+                ..FetchResult::default()
+            };
+            assert_eq!(
+                fetched_desc(&fr),
+                c.at("out").str(),
+                "{}",
+                c.at("name").str()
+            );
+        }
+        let cases = v.at("pushed_key").arr();
+        assert!(cases.len() >= 3);
+        for c in cases {
+            let r = PushResult {
+                root: key(c.at("root").str()),
+                commit: key(c.at("commit").str()),
+                ..PushResult::default()
+            };
+            assert_eq!(
+                pushed_key(&r),
+                key(c.at("out").str()),
+                "{}",
+                c.at("name").str()
+            );
+        }
+    }
+
     /// Every stdout/stderr format of wc.go with the vectors' fixed arguments.
     #[test]
     fn printf_vectors() {
         let v = vectors("worktree/cli.json");
         let cases = v.at("printf").arr();
-        assert!(cases.len() >= 27);
+        assert!(cases.len() >= 34);
         for c in cases {
             let name = c.at("name").str();
             let args = c.at("args").arr();
@@ -1125,10 +1231,10 @@ mod tests {
             let count = |i: usize| usize::try_from(int(i)).expect("count");
             let kind = |i: usize| kind_numbered(int(i)).expect("kind");
             let got: Vec<u8> = match c.at("format").str() {
-                "cloned %s into %s: root %s, %d objects fetched (%d bytes)\n" => {
+                "cloned %s into %s: %s, %d objects fetched (%d bytes)\n" => {
                     cloned(&s(0), &s(1), &text(2), int(3), int(4))
                 }
-                "initialised working copy of %s; the reference exists (root %s): status shows everything as new, pull merges\n" => {
+                "initialised working copy of %s; the reference exists (%s): status shows everything as new, pull merges\n" => {
                     init_exists(&s(0), &text(1))
                 }
                 "initialised working copy of %s; the reference does not exist yet: push creates it\n" => {
@@ -1136,7 +1242,7 @@ mod tests {
                 }
                 "%s does not exist on the cluster\n" => fetch_absent(&s(0)),
                 "%s: up to date (%s)\n" => fetch_up_to_date(&s(0), &text(1)),
-                "fetched %s: root %s, %d objects fetched (%d bytes)\n" => {
+                "fetched %s: %s, %d objects fetched (%d bytes)\n" => {
                     fetched(&s(0), &text(1), int(2), int(3))
                 }
                 "conflicts:" => CONFLICTS_HEADER.to_vec(),
@@ -1149,6 +1255,17 @@ mod tests {
                 "nothing to push" => NOTHING_TO_PUSH.to_vec(),
                 "%s already holds %s (an earlier push completed); state updated\n" => {
                     push_recovered(&s(0), &text(1))
+                }
+                "commit %s, root %s" => commit_desc(&text(0), &text(1)).into_bytes(),
+                "pushed %s: commit %s, root %s, %d objects, %d uploaded, version %x\n" => {
+                    pushed_commit(
+                        &s(0),
+                        &text(1),
+                        &text(2),
+                        int(3),
+                        int(4),
+                        &unhex(args[5].at("value").str()),
+                    )
                 }
                 "pushed %s: root %s, %d objects, %d uploaded, version %x\n" => pushed(
                     &s(0),
