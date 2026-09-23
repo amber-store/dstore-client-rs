@@ -133,7 +133,7 @@ These work together with Go, but their bytes are not compared:
 | DD-9 | Packstore segment files under a non-022 umask get `0666 & ~umask` (Go: `0644 & ~umask`) until core-rs is patched. Rust pre-creates store directories with 0755. | core-rs `create_active` mode (core-rs-gaps G5); upstream patch proposed. |
 | DD-10 | Where Go iterates a map, Rust uses a deterministic order: anyNode's bootstrap fallback, the ref-watch known list, `shortError` names, `negotiate %x`/`record %x rejected` picks, pickBatch ties, primary goroutine order, xattr set order, directory chmod restore order. | Go's order is random, so any order is compatible. |
 | DD-11 | At CLI exit Rust awaits `Endpoint::close()` (bounded to 3 s) after `Cluster::close()`. | Go's `CloseWithError` blocks until CONNECTION_CLOSE is sent; noq only queues it. This restores parity for the peer. |
-| DD-12 | Rare core-rs error texts are not re-rendered: `decode_payload` over-long frames, and `readdirent` vs `open` op names in walk errors. | Unobservable in practice (core-rs-gaps G17, G19, R3). Common paths are rewritten (§5.2). |
+| DD-12 | Rare core-rs error texts are not re-rendered: `decode_payload` over-long frames, and `readdirent` vs `open` op names in walk errors. Nor are the SQLite driver's texts below core's `refstore:` wrappers: Go's modernc driver prints `<errstr> (<code>)`, rusqlite its own wording. With `<local>/refs/refs.sqlite` a directory, or `<local>/refs` not writable and no database yet, Go prints `refstore: opening sqlite <path>: unable to open database file (14)` and Rust `refstore: opening sqlite <path>: unable to open database file: <path>`; over a file that is no database, Go ends in `file is not a database (26)` and Rust in `file is not a database`. The wrapper and the exit status (1) are identical. | Unobservable in practice (core-rs-gaps G17, G19, R3). Common paths are rewritten (§5.2). The driver texts show only over a broken `--local` directory. Re-rendering them would need rusqlite's error type, which core-rs boxes and does not re-export, and modernc builds its text from `sqlite3_errstr`, `sqlite3_errmsg`, the extended code and a `SQLITE_BUSY` suffix, so a table of two messages would match Go for those two and nothing else. Pinned by `common::tests::open_local_sqlite_errors_are_the_rust_drivers`. |
 | DD-13 | A `--relay` string that Go's `url.Parse` accepts but `url::Url` rejects (e.g. `foo`) is accepted. Relays count as enabled, bind waits its 10 s for a home relay, and no relay path is dialled. | Same observable effect as Go, whose relay never connects. |
 | DD-14 | Unicode tables (`IsPrint`, `IsSpace`, simple case mapping) are those of go1.26.5. | Regenerate the tables when dstore's `go.mod` `go` line changes. |
 | DD-15 | `cluster status` takes the cluster id's length as its capacity. An id shorter than 4 bytes takes the DD-7 path (`panic: runtime error: slice bounds out of range [:4] with capacity N`, N = the length, exit 2). Go slices `v.ClusterID[:4]` up to the capacity: a 1..3-byte id sent as an indefinite-length CBOR byte string has an append-grown capacity of at least 8, so Go prints it zero-padded (`01020000`) and exits 0. | `View` and `Cluster` keep neither the view bytes nor Go's slice capacity (`dstore_view::cluster_id_cap` needs the bytes). Nodes encode views canonically, with definite lengths, so only a hand-crafted reply differs. Decided by the orchestrator at the L2-L4 review. |
@@ -275,6 +275,11 @@ with `MkdirAll(dir, 0o755)` and Go's text `refstore: creating <DIR>/refs: <PathE
   Nothing is created next to the Pebble files. What Go's import leaves behind (`refs.sqlite`,
   `pebble-migrated/`, the poison marker `marker.format-version.999999.999`, a stray `LOCK`) opens.
 
+Core's own `refstore:` texts are Go's: `refstore: creating …`, the application id and schema version
+checks with the path in parentheses, the Pebble refusal above being the one designed exception. Below the
+wrapper `refstore: opening sqlite <path>: ` the text is the SQLite driver's, which differs between
+modernc (Go) and rusqlite (DD-12).
+
 Up to core-rs 0.4.0 this section listed `DIR/refs` for Pebble's file names itself and refused them all,
 because Rust kept references in redb and the two stores could not meet. That check would now refuse a
 directory Go has imported (the poison marker matches `marker.format-version.*`), so it is gone and core-rs
@@ -316,7 +321,7 @@ dstore-client-rs/
                           transfers against scripted nodes; working-copy flows (added at L5)
   tests/iroh_loopback.rs  real Rust iroh on 127.0.0.1 (never inside the Nix sandbox); the live Go tests (ignored)
   examples/holdlock.rs    lock-interop helper for interop D12 (holds a working copy open, so its .dstore/lock)
-  tools/vectorgen/        Go module: vector generator, gotables, goerrno, clisnap, mktree, treekey, storecmp, holdlock
+  tools/vectorgen/        Go module: vector generator, gotables, goerrno, clisnap, mktree, treekey, storecmp, holdlock, pebblerefs
   third_party/iroh-1.2.0/ iroh 1.2.0 with one patch, through [patch.crates-io] (§5.12, third_party/README.md)
   interop/check.sh, interop/lib.sh, interop/README.md
   flake.nix, flake.lock, .envrc, .gitignore, .github/workflows/ci.yml
@@ -2496,8 +2501,9 @@ were decided.
   - D12 (reworked with dstore v0.1.11) is the lock check: while `holdlock` of either implementation has
     a working copy open (`.dstore/lock`), both clients refuse alike, and likewise while an exclusive flock
     is on the packstore directory, which is how a dstore v0.1.10 command holds it (core-v0.0.10.md §4);
-  - G1 asserts the §2.3 refusal and that either client works on the `--local` directory the other wrote
-    (one `refs.sqlite`), and G2 the §2.2 texts;
+  - G1 asserts the §2.3 refusal over a real Pebble store (`pebblerefs`), Go's import of it, the Rust
+    client on what the import leaves, and that either client works on the `--local` directory the other
+    wrote (one `refs.sqlite`); G2 asserts the §2.2 texts;
   - H1-H8 are the live cases handed over by the CLI snapshots and the L5 reviews. H8 is always skipped,
     because real nodes send a 16-byte cluster id.
 - **Comparison modes:** exact, stdout+exit, normalized, panic, format and root.

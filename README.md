@@ -170,7 +170,7 @@ The full contract is PORTING.md §1. In short:
 | DD-9 | Under a umask other than 022, packstore segment files get `0666 &^ umask` (Go: `0644 &^ umask`), until core-rs is patched. |
 | DD-10 | Where Go iterates a map in random order, Rust uses a deterministic order. |
 | DD-11 | At exit the CLI waits up to 3 s for the endpoint to close. |
-| DD-12 | Rare core-rs error texts are not re-rendered. |
+| DD-12 | Rare core-rs error texts are not re-rendered, nor are the SQLite driver's texts below core's `refstore:` wrappers: over a broken `--local` directory Go prints `refstore: opening sqlite <path>: unable to open database file (14)` where Rust prints `…: unable to open database file: <path>`. The exit status is the same. |
 | DD-13 | A `--relay` value that Go's `url.Parse` accepts but Rust's `url` rejects is accepted, and no relay is dialled, which is what Go's unusable relay amounts to. |
 | DD-14 | The Unicode tables are those of go1.26.5. |
 | DD-15 | `cluster status` treats a cluster id shorter than 4 bytes as DD-7, where Go, for a hand-crafted indefinite-length id, prints it zero-padded. |

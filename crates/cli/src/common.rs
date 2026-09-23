@@ -419,6 +419,10 @@ pub fn record_payload(rec: &[u8]) -> Result<Vec<u8>, amberpack::Error> {
 /// Pebble database of Go dstore v0.1.10 or earlier is refused (DD-2): Go imports it on its first open,
 /// core-rs cannot, and it decides what such a directory is (`refstore::Error::PebbleStore`). A `refs.redb`
 /// of an earlier dstore-client-rs is imported by core-rs.
+///
+/// Core's own `refstore:` texts are Go's. Below the wrapper `refstore: opening sqlite <path>: ` the text is
+/// the SQLite driver's, and rusqlite words a failure differently from Go's modernc driver (DD-12): core-rs
+/// boxes the driver's error and does not re-export its type, so it is passed on as it is.
 pub fn open_local(c: &Context) -> Result<(Arc<packstore::Store>, refstore::Store), CliError> {
     let local = c.os_string("local");
     let dir = local.as_bytes();
@@ -1676,7 +1680,9 @@ mod tests {
     }
 
     /// What Go's import leaves behind opens: `refs.sqlite` beside the poison marker that keeps Pebble-based
-    /// releases out, the retired files, and the `LOCK` such a release may have left since.
+    /// releases out, the migration's lock file, the retired files, and the `LOCK` a Pebble-based release may
+    /// have left since. (Interop G1 runs the real thing: `marker.format-version.999999.999 migrate.lock
+    /// pebble-migrated refs.sqlite`.)
     #[test]
     fn open_local_opens_refs_that_go_imported() {
         let s = Scratch::new("imported");
@@ -1685,7 +1691,12 @@ mod tests {
         if let Err(e) = std::fs::create_dir_all(refs.join("pebble-migrated")) {
             panic!("mkdir refs: {e}");
         }
-        for f in ["refs.sqlite", "marker.format-version.999999.999", "LOCK"] {
+        for f in [
+            "refs.sqlite",
+            "marker.format-version.999999.999",
+            "migrate.lock",
+            "LOCK",
+        ] {
             if let Err(e) = std::fs::write(refs.join(f), b"") {
                 panic!("write {f}: {e}");
             }
@@ -1710,6 +1721,49 @@ mod tests {
             e,
             format!("refstore: creating {d}/refs: mkdir {d}/refs: not a directory")
         );
+    }
+
+    /// DD-12: below core's `refstore: opening sqlite <path>: ` the text is the SQLite driver's. Go's modernc
+    /// driver prints `<errstr> (<code>)`: `unable to open database file (14)` and `file is not a database
+    /// (26)` for these two. rusqlite names the path in the first and prints no code. Both exit 1.
+    #[test]
+    fn open_local_sqlite_errors_are_the_rust_drivers() {
+        let s = Scratch::new("sqlite-errors");
+        let d = s.path();
+        let db = s.0.join("refs").join("refs.sqlite");
+        // refs.sqlite is a directory.
+        if let Err(e) = std::fs::create_dir_all(&db) {
+            panic!("mkdir refs.sqlite: {e}");
+        }
+        let e = match open_local(&local(&d)) {
+            Ok(_) => panic!("opened a directory as the database"),
+            Err(e) => msg(e),
+        };
+        assert_eq!(
+            e,
+            format!(
+                "refstore: opening sqlite {d}/refs/refs.sqlite: unable to open database file: {d}/refs/refs.sqlite"
+            )
+        );
+        // refs.sqlite is no database.
+        if let Err(e) = std::fs::remove_dir(&db).and_then(|()| std::fs::write(&db, [b'x'; 4096])) {
+            panic!("write refs.sqlite: {e}");
+        }
+        let e = match open_local(&local(&d)) {
+            Ok(_) => panic!("opened garbage as the database"),
+            Err(e) => msg(e),
+        };
+        assert_eq!(
+            e,
+            format!("refstore: opening sqlite {d}/refs/refs.sqlite: file is not a database")
+        );
+        // The packstore was closed each time: the directory opens once the file is out of the way.
+        if let Err(e) = std::fs::remove_file(&db) {
+            panic!("remove refs.sqlite: {e}");
+        }
+        if let Err(e) = open_local(&local(&d)) {
+            panic!("open after the refusals: {}", msg(e));
+        }
     }
 
     #[test]

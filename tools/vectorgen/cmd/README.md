@@ -12,4 +12,5 @@ built binary.
 | `mktree` | writes a deterministic source tree for interop checks |
 | `treekey` | prints the root key of a directory computed by core `ingest` without storing |
 | `storecmp` | `storecmp A B ROOT`: checks that every object reachable from ROOT is present in the packstores A and B with identical record bytes (interop B2, B3, B11) |
+| `pebblerefs` | `pebblerefs DIR`: makes DIR a Pebble reference store as Go dstore v0.1.10 and earlier left one in `<local>/refs` (pebble/v2 opened and closed), and prints its entries, for the DD-2 check G1 |
 | `holdlock` | `holdlock DIR SECONDS`: opens the working copy `DIR` (`worktree.Open`, which takes `.dstore/lock`), prints `locked <root>` and sleeps, for the lock-interop check D12; `examples/holdlock.rs` is the Rust twin |

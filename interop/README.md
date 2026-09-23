@@ -23,7 +23,7 @@ summary. The exit status is 0 when nothing failed, 1 when a check failed and 2 w
    - Go dstore v0.1.11 with `CGO_ENABLED=0`: from `$DSTORE_GO_BIN` (copied); else from a checkout
      (`$DSTORE_GO_REPO`, or `../dstore` next to this repository) whose HEAD must be tag `v0.1.11`, built
      from `git archive HEAD` (uncommitted changes are ignored); else `go install …/cmd/dstore@v0.1.11`.
-   - The vectorgen helpers `mktree`, `treekey`, `storecmp` and `holdlock` (tools/vectorgen/cmd).
+   - The vectorgen helpers `mktree`, `treekey`, `storecmp`, `holdlock` and `pebblerefs` (tools/vectorgen/cmd).
    - The Rust CLI and `examples/holdlock.rs`: from `$DSTORE_RS_BIN` (the holdlock example next to it in
      `examples/`, or `$DSTORE_RS_HOLDLOCK`); else `cargo build --release --locked --bin dstore --examples`
      into `$INTEROP_CARGO_TARGET_DIR`, by default the work directory's `target/`.
@@ -113,11 +113,12 @@ Deviations from verification.md §4.5, each explained in the check's code:
   the packstore directory's flock exclusively. No such binary is at hand, so `perl` takes that lock, and both
   clients must refuse with the same line (`… is held by an older release, which needs the store to itself:
   …`); without `perl` that part is left out, with a note.
-- **G1** follows PORTING.md §2.3. The Rust client refuses a `--local` directory whose `refs/` holds a Pebble
-  store (empty files under Pebble's names: no release that writes Pebble is at hand, and the refusal looks
-  at names only). Then each client runs `store pull` on a copy of the `--local` directory the other one
-  wrote, and the writer runs again after it: both use the one `refs/refs.sqlite`, and no second reference
-  store appears.
+- **G1** follows PORTING.md §2.3. `pebblerefs` makes a real Pebble store in a `--local` directory's `refs/`,
+  as core v0.0.9's refstore did. The Rust client refuses it, creates nothing and leaves the directory as it
+  was; the Go client imports it (`refs.sqlite`, `pebble-migrated/`, the poison marker); then the Rust
+  client opens what the import left. After that each client runs `store pull` on a copy of the `--local`
+  directory the other one wrote, and the writer runs again after it: both use the one `refs/refs.sqlite`,
+  and no second reference store appears.
 
 ## Inputs
 
