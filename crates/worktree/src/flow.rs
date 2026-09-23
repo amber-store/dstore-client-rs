@@ -468,6 +468,10 @@ fn commit_object(
         message: String::new(),
         signature: Vec::new(),
         public_key: Vec::new(),
+        // dstore records no change id and never a conflicted tree (core v0.0.10's jj fields).
+        change_id: Vec::new(),
+        conflict_terms: Vec::new(),
+        conflict_labels: Vec::new(),
     };
     match std::str::from_utf8(message) {
         Ok(m) => {
@@ -624,11 +628,12 @@ mod tests {
     #[test]
     fn commit_object_checks_the_message_in_go_order() {
         let (tree, _) = crate::empty_tree();
-        // dstore's own test commit (`worktree/state.json` `commit`).
+        // dstore's own test commit (`worktree/state.json` `commit`). Its length field is its footprint
+        // (core v0.0.10): 0x49 = its own 72 bytes plus the empty tree's 1.
         let (k, raw) = commit_object(tree, &[], id("tester"), b"").expect("commit");
         assert_eq!(
             k.to_string(),
-            "5048b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329"
+            "5049b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329"
         );
         assert_eq!(Commit::decode(&raw).expect("decode").tree, tree);
         let (with_parent, _) =

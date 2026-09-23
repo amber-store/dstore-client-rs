@@ -81,19 +81,6 @@
     {
       "name": "commit",
       "raw": {
-        "key": "50498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5",
-        "flags": 0,
-        "ulen": 73,
-        "slen": 73,
-        "bytes": "0150498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe50000000049000000496b225c5ba50058202001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b018002a4006674657374657201600201030003a4006674657374657201600201030004616d"
-      },
-      "parses": true,
-      "ok": true,
-      "out_key": "50498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5"
-    },
-    {
-      "name": "commit_length_field_off_by_one",
-      "raw": {
         "key": "504a8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5",
         "flags": 0,
         "ulen": 73,
@@ -103,6 +90,32 @@
       "parses": true,
       "ok": true,
       "out_key": "504a8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5"
+    },
+    {
+      "name": "commit_length_field_off_by_one",
+      "raw": {
+        "key": "504b8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5",
+        "flags": 0,
+        "ulen": 73,
+        "slen": 73,
+        "bytes": "01504b8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5000000004900000049478a280ca50058202001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b018002a4006674657374657201600201030003a4006674657374657201600201030004616d"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "504b8d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5"
+    },
+    {
+      "name": "commit_keyed_by_own_length",
+      "raw": {
+        "key": "50498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5",
+        "flags": 0,
+        "ulen": 73,
+        "slen": 73,
+        "bytes": "0150498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe50000000049000000496b225c5ba50058202001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b018002a4006674657374657201600201030003a4006674657374657201600201030004616d"
+      },
+      "parses": true,
+      "ok": true,
+      "out_key": "50498d6aae8921a4ba11eff957fc64d4cafc0008f5ae70473828cd93dd43dbe5"
     },
     {
       "name": "blob_length_field_999_over_100_bytes",

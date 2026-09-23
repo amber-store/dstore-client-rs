@@ -25,8 +25,8 @@
         version = cargoToml.workspace.package.version;
         cargoLock = {
           lockFile = ./Cargo.lock;
-          # github.com/amber-store/core-rs 7386914b56b9c43ea42b166d81c1f2fbce3aaffb (v0.4.0); bump with every rev.
-          outputHashes."amber-store-core-0.4.0" = "sha256-V7DidCX4QDQXzvzWsiXDex1UVlAmmN0BIphvXlC1974=";
+          # github.com/amber-store/core-rs 1a8bca1079e85713052b99c9bde144625015652c (v0.7.0); bump with every rev.
+          outputHashes."amber-store-core-0.7.0" = "sha256-tT4gGlJ0ZEGCjJXPvAtJ0T2DIlANe7R6o7bCn3ExjnE=";
         };
       };
     in
@@ -45,7 +45,7 @@
           # the socket-free suites run in checks.tests, everything runs in CI.
           doCheck = false;
           meta = {
-            description = "dstore client library and CLI (Rust port of github.com/amber-store/dstore v0.1.10)";
+            description = "dstore client library and CLI (Rust port of github.com/amber-store/dstore v0.1.11)";
             homepage = "https://github.com/amber-store/dstore-client-rs";
             license = lib.licenses.lgpl3Only;
             mainProgram = "dstore";

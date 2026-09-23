@@ -8,8 +8,8 @@ built binary.
 |---|---|
 | `gotables` | prints `crates/gocompat/src/tables.rs`: the go1.26.5 `strconv` isPrint/isNotPrint/isGraphic tables, `unicode.White_Space`, and every rune whose `unicode.ToLower`/`ToUpper` differs from itself |
 | `goerrno` | prints `crates/gocompat/src/errno_tables.rs`: the go1.26.5 `syscall` errno texts of darwin and linux on amd64 and arm64 |
-| `clisnap` | builds dstore v0.1.10 `cmd/dstore` with `go build -trimpath` into a temporary directory (deleted on exit), runs every CLI case and writes `snapshots.json` |
+| `clisnap` | builds dstore v0.1.11 `cmd/dstore` with `go build -trimpath` into a temporary directory (deleted on exit), runs every CLI case and writes `snapshots.json` |
 | `mktree` | writes a deterministic source tree for interop checks |
 | `treekey` | prints the root key of a directory computed by core `ingest` without storing |
 | `storecmp` | `storecmp A B ROOT`: checks that every object reachable from ROOT is present in the packstores A and B with identical record bytes (interop B2, B3, B11) |
-| `holdlock` | `holdlock DIR SECONDS`: opens `DIR/.dstore/packstore` (flock), prints `locked <path>` and sleeps, for the lock-interop check D12; `examples/holdlock.rs` is the Rust twin |
+| `holdlock` | `holdlock DIR SECONDS`: opens the working copy `DIR` (`worktree.Open`, which takes `.dstore/lock`), prints `locked <root>` and sleeps, for the lock-interop check D12; `examples/holdlock.rs` is the Rust twin |

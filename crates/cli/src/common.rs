@@ -414,24 +414,31 @@ pub fn record_payload(rec: &[u8]) -> Result<Vec<u8>, amberpack::Error> {
 /// PORTING.md §2.3.
 ///
 /// `openLocal` (`client.go:209-221`): `<local>/packstore` opened with sync, then the refs store at
-/// `<local>/refs`, closing the packstore when that fails. A `<local>/refs` holding Pebble files is refused
-/// (DD-2) before redb touches it.
+/// `<local>/refs`, closing the packstore when that fails. Since core v0.0.10 the references are in
+/// `<local>/refs/refs.sqlite`, one file that Go and Rust share. A `<local>/refs` that still holds the
+/// Pebble database of Go dstore v0.1.10 or earlier is refused (DD-2): Go imports it on its first open,
+/// core-rs cannot, and it decides what such a directory is (`refstore::Error::PebbleStore`). A `refs.redb`
+/// of an earlier dstore-client-rs is imported by core-rs.
 pub fn open_local(c: &Context) -> Result<(Arc<packstore::Store>, refstore::Store), CliError> {
     let local = c.os_string("local");
     let dir = local.as_bytes();
     let st = open_packstore(&join(&[dir, b"packstore"]))?;
     let refs_dir = join(&[dir, b"refs"]);
-    if holds_pebble(&refs_dir) {
+    // Go `refstore.Open`: MkdirAll(dir, 0o755), wrapped as `refstore: creating <dir>: …` (core-rs-gaps
+    // G5, G6: core-rs creates with 0777 and renders Rust's errno text).
+    if let Err(e) = mkdir_all(&refs_dir, 0o755) {
         drop(st);
         return Err(CliError::Msg(format!(
-            "refstore: {} holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)",
+            "refstore: creating {}: {e}",
             String::from_utf8_lossy(&refs_dir)
         )));
     }
-    // Pebble's MkdirAll(dir, 0o755) (core-rs-gaps G5); a failure is the refs store's to report.
-    let _ = mkdir_all(&refs_dir, 0o755);
     match refstore::Store::open(to_path(&refs_dir), true) {
         Ok(refs) => Ok((Arc::new(st), refs)),
+        Err(refstore::Error::PebbleStore { .. }) => {
+            drop(st);
+            Err(CliError::Msg(pebble_refs_text(&refs_dir)))
+        }
         Err(e) => {
             drop(st);
             Err(CliError::msg(e))
@@ -439,9 +446,18 @@ pub fn open_local(c: &Context) -> Result<(Arc<packstore::Store>, refstore::Store
     }
 }
 
+/// The DD-2 text of PORTING.md §2.3 for a `<local>/refs` that holds a Pebble database and no `refs.sqlite`.
+fn pebble_refs_text(refs_dir: &[u8]) -> String {
+    format!(
+        "refstore: {} holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does",
+        String::from_utf8_lossy(refs_dir)
+    )
+}
+
 /// Go `packstore.Open(dir, WithSync(true))` with Go's texts (core-rs-gaps G3, G5, G6): `MkdirAll(dir,
 /// 0o755)` wrapped as `packstore: creating <dir>: …`, then the raw `os.Open(dir)` error, then core-rs
-/// (the flock's `packstore: <dir> is already open: …`, whose errno the top-level print rewrites).
+/// (the shared flock's `packstore: <dir> is held by an older release, which needs the store to itself: …`,
+/// whose errno the top-level print rewrites; a store that a current release has open is shared).
 fn open_packstore(dir: &[u8]) -> Result<packstore::Store, CliError> {
     if let Err(e) = mkdir_all(dir, 0o755) {
         return Err(CliError::Msg(format!(
@@ -458,30 +474,6 @@ fn open_packstore(dir: &[u8]) -> Result<packstore::Store, CliError> {
     }
     packstore::Store::open_with(to_path(dir), packstore::Options::new().sync(true))
         .map_err(CliError::msg)
-}
-
-/// Whether the directory lists a file that Pebble writes (PORTING.md §2.3). An unreadable or missing
-/// directory holds none.
-fn holds_pebble(dir: &[u8]) -> bool {
-    let Ok(entries) = std::fs::read_dir(to_path(dir)) else {
-        return false;
-    };
-    entries
-        .flatten()
-        .any(|e| is_pebble_name(e.file_name().as_bytes()))
-}
-
-/// `CURRENT`, `LOCK`, `MANIFEST-*`, `OPTIONS-*`, `marker.format-version.*`, `marker.manifest.*`, `*.sst`,
-/// `*.log`.
-fn is_pebble_name(name: &[u8]) -> bool {
-    name == b"CURRENT"
-        || name == b"LOCK"
-        || name.starts_with(b"MANIFEST-")
-        || name.starts_with(b"OPTIONS-")
-        || name.starts_with(b"marker.format-version.")
-        || name.starts_with(b"marker.manifest.")
-        || name.ends_with(b".sst")
-        || name.ends_with(b".log")
 }
 
 /// `clusterGet(ctx, cl)(k)` (`client.go:454-468`): the payload of the first record `cl.Get(ctx, [k])`
@@ -1580,33 +1572,6 @@ mod tests {
     }
 
     #[test]
-    fn pebble_names() {
-        for name in [
-            "CURRENT",
-            "LOCK",
-            "MANIFEST-000001",
-            "OPTIONS-000003",
-            "marker.format-version.000001.013",
-            "marker.manifest.000001.MANIFEST-000001",
-            "000002.log",
-            "000005.sst",
-        ] {
-            assert!(is_pebble_name(name.as_bytes()), "{name}");
-        }
-        for name in [
-            "refs.redb",
-            "MANIFEST",
-            "OPTIONS",
-            "x.logs",
-            "lock",
-            "current",
-            "marker.x",
-        ] {
-            assert!(!is_pebble_name(name.as_bytes()), "{name}");
-        }
-    }
-
-    #[test]
     fn open_local_creates_both_stores() {
         let s = Scratch::new("fresh");
         let d = s.path();
@@ -1618,21 +1583,54 @@ mod tests {
             Err(e) => panic!("open_local: {}", msg(e)),
         }
         assert!(s.0.join("packstore").is_dir());
-        assert!(s.0.join("refs").join("refs.redb").is_file());
-        // A second open while the first holds the packstore fails with Go's flock text.
-        let (held, _refs) = match open_local(&local(&d)) {
+        assert!(s.0.join("refs").join("refs.sqlite").is_file());
+        // Since core v0.0.10 any number of opens share both stores.
+        let held = match open_local(&local(&d)) {
             Ok(v) => v,
             Err(e) => panic!("reopen: {}", msg(e)),
         };
+        match open_local(&local(&d)) {
+            Ok(again) => drop(again),
+            Err(e) => panic!("a second open while the first is held: {}", msg(e)),
+        }
+        drop(held);
+        // A release from before that holds the packstore directory exclusively: Go's text.
+        let older = hold_as_an_older_release(&s.0.join("packstore"));
         let e = match open_local(&local(&d)) {
-            Ok(_) => panic!("opened twice"),
+            Ok(_) => panic!("opened a store that an older release holds"),
             Err(e) => rewrite_os_errors(&msg(e)),
         };
         assert_eq!(
             e,
-            format!("packstore: {d}/packstore is already open: resource temporarily unavailable")
+            format!(
+                "packstore: {d}/packstore is held by an older release, which needs the store to itself: resource temporarily unavailable"
+            )
         );
-        drop(held);
+        drop(older);
+    }
+
+    /// The exclusive flock that a release from before core v0.0.10 holds on a store it has open. Retried
+    /// for a while: a process that another test forks holds, until it execs, a copy of the shared lock
+    /// that a closed store has just let go of.
+    fn hold_as_an_older_release(dir: &std::path::Path) -> std::fs::File {
+        use std::os::unix::io::AsRawFd;
+        let f = match std::fs::File::open(dir) {
+            Ok(f) => f,
+            Err(e) => panic!("open {}: {e}", dir.display()),
+        };
+        let deadline = std::time::Instant::now() + Duration::from_secs(10);
+        loop {
+            // SAFETY: flock(2) on a descriptor this function owns; no memory is involved.
+            if unsafe { libc::flock(f.as_raw_fd(), libc::LOCK_EX | libc::LOCK_NB) } == 0 {
+                return f;
+            }
+            let e = std::io::Error::last_os_error();
+            assert!(
+                e.raw_os_error() == Some(libc::EWOULDBLOCK) && std::time::Instant::now() < deadline,
+                "flock: {e}"
+            );
+            std::thread::sleep(Duration::from_millis(20));
+        }
     }
 
     #[test]
@@ -1643,7 +1641,13 @@ mod tests {
         if let Err(e) = std::fs::create_dir_all(&refs) {
             panic!("mkdir refs: {e}");
         }
-        for f in ["000002.log", "LOCK", "MANIFEST-000001"] {
+        // core-rs knows a Pebble store by the marker that names its manifest.
+        for f in [
+            "000002.log",
+            "LOCK",
+            "MANIFEST-000001",
+            "marker.manifest.000001.MANIFEST-000001",
+        ] {
             if let Err(e) = std::fs::write(refs.join(f), b"") {
                 panic!("write {f}: {e}");
             }
@@ -1655,17 +1659,57 @@ mod tests {
         assert_eq!(
             e,
             format!(
-                "refstore: {d}/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)"
+                "refstore: {d}/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does"
             )
         );
-        assert!(!refs.join("refs.redb").exists(), "redb touched the dir");
-        // The packstore lock was released.
+        assert!(
+            !refs.join("refs.sqlite").exists(),
+            "a database was created next to the Pebble store"
+        );
+        // The packstore was closed.
         if let Err(e) = std::fs::remove_dir_all(&refs) {
             panic!("remove refs: {e}");
         }
         if let Err(e) = open_local(&local(&d)) {
             panic!("open after refusal: {}", msg(e));
         }
+    }
+
+    /// What Go's import leaves behind opens: `refs.sqlite` beside the poison marker that keeps Pebble-based
+    /// releases out, the retired files, and the `LOCK` such a release may have left since.
+    #[test]
+    fn open_local_opens_refs_that_go_imported() {
+        let s = Scratch::new("imported");
+        let d = s.path();
+        let refs = s.0.join("refs");
+        if let Err(e) = std::fs::create_dir_all(refs.join("pebble-migrated")) {
+            panic!("mkdir refs: {e}");
+        }
+        for f in ["refs.sqlite", "marker.format-version.999999.999", "LOCK"] {
+            if let Err(e) = std::fs::write(refs.join(f), b"") {
+                panic!("write {f}: {e}");
+            }
+        }
+        if let Err(e) = open_local(&local(&d)) {
+            panic!("open_local: {}", msg(e));
+        }
+    }
+
+    #[test]
+    fn open_local_refs_errors_have_go_texts() {
+        let s = Scratch::new("refs-errors");
+        let d = s.path();
+        if let Err(e) = std::fs::write(s.0.join("refs"), b"") {
+            panic!("write refs file: {e}");
+        }
+        let e = match open_local(&local(&d)) {
+            Ok(_) => panic!("opened a file as refs"),
+            Err(e) => msg(e),
+        };
+        assert_eq!(
+            e,
+            format!("refstore: creating {d}/refs: mkdir {d}/refs: not a directory")
+        );
     }
 
     #[test]

@@ -5,7 +5,7 @@ use std::sync::Arc;
 use amber_store_core::fstree;
 use amber_store_core::key::{Key, Type};
 use amber_store_core::packstore;
-use dstore_gocompat::errno::{PathError, rewrite_os_errors};
+use dstore_gocompat::errno::{PathError, io_error_text, rewrite_os_errors};
 use dstore_gocompat::json::{self, JsonField, JsonFieldSpec, JsonKind, JsonValue};
 use dstore_gocompat::path::{self, to_path};
 use dstore_gocompat::time::GoTime;
@@ -17,6 +17,9 @@ use crate::{Change, DIR, Error, Kind};
 const CONFIG_FILE: &[u8] = b"config";
 const STATE_FILE: &[u8] = b"state";
 const STORE_DIR: &[u8] = b"packstore";
+/// Go `lockFile`: the working copy's lock, `.dstore/lock`. Go and Rust commands exclude each other through
+/// it, so the file, the call (`flock`) and its mode (exclusive, without waiting) are Go's.
+const LOCK_FILE: &[u8] = b"lock";
 
 /// The empty tree's key (`fstree.EncodeDirLeaf(nil)` in core v0.0.9).
 const EMPTY_TREE_KEY: [u8; 32] = [
@@ -78,12 +81,15 @@ pub(crate) fn is_commit(k: &Key) -> bool {
     Type::from_u8(k.0[0] >> 4) == Some(Type::Commit)
 }
 
-/// `*worktree.Tree`.
+/// `*worktree.Tree`: an open working copy. One command at a time has a working copy open: the lock is
+/// held from [`Tree::open`] or [`Tree::create`] to [`Tree::close`] (or the drop of the tree).
 pub struct Tree {
     pub root: Vec<u8>,
     pub config: Config,
     pub state: State,
     pub store: Arc<packstore::Store>,
+    /// Go `Tree.lock`, the open `.dstore/lock` holding its flock. `None` for a tree made from its parts.
+    lock: Option<std::fs::File>,
 }
 
 /// Where the reference stands on the cluster.
@@ -136,7 +142,70 @@ pub fn remove(dir: &[u8]) -> Result<(), Error> {
     os::remove_all(&path::join(&[dir, DIR.as_bytes()])).map_err(Error::Path)
 }
 
+/// Go `lockWorkingCopy`: `.dstore/lock` opened `O_RDWR|O_CREATE` with mode 0644 and flocked exclusively
+/// without waiting (EINTR retried). Until core v0.0.10 the packstore's single-owner lock kept two commands
+/// apart on the side; a packstore may now be open in any number of processes, and two commands at once
+/// would race on the state file and on the working directory itself. `EWOULDBLOCK` is [`Error::InUse`];
+/// any other errno, and a failure to open the lock file (a `*PathError`), is wrapped the same way,
+/// `working copy <root>: <error>`.
+fn lock_working_copy(root: &[u8]) -> Result<std::fs::File, Error> {
+    use std::os::unix::fs::OpenOptionsExt;
+    use std::os::unix::io::AsRawFd;
+    let p = path::join(&[root, DIR.as_bytes(), LOCK_FILE]);
+    let f = match std::fs::OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .truncate(false)
+        .mode(0o644)
+        .open(to_path(&p))
+    {
+        Ok(f) => f,
+        Err(err) => {
+            let e = PathError {
+                op: "open",
+                path: p,
+                err,
+            };
+            return Err(wrap(format!("working copy {}: {e}", lossy(root)), e));
+        }
+    };
+    loop {
+        // SAFETY: flock(2) on a descriptor this function owns; no memory is involved.
+        if unsafe { libc::flock(f.as_raw_fd(), libc::LOCK_EX | libc::LOCK_NB) } == 0 {
+            return Ok(f);
+        }
+        let e = std::io::Error::last_os_error();
+        match e.raw_os_error() {
+            Some(libc::EINTR) => {}
+            Some(libc::EWOULDBLOCK) => return Err(Error::InUse(root.to_vec())),
+            _ => {
+                let text = format!("working copy {}: {}", lossy(root), io_error_text(&e));
+                return Err(wrap(text, e));
+            }
+        }
+    }
+}
+
 impl Tree {
+    /// A tree from its parts, which holds no lock: Go's `&worktree.Tree{Root: …, State: …}`, as the vector
+    /// generator writes a state file with. Commands open a working copy with [`Tree::open`] or
+    /// [`Tree::create`], which lock it.
+    pub fn from_parts(
+        root: Vec<u8>,
+        config: Config,
+        state: State,
+        store: Arc<packstore::Store>,
+    ) -> Tree {
+        Tree {
+            root,
+            config,
+            state,
+            store,
+            lock: None,
+        }
+    }
+
     /// `worktree.Open`: lock before state (a locked copy reports the lock error).
     pub fn open(dir: &[u8]) -> Result<Tree, Error> {
         let mut t = Tree::open_raw(dir)?;
@@ -157,6 +226,10 @@ impl Tree {
     pub(crate) fn open_raw(dir: &[u8]) -> Result<Tree, Error> {
         let root = find(dir)?;
         let meta = path::join(&[&root, DIR.as_bytes()]);
+        // Go's order: find, take the lock, read and parse the config, open the packstore. The lock comes
+        // first because the command that holds the working copy may rewrite the config. An error from here
+        // on drops `lock`, which lets go of the working copy.
+        let lock = lock_working_copy(&root)?;
         let b = os::read_file(&path::join(&[&meta, CONFIG_FILE]))
             .map_err(|e| wrap(format!("working copy {}: {e}", lossy(&root)), e))?;
         let config = decode_config(&b)
@@ -164,6 +237,7 @@ impl Tree {
         let store = open_store(&path::join(&[&meta, STORE_DIR]))?;
         let (empty, _) = empty_tree();
         Ok(Tree {
+            lock: Some(lock),
             root,
             config,
             state: State {
@@ -190,6 +264,8 @@ impl Tree {
         }
         let meta = path::join(&[&abs, DIR.as_bytes()]);
         os::mkdir_all(&meta, 0o755).map_err(Error::Path)?;
+        // Go's order: the lock, then the config, the packstore and the empty tree.
+        let lock = lock_working_copy(&abs)?;
         write_json(&path::join(&[&meta, CONFIG_FILE]), config_json(&cfg))?;
         let store = open_store(&path::join(&[&meta, STORE_DIR]))?;
         let (empty, bytes) = empty_tree();
@@ -198,6 +274,7 @@ impl Tree {
             return Err(Error::Packstore(e));
         }
         Ok(Tree {
+            lock: Some(lock),
             root: abs,
             config: cfg,
             state: State {
@@ -212,8 +289,11 @@ impl Tree {
         })
     }
 
+    /// `Tree.Close`: closes the store, then lets go of the working copy.
     pub fn close(self) -> Result<(), Error> {
-        self.store.close().map_err(Error::Packstore)
+        let res = self.store.close().map_err(Error::Packstore);
+        drop(self.lock); // closes `.dstore/lock`, which releases the flock
+        res
     }
 
     /// `Tree.Get`: an object's payload from the local packstore.
@@ -294,7 +374,11 @@ impl Tree {
 }
 
 /// Go `packstore.Open(dir, WithSync(true))` with Go's texts: `MkdirAll(dir, 0o755)` wrapped
-/// `packstore: creating <dir>: …`, then `os.Open(dir)` raw, then the flock (`… is already open: <errno>`).
+/// `packstore: creating <dir>: …`, then `os.Open(dir)` raw, then the directory's flock. Since core v0.0.10
+/// that lock is shared, so any number of processes open one store, and what keeps two commands out of one
+/// working copy is `.dstore/lock` ([`lock_working_copy`]). Only a release from before core v0.0.10, which
+/// holds the directory exclusively and knows no `.dstore/lock`, is still refused here (`… is held by an
+/// older release, which needs the store to itself: <errno>`).
 /// core-rs creates directories 0777 & ~umask and renders Rust errno texts, so the first two steps run here
 /// (core-rs-gaps G3, G5, G6).
 pub(crate) fn open_store(dir: &[u8]) -> Result<packstore::Store, Error> {
@@ -588,6 +672,9 @@ mod tests {
             message: String::new(),
             signature: Vec::new(),
             public_key: Vec::new(),
+            change_id: Vec::new(),
+            conflict_terms: Vec::new(),
+            conflict_labels: Vec::new(),
         }
         .object()
         .expect("commit");
@@ -699,20 +786,136 @@ mod tests {
         assert!(!dir.join(".dstore").exists());
     }
 
+    /// The exclusive flock that a release from before core v0.0.10 holds on a store it has open. Retried
+    /// for a while: a process that another test forks holds, until it execs, a copy of the shared lock
+    /// that `Tree::close` has just let go of.
+    fn hold_as_an_older_release(root: &[u8]) -> std::fs::File {
+        use std::os::unix::io::AsRawFd;
+        let dir = std::fs::File::open(to_path(&[root, b"/.dstore/packstore".as_slice()].concat()))
+            .expect("open the packstore directory");
+        let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+        loop {
+            // SAFETY: flock(2) on a descriptor this function owns; no memory is involved.
+            if unsafe { libc::flock(dir.as_raw_fd(), libc::LOCK_EX | libc::LOCK_NB) } == 0 {
+                return dir;
+            }
+            let e = std::io::Error::last_os_error();
+            assert!(
+                e.raw_os_error() == Some(libc::EWOULDBLOCK) && std::time::Instant::now() < deadline,
+                "flock: {e}"
+            );
+            std::thread::sleep(std::time::Duration::from_millis(20));
+        }
+    }
+
+    /// A dstore v0.1.10 command (core v0.0.9) knows no `.dstore/lock`, but it holds the packstore
+    /// directory exclusively, and that is reported before the state is read.
     #[test]
-    fn locked_copy_reports_the_lock_before_the_state() {
+    fn a_copy_held_by_an_older_release_reports_it_before_the_state() {
         let dir = Scratch::new();
         let root = dir.bytes();
-        let tr = Tree::create(&root, cfg()).expect("create");
-        let e = Tree::open(&root).err().expect("second open must fail");
+        // No state file: an open that got past the lock would report an incomplete clone.
+        Tree::create(&root, cfg())
+            .expect("create")
+            .close()
+            .expect("close");
+        let held = hold_as_an_older_release(&root);
+        let e = Tree::open(&root)
+            .err()
+            .expect("an older release holds the store");
         assert_eq!(
             e.to_string(),
             format!(
-                "packstore: {}/.dstore/packstore is already open: resource temporarily unavailable",
+                "packstore: {}/.dstore/packstore is held by an older release, which needs the store to itself: resource temporarily unavailable",
                 lossy(&root)
             )
         );
-        tr.close().expect("close");
+        drop(held);
+    }
+
+    /// The lock is taken before the config is read (the command that holds the working copy may rewrite
+    /// it), and a lock file that cannot be opened names the working copy (`errors/worktree_text.json`
+    /// `tree/open-locked-before-config-check`, `tree/open-lock-is-a-directory`).
+    #[test]
+    fn the_lock_comes_before_the_config() {
+        use std::os::unix::io::AsRawFd;
+        let dir = Scratch::new();
+        let root = dir.bytes();
+        let r = lossy(&root).into_owned();
+        // A `.dstore` without a config: an open that read the config first would report that.
+        std::fs::create_dir(dir.join(".dstore")).expect("mkdir .dstore");
+        let held = std::fs::File::create(dir.join(".dstore/lock")).expect("the lock file");
+        // SAFETY: flock(2) on a descriptor this test owns; no memory is involved.
+        let rc = unsafe { libc::flock(held.as_raw_fd(), libc::LOCK_EX | libc::LOCK_NB) };
+        assert_eq!(rc, 0, "flock: {}", std::io::Error::last_os_error());
+        let e = Tree::open(&root).err().expect("the lock is held");
+        assert!(e.is_in_use(), "{e}");
+        drop(held);
+        let e = Tree::open(&root).err().expect("no config");
+        assert!(!e.is_in_use(), "{e}");
+        assert!(
+            e.to_string().starts_with(&format!("working copy {r}: ")),
+            "{e}"
+        );
+
+        std::fs::remove_file(dir.join(".dstore/lock")).expect("remove the lock file");
+        std::fs::create_dir(dir.join(".dstore/lock")).expect("a directory in its place");
+        let e = Tree::open(&root)
+            .err()
+            .expect("the lock file cannot be opened");
+        assert_eq!(
+            e.to_string(),
+            format!("working copy {r}: open {r}/.dstore/lock: is a directory")
+        );
+    }
+
+    // Port of TestWorkingCopyTakesOneCommandAtATime (worktree/lock_test.go). Two opens in one process stand
+    // for two processes: flock is per open file description. Its companion,
+    // TestWorkingCopyLockHoldsAcrossProcesses, is tests/cli_wc.rs `a_working_copy_in_use_is_refused`: there
+    // this process holds the working copy and `dstore` processes are refused.
+    #[test]
+    fn working_copy_takes_one_command_at_a_time() {
+        let dir = Scratch::new();
+        let root = dir.bytes();
+        let in_use = format!(
+            "working copy {}: in use by another dstore command",
+            lossy(&root)
+        );
+        let mut made = Tree::create(&root, cfg()).expect("create");
+        // The lock is taken before the state is read: the copy has no state file yet.
+        let e = Tree::open(&root)
+            .err()
+            .expect("open during a clone or init");
+        assert!(e.is_in_use(), "{e}");
+        assert_eq!(e.to_string(), in_use);
+        made.state.synced_at = GoTime::now();
+        made.save_state().expect("save state");
+        made.close().expect("close");
+        let lock = std::fs::metadata(dir.join(".dstore/lock")).expect("the lock file stays");
+        assert!(lock.is_file());
+
+        let first = Tree::open(&root).expect("open after the first command ended");
+        let e = Tree::open(&root)
+            .err()
+            .expect("second open of one working copy");
+        assert!(e.is_in_use(), "{e}");
+        assert_eq!(e.to_string(), in_use);
+        let e = Tree::create(&root, cfg()).err().expect("create over it");
+        assert!(
+            !e.is_in_use(),
+            "create fails on the existing .dstore first: {e}"
+        );
+        first.close().expect("close");
+        Tree::open(&root)
+            .expect("open after close")
+            .close()
+            .expect("close");
+        // A tree that is dropped without close lets go of the working copy too.
+        drop(Tree::open(&root).expect("open"));
+        Tree::open(&root)
+            .expect("open after drop")
+            .close()
+            .expect("close");
     }
 
     #[test]

@@ -1,20 +1,21 @@
-// Command holdlock opens DIR/.dstore/packstore with github.com/amber-store/core v0.0.9 packstore, which
-// takes the directory's flock, and holds it for SECONDS. The lock-interop check (D12) runs a Rust command
-// against a working copy while this Go process holds its store; examples/holdlock.rs is the Rust twin.
+// Command holdlock opens the working copy DIR with github.com/amber-store/dstore v0.1.11 worktree.Open,
+// which takes its lock (.dstore/lock, an exclusive flock), and keeps it open for SECONDS. The lock-interop
+// check (D12) runs a Rust command against a working copy while this Go process holds it;
+// examples/holdlock.rs is the Rust twin. Until core v0.0.10 the packstore's single-owner lock kept two
+// commands apart, and this helper opened the packstore; a packstore is shared now.
 //
 //	go run ./cmd/holdlock DIR SECONDS
 //
-// Once the lock is held it prints "locked <path>" on stdout.
+// Once the working copy is open it prints "locked <root>" on stdout.
 package main
 
 import (
 	"fmt"
 	"os"
-	"path/filepath"
 	"strconv"
 	"time"
 
-	"github.com/amber-store/core/packstore"
+	"github.com/amber-store/dstore/worktree"
 )
 
 func main() {
@@ -27,15 +28,14 @@ func main() {
 		fmt.Fprintln(os.Stderr, "holdlock: SECONDS must be a non-negative integer")
 		os.Exit(2)
 	}
-	path := filepath.Join(os.Args[1], ".dstore", "packstore")
-	st, err := packstore.Open(path)
+	tr, err := worktree.Open(os.Args[1])
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "holdlock:", err)
 		os.Exit(1)
 	}
-	fmt.Println("locked", path)
+	fmt.Println("locked", tr.Root)
 	time.Sleep(time.Duration(secs) * time.Second)
-	if err := st.Close(); err != nil {
+	if err := tr.Close(); err != nil {
 		fmt.Fprintln(os.Stderr, "holdlock:", err)
 		os.Exit(1)
 	}

@@ -4,7 +4,7 @@
     "go": "go1.26.5",
     "module": {
       "path": "github.com/amber-store/dstore",
-      "version": "v0.1.10"
+      "version": "v0.1.11"
     },
     "deps": [
       {
@@ -21,7 +21,7 @@
       },
       {
         "path": "github.com/amber-store/core",
-        "version": "v0.0.9"
+        "version": "v0.0.10"
       },
       {
         "path": "github.com/amber-store/transport-iroh",
@@ -5089,7 +5089,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: refstore: P/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)\n"
+          "stderr": "dstore: refstore: P/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does\n"
         }
       }
     },
@@ -5117,7 +5117,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: refstore: P/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)\n"
+          "stderr": "dstore: refstore: P/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does\n"
         }
       }
     },
@@ -5535,7 +5535,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5564,7 +5564,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5593,7 +5593,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5620,7 +5620,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: serve is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5654,7 +5654,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5684,7 +5684,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: cluster init is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5718,7 +5718,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },
@@ -5754,7 +5754,7 @@
         "rust": {
           "exit": 1,
           "stdout": "",
-          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)\n"
+          "stderr": "dstore: node join is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)\n"
         }
       }
     },

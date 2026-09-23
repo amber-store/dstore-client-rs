@@ -4,8 +4,8 @@ Owner: vectorgen-worktree. Generator: `tools/vectorgen/family_worktree.go`, whic
 `worktree`. Helper programs: `tools/vectorgen/cmd/mktree` and `tools/vectorgen/cmd/treekey`. Specs:
 port-notes/worktree.md §5 (items 1-4, 8-15) and port-notes/verification.md §4.3 items 13-18 and 22.
 
-Every value comes from the real Go code: `github.com/amber-store/dstore` v0.1.10 package `worktree` over
-`github.com/amber-store/core` v0.0.9, run through temporary directories and packstores where the Go API
+Every value comes from the real Go code: `github.com/amber-store/dstore` v0.1.11 package `worktree` over
+`github.com/amber-store/core` v0.0.10, run through temporary directories and packstores where the Go API
 needs them. The conventions of the root `VECTORS.md` apply: 64-bit integers are decimal strings, bytes are
 lowercase hex, and a Go string that is not valid UTF-8 goes into a field whose name ends in `_hex`. When a
 text field comes in two forms (`path` / `path_hex`), exactly one of them is present. Before writing a file the
@@ -94,7 +94,7 @@ Rust (worktree-offline, `tests/golden_tests/worktree.rs`, and gocompat-c for `go
 ```json
 {
   "empty_tree": { "key": "2001bbe6…f36b", "bytes": "80", "short": "2001bbe6a9f5a014" },
-  "commit": { "key": "5048b642…0329", "bytes": "a5005820…", "short": "5048b642d37e2772" },
+  "commit": { "key": "5049b642…0329", "bytes": "a5005820…", "short": "5049b642d37e2772" },
   "encode": [ { "name": "probe", "state": State, "file": "{\n  \"base\": …}\n" } ],
   "decode": [ { "name": "offset-plus-0200", "setup": "file", "file": "…" | "file_hex": "…", "ok": true,
                 "state": State | null, "error": "bad state file: …" } ]
@@ -121,7 +121,9 @@ Rust (worktree-offline, `tests/golden_tests/worktree.rs`, and gocompat-c for `go
 Go:
 - **empty_tree.** `worktree.EmptyTree()`.
 - **commit.** The commit of dstore's own tests, which the branch cases use: `commit.Commit{Tree: empty,
-  Author: id, Committer: id}.Object()` with `id = commit.Identity{Name: "tester", When: 1}` (core v0.0.9).
+  Author: id, Committer: id}.Object()` with `id = commit.Identity{Name: "tester", When: 1}`. Its key's length
+  field is its footprint (core v0.0.10): `0x49`, its own 72 bytes plus the empty tree's 1. Under core v0.0.9
+  the same bytes had the key `5048b642…`.
 - **encode.** `worktree.Create` in a temporary directory, set `Tree.State`, `SaveState()`, read
   `.dstore/state` (no `state.tmp` left). The cases:
   - with and without a remote; a state without a remote but with remote fields set, which are not written;
@@ -164,7 +166,7 @@ Rust (worktree-offline): `Tree::save_state` writes `file`; `Tree::open` (or the 
 }
 ```
 
-The trees are built in memory (no filesystem) through the public core v0.0.9 builders, exactly as `ingest`
+The trees are built in memory (no filesystem) through the public core v0.0.10 builders, exactly as `ingest`
 builds them from disk:
 - file content goes through `chunkers.SplitBytes` with the default sizes, then `fstree.EncodeBlob`, then
   `fstree.NewFileIndexBuilder(chunkers.NewItemChunker(7))`; an empty file is one empty Blob;
@@ -360,7 +362,7 @@ Rust (worktree-offline): `unified` and `stat` write the same bytes and return th
   `cwd` (relative to the root) inside a temporary working-copy root whose symlinks are resolved, over changes
   at `changes` (all `new` files). `{ROOT}` in `args` and `error` stands for the root. `kept` lists the kept
   paths, and is null when Go returned nil.
-- **fetched_desc**, **pushed_key.** The verbatim `fetchedDesc` and `pushedKey` copies (dstore v0.1.10) over a
+- **fetched_desc**, **pushed_key.** The verbatim `fetchedDesc` and `pushedKey` copies (dstore v0.1.11) over a
   `worktree.FetchResult{Key, Tree}` and a `worktree.PushResult{Root, Commit}`: a tree, a branch, the zero key
   of an absent reference, and keys of other types.
 - **printf.** Every stdout/stderr format of the working-copy commands (`cmd/dstore/wc.go`, literals checked by
@@ -379,7 +381,7 @@ command output; worktree-offline for `Kind` Display and `type_name`; `dstore-vie
 ## `errors/worktree_text.json`
 
 ```json
-{ "cases": [ { "name": "tree/open-locked", "out": "packstore: {ROOT}/.dstore/packstore is already open: resource temporarily unavailable" | "out_hex": "…" } ] }
+{ "cases": [ { "name": "tree/open-locked", "out": "working copy {ROOT}: in use by another dstore command" | "out_hex": "…" } ] }
 ```
 
 Name prefixes:
@@ -389,7 +391,7 @@ Name prefixes:
 | `worktree/`, `client/` | the sentinel errors (`tree.go`, `flow.go`, `diff.go`; `client.ErrUnknownRef`) |
 | `cli-line/` | what `dstore` prints for them on stderr: `"dstore: " + text + "\n"` |
 | `flow/` | `Push`'s `%w (%v)` over `*client.CASMismatch` (absent, current, a short current key), `Clone`'s `%w: %s`, and real `Init`/`Clone` failures before the cluster is used (`is not a directory`, `is not empty`, a stat error, inside a working copy) |
-| `tree/` | real `Find`, `Open` and `Create` failures: no working copy, `.dstore` a file, no config, config a directory, bad config (syntax and type), packstore path a file, incomplete, locked (the lock is taken before the state check), inside a working copy. `Find` walks every ancestor of the temporary directory, so the generator requires `ErrNotWorkingCopy` (and `ErrIncomplete`) for those cases and fails when a `.dstore` above `$TMPDIR` would change them |
+| `tree/` | real `Find`, `Open` and `Create` failures: no working copy, `.dstore` a file, no config, config a directory, bad config (syntax and type), packstore path a file, incomplete, locked (`.dstore/lock`, dstore v0.1.11: `working copy {ROOT}: in use by another dstore command`, once with a second `Open`, once during a `Create`, where the lock is taken before the state check, and once with no config at all and the lock file flocked by hand, because the lock is taken before the config is read), a lock file that cannot be opened (`tree/open-lock-is-a-directory`), held by an older release (`tree/open-held-by-an-older-release`: a dstore v0.1.10 command knows no `.dstore/lock` but holds the packstore directory's flock exclusively, which the generator takes by hand; core v0.0.10's packstore reports it, again before the state check), inside a working copy. `Find` walks every ancestor of the temporary directory, so the generator requires `ErrNotWorkingCopy` (and `ErrIncomplete`) for those cases and fails when a `.dstore` above `$TMPDIR` would change them |
 | `apply/` | real `Apply` failures: `empty path`, `refusing unsafe path %q` (including `%q` of invalid UTF-8, tab, quote, backslash, U+00A0, emoji), a symlinked ancestor, a file ancestor, unsupported types `0160000` and `0`, a 3-byte content key, a missing content object, bad inline xattrs, a missing or invalid xattr set key |
 | `cmd/` | `cmd/dstore/wc.go` texts: usage errors, `--remote and --incoming exclude each other`, `no cluster: …`, `user: …` over `reference.ValidateUser`, and the `reference.ValidateName` texts |
 

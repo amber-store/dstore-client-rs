@@ -11,7 +11,7 @@ PORTING.md §1.1 (CLI surface), §2.2 (node-side handling), §2.3 (local refs po
 
 ## Where the values come from
 
-- **Go dstore v0.1.10 `cmd/dstore`** is `package main`, so `tools/vectorgen/cmd/clisnap/mainpkg/copied.go`
+- **Go dstore v0.1.11 `cmd/dstore`** is `package main`, so `tools/vectorgen/cmd/clisnap/mainpkg/copied.go`
   holds verbatim copies of the declarations the vectors need:
   - `main.go`: `logLevel`, `storeFlag`, `noDiscoveryFlag`, `netFlags`, `nodeFlags`, `defaultPackSize`,
     `packSize`;
@@ -21,18 +21,18 @@ PORTING.md §1.1 (CLI surface), §2.2 (node-side handling), §2.3 (local refs po
     types, `maxEvents`, `tickEvery`, the five styles, `uiModel` and its methods, `newUIModel`, `tick`,
     `appendEvent`, `nodeState`, `formatEvent`, `teaHandler` and its methods, `attrValue`.
 - **The self-check.** `mainpkg.SelfCheck` finds the dstore module with `go list -m` (falling back to the
-  build information and `$GOMODCACHE`), requires version v0.1.10, parses `cmd/dstore/*.go` (non-test)
+  build information and `$GOMODCACHE`), requires version v0.1.11, parses `cmd/dstore/*.go` (non-test)
   without comments, and prints every declaration with `go/printer`. Each copy must print identically,
   and a declaration that `cmd/dstore` lacks fails the check. The `cli` family and `clisnap` run it
   before generating anything.
 - **The Go tests.** `mainpkg` also holds verbatim copies of `size_test.go`, `tui_test.go` and
   `wc_test.go`, which `go test ./cmd/clisnap/mainpkg` runs against the copies.
-- **Libraries.** `client.HumanBytes` and `client.Rate` (dstore v0.1.10); `lipgloss.Blend1D` (v2.0.6);
+- **Libraries.** `client.HumanBytes` and `client.Rate` (dstore v0.1.11); `lipgloss.Blend1D` (v2.0.6);
   bubbles v2.2.1 `progress`.
 - **Snapshots.** `clisnap` builds `github.com/amber-store/dstore/cmd/dstore` with the vectorgen build list,
-  which equals dstore v0.1.10's `go.mod`. It builds with go1.26.5 and `CGO_ENABLED=0`, without ldflags (so
+  which equals dstore v0.1.11's `go.mod`. It builds with go1.26.5 and `CGO_ENABLED=0`, without ldflags (so
   `version` is `dev`), into a temporary directory, and checks the binary's build information (main module
-  dstore v0.1.10). It runs every case there and deletes the binary and all fixtures afterwards.
+  dstore v0.1.11). It runs every case there and deletes the binary and all fixtures afterwards.
 
 ## Regenerating
 
@@ -163,7 +163,7 @@ that zone.
 
 ```json
 {
-  "generator":   {"program": "tools/vectorgen/cmd/clisnap", "go": "go1.26.5", "module": {"path": "github.com/amber-store/dstore", "version": "v0.1.10"}, "deps": [{"path": "…", "version": "…"}]},
+  "generator":   {"program": "tools/vectorgen/cmd/clisnap", "go": "go1.26.5", "module": {"path": "github.com/amber-store/dstore", "version": "v0.1.11"}, "deps": [{"path": "…", "version": "…"}]},
   "environment": {"inherited": ["PATH"], "set": [{"name": "HOME", "value": "{HOME}"}, {"name": "TZ", "value": "UTC"}]},
   "fixtures":    [ {"name": "wc1", "steps": [Step, …]} ],
   "cases":       [ Case ]
@@ -215,7 +215,7 @@ The groups follow cli.md §5.2 and verification.md §5.
 | `unknown` | `No help topic for '…'`, exit 3 |
 | `usage` | `Incorrect Usage: …` plus help, for flag syntax, unknown flags, missing values, value parse errors (bool, int, uint, float64, duration), global flags after the command, and bool env parse errors |
 | `required` | `Required flag(s) … not set`, with and without help, plus the empty `AMBER_STORE` |
-| `validation` | Argument and ticket validation before dialing: `no cluster`, ticket texts, relay URL errors, name validation, `replicas R`, `why KEY…`, `view: bad node id`, `store push` building the tree before failing, and the DD-2 cases over a Pebble `--local` refs directory |
+| `validation` | Argument and ticket validation before dialing: `no cluster`, ticket texts, relay URL errors, name validation, `replicas R`, `why KEY…`, `view: bad node id`, `store push` building the tree before failing, and the DD-2 cases over a `--local` refs directory that still holds a Pebble store |
 | `node-side` | The node-side path up to the store step (`no store directory`, `--pack-size`, seed and token, the identity read of `--store`), and the cases where Rust substitutes |
 | `prompt` | The `cluster replicas` prompt with stdin `n\n`, EOF, `yes please\n`, `Y`, and others |
 | `wc` | Offline working-copy commands: outside a working copy, broken `.dstore` files, a copy without a remote, and the two fixtures of cli.md §3.5 (`status`, `diff`, `diff --stat`, path filters, `--incoming`, `--remote`), plus `push`/`fetch`/`init` failing on the ticket |
@@ -230,9 +230,10 @@ the Pebble refs refusal of §2.3.
   pass.
 - **B:** a ticket derived from `--store` whose identity file is readable.
 - **C:** `catalog restore` with its data and `--store`.
-- **DD-2:** `store push` or `store pull` with a `--local` directory whose `refs/` holds a Pebble database
-  (fixture `pebble-refs`, group `validation`). Go opens it and fails later on the missing ticket; Rust refuses
-  at open.
+- **DD-2:** `store push` or `store pull` with a `--local` directory whose `refs/` still holds the Pebble
+  database of Go dstore v0.1.10 or earlier (fixture `pebble-refs`, group `validation`). Go imports it into
+  `refs.sqlite` on this first open and fails later on the missing ticket; Rust, which cannot import Pebble,
+  refuses at open.
 
 The top-level `exit`, `stdout` and `stderr` record what Go does. Go builds, binds (always with
 `--no-relay --no-discovery`) and opens its stores inside ROOT, and anything random in its output is
@@ -246,7 +247,7 @@ replaced by the placeholders listed in `go_normalized`:
 
 `rust` is what the Rust CLI must print: exit 1, empty stdout, and stderr `dstore: <text>\n`, where the text is
 the §2.2 text of the kind, or for DD-2 the §2.3 text with `<DIR>` = the `--local` value as given
-(`refstore: P/refs holds a Pebble database written by Go dstore; …`).
+(`refstore: P/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; …`).
 
 ### Fixture steps
 
@@ -263,7 +264,7 @@ Paths are relative to ROOT and `/`-separated.
 | `wc_create` | `config` | `worktree.Create(ROOT, config)` (Rust `Tree::create`), then close. `config` uses the `.dstore/config` JSON keys. |
 | `ingest` | `dir`, `into`, `exclude`?, `var` | Ingest ROOT/`dir` with core ingest: Go `ingest.Dir(st, dir, Opts{Jobs: 1, Exclude: exclude})`, Rust core-rs `ingest::dir` with `exclude`. An absent `exclude` means none. `into` is `wc` (ROOT/.dstore/packstore, opened with sync) or `scratch` (a throwaway packstore outside ROOT). The root key becomes variable `var`. |
 | `wc_state` | `base_var`, `remote_var`?, `remote_version_hex`?, `synced_at_unix_ns` | Write `.dstore/state` as worktree `SaveState` does. `base` is variable `base_var` (`""` is the empty tree). The remote is present when `remote_var` is. `synced_at` is in UTC. |
-| `pebble_refs` | `path`, `names` | A refs directory that Go dstore wrote as a Pebble database. Go: core `refstore.Open(path, true)`, then close, then check that the directory holds exactly `names`. Rust: create `path` with its parents and an empty regular file for each entry of `names`, which is all the PORTING.md §2.3 check looks at. |
+| `pebble_refs` | `path`, `names` | A refs directory that Go dstore v0.1.10 or earlier wrote as a Pebble database. Go: `pebble.Open(path, …)` as core v0.0.9's `refstore.Open` did it (core v0.0.10's refstore is SQLite), then close, then check that the directory holds exactly `names`. Rust: create `path` with its parents and an empty regular file for each entry of `names`; core-rs knows a Pebble store by the `marker.manifest.*` name with no `refs.sqlite` beside it, which is all the PORTING.md §2.3 refusal looks at. |
 
 `mode` is a JSON number (for example 420 = 0644). Ingested keys depend on the uid, gid and times of the
 user running the harness, which is why outputs name them through `{key:…}` placeholders. The fixtures set
@@ -281,7 +282,8 @@ the explicit mode the three cases are the same on both platforms.
 - **`validation`, `prompt`, `node-side`:** the actions up to dialing (cli-admin, cli-client, cli-wc,
   `nodeside`).
 - **`validation/files store push …`:** ingest into `--local`.
-- **`validation/pebble-refs …`:** `common::open_local` with the PORTING.md §2.3 check (cli-client).
+- **`validation/pebble-refs …`:** `common::open_local` with the PORTING.md §2.3 refusal, which core-rs
+  `refstore::Error::PebbleStore` decides (cli-client).
 - **`wc`:** `dstore-worktree` offline and cli-wc. The fixture builder needs `Tree::create`, `save_state`
   and core-rs `ingest::dir`.
 

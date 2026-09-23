@@ -25,6 +25,7 @@ use std::sync::{Arc, Mutex, MutexGuard, PoisonError};
 use std::time::Duration;
 
 use amber_store_core::amberpack::{self, REC_HEADER_SIZE, RawRecord};
+use amber_store_core::commit::{self, Commit};
 use amber_store_core::fstree;
 use amber_store_core::key::{Key, Type};
 use amber_store_core::reference::{self, Reference};
@@ -61,6 +62,44 @@ const LINK_DIAL_TIMEOUT: Duration = Duration::from_secs(10);
 /// `walkComplete` keeps at most this many missing keys; `handleRefPut` sends at most 64 of them.
 const MISSING_CAP: usize = 1024;
 const INCOMPLETE_SAMPLE: usize = 64;
+/// node `errMalformed`: a completeness walk fetched an object and could not read it.
+const MALFORMED: &str = "malformed object under the reference";
+/// node `errUnread`: a completeness walk could not fetch an interior object that its owners hold.
+const UNREAD: &str = "object held by its owners could not be read";
+
+/// Why `get_data` has no payload (node `getData` over `fetchRecord`).
+enum DataError {
+    /// `packstore.ErrNotFound`: neither this node nor a reachable owner holds the record.
+    NotFound,
+    /// node `refusedError`: a peer holds a record under the key and `verifyRecord` refused it, in
+    /// practice a commit keyed by core v0.0.9's rule that its owners still hold from before an upgrade.
+    Refused(String),
+}
+
+impl std::fmt::Display for DataError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            DataError::NotFound => f.write_str("packstore: object not found"),
+            DataError::Refused(e) => write!(f, "record refused: {e}"),
+        }
+    }
+}
+
+/// Why `walk_complete` failed, with the node's text.
+enum WalkFail {
+    /// `errMalformed`: `handleRefPut` answers bad-request with the text.
+    Malformed(String),
+    /// `errUnread`: any other walk error is `unavailable`, `completeness walk: <text>`.
+    Unread(String),
+}
+
+impl WalkFail {
+    fn into_text(self) -> String {
+        match self {
+            WalkFail::Malformed(t) | WalkFail::Unread(t) => t,
+        }
+    }
+}
 /// The disk size the canned status reports.
 const TOTAL_BYTES: i64 = 1 << 40;
 /// The seed of the cluster's pseudo-random stream (tokens, the cluster id, forward retry hints).
@@ -327,9 +366,26 @@ fn verify_record(raw: &RawRecord) -> Result<([u8; 32], Vec<u8>), String> {
     if want != k {
         return Err(format!("payload hashes to {want}"));
     }
-    if matches!(t, Type::Blob | Type::XattrSet | Type::Commit) && k.length() != payload.len() as u64
-    {
-        return Err("length field mismatch".to_string());
+    match t {
+        // These carry their own serialized length; directory and file nodes carry their subtree's.
+        Type::Blob | Type::XattrSet if k.length() != payload.len() as u64 => {
+            return Err("length field mismatch".to_string());
+        }
+        // A commit carries its footprint: its own bytes plus the length field of every tree it records
+        // (core v0.0.10). The trees' keys are in the payload, so a node holds the key to the rule without
+        // having the trees. A commit keyed by core v0.0.9's rule, its own bytes alone, is refused.
+        Type::Commit => {
+            let c = Commit::decode(&payload).map_err(|e| format!("commit: {e}"))?;
+            let want = commit::footprint(payload.len() as u64, &c.trees())
+                .map_err(|e| format!("commit: {e}"))?;
+            if k.length() != want {
+                return Err(format!(
+                    "length field {} is not the commit's footprint {want}; a commit keyed by an older rule has to be created again",
+                    k.length()
+                ));
+            }
+        }
+        _ => {}
     }
     Ok((k.0, raw.bytes.clone()))
 }
@@ -831,7 +887,9 @@ impl FakeState {
     }
 
     /// node `getData` from the shared stores: this node's copy, else the first owner in read order that
-    /// holds it (`fetchRecord`; each owner `getFrom` asks is marked reachable or unreachable).
+    /// holds it (`fetchRecord`; each owner `getFrom` asks is marked reachable or unreachable). A record
+    /// that comes from a peer is verified, as `getFromChecked` does: one that `verify_record` refuses is
+    /// left out, and when no owner has a better copy the answer is [`DataError::Refused`].
     fn get_data(
         &mut self,
         ids: &[NodeId],
@@ -839,10 +897,11 @@ impl FakeState {
         reach: &HashMap<NodeId, bool>,
         pl: &Placement,
         k: &[u8; 32],
-    ) -> Option<Vec<u8>> {
+    ) -> Result<Vec<u8>, DataError> {
         if let Some(s) = self.nodes.get(idx).and_then(|n| n.store.get(k)) {
-            return decode_record(&s.record);
+            return decode_record(&s.record).ok_or(DataError::NotFound);
         }
+        let mut refused = None;
         for o in pl.read_order(k) {
             if o == ids[idx] {
                 continue;
@@ -853,10 +912,21 @@ impl FakeState {
                 continue;
             };
             if let Some(s) = self.nodes[o_idx].store.get(k) {
-                return decode_record(&s.record);
+                let verified = amberpack::parse_record(&s.record)
+                    .map_err(|e| e.to_string())
+                    .and_then(|record| {
+                        verify_record(&RawRecord {
+                            record,
+                            bytes: s.record.clone(),
+                        })
+                    });
+                match verified {
+                    Ok(_) => return decode_record(&s.record).ok_or(DataError::NotFound),
+                    Err(e) => refused = Some(e),
+                }
             }
         }
-        None
+        Err(refused.map_or(DataError::NotFound, DataError::Refused))
     }
 
     /// `negotiateComplete`: has-and-pin at every owner, then the keys held by fewer than
@@ -1135,6 +1205,16 @@ impl FakeCluster {
             nth,
             inj,
         });
+    }
+
+    /// Puts a record straight into a node's store, unverified, as an upgrade finds what an earlier release
+    /// stored (Go tests: `n.Store().Put`). A `put` would refuse what this is for: a commit keyed by core
+    /// v0.0.9's rule.
+    pub fn plant(&self, id: NodeId, key: [u8; 32], record: &[u8]) {
+        let Some(idx) = self.shared.index_of(&id) else {
+            return;
+        };
+        insert_record(&mut self.shared.lock().nodes[idx], key, record);
     }
 
     /// The records a node stores, by key.
@@ -1957,7 +2037,18 @@ impl Shared {
         if stale {
             return self.write_stale(out).await;
         }
-        let (missing, shortfall) = self.walk_complete(idx, root).await;
+        // `errors.Is(err, errMalformed)`: bad-request with the error's text; any other walk error is
+        // unavailable.
+        let (missing, shortfall) = match self.walk_complete(idx, root).await {
+            Ok(v) => v,
+            Err(WalkFail::Malformed(text)) => {
+                return wire::write_err(out, wire::CODE_BAD_REQUEST, &text).await;
+            }
+            Err(WalkFail::Unread(text)) => {
+                let text = format!("completeness walk: {text}");
+                return wire::write_err(out, wire::CODE_UNAVAILABLE, &text).await;
+            }
+        };
         if !missing.is_empty() {
             let sample = &missing[..missing.len().min(INCOMPLETE_SAMPLE)];
             let reply = self.stamp(Msg {
@@ -1994,7 +2085,15 @@ impl Shared {
 
     /// `walkComplete`: the keys under `root` held by fewer than `min(minR, owners)` owners (at most
     /// 1024 of them) and their total.
-    async fn walk_complete(&self, idx: usize, root: Key) -> (Vec<[u8; 32]>, i64) {
+    ///
+    /// An interior object that was fetched but that `child_keys` refuses, or that a peer holds and
+    /// `verify_record` refuses, ends the walk with Go's `errMalformed` text (dstore v0.1.11): it is
+    /// present, so the negotiation would pass it with nothing below it checked. In practice it is a commit
+    /// keyed by core v0.0.9's rule. An object that cannot be fetched is left to the negotiation, as before;
+    /// when the negotiation then finds it held after all, the walk fails with `errUnread`. The cause of a
+    /// `child_keys` refusal is core-rs's text, which is Go's for a commit; a malformed directory's entry
+    /// names are quoted as core-rs quotes them (core-rs-gaps G4).
+    async fn walk_complete(&self, idx: usize, root: Key) -> Result<(Vec<[u8; 32]>, i64), WalkFail> {
         let me = self.ids[idx];
         let members: Vec<NodeId> = {
             let st = self.lock();
@@ -2012,17 +2111,36 @@ impl Shared {
         let mut seen: HashSet<[u8; 32]> = HashSet::new();
         let mut to_check: Vec<[u8; 32]> = Vec::new();
         let mut frontier = vec![root.0];
-        let mut flush = |st: &mut FakeState, to_check: &mut Vec<[u8; 32]>| {
+        // Interior keys the walk could not fetch, with why.
+        let mut unread: HashMap<[u8; 32], String> = HashMap::new();
+        let mut flush = |st: &mut FakeState,
+                         to_check: &mut Vec<[u8; 32]>,
+                         unread: &HashMap<[u8; 32], String>|
+         -> Result<(), WalkFail> {
             if to_check.is_empty() {
-                return;
+                return Ok(());
             }
-            for k in st.negotiate_complete(&self.ids, idx, &reach, &pl, to_check, min_r) {
+            let short = st.negotiate_complete(&self.ids, idx, &reach, &pl, to_check, min_r);
+            for k in &short {
                 if missing.len() < MISSING_CAP {
-                    missing.push(k);
+                    missing.push(*k);
                 }
                 shortfall += 1;
             }
+            // Absent everywhere: incomplete, and the negotiation reports it. Held after all: the
+            // negotiation alone would pass it with everything below it unchecked.
+            for k in to_check.iter() {
+                if let Some(e) = unread.get(k)
+                    && !short.contains(k)
+                {
+                    return Err(WalkFail::Unread(format!(
+                        "{UNREAD}: {}: {e}",
+                        hex::encode(&k[..8])
+                    )));
+                }
+            }
             to_check.clear();
+            Ok(())
         };
         while !frontier.is_empty() {
             let mut interior = Vec::new();
@@ -2037,21 +2155,31 @@ impl Shared {
             }
             let mut next = Vec::new();
             for k in &interior {
-                let Some(data) = st.get_data(&self.ids, idx, &reach, &pl, k) else {
-                    continue;
+                let data = match st.get_data(&self.ids, idx, &reach, &pl, k) {
+                    Ok(data) => data,
+                    // A record that peers hold and verify_record refuses is as unreadable as one
+                    // child_keys refuses.
+                    Err(e @ DataError::Refused(_)) => {
+                        return Err(WalkFail::Malformed(format!("{MALFORMED}: {e}")));
+                    }
+                    Err(e) => {
+                        unread.insert(*k, e.to_string());
+                        continue;
+                    }
                 };
-                if let Ok(kids) = fstree::child_keys(Key(*k), &data) {
-                    next.extend(kids.into_iter().map(|c| c.0));
+                match fstree::child_keys(Key(*k), &data) {
+                    Ok(kids) => next.extend(kids.into_iter().map(|c| c.0)),
+                    Err(e) => return Err(WalkFail::Malformed(format!("{MALFORMED}: {e}"))),
                 }
             }
             if to_check.len() >= wire::MAX_KEYS {
-                flush(&mut st, &mut to_check);
+                flush(&mut st, &mut to_check, &unread)?;
             }
             frontier = next;
         }
-        flush(&mut st, &mut to_check);
+        flush(&mut st, &mut to_check, &unread)?;
         drop(st);
-        (missing, shortfall)
+        Ok((missing, shortfall))
     }
 
     /// `handleRefDelete`.
@@ -2414,7 +2542,10 @@ impl Shared {
     async fn local_ref_put(self: &Arc<Self>, idx: usize, record: &[u8]) -> Result<Vec<u8>, String> {
         let rec = Reference::decode(record).map_err(|e| e.to_string())?;
         let root = Key::parse(&rec.key).map_err(|e| e.to_string())?;
-        let (missing, shortfall) = self.walk_complete(idx, root).await;
+        let (missing, shortfall) = self
+            .walk_complete(idx, root)
+            .await
+            .map_err(WalkFail::into_text)?;
         if shortfall > 0 {
             let sample = missing
                 .first()
@@ -2921,15 +3052,16 @@ mod tests {
             Some("length field mismatch")
         );
 
-        // A Commit's length field is its own serialized length, checked like a Blob's (node
-        // TestVerifyRecordCommitLength).
+        // A Commit's length field is its footprint, its own serialized length plus the length field of
+        // every tree it records, and a node holds a key to that rule before it stores or forwards the
+        // record (node TestVerifyRecordCommitFootprint).
         let dir = must(fstree::encode_dir_leaf(&[]), "empty tree");
-        let id = amber_store_core::commit::Identity {
+        let id = commit::Identity {
             name: "tester".into(),
             when: 1,
             ..Default::default()
         };
-        let commit = amber_store_core::commit::Commit {
+        let plain = Commit {
             tree: dir.key,
             parents: Vec::new(),
             author: id.clone(),
@@ -2937,15 +3069,40 @@ mod tests {
             message: "m".into(),
             signature: Vec::new(),
             public_key: Vec::new(),
+            change_id: Vec::new(),
+            conflict_terms: Vec::new(),
+            conflict_labels: Vec::new(),
         };
-        let (ck, cdata) = must(commit.object(), "commit");
-        let rec = must(amberpack::encode_record(ck, &cdata), "encode_record");
-        assert!(verify_record(&raw_record(&rec)).is_ok());
-        let bad = Key::new(Type::Commit, cdata.len() as u64 + 1, &cdata);
-        let rec = must(amberpack::encode_record(bad, &cdata), "encode_record");
+        let conflicted = Commit {
+            conflict_terms: vec![dir.key, dir.key],
+            ..plain.clone()
+        };
+        for (name, c) in [("plain", plain), ("conflicted", conflicted)] {
+            let (ck, cdata) = must(c.object(), "commit");
+            let rec = must(amberpack::encode_record(ck, &cdata), "encode_record");
+            assert!(verify_record(&raw_record(&rec)).is_ok(), "{name}");
+            assert_ne!(ck.length(), cdata.len() as u64, "{name}: the footprint");
+            // core v0.0.9's rule, the commit's own length; and one off the footprint.
+            for length in [cdata.len() as u64, ck.length() + 1, ck.length() - 1] {
+                let bad = Key::new(Type::Commit, length, &cdata);
+                let rec = must(amberpack::encode_record(bad, &cdata), "encode_record");
+                assert_eq!(
+                    verify_record(&raw_record(&rec)).err(),
+                    Some(format!(
+                        "length field {length} is not the commit's footprint {}; a commit keyed by an older rule has to be created again",
+                        ck.length()
+                    )),
+                    "{name}"
+                );
+            }
+        }
+        // Bytes that are no commit cannot be held to the rule: refused, whatever their length field says.
+        let junk = b"not a commit";
+        let jk = Key::new(Type::Commit, junk.len() as u64, junk);
+        let rec = must(amberpack::encode_record(jk, junk), "encode_record");
         assert_eq!(
             verify_record(&raw_record(&rec)).err().as_deref(),
-            Some("length field mismatch")
+            Some("commit: decoding commit: unexpected EOF")
         );
 
         // A DirNode key over any payload: no length check, the hash decides.

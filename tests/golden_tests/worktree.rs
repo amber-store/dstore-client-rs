@@ -665,6 +665,9 @@ fn test_commit() {
         message: String::new(),
         signature: Vec::new(),
         public_key: Vec::new(),
+        change_id: Vec::new(),
+        conflict_terms: Vec::new(),
+        conflict_labels: Vec::new(),
     }
     .object()
     .expect("commit");
@@ -1504,11 +1507,43 @@ fn tree_error_texts() {
                 res
             },
         ),
-        ("tree/open-locked-before-state-check", Some(create), |r| {
-            let st = packstore::Store::open(r.join(".dstore/packstore")).expect("open store");
+        // The copy has no state file, as during a clone or init: the lock is taken first, so open reports
+        // the lock.
+        ("tree/open-locked-before-state-check", None, |r| {
+            let t = wt::Tree::create(&r.bytes(), small_config()).map_err(Box::new)?;
             let res = open(r);
-            st.close().expect("close store");
+            t.close().map_err(Box::new)?;
             res
+        }),
+        // The copy has no config: the lock is taken before the config is read, because the command that
+        // holds the working copy may rewrite it, so open reports the lock.
+        (
+            "tree/open-locked-before-config-check",
+            Some(|r| {
+                std::fs::create_dir(r.join(".dstore")).expect("mkdir .dstore");
+                std::fs::File::create(r.join(".dstore/lock")).expect("the lock file");
+                Ok(())
+            }),
+            |r| {
+                let _held = hold_flock(&r.join(".dstore/lock"));
+                open(r)
+            },
+        ),
+        // A lock file that cannot be opened names the working copy.
+        (
+            "tree/open-lock-is-a-directory",
+            Some(|r| {
+                create(r)?;
+                std::fs::remove_file(r.join(".dstore/lock")).expect("remove the lock file");
+                std::fs::create_dir(r.join(".dstore/lock")).expect("a directory in its place");
+                Ok(())
+            }),
+            open,
+        ),
+        // A dstore v0.1.10 command knows no .dstore/lock but holds the packstore directory exclusively.
+        ("tree/open-held-by-an-older-release", Some(create), |r| {
+            let _held = hold_as_an_older_release(&r.join(".dstore/packstore"));
+            open(r)
         }),
         ("tree/create-over-existing", Some(create), create),
         (
@@ -1758,4 +1793,30 @@ fn apply_error_texts() {
 #[test]
 fn apply_error_texts_corefmt() {
     apply_error_cases(true);
+}
+
+/// The exclusive flock that a release from before core v0.0.10 holds on a store it has open; since then a
+/// store is shared and nothing else locks the packstore (the generator's `wtHoldAsOlderRelease`). Retried for a
+/// while: a process that another test forks holds, until it execs, a copy of the shared lock that the
+/// prepare step has just let go of.
+fn hold_as_an_older_release(dir: &std::path::Path) -> std::fs::File {
+    hold_flock(dir)
+}
+
+/// An exclusive flock on `path`, taken without waiting, as another process would hold it: flock is per open
+/// file description (the generator's `wtFlock`).
+fn hold_flock(dir: &std::path::Path) -> std::fs::File {
+    let f = std::fs::File::open(dir).expect("open the path to lock");
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    loop {
+        match rustix::fs::flock(&f, rustix::fs::FlockOperation::NonBlockingLockExclusive) {
+            Ok(()) => return f,
+            Err(e)
+                if e == rustix::io::Errno::WOULDBLOCK && std::time::Instant::now() < deadline =>
+            {
+                std::thread::sleep(std::time::Duration::from_millis(20));
+            }
+            Err(e) => panic!("flock {}: {e}", dir.display()),
+        }
+    }
 }

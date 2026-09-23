@@ -9,9 +9,9 @@ decisions, the build order, and how compatibility is proven.
 
 | What | Pin |
 |---|---|
-| Go dstore (normative behaviour) | `github.com/amber-store/dstore` tag `v0.1.10`, HEAD `7bd788e`, checkout `/Users/dragan/amber-store/dstore`; read files with `git show v0.1.10:<path>`. The port was written against `v0.1.9` (`368f2c7`) and then followed v0.1.10, whose client-side delta is commit objects (`port-notes/commit-objects.md`). |
-| Go dependencies | `github.com/amber-store/core` v0.0.9; `github.com/amber-store/transport-iroh` v0.4.0 (`protocol`); `github.com/tmc/go-iroh` v0.2.0; `github.com/fxamacker/cbor/v2` v2.9.3; `github.com/aymanbagabas/go-udiff` v0.4.1; `github.com/urfave/cli/v2` v2.27.7; `charm.land/bubbletea/v2` v2.0.9, `lipgloss/v2` v2.0.6, `bubbles/v2` v2.2.1; Go toolchain go1.26.5 (stdlib behaviour: `encoding/base32`, `encoding/json` v1, `strconv`, `unicode`, `sort`, `log/slog`, `flag`, `time`). |
-| core-rs | crate `amber-store-core` 0.4.0, git rev `7386914b56b9c43ea42b166d81c1f2fbce3aaffb` (= public tag v0.4.0, the backport of core v0.0.9's Commit object) |
+| Go dstore (normative behaviour) | `github.com/amber-store/dstore` tag `v0.1.11`: v0.1.10 (`7bd788e`) plus the branch `core-v0.0.10`, whose changes are `1b6583e` "Follow core v0.0.10: commit footprints, shared local stores" and `53b88ae` "Working copies keep their own lock; ref-put refuses what it cannot read" and `6c808de` "ref-put refuses an unreadable commit whichever node coordinates" (beside them a script, README texts and a test; head `6c808de` when this port followed it). Checkout `/Users/dragan/amber-store/dstore`; read files with `git show v0.1.11:<path>`. The port was written against `v0.1.9` (`368f2c7`), then followed v0.1.10, whose client-side delta is commit objects (`port-notes/commit-objects.md`), and v0.1.11, whose delta is core v0.0.10 (`port-notes/core-v0.0.10.md`). |
+| Go dependencies | `github.com/amber-store/core` v0.0.10 (`9026f42`); `github.com/amber-store/transport-iroh` v0.4.0 (`protocol`); `github.com/tmc/go-iroh` v0.2.0; `github.com/fxamacker/cbor/v2` v2.9.3; `github.com/aymanbagabas/go-udiff` v0.4.1; `github.com/urfave/cli/v2` v2.27.7; `charm.land/bubbletea/v2` v2.0.9, `lipgloss/v2` v2.0.6, `bubbles/v2` v2.2.1; Go toolchain go1.26.5 (stdlib behaviour: `encoding/base32`, `encoding/json` v1, `strconv`, `unicode`, `sort`, `log/slog`, `flag`, `time`). |
+| core-rs | crate `amber-store-core` 0.7.0, git rev `1a8bca1079e85713052b99c9bde144625015652c` (= public tag v0.7.0, at parity with core v0.0.10: references on SQLite, a packstore that many processes share, the commit fields of a jj backend and the footprint key rule) |
 | Rust iroh | `iroh = "=1.2.0"` (iroh-base/iroh-relay 1.2.0, noq 1.3.0): the latest release, by user decision (2026-09-18). go-iroh v0.2.0's matrix verifies 1.0.3; compatibility with 1.2.0 is proven by the live interop suite (§7), not assumed. The crate comes through `[patch.crates-io]` from `third_party/iroh-1.2.0`: the published 1.2.0 with two changes: no NAT traversal round while a direct path is selected, and a bootstrap home relay at bind (§5.12). |
 | Toolchain | nixpkgs `nixos-26.05`: rustc/cargo/clippy/rustfmt 1.95.0, go 1.26.5. Workspace `rust-version = "1.91"`, edition 2024. |
 
@@ -34,9 +34,10 @@ Area specs (read the one for your crate completely before coding):
 | `port-notes/client-transfer.md` | client part B: Missing, Put, Placed, Get/fetcher, VerifyRecord, Push, Pull/PullTree |
 | `port-notes/worktree.md` | working copies, go-udiff port, Go stdlib behaviour the working-copy CLI observes |
 | `port-notes/cli.md` | `cmd/dstore`: urfave/cli behaviour, every command, help texts, slog, TUI, signals, node-side needs |
-| `port-notes/core-rs-gaps.md` | every core v0.0.8 API used client-side and its core-rs equivalent, gaps G1-G22 (core v0.0.9 adds only the `commit` package and `key.Commit` to that list: commit-objects.md §2) |
+| `port-notes/core-rs-gaps.md` | every core v0.0.8 API used client-side and its core-rs equivalent, gaps G1-G22 (core v0.0.9 adds only the `commit` package and `key.Commit` to that list: commit-objects.md §2; what it says about the packstore's exclusive flock, the `is already open` text and redb references ended with core v0.0.10: core-v0.0.10.md) |
 | `port-notes/verification.md` | golden-vector generator, live interop harness, fake node, Nix flake, CI |
 | `port-notes/commit-objects.md` | the dstore v0.1.10 delta over all of the above: commit objects (core v0.0.9, core-rs 0.4.0), branches in working copies, `push --message`, `TreeOf`, and the checklist for following an upstream release |
+| `port-notes/core-v0.0.10.md` | the dstore v0.1.11 delta over all of the above: core v0.0.10 and core-rs 0.7.0. A commit's key carries its footprint (`TreeOf`, the node's `verifyRecord` and completeness walk, `ChildKeys`), local references are one `refs.sqlite` that Go and Rust share (DD-2 rewritten), a packstore is shared by any number of processes, and a working copy keeps its own lock, `.dstore/lock` (the lock tests, vectors, `holdlock` and interop D12 follow) |
 
 Precedence when sources disagree:
 
@@ -50,7 +51,8 @@ Precedence when sources disagree:
 Line numbers: `worktree.md` and `cli.md` cite `cmd/dstore/wc.go` from the working tree, which is
 HEAD + 12 lines after line 46; `verification.md` cites HEAD. `scripts/e2e-loopback.sh` stale lines
 are 42 and 46 at HEAD. All of these are v0.1.9 line numbers: v0.1.10 moved `cmd/dstore/wc.go`,
-`cmd/dstore/client.go`, `worktree/tree.go` and `worktree/flow.go` (commit-objects.md §1).
+`cmd/dstore/client.go`, `worktree/tree.go` and `worktree/flow.go` (commit-objects.md §1); v0.1.11 moved
+`client/commit.go`, `worktree/tree.go`, `node/data.go` and `node/refs.go` (core-v0.0.10.md §1).
 
 ---
 
@@ -90,18 +92,27 @@ Locked by golden vectors from the Go libraries (§7) and by CLI snapshots from t
   RFC3339Nano UTC, `%q`, `%x`, Go errno texts, `encoding/hex` errors.
 - **Records.** Raw (uncompressed) records built by core-rs.
 - **Commits.** The Commit object (core type 5) a push records: for the same tree, parents, identity and
-  message, the bytes and the key are Go's (core-rs 0.4.0; pinned here by `worktree/state.json` `commit`).
-  Two pushes differ in their timestamp, as two Go pushes do.
+  message, the bytes and the key are Go's (core-rs 0.7.0; pinned here by `worktree/state.json` `commit`).
+  The key's length field is the commit's footprint, its own bytes plus the length field of every tree it
+  records (core v0.0.10); a commit keyed by core v0.0.9's rule, as dstore v0.1.10 and this port at that
+  level made them, is refused by `tree_of`, by every graph walk and by the nodes, with Go's texts. Two
+  pushes differ in their timestamp, as two Go pushes do.
 
 ### 1.2 Interoperable
 
 These work together with Go, but their bytes are not compared:
 
-- A Rust client against Go dstore v0.1.10 nodes on `amber-dstore/1`: direct paths, relay, number0 DNS
+- A Rust client against Go dstore v0.1.11 nodes on `amber-dstore/1`: direct paths, relay, number0 DNS
   discovery, and id-only tickets over mDNS (through a port of go-iroh's mDNS resolver, §5.12).
-- Packstores (`.dstore/packstore`, `<local>/packstore`) used by Go and Rust processes one after the
-  other; the directory flock excludes both.
-- Working copies created or updated by one implementation and used by the other.
+- Packstores (`.dstore/packstore`, `<local>/packstore`) used by Go and Rust processes, one after the
+  other or at the same time. Since core v0.0.10 any number of processes share a store: the directory
+  flock is a shared one and keeps out only a release from before that, which holds it exclusively
+  (`… is held by an older release, which needs the store to itself: …`, in both implementations).
+- Local references (`<local>/refs/refs.sqlite`): one SQLite file in WAL mode that both implementations
+  read and write, at the same time if need be (§2.3).
+- Working copies created or updated by one implementation and used by the other. One command at a time
+  has a working copy open, whichever implementation runs it: both take `.dstore/lock`, an exclusive flock
+  without waiting (dstore v0.1.11), and both print `working copy <root>: in use by another dstore command`.
 - Branches (references naming a commit): either implementation clones, fetches and pulls the other's
   commits with their history, and pushes on top of them.
 - Records pushed by Rust accepted by Go nodes (CRC and payload hash verified), and the reverse.
@@ -112,7 +123,7 @@ These work together with Go, but their bytes are not compared:
 | # | Difference | Reason |
 |---|---|---|
 | DD-1 | Newly compressed records differ (libzstd vs klauspost: no content checksum, different ratio). This shifts `PushStats.bytes`, progress `TotalBytes`, the `bytes=` log attributes and put-batch boundaries (`storedSizer` = 46 + slen) for trees ingested locally by Rust. | core-rs contract; no client-side dependence on compressed bytes (core-rs-gaps G8). Golden vectors use incompressible payloads. |
-| DD-2 | `store push/pull --local DIR` stores references in redb (`DIR/refs/refs.redb`), not Pebble. A Pebble directory is refused with a fixed error (§2.3). | No Rust Pebble; core-rs refstore is redb. The `packstore/` half interoperates. |
+| DD-2 | A `store push/pull --local DIR` whose `DIR/refs` still holds the Pebble database of Go dstore v0.1.10 or earlier is refused with a fixed error (§2.3) until Go dstore v0.1.11 or later has opened the directory once, which imports it. Everything else about `DIR` is shared: since core v0.0.10 both keep references in `DIR/refs/refs.sqlite`. | No Rust Pebble, so core-rs cannot import what Go can; creating an empty database beside the Pebble files would hide the references. Until core-rs 0.7.0 Rust kept references in redb (`DIR/refs/refs.redb`), which core-rs imports on the first open. |
 | DD-3 | Node-side commands (`serve`, `cluster init`, `node join`), the restore step of `catalog restore`, and ticket derivation from `--store` fail with a fixed error after Go's validation steps (§2.2). | They need the Pebble meta store, the paxos acceptor and the whole node. |
 | DD-4 | Transport error texts and timing below the dstore wrappers. The inner QUIC text (noq vs qng) differs. A connect phase fails at `min(ctx deadline, 10 s)`, where qng uses a 5 s handshake idle / 10 s total timeout. The `dial <addr>: …` lines of one phase share one inner error and are joined in candidate order, not completion order. The wrapper texts are identical: `client: no bootstrap node answered: `, `dial %s: `, `discovery: `, `transport: …`. | Rust iroh sends handshakes on all known paths and has no separate handshake idle timeout (transport §7). |
 | DD-5 | "RTT not measured" is detected when the selected path's RTT equals noq's initial RTT (333 ms), so a real 333.000 ms sample reads as unmeasured. | noq exposes no has-sample flag. |
@@ -145,7 +156,7 @@ Do not "fix" these; each is observable:
   - Working-copy `push` checks the user after dialing.
   - `catalog restore` fetches before requiring `--store`.
   - `diff --remote --incoming` fails before opening the working copy.
-- **Client behaviour of v0.1.9, unchanged in v0.1.10** (client-transfer §8.1, client-core §8.3):
+- **Client behaviour of v0.1.9, unchanged in v0.1.10 and v0.1.11** (client-transfer §8.1, client-core §8.3):
   - A malformed `Keys32` list in a missing reply is ignored (every key counts as held), and unreadable records are skipped during upload.
   - `busy` sleeps without watching ctx; the stale-view retry goes to the same primary.
   - Unrequested and duplicate get records are emitted; the read order is re-ranked per retry; the view is refreshed at most once per fetcher; a Blob's length field is not checked.
@@ -198,7 +209,7 @@ definition, flags, help and pre-store validation are identical, then the action 
 | `store` (parent), `store push PATH NAME`, `store pull NAME` | client.go:205-342 | client + local store | implemented (DD-2 policy §2.3) |
 | `clone NAME [DIR]`, `init NAME`, `fetch`, `pull`, `push [--message/-m MSG]` | wc.go:116-359 (v0.1.10) | client + working copy | implemented; on a branch (a reference naming a commit) every push records a commit, and a message makes one on any reference (commit-objects.md) |
 | `status`, `diff [PATH...]` | wc.go:361-511 (v0.1.10) | offline working copy | implemented |
-| `refs [PREFIX]`, `watch PATTERN`, `ref` (parent), `ref get NAME`, `ref delete NAME`, `ls NAME [PATH]`, `cat NAME PATH` | client.go:344-580 (v0.1.10) | client | implemented (`cat NAME /` → DD-7); `ls` and `cat` read a commit's tree (`TreeOf`) |
+| `refs [PREFIX]`, `watch PATTERN`, `ref` (parent), `ref get NAME`, `ref delete NAME`, `ls NAME [PATH]`, `cat NAME PATH` | client.go:344-580 (v0.1.10) | client | implemented (`cat NAME /` → DD-7); `ls` and `cat` read a commit's tree (`TreeOf`, which holds the commit to the footprint rule since v0.1.11) |
 
 That is 21 top-level commands, 30 subcommands (cluster 4, token 1, node 6, voter 2, transition 5, gc 5,
 catalog 3, store 2, ref 2) and the `help` command. Library scope: everything in Go
@@ -221,7 +232,7 @@ work, in order:
 3. `--store == ""` → `no store directory: set --store or $DSTORE_STORE`.
 4. `pack_size(c)` → `--pack-size: …` errors (cli §2.9).
 5. Fail with
-   `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)`,
+   `<cmd> is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)`,
    where `<cmd>` is `serve`, `cluster init` or `node join`.
 
 **B. `--store` ticket derivation** (`cluster status`, `cluster ticket`, and `catalog restore` without
@@ -247,12 +258,27 @@ Constants live in `dstore_cli::nodeside` (§4.12).
 ### 2.3 Local refs policy for `store push/pull --local DIR` (DD-2)
 
 `open_local` mirrors Go `openLocal` (client.go:209-221): open `DIR/packstore` with sync, then open
-the refs store; if the refs store fails, close the packstore and return the error. Before calling
-`refstore::Store::open(DIR/refs, true)`, list `DIR/refs`. If it contains any of `CURRENT`, `LOCK`,
-`MANIFEST-*`, `OPTIONS-*`, `marker.format-version.*`, `marker.manifest.*`, `*.sst`, `*.log`, fail with
-`refstore: <DIR>/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)`.
-Go dstore run on a Rust-written directory silently creates a second (Pebble) database next to
-`refs.redb`; document this in the README.
+the refs store; if the refs store fails, close the packstore and return the error.
+
+Since core v0.0.10 and core-rs 0.7.0 the references are in `DIR/refs/refs.sqlite`, one SQLite file in WAL
+mode that both implementations read and write (core `architecture/references.md`). `DIR/refs` is created
+with `MkdirAll(dir, 0o755)` and Go's text `refstore: creating <DIR>/refs: <PathError>`, then
+`refstore::Store::open(DIR/refs, true)` decides:
+
+- A `refs.redb` of an earlier dstore-client-rs is imported by core-rs on this first open (the old file
+  goes to `redb-migrated/`, a poison file takes its place). Go knows nothing of `refs.redb`; if Go
+  opened the directory first and started a database, the import merges into it and overwrites nothing.
+- A Pebble database of Go dstore v0.1.10 or earlier is imported by Go on its first open. core-rs cannot
+  import Pebble: it knows such a directory by a `marker.manifest.*` file with no `refs.sqlite` beside it
+  and returns `refstore::Error::PebbleStore`, which `open_local` renders as
+  `refstore: <DIR>/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does`.
+  Nothing is created next to the Pebble files. What Go's import leaves behind (`refs.sqlite`,
+  `pebble-migrated/`, the poison marker `marker.format-version.999999.999`, a stray `LOCK`) opens.
+
+Up to core-rs 0.4.0 this section listed `DIR/refs` for Pebble's file names itself and refused them all,
+because Rust kept references in redb and the two stores could not meet. That check would now refuse a
+directory Go has imported (the poison marker matches `marker.format-version.*`), so it is gone and core-rs
+decides.
 
 ---
 
@@ -289,7 +315,7 @@ dstore-client-rs/
   tests/fake_cluster_transfer.rs, tests/fake_cluster_worktree.rs
                           transfers against scripted nodes; working-copy flows (added at L5)
   tests/iroh_loopback.rs  real Rust iroh on 127.0.0.1 (never inside the Nix sandbox); the live Go tests (ignored)
-  examples/holdlock.rs    lock-interop helper for interop D12
+  examples/holdlock.rs    lock-interop helper for interop D12 (holds a working copy open, so its .dstore/lock)
   tools/vectorgen/        Go module: vector generator, gotables, goerrno, clisnap, mktree, treekey, storecmp, holdlock
   third_party/iroh-1.2.0/ iroh 1.2.0 with one patch, through [patch.crates-io] (§5.12, third_party/README.md)
   interop/check.sh, interop/lib.sh, interop/README.md
@@ -1412,8 +1438,8 @@ pub mod ifaces {
 ### 4.8 `dstore-client`
 
 **Ports:** dstore `client/client.go` (403), `rank.go` (71), `batch.go` (29), `progress.go` (181),
-`refs.go` (150), `watch.go` (245), `objects.go` (395), `fetch.go` (309), `tree.go` (479), `commit.go` (26,
-v0.1.10).
+`refs.go` (150), `watch.go` (245), `objects.go` (395), `fetch.go` (309), `tree.go` (479), `commit.go` (38,
+v0.1.11).
 
 **Specs:**
 - client-core (part A, all);
@@ -1612,13 +1638,17 @@ impl Cluster {
 }
 pub(crate) fn stored_size_of(st: &packstore::Store, k: &[u8; 32]) -> usize;   // 46 + slen when stored, else key length
 
-// ---- commit.rs: dstore v0.1.10 client/commit.go (commit-objects.md) ----
+// ---- commit.rs: dstore v0.1.11 client/commit.go (commit-objects.md, core-v0.0.10.md) ----
 #[derive(Debug, thiserror::Error)]
 pub enum TreeOfError<E: std::error::Error + 'static> {
     #[error("reading commit {key}: {source}")] Read { key: key::Key, #[source] source: E },
     #[error("commit {key}: {source}")] Decode { key: key::Key, #[source] source: amber_store_core::commit::Error },
+    #[error("commit {key}: {source}")] Footprint { key: key::Key, #[source] source: amber_store_core::commit::Error },
+    #[error("commit {key}: length field {length} is not the commit's footprint {want} (its own {own} bytes plus its trees); a commit keyed by an older rule has to be created again")]
+    Length { key: key::Key, length: u64, want: u64, own: usize },
 }
 /// client.TreeOf: a Commit's recorded tree, or `k` itself for any other key (a reserved type nibble included).
+/// The commit's key must carry its footprint (core v0.0.10); a conflicted commit stands for its first side.
 pub fn tree_of<G, E>(k: key::Key, get: G) -> Result<key::Key, TreeOfError<E>>
 where G: FnMut(key::Key) -> Result<Vec<u8>, E>, E: std::error::Error + 'static;
 
@@ -1794,7 +1824,9 @@ pub fn remove(dir: &[u8]) -> Result<(), Error>;
 impl Tree {
     pub fn open(dir: &[u8]) -> Result<Tree, Error>;           // lock before state (a locked copy reports the lock error)
     pub fn create(dir: &[u8], cfg: Config) -> Result<Tree, Error>;   // no state file
-    pub fn close(self) -> Result<(), Error>;
+    // open and create take .dstore/lock (Go lockWorkingCopy, v0.1.11; open before it reads the config): Error::InUse, is_in_use() = errors.Is(err, ErrInUse)
+    pub fn from_parts(root: Vec<u8>, config: Config, state: State, store: Arc<packstore::Store>) -> Tree;   // Go &Tree{…}: no lock
+    pub fn close(self) -> Result<(), Error>;                  // the store, then the lock
     pub fn get(&self, k: Key) -> Result<Vec<u8>, packstore::Error>;
     pub fn save_config(&self) -> Result<(), Error>;
     pub fn save_state(&self) -> Result<(), Error>;
@@ -2094,7 +2126,7 @@ fn main() { std::process::exit(dstore_cli::main_entry()) }
 ```
 
 Integration tests (§7): `tests/golden.rs`, `tests/cli_snapshots.rs`, `tests/fake_cluster.rs`,
-`tests/iroh_loopback.rs`. Examples: `examples/holdlock.rs` (opens a `.dstore/packstore` and sleeps).
+`tests/iroh_loopback.rs`. Examples: `examples/holdlock.rs` (opens a working copy and sleeps).
 
 ---
 
@@ -2254,7 +2286,7 @@ Declare them in `[workspace.dependencies]`.
 
 | Crate | Version | Features / notes |
 |---|---|---|
-| `amber-store-core` | git rev `7386914b56b9c43ea42b166d81c1f2fbce3aaffb` | §5.11 |
+| `amber-store-core` | git rev `1a8bca1079e85713052b99c9bde144625015652c` | §5.11 |
 | `iroh` | `=1.2.0` | `default-features = false`, `features = ["tls-ring", "fast-apple-datapath"]` |
 | `iroh-base` | `=1.2.0` | ticket curve check |
 | `tokio` | `1.53.1` | `rt-multi-thread`, `macros`, `sync`, `time`, `io-util`, `net`, `signal`, `fs` (dev: `test-util`) |
@@ -2293,11 +2325,15 @@ rustls 0.23.43, ring 0.17.14). Commit `Cargo.lock`.
 ### 5.11 core-rs pin
 
 - **Manifest entry:**
-  `amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "7386914b56b9c43ea42b166d81c1f2fbce3aaffb" }`
-  (public repo; tag v0.4.0 is the same commit; v0.3.0 was `a85ffa1eb5ed363b9072ab224de179196cd0a046`).
-- **Nix `outputHashes."amber-store-core-0.4.0"`** = `sha256-V7DidCX4QDQXzvzWsiXDex1UVlAmmN0BIphvXlC1974=`
-  (`nix hash path` over `git archive <rev>`, the method that reproduces the v0.3.0 hash; the key carries
-  the crate version, so it changes with it; confirmed by `nix build .#dstore`; bump with every rev).
+  `amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "1a8bca1079e85713052b99c9bde144625015652c" }`
+  (public repo; tag v0.7.0 is the same commit; v0.4.0 was `7386914b56b9c43ea42b166d81c1f2fbce3aaffb`,
+  v0.3.0 `a85ffa1eb5ed363b9072ab224de179196cd0a046`). core-rs 0.7.0 brings `rusqlite` with the bundled
+  SQLite (`libsqlite3-sys`, built by the C compiler the workspace already needs) and keeps `redb` for the
+  import of old reference stores only.
+- **Nix `outputHashes."amber-store-core-0.7.0"`** = `sha256-tT4gGlJ0ZEGCjJXPvAtJ0T2DIlANe7R6o7bCn3ExjnE=`
+  (`nix hash path` over `git archive <rev>`, the method that reproduces the v0.3.0 and v0.4.0 hashes; the
+  key carries the crate version, so it changes with it; confirmed by `nix build .#dstore`; bump with
+  every rev).
 - **Effective MSRV** is 1.88 for core-rs and 1.91 for iroh; the workspace declares
   `rust-version = "1.91"`.
 - **Upstream proposals, none required:**
@@ -2383,7 +2419,7 @@ Notes:
 ## 7. Golden vectors and tests
 
 **Generator.** One Go module, `tools/vectorgen`:
-- **Requires:** dstore v0.1.10, core v0.0.9, go-udiff v0.4.1, fxamacker/cbor v2.9.3, go-iroh v0.2.0,
+- **Requires:** dstore v0.1.11, core v0.0.10, go-udiff v0.4.1, fxamacker/cbor v2.9.3, go-iroh v0.2.0,
   zeebo/blake3 v0.2.4; built with go1.26.5, `GOTOOLCHAIN=local`, `CGO_ENABLED=0`.
 - **Output.** `vectorgen <out-dir> [family…]` deletes exactly what it owns and regenerates. JSON is
   built from structs only, `u64`/`i64` are decimal strings, bytes are lowercase hex, payloads use
@@ -2452,12 +2488,16 @@ were decided.
   hook, a custom `HelpName`, `HideHelp` (impl-gocli.md).
 
 **Live interop** (`interop/check.sh`, `interop/README.md`, verification §4.5):
-- **Cluster.** 3 Go v0.1.10 nodes on loopback, built with `CGO_ENABLED=0` into `mktemp -d` and removed on
+- **Cluster.** 3 Go v0.1.11 nodes on loopback, built with `CGO_ENABLED=0` into `mktemp -d` and removed on
   exit. It uses `store push/pull`, not the stale script lines.
 - **Checks.** A1-A13, B1-B14, C1-C3, D1-D14, E1-E3, G1-G2 and H1-H8:
   - D14 (added with dstore v0.1.10) is the branch check: commits pushed by either client, cloned, fetched
     and pulled by the other, and the lost-state recovery on a branch (commit-objects.md §6);
-  - G1 asserts the §2.3 refusal, and G2 the §2.2 texts;
+  - D12 (reworked with dstore v0.1.11) is the lock check: while `holdlock` of either implementation has
+    a working copy open (`.dstore/lock`), both clients refuse alike, and likewise while an exclusive flock
+    is on the packstore directory, which is how a dstore v0.1.10 command holds it (core-v0.0.10.md §4);
+  - G1 asserts the §2.3 refusal and that either client works on the `--local` directory the other wrote
+    (one `refs.sqlite`), and G2 the §2.2 texts;
   - H1-H8 are the live cases handed over by the CLI snapshots and the L5 reviews. H8 is always skipped,
     because real nodes send a 16-byte cluster id.
 - **Comparison modes:** exact, stdout+exit, normalized, panic, format and root.
@@ -2474,7 +2514,7 @@ were decided.
   `445d861c6d31b4af0c79d8d4be2331f762a361d7`).
 - **`packages.dstore`.**
   - `rustPlatform.buildRustPackage` over `lib.fileset.unions [ ./Cargo.toml ./Cargo.lock ./src ./crates ./tests ./examples ./third_party ]`;
-  - `cargoLock.outputHashes."amber-store-core-0.4.0"` per §5.11;
+  - `cargoLock.outputHashes."amber-store-core-0.7.0"` per §5.11;
   - `cargoBuildFlags = [ "-p" "dstore-client-rs" "--bin" "dstore" ]`, `doCheck = false`
     (the Darwin sandbox refuses UDP binds).
 - **`checks`:**
@@ -2500,7 +2540,7 @@ were decided.
 |---|---|---|
 | `rust` | ubuntu-latest, macos-latest | toolchain 1.95.0; `cargo fmt --all --check`; `cargo clippy --workspace --all-targets --locked -- -D warnings`; `cargo test --workspace --all-targets --locked` (includes iroh loopback), `TZ=UTC` |
 | `vectors` | ubuntu-latest | `go vet ./...`; `go test ./...`; regenerate twice and diff; diff against `tests/golden`; regenerate `crates/gocompat/src/tables.rs` and `errno_tables.rs` and diff; `clisnap` and diff |
-| `interop` | ubuntu-latest, 45 min timeout | check out dstore at `v0.1.10`; `cargo build --release --locked --bin dstore --examples`; `bash interop/check.sh`; upload logs on failure; heavy and chaos groups on `workflow_dispatch` |
+| `interop` | ubuntu-latest, 45 min timeout | check out dstore at `v0.1.11`; `cargo build --release --locked --bin dstore --examples`; `bash interop/check.sh`; upload logs on failure; heavy and chaos groups on `workflow_dispatch` |
 | `nix` | ubuntu-latest, macos-latest | `nix flake check -L`; `nix build .#dstore -L && ./result/bin/dstore --version` |
 
 ---
@@ -2533,7 +2573,7 @@ were decided.
 | C22 | `NodeId` | Newtype in `dstore-view`. | transport and client-transfer (`type NodeId = [u8; 32]`) |
 | C23 | Fake node | `dstore-testkit` crate. | verification §4.1 (`src/testing` behind `test-support`) |
 | C24 | Go runtime panics | Emulated (first line, exit 2). | cli §8.2 item 3 and core-rs-gaps D4 (exit 1); agrees with view-placement open decision 2 |
-| C25 | Pebble refs | Refuse at open for push and pull. | core-rs-gaps D1 ("skip on push") |
+| C25 | Pebble refs | Refuse at open for push and pull, until Go has imported them (§2.3). | core-rs-gaps D1 ("skip on push") |
 | C26 | Undialable `--relay` | Accepted (DD-13). | cli §7 ("fail early") |
 | C27 | Node-side messages | The exact texts of §2.2. | cli §8.2 item 2 and verification §8 suggestions |
 | C28 | Layout | Workspace of §3. | verification §4.1 (single package with `src/testing`) and the single-crate module paths in every area spec (`src/codec`, `src/client`, …); module contents are unchanged |
@@ -2551,10 +2591,12 @@ These questions were open when this contract was written. v1 settles them as fol
    and pre-store validation, then fail with the fixed messages of §2.2 (DD-3; interop G2). Porting the
    node (a Pebble-compatible meta store, the paxos acceptor, the full node), or delegating to a Go
    `dstore` binary on `PATH`, is not part of v1.
-2. **Local refs for `store push/pull --local`: redb, with the Pebble refusal.** References live in
-   `DIR/refs/refs.redb`, and a Pebble directory is refused with the §2.3 text (DD-2; interop G1). There
-   is no Pebble-compatible refs writer. The README tells users to keep separate `--local` directories for
-   Go and Rust.
+2. **Local refs for `store push/pull --local`: the shared `refs.sqlite`, with the Pebble refusal.** v1
+   kept references in redb (`DIR/refs/refs.redb`) and told users to keep separate `--local` directories
+   for Go and Rust. Since core v0.0.10 and core-rs 0.7.0 both keep them in `DIR/refs/refs.sqlite` and
+   share the directory. core-rs imports a `refs.redb`; a Pebble directory of Go dstore v0.1.10 or
+   earlier is refused with the §2.3 text until Go has imported it (DD-2; interop G1). There is no Rust
+   Pebble reader.
 3. **License: LGPL-3.0-only** (`[workspace.package] license`, `LICENSE`, `COPYING`). That is the
    licence of core-rs, which the port links and copies helpers from. dstore itself has no LICENSE file.
 4. **Rust iroh: `=1.2.0`**, the latest release, by user decision (2026-09-18; §0, §5.12). It carries one

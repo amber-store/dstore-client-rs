@@ -18,6 +18,7 @@ fn type_name(k: &Key) -> String {
         2 => "DirLeaf".to_owned(),
         3 => "DirNode".to_owned(),
         4 => "XattrSet".to_owned(),
+        5 => "Commit".to_owned(),
         n => format!("Type({n})"),
     }
 }
@@ -59,9 +60,20 @@ fn child_keys_error_text(e: &ChildKeysError) -> String {
                 fstree_error_text(source)
             )
         }
-        // A commit's error texts hold no quoted names (core v0.0.9 `commit`), so core-rs's text is Go's.
+        // A commit's error texts hold no quoted names (core `commit`), so core-rs's text is Go's.
         ChildKeysError::DecodeCommit { key, source } => {
             format!("fstree: decoding Commit {key}: {source}")
+        }
+        // Go `decodeCommit` (core v0.0.10 fstree/dirof.go): the footprint does not fit a length field.
+        ChildKeysError::CommitFootprint { key, source } => {
+            format!("fstree: Commit {key}: {source}")
+        }
+        // The key is not held to the footprint rule: in practice a commit keyed by core v0.0.9.
+        ChildKeysError::CommitLength { key, want, own } => {
+            format!(
+                "fstree: Commit {key}: length field {} is not the commit's footprint {want} (its own {own} bytes plus its trees); a commit keyed by an older rule has to be created again",
+                key.length()
+            )
         }
         ChildKeysError::EntryContentKey { name, source } => {
             format!("fstree: {}: content key: {source}", quote(name))
@@ -256,16 +268,22 @@ mod tests {
             walk_error_text(&content_key),
             "fstree: \"\\x01\": content key: key: data is not 32 bytes: got 3"
         );
-        // A reserved type nibble renders as Go's Type(n) instead of panicking.
+        // A reserved type nibble renders as Go's Type(n) instead of panicking. 5 is Commit.
         let mut raw = [0u8; 32];
-        raw[0] = 0x50;
+        raw[0] = 0x60;
         let reserved: WalkError<String> = WalkError::NotDirObject { key: Key(raw) };
         assert_eq!(
             walk_error_text(&reserved),
             format!(
-                "fstree: {} is not a directory object (type Type(5))",
+                "fstree: {} is not a directory object (type Type(6))",
                 Key(raw)
             )
+        );
+        raw[0] = 0x50;
+        let commit: WalkError<String> = WalkError::NotContentObject { key: Key(raw) };
+        assert_eq!(
+            walk_error_text(&commit),
+            format!("{} is not a file-content object (type Commit)", Key(raw))
         );
         let children: WalkError<String> = WalkError::Children(ChildKeysError::EntryXattrsKey {
             name: b"\xfe".to_vec(),
@@ -277,6 +295,63 @@ mod tests {
         );
         let limit: WalkError<String> = WalkError::BadLimit { limit: 0 };
         assert_eq!(walk_error_text(&limit), limit.to_string());
+    }
+
+    // core v0.0.10 fstree/dirof.go `decodeCommit`: a commit's key carries its footprint.
+    #[test]
+    fn commit_key_rule_errors_match_go() {
+        use amber_store_core::commit::{Commit, Identity};
+
+        let dir = fstree::encode_dir_leaf(&[]).expect("empty tree");
+        let id = Identity {
+            name: "tester".into(),
+            when: 1,
+            ..Identity::default()
+        };
+        let (ck, raw) = Commit {
+            tree: dir.key,
+            parents: Vec::new(),
+            author: id.clone(),
+            committer: id,
+            message: String::new(),
+            signature: Vec::new(),
+            public_key: Vec::new(),
+            change_id: Vec::new(),
+            conflict_terms: Vec::new(),
+            conflict_labels: Vec::new(),
+        }
+        .object()
+        .expect("commit");
+        assert_eq!(ck.length(), raw.len() as u64 + dir.key.length());
+        assert_eq!(
+            fstree::child_keys(ck, &raw).expect("children"),
+            vec![dir.key]
+        );
+
+        // The same bytes keyed by core v0.0.9's rule, the commit's own length.
+        let old = Key::new(key::Type::Commit, raw.len() as u64, &raw);
+        let err = fstree::child_keys(old, &raw).expect_err("the older rule");
+        let want = format!(
+            "fstree: Commit {old}: length field {} is not the commit's footprint {} (its own {} bytes plus its trees); a commit keyed by an older rule has to be created again",
+            raw.len(),
+            ck.length(),
+            raw.len()
+        );
+        assert_eq!(child_keys_error_text(&err), want);
+        assert_eq!(err.to_string(), want);
+        // Through a reader: `dir_of` refuses the key before anything is listed.
+        let walk = fstree::dir_of(old, |_| -> Result<Vec<u8>, String> { Ok(raw.clone()) })
+            .expect_err("the older rule");
+        assert_eq!(walk_error_text(&walk), want);
+
+        let overflow = ChildKeysError::CommitFootprint {
+            key: ck,
+            source: amber_store_core::commit::Error::FootprintOverflow,
+        };
+        assert_eq!(
+            child_keys_error_text(&overflow),
+            format!("fstree: Commit {ck}: commit footprint overflows the key's length field")
+        );
     }
 
     #[test]

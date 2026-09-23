@@ -114,6 +114,140 @@ async fn eventually(what: &str, d: Duration, mut cond: impl FnMut() -> bool) {
 
 // ---- Dial, view refresh, backoff ----
 
+/// The objects of node/oldrule_test.go: a commit whose tree is on no node, under its footprint key and
+/// under a key of core v0.0.9's rule (its own length), with its bytes and its tree's key.
+fn commit_of_the_older_key_rule() -> (
+    amber_store_core::key::Key,
+    amber_store_core::key::Key,
+    Vec<u8>,
+    amber_store_core::key::Key,
+) {
+    use amber_store_core::commit::{Commit, Identity};
+    use amber_store_core::key::{Key, Type};
+
+    let blob = fstree::encode_blob(b"never uploaded");
+    let dir = fstree::encode_dir_leaf(&[fstree::Entry {
+        name: b"f".to_vec(),
+        mode: 0o100644,
+        content_key: blob.key.0.to_vec(),
+        ..fstree::Entry::default()
+    }])
+    .expect("dir leaf");
+    let id = Identity {
+        name: "alice".into(),
+        when: 1,
+        ..Identity::default()
+    };
+    let (good, raw) = Commit {
+        tree: dir.key,
+        parents: Vec::new(),
+        author: id.clone(),
+        committer: id,
+        message: "its tree is on no node".into(),
+        signature: Vec::new(),
+        public_key: Vec::new(),
+        change_id: Vec::new(),
+        conflict_terms: Vec::new(),
+        conflict_labels: Vec::new(),
+    }
+    .object()
+    .expect("commit");
+    let old = Key::new(Type::Commit, raw.len() as u64, &raw);
+    assert_ne!(old, good);
+    (good, old, raw, dir.key)
+}
+
+// Port of TestRefPutRefusesACommitOfTheOlderKeyRule (node/oldrule_test.go, dstore v0.1.11). A node that
+// upgraded from v0.1.10 may hold commits keyed by core v0.0.9's rule. The completeness walk can fetch one
+// but not read it, and must refuse the reference: treated like an absent object, as it once was, the
+// commit passed the has-and-pin negotiation with nothing below it checked.
+#[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+async fn ref_put_refuses_a_commit_of_the_older_key_rule() {
+    let net = Network::new();
+    let fc = cluster3(&net).await;
+    let c = dial_with(client_config(&net, &fc)).await;
+    let ctx = Ctx::background();
+    let (good, old, raw, dir) = commit_of_the_older_key_rule();
+    // Straight into the stores, as an upgrade finds them: put would refuse.
+    for node in fc.ids() {
+        for k in [good, old] {
+            let rec = amberpack::encode_record(k, &raw).expect("encode record");
+            fc.plant(node, k.0, &rec);
+        }
+    }
+    let force = Cond {
+        force: true,
+        ..Cond::default()
+    };
+    // The control: the same bytes under their footprint key are read, and the absent tree makes the
+    // reference incomplete.
+    let e = err(
+        c.ref_put(&ctx, &record("trees/control", &good.0, "alice"), &force)
+            .await,
+        "a commit whose tree is absent",
+    );
+    let inc = e.incomplete().expect("incomplete");
+    assert_eq!(inc.sample, [dir.0], "{e}");
+    // The older rule: refused, not to be retried (bad-request), and the refusal says why.
+    let e = err(
+        c.ref_put(&ctx, &record("trees/oldrule", &old.0, "alice"), &force)
+            .await,
+        "a commit keyed by the older rule",
+    );
+    assert!(e.is_code(CODE_BAD_REQUEST), "{e}");
+    let want = format!(
+        "malformed object under the reference: fstree: Commit {old}: length field {} is not the commit's footprint {} (its own {} bytes plus its trees); a commit keyed by an older rule has to be created again",
+        raw.len(),
+        good.length(),
+        raw.len()
+    );
+    assert!(e.to_string().ends_with(&want), "{e}");
+    // The in-process form returns the error as it is.
+    let local = fc
+        .ref_put_local(fc.ids()[0], &record("trees/oldrule", &old.0, "alice"))
+        .await;
+    assert_eq!(local, Err(want));
+    assert!(err(c.ref_get(&ctx, "trees/oldrule").await, "no reference").is_unknown_ref());
+    fc.close().await;
+}
+
+// Port of TestRefPutRefusesACommitTheCoordinatorDoesNotHold (node/oldrule_test.go). The same when the
+// node that coordinates the put does not hold the commit, the normal case in a cluster with more nodes
+// than replicas. It fetches the record from a peer, verify_record refuses it, and the refusal must not be
+// taken for "absent": the owners answer that they hold the key.
+#[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+async fn ref_put_refuses_a_commit_the_coordinator_does_not_hold() {
+    let net = Network::new();
+    let fc = cluster3(&net).await; // replicas 3, min_replicas 2
+    let (good, old, raw, _) = commit_of_the_older_key_rule();
+    // On two nodes, which satisfies min_replicas; the third coordinates.
+    let ids = fc.ids();
+    for node in &ids[1..] {
+        for k in [good, old] {
+            let rec = amberpack::encode_record(k, &raw).expect("encode record");
+            fc.plant(*node, k.0, &rec);
+        }
+    }
+    let control = fc
+        .ref_put_local(ids[0], &record("trees/control", &good.0, "alice"))
+        .await
+        .expect_err("a commit whose tree is absent");
+    assert!(control.starts_with("incomplete: 1 keys short"), "{control}");
+    let refused = fc
+        .ref_put_local(ids[0], &record("trees/oldrule", &old.0, "alice"))
+        .await
+        .expect_err("a commit of the older rule that the coordinator does not hold");
+    assert_eq!(
+        refused,
+        format!(
+            "malformed object under the reference: record refused: length field {} is not the commit's footprint {}; a commit keyed by an older rule has to be created again",
+            raw.len(),
+            good.length()
+        )
+    );
+    fc.close().await;
+}
+
 #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
 async fn client_dial_adopts_the_cluster_view() {
     let net = Network::new();

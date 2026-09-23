@@ -2551,7 +2551,7 @@
       "name": "error-not-a-directory",
       "a": "empty",
       "b": "notdir",
-      "get_calls": 2,
+      "get_calls": 1,
       "changes": null,
       "error": "fstree: 001cb602edc55fbc458ef47c972cedd1bed551dd75c4e8ebd2341a5f9c002663 is not a directory object (type Blob)"
     },

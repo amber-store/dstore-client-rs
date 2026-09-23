@@ -1,6 +1,6 @@
 [package]
 name = "dstore-client-rs"
-description = "dstore client library and CLI: a compatible Rust port of github.com/amber-store/dstore v0.1.10"
+description = "dstore client library and CLI: a compatible Rust port of github.com/amber-store/dstore v0.1.11"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -81,8 +81,8 @@ dstore-view = { path = "crates/view", version = "0.1.0" }
 dstore-wire = { path = "crates/wire", version = "0.1.0" }
 dstore-worktree = { path = "crates/worktree", version = "0.1.0" }
 
-# core-rs v0.4.0 (PORTING.md §5.11). Bump the flake's outputHashes."amber-store-core-0.4.0" with every rev.
-amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "7386914b56b9c43ea42b166d81c1f2fbce3aaffb" }
+# core-rs v0.7.0 (PORTING.md §5.11). Bump the flake's outputHashes."amber-store-core-0.7.0" with every rev.
+amber-store-core = { git = "https://github.com/amber-store/core-rs", rev = "1a8bca1079e85713052b99c9bde144625015652c" }
 
 # External crates (PORTING.md §5.10).
 async-channel = "2.5.0"

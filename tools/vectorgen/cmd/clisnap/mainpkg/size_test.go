@@ -1,4 +1,4 @@
-// Verbatim copy of github.com/amber-store/dstore v0.1.10 cmd/dstore/size_test.go, run
+// Verbatim copy of github.com/amber-store/dstore v0.1.11 cmd/dstore/size_test.go, run
 // against the copies of copied.go (only the package clause differs).
 
 package mainpkg

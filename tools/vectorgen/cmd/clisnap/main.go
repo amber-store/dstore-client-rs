@@ -1,5 +1,5 @@
 // Command clisnap captures tests/golden/cli/snapshots.json: the stdout, stderr
-// and exit status of the Go dstore v0.1.10 CLI for every case of
+// and exit status of the Go dstore v0.1.11 CLI for every case of
 // port-notes/cli.md §5.2-§5.3 and verification.md §4.3 item 24 and §5 that
 // runs without a cluster (help, usage errors, unknown commands and flags,
 // required flags, --version, argument validation before dialing, node-side
@@ -13,7 +13,7 @@
 //
 // It first runs the AST self-check of the cmd/dstore copies (mainpkg), then
 // builds github.com/amber-store/dstore/cmd/dstore with the vectorgen module's
-// build list (identical to dstore v0.1.10's go.mod) into a temporary directory,
+// build list (identical to dstore v0.1.11's go.mod) into a temporary directory,
 // runs every case there with a clean environment (PATH, a temporary HOME,
 // TZ=UTC) in a freshly built fixture directory, and deletes the binary and
 // every fixture afterwards. Schema: docs/vectorgen-cli.md.
@@ -43,9 +43,9 @@ import (
 	"github.com/amber-store/core/ingest"
 	"github.com/amber-store/core/key"
 	"github.com/amber-store/core/packstore"
-	"github.com/amber-store/core/refstore"
 	"github.com/amber-store/dstore-client-rs/tools/vectorgen/cmd/clisnap/mainpkg"
 	"github.com/amber-store/dstore/worktree"
+	"github.com/cockroachdb/pebble/v2"
 	"golang.org/x/sys/unix"
 )
 
@@ -184,18 +184,21 @@ const (
 )
 
 func nodeSideCommandText(cmd string) string {
-	return cmd + " is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.10)"
+	return cmd + " is a node-side command and dstore-client-rs does not implement the dstore node; use the Go dstore binary (github.com/amber-store/dstore v0.1.11)"
 }
 
 // pebbleRefsText is the PORTING.md §2.3 refusal for a --local directory whose
-// refs/ holds a Pebble database; local is the --local value as given.
+// refs/ still holds the Pebble database of Go dstore v0.1.10 or earlier, which
+// Go imports on its first open and core-rs cannot; local is the --local value
+// as given.
 func pebbleRefsText(local string) string {
-	return "refstore: " + local + "/refs holds a Pebble database written by Go dstore; dstore-client-rs keeps local references in redb and cannot open it (use another --local directory)"
+	return "refstore: " + local + "/refs holds a Pebble database written by Go dstore v0.1.10 or earlier; dstore-client-rs cannot import it: open the --local directory once with Go dstore v0.1.11 or later, which does"
 }
 
-// pebbleRefsNames are the entries of a fresh core v0.0.9 refstore (Pebble)
-// directory after Open and Close. The pebble_refs step checks them, so a
-// Pebble upgrade that changes them fails the run.
+// pebbleRefsNames are the entries of a fresh Pebble directory after Open and
+// Close: the refstore of core v0.0.9 and earlier, which dstore v0.1.10 and
+// earlier kept in <local>/refs. The pebble_refs step checks them, so a Pebble
+// upgrade that changes them fails the run.
 var pebbleRefsNames = []string{"000002.log", "LOCK", "MANIFEST-000001", "OPTIONS-000003", "marker.format-version.000001.013", "marker.manifest.000001.MANIFEST-000001"}
 
 // smData is data(seed, n) of VECTORS.md: splitmix64 outputs as 8
@@ -437,11 +440,14 @@ func applyStep(s step, root, scratch string, vars map[string]key.Key) error {
 		st.SyncedAt = time.Unix(0, int64(*s.SyncedAtUnixNs)).UTC()
 		return (&worktree.Tree{Root: root, State: st}).SaveState()
 	case "pebble_refs":
-		rs, err := refstore.Open(p, true)
+		// Since core v0.0.10 the refstore is SQLite. What dstore v0.1.10 and
+		// earlier left behind is a Pebble store, opened as core v0.0.9's
+		// refstore.Open opened it and as core's migration tests make one.
+		db, err := pebble.Open(p, &pebble.Options{Logger: quietPebble{}})
 		if err != nil {
 			return err
 		}
-		if err := rs.Close(); err != nil {
+		if err := db.Close(); err != nil {
 			return err
 		}
 		entries, err := os.ReadDir(p)
@@ -1060,4 +1066,13 @@ func contains(list []string, s string) bool {
 		}
 	}
 	return false
+}
+
+// quietPebble silences Pebble's own logging, as core's refstore did.
+type quietPebble struct{}
+
+func (quietPebble) Infof(string, ...any)  {}
+func (quietPebble) Errorf(string, ...any) {}
+func (quietPebble) Fatalf(format string, args ...any) {
+	panic(fmt.Sprintf("pebble fatal: "+format, args...))
 }

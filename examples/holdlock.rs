@@ -1,13 +1,16 @@
-//! Lock-interop helper for interop check D12: opens `<DIR>/.dstore/packstore` (taking its flock) and sleeps
-//! for `SECONDS`.
+//! Lock-interop helper for interop check D12: opens the working copy `DIR`, which takes its lock
+//! (`.dstore/lock`, an exclusive flock, dstore v0.1.11), and keeps it open for `SECONDS`.
 //!
 //! Usage: `cargo run --example holdlock -- DIR SECONDS`
 //!
-//! Once the lock is held it prints `locked <path>` on stdout, so a caller can wait for that line before it
-//! starts the process that must be refused. The Go twin is `tools/vectorgen/cmd/holdlock`.
+//! One command at a time has a working copy open, and Go and Rust commands exclude each other through the
+//! same lock file. Until core v0.0.10 the packstore's single-owner lock did that on the side, and this
+//! helper opened the packstore; a packstore is shared now. Once the working copy is open it prints
+//! `locked <root>` on stdout, so a caller can wait for that line before it starts the command that must be
+//! refused. The Go twin is `tools/vectorgen/cmd/holdlock`.
 
 use std::io::Write;
-use std::path::Path;
+use std::os::unix::ffi::OsStrExt;
 use std::process::ExitCode;
 use std::time::Duration;
 
@@ -21,16 +24,15 @@ fn main() -> ExitCode {
         eprintln!("holdlock: SECONDS must be a non-negative integer");
         return ExitCode::from(2);
     };
-    let path = Path::new(dir).join(".dstore").join("packstore");
-    let store = match dstore::core::packstore::Store::open(&path) {
-        Ok(store) => store,
+    let tree = match dstore::worktree::Tree::open(dir.as_bytes()) {
+        Ok(tree) => tree,
         Err(e) => {
             eprintln!("holdlock: {e}");
             return ExitCode::from(1);
         }
     };
     let mut out = std::io::stdout().lock();
-    if writeln!(out, "locked {}", path.display())
+    if writeln!(out, "locked {}", String::from_utf8_lossy(&tree.root))
         .and_then(|()| out.flush())
         .is_err()
     {
@@ -38,7 +40,7 @@ fn main() -> ExitCode {
     }
     drop(out);
     std::thread::sleep(Duration::from_secs(secs));
-    if let Err(e) = store.close() {
+    if let Err(e) = tree.close() {
         eprintln!("holdlock: {e}");
         return ExitCode::from(1);
     }

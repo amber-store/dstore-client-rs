@@ -1338,9 +1338,9 @@
     },
     {
       "name": "branch",
-      "key": "5048b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329",
+      "key": "5049b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329",
       "tree": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
-      "out": "commit 5048b642d37e2772, root 2001bbe6a9f5a014"
+      "out": "commit 5049b642d37e2772, root 2001bbe6a9f5a014"
     },
     {
       "name": "absent reference",
@@ -1365,8 +1365,8 @@
     {
       "name": "branch",
       "root": "2001bbe6a9f5a0146a1f4d0381e9b0ed1ac2f1a979ce9d5ad84e46ff0b58f36b",
-      "commit": "5048b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329",
-      "out": "5048b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329"
+      "commit": "5049b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329",
+      "out": "5049b642d37e277245884cf8abac0c615aae9a0ee4fd74cc8358ce0cd26d0329"
     },
     {
       "name": "commit field holding a tree",
@@ -1450,7 +1450,7 @@
         },
         {
           "type": "string",
-          "value": "commit 5048b642d37e2772, root 2001bbe6a9f5a014"
+          "value": "commit 5049b642d37e2772, root 2001bbe6a9f5a014"
         },
         {
           "type": "int",
@@ -1461,7 +1461,7 @@
           "value": "34700"
         }
       ],
-      "out": "cloned trees/demo into demo: commit 5048b642d37e2772, root 2001bbe6a9f5a014, 13 objects fetched (34700 bytes)\n"
+      "out": "cloned trees/demo into demo: commit 5049b642d37e2772, root 2001bbe6a9f5a014, 13 objects fetched (34700 bytes)\n"
     },
     {
       "name": "init-exists",
@@ -1492,10 +1492,10 @@
         },
         {
           "type": "string",
-          "value": "commit 5048b642d37e2772, root 2001bbe6a9f5a014"
+          "value": "commit 5049b642d37e2772, root 2001bbe6a9f5a014"
         }
       ],
-      "out": "initialised working copy of trees/demo; the reference exists (commit 5048b642d37e2772, root 2001bbe6a9f5a014): status shows everything as new, pull merges\n"
+      "out": "initialised working copy of trees/demo; the reference exists (commit 5049b642d37e2772, root 2001bbe6a9f5a014): status shows everything as new, pull merges\n"
     },
     {
       "name": "init-absent",
@@ -1552,10 +1552,10 @@
         },
         {
           "type": "string",
-          "value": "5048b642d37e2772"
+          "value": "5049b642d37e2772"
         }
       ],
-      "out": "trees/demo: up to date (5048b642d37e2772)\n"
+      "out": "trees/demo: up to date (5049b642d37e2772)\n"
     },
     {
       "name": "fetch",
@@ -1594,7 +1594,7 @@
         },
         {
           "type": "string",
-          "value": "commit 5048b642d37e2772, root 2001bbe6a9f5a014"
+          "value": "commit 5049b642d37e2772, root 2001bbe6a9f5a014"
         },
         {
           "type": "int",
@@ -1605,7 +1605,7 @@
           "value": "133"
         }
       ],
-      "out": "fetched trees/demo: commit 5048b642d37e2772, root 2001bbe6a9f5a014, 4 objects fetched (133 bytes)\n"
+      "out": "fetched trees/demo: commit 5049b642d37e2772, root 2001bbe6a9f5a014, 4 objects fetched (133 bytes)\n"
     },
     {
       "name": "fetched-desc-commit",
@@ -1615,14 +1615,14 @@
       "args": [
         {
           "type": "string",
-          "value": "5048b642d37e2772"
+          "value": "5049b642d37e2772"
         },
         {
           "type": "string",
           "value": "2001bbe6a9f5a014"
         }
       ],
-      "out": "commit 5048b642d37e2772, root 2001bbe6a9f5a014"
+      "out": "commit 5049b642d37e2772, root 2001bbe6a9f5a014"
     },
     {
       "name": "pull-conflicts-header",
@@ -1753,10 +1753,10 @@
         },
         {
           "type": "string",
-          "value": "5048b642d37e2772"
+          "value": "5049b642d37e2772"
         }
       ],
-      "out": "trees/demo already holds 5048b642d37e2772 (an earlier push completed); state updated\n"
+      "out": "trees/demo already holds 5049b642d37e2772 (an earlier push completed); state updated\n"
     },
     {
       "name": "push-commit",
@@ -1770,7 +1770,7 @@
         },
         {
           "type": "string",
-          "value": "5048b642d37e2772"
+          "value": "5049b642d37e2772"
         },
         {
           "type": "string",
@@ -1789,7 +1789,7 @@
           "value": "01ab00"
         }
       ],
-      "out": "pushed trees/demo: commit 5048b642d37e2772, root 2001bbe6a9f5a014, 6 objects, 3 uploaded, version 01ab00\n"
+      "out": "pushed trees/demo: commit 5049b642d37e2772, root 2001bbe6a9f5a014, 6 objects, 3 uploaded, version 01ab00\n"
     },
     {
       "name": "push",
